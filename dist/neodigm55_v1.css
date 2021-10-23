@@ -1,0 +1,75 @@
+* neodigm 55 JS v1 | Scott C. Krause | neodigm | JavaScript Micor-Framework */
+
+.l-snackbar .snackbar__cont{border-radius:4px;background:linear-gradient(45deg,#a29980 0%,#665f50 100%);box-shadow:inset #665f50 0 0 6px 2px;border:solid 1px #d3cdb4;left:38%;min-width:188px;padding:0;position:fixed;transition:bottom .6s ease-in-out;user-select:none;z-index:6408}.l-snackbar .snackbar__cont--hide{bottom:-112px;transition:bottom .6s ease-in-out}.l-snackbar .snackbar__cont--show{bottom:4px;transition:bottom .6s ease-in-out}.l-snackbar .snackbar__progbar{background: linear-gradient(to right, #edba08 64%,#fff 100%);height:2px;padding:0;margin:0;position:relative;top:2px}.l-snackbar .snackbar__cont--hide .snackbar__progbar{width:0%;transition:all .1s ease-in-out}.l-snackbar .snackbar__cont--show .snackbar__progbar{width:101%;transition:all 6s ease-in-out}.l-snackbar .snackbar__msg{color:#fff;font-family:sans-serif;font-size:16px;margin:20px;text-align:center;white-space:nowrap}
+
+.l-reveal .reveal__box {
+    display: block !important;
+    position: absolute;
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1005;
+    left: 0;
+    margin: 0 24%;
+    right: 0;
+    background-color: #fff;
+    padding: 8px;
+    border: solid 1px #666;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+    .l-reveal .reveal__scrim {
+        background: linear-gradient(rgba(55,82,73,.38),rgba(55,82,73,.92));
+        background-position: 50% 0;
+        background-size: cover;
+        backdrop-filter: blur(16px);
+    cursor: pointer;
+    display: block!important;
+    opacity: .4;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: 8;
+    }
+    .l-reveal .reveal-modal,
+    .reveal__init {
+    display: none;
+    }
+    .l-reveal .small {
+    width: 78%;
+    }
+
+    .l-reveal .medium {
+    width: 60%;
+    }
+    .l-reveal .large {
+    width: 76%;
+    }
+    .l-reveal .resp_x, .resp_x:hover {
+    position: absolute;
+    right: 10px; top: 2px;
+    font-family: monospace;
+    font-size: 28px;
+    font-weight: 800;
+    cursor: pointer;
+    }
+    .l-reveal .eml-msg__x{
+        position: absolute;
+        top: -24px; right: -44px;
+    }
+    .l-reveal.reveal-cta {
+        position: fixed;
+        width: 100%;
+        z-index: 364;
+        top: 38px;
+    }
+    
+    @media only screen and (min-width:48.1em) and (max-width:62em){/* med */
+        .l-reveal .small {
+            width: 40%;
+        }
+    }
+    @media only screen and (min-width:62.1em){/* lg */
+        .l-reveal .small {
+            width: 40%;
+        }
+    }
