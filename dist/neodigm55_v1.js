@@ -1,4 +1,5 @@
 console.log("nd55 loading ...");
+setTimeout(function(){
 var neodigmSnack = (function(_d, eID) {
     var _nTimeout = 5400, _aQ = [];
     var _eSb = _d.getElementById(eID);
@@ -33,6 +34,7 @@ var neodigmSnack = (function(_d, eID) {
         }
     }
 })(document, "js-snackbar__id");
+}, 4000);
 
 // neodigm 55 JS v1.0.2 | Scott C. Krause | neodigm | Gamefried JavaScript Framework
 
