@@ -1,3 +1,4 @@
+console.log("nd55 loading ...");
 var neodigmSnack = (function(_d, eID) {
     var _nTimeout = 5400, _aQ = [];
     var _eSb = _d.getElementById(eID),
