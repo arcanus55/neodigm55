@@ -1,8 +1,13 @@
 console.log("nd55 loading ...");
 var neodigmSnack = (function(_d, eID) {
     var _nTimeout = 5400, _aQ = [];
-    var _eSb = _d.getElementById(eID),
-        _eSbText = _eSb.querySelectorAll("P")[0];
+    var _eSb = _d.getElementById(eID);
+    if( !_eSb ){
+        var _eSb = document.createElement('div');
+        document.body.appendChild( _eSb );
+        _eSb.outerHTML = '<div class="l-snackbar" qrole="alert"><section id="js-snackbar__id" class="snackbar__cont snackbar__cont--hide" aria-live="polite" aria-atomic="true"><div class="snackbar__progbar"></div><p class="snackbar__msg"></p></section></div>';
+    }
+    var _eSbText = _eSb.querySelector("P");
     var _fClose = function() {
         _aQ.shift();
         _eSb.classList.remove("snackbar__cont--show");
