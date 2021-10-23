@@ -4,7 +4,7 @@ var neodigmSnack = (function(_d, eID) {
     var _eSb = _d.getElementById(eID);
     if( !_eSb ){
         var _eSb = document.createElement('div');
-        document.body.appendChild( _eSb );
+        _d.body.appendChild( _eSb );
         _eSb.outerHTML = '<div class="l-snackbar" qrole="alert"><section id="js-snackbar__id" class="snackbar__cont snackbar__cont--hide" aria-live="polite" aria-atomic="true"><div class="snackbar__progbar"></div><p class="snackbar__msg"></p></section></div>';
     }
     var _eSbText = _eSb.querySelector("P");
