@@ -66,8 +66,8 @@
     padding: 8px;
     border: solid 1px #666;
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
-    .l-reveal .reveal__scrim {
+}
+.l-reveal .reveal__scrim {
         background: linear-gradient(rgba(55,82,73,.38),rgba(55,82,73,.92));
         background-position: 50% 0;
         background-size: cover;
@@ -78,8 +78,8 @@
     position: fixed;
     top: 0; right: 0; bottom: 0; left: 0;
     z-index: 8;
-    }
-    .l-reveal .reveal-modal,
+}
+.l-reveal .reveal-modal,
     .reveal__init {
     display: none;
     }
@@ -103,7 +103,7 @@
     }
     .l-reveal .eml-msg__x{
         position: absolute;
-        top: -24px; right: -44px;
+        top: -20px; right: -32px;
     }
     .l-reveal.reveal-cta {
         position: fixed;
