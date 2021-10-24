@@ -60,7 +60,7 @@
           neodigmPop.eRev = _d.getElementById(_sRevId);
           neodigmPop.eRev.classList.add("reveal__box");
           neodigmPop.eRev.parentElement.classList.remove("reveal__init");
-            neodigmPop.eRev.style.top = String(window.pageYOffset + 84) + "px";
+            neodigmPop.eRev.style.top = "176px";  //  String(window.pageYOffset + 84) + "px";
             neodigmPop.eRev.style.visibility = "visible";
           neodigmPop.eRev.setAttribute("aria-hidden", "false");
           e.preventDefault();
@@ -84,7 +84,7 @@
           neodigmPop.eRev = _d.getElementById(_sRevId);
           neodigmPop.eRev.classList.add("reveal__box");
           neodigmPop.eRev.parentElement.classList.remove("reveal__init");
-            neodigmPop.eRev.style.top = String(window.pageYOffset + 84) + "px";
+            neodigmPop.eRev.style.top = "176px";  //  String(window.pageYOffset + 84) + "px";
             neodigmPop.eRev.style.visibility = "visible";
           neodigmPop.eRev.setAttribute("aria-hidden", "false");
         }
