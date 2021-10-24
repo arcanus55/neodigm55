@@ -68,13 +68,11 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 .l-reveal .reveal__scrim {
-	background: linear-gradient( rgba(51,73,94, .48), rgba(33,48,66,.92) );
         background-position: 50% 0;
         background-size: cover;
-        backdrop-filter: blur(16px);
+        backdrop-filter: blur(6px);
     cursor: pointer;
     display: block!important;
-    opacity: .4;
     position: fixed;
     top: 0; right: 0; bottom: 0; left: 0;
     z-index: 80;
