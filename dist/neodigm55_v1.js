@@ -1,4 +1,6 @@
-    var neodigmSnack = (function(_d, eID) {
+// neodigm 55 JS v1.0.2 | Scott C. Krause | neodigm | Gamefried JavaScript Framework    
+
+var neodigmSnack = (function(_d, eID) {
         var _nTimeout = 5400, _aQ = [], _eSb, _eSbText;
         var _fOpen = function() {
             _eSbText.innerHTML = _aQ[0].replace("|", "<br>");
@@ -31,13 +33,10 @@
             }
         }
     })(document, "js-snackbar__id");
-
-    
-    // neodigm 55 JS v1.0.2 | Scott C. Krause | neodigm | Gamefried JavaScript Framework
     
     var neodigm = {};
     
-    // neodigm Modal Begin //
+    // neodigm Pop Begin //
     var _aRevAct=0, _aRevX=0, _sRevId="", _bIsOpen = false, _fOnClose=null, _d=document;
     var neodigmPop = {
       eRev: 0, eRevScrim: 0,
