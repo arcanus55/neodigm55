@@ -40,7 +40,7 @@ let neodigmSnack = (function(_d, eID) {
 })(document, "js-snackbar__id");
 
 // Neodigm 55 Pop Begin //
-let _aRevAct=0, _aRevX=0, _sRevId="", _bIsOpen = false, _fOnClose=null, _d=document;
+var _aRevAct=0, _aRevX=0, _sRevId="", _bIsOpen = false, _fOnClose=null, _d=document;
 let neodigmPop = {
   eRev: 0, eRevScrim: 0,
   "init" : function() {
