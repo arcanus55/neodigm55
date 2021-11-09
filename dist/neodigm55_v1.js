@@ -26,7 +26,7 @@ var neodigmSnack = (function(_d, eID) {
                 }
             },
             q: function(sMsg) {
-                if (sMsg != _aQ[0]) _aQ.push(sMsg); // debounce
+                if (sMsg && sMsg != _aQ[0]) _aQ.push(sMsg); // debounce
                 if (_aQ.length == 1) {
                     _fOpen();
                 }
