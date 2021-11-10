@@ -82,14 +82,14 @@
     display: none;
     }
     .l-reveal .small {
-    width: 78%;
+    width: 60%;
     }
 
     .l-reveal .medium {
-    width: 60%;
+    width: 70%;
     }
     .l-reveal .large {
-    width: 76%;
+    width: 80%;
     }
     .l-reveal .resp_x, .resp_x:hover {
     position: absolute;
