@@ -116,11 +116,9 @@
 	    overflow-x: hidden;
 	}
 
-body[data-pref-scheme='dark'] .l-reveal {
-	border: solid 1px #888;
-	box-shadow: 0px 2px 6px -2px rgb(164 164 164 / 60%);
-	background-color: #242424;
-}
+	body[data-pref-scheme='dark'] .rev-artc {
+		background-color: #242424;
+	}
     
     @media only screen and (min-width:48.1em) and (max-width:62em){/* med */
         .l-reveal .small {
