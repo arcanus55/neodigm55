@@ -40,10 +40,11 @@ let neodigmSnack = (function(_d, eID) {
 })(document, "js-snackbar__id");
 
 // Neodigm 55 Pop Begin //
-var _aRevAct=0, _aRevX=0, _sRevId="", _bIsOpen = false, _fOnClose=null, _d=document;
+//  var _aRevAct=0, _aRevX=0, _sRevId="", _bIsOpen = false, _fOnClose=null, _d=document;
 let neodigmPop = {
   eRev: 0, eRevScrim: 0,
-  "init" : function() {
+  _aRevAct: 0, _aRevX: 0, _sRevId: "", _bIsOpen :  false, _fOnClose: null, _d: document,
+"init" : function() {
     _aRevX = _d.getElementsByClassName("close-reveal-modal");
     for (let i = 0, ln = _aRevX.length; i < ln; i++) {
         _aRevX[i].addEventListener("click", neodigmPop.close, false);
@@ -60,7 +61,7 @@ let neodigmPop = {
     if(_sRevId){
       neodigmPop.eRevScrim.classList.add("reveal__scrim");
       neodigmPop.eRev = _d.getElementById(_sRevId);
-      neodigmPop.eRev.classList.add("reveal__box");
+      neodigmPop.eRev.classList.add("reveal__box"); 
       neodigmPop.eRev.parentElement.classList.remove("reveal__init");
         neodigmPop.eRev.style.top = "116px";  //  String(window.pageYOffset + 84) + "px";
         neodigmPop.eRev.style.visibility = "visible";
