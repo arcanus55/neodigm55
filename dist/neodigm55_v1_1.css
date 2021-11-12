@@ -2,8 +2,8 @@
 
 .l-snackbar .snackbar__cont {
 	border-radius: 4px;
-	background: linear-gradient(45deg, #4c75c2 0%, #92A8D1 100%);
-	box-shadow: inset #92A8D1 0 0 6px 2px;
+	background: linear-gradient(45deg, #a5321d 0%, #DD4124 100%);
+	box-shadow: inset #DD4124 0 0 6px 2px;
 	border: solid 1px #d3cdb4;
 	left: 38%;
 	min-width: 188px;
