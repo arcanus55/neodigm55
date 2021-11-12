@@ -82,14 +82,14 @@
     display: none;
     }
     .l-reveal .small {
-    width: 78%;
+    width: 60%;
     }
 
     .l-reveal .medium {
-    width: 60%;
+    width: 70%;
     }
     .l-reveal .large {
-    width: 76%;
+    width: 80%;
     }
     .l-reveal .resp_x, .resp_x:hover {
     position: absolute;
@@ -114,6 +114,10 @@
 	    max-height: calc(100vh - 300px);
 	    overflow-y: scroll;
 	    overflow-x: hidden;
+	}
+
+	body[data-pref-scheme='dark'] .rev-artc {
+		background-color: #242424;
 	}
     
     @media only screen and (min-width:48.1em) and (max-width:62em){/* med */
