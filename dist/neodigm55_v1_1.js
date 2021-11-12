@@ -3,7 +3,7 @@ neodigm 55 UX v1.0.2 | Arcanus 55 and Scott C. Krause
 Neodigm 55 is an eclectic JavaScript UX micro-library.
 The lightweight components come together in a unique way that will make visiting your website playful and fun.
 */
-let neodigmOpt = {neodigmSnack: true, neodigmPop: true};
+let neodigmOpt = {neodigmSnack: true, neodigmPop: true, neodigmAudio: false};
 
 let neodigmSnack = (function(_d, eID) {
   let _nTimeout = 5800, _aQ = [], _eSb, _eSbText;

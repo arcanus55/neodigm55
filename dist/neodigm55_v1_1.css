@@ -52,8 +52,8 @@
 	white-space: nowrap
 }
 
-.l-reveal {
-    border-radius: 12px !important; 
+.l-reveal > section {
+    border-radius: 44px; 
     transition: border-radius 4s; 
 }
 
@@ -72,6 +72,8 @@
     border: solid 1px #666;
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
 
+    border-radius: 16px; 
+    transition: border-radius 4s; 
 }
 .l-reveal .reveal__scrim {
     background-position: 50% 0;
@@ -86,18 +88,17 @@
 }
 .l-reveal .reveal-modal,
     .reveal__init {
-    display: none;
-    border-radius: 33px;
+        display: none;
     }
     .l-reveal .small {
-    width: 60%;
+        width: 60%;
     }
 
     .l-reveal .medium {
-    width: 70%;
+        width: 70%;
     }
     .l-reveal .large {
-    width: 80%;
+        width: 80%;
     }
     .l-reveal .resp_x, .resp_x:hover {
     position: absolute;
@@ -110,7 +111,7 @@
         position: absolute;
         top: -20px; right: -32px;
     }
-    .l-reveal.reveal-cta {
+    .l-reveal.reveal-cta { 
         position: fixed;
         width: 100%;
         z-index: 364;
