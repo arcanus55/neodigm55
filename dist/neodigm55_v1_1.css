@@ -54,7 +54,7 @@
 .l-reveal .reveal__box {
     display: block !important;
     position: absolute;
-    border-radius: 3px;
+    border-radius: 6px;
     position: absolute;
     top: 0;
     width: 100%;
@@ -68,9 +68,10 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 .l-reveal .reveal__scrim {
-        background-position: 50% 0;
-        background-size: cover;
-        backdrop-filter: blur(6px);
+    background-position: 50% 0;
+    background-size: cover;
+    backdrop-filter: blur(6px);
+
     cursor: pointer;
     display: block!important;
     position: fixed;
@@ -80,6 +81,8 @@
 .l-reveal .reveal-modal,
     .reveal__init {
     display: none;
+    border-radius: 33px;
+    transition: border-radius 2s;
     }
     .l-reveal .small {
     width: 60%;
@@ -95,8 +98,7 @@
     position: absolute;
     right: 10px; top: 2px;
     font-family: monospace;
-    font-size: 28px;
-    font-weight: 800;
+    font-size: 28px; font-weight: 800;
     cursor: pointer;
     }
     .l-reveal .eml-msg__x{
