@@ -51,10 +51,15 @@
 	text-align: center;
 	white-space: nowrap
 }
+
+.l-reveal {
+    border-radius: 12px !important; 
+    transition: border-radius 4s; 
+}
+
 .l-reveal .reveal__box {
     display: block !important;
     position: absolute;
-    border-radius: 12px !important;
     position: absolute;
     top: 0;
     width: 100%;
@@ -66,7 +71,6 @@
     padding: 8px;
     border: solid 1px #666;
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    transition: border-radius 2s;
 
 }
 .l-reveal .reveal__scrim {
