@@ -1,0 +1,27 @@
+{
+  "name": "neodigm55",
+  "version": "1.1.0",
+  "description": "Neodigm 55 is an eclectic JavaScript UX micro-library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arcanus55/neodigm55.git"
+  },
+  "keywords": [
+    "ux",
+    "JavaScript",
+    "micro-library"
+  ],
+  "author": "Arcanus 55, Inc.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arcanus55/neodigm55/issues"
+  },
+  "homepage": "https://github.com/arcanus55/neodigm55#readme",
+  "dependencies": {
+    "typescript": "^4.4.4"
+  }
+}
