@@ -3,16 +3,19 @@ neodigm 55 UX v1.0.2 | Arcanus 55 and Scott C. Krause
 Neodigm 55 is an eclectic JavaScript UX micro-library.
 The lightweight components come together in a unique way that will make visiting your website playful and fun.
 */
-let neodigmOpt = {neodigmSnack: true, neodigmPop: true, neodigmAudio: false};
+let neodigmOpt = {neodigmToast: true, neodigmPop: true, neodigmAudio: false};
 
-let neodigmSnack = (function(_d, eID, _q) {
+let neodigmToast = (function(_d, eID, _q) {
   let _nTimeout = 5800, _aQ = [], _eSb, _eSbText;
   let _fOpen = function() {
-      _eSbText.innerHTML = _aQ[0].replace("|", "<br>");
+      _eSbText.innerHTML = _aQ[0].replace("|", "<br>").replace("##", "");
       _eSb.style.left = ((_d.body.clientWidth / 2) - (_eSb.clientWidth / 2)) + "px";
       _eSb.classList.remove("snackbar__cont--hide");
-      _eSb.classList.add("snackbar__cont--show");
-      if ("vibrate" in navigator) window.navigator.vibrate([16, 8]);
+      if( _aQ[0].indexOf("##") != -1){
+        _eSb.classList.add("snackbar__cont--alt");
+      }
+    _eSb.classList.add("snackbar__cont--show");
+    if ("vibrate" in navigator) window.navigator.vibrate([16, 8]);
       setTimeout(_fClose, _nTimeout);
   };
   return {
@@ -27,10 +30,13 @@ let neodigmSnack = (function(_d, eID, _q) {
                   if (_aQ.length != 0) {
                       setTimeout(_fOpen, 1200);
                   }
+                  _eSb.classList.remove("snackbar__cont--alt");
               }
           }
           _d.body.addEventListener("click", ( ev )=>{
-console.log( ev )
+            if( ev?.target?.dataset?.neodigmToast ){
+                neodigmToast.q(ev.target.dataset.neodigmToast  )
+            }
           }, true)
       },
       q: function(sMsg) {
@@ -133,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function(ev) {
   eMU.innerHTML = neodigmMU;
   document.body.appendChild(eMU);
   setTimeout( ()=>{
-    if( neodigmOpt.neodigmSnack ) neodigmSnack.init();
+    if( neodigmOpt.neodigmToast ) neodigmToast.init();
     if( neodigmOpt.neodigmPop )   neodigmPop.init();
   }, 4);
 });
