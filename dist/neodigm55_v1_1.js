@@ -5,7 +5,7 @@ The lightweight components come together in a unique way that will make visiting
 */
 let neodigmOpt = {neodigmSnack: true, neodigmPop: true, neodigmAudio: false};
 
-let neodigmSnack = (function(_d, eID) {
+let neodigmSnack = (function(_d, eID, _q) {
   let _nTimeout = 5800, _aQ = [], _eSb, _eSbText;
   let _fOpen = function() {
       _eSbText.innerHTML = _aQ[0].replace("|", "<br>");
@@ -29,6 +29,9 @@ let neodigmSnack = (function(_d, eID) {
                   }
               }
           }
+          _d.body.addEventListener("click", ( ev )=>{
+console.log( ev )
+          }, true)
       },
       q: function(sMsg) {
           if (sMsg && sMsg != _aQ[0]) _aQ.push(sMsg); // debounce
@@ -37,10 +40,9 @@ let neodigmSnack = (function(_d, eID) {
           }
       }
   }
-})(document, "js-snackbar__id");
+})(document, "js-snackbar__id", "[data-neodigm-toast]");
 
 // Neodigm 55 Pop Begin //
-//  var _aRevAct=0, _aRevX=0, _sRevId="", _bIsOpen = false, _fOnClose=null, _d=document;
 let neodigmPop = {
   eRev: 0, eRevScrim: 0,
   _aRevAct: 0, _aRevX: 0, _sRevId: "", _bIsOpen :  false, _fOnClose: null, _d: document,
