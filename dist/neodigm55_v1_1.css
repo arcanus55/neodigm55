@@ -161,14 +161,14 @@ neodigm-sodapop-scrim { display: none; }
 neodigm-sodapop-scrim[data-neodigm-sodapop-scrim='opened'] {
     display: block!important;
     position: fixed;
-    cursor: pointer;
     background-position: 50% 0; background-size: cover;
     top: 0; right: 0; bottom: 0; left: 0;
     backdrop-filter: blur(0px); transition: backdrop-filter .8s;
     z-index: 256;
 }
+neodigm-sodapop-scrim:not(.ndsp__modal) { cursor: pointer; }
 neodigm-sodapop-scrim[data-neodigm-sodapop-scrim='opened'].ndsp__blur {
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(6px);
 }
 neodigm-sodapop {
     background-color: #fff;

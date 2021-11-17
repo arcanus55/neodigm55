@@ -138,10 +138,11 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
       open: function( sId ){
         let eTmpl = _d.getElementById( sId );
         if( bIsInit && eTmpl && eScrim ){
-          eScrim.dataset.neodigmSodapopScrim = "opened";
           bIsModal = (eTmpl.dataset.neodigmSodapopModal == "true");
+          if( bIsModal ) eScrim.classList.add( "ndsp__modal" );
+          eScrim.dataset.neodigmSodapopScrim = "opened";
            eSoda = _d.createElement( _aQ[1] );
-          setTimeout(function(){ eScrim.classList.add("ndsp__blur"); }, 96);
+          setTimeout(function(){ eScrim.classList.add( "ndsp__blur" ); }, 96);
           if( bIsModal ) eSoda.classList.add("ndsp__modal");
           eSoda.classList.add( "ndsp__size--" +  eTmpl.dataset.neodigmSodapopSize );
           setTimeout(function(){ eSoda.classList.add( "ndsp__opened" ); }, 4);
@@ -154,7 +155,7 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
       },
       close: function(){
         if( bIsInit && bIsOpen ){
-          eScrim.classList.remove("ndsp__blur");
+          eScrim.classList.remove( "ndsp__blur", "ndsp__modal" );
           setTimeout(function(){
             eSoda.remove();
             setTimeout(function(){
