@@ -176,7 +176,7 @@ neodigm-sodapop {
     border: solid 1px #767676;
     box-shadow: 0 0 4px rgba(100,100,100,0.4);
     display: block !important;
-    margin: 0 auto; padding: 8px;
+    margin: 0 auto; padding: 10px;
     position: fixed;
     top: 38px; right: 0; left: 0;
     max-height: calc(100vh - 300px);
