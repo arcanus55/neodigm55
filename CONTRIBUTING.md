@@ -30,7 +30,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 
 > If you want to ask a question, we assume that you have read the available [Documentation](https://thescottkrause.com/emerging_tech/neodigm55_ux_library/).
 
-Before you ask a question, it is best to search for existing [Issues](https://github.com/arcanus55/neodigm55/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
+Before you ask a question, it is best to search for existing [Issues](https://github.com/arcanus55/neodigm55/issues) that might help you 👁️. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
 
 If you then still feel the need to ask a question and need clarification, we recommend the following:
 
