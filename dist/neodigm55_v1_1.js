@@ -8,7 +8,7 @@ Neodigm 55 UX is an eclectic JavaScript UX micro-library.
 The lightweight components come together in a unique way that will make visiting your website playful and fun.
 */
 let neodigmOpt = {neodigmToast: true, neodigmPop: false, neodigmSodaPop: true, neodigmAudio: false};
-if( neodigmOptCustom ) neodigmOpt = neodigmOptCustom;
+if( typeof neodigmOptCustom != 'undefined' ) neodigmOpt = neodigmOptCustom;
 
 let neodigmToast = (function(_d, eID, _q) {
   let _nTimeout = 5800, _aQ = [], _eSb, _eSbText;
