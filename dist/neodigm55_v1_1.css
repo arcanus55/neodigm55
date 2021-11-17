@@ -172,19 +172,20 @@ neodigm-sodapop-scrim[data-neodigm-sodapop-scrim='opened'].ndsp__blur {
 }
 neodigm-sodapop {
     background-color: #fff;
-    border-radius: 30px;  transition: border-radius 1s;
+    border-radius: 30px;  transition: all .4s; transition-timing-function: ease-in;
     border: solid 1px #767676;
     box-shadow: 0 0 4px rgba(100,100,100,0.4);
     display: block !important;
     margin: 0 auto; padding: 10px;
     position: fixed;
-    top: 38px; right: 0; left: 0;
+    top: 76px; right: 0; left: 0;
     max-height: calc(100vh - 300px);
     overflow-y: scroll; overflow-x: hidden;
     z-index: 258;
 }
 neodigm-sodapop.ndsp__opened {
-    border-radius: 12px; 
+    border-radius: 12px;
+    top: 60px;
 }
 neodigm-sodapop.ndsp__size--small  { width: 44%; }
 neodigm-sodapop.ndsp__size--medium { width: 66%; }
