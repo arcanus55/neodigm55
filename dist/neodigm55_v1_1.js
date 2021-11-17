@@ -141,7 +141,7 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
           eScrim.dataset.neodigmSodapopScrim = "opened";
           bIsModal = (eTmpl.dataset.neodigmSodapopModal == "true");
            eSoda = _d.createElement( _aQ[1] );
-          setTimeout(function(){ eScrim.classList.add("ndsp__blur"); }, 98);
+          setTimeout(function(){ eScrim.classList.add("ndsp__blur"); }, 96);
           if( bIsModal ) eSoda.classList.add("ndsp__modal");
           eSoda.classList.add( "ndsp__size--" +  eTmpl.dataset.neodigmSodapopSize );
           setTimeout(function(){ eSoda.classList.add( "ndsp__opened" ); }, 4);
