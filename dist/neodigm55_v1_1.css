@@ -1,4 +1,12 @@
-/* neodigm 55 JS v1 | Scott C. Krause | neodigm | JavaScript Micor-Framework */
+/*
+Neodigm 55 UX v1.1.0
+
+Copyright (c) 2021, Arcanus 55 Privacy Paranoid Vault | Scott C. Krause
+All rights reserved. Redistributions of source code must retain the above copyright notice.
+
+Neodigm 55 UX is an eclectic JavaScript UX micro-library.
+The lightweight components come together in a unique way that will make visiting your website playful and fun.
+*/
 
 .l-snackbar .snackbar__cont {
 	border-radius: 4px;
@@ -56,6 +64,8 @@
 	text-align: center;
 	white-space: nowrap
 }
+
+/*  Legacy Popup Begin */
 
 .l-reveal > section {
     border-radius: 44px; 
@@ -144,3 +154,47 @@ z-index: 4;
             width: 40%;
         }
     }
+
+
+/*  neodigm Soda Pop Begin  */
+neodigm-sodapop-scrim { display: none; }
+neodigm-sodapop-scrim[data-neodigm-sodapop-scrim='opened'] {
+    display: block!important;
+    position: fixed;
+    cursor: pointer;
+    background-position: 50% 0; background-size: cover;
+    top: 0; right: 0; bottom: 0; left: 0;
+    backdrop-filter: blur(0px); transition: backdrop-filter .8s;
+    z-index: 256;
+}
+neodigm-sodapop-scrim[data-neodigm-sodapop-scrim='opened'].ndsp__blur {
+    backdrop-filter: blur(8px);
+}
+neodigm-sodapop {
+    background-color: #fff;
+    border-radius: 30px;  transition: border-radius 1s;
+    border: solid 1px #767676;
+    box-shadow: 0 0 4px rgba(100,100,100,0.4);
+    display: block !important;
+    margin: 0 auto; padding: 8px;
+    position: fixed;
+    top: 38px; right: 0; left: 0;
+    max-height: calc(100vh - 300px);
+    overflow-y: scroll; overflow-x: hidden;
+    z-index: 258;
+}
+neodigm-sodapop.ndsp__opened {
+    border-radius: 12px; 
+}
+neodigm-sodapop.ndsp__size--small  { width: 44%; }
+neodigm-sodapop.ndsp__size--medium { width: 66%; }
+neodigm-sodapop.ndsp__size--large  { width: 88%; }
+
+neodigm-sodapop:not(.ndsp__modal)::after {
+    cursor: pointer;
+    display: block;
+    position: absolute; top: -14px; right: -26px;
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23EDBA08'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M14.59 8L12 10.59 9.41 8 8 9.41 10.59 12 8 14.59 9.41 16 12 13.41 14.59 16 16 14.59 13.41 12 16 9.41 14.59 8zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+    user-select: none;
+}
+/*  neodigm Soda Pop End  */

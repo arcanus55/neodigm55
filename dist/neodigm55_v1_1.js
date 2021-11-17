@@ -1,9 +1,13 @@
 /*
-neodigm 55 UX v1.0.2 | Arcanus 55 and Scott C. Krause
-Neodigm 55 is an eclectic JavaScript UX micro-library.
+Neodigm 55 UX v1.1.0
+
+Copyright (c) 2021, Arcanus 55 Privacy Paranoid Vault | Scott C. Krause
+All rights reserved. Redistributions of source code must retain the above copyright notice.
+
+Neodigm 55 UX is an eclectic JavaScript UX micro-library.
 The lightweight components come together in a unique way that will make visiting your website playful and fun.
 */
-let neodigmOpt = {neodigmToast: true, neodigmPop: true, neodigmAudio: false};
+let neodigmOpt = {neodigmToast: true, neodigmPop: true, neodigmSodaPop: true, neodigmAudio: false};
 
 let neodigmToast = (function(_d, eID, _q) {
   let _nTimeout = 5800, _aQ = [], _eSb, _eSbText;
@@ -48,27 +52,27 @@ let neodigmToast = (function(_d, eID, _q) {
   }
 })(document, "js-snackbar__id", "[data-neodigm-toast]");
 
-// Neodigm 55 Pop Begin //
+// Neodigm 55 Pop Begin Legacy //
 let neodigmPop = {
   eRev: 0, eRevScrim: 0,
   _aRevAct: 0, _aRevX: 0, _sRevId: "", _bIsOpen :  false, _fOnClose: null, _d: document,
 "init" : function() {
-    _aRevX = _d.getElementsByClassName("close-reveal-modal");
+    _aRevX = this._d.getElementsByClassName("close-reveal-modal");
     for (let i = 0, ln = _aRevX.length; i < ln; i++) {
         _aRevX[i].addEventListener("click", neodigmPop.close, false);
     }
-    _aRevAct = _d.querySelectorAll("[data-neodigm-pop-id]");
+    _aRevAct = this._d.querySelectorAll("[data-neodigm-pop-id]");
     for (let i = 0, ln = _aRevAct.length; i < ln; i++) {
         _aRevAct[i].addEventListener("click", neodigmPop.open, false);
     }
-    neodigmPop.eRevScrim = _d.getElementById("id-reveal__scrim");
+    neodigmPop.eRevScrim = this._d.getElementById("id-reveal__scrim");
   },
   "open" : function(e){
     _bIsOpen = true;
     _sRevId = this.getAttribute("data-neodigm-pop-id");
     if(_sRevId){
       neodigmPop.eRevScrim.classList.add("reveal__scrim");
-      neodigmPop.eRev = _d.getElementById(_sRevId);
+      neodigmPop.eRev = this._d.getElementById(_sRevId);
       neodigmPop.eRev.classList.add("reveal__box"); 
       neodigmPop.eRev.parentElement.classList.remove("reveal__init");
         neodigmPop.eRev.style.top = "116px";  //  String(window.pageYOffset + 84) + "px";
@@ -92,7 +96,7 @@ let neodigmPop = {
     _sRevId = _sId;
     if(_sRevId){
       neodigmPop.eRevScrim.classList.add("reveal__scrim");
-      neodigmPop.eRev = _d.getElementById(_sRevId);
+      neodigmPop.eRev = this._d.getElementById(_sRevId);
       neodigmPop.eRev.classList.add("reveal__box");
       neodigmPop.eRev.parentElement.classList.remove("reveal__init");
         neodigmPop.eRev.style.top = "116px";  //  String(window.pageYOffset + 84) + "px";
@@ -108,9 +112,70 @@ let neodigmPop = {
     if( _f ) _fOnClose = _f;
   }
 };
+
+// Neodigm 55 UX Soda Pop Begin //
+const neodigmSodaPop = ( ( _d, _aQ ) =>{
+  if( _d && (_aQ.length >= 1) ){
+    let eSoda = eScrim = fOnOpen = fOnClose = null;
+    let bIsOpen = bIsModal = bIsInit = false;
+    return {
+      init: function(){
+        eScrim = _d.querySelector( _aQ[0] );
+        _d.body.addEventListener("click", ( ev )=>{
+          if( ev?.target?.dataset?.neodigmSodapopId ){
+            neodigmSodaPop.open( ev.target.dataset.neodigmSodapopId )
+            ev.preventDefault();
+          }
+          if( !bIsModal ){
+console.log( ev.target.tagName )
+            if( "NEODIGM-SODAPOP-SCRIM" == ev.target.tagName ){
+              neodigmSodaPop.close();
+            }
+          }
+        }, false)
+        bIsInit = true;
+      },
+      open: function( sId ){
+        let eTmpl = _d.getElementById( sId );
+        if( bIsInit && eTmpl && eScrim ){
+          eScrim.dataset.neodigmSodapopScrim = "opened";
+          bIsModal = (eTmpl.dataset.neodigmSodapopModal == "true");
+           eSoda = _d.createElement( _aQ[1] );
+          setTimeout(function(){ eScrim.classList.add("ndsp__blur"); }, 4);
+          if( bIsModal ) eSoda.classList.add("ndsp__modal");
+          eSoda.classList.add( "ndsp__size--" +  eTmpl.dataset.neodigmSodapopSize );
+          setTimeout(function(){ eSoda.classList.add( "ndsp__opened" ); }, 4);
+          eSoda.innerHTML = eTmpl.innerHTML;
+          _d.body.appendChild( eSoda );
+          if( fOnOpen ) fOnOpen();
+          if ("vibrate" in navigator) window.navigator.vibrate([16, 8]);
+          bIsOpen = true;
+        }
+      },
+      close: function(){
+        if( bIsInit && bIsOpen ){
+          eScrim.classList.remove("ndsp__blur");
+          setTimeout(function(){
+            eSoda.remove();
+            setTimeout(function(){
+              eScrim.dataset.neodigmSodapopScrim = "closed";
+            }, 500);
+          }, 300);
+          if( fOnClose ) fOnClose();
+          if ("vibrate" in navigator) window.navigator.vibrate([8, 16]);
+          bIsOpen = false;
+        }
+      },
+      autoOpen: function( sId ){ neodigmSodaPop.open( sId ) },
+      isOpen: function(){ return bIsOpen; },
+      setOnOpen: function( _f ){ fOnOpen = _f },
+      setOnClose: function( _f ){ fOnClose = _f }
+    }
+  }
+})( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-neodigm-sodapop-modal"]);
+// Neodigm 55 UX Soda Pop End //
+
 // neodigm Audio Begin //
-// neodigm Modal Begin //
-// neodigm Toast Begin //
 // neodigm Vivid Begin //
 // neodigm Type Begin //
 // neodigm Marq Begin //
@@ -126,7 +191,9 @@ let neodigmPop = {
 
 document.addEventListener("DOMContentLoaded", function(ev) {
   const neodigmMU = `
-  <neodigm-scrim class="l-reveal">
+  <neodigm-sodapop-scrim></neodigm-sodapop-scrim>
+
+  <neodigm-scrim class="l-reveal" DATA-LEGACY>
       <aside id="id-reveal__scrim" class="close-reveal-modal"></aside> 
   </neodigm-scrim>
   <neodiigm-snack class="l-snackbar" role="alert">
@@ -139,7 +206,8 @@ document.addEventListener("DOMContentLoaded", function(ev) {
   eMU.innerHTML = neodigmMU;
   document.body.appendChild(eMU);
   setTimeout( ()=>{
-    if( neodigmOpt.neodigmToast ) neodigmToast.init();
-    if( neodigmOpt.neodigmPop )   neodigmPop.init();
+    if( neodigmOpt.neodigmToast )   neodigmToast.init();
+    if( neodigmOpt.neodigmPop )     neodigmPop.init();
+    if( neodigmOpt.neodigmSodaPop ) neodigmSodaPop.init();
   }, 4);
 });
