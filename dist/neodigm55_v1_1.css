@@ -5,9 +5,9 @@ Copyright (c) 2021, Arcanus 55 Privacy Paranoid Vault | Scott C. Krause
 All rights reserved. Redistributions of source code must retain the above copyright notice.
 
 Neodigm 55 UX is an eclectic JavaScript UX micro-library.
-The lightweight components come together in a unique way that will make visiting your website playful and fun.
-*/
+The lightweight components come together in a unique way that will make visiting your website playful and fun.*/
 
+/*  neodigm Toast Begin  */
 .l-snackbar .snackbar__cont {
 	border-radius: 4px;
 	background: linear-gradient(45deg, #882918 0%, #DD4124 100%);
@@ -64,97 +64,7 @@ The lightweight components come together in a unique way that will make visiting
 	text-align: center;
 	white-space: nowrap
 }
-
-/*  Legacy Popup Begin */
-
-.l-reveal > section {
-    border-radius: 44px; 
-    transition: border-radius 4s; 
-}
-
-.l-reveal .reveal__box {
-    display: block !important;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1005;
-    left: 0;
-    margin: 0 auto;
-    right: 0;
-    background-color: #fff;
-    padding: 8px;
-    border: solid 1px #666;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-
-border-radius: 12px; 
-transition: border-radius 4s; 
-
-z-index: 4;
-}
-.l-reveal .reveal__scrim {
-    background-position: 50% 0;
-    background-size: cover;
-    backdrop-filter: blur(6px);
-
-    cursor: pointer;
-    display: block!important;
-    position: fixed;
-    top: 0; right: 0; bottom: 0; left: 0;
-    z-index: 80;
-}
-.l-reveal .reveal-modal,
-    .reveal__init {
-        display: none;
-    }
-    .l-reveal .small {
-        width: 60%;
-    }
-
-    .l-reveal .medium {
-        width: 70%;
-    }
-    .l-reveal .large {
-        width: 80%;
-    }
-    .l-reveal .resp_x, .resp_x:hover {
-    position: absolute;
-    right: 10px; top: 2px;
-    font-family: monospace;
-    font-size: 28px; font-weight: 800;
-    cursor: pointer;
-    }
-    .l-reveal .eml-msg__x{
-        position: absolute;
-        top: -20px; right: -32px;
-    }
-    .l-reveal.reveal-cta { 
-        position: fixed;
-        width: 100%;
-        z-index: 364;
-        top: 38px;
-    }
-
-	.QQQQrev-artc{
-	    max-height: calc(100vh - 300px);
-	    overflow-y: scroll;
-	    overflow-x: hidden;
-	}
-
-	body[data-pref-scheme='dark'] .rev-artc {
-		background-color: #242424;
-	}
-    
-    @media only screen and (min-width:48.1em) and (max-width:62em){/* med */
-        .l-reveal .small {
-            width: 40%;
-        }
-    }
-    @media only screen and (min-width:62.1em){/* lg */
-        .l-reveal .small {
-            width: 40%;
-        }
-    }
-
+/*  neodigm Toast End  */
 
 /*  neodigm Soda Pop Begin  */
 neodigm-sodapop-scrim { display: none; }

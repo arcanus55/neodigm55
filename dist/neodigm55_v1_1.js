@@ -53,71 +53,10 @@ let neodigmToast = (function(_d, eID, _q) {
   }
 })(document, "js-snackbar__id", "[data-neodigm-toast]");
 
-// Neodigm 55 Pop Begin Legacy //
-let neodigmPop = {
-  eRev: 0, eRevScrim: 0,
-  _aRevAct: 0, _aRevX: 0, _sRevId: "", _bIsOpen :  false, _fOnClose: null, _d: document,
-"init" : function() {
-    _aRevX = this._d.getElementsByClassName("close-reveal-modal");
-    for (let i = 0, ln = _aRevX.length; i < ln; i++) {
-        _aRevX[i].addEventListener("click", neodigmPop.close, false);
-    }
-    _aRevAct = this._d.querySelectorAll("[data-neodigm-pop-id]");
-    for (let i = 0, ln = _aRevAct.length; i < ln; i++) {
-        _aRevAct[i].addEventListener("click", neodigmPop.open, false);
-    }
-    neodigmPop.eRevScrim = this._d.getElementById("id-reveal__scrim");
-  },
-  "open" : function(e){
-    _bIsOpen = true;
-    _sRevId = this.getAttribute("data-neodigm-pop-id");
-    if(_sRevId){
-      neodigmPop.eRevScrim.classList.add("reveal__scrim");
-      neodigmPop.eRev = this._d.getElementById(_sRevId);
-      neodigmPop.eRev.classList.add("reveal__box"); 
-      neodigmPop.eRev.parentElement.classList.remove("reveal__init");
-        neodigmPop.eRev.style.top = "116px";  //  String(window.pageYOffset + 84) + "px";
-        neodigmPop.eRev.style.visibility = "visible";
-      neodigmPop.eRev.setAttribute("aria-hidden", "false");
-      e.preventDefault();
-    }
-    return false;
-  },
-  "close" : function(e){
-    _bIsOpen = false;
-    neodigmPop.eRevScrim.classList.remove("reveal__scrim");
-    neodigmPop.eRev.classList.remove("reveal__box");
-    neodigmPop.eRev.parentElement.classList.add("reveal__init");
-    neodigmPop.eRev.setAttribute("aria-hidden", "true");
-    if(e){ e.preventDefault(); }
-    if( _fOnClose ) _fOnClose();
-  },
-  "autoOpen" : function(_sId){
-    _bIsOpen = true;
-    _sRevId = _sId;
-    if(_sRevId){
-      neodigmPop.eRevScrim.classList.add("reveal__scrim");
-      neodigmPop.eRev = this._d.getElementById(_sRevId);
-      neodigmPop.eRev.classList.add("reveal__box");
-      neodigmPop.eRev.parentElement.classList.remove("reveal__init");
-        neodigmPop.eRev.style.top = "116px";  //  String(window.pageYOffset + 84) + "px";
-        neodigmPop.eRev.style.visibility = "visible";
-      neodigmPop.eRev.setAttribute("aria-hidden", "false");
-    }
-    return false;
-  },
-  "isOpen" : function(){
-    return _bIsOpen;
-  },
-  "setOnClose" : function( _f ){
-    if( _f ) _fOnClose = _f;
-  }
-};
-
 // Neodigm 55 UX Soda Pop Begin //
 const neodigmSodaPop = ( ( _d, _aQ ) =>{
   if( _d && (_aQ.length >= 1) ){
-    let eSoda = eScrim = fOnOpen = fOnClose = null;
+    let eSoda = eScrim = fOnBeforeOpen = fOnAfterOpen = fOnClose = null;
     let bIsOpen = bIsModal = bIsInit = false;
     return {
       init: function(){
@@ -138,6 +77,7 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
       open: function( sId ){
         let eTmpl = _d.getElementById( sId );
         if( bIsInit && eTmpl && eScrim ){
+          if( fOnBeforeOpen ) fOnBeforeOpen();
           bIsModal = (eTmpl.dataset.neodigmSodapopModal == "true");
           if( bIsModal ) eScrim.classList.add( "ndsp__modal" );
           eScrim.dataset.neodigmSodapopScrim = "opened";
@@ -148,9 +88,9 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
           setTimeout(function(){ eSoda.classList.add( "ndsp__opened" ); }, 4);
           eSoda.innerHTML = eTmpl.innerHTML;
           _d.body.appendChild( eSoda );
-          if( fOnOpen ) fOnOpen();
           if ("vibrate" in navigator) window.navigator.vibrate([16, 8]);
           bIsOpen = true;
+          if( fOnAfterOpen ) fOnAfterOpen();
         }
       },
       close: function(){
@@ -169,11 +109,13 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
       },
       autoOpen: function( sId ){ neodigmSodaPop.open( sId ) },
       isOpen: function(){ return bIsOpen; },
-      setOnOpen: function( _f ){ fOnOpen = _f },
+      setOnBeforeOpen: function( _f ){ fOnBeforeOpen = _f },
+      setOnAfterOpen: function( _f ){ fOnAfterOpen = _f },
       setOnClose: function( _f ){ fOnClose = _f }
     }
   }
 })( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-neodigm-sodapop-modal"]);
+
 // Neodigm 55 UX Soda Pop End //
 
 // neodigm Audio Begin //
