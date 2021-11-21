@@ -66,8 +66,10 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
             neodigmSodaPop.open( ev.target.dataset.neodigmSodapopId )
             ev.preventDefault();
           }
-          if( !bIsModal ){
-            if( "NEODIGM-SODAPOP-SCRIM" == ev.target.tagName ){
+          if( "NEODIGM-SODAPOP-SCRIM" == ev.target.tagName ){
+            if( bIsModal ){
+              neodigmSodaPop.shake();
+            }else{
               neodigmSodaPop.close();
             }
           }
