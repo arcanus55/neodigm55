@@ -97,6 +97,10 @@ neodigm-sodapop.ndsp__opened {
     border-radius: 12px;
     top: 60px;
 }
+neodigm-sodapop.ndsp__opened--shake {
+    border-radius: 12px;
+    top: 68px;
+}
 neodigm-sodapop.ndsp__size--small  { width: 76%; }
 neodigm-sodapop.ndsp__size--medium { width: 86%; }
 neodigm-sodapop.ndsp__size--large  { width: 96%; }

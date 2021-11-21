@@ -107,6 +107,23 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
           bIsOpen = false;
         }
       },
+      shake: function(){
+        if( bIsInit && bIsOpen ){
+          setTimeout(function(){
+            eSoda.classList.add( "ndsp__opened--shake" );
+            setTimeout(function(){
+              eSoda.classList.remove( "ndsp__opened--shake" );
+              setTimeout(function(){
+                eSoda.classList.add( "ndsp__opened--shake" );
+                setTimeout(function(){
+                  eSoda.classList.remove( "ndsp__opened--shake" );
+                }, 256);
+              }, 256);
+            }, 256);
+          }, 256);
+          if ("vibrate" in navigator) window.navigator.vibrate([16, 16]);
+        }
+      },
       autoOpen: function( sId ){ neodigmSodaPop.open( sId ) },
       isOpen: function(){ return bIsOpen; },
       setOnBeforeOpen: function( _f ){ fOnBeforeOpen = _f },
