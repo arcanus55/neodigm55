@@ -117,10 +117,10 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
                 eSoda.classList.add( "ndsp__opened--shake" );
                 setTimeout(function(){
                   eSoda.classList.remove( "ndsp__opened--shake" );
-                }, 256);
-              }, 256);
-            }, 256);
-          }, 256);
+                }, 184);
+              }, 184);
+            }, 184);
+          }, 184);
           if ("vibrate" in navigator) window.navigator.vibrate([16, 16]);
         }
       },
