@@ -110,20 +110,10 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
         }
       },
       shake: function(){
-        if( bIsInit && bIsOpen ){
-          setTimeout(function(){
-            eSoda.classList.add( "ndsp__opened--shake" );
-            setTimeout(function(){
-              eSoda.classList.remove( "ndsp__opened--shake" );
-              setTimeout(function(){
-                eSoda.classList.add( "ndsp__opened--shake" );
-                setTimeout(function(){
-                  eSoda.classList.remove( "ndsp__opened--shake" );
-                }, 184);
-              }, 184);
-            }, 184);
-          }, 184);
-          if ("vibrate" in navigator) window.navigator.vibrate([16, 16]);
+        let iT = 144;
+        for(let x=1; x<=8; x++){
+          setTimeout(function(){ eSoda.classList.add( "ndsp__opened--shake" ); }, ( iT * x ));
+          setTimeout(function(){ eSoda.classList.remove( "ndsp__opened--shake" ); }, ( iT * x ) + (iT/2));
         }
       },
       autoOpen: function( sId ){ neodigmSodaPop.open( sId ) },

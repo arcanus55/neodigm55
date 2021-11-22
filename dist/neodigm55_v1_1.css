@@ -88,7 +88,7 @@ neodigm-sodapop {
     display: block !important;
     margin: 0 auto; padding: 10px;
     position: fixed;
-    top: 76px; right: 0; left: 0;
+    top: 88px; right: 0; left: 0;
     max-height: calc(100vh - 300px);
     overflow-y: scroll; overflow-x: hidden;
     z-index: 258;
@@ -99,7 +99,7 @@ neodigm-sodapop.ndsp__opened {
 }
 neodigm-sodapop.ndsp__opened--shake {
     border-radius: 12px;
-    top: 68px;
+    top: 84px;
 }
 neodigm-sodapop.ndsp__size--small  { width: 76%; }
 neodigm-sodapop.ndsp__size--medium { width: 86%; }
