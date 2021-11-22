@@ -82,7 +82,7 @@ neodigm-sodapop-scrim[data-neodigm-sodapop-scrim='opened'].ndsp__blur {
 }
 neodigm-sodapop {
     background-color: #fff;
-    border-radius: 30px;  transition: all .4s; transition-timing-function: ease-in;
+    border-radius: 30px;  transition: all .3s;;
     border: solid 1px #767676;
     box-shadow: 0 0 4px rgba(100,100,100,0.4);
     display: block !important;
@@ -99,7 +99,7 @@ neodigm-sodapop.ndsp__opened {
 }
 neodigm-sodapop.ndsp__opened--shake {
     border-radius: 12px;
-    top: 84px;
+    top: 80px;
 }
 neodigm-sodapop.ndsp__size--small  { width: 76%; }
 neodigm-sodapop.ndsp__size--medium { width: 86%; }
