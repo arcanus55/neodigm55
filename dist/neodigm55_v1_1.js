@@ -111,7 +111,7 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
       },
       shake: function(){
         let iT = 188;
-        for(let x=1; x<=8; x++){
+        for(let x=1; x<=10; x++){
           setTimeout(function(){ eSoda.classList.add( "ndsp__opened--shake" ); }, ( iT * x ));
           setTimeout(function(){ eSoda.classList.remove( "ndsp__opened--shake" ); }, ( iT * x ) + ( iT/2 ));
         }

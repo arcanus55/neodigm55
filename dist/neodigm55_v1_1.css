@@ -95,11 +95,13 @@ neodigm-sodapop {
 }
 neodigm-sodapop.ndsp__opened {
     border-radius: 12px;
+	transform: rotate(0deg);
     top: 60px;
 }
 neodigm-sodapop.ndsp__opened--shake {
     border-radius: 12px;
-    top: 80px;
+	transform: rotate(1deg);
+    QQQtop: 80px;
 }
 neodigm-sodapop.ndsp__size--small  { width: 76%; }
 neodigm-sodapop.ndsp__size--medium { width: 86%; }
