@@ -116,7 +116,7 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
           setTimeout(function(){ eSoda.classList.remove( "ndsp__opened--shake" ); }, ( iT * x ) + ( iT/2 ));
         }
       },
-      autoOpen: function( sId ){ setTimeout(function(){ neodigmSodaPop.open( sId )}, 4)},
+      autoOpen: function( sId ){ setTimeout(function(){ neodigmSodaPop.open( sId )}, 16)},
       isOpen: function(){ return bIsOpen; },
       setOnBeforeOpen: function( _f ){ fOnBeforeOpen = _f },
       setOnAfterOpen: function( _f ){ fOnAfterOpen = _f },
