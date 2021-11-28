@@ -1,5 +1,5 @@
 <!-- omit in toc -->
-# Contributing to Neodigm 55 UX micro-library
+# Contributing to Neodigm 55 UX Popup micro-library
 
 First off, thanks for taking the time to contribute! ❤️
 
