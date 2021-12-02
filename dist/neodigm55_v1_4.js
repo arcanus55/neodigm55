@@ -7,7 +7,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 Neodigm 55 UX is an eclectic JavaScript UX micro-library.
 The lightweight components come together in a unique way that will make visiting your website playful and fun.
 */
-let neodigmOpt = {neodigmToast: true, neodigmSodaPop: true, neodigmAudio: false};
+let neodigmOpt = {neodigmToast: true, neodigmSodaPop: true, neodigmUtils: true, neodigmAudio: false};
 if( typeof neodigmOptCustom != 'undefined' ) neodigmOpt = neodigmOptCustom;
 
 let neodigmToast = (function(_d, eID, _q) {
@@ -134,6 +134,23 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
     }
   }
 })( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-neodigm-sodapop-modal"]);
+
+// Neodigm 55 UX Utils Begin //
+const neodigmUtils = ( ( _d ) =>{
+  return {
+    isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
+    f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
+    fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback
+      var _js = _d.createElement( "script" );
+      _js.type = "text/javascript";
+      _js.async = true;
+      if( _cb ) _js.onload = function(){ _cb(); };
+      _js.src = _uri;
+      _d.getElementsByTagName( "head" )[0].appendChild( _js );
+    }
+  }
+})( document );
+
 
 // Neodigm 55 UX Soda Pop End //
 
