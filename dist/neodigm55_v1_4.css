@@ -74,11 +74,13 @@ neodigm-sodapop-scrim[data-neodigm-sodapop-scrim='opened'] {
     background-position: 50% 0; background-size: cover;
     top: 0; right: 0; bottom: 0; left: 0;
     backdrop-filter: blur(0px); transition: backdrop-filter .8s;
+    background: hsla(0, 0%, 100%, .3);
     z-index: 256;
 }
 neodigm-sodapop-scrim:not(.ndsp__modal) { cursor: pointer; }
 neodigm-sodapop-scrim[data-neodigm-sodapop-scrim='opened'].ndsp__blur {
     backdrop-filter: blur(6px);
+    background: hsla(0, 0%, 100%, .3);
 }
 neodigm-sodapop-scrim-close { display: none; }
 neodigm-sodapop-scrim-close:not(.ndsp__modal)[data-neodigm-sodapop-scrim='opened'] {
