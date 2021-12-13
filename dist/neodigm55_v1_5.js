@@ -23,6 +23,7 @@ let neodigmToast = (function(_d, eID, _q) {
       }
     _eSb.classList.add("snackbar__cont--show");
     if ("vibrate" in navigator) window.navigator.vibrate([16, 8]);
+    if ( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 7 )
       setTimeout(_fClose, _nTimeout);
   };
   return {
