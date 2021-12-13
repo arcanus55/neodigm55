@@ -167,6 +167,7 @@ const neodigmWired4Sound = ( ( _d, _aQ ) =>{
           },
           play: function( nSnd ){
               if( bIsInit && nSnd ){
+                if(nSnd >= 7) nSnd = 6;  //  Legacy max 17?
                 if( zzfx ) zzfx(... aSnd[ nSnd ]);
               }
           }
