@@ -1,0 +1,134 @@
+/*
+Neodigm 55 UX v1.5.0
+
+Copyright (c) 2021, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
+All rights reserved. Redistributions of source code must retain the above copyright notice.
+
+Neodigm 55 UX is an eclectic JavaScript UX micro-library.
+The lightweight components come together in a unique way that will make visiting your website playful and fun.*/
+
+/*  neodigm Toast Begin  */
+.l-snackbar .snackbar__cont {
+	border-radius: 4px;
+	background: linear-gradient(45deg, #882918 0%, #DD4124 100%);
+	box-shadow: inset #DD4124 0 0 6px 2px;
+	border: solid 1px #d3cdb4;
+	left: 38%;
+	min-width: 188px;
+	padding: 0;
+	position: fixed;
+	transition: bottom .6s ease-in-out;
+	user-select: none;
+	z-index: 6408
+}
+
+.l-snackbar .snackbar__cont--hide {
+	bottom: -112px;
+	transition: bottom .6s ease-in-out
+}
+
+.l-snackbar .snackbar__cont--show {
+	bottom: 4px;
+	transition: bottom .6s ease-in-out
+}
+
+.l-snackbar .snackbar__cont--alt {
+	background: linear-gradient(45deg, #685b2d 0%, #d8ad12 100%) !important;
+	box-shadow: inset #685b2d 0 0 6px 2px !important;
+}
+
+.l-snackbar .snackbar__progbar {
+	background: linear-gradient(to right, #edba08 64%, #fff 100%);
+	height: 2px;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	top: 2px
+}
+
+.l-snackbar .snackbar__cont--hide .snackbar__progbar {
+	width: 0%;
+	transition: all .1s ease-in-out
+}
+
+.l-snackbar .snackbar__cont--show .snackbar__progbar {
+	width: 101%;
+	transition: all 6s ease-in-out
+}
+
+.l-snackbar .snackbar__msg {
+	color: #fff;
+	font-family: sans-serif;
+	font-size: 16px;
+	margin: 20px;
+	text-align: center;
+	white-space: nowrap
+}
+/*  neodigm Toast End  */
+
+/*  neodigm Soda Pop Begin  */
+neodigm-sodapop-scrim { display: none; }
+neodigm-sodapop-scrim[data-neodigm-sodapop-scrim='opened'] {
+    display: block!important;
+    position: fixed;
+    background-position: 50% 0; background-size: cover;
+    top: 0; right: 0; bottom: 0; left: 0;
+    backdrop-filter: blur(0px); transition: backdrop-filter .8s;
+    background: hsla(0, 0%, 100%, .3);
+    z-index: 256;
+}
+neodigm-sodapop-scrim:not(.ndsp__modal) { cursor: pointer; }
+neodigm-sodapop-scrim[data-neodigm-sodapop-scrim='opened'].ndsp__blur {
+    backdrop-filter: blur(6px);
+    background: hsla(0, 0%, 100%, .3);
+}
+neodigm-sodapop-scrim-close { display: none; }
+neodigm-sodapop-scrim-close:not(.ndsp__modal)[data-neodigm-sodapop-scrim='opened'] {
+    pointer-events: none;
+    display: block!important;
+    cursor: pointer;
+    position: fixed;
+    top: 4px;
+    right: 6px;
+    overflow-x: hidden;
+    z-index: 258;
+}
+neodigm-sodapop {
+    background-color: #fff;
+    border-radius: 30px;  transition: all .3s;;
+    border: solid 1px #767676;
+    box-shadow: 0 0 4px rgba(100,100,100,0.4);
+    display: block !important;
+    margin: 0 auto; padding: 10px;
+    position: fixed;
+    top: 88px; right: 0; left: 0;
+    max-height: calc(100vh - 300px);
+    overflow-y: scroll; overflow-x: hidden;
+    z-index: 258;
+}
+neodigm-sodapop.ndsp__opened {
+    border-radius: 12px;
+	transform: rotate(0deg);
+    top: 60px;
+}
+neodigm-sodapop.ndsp__opened--shake {
+    border-radius: 12px;
+	transform: rotate(1deg);
+}
+neodigm-sodapop.ndsp__size--small  { width: 76%; }
+neodigm-sodapop.ndsp__size--medium { width: 86%; }
+neodigm-sodapop.ndsp__size--large  { width: 96%; }
+
+neodigm-sodapop:not(.ndsp__modal)::after {
+    cursor: pointer;
+    display: block;
+    position: absolute; top: -14px; right: -26px;
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23EDBA08'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M14.59 8L12 10.59 9.41 8 8 9.41 10.59 12 8 14.59 9.41 16 12 13.41 14.59 16 16 14.59 13.41 12 16 9.41 14.59 8zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+    user-select: none;
+}
+@media only screen and (min-width:62em){/* sm med */
+    neodigm-sodapop.ndsp__size--small  { width: 44%; }
+    neodigm-sodapop.ndsp__size--medium { width: 66%; }
+    neodigm-sodapop.ndsp__size--large  { width: 88%; }
+}
+/*  neodigm Soda Pop End  */
