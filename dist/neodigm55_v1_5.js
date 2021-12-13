@@ -167,7 +167,7 @@ const neodigmWired4Sound = ( ( _d, _aQ ) =>{
           },
           play: function( nSnd ){
               if( bIsInit && nSnd ){
-                if(nSnd >= 7) nSnd = 6;  //  Legacy max 17?
+                if(nSnd >= aSnd.length) nSnd = 0;  //  Legacy max 17?
                 if( zzfx ) zzfx(... aSnd[ nSnd ]);
               }
           }
@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", function(ev) {
 // MIT License - Copyright 2019 Frank Force
 // https://github.com/KilledByAPixel/ZzFX
 let zzfx,zzfxV,zzfxX
-zzfxV=.3
+zzfxV=.16
 zzfx=(p=1,k=.05,b=220,e=0,r=0,t=.1,q=0,D=1,u=0,y=0,v=0,z=0,l=0,E=0,A=0,F=0,c=0,w=1,m=0,B=0)=>{let
 M=Math,R=44100,d=2*M.PI,G=u*=500*d/R/R,C=b*=(1-k+2*k*M.random(k=[]))*d/R,g=0,H=0,a=0,n=1,I=0
 ,J=0,f=0,x,h;e=R*e+9;m*=R;r*=R;t*=R;c*=R;y*=500*d/R**3;A*=d/R;v*=d/R;z*=R;l=R*l|0;for(h=e+m+
