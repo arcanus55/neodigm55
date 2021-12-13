@@ -48,7 +48,7 @@ let neodigmToast = (function(_d, eID, _q) {
           }, true)
       },
       q: function(sMsg) {
-          if (sMsg && sMsg != _aQ[0]) _aQ.push(sMsg); // debounce
+          if (sMsg && sMsg != _aQ[0]) _aQ.push(sMsg); // temporal debounce
           if (_aQ.length == 1) {
               _fOpen();
           }
@@ -109,15 +109,14 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
       },
       close: function(){
         if( bIsInit && bIsOpen ){
-          eScrim.classList.remove( "ndsp__blur", "ndsp__modal" );
-          eClose.classList.remove( "ndsp__modal" );
           eClose.dataset.neodigmSodapopScrim = "closed";
           setTimeout(function(){
             eSoda.remove();
             setTimeout(function(){
               eScrim.dataset.neodigmSodapopScrim = "closed";
+              eScrim.classList.remove( "ndsp__blur", "ndsp__modal" );
             }, 500);
-          }, 300);
+          }, 500);
           if( fOnClose ) fOnClose();
           if ("vibrate" in navigator) window.navigator.vibrate([8, 16]);
           if ( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 3 )

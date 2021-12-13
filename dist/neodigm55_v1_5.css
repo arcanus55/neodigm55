@@ -5,9 +5,10 @@ Copyright (c) 2021, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Kraus
 All rights reserved. Redistributions of source code must retain the above copyright notice.
 
 Neodigm 55 UX is an eclectic JavaScript UX micro-library.
-The lightweight components come together in a unique way that will make visiting your website playful and fun.*/
+The lightweight components come together in a unique way that will make visiting your website playful and fun.
+*/
 
-/*  neodigm Toast Begin  */
+/*  Neodigm Toast Begin  */
 .l-snackbar .snackbar__cont {
 	border-radius: 4px;
 	background: linear-gradient(45deg, #882918 0%, #DD4124 100%);
@@ -64,23 +65,23 @@ The lightweight components come together in a unique way that will make visiting
 	text-align: center;
 	white-space: nowrap
 }
-/*  neodigm Toast End  */
+/*  Neodigm Toast End  */
 
-/*  neodigm Soda Pop Begin  */
+/*  Neodigm Soda Pop Begin  */
 neodigm-sodapop-scrim { display: none; }
 neodigm-sodapop-scrim[data-neodigm-sodapop-scrim='opened'] {
     display: block!important;
     position: fixed;
     background-position: 50% 0; background-size: cover;
     top: 0; right: 0; bottom: 0; left: 0;
-    backdrop-filter: blur(0px); transition: backdrop-filter .8s;
-    background: hsla(0, 0%, 100%, .3);
+    backdrop-filter: blur(0px); transition: backdrop-filter 1s ease-in-out;
+    background: rgba(43, 30, 30, 0);
     z-index: 256;
 }
 neodigm-sodapop-scrim:not(.ndsp__modal) { cursor: pointer; }
 neodigm-sodapop-scrim[data-neodigm-sodapop-scrim='opened'].ndsp__blur {
-    backdrop-filter: blur(6px);
-    background: hsla(0, 0%, 100%, .3);
+    backdrop-filter: blur(8px);
+    background: hsla(0, 0%, 100%, .2);
 }
 neodigm-sodapop-scrim-close { display: none; }
 neodigm-sodapop-scrim-close:not(.ndsp__modal)[data-neodigm-sodapop-scrim='opened'] {
@@ -131,4 +132,4 @@ neodigm-sodapop:not(.ndsp__modal)::after {
     neodigm-sodapop.ndsp__size--medium { width: 66%; }
     neodigm-sodapop.ndsp__size--large  { width: 88%; }
 }
-/*  neodigm Soda Pop End  */
+/*  Neodigm Soda Pop End  */
