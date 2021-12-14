@@ -128,8 +128,8 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
         for(let x=1; x<=10; x++){
           setTimeout(function(){ eSoda.classList.add( "ndsp__opened--shake" ); }, ( iT * x ));
           setTimeout(function(){ eSoda.classList.remove( "ndsp__opened--shake" ); }, ( iT * x ) + ( iT/2 ));
-          if ( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 5 )
         }
+        if ( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 5 )
       },
       autoOpen: function( sId ){ setTimeout(function(){ neodigmSodaPop.open( sId )}, 400)},
       isOpen: function(){ return bIsOpen; },
