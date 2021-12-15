@@ -208,8 +208,8 @@ const neodigmUtils = ( ( _d ) =>{
 // neodigm Dice Begin//
 // neodigm Tradecraft Begin//
 // neodigm Material Input Begin//
-// neodigm accolades carousel Begin//
-// neodigm a11y skip Begin//
+// neodigm Accolades carousel Begin//
+// neodigm A11Y skip Begin//
 
 document.addEventListener("DOMContentLoaded", function(ev) {
   const neodigmMU = `
