@@ -20,10 +20,11 @@ let neodigmToast = (function(_d, eID, _q) {
       _eSb.classList.remove("snackbar__cont--hide");
       if( _aQ[0].indexOf("##") != -1){
         _eSb.classList.add("snackbar__cont--alt");
+      }else{
+        if ( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 1 )
       }
     _eSb.classList.add("snackbar__cont--show");
     if ("vibrate" in navigator) window.navigator.vibrate([16, 8]);
-    if ( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 7 )
       setTimeout(_fClose, _nTimeout);
   };
   return {
@@ -130,7 +131,7 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
             setTimeout(function(){ eSoda.classList.add( "ndsp__opened--shake"+(x%2) ); }, ( iT * x ));
             setTimeout(function(){ eSoda.classList.remove( "ndsp__opened--shake0", "ndsp__opened--shake1" ); }, ( iT * x ) + ( iT/2 ));
           }
-          if ( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 5 )
+          if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 0 )
         }
       },
       autoOpen: function( sId ){ setTimeout(function(){ neodigmSodaPop.open( sId )}, 400)},
@@ -146,18 +147,18 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
 const neodigmWired4Sound = ( ( _d, _aQ ) =>{
     if( _d && (_aQ.length >= 1) ){
         let aSnd = [
-          [2.11,0,73.41619,.01,.9,.27,,.51,,,50,-0.01,.26,,,-0.2,.16,.53,.13,.07],
-          [,,537,.02,.02,.22,1,1.59,-6.98,4.97],
-          [1.5,.8,270,,.1,,1,1.5,,,,,,,,.1,.01],
+          [,,625,.05,.14,.17,,0,-3.8,-1.7,150,,.06,.1,-1,,,.76,.08],
+          [,,1675,,.06,.24,1,1.82,,,837,.06],
+          [,,1e3,,,.5,,,,,99,.01,.03],
           [,,129,.01,,.15,,,,,,,,5],
           [1.01,,561,.05,.17,.39,,.78,5.8,1.9,,,.17,,,,,.66,.08,.4],
           [,.5,847,.02,.3,.9,1,1.67,,,-294,.04,.13,,,,.1],
           [,,172,.8,,.8,1,.76,7.7,3.73,-482,.08,.15,,.14],
           [,,20,.04,,.6,,1.31,,,-990,.06,.17,,,.04,.07],
-          [,,625,.05,.14,.17,,0,-3.8,-1.7,150,,.06,.1,-1,,,.76,.08],
-          [,,1675,,.06,.24,1,1.82,,,837,.06],
+          [2.11,0,73.41619,.01,.9,.27,,.51,,,50,-0.01,.26,,,-0.2,.16,.53,.13,.07],
+          [,,537,.02,.02,.22,1,1.59,-6.98,4.97],
           [1.5,.5,270,,.1,,1,1.5,,,,,,,,.1,.01],
-          [,,1e3,,,.5,,,,,99,.01,.03]
+          [1.5,.8,270,,.1,,1,1.5,,,,,,,,.1,.01],
         ];
         let bIsInit = false;
         return {
@@ -173,7 +174,7 @@ const neodigmWired4Sound = ( ( _d, _aQ ) =>{
             bIsInit = true;
           },
           play: function( nSnd ){
-              if( bIsInit && nSnd ){
+              if( bIsInit ){
                 if(nSnd >= aSnd.length) nSnd = 10;  //  Legacy max 17?
                 if( zzfx ) zzfx(... aSnd[ nSnd ]);
               }
@@ -232,6 +233,18 @@ document.addEventListener("DOMContentLoaded", function(ev) {
     if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.init();
   }, 4);
 });
+
+//  Determine if two strings are Anagrams
+function isAnagram( word1 = "DOCTORWHO", word2 = "TORCHWOOD"){
+  let uc1 = word1.toUpperCase(), uc2 = word2.toUpperCase()
+  return ([ ... uc1 ].filter(( c )=>{
+    if( uc2.indexOf( c ) != -1 ){
+      uc2 = uc2.replace( c, "" )  //  Replace First Occurrence
+      return true;
+    }
+  }).length === uc1.length && (!uc2))
+}
+console.warn( isAnagram("neodigm", "dogimen") );
 
 // ZzFX - Zuper Zmall Zound Zynth - Micro Edition
 // MIT License - Copyright 2019 Frank Force
