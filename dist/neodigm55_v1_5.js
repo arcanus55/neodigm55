@@ -158,7 +158,8 @@ const neodigmWired4Sound = ( ( _d, _aQ ) =>{
           [2.11,0,73.41619,.01,.9,.27,,.51,,,50,-0.01,.26,,,-0.2,.16,.53,.13,.07],
           [,,537,.02,.02,.22,1,1.59,-6.98,4.97],
           [1.5,.5,270,,.1,,1,1.5,,,,,,,,.1,.01],
-          [1.99,,1477,.14,,0,3,.01,,,,,.07,,,,.39,.61,.05]
+          [1.99,,1477,.14,,0,3,.01,,,,,.07,,,,.39,.61,.05],
+          [,,646,,.16,.08,1,1.5,-15,,938,.06,,,-64,,,,.18]
         ];
         let bIsInit = false;
         return {
@@ -175,8 +176,12 @@ const neodigmWired4Sound = ( ( _d, _aQ ) =>{
           },
           play: function( nSnd ){
               if( bIsInit ){
-                if(nSnd >= aSnd.length) nSnd = 10;  //  Legacy max 17?
-                if( zzfx ) zzfx(... aSnd[ nSnd ]);
+                if(typeof nSnd  === "object"){
+                  if( zzfx ) zzfx(... nSnd );
+                }else{
+                  if(nSnd >= aSnd.length) nSnd = 1;
+                  if( zzfx ) zzfx(... aSnd[ nSnd ]);
+                }
               }
           }
         }
@@ -233,18 +238,6 @@ document.addEventListener("DOMContentLoaded", function(ev) {
     if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.init();
   }, 4);
 });
-
-//  Determine if two strings are Anagrams
-function isAnagram( word1 = "DOCTORWHO", word2 = "TORCHWOOD"){
-  let uc1 = word1.toUpperCase(), uc2 = word2.toUpperCase()
-  return ([ ... uc1 ].filter(( c )=>{
-    if( uc2.indexOf( c ) != -1 ){
-      uc2 = uc2.replace( c, "" )  //  Replace First Occurrence
-      return true;
-    }
-  }).length === uc1.length && (!uc2))
-}
-console.warn( isAnagram("neodigm", "dogimen") );
 
 // ZzFX - Zuper Zmall Zound Zynth - Micro Edition
 // MIT License - Copyright 2019 Frank Force
