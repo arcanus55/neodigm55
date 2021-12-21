@@ -1,11 +1,11 @@
 /*
 Neodigm 55 UX v1.5.0
 
-Copyright (c) 2021, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
-All rights reserved. Redistributions of source code must retain the above copyright notice.
-
 Neodigm 55 UX is an eclectic JavaScript UX micro-library.
 The lightweight components come together in a unique way that will make visiting your website playful and fun.
+
+Copyright (c) 2021, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
+All rights reserved. Redistributions of source code must retain the above copyright notice.
 */
 
 /*  Neodigm Toast Begin  */
@@ -137,3 +137,19 @@ neodigm-sodapop:not(.ndsp__modal)::after {
     neodigm-sodapop.ndsp__size--large  { width: 88%; }
 }
 /*  Neodigm Soda Pop End  */
+
+/*  Neodigm Parallax Begin  */
+eodigm-parallax * { display: none; }
+
+@media only screen and (min-width:48.1em){/* med lg */
+    neodigm-parallax[data-neodigm-parallax] aside {
+        position: relative; overflow: hidden;
+        padding: 200px 0;
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: middle center;
+        width: 100%;
+    }
+}
+/*  Neodigm Parallax End  */

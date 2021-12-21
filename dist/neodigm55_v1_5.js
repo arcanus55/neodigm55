@@ -1,15 +1,15 @@
 /*
 Neodigm 55 UX v1.5.0
 
-Copyright (c) 2021, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
-All rights reserved. Redistributions of source code must retain the above copyright notice.
-
 Neodigm 55 UX is an eclectic JavaScript UX micro-library.
 The lightweight components come together in a unique way that will make visiting your website playful and fun.
+
+Copyright (c) 2021, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
+All rights reserved. Redistributions of source code must retain the above copyright notice.
 */
 
 // Neodigm 55 UX Toast Begin //
-let neodigmOpt = {neodigmToast: true, neodigmSodaPop: true, neodigmUtils: true, neodigmWired4Sound: true};
+let neodigmOpt = {neodigmToast: true, neodigmSodaPop: true, neodigmUtils: true, neodigmWired4Sound: true, neodigmParallax: true};
 if( typeof neodigmOptCustom != 'undefined' ) neodigmOpt = neodigmOptCustom;
 
 let neodigmToast = (function(_d, eID, _q) {
@@ -188,6 +188,22 @@ const neodigmWired4Sound = ( ( _d, _aQ ) =>{
     }
 })( document, ["body"]);
 
+// Neodigm 55 UX Parallax Begin //
+const neodigmParallax = ( ( _d, _aQ ) =>{
+  if( _d && (_aQ.length >= 1) ){
+    let bIsInit = false;
+    return {
+      init: function(){
+        [ ... _d.querySelectorAll( _aQ[0] )].filter( ( ndP ) => {
+          let ndPDv = ndP.querySelector("aside")
+          ndPDv.style.backgroundImage = 'url(' + ndP.dataset[ _aQ[1] ] + ')';
+        })
+        bIsInit = true;
+      }
+    }
+  }
+})( document, ["neodigm-parallax", "neodigmParallax"]);
+
 // Neodigm 55 UX Utils Begin //
 const neodigmUtils = ( ( _d ) =>{
   return {
@@ -236,6 +252,7 @@ document.addEventListener("DOMContentLoaded", function(ev) {
     if( neodigmOpt.neodigmToast )   neodigmToast.init();
     if( neodigmOpt.neodigmSodaPop ) neodigmSodaPop.init();
     if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.init();
+    if( neodigmOpt.neodigmParallax ) neodigmParallax.init();
   }, 4);
 });
 
