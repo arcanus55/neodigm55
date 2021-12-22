@@ -9,37 +9,37 @@ All rights reserved. Redistributions of source code must retain the above copyri
 */
 
 // Neodigm 55 UX Toast Begin //
-let neodigmOpt = {neodigmToast: true, neodigmSodaPop: true, neodigmUtils: true, neodigmWired4Sound: true, neodigmParallax: true};
+let neodigmOpt = {neodigmToast: true, neodigmSodaPop: true, neodigmUtils: true, neodigmWired4Sound: true, neodigmParallax: true}
 if( typeof neodigmOptCustom != 'undefined' ) neodigmOpt = neodigmOptCustom;
 
 let neodigmToast = (function(_d, eID, _q) {
-  let _nTimeout = 5800, _aQ = [], _eSb, _eSbText;
+  let _nTimeout = 5800, _aQ = [], _eSb, _eSbText
   let _fOpen = function() {
-      _eSbText.innerHTML = _aQ[0].replace("|", "<br>").replace("##", "");
-      _eSb.style.left = ((_d.body.clientWidth / 2) - (_eSb.clientWidth / 2)) + "px";
-      _eSb.classList.remove("snackbar__cont--hide");
+      _eSbText.innerHTML = _aQ[0].replace("|", "<br>").replace("##", "")
+      _eSb.style.left = ((_d.body.clientWidth / 2) - (_eSb.clientWidth / 2)) + "px"
+      _eSb.classList.remove("snackbar__cont--hide")
       if( _aQ[0].indexOf("##") != -1){
-        _eSb.classList.add("snackbar__cont--alt");
+        _eSb.classList.add("snackbar__cont--alt")
       }else{
         if ( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 1 )
       }
-    _eSb.classList.add("snackbar__cont--show");
-    if ("vibrate" in navigator) window.navigator.vibrate([16, 8]);
-      setTimeout(_fClose, _nTimeout);
+    _eSb.classList.add("snackbar__cont--show")
+    if ("vibrate" in navigator) window.navigator.vibrate([16, 8])
+      setTimeout(_fClose, _nTimeout)
   };
   return {
       init: function(){
-          _eSb = _d.getElementById(eID);
+          _eSb = _d.getElementById(eID)
           if( _eSb ){
-              _eSbText  = _eSb.querySelector("p");
+              _eSbText  = _eSb.querySelector("p")
               _fClose = function() {
-                  _aQ.shift();
-                  _eSb.classList.remove("snackbar__cont--show");
-                  _eSb.classList.add("snackbar__cont--hide");
+                  _aQ.shift()
+                  _eSb.classList.remove("snackbar__cont--show")
+                  _eSb.classList.add("snackbar__cont--hide")
                   if (_aQ.length != 0) {
-                      setTimeout(_fOpen, 1200);
+                      setTimeout(_fOpen, 1200)
                   }
-                  _eSb.classList.remove("snackbar__cont--alt");
+                  _eSb.classList.remove("snackbar__cont--alt")
               }
           }
           _d.body.addEventListener("click", ( ev )=>{
@@ -49,9 +49,9 @@ let neodigmToast = (function(_d, eID, _q) {
           }, true)
       },
       q: function(sMsg) {
-          if (sMsg && sMsg != _aQ[0]) _aQ.push(sMsg); // temporal debounce
+          if (sMsg && sMsg != _aQ[0]) _aQ.push(sMsg) // temporal debounce
           if (_aQ.length == 1) {
-              _fOpen();
+              _fOpen()
           }
       }
   }
@@ -60,49 +60,49 @@ let neodigmToast = (function(_d, eID, _q) {
 // Neodigm 55 UX Soda Pop Begin //
 const neodigmSodaPop = ( ( _d, _aQ ) =>{
   if( _d && (_aQ.length >= 1) ){
-    let eSoda = eScrim = eClose = fOnBeforeOpen = fOnAfterOpen = fOnClose = null;
-    let bIsOpen = bIsModal = bIsInit = false;
+    let eSoda = eScrim = eClose = fOnBeforeOpen = fOnAfterOpen = fOnClose = null
+    let bIsOpen = bIsModal = bIsInit = false
     return {
       init: function(){
-        eScrim = _d.querySelector( _aQ[0] );
-        eClose = _d.querySelector( _aQ[0] + "-close" );
+        eScrim = _d.querySelector( _aQ[0] )
+        eClose = _d.querySelector( _aQ[0] + "-close" )
         _d.body.addEventListener("click", ( ev )=>{
           if( ev?.target?.dataset?.neodigmSodapopId ){
             neodigmSodaPop.open( ev.target.dataset.neodigmSodapopId )
-            ev.preventDefault();
+            ev.preventDefault()
           }
           if( "NEODIGM-SODAPOP-SCRIM" == ev.target.tagName ){
             if( bIsModal ){
-              neodigmSodaPop.shake();
+              neodigmSodaPop.shake()
             }else{
-              neodigmSodaPop.close();
+              neodigmSodaPop.close()
             }
           }
           if( "NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName ){
-            neodigmSodaPop.close();
+            neodigmSodaPop.close()
           }
         }, false)
-        bIsInit = true;
+        bIsInit = true
       },
       open: function( sId ){
-        let eTmpl = _d.getElementById( sId );
+        let eTmpl = _d.getElementById( sId )
         if( bIsInit && eTmpl && eScrim ){
-          if( fOnBeforeOpen ) fOnBeforeOpen();
-          bIsModal = (eTmpl.dataset.neodigmSodapopModal == "true");
+          if( fOnBeforeOpen ) fOnBeforeOpen()
+          bIsModal = (eTmpl.dataset.neodigmSodapopModal == "true")
           if( bIsModal ) {
             eScrim.classList.add( "ndsp__modal" )
             eClose.classList.add( "ndsp__modal" )
-            };
-          eScrim.dataset.neodigmSodapopScrim = "opened";
-          eClose.dataset.neodigmSodapopScrim = "opened";
-           eSoda = _d.createElement( _aQ[1] );
-          setTimeout(function(){ eScrim.classList.add( "ndsp__blur" ); }, 96);
-          if( bIsModal ) eSoda.classList.add("ndsp__modal");
-          eSoda.classList.add( "ndsp__size--" +  eTmpl.dataset.neodigmSodapopSize );
-          setTimeout(function(){ eSoda.classList.add( "ndsp__opened" ); }, 4);
-          eSoda.innerHTML = eTmpl.innerHTML;
-          _d.body.appendChild( eSoda );
-          if ("vibrate" in navigator) window.navigator.vibrate([16, 8]);
+            }
+          eScrim.dataset.neodigmSodapopScrim = "opened"
+          eClose.dataset.neodigmSodapopScrim = "opened"
+           eSoda = _d.createElement( _aQ[1] )
+          setTimeout(function(){ eScrim.classList.add( "ndsp__blur" ); }, 96)
+          if( bIsModal ) eSoda.classList.add("ndsp__modal")
+          eSoda.classList.add( "ndsp__size--" +  eTmpl.dataset.neodigmSodapopSize )
+          setTimeout(function(){ eSoda.classList.add( "ndsp__opened" ); }, 4)
+          eSoda.innerHTML = eTmpl.innerHTML
+          _d.body.appendChild( eSoda )
+          if ("vibrate" in navigator) window.navigator.vibrate([16, 8])
           if ( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 2 )
           bIsOpen = true;
           if( fOnAfterOpen ) fOnAfterOpen();
@@ -114,12 +114,12 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
           setTimeout(function(){
             eSoda.remove();
             setTimeout(function(){
-              eScrim.dataset.neodigmSodapopScrim = "closed";
-              eScrim.classList.remove( "ndsp__blur", "ndsp__modal" );
+              eScrim.dataset.neodigmSodapopScrim = "closed"
+              eScrim.classList.remove( "ndsp__blur", "ndsp__modal" )
             }, 500);
           }, 500);
-          if( fOnClose ) fOnClose();
-          if ("vibrate" in navigator) window.navigator.vibrate([8, 16]);
+          if( fOnClose ) fOnClose()
+          if ("vibrate" in navigator) window.navigator.vibrate([8, 16])
           if ( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 3 )
           bIsOpen = false;
         }
@@ -135,7 +135,7 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
         }
       },
       autoOpen: function( sId ){ setTimeout(function(){ neodigmSodaPop.open( sId )}, 400)},
-      isOpen: function(){ return bIsOpen; },
+      isOpen: function(){ return bIsOpen },
       setOnBeforeOpen: function( _f ){ fOnBeforeOpen = _f },
       setOnAfterOpen: function( _f ){ fOnAfterOpen = _f },
       setOnClose: function( _f ){ fOnClose = _f }
@@ -160,16 +160,16 @@ const neodigmWired4Sound = ( ( _d, _aQ ) =>{
           [1.5,.5,270,,.1,,1,1.5,,,,,,,,.1,.01],
           [1.99,,1477,.14,,0,3,.01,,,,,.07,,,,.39,.61,.05],
           [,,646,,.16,.08,1,1.5,-15,,938,.06,,,-64,,,,.18]
-        ];
-        let bIsInit = false;
+        ]
+        let bIsInit = false
         return {
           init: function(){
             _d.querySelector( _aQ[0] ).addEventListener("click", ( ev )=>{
-                let eTg = ev.target;
+                let eTg = ev.target
                 if( eTg && eTg.dataset.neodigmWired4sound ){
-                  let aW4S = [];
-                    aW4S = eTg.dataset.neodigmWired4sound.split("|");
-                    if( aW4S[0] == "click") neodigmWired4Sound.play( aW4S[1] );
+                  let aW4S = []
+                    aW4S = eTg.dataset.neodigmWired4sound.split("|")
+                    if( aW4S[0] == "click") neodigmWired4Sound.play( aW4S[1] )
                 }
             }, false);
             bIsInit = true;
@@ -177,10 +177,10 @@ const neodigmWired4Sound = ( ( _d, _aQ ) =>{
           play: function( nSnd ){
               if( bIsInit ){
                 if(typeof nSnd  === "object"){
-                  if( zzfx ) zzfx(... nSnd );
+                  if( zzfx ) zzfx(... nSnd )
                 }else{
-                  if(nSnd >= aSnd.length) nSnd = 1;
-                  if( zzfx ) zzfx(... aSnd[ nSnd ]);
+                  if(nSnd >= aSnd.length) nSnd = 1
+                  if( zzfx ) zzfx(... aSnd[ nSnd ])
                 }
               }
           }
@@ -194,11 +194,13 @@ const neodigmParallax = ( ( _d, _aQ ) =>{
     let bIsInit = false;
     return {
       init: function(){
-        [ ... _d.querySelectorAll( _aQ[0] )].filter( ( ndP ) => {
-          let ndPDv = ndP.querySelector("aside")
-          ndPDv.style.backgroundImage = 'url(' + ndP.dataset[ _aQ[1] ] + ')';
-        })
-        bIsInit = true;
+        if( !neodigmUtils.isMobile() ){
+          [ ... _d.querySelectorAll( _aQ[0] )].filter( ( ndP ) => {
+            let ndPDv = ndP.querySelector("aside")
+            ndPDv.style.backgroundImage = "url(" + ndP.dataset[ _aQ[1] ] + ")"
+          })
+          bIsInit = true
+        }
       }
     }
   }
@@ -210,12 +212,12 @@ const neodigmUtils = ( ( _d ) =>{
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
     fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback
-      var _js = _d.createElement( "script" );
-      _js.type = "text/javascript";
-      _js.async = true;
-      if( _cb ) _js.onload = function(){ _cb(); };
-      _js.src = _uri;
-      _d.getElementsByTagName( "head" )[0].appendChild( _js );
+      var _js = _d.createElement( "script" )
+      _js.type = "text/javascript"
+      _js.async = true
+      if( _cb ) _js.onload = function(){ _cb(); }
+      _js.src = _uri
+      _d.getElementsByTagName( "head" )[0].appendChild( _js )
     }
   }
 })( document );
