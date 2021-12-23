@@ -8,6 +8,35 @@ Copyright (c) 2021, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Kraus
 All rights reserved. Redistributions of source code must retain the above copyright notice.
 */
 
+// Neodigm 55 UX Utils Begin //
+const neodigmUtils = ( ( _d ) =>{
+  return {
+    isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
+    f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
+    fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback
+      var _js = _d.createElement( "script" )
+      _js.type = "text/javascript"
+      _js.async = true
+      if( _cb ) _js.onload = function(){ _cb(); }
+      _js.src = _uri
+      _d.getElementsByTagName( "head" )[0].appendChild( _js )
+    },
+    data2prop: function( sDset ){  //  Convert HTML data attrib name to JS dataset name
+      sDset = sDset.replace("data-", "").toLowerCase();
+      let aDset = sDset.split(""), aDret = [], bUpper = false;
+      aDset.forEach( (sVal, nIx) => {
+          if( sVal == "-" ){
+              bUpper = true;
+          }else{
+              aDret.push( ( bUpper ) ? sVal.toUpperCase() : sVal );
+              bUpper = false;
+          }
+      });
+      return aDret.join("");
+    }
+  }
+})( document );
+
 // Neodigm 55 UX Toast Begin //
 let neodigmOpt = {neodigmToast: true,
   neodigmSodaPop: true,
@@ -224,35 +253,6 @@ const neodigmMetronome = ( ( _d, _aQ ) =>{
     }
   }
 })( document, ["", ""]);
-
-// Neodigm 55 UX Utils Begin //
-const neodigmUtils = ( ( _d ) =>{
-  return {
-    isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
-    f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
-    fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback
-      var _js = _d.createElement( "script" )
-      _js.type = "text/javascript"
-      _js.async = true
-      if( _cb ) _js.onload = function(){ _cb(); }
-      _js.src = _uri
-      _d.getElementsByTagName( "head" )[0].appendChild( _js )
-    },
-    data2prop: function( sDset ){  //  Convert HTML data attrib name to JS dataset name
-      sDset = sDset.replace("data-", "").toLowerCase();
-      let aDset = sDset.split(""), aDret = [], bUpper = false;
-      aDset.forEach( (sVal, nIx) => {
-          if( sVal == "-" ){
-              bUpper = true;
-          }else{
-              aDret.push( ( bUpper ) ? sVal.toUpperCase() : sVal );
-              bUpper = false;
-          }
-      });
-      return aDret.join("");
-      }
-  }
-})( document );
 
 // neodigm A11Y skip Begin//
 // neodigm Confetti Begin//
