@@ -8,7 +8,7 @@ Copyright (c) 2021, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Kraus
 All rights reserved. Redistributions of source code must retain the above copyright notice.
 */
 
-// Neodigm 55 UX Utils Begin //
+//  Neodigm 55 UX Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
@@ -37,13 +37,13 @@ const neodigmUtils = ( ( _d ) =>{
   }
 })( document );
 
-// Neodigm 55 UX Toast Begin //
-let neodigmOpt = {neodigmToast: true,
+//  Neodigm 55 UX Toast Begin  //
+let neodigmOpt = {
+  neodigmToast: true,
   neodigmSodaPop: true,
   neodigmUtils: true,
   neodigmWired4Sound: true,
-  neodigmParallax: true,
-  neodigmMetronome: true}
+  neodigmParallax: true}
 if( typeof neodigmOptCustom != 'undefined' ) neodigmOpt = neodigmOptCustom
 
 let neodigmToast = (function(_d, eID, _q) {
@@ -87,11 +87,12 @@ let neodigmToast = (function(_d, eID, _q) {
           if (_aQ.length == 1) {
               _fOpen()
           }
+        return neodigmToast
       }
   }
 })(document, "js-snackbar__id", "[data-neodigm-toast]");
 
-// Neodigm 55 UX Soda Pop Begin //
+//  Neodigm 55 UX Soda Pop Begin  //
 const neodigmSodaPop = ( ( _d, _aQ ) =>{
   if( _d && (_aQ.length >= 1) ){
     let eSoda = eScrim = eClose = fOnBeforeOpen = fOnAfterOpen = fOnClose = null
@@ -117,6 +118,7 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
           }
         }, false)
         bIsInit = true
+        return neodigmSodaPop
       },
       open: function( sId ){
         let eTmpl = _d.getElementById( sId )
@@ -141,6 +143,7 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
           bIsOpen = true;
           if( fOnAfterOpen ) fOnAfterOpen()
         }
+        return neodigmSodaPop
       },
       close: function(){
         if( bIsInit && bIsOpen ){
@@ -157,6 +160,7 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
           if ( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 3 )
           bIsOpen = false
         }
+        return neodigmSodaPop
       },
       shake: function(){
         if( bIsInit && bIsOpen ){
@@ -167,8 +171,9 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
           }
           if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 0 )
         }
+        return neodigmSodaPop
       },
-      autoOpen: function( sId ){ setTimeout(function(){ neodigmSodaPop.open( sId )}, 400)},
+      autoOpen: function( sId ){ setTimeout(function(){ neodigmSodaPop.open( sId )}, 400); return neodigmToast},
       isOpen: function(){ return bIsOpen },
       setOnBeforeOpen: function( _f ){ fOnBeforeOpen = _f },
       setOnAfterOpen: function( _f ){ fOnAfterOpen = _f },
@@ -177,7 +182,7 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
   }
 })( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-neodigm-sodapop-modal"]);
 
-// Neodigm 55 UX Wired4Sound Begin //
+//  Neodigm 55 UX Wired4Sound Begin  //
 const neodigmWired4Sound = ( ( _d, _aQ ) =>{
     if( _d && (_aQ.length >= 1) ){
         let aSnd = [
@@ -222,7 +227,7 @@ const neodigmWired4Sound = ( ( _d, _aQ ) =>{
     }
 })( document, ["body"]);
 
-// Neodigm 55 UX Parallax Begin //
+//  Neodigm 55 UX Parallax Begin  //
 const neodigmParallax = ( ( _d, _aQ ) =>{
   if( _d && (_aQ.length >= 1) ){
     let bIsInit = false
@@ -240,28 +245,44 @@ const neodigmParallax = ( ( _d, _aQ ) =>{
   }
 })( document, ["neodigm-parallax", "neodigmParallax"]);
 
-// Neodigm 55 UX Metronome Begin //
-const neodigmMetronome = ( ( _d, _aQ ) =>{
-  if( _d && (_aQ.length >= 1) ){
-    let bIsInit = false
-    return {
-      init: function(){
-//  data-at-change="class"
-        
-        bIsInit = true
+//  Neodigm 55 UX Metronome Begin  //
+const neodigmMetronome = ( () =>{
+  let oEmit = {};
+  let bIsInit = bIsPause = false
+  return {
+    init: function(){
+      oEmit = {}  //  Reset all sans setIntr
+      bIsInit = true
+      return neodigmMetronome;
+    },
+    tick: function( t ){
+      if( bIsInit && !bIsPause ){ oEmit[ t ].forEach( ( f )=>{ f() }) }
+      return neodigmMetronome;
+    },
+    subscribe: function( f, t ){  //  Usage: .subscribe(f, 1000)
+      if( bIsInit ){
+        let _t = t
+        if( !oEmit[ _t ] ){
+          oEmit[ _t ] = []
+          setInterval( ()=>{ neodigmMetronome.tick( _t )}, _t);
+        }
+        oEmit[ _t ].push( f )
       }
-    }
+      return neodigmMetronome;
+    },
+    pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMetronome; } },
+    play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMetronome; } }
   }
-})( document, ["", ""]);
+})();
 
-// neodigm A11Y skip Begin//
-// neodigm Confetti Begin//
-// neodigm Dice Begin//
-// neodigm Marq Begin //
-// neodigm Popover Begin//
-// neodigm Tradecraft Begin//
-// neodigm Type Begin //
-// neodigm Vivid Begin //
+//  Neodigm 55 UX Marq Begin  //
+//  Neodigm 55 UX A11Y skip Begin  //
+//  Neodigm 55 UX Confetti Begin  //
+//  Neodigm 55 UX Dice Begin  //
+//  Neodigm 55 UX Popover Begin  //
+//  Neodigm 55 UX Tradecraft Begin  //
+//  Neodigm 55 UX Type Begin  //
+//  Neodigm 55 UX Vivid Begin  //
 
 document.addEventListener("DOMContentLoaded", function(ev) {
   const neodigmMU = `
@@ -279,11 +300,11 @@ document.addEventListener("DOMContentLoaded", function(ev) {
   eMU.innerHTML = neodigmMU;
   document.body.appendChild(eMU);
   setTimeout( ()=>{
-    if( neodigmOpt.neodigmToast )   neodigmToast.init()
+    neodigmMetronome.init()
+    if( neodigmOpt.neodigmToast ) neodigmToast.init()
     if( neodigmOpt.neodigmSodaPop ) neodigmSodaPop.init()
     if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.init()
     if( neodigmOpt.neodigmParallax ) neodigmParallax.init()
-    if( neodigmOpt.neodigmMetronome ) neodigmMetronome.init()
   }, 4)
 });
 
