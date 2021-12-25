@@ -153,3 +153,28 @@ eodigm-parallax * { display: none; }
     }
 }
 /*  Neodigm Parallax End  */
+
+/*  Neodigm Marquee Begin  */
+neodigm-marquee {
+    position: fixed;
+    display: inline-block;
+    user-select: none;
+    height: 38px; width: 100%;
+    background-color: #383838;
+    overflow: hidden;
+}
+neodigm-marquee p {
+    color: #f8d34d;
+    font-family: monospace;
+    font-weight: 100;
+    font-size: 28px;
+    margin: 2px;
+    line-height: 1.2;
+
+    text-shadow:
+    -0.2rem -0.2rem 1rem #ed5808,
+    0.2rem 0.2rem 1rem #fff,
+    0 0 2rem #fff,
+    0 0 4rem #ed5808;
+}
+/*  Neodigm Marquee End  */

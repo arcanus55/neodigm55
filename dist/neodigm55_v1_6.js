@@ -42,7 +42,8 @@ let neodigmOpt = {
   neodigmSodaPop: true,
   neodigmUtils: true,
   neodigmWired4Sound: true,
-  neodigmParallax: true}
+  neodigmParallax: true,
+  neodigmMarquee: true}
 if( typeof neodigmOptCustom != 'undefined' ) neodigmOpt = neodigmOptCustom
 
 //  Neodigm 55 UX Toast Begin  //
@@ -275,7 +276,33 @@ const neodigmMetronome = ( () =>{
   }
 })();
 
-//  Neodigm 55 UX Marq Begin  //
+//  Neodigm 55 UX Marquee Begin  //
+const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
+    let aMarqs = [];
+    let bIsInit = bIsPause = false
+    return {
+      init: function(){
+        aMarqs = [ ... _d.querySelectorAll( _aQ[0] )]
+        aMarqs.forEach( ( eMc )=>{
+            eMc.eMp = eMc.querySelector("p")
+        })
+        neodigmMetronome.subscribe( neodigmMarquee.tick, _t )
+        bIsInit = true
+        return neodigmMarquee;
+      },
+      tick: function( t ){
+        aMarqs.forEach( ( eMc )=>{
+            //let eMp = eMc.querySelector("p")
+            let aMt = [ ... eMc.dataset[ _aQ[1] ]]
+            aMt.push( aMt.shift() )
+            eMc.eMp.textContent = eMc.dataset[ _aQ[1] ] = aMt.join("")
+            })
+      },
+      pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMarquee; } },
+      play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMarquee; } }
+    }
+  })( document, ["neodigm-marquee", "neodigmMarqueeText"], 120);
+
 //  Neodigm 55 UX A11Y skip Begin  //
 //  Neodigm 55 UX Confetti Begin  //
 //  Neodigm 55 UX Dice Begin  //
@@ -305,6 +332,7 @@ document.addEventListener("DOMContentLoaded", function(ev) {
     if( neodigmOpt.neodigmSodaPop ) neodigmSodaPop.init()
     if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.init()
     if( neodigmOpt.neodigmParallax ) neodigmParallax.init()
+    if( neodigmOpt.neodigmMarquee ) neodigmMarquee.init()
   }, 4)
 });
 
