@@ -272,7 +272,8 @@ const neodigmMetronome = ( () =>{
       return neodigmMetronome;
     },
     pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMetronome; } },
-    play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMetronome; } }
+    play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMetronome; } },
+    clear: function(){}
   }
 })();
 
@@ -284,7 +285,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
       init: function(){
         aMarqs = [ ... _d.querySelectorAll( _aQ[0] )]
         aMarqs.forEach( ( eMc )=>{
-            eMc.eMp = eMc.querySelector("p")
+            eMc.eMp = eMc.querySelector("pre")
         })
         neodigmMetronome.subscribe( neodigmMarquee.tick, _t )
         bIsInit = true
@@ -292,7 +293,6 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
       },
       tick: function( t ){
         aMarqs.forEach( ( eMc )=>{
-            //let eMp = eMc.querySelector("p")
             let aMt = [ ... eMc.dataset[ _aQ[1] ]]
             aMt.push( aMt.shift() )
             eMc.eMp.textContent = eMc.dataset[ _aQ[1] ] = aMt.join("")
@@ -301,7 +301,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
       pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMarquee; } },
       play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMarquee; } }
     }
-  })( document, ["neodigm-marquee", "neodigmMarqueeText"], 240);
+  })( document, ["neodigm-marquee", "neodigmMarqueeText"], 180);
 
 //  Neodigm 55 UX A11Y skip Begin  //
 //  Neodigm 55 UX Confetti Begin  //

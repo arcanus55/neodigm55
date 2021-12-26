@@ -163,7 +163,7 @@ neodigm-marquee {
     background-color: #383838;
     overflow: hidden;
 }
-neodigm-marquee p {
+neodigm-marquee * {
     color: #f8d34d;
     font-family: monospace;
     font-weight: 100;
