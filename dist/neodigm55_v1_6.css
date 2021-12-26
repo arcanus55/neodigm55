@@ -156,7 +156,6 @@ eodigm-parallax * { display: none; }
 
 /*  Neodigm Marquee Begin  */
 neodigm-marquee {
-    position: fixed;
     display: inline-block;
     user-select: none;
     width: 100%;
