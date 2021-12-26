@@ -292,11 +292,13 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
         return neodigmMarquee;
       },
       tick: function( t ){
-        aMarqs.forEach( ( eMc )=>{
-            let aMt = [ ... eMc.dataset[ _aQ[1] ]]
-            aMt.push( aMt.shift() )
-            eMc.eMp.textContent = eMc.dataset[ _aQ[1] ] = aMt.join("")
+        if( bIsInit && !bIsPause ){
+            aMarqs.forEach( ( eMc )=>{
+                let aMt = [ ... eMc.dataset[ _aQ[1] ]]
+                aMt.push( aMt.shift() )
+                eMc.eMp.textContent = eMc.dataset[ _aQ[1] ] = aMt.join("")
             })
+        }
       },
       pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMarquee; } },
       play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMarquee; } }

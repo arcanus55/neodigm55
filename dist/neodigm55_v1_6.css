@@ -159,22 +159,34 @@ neodigm-marquee {
     position: fixed;
     display: inline-block;
     user-select: none;
-    height: 38px; width: 100%;
-    background-color: #383838;
+    width: 100%;
     overflow: hidden;
-}
+    background-color: #282828;
+        height: 38px;
+    }
 neodigm-marquee * {
     color: #f8d34d;
     font-family: monospace;
-    font-weight: 100;
-    font-size: 28px;
     margin: 2px;
-    line-height: 1.2;
+    font-weight: 100;
+        font-size: 30px; line-height: 1.1;
 
     text-shadow:
     -0.2rem -0.2rem 1rem #ed5808,
     0.2rem 0.2rem 1rem #fff,
     0 0 2rem #fff,
     0 0 4rem #ed5808;
+}
+neodigm-marquee[data-neodigm-marquee-size='small'] { height: 28px; }
+neodigm-marquee[data-neodigm-marquee-size='small'] * {
+    font-size: 20px; line-height: 1;
+}
+neodigm-marquee[data-neodigm-marquee-size='medium'] { height: 30px; }
+neodigm-marquee[data-neodigm-marquee-size='medium'] * {
+    font-size: 26px; line-height: .9;
+}
+neodigm-marquee[data-neodigm-marquee-size='large'] { height: 38px; }
+neodigm-marquee[data-neodigm-marquee-size='large'] * {
+    font-size: 30px; line-height: 1.1;
 }
 /*  Neodigm Marquee End  */

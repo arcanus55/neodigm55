@@ -1,4 +1,4 @@
-# Simple JavaScript Popups micro-library (only 7k)
+# Simple JavaScript Popups micro-library (only 9k)
 An eclectic low-code vanilla [JavaScript UX micro-library](https://thescottkrause.com/emerging_tech/neodigm55_ux_library/) for those that defiantly think for themselves.
 
 Neodigm 55 is low-code, performant, accessible, and open source. Because it’s so easy to get started it is the perfect solution for quick landing pages or event sites.
