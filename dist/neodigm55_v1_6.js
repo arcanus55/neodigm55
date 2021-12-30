@@ -248,11 +248,12 @@ const neodigmParallax = ( ( _d, _aQ ) =>{
 
 //  Neodigm 55 UX Metronome Begin  //
 const neodigmMetronome = ( () =>{
-  let oEmit = {};
+  let oEmit = {}, aIntv = []
   let bIsInit = bIsPause = false
   return {
     init: function(){
       oEmit = {}  //  Reset all sans setIntr
+      aIntv.forEach( ( i )=>{ clearInterval( i ) } )
       bIsInit = true
       return neodigmMetronome;
     },
@@ -265,7 +266,7 @@ const neodigmMetronome = ( () =>{
         let _t = t
         if( !oEmit[ _t ] ){
           oEmit[ _t ] = []
-          setInterval( ()=>{ neodigmMetronome.tick( _t )}, _t);
+          aIntv.push( setInterval( ()=>{ neodigmMetronome.tick( _t ) }, _t) )
         }
         oEmit[ _t ].push( f )
       }
