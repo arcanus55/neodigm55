@@ -274,7 +274,6 @@ const neodigmMetronome = ( () =>{
     },
     pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMetronome; } },
     play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMetronome; } },
-    clear: function(){}
   }
 })();
 
