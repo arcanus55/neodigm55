@@ -9,6 +9,10 @@ Neodigm 55 is low-code, performant, accessible, and open source. Because it’s 
   </a>
 </p>
 
+<p align="center">
+  <a target="_blank" href="https://codepen.io/neodigm24/pen/oNGqzyO" title="Infographics, UX, PWA, Typescript, Svelte, ThreeJS, Vue, and WASM" alt="TypeScript ⚡ WASM ✨ Svelte">CodePen</a>
+</p>
+
 https://user-images.githubusercontent.com/41128567/144532034-16ab92e5-33ae-4465-b0be-41be82f9e59e.mp4
 
 <p align="center">
