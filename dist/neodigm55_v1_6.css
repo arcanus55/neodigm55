@@ -110,6 +110,7 @@ neodigm-sodapop {
 neodigm-sodapop.ndsp__opened {
     border-radius: 12px;
 	transform: rotate(0deg);
+    min-height: 176px;
     top: 60px;
 }
 neodigm-sodapop.ndsp__opened--shake1 {
@@ -163,7 +164,7 @@ neodigm-marquee {
     background-color: #282828;
         height: 38px;
     }
-neodigm-marquee * {
+neodigm-marquee pre {
     color: #f8d34d;
     font-family: monospace;
     margin: 2px;
@@ -174,6 +175,14 @@ neodigm-marquee * {
     -0.2rem -0.2rem 1rem #ed5808,
     0.2rem 0.2rem 1rem #fff,
     0 0 2rem #fff,
+    0 0 4rem #ed5808;
+}
+neodigm-marquee pre.marquee--alt {
+    color: #dd6e32;
+    text-shadow:
+    -0.2rem -0.2rem 1rem #ed5808,
+    0.2rem 0.2rem 1rem #9b3f0d,
+    0 0 2rem #ed5808,
     0 0 4rem #ed5808;
 }
 neodigm-marquee[data-neodigm-marquee-size='small'] { height: 28px; }

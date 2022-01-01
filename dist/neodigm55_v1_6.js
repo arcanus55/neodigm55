@@ -303,7 +303,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
       pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMarquee; } },
       play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMarquee; } }
     }
-  })( document, ["neodigm-marquee", "neodigmMarqueeText"], 124);
+  })( document, ["neodigm-marquee", "neodigmMarqueeText"], 124 );
 
 //  Neodigm 55 UX A11Y skip Begin  //
 //  Neodigm 55 UX Confetti Begin  //
