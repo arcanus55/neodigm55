@@ -4,15 +4,24 @@ Neodigm 55 UX v1.5.0
 Neodigm 55 UX is an eclectic JavaScript UX micro-library.
 The lightweight components come together in a unique way that will make visiting your website playful and fun.
 
-Copyright (c) 2021, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
+Copyright (c) 2022, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
 All rights reserved. Redistributions of source code must retain the above copyright notice.
 */
+
+:root {
+    --neodigm-theme-primary: #92a8d1;   --neodigm-theme-primary-alt: #465C85;  /* Serenity 30% darker*/
+    --neodigm-theme-secondary: #939597; --neodigm-theme-secondary-alt: #47494B;  /* Ultimate Gray */
+    --neodigm-theme-success: #009473;   --neodigm-theme-success-alt: #004827;  /* Emerald */
+    --neodigm-theme-danger: #DD4124;    --neodigm-theme-danger-alt: #910000;  /* Tangerine Tango */
+    --neodigm-theme-warning: #F5DF4D;   --neodigm-theme-warning-alt: #A99301;  /* Illuminating */
+    --neodigm-theme-info: #7BC4C4;      --neodigm-theme-info-alt: #2F7878;  /* Aqua Sky */
+}
 
 /*  Neodigm Toast Begin  */
 .l-snackbar .snackbar__cont {
 	border-radius: 4px;
-	background: linear-gradient(45deg, #882918 0%, #DD4124 100%);
-	box-shadow: inset #DD4124 0 0 6px 2px;
+	background: linear-gradient(45deg, var(--neodigm-theme-danger) 0%, var(--neodigm-theme-danger-alt) 100%);
+	box-shadow: inset var(--neodigm-theme-danger) 0 0 6px 2px;
 	border: solid 1px #d3cdb4;
 	left: 38%;
 	min-width: 188px;
@@ -22,6 +31,12 @@ All rights reserved. Redistributions of source code must retain the above copyri
 	user-select: none;
 	z-index: 6408
 }
+.l-snackbar .snackbar__cont[data-neodigm-theme='primary'] { box-shadow: inset var(--neodigm-theme-primary) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-primary) 0%, var(--neodigm-theme-primary-alt) 100%); }
+.l-snackbar .snackbar__cont[data-neodigm-theme='secondary'] { box-shadow: inset var(--neodigm-theme-secondary) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-secondary) 0%, var(--neodigm-theme-secondary-alt) 100%); }
+.l-snackbar .snackbar__cont[data-neodigm-theme='success'] { box-shadow: inset var(--neodigm-theme-success) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-success) 0%, var(--neodigm-theme-success-alt) 100%); }
+.l-snackbar .snackbar__cont[data-neodigm-theme='danger'] { box-shadow: inset var(--neodigm-theme-danger) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-danger) 0%, var(--neodigm-theme-danger-alt) 100%); }
+.l-snackbar .snackbar__cont[data-neodigm-theme='warning'] { box-shadow: inset var(--neodigm-theme-warning) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-warning) 0%, var(--neodigm-theme-warning-alt) 100%); }
+.l-snackbar .snackbar__cont[data-neodigm-theme='info'] { box-shadow: inset var(--neodigm-theme-info) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-info) 0%, var(--neodigm-theme-info-alt) 100%); }
 
 .l-snackbar .snackbar__cont--hide {
 	bottom: -112px;
