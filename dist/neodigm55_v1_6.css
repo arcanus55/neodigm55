@@ -103,7 +103,7 @@ neodigm-sodapop {
     margin: 0 auto; padding: 10px;
     position: fixed;
     top: 88px; right: 0; left: 0;
-    max-height: calc(100vh - 300px);
+    max-height: calc(100vh - 176px);
     overflow-y: scroll; overflow-x: hidden;
     z-index: 258;
 }
@@ -152,6 +152,9 @@ eodigm-parallax * { display: none; }
         background-position: middle center;
         width: 100%;
     }
+    neodigm-parallax[data-neodigm-parallax-size='small'] aside  { padding: 200px 0; }
+    neodigm-parallax[data-neodigm-parallax-size='medium'] aside { padding: 400px 0; }
+    neodigm-parallax[data-neodigm-parallax-size='large'] aside  { padding: 600px 0; }
 }
 /*  Neodigm Parallax End  */
 
