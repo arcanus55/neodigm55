@@ -48,10 +48,14 @@ if( typeof neodigmOptCustom != 'undefined' ) neodigmOpt = neodigmOptCustom
 
 //  Neodigm 55 UX Toast Begin  //
 let neodigmToast = (function(_d, eID, _q) {
-  let _nTimeout = 5800, _aQ = [], _eSb, _eSbText
+  let _nTimeout = 5800, _aQ = [], _eSb, _eSbText, _sTheme
   let _fOpen = function() {
       _eSbText.innerHTML = _aQ[0].replace("|", "<br>").replace("##", "")
       _eSb.style.left = ((_d.body.clientWidth / 2) - (_eSb.clientWidth / 2)) + "px"
+      if( _sTheme ) {
+        _eSb.dataset.neodigmTheme = _sTheme
+        _sTheme = ""
+      }
       _eSb.classList.remove("snackbar__cont--hide")
       if( _aQ[0].indexOf("##") != -1){
         _eSb.classList.add("snackbar__cont--alt")
@@ -91,7 +95,7 @@ let neodigmToast = (function(_d, eID, _q) {
         return neodigmToast
       },
       setTheme: function( sTheme ){
-        _eSb.dataset.neodigmTheme = sTheme
+        _sTheme = sTheme
         return neodigmToast
       }
   }
