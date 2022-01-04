@@ -130,6 +130,7 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
         return neodigmSodaPop
       },
       open: function( sId ){
+        if( bIsOpen ) neodigmSodaPop.close( true )
         let eTmpl = _d.getElementById( sId )
         if( bIsInit && eTmpl && eScrim ){
           if( fOnBeforeOpen ) fOnBeforeOpen()
@@ -154,16 +155,22 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
         }
         return neodigmSodaPop
       },
-      close: function(){
+      close: function( bFast ){
         if( bIsInit && bIsOpen ){
           eClose.dataset.neodigmSodapopScrim = "closed"
-          setTimeout(function(){
+          if( bFast ){
             eSoda.remove()
+            eScrim.dataset.neodigmSodapopScrim = "closed"
+            eScrim.classList.remove( "ndsp__blur", "ndsp__modal" )
+          }else{
             setTimeout(function(){
-              eScrim.dataset.neodigmSodapopScrim = "closed"
-              eScrim.classList.remove( "ndsp__blur", "ndsp__modal" )
+              eSoda.remove()
+              setTimeout(function(){
+                eScrim.dataset.neodigmSodapopScrim = "closed"
+                eScrim.classList.remove( "ndsp__blur", "ndsp__modal" )
+              }, 500)
             }, 500)
-          }, 500)
+          }
           if( fOnClose ) fOnClose()
           if ("vibrate" in navigator) window.navigator.vibrate([8, 16])
           if ( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 3 )
@@ -182,7 +189,7 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
         }
         return neodigmSodaPop
       },
-      autoOpen: function( sId ){ setTimeout(function(){ neodigmSodaPop.open( sId )}, 400); return neodigmToast},
+      autoOpen: function( sId ){ setTimeout(function(){ neodigmSodaPop.open( sId )}, 400); return neodigmSodaPop },
       isOpen: function(){ return bIsOpen },
       setOnBeforeOpen: function( _f ){ fOnBeforeOpen = _f },
       setOnAfterOpen: function( _f ){ fOnAfterOpen = _f },
