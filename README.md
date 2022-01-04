@@ -5,7 +5,7 @@ Neodigm 55 is low-code, performant, accessible, and open source. Because it’s 
 
 <p align="center">
   <a target="_blank" href="https://thescottkrause.com/emerging_tech/neodigm55_ux_library/">
-    <img src="https://user-images.githubusercontent.com/3151842/147797159-00edc521-e817-44c3-b64f-f8a392002075.jpg" title="Infographics, UX, PWA, Typescript, Svelte, ThreeJS, Vue, and WASM" alt="TypeScript ⚡ WASM ✨ Svelte">
+    <img src="https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/25.webp" title="Infographics, UX, PWA, Typescript, Svelte, ThreeJS, Vue, and WASM" alt="TypeScript ⚡ WASM ✨ Svelte">
   </a>
 </p>
 
