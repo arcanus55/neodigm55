@@ -7,8 +7,10 @@ Neodigm 55 is low-code, performant, accessible, and open source. Because it’s 
 
 Simply copy the two lines of code and paste into the head of any HTML page that you want to make enchanted.
 
-`<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v1_7.min.css">
-<script src="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v1_7.min.js"></script>`
+```
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v1_7.min.css">
+<script src="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v1_7.min.js"></script>
+```
 
 <p align="center">
   <a target="_blank" href="https://thescottkrause.com/emerging_tech/neodigm55_ux_library/">
