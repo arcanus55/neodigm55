@@ -3,7 +3,7 @@ An eclectic low-code vanilla [JavaScript UX micro-library](https://thescottkraus
 
 Neodigm 55 is low-code, performant, accessible, and open source. Because it’s so easy to get started it is the perfect solution for quick landing pages or event sites.
 
-# Getting Started:
+# Getting Started
 
 Simply copy the two lines of code and paste into the head of any HTML page that you want to make enchanted.
 
@@ -11,6 +11,8 @@ Simply copy the two lines of code and paste into the head of any HTML page that 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v1_7.min.css">
 <script src="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v1_7.min.js"></script>
 ```
+
+
 
 <p align="center">
   <a target="_blank" href="https://thescottkrause.com/emerging_tech/neodigm55_ux_library/">
