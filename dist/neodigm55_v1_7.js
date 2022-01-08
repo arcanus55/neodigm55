@@ -182,10 +182,10 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
         if( bIsInit && bIsOpen ){
           let iT = 156
           for(let x=1; x<=10; x++){
-            setTimeout(function(){ eSoda.classList.add( "ndsp__opened--shake"+(x%2) ); }, ( iT * x ))
+            setTimeout(function(){ eSoda.classList.add( "ndsp__opened--shake"+( x%2 ) ); }, ( iT * x ))
             setTimeout(function(){ eSoda.classList.remove( "ndsp__opened--shake0", "ndsp__opened--shake1" ); }, ( iT * x ) + ( iT/2 ))
           }
-          if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 0 )
+          if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 12 )
         }
         return neodigmSodaPop
       },
@@ -199,70 +199,76 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
 })( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-neodigm-sodapop-modal"]);
 
 //  Neodigm 55 UX Wired4Sound Begin  //
-const neodigmWired4Sound = ( ( _d, _aQ ) =>{
-    if( _d && (_aQ.length >= 1) ){
-        let aSnd = [
-          [,,625,.05,.14,.17,,0,-3.8,-1.7,150,,.06,.1,-1,,,.76,.08],
-          [,,1675,,.06,.24,1,1.82,,,837,.06],
-          [,,1e3,,,.5,,,,,99,.01,.03],
-          [,,129,.01,,.15,,,,,,,,5],
-          [1.01,,561,.05,.17,.39,,.78,5.8,1.9,,,.17,,,,,.66,.08,.4],
-          [,.5,847,.02,.3,.9,1,1.67,,,-294,.04,.13,,,,.1],
-          [,,172,.8,,.8,1,.76,7.7,3.73,-482,.08,.15,,.14],
-          [,,20,.04,,.6,,1.31,,,-990,.06,.17,,,.04,.07],
-          [2.11,0,73.41619,.01,.9,.27,,.51,,,50,-0.01,.26,,,-0.2,.16,.53,.13,.07],
-          [,,537,.02,.02,.22,1,1.59,-6.98,4.97],
-          [1.5,.5,270,,.1,,1,1.5,,,,,,,,.1,.01],
-          [1.99,,1477,.14,,0,3,.01,,,,,.07,,,,.39,.61,.05],
-          [,,646,,.16,.08,1,1.5,-15,,938,.06,,,-64,,,,.18]
-        ]
-        let bIsInit = false
-        return {
-          init: function(){
-            _d.querySelector( _aQ[0] ).addEventListener("click", ( ev )=>{
-                let eTg = ev.target
-                if( eTg && eTg.dataset.neodigmWired4sound ){
-                  let aW4S = []
-                    aW4S = eTg.dataset.neodigmWired4sound.split("|")
-                    if( aW4S[0] == "click") neodigmWired4Sound.play( aW4S[1] )
-                }
-            }, false);
-            bIsInit = true
-          },
-          play: function( nSnd ){
-              if( bIsInit ){
-                if(typeof nSnd  === "object"){
-                  if( zzfx ) zzfx(... nSnd )
-                }else{
-                  if(nSnd >= aSnd.length) nSnd = 1
-                  if( zzfx ) zzfx(... aSnd[ nSnd ])
-                }
-              }
-          },
-          setVolume: function( nVol ){
-            if( zzfxV ) zzfxV = nVol
-          }
-        }
-    }
-})( document, ["body"]);
-
-//  Neodigm 55 UX Parallax Begin  //
-const neodigmParallax = ( ( _d, _aQ ) =>{
-  if( _d && (_aQ.length >= 1) ){
-    let bIsInit = false
-    return {
-      init: function(){
-        if( !neodigmUtils.isMobile() ){
-          [ ... _d.querySelectorAll( _aQ[0] )].filter( ( ndP ) => {
-            let ndPDv = ndP.querySelector("aside")
-            ndPDv.style.backgroundImage = "url(" + ndP.dataset[ _aQ[1] ] + ")"
-          })
-          bIsInit = true
-        }
+class NeodigmWired4Sound {
+  constructor( _d, _aQ ){
+    this._d = _d
+    this._aQ = _aQ
+    this.aSnd = [
+      [,,625,.05,.14,.17,,0,-3.8,-1.7,150,,.06,.1,-1,,,.76,.08],
+      [,,1675,,.06,.24,1,1.82,,,837,.06],
+      [,,1e3,,,.5,,,,,99,.01,.03],
+      [,,129,.01,,.15,,,,,,,,5],
+      [1.01,,561,.05,.17,.39,,.78,5.8,1.9,,,.17,,,,,.66,.08,.4],
+      [,.5,847,.02,.3,.9,1,1.67,,,-294,.04,.13,,,,.1],
+      [,,172,.8,,.8,1,.76,7.7,3.73,-482,.08,.15,,.14],
+      [,,20,.04,,.6,,1.31,,,-990,.06,.17,,,.04,.07],
+      [2.11,0,73.41619,.01,.9,.27,,.51,,,50,-0.01,.26,,,-0.2,.16,.53,.13,.07],
+      [,,537,.02,.02,.22,1,1.59,-6.98,4.97],
+      [1.5,.5,270,,.1,,1,1.5,,,,,,,,.1,.01],
+      [1.99,,1477,.14,,0,3,.01,,,,,.07,,,,.39,.61,.05],
+      [,,646,,.16,.08,1,1.5,-15,,938,.06,,,-64,,,,.18]
+    ]
+    this.bIsInit = false
+  }
+  init () {
+    this._d.querySelector( this._aQ[0] ).addEventListener("click", ( ev )=>{
+      let eTg = ev.target
+      if( eTg && eTg.dataset.neodigmWired4sound ){
+        let aW4S = []
+          aW4S = eTg.dataset.neodigmWired4sound.split("|")
+          if( aW4S[0] == "click") neodigmWired4Sound.play( aW4S[1] )
+      }
+    }, false);
+    this.bIsInit = true
+    return this
+  }
+  play ( nSnd ) {
+    if( bIsInit ){
+      if(typeof nSnd  === "object"){
+        if( zzfx ) zzfx(... nSnd )
+      }else{
+        if(nSnd >= this.aSnd.length) nSnd = 1
+        if( zzfx ) zzfx(... this.aSnd[ nSnd ])
       }
     }
+    return this
   }
-})( document, ["neodigm-parallax", "neodigmParallax"]);
+  setVolume ( nVol ) {
+    if( zzfxV ) zzfxV = nVol
+    return this
+  }
+}
+let neodigmWired4Sound = new NeodigmWired4Sound( document, ["body"])
+
+//  Neodigm 55 UX Parallax Begin  //
+class NeodigmParallax {
+  constructor( _d, _aQ ) {
+      this._d = _d
+      this._aQ = _aQ
+      this.bIsInit = false
+  }
+  init () {
+    if( !neodigmUtils.isMobile() ){
+      [ ... this._d.querySelectorAll( this._aQ[0] )].filter( ( ndP ) => {
+        let ndPDv = ndP.querySelector("aside")
+        ndPDv.style.backgroundImage = "url(" + ndP.dataset[ this._aQ[1] ] + ")"
+      })
+      this.bIsInit = true
+      return this
+    }
+  }
+}
+let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "neodigmParallax"] )
 
 //  Neodigm 55 UX Metronome Begin  //
 const neodigmMetronome = ( () =>{
