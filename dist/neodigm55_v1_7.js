@@ -185,7 +185,7 @@ const neodigmSodaPop = ( ( _d, _aQ ) =>{
             setTimeout(function(){ eSoda.classList.add( "ndsp__opened--shake"+( x%2 ) ); }, ( iT * x ))
             setTimeout(function(){ eSoda.classList.remove( "ndsp__opened--shake0", "ndsp__opened--shake1" ); }, ( iT * x ) + ( iT/2 ))
           }
-          if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 12 )
+          if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 9 )
         }
         return neodigmSodaPop
       },
