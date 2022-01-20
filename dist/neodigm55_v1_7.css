@@ -202,14 +202,6 @@ neodigm-marquee pre[data-neodigm-theme='danger'] { color: var(--neodigm-theme-da
 neodigm-marquee pre[data-neodigm-theme='warning'] { color: var(--neodigm-theme-warning); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-warning-alt), 0.2rem 0.2rem 1rem #fff }
 neodigm-marquee pre[data-neodigm-theme='info'] { color: var(--neodigm-theme-info); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-info-alt), 0.2rem 0.2rem 1rem #fff }
 
-neodigm-marquee pre.marquee--alt {
-    color: #dd6e32;
-    text-shadow:
-    -0.2rem -0.2rem 1rem #ed5808,
-    0.2rem 0.2rem 1rem #9b3f0d,
-    0 0 2rem #ed5808,
-    0 0 4rem #ed5808;
-}
 neodigm-marquee[data-neodigm-marquee-size='small'] { height: 28px; }
 neodigm-marquee[data-neodigm-marquee-size='small'] * {
     font-size: 20px; line-height: 1;

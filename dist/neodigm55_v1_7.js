@@ -337,6 +337,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
 //  Neodigm 55 UX Type Begin  //
 //  Neodigm 55 UX Vivid Begin  //
 //  Neodigm 55 UX Virtual Keyboard Begin  //
+//  Neodigm 55 UX Dynamic Infographic  //
 
 document.addEventListener("DOMContentLoaded", function(ev) {
   const neodigmMU = `
