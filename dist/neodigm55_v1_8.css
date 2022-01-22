@@ -1,5 +1,5 @@
 /*
-Neodigm 55 UX v1.7.0
+Neodigm 55 UX v1.8.0
 
 Neodigm 55 UX is an eclectic JavaScript UX micro-library.
 The lightweight components come together in a unique way that will make visiting your website playful and fun.
@@ -9,6 +9,8 @@ All rights reserved. Redistributions of source code must retain the above copyri
 */
 
 :root {
+    --neodigm-theme-brand: #edba08;   --neodigm-theme-brand-alt: #A16E00;  /* Custom Override */
+
     --neodigm-theme-primary: #92a8d1;   --neodigm-theme-primary-alt: #465C85;  /* Serenity 30% darker */
     --neodigm-theme-secondary: #939597; --neodigm-theme-secondary-alt: #47494B;  /* Ultimate Gray */
     --neodigm-theme-success: #009473;   --neodigm-theme-success-alt: #004827;  /* Emerald */
@@ -20,8 +22,8 @@ All rights reserved. Redistributions of source code must retain the above copyri
 /*  Neodigm Toast Begin  */
 .l-snackbar .snackbar__cont {
 	border-radius: 4px;
-	background: linear-gradient(45deg, var(--neodigm-theme-danger) 0%, var(--neodigm-theme-danger-alt) 100%);
-	box-shadow: inset var(--neodigm-theme-danger) 0 0 6px 2px;
+	background: linear-gradient(45deg, var(--neodigm-theme-brand) 0%, var(--neodigm-theme-brand-alt) 100%);
+	box-shadow: inset var(--neodigm-theme-brand) 0 0 6px 2px;
 	border: solid 1px #d3cdb4;
 	left: 38%;
 	min-width: 188px;
@@ -31,6 +33,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 	user-select: none;
 	z-index: 6408
 }
+.l-snackbar .snackbar__cont[data-neodigm-theme='brand'] { box-shadow: inset var(--neodigm-theme-brand) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-brand) 0%, var(--neodigm-theme-brand-alt) 100%); }
 .l-snackbar .snackbar__cont[data-neodigm-theme='primary'] { box-shadow: inset var(--neodigm-theme-primary) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-primary) 0%, var(--neodigm-theme-primary-alt) 100%); }
 .l-snackbar .snackbar__cont[data-neodigm-theme='secondary'] { box-shadow: inset var(--neodigm-theme-secondary) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-secondary) 0%, var(--neodigm-theme-secondary-alt) 100%); }
 .l-snackbar .snackbar__cont[data-neodigm-theme='success'] { box-shadow: inset var(--neodigm-theme-success) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-success) 0%, var(--neodigm-theme-success-alt) 100%); }
@@ -49,8 +52,8 @@ All rights reserved. Redistributions of source code must retain the above copyri
 }
 
 .l-snackbar .snackbar__cont--alt {
-	background: linear-gradient(45deg, #685b2d 0%, #d8ad12 100%) !important;
-	box-shadow: inset #685b2d 0 0 6px 2px !important;
+	background: linear-gradient(45deg, #685b2d 0%, #d8ad12 100%) !important; 
+	box-shadow: inset #685b2d 0 0 6px 2px !important; 
 }
 
 .l-snackbar .snackbar__progbar {

@@ -1,5 +1,5 @@
 /*
-Neodigm 55 UX v1.7.0
+Neodigm 55 UX v1.8.0
 
 Neodigm 55 UX is an eclectic JavaScript UX micro-library.
 The lightweight components come together in a unique way that will make visiting your website playful and fun.
@@ -58,7 +58,7 @@ let neodigmToast = (function(_d, eID, _q) {
       }
       _eSb.classList.remove("snackbar__cont--hide")
       if( _aQ[0].indexOf("##") != -1){
-        _eSb.classList.add("snackbar__cont--alt")
+        _eSb.dataset.neodigmTheme = _sTheme = "brand"
       }else{
         if ( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 1 )
       }
