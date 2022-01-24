@@ -5,13 +5,13 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=2, minimum-scale=1, width=device-width, height=device-height"/>
 </head>
 <body>
-    <link rel="stylesheet" href="neodigm55_v1_7.css">
-    <script src="neodigm55_v1_7.js"></script>
+    <link rel="stylesheet" href="neodigm55_v1_8.css">
+    <script src="neodigm55_v1_8.js"></script>
 
-    <button data-neodigm-sodapop-id="js-pop-basic__id">Try Me</button>
+    <button data-neodigm-sodapop-id="js-pop-basic__id">Try Me (Declr)</button>
 
-    <button onClick="neodigmSodaPop.autoOpen('js-pop-basic__id')">Try Me</button>
-
+    <button onClick="neodigmSodaPop.autoOpen('js-pop-basic__id')">Try Me (autoOpen)</button>
+<hr>
     <button data-neodigm-wired4sound="click|0">Pop Shake 0</button>
     <button data-neodigm-wired4sound="click|1">Toast 1</button>
     <button data-neodigm-wired4sound="click|2">Pop Open 2</button>
@@ -26,6 +26,7 @@
     <button data-neodigm-wired4sound="click|12">Sound 12</button>
     <button data-neodigm-wired4sound="click|13">Sound 13 (1)</button>
     <br>
+    <button onClick="neodigmToast.setTheme('brand').q('brand')">Toast Theme brand</button>
     <button onClick="neodigmToast.setTheme('primary').q('primary')">Toast Theme primary</button>
     <button onClick="neodigmToast.setTheme('secondary').q('secondary')">Toast Theme secondary</button>
     <button onClick="neodigmToast.setTheme('success').q('success')">Toast Theme success</button>
@@ -33,7 +34,7 @@
     <button onClick="neodigmToast.setTheme('warning').q('warning')">Toast Theme warning</button>
     <button onClick="neodigmToast.setTheme('info').q('info')">Toast Theme info</button>
 
-<neodigm-marquee data-neodigm-marquee-text=" Yikes It creates a resonance in the mind of the Audience... "
+<neodigm-marquee data-neodigm-marquee-text=" Yikes It creates a resonance in the mind of the #warning#Audience...#warning# "
 data-neodigm-marquee-size="small">
     <pre class="QQQQmarquee--alt" data-neodigm-theme="warning"></pre>
 </neodigm-marquee>
@@ -49,7 +50,7 @@ data-neodigm-marquee-size="medium">
 </template>
     
     <template id="js-pop-basic__id" data-neodigm-sodapop-modal="false"  data-neodigm-sodapop-size="small">
-        <neodigm-marquee data-neodigm-marquee-text=" It creates a resonance in the mind of the Audience that helps establish mood, feeling, and emotion. It plays with our subconscious in ways that can achieve a connection with the reader deeper then emotioning. ">
+        <neodigm-marquee data-neodigm-marquee-text=" It creates a resonance in the mind of the Audience that helps establish mood, feeling, and emotion. It plays with our #warning#subconscious#warning# in ways that can achieve a connection with the reader deeper then emotioning. ">
             <pre class="marquee--alt"></pre>
         </neodigm-marquee>
         <p>Use Cases:</p>
