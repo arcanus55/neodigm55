@@ -32,6 +32,9 @@ https://user-images.githubusercontent.com/41128567/144532034-16ab92e5-33ae-4465-
   </a>
 </p>
 
+![neodigm55_wasm_svelte_code](https://user-images.githubusercontent.com/3151842/150714949-6392433d-c80a-442e-a5db-c3597d42358f.jpg)
+
+
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://github.com/arcanus55/neodigm55)
 <p align="center">
   <a target="_blank" href="https://thescottkrause.com/emerging_tech/neodigm55_ux_library/">
