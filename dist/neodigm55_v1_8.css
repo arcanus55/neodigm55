@@ -1,8 +1,8 @@
 /*
 Neodigm 55 UX v1.8.0
 
-Neodigm 55 UX is an eclectic JavaScript UX micro-library.
-The lightweight components come together in a unique way that will make visiting your website playful and fun.
+Neodigm 55 is an eclectic JavaScript UX micro-library.
+The lightweight components come together in a unique way that will make your website playful and fun.
 
 Copyright (c) 2022, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
 All rights reserved. Redistributions of source code must retain the above copyright notice.
@@ -198,12 +198,18 @@ neodigm-marquee pre {
     0 0 2rem #fff,
     0 0 4rem #ed5808;
 }
-neodigm-marquee pre[data-neodigm-theme='primary'] { color: var(--neodigm-theme-primary); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-primary-alt), 0.2rem 0.2rem 1rem #fff }
-neodigm-marquee pre[data-neodigm-theme='secondary'] { color: var(--neodigm-theme-secondary); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-secondary-alt), 0.2rem 0.2rem 1rem #fff }
-neodigm-marquee pre[data-neodigm-theme='success'] { color: var(--neodigm-theme-success); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-success-alt), 0.2rem 0.2rem 1rem #fff }
-neodigm-marquee pre[data-neodigm-theme='danger'] { color: var(--neodigm-theme-danger); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-danger-alt), 0.2rem 0.2rem 1rem #fff }
-neodigm-marquee pre[data-neodigm-theme='warning'] { color: var(--neodigm-theme-warning); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-warning-alt), 0.2rem 0.2rem 1rem #fff }
-neodigm-marquee pre[data-neodigm-theme='info'] { color: var(--neodigm-theme-info); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-info-alt), 0.2rem 0.2rem 1rem #fff }
+neodigm-marquee pre[data-neodigm-theme='primary'],
+neodigm-marquee pre [data-neodigm-theme='primary'] { color: var(--neodigm-theme-primary); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-primary-alt), 0.2rem 0.2rem 1rem #fff }
+neodigm-marquee pre[data-neodigm-theme='secondary'],
+neodigm-marquee pre [data-neodigm-theme='secondary'] { color: var(--neodigm-theme-secondary); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-secondary-alt), 0.2rem 0.2rem 1rem #fff }
+neodigm-marquee pre[data-neodigm-theme='success'],
+neodigm-marquee pre [data-neodigm-theme='success'] { color: var(--neodigm-theme-success); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-success-alt), 0.2rem 0.2rem 1rem #fff }
+neodigm-marquee pre[data-neodigm-theme='danger'],
+neodigm-marquee pre [data-neodigm-theme='danger'] { color: var(--neodigm-theme-danger); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-danger-alt), 0.2rem 0.2rem 1rem #fff }
+neodigm-marquee pre[data-neodigm-theme='warning'],
+neodigm-marquee pre [data-neodigm-theme='warning'] { color: var(--neodigm-theme-warning); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-warning-alt), 0.2rem 0.2rem 1rem #fff }
+neodigm-marquee pre[data-neodigm-theme='info'],
+neodigm-marquee pre [data-neodigm-theme='info'] { color: var(--neodigm-theme-info); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-info-alt), 0.2rem 0.2rem 1rem #fff }
 
 neodigm-marquee[data-neodigm-marquee-size='small'] { height: 28px; }
 neodigm-marquee[data-neodigm-marquee-size='small'] * {

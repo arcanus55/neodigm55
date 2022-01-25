@@ -1,8 +1,8 @@
 /*
 Neodigm 55 UX v1.8.0
 
-Neodigm 55 UX is an eclectic JavaScript UX micro-library.
-The lightweight components come together in a unique way that will make visiting your website playful and fun.
+Neodigm 55 is an eclectic JavaScript UX micro-library.
+The lightweight components come together in a unique way that will make your website playful and fun.
 
 Copyright (c) 2022, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
 All rights reserved. Redistributions of source code must retain the above copyright notice.
@@ -43,9 +43,16 @@ let neodigmOpt = {
   neodigmSodaPop: true,
   neodigmUtils: true,
   neodigmWired4Sound: true,
+  EVENT_SOUNDS: true,
   neodigmParallax: true,
-  neodigmMarquee: true}
-if( typeof neodigmOptCustom != 'undefined' ) neodigmOpt = neodigmOptCustom
+  neodigmMarquee: true,
+  CONSOLE_LOG: true}
+
+if( typeof neodigmOptCustom != 'undefined' ){
+    for( cnfgProp in neodigmOptCustom ){
+        if( neodigmOpt[ cnfgProp ] ) neodigmOpt[ cnfgProp ] = neodigmOptCustom[ cnfgProp ]
+    }
+}
 
 //  Neodigm 55 UX Toast Begin  //
 let neodigmToast = (function(_d, eID, _q) {
@@ -61,7 +68,7 @@ let neodigmToast = (function(_d, eID, _q) {
       if( _aQ[0].indexOf("##") != -1){
         _eSb.dataset.neodigmTheme = _sTheme = "brand"
       }else{
-        if ( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.play( 1 )
+        if ( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.play( 1 )
       }
     _eSb.classList.add("snackbar__cont--show")
     if ("vibrate" in navigator) window.navigator.vibrate([16, 8])
@@ -156,7 +163,7 @@ class NeodigmSodaPop {
             this.eSoda.innerHTML = this.eTmpl.innerHTML
             this._d.body.appendChild(this.eSoda)
             if ("vibrate" in navigator) window.navigator.vibrate([16, 8])
-            if (neodigmOpt.neodigmWired4Sound) neodigmWired4Sound.play(2)
+            if (neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.play(2)
             this.bIsOpen = true;
             if (this.fOnAfterOpen) this.fOnAfterOpen()
         }
@@ -180,7 +187,7 @@ class NeodigmSodaPop {
             }
             if (this.fOnClose) this.fOnClose()
             if ("vibrate" in navigator) window.navigator.vibrate([8, 16])
-            if (neodigmOpt.neodigmWired4Sound) neodigmWired4Sound.play(3)
+            if (neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.play(3)
             this.bIsOpen = false
         }
         return this
@@ -333,8 +340,10 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
         aMarqs = [ ... _d.querySelectorAll( _aQ[0] )]
         aMarqs.forEach( ( eMc )=>{
             eMc.eMp = eMc.querySelector("pre")
+            eMc.addEventListener("mouseover", (ev) => {neodigmMarquee.pause() }, true)
+            eMc.addEventListener("mouseout", (ev) => {neodigmMarquee.play() }, true)
         })
-        neodigmMetronome.subscribe( neodigmMarquee.tick, _t )
+        neodigmMetronome.subscribe( ()=>{ requestAnimationFrame( neodigmMarquee.tick ) }, _t )
         bIsInit = true
         return neodigmMarquee;
       },
@@ -384,6 +393,7 @@ document.addEventListener("DOMContentLoaded", function(ev) {
     if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.init()
     if( neodigmOpt.neodigmParallax ) neodigmParallax.init()
     if( neodigmOpt.neodigmMarquee ) neodigmMarquee.init()
+    if( neodigmOpt.CONSOLE_LOG ) console.log("%c Neodigm 55 the eclectic JavaScript UX micro-library ⭐ v" + neodigmUtils.ver, "background: #000; color: #f4dc5e; font-size: 20px");
   }, 4)
 });
 
