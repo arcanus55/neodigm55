@@ -112,8 +112,7 @@ let neodigmToast = (function(_d, eID, _q) {
 //  Neodigm 55 UX Soda Pop Begin  //
 class NeodigmSodaPop {
     constructor(_d, _aQ) {
-        this._d = _d
-        this._aQ = _aQ
+        this._d = _d; this._aQ = _aQ
         this.eSoda = this.eScrim = this.eClose = this.fOnBeforeOpen = this.fOnAfterOpen = this.fOnClose = null
         this.bIsOpen = this.bIsModal = this.bIsInit = false
     }
@@ -334,14 +333,16 @@ const neodigmMetronome = ( () =>{
 //  Neodigm 55 UX Marquee Begin  //
 const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
     let aMarqs = [];
-    let bIsInit = bIsPause = false
+    let bIsInit = bIsPause = bLTR = false
     return {
       init: function(){
         aMarqs = [ ... _d.querySelectorAll( _aQ[0] )]
         aMarqs.forEach( ( eMc )=>{
             eMc.eMp = eMc.querySelector("pre")
-            eMc.addEventListener("mouseover", (ev) => {neodigmMarquee.pause() }, true)
-            eMc.addEventListener("mouseout", (ev) => {neodigmMarquee.play() }, true)
+            eMc.addEventListener("mouseover", neodigmMarquee.toggleDir )
+            eMc.addEventListener("mouseout", neodigmMarquee.toggleDir )
+            eMc.addEventListener("mousedown", neodigmMarquee.pause )
+            eMc.addEventListener("mouseup", neodigmMarquee.play )
         })
         neodigmMetronome.subscribe( ()=>{ requestAnimationFrame( neodigmMarquee.tick ) }, _t )
         bIsInit = true
@@ -351,11 +352,16 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
         if( bIsInit && !bIsPause ){
             aMarqs.forEach( ( eMc )=>{
                 let aMt = [ ... eMc.dataset[ _aQ[1] ]]
-                aMt.push( aMt.shift() )
+                if( bLTR ){
+                    aMt.unshift( aMt.pop() )
+                }else{
+                    aMt.push( aMt.shift() )
+                }
                 eMc.eMp.textContent = eMc.dataset[ _aQ[1] ] = aMt.join("")
             })
         }
       },
+      toggleDir: function(){ if( bIsInit ){ bLTR = !bLTR; return neodigmMarquee; } },
       pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMarquee; } },
       play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMarquee; } }
     }
