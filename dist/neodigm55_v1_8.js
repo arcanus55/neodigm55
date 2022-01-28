@@ -344,7 +344,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
             eMc.addEventListener("mousedown", neodigmMarquee.pause )
             eMc.addEventListener("mouseup", neodigmMarquee.play )
         })
-        neodigmMetronome.subscribe( ()=>{ neodigmMarquee.tick }, _t )
+        neodigmMetronome.subscribe( ()=>{ requestAnimationFrame( neodigmMarquee.tick ) }, _t )
         bIsInit = true
         return neodigmMarquee;
       },
@@ -365,7 +365,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
       pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMarquee; } },
       play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMarquee; } }
     }
-  })( document, ["neodigm-marquee", "neodigmMarqueeText"], 108 );
+  })( document, ["neodigm-marquee", "neodigmMarqueeText"], 104 );
 
 //  Neodigm 55 UX A11Y skip Begin  //
 //  Neodigm 55 UX Confetti Begin  //
