@@ -311,7 +311,7 @@ const neodigmMetronome = ( () =>{
       return neodigmMetronome;
     },
     tick: function( t ){
-      if( bIsInit && !bIsPause ){ oEmit[ t ].forEach( ( f )=>{ requestAnimationFrame( f ) }) }
+      if( bIsInit && !bIsPause ){ oEmit[ t ].forEach( ( f )=>{ f() }) }
       return neodigmMetronome;
     },
     subscribe: function( f, t ){  //  Usage: .subscribe(f, 1000)
