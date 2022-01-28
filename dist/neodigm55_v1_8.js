@@ -40,7 +40,10 @@ const neodigmUtils = ( ( _d ) =>{
 
 let neodigmOpt = {
   neodigmToast: true,
+  N55_GTM_DL_TOAST: "n55_gtm_dl_toast",
   neodigmSodaPop: true,
+  N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
+  N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
   neodigmUtils: true,
   neodigmWired4Sound: true,
   EVENT_SOUNDS: true,
@@ -97,6 +100,7 @@ let neodigmToast = (function(_d, eID, _q) {
       },
       q: function( sMsg ) {
           if (sMsg && sMsg != _aQ[0]) _aQ.push(sMsg) // temporal debounce
+          if( window.datalayer && neodigmOpt.N55_GTM_DL_TOAST ) window.datalayer.push( {"event": neodigmOpt.N55_GTM_DL_TOAST, "msg": sMsg } )
           if (_aQ.length == 1) {
               _fOpen()
           }
