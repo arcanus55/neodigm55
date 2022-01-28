@@ -311,7 +311,7 @@ const neodigmMetronome = ( () =>{
       return neodigmMetronome;
     },
     tick: function( t ){
-      if( bIsInit && !bIsPause ){ oEmit[ t ].forEach( ( f )=>{ f() }) }
+      if( bIsInit && !bIsPause ){ oEmit[ t ].forEach( ( f )=>{ requestAnimationFrame( f() ) }) }
       return neodigmMetronome;
     },
     subscribe: function( f, t ){  //  Usage: .subscribe(f, 1000)
@@ -344,7 +344,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
             eMc.addEventListener("mousedown", neodigmMarquee.pause )
             eMc.addEventListener("mouseup", neodigmMarquee.play )
         })
-        neodigmMetronome.subscribe( ()=>{ requestAnimationFrame( neodigmMarquee.tick ) }, _t )
+        neodigmMetronome.subscribe( ()=>{ neodigmMarquee.tick }, _t )
         bIsInit = true
         return neodigmMarquee;
       },
