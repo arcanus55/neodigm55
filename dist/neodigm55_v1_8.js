@@ -169,6 +169,7 @@ class NeodigmSodaPop {
             if (neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.play(2)
             this.bIsOpen = true;
             if (this.fOnAfterOpen) this.fOnAfterOpen()
+            if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_OPEN ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_OPEN, "id": _sId } )
         }
         return neodigmSodaPop
     }
@@ -192,6 +193,7 @@ class NeodigmSodaPop {
             if ("vibrate" in navigator) window.navigator.vibrate([8, 16])
             if (neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.play(3)
             this.bIsOpen = false
+            if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_CLOSE ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_CLOSE } )
         }
         return this
     }
