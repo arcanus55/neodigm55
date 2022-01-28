@@ -100,7 +100,7 @@ let neodigmToast = (function(_d, eID, _q) {
       },
       q: function( sMsg ) {
           if (sMsg && sMsg != _aQ[0]) _aQ.push(sMsg) // temporal debounce
-          if( window.datalayer && neodigmOpt.N55_GTM_DL_TOAST ) window.datalayer.push( {"event": neodigmOpt.N55_GTM_DL_TOAST, "msg": sMsg } )
+          if( window.dataLayer && neodigmOpt.N55_GTM_DL_TOAST ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_TOAST, "msg": sMsg } )
           if (_aQ.length == 1) {
               _fOpen()
           }
