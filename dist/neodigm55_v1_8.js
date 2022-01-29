@@ -8,7 +8,7 @@ Copyright (c) 2022, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Kraus
 All rights reserved. Redistributions of source code must retain the above copyright notice.
 */
 
-//  Neodigm 55 UX Utils Begin  //
+//  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
     ver: "1.8.0",
@@ -38,6 +38,7 @@ const neodigmUtils = ( ( _d ) =>{
   }
 })( document );
 
+//  Neodigm 55 Options Custom Config Begin  //
 let neodigmOpt = {
   neodigmToast: true,
   N55_GTM_DL_TOAST: "n55_gtm_dl_toast",
@@ -57,7 +58,7 @@ if( typeof neodigmOptCustom != 'undefined' ){
     }
 }
 
-//  Neodigm 55 UX Toast Begin  //
+//  Neodigm 55 Toast Begin  //
 let neodigmToast = (function(_d, eID, _q) {
   let _nTimeout = 5800, _aQ = [], _eSb, _eSbText, _sTheme
   let _fOpen = function() {
@@ -113,7 +114,7 @@ let neodigmToast = (function(_d, eID, _q) {
   }
 })(document, "js-snackbar__id", "[data-neodigm-toast]");
 
-//  Neodigm 55 UX Soda Pop Begin  //
+//  Neodigm 55 Soda Pop Begin  //
 class NeodigmSodaPop {
     constructor(_d, _aQ) {
         this._d = _d; this._aQ = _aQ
@@ -233,7 +234,7 @@ class NeodigmSodaPop {
 }
 let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-neodigm-sodapop-modal"] )
 
-//  Neodigm 55 UX Wired4Sound Begin  //
+//  Neodigm 55 Wired4Sound Begin  //
 class NeodigmWired4Sound {
   constructor( _d, _aQ ){
     this._d = _d
@@ -260,8 +261,8 @@ class NeodigmWired4Sound {
       let eTg = ev.target
       if( eTg && eTg.dataset.neodigmWired4sound ){
         let aW4S = []
-          aW4S = eTg.dataset.neodigmWired4sound.split("|")
-          if( aW4S[0] == "click") neodigmWired4Sound.play( aW4S[1] )
+        aW4S = eTg.dataset.neodigmWired4sound.split("|")
+        if( aW4S[0] == "click") neodigmWired4Sound.play( aW4S[1] )
       }
     }, false);
     this.bIsInit = true
@@ -285,11 +286,10 @@ class NeodigmWired4Sound {
 }
 let neodigmWired4Sound = new NeodigmWired4Sound( document, ["body"])
 
-//  Neodigm 55 UX Parallax Begin  //
+//  Neodigm 55 Parallax Begin  //
 class NeodigmParallax {
   constructor( _d, _aQ ) {
-      this._d = _d
-      this._aQ = _aQ
+      this._d = _d; this._aQ = _aQ
       this.bIsInit = false
   }
   init () {
@@ -305,7 +305,7 @@ class NeodigmParallax {
 }
 let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "neodigmParallax"] )
 
-//  Neodigm 55 UX Metronome Begin  //
+//  Neodigm 55 Metronome Begin  //
 const neodigmMetronome = ( () =>{
   let oEmit = {}, aIntv = []
   let bIsInit = bIsPause = false
@@ -336,7 +336,7 @@ const neodigmMetronome = ( () =>{
   }
 })();
 
-//  Neodigm 55 UX Marquee Begin  //
+//  Neodigm 55 Marquee Begin  //
 const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
     let aMarqs = [];
     let bIsInit = bIsPause = bLTR = false
@@ -371,17 +371,43 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
       pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMarquee; } },
       play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMarquee; } }
     }
-  })( document, ["neodigm-marquee", "neodigmMarqueeText"], 104 );
+})( document, ["neodigm-marquee", "neodigmMarqueeText"], 104 );
 
-//  Neodigm 55 UX A11Y skip Begin  //
-//  Neodigm 55 UX Confetti Begin  //
-//  Neodigm 55 UX Dice Begin  //
-//  Neodigm 55 UX Popover Begin  //
-//  Neodigm 55 UX Tradecraft Begin  //
-//  Neodigm 55 UX Type Begin  //
-//  Neodigm 55 UX Vivid Begin  //
-//  Neodigm 55 UX Virtual Keyboard Begin  //
-//  Neodigm 55 UX Dynamic Infographic  //
+//  Neodigm 55 Claire Begin  //
+class NeodigmClaire {
+    constructor( _d, _aQ ) {
+        this._d = _d; this._aQ = _aQ
+        this.bIsInit = false
+    }
+    init () {
+        this.bIsInit = true
+        return this
+    }
+}
+let neodigmClaire = new NeodigmClaire( document, ["neodigm-claire"] )
+
+//  Neodigm 55 Confetti Begin  //
+//  Neodigm 55 Tradecraft Redact Begin  //
+//  Neodigm 55 Cypher Type On Begin  //
+//  Neodigm 55 VT100 Begin //
+//  Neodigm 55 KPI Card Begin //
+
+// Claire
+//  Neodigm 55 Horizontal Accordion Begin //
+//  Neodigm 55 Card Deck Begin //
+//  Neodigm 55 Slot Begin //
+//  Neodigm 55 Quiz Challenge Begin //
+//  Neodigm 55 Dynamic Infographic Begin //
+
+// Parking lot
+//  Neodigm 55 A11Y skip Begin  //
+//  Neodigm 55 Dice Begin  //
+//  Neodigm 55 Popover Begin  //
+//  Neodigm 55 ToolTip Begin  //
+//  Neodigm 55 Virtual Keyboard Begin  //
+//  Neodigm 55 Vivid Begin  //
+//  Neodigm 55 CAPTCHA Begin //
+
 
 document.addEventListener("DOMContentLoaded", function(ev) {
   const neodigmMU = `
@@ -400,6 +426,7 @@ document.addEventListener("DOMContentLoaded", function(ev) {
   document.body.appendChild(eMU);
   setTimeout( ()=>{
     neodigmMetronome.init()
+    neodigmClaire.init()
     if( neodigmOpt.neodigmToast ) neodigmToast.init()
     if( neodigmOpt.neodigmSodaPop ) neodigmSodaPop.init()
     if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.init()
