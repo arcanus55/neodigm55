@@ -1,11 +1,11 @@
 /*
 Neodigm 55 UX v1.8.0
+Copyright (c) 2022, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
 
 Neodigm 55 is an eclectic JavaScript UX micro-library.
 The lightweight components come together in a unique way that will make your website playful and fun.
 
-Copyright (c) 2022, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
-All rights reserved. Redistributions of source code must retain the above copyright notice.
+All rights reserved. Redistributions of source code must retain the above copyright and notice.
 */
 
 //  Neodigm 55 Utils Begin  //
@@ -41,19 +41,18 @@ const neodigmUtils = ( ( _d ) =>{
 //  Neodigm 55 Options Custom Config Begin  //
 let neodigmOpt = {
   neodigmToast: true,
-  N55_GTM_DL_TOAST: "n55_gtm_dl_toast",
+    N55_GTM_DL_TOAST: "n55_gtm_dl_toast",
   neodigmSodaPop: true,
-  N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
-  N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
-  neodigmUtils: true,
+    N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
+    N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
   neodigmWired4Sound: true,
-  EVENT_SOUNDS: true,
+    EVENT_SOUNDS: true,
   neodigmParallax: true,
   neodigmMarquee: true,
-  CONSOLE_LOG: true}
+    CONSOLE_LOG: true}
 
 if( typeof neodigmOptCustom != 'undefined' ){
-    for( cnfgProp in neodigmOptCustom ){
+    for( cnfgProp in neodigmOptCustom ){  //  Import Custom Objects props if exists
         if( neodigmOpt[ cnfgProp ] ) neodigmOpt[ cnfgProp ] = neodigmOptCustom[ cnfgProp ]
     }
 }
@@ -378,6 +377,7 @@ class NeodigmClaire {
     constructor( _d, _aQ ) {
         this._d = _d; this._aQ = _aQ
         this.bIsInit = false
+        //  Cut Out Layer
     }
     init () {
         this.bIsInit = true
@@ -386,11 +386,14 @@ class NeodigmClaire {
 }
 let neodigmClaire = new NeodigmClaire( document, ["neodigm-claire"] )
 
+// v0.8.0
+//  Neodigm 55 Button Glance Begin  //
 //  Neodigm 55 Confetti Begin  //
-//  Neodigm 55 Tradecraft Redact Begin  //
 //  Neodigm 55 Cypher Type On Begin  //
-//  Neodigm 55 VT100 Begin //
 //  Neodigm 55 KPI Card Begin //
+
+//  Neodigm 55 Tradecraft Redact Begin  //
+//  Neodigm 55 VT100 Begin //
 
 // Claire
 //  Neodigm 55 Horizontal Accordion Begin //
