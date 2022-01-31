@@ -28,7 +28,7 @@ https://user-images.githubusercontent.com/41128567/144532034-16ab92e5-33ae-4465-
 
 <p align="center">
   <a target="_blank" href="https://thescottkrause.com/emerging_tech/neodigm55_ux_library/">
-    <img src="https://user-images.githubusercontent.com/3151842/150714949-6392433d-c80a-442e-a5db-c3597d42358f.jpg" title="TypeScript ⚡ WASM ✨ Three.js Svelte">
+    <img src="https://user-images.githubusercontent.com/3151842/150714949-6392433d-c80a-442e-a5db-c3597d42358f.jpg" title="UX TypeScript ⚡ WASM ✨ Three.js Svelte">
   </a>
 </p>
 
