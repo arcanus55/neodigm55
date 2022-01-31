@@ -158,22 +158,20 @@ neodigm-sodapop:not(.ndsp__modal)::after {
 /*  Neodigm Soda Pop End  */
 
 /*  Neodigm Parallax Begin  */
-eodigm-parallax * { display: none; }
+neodigm-parallax[data-neodigm-parallax-mobile='false'] { display: none; }
 
-@media only screen and (min-width:48.1em){/* med lg */
-    neodigm-parallax[data-neodigm-parallax] aside {
-        position: relative; overflow: hidden;
-        padding: 200px 0;
-        background-attachment: fixed;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: middle center;
-        width: 100%;
-    }
-    neodigm-parallax[data-neodigm-parallax-size='small'] aside  { padding: 200px 0; }
-    neodigm-parallax[data-neodigm-parallax-size='medium'] aside { padding: 400px 0; }
-    neodigm-parallax[data-neodigm-parallax-size='large'] aside  { padding: 600px 0; }
+neodigm-parallax[data-neodigm-parallax] aside {
+    position: relative; overflow: hidden;
+    padding: 200px 0;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: middle center;
+    width: 100%;
 }
+neodigm-parallax[data-neodigm-parallax-size='small']  aside { padding: 200px 0; }
+neodigm-parallax[data-neodigm-parallax-size='medium'] aside { padding: 400px 0; }
+neodigm-parallax[data-neodigm-parallax-size='large']  aside { padding: 600px 0; }
 /*  Neodigm Parallax End  */
 
 /*  Neodigm Marquee Begin  */

@@ -48,6 +48,7 @@ let neodigmOpt = {
   neodigmWired4Sound: true,
     EVENT_SOUNDS: true,
   neodigmParallax: true,
+    PRLX_MOBILE: false,
   neodigmMarquee: true,
     CONSOLE_LOG: true}
 
@@ -166,7 +167,7 @@ class NeodigmSodaPop {
             this.eSoda.innerHTML = this.eTmpl.innerHTML
             this._d.body.appendChild(this.eSoda)
             if ("vibrate" in navigator) window.navigator.vibrate([16, 8])
-            if (neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.play(2)
+            if (neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.play(7)
             this.bIsOpen = true;
             if (this.fOnAfterOpen) this.fOnAfterOpen()
             if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_OPEN ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_OPEN, "id": _sId } )
@@ -292,14 +293,13 @@ class NeodigmParallax {
       this.bIsInit = false
   }
   init () {
-    if( !neodigmUtils.isMobile() ){
-      [ ... this._d.querySelectorAll( this._aQ[0] )].filter( ( ndP ) => {
-        let ndPDv = ndP.querySelector("aside")
-        ndPDv.style.backgroundImage = "url(" + ndP.dataset[ this._aQ[1] ] + ")"
-      })
-      this.bIsInit = true
-      return this
-    }
+    [ ... this._d.querySelectorAll( this._aQ[0] )].filter( ( ndP ) => {
+    if( neodigmUtils.isMobile() ) ndP.dataset.neodigmParallaxMobile = neodigmOpt.PRLX_MOBILE;
+    let ndPDv = ndP.querySelector("aside")
+    ndPDv.style.backgroundImage = "url(" + ndP.dataset[ this._aQ[1] ] + ")"
+    })
+    this.bIsInit = true
+    return this
   }
 }
 let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "neodigmParallax"] )
@@ -404,9 +404,9 @@ let neodigmClaire = new NeodigmClaire( document, ["neodigm-claire"] )
 
 // Parking lot
 //  Neodigm 55 A11Y skip Begin  //
+//  Neodigm 55 ToolTip Begin  //
 //  Neodigm 55 Dice Begin  //
 //  Neodigm 55 Popover Begin  //
-//  Neodigm 55 ToolTip Begin  //
 //  Neodigm 55 Virtual Keyboard Begin  //
 //  Neodigm 55 Vivid Begin  //
 //  Neodigm 55 CAPTCHA Begin //
