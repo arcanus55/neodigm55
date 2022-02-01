@@ -370,7 +370,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
       pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMarquee; } },
       play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMarquee; } }
     }
-})( document, ["neodigm-marquee", "neodigmMarqueeText"], 104 );
+})( document, ["neodigm-marquee", "neodigmMarqueeText"], 96 );
 
 //  Neodigm 55 Claire Begin  //
 class NeodigmClaire {
