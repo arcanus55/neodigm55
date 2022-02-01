@@ -200,8 +200,8 @@ class NeodigmSodaPop {
     }
     shake() {
         if (this.bIsInit && this.bIsOpen) {
-            let iT = 156
-            for (let x = 1; x <= 10; x++) {
+            let iT = 460
+            for (let x = 1; x <= 6; x++) {
                 setTimeout(function() {
                     neodigmSodaPop.eSoda.classList.add("ndsp__opened--shake" + (x % 2));
                 }, (iT * x))
@@ -209,7 +209,7 @@ class NeodigmSodaPop {
                     neodigmSodaPop.eSoda.classList.remove("ndsp__opened--shake0", "ndsp__opened--shake1");
                 }, (iT * x) + (iT / 2))
             }
-            if (neodigmOpt.neodigmWired4Sound) neodigmWired4Sound.play(9)
+            if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.play(9) 
         }
         return this
     }
@@ -370,7 +370,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
       pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMarquee; } },
       play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMarquee; } }
     }
-})( document, ["neodigm-marquee", "neodigmMarqueeText"], 96 );
+})( document, ["neodigm-marquee", "neodigmMarqueeText"], 102 );
 
 //  Neodigm 55 Claire Begin  //
 class NeodigmClaire {
