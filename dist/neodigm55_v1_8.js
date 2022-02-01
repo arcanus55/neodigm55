@@ -382,9 +382,9 @@ class NeodigmClaire {
 let neodigmClaire = new NeodigmClaire( document, ["neodigm-claire"] )
 
 // v0.8.0
-//  Neodigm 55 Button Glance Begin  //
+//  Neodigm 55 Button Glance Begin  // Enchanted CTA
 //  Neodigm 55 Confetti Begin  //
-//  Neodigm 55 Cypher Type On Begin  //
+//  Neodigm 55 Cypher Type FX Begin  //
 //  Neodigm 55 KPI Card Begin //
 
 //  Neodigm 55 Tradecraft Redact Begin  //
