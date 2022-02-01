@@ -11,7 +11,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
-    ver: "1.8.0",
+    ver: "1.8.4",
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
     fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback
@@ -200,15 +200,7 @@ class NeodigmSodaPop {
     }
     shake() {
         if (this.bIsInit && this.bIsOpen) {
-            let iT = 460
-            for (let x = 1; x <= 6; x++) {
-                setTimeout(function() {
-                    neodigmSodaPop.eSoda.classList.add("ndsp__opened--shake" + (x % 2));
-                }, (iT * x))
-                setTimeout(function() {
-                    neodigmSodaPop.eSoda.classList.remove("ndsp__opened--shake0", "ndsp__opened--shake1");
-                }, (iT * x) + (iT / 2))
-            }
+            neodigmSodaPop.eSoda.classList.add("ndsp__opened--shake1");
             if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.play(9) 
         }
         return this
