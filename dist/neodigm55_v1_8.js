@@ -201,6 +201,9 @@ class NeodigmSodaPop {
     shake() {
         if (this.bIsInit && this.bIsOpen) {
             neodigmSodaPop.eSoda.classList.add("ndsp__opened--shake1");
+            setTimeout(function(){
+                neodigmSodaPop.eSoda.classList.remove("ndsp__opened--shake1");
+            }, 460)
             if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.play(9) 
         }
         return this
