@@ -11,7 +11,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
-    ver: "1.8.2",
+    ver: "1.8.0",
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
     fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback
@@ -187,8 +187,8 @@ class NeodigmSodaPop {
                     setTimeout(function() {
                         neodigmSodaPop.eScrim.dataset.neodigmSodapopScrim = "closed"
                         neodigmSodaPop.eScrim.classList.remove("ndsp__blur", "ndsp__modal")
-                    }, 256)
-                }, 256)
+                    }, 304)
+                }, 176)
             }
             if (this.fOnClose) this.fOnClose()
             if ("vibrate" in navigator) window.navigator.vibrate([8, 16])
