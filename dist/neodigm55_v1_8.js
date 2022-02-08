@@ -11,7 +11,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
-    ver: "1.8.4",
+    ver: "1.8.0",
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
     fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback
@@ -50,6 +50,7 @@ let neodigmOpt = {
   neodigmParallax: true,
     PRLX_MOBILE: false,
   neodigmMarquee: true,
+  neodigmButtonGlance: true,
     CONSOLE_LOG: true}
 
 if( typeof neodigmOptCustom != 'undefined' ){
@@ -365,24 +366,42 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
       pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMarquee; } },
       play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMarquee; } }
     }
-})( document, ["neodigm-marquee", "neodigmMarqueeText"], 102 );
+})( document, ["neodigm-marquee", "neodigmMarqueeText"], 112 );
 
 //  Neodigm 55 Claire Begin  //
 class NeodigmClaire {
     constructor( _d, _aQ ) {
         this._d = _d; this._aQ = _aQ
-        this.bIsInit = false
+        this.bIsInit = false; this.bIsPause = false
         //  Cut Out Layer
     }
     init () {
         this.bIsInit = true
         return this
     }
+    pause (){ if( bIsInit ){ bIsPause = true;  return this; } }
+    play (){ if( bIsInit ){ bIsPause = false; return this; } }
+    setTheme (){ if( bIsInit ){ return this; } }
 }
 let neodigmClaire = new NeodigmClaire( document, ["neodigm-claire"] )
 
-// v0.8.0
 //  Neodigm 55 Button Glance Begin  // Enchanted CTA
+class NeodigmButtonGlance {
+    constructor( _d, _aQ ) {
+        this._d = _d; this._aQ = _aQ
+        this.bIsInit = false; this.bIsPause = false
+    }
+    init () {
+        this.bIsInit = true
+        return this
+    }
+    pause (){ if( bIsInit ){ bIsPause = true;  return this; } }
+    play (){ if( bIsInit ){ bIsPause = false; return this; } }
+    setTheme (){ if( bIsInit ){ return this; } }
+}
+let neodigmButtonGlance = new NeodigmButtonGlance( document, ["neodigm-button-glance"] )
+
+// v0.8.0
 //  Neodigm 55 Confetti Begin  //
 //  Neodigm 55 Cypher Type FX Begin  //
 //  Neodigm 55 KPI Card Begin //
