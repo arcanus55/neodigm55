@@ -385,8 +385,8 @@ class NeodigmClaire {
 }
 let neodigmClaire = new NeodigmClaire( document, ["neodigm-claire"] )
 
-//  Neodigm 55 Button Glance Begin  // Enchanted CTA
-class NeodigmButtonGlance {
+//  Neodigm 55 Enchanted CTA Begin
+class NeodigmEnchantedCTA {
     constructor( _d, _aQ ) {
         this._d = _d; this._aQ = _aQ
         this.bIsInit = false; this.bIsPause = false
@@ -399,7 +399,7 @@ class NeodigmButtonGlance {
     play (){ if( bIsInit ){ bIsPause = false; return this; } }
     setTheme (){ if( bIsInit ){ return this; } }
 }
-let neodigmButtonGlance = new NeodigmButtonGlance( document, ["neodigm-button-glance"] )
+let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["neodigm-button-glance"] )
 
 // v0.8.0
 //  Neodigm 55 Confetti Begin  //
