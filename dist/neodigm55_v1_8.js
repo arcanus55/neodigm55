@@ -66,12 +66,12 @@ let neodigmToast = (function(_d, eID, _q) {
       _eSbText.innerHTML = _aQ[0].replace("|", "<br>").replace("##", "")
       _eSb.style.left = ((_d.body.clientWidth / 2) - (_eSb.clientWidth / 2)) + "px"
       if( _sTheme ) {
-        _eSb.dataset.neodigmTheme = _sTheme
+        _eSb.dataset.n55Theme = _sTheme
         _sTheme = ""
       }
       _eSb.classList.remove("snackbar__cont--hide")
       if( _aQ[0].indexOf("##") != -1){
-        _eSb.dataset.neodigmTheme = _sTheme = "brand"
+        _eSb.dataset.n55Theme = _sTheme = "brand"
       }else{
         if ( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.play( 1 )
       }
@@ -95,8 +95,8 @@ let neodigmToast = (function(_d, eID, _q) {
               }
           }
           _d.body.addEventListener("click", ( ev )=>{
-            if( ev?.target?.dataset?.neodigmToast ){
-                neodigmToast.q(ev.target.dataset.neodigmToast  )
+            if( ev?.target?.dataset?.n55Toast ){
+                neodigmToast.q( ev.target.dataset.n55Toast )
             }
           }, true)
       },
@@ -113,7 +113,7 @@ let neodigmToast = (function(_d, eID, _q) {
         return neodigmToast
       }
   }
-})(document, "js-snackbar__id", "[data-neodigm-toast]");
+})(document, "js-snackbar__id", "[data-n55-toast]");
 
 //  Neodigm 55 Soda Pop Begin  //
 class NeodigmSodaPop {
@@ -126,9 +126,9 @@ class NeodigmSodaPop {
         this.eScrim = this._d.querySelector(this._aQ[0])
         this.eClose = this._d.querySelector(this._aQ[0] + "-close")
         this._d.body.addEventListener("click", (ev) => {
-            if (ev?.target?.dataset?.neodigmSodapopId) {
+            if (ev?.target?.dataset?.n55SodapopId) {
                 ev.preventDefault()
-                neodigmSodaPop.open(ev.target.dataset.neodigmSodapopId)
+                neodigmSodaPop.open(ev.target.dataset.n55SodapopId)
             }
             if ("NEODIGM-SODAPOP-SCRIM" == ev.target.tagName) {
                 if (this.bIsModal) {
@@ -149,19 +149,19 @@ class NeodigmSodaPop {
         this.eTmpl = this._d.getElementById(_sId)
         if (this.bIsInit && this.eTmpl && this.eScrim) {
             if (this.fOnBeforeOpen) this.fOnBeforeOpen()
-            this.bIsModal = (this.eTmpl.dataset.neodigmSodapopModal == "true")
+            this.bIsModal = (this.eTmpl.dataset.n55SodapopModal == "true")
             if (this.bIsModal) {
                 this.eScrim.classList.add("ndsp__modal")
                 this.eClose.classList.add("ndsp__modal")
             }
-            this.eScrim.dataset.neodigmSodapopScrim = "opened"
-            this.eClose.dataset.neodigmSodapopScrim = "opened"
+            this.eScrim.dataset.n55SodapopScrim = "opened"
+            this.eClose.dataset.n55SodapopScrim = "opened"
             this.eSoda = this._d.createElement(this._aQ[1])
             setTimeout(function() {
                 neodigmSodaPop.eScrim.classList.add("ndsp__blur");
             }, 96)
             if (this.bIsModal) this.eSoda.classList.add("ndsp__modal")
-            this.eSoda.classList.add("ndsp__size--" + this.eTmpl.dataset.neodigmSodapopSize)
+            this.eSoda.classList.add("ndsp__size--" + this.eTmpl.dataset.n55SodapopSize)
             setTimeout(function() {
                 neodigmSodaPop.eSoda.classList.add("ndsp__opened");
             }, 4)
@@ -177,16 +177,16 @@ class NeodigmSodaPop {
     }
     close(_bFast) {
         if (this.bIsInit && this.bIsOpen) {
-            this.eClose.dataset.neodigmSodapopScrim = "closed"
+            this.eClose.dataset.n55SodapopScrim = "closed"
             if (_bFast) {
                 this.eSoda.remove()
-                this.eScrim.dataset.neodigmSodapopScrim = "closed"
+                this.eScrim.dataset.n55SodapopScrim = "closed"
                 this.eScrim.classList.remove("ndsp__blur", "ndsp__modal")
             } else {
                 setTimeout(function() {
                     neodigmSodaPop.eSoda.remove()
                     setTimeout(function() {
-                        neodigmSodaPop.eScrim.dataset.neodigmSodapopScrim = "closed"
+                        neodigmSodaPop.eScrim.dataset.n55SodapopScrim = "closed"
                         neodigmSodaPop.eScrim.classList.remove("ndsp__blur", "ndsp__modal")
                     }, 304)
                 }, 176)
@@ -228,7 +228,7 @@ class NeodigmSodaPop {
         this.fOnClose = _f
     }
 }
-let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-neodigm-sodapop-modal"] )
+let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-n55-sodapop-modal"] )
 
 //  Neodigm 55 Wired4Sound Begin  //
 class NeodigmWired4Sound {
@@ -255,9 +255,9 @@ class NeodigmWired4Sound {
   init () {
     this._d.querySelector( this._aQ[0] ).addEventListener("click", ( ev )=>{
       let eTg = ev.target
-      if( eTg && eTg.dataset.neodigmWired4sound ){
+      if( eTg && eTg.dataset.n55Wired4sound ){
         let aW4S = []
-        aW4S = eTg.dataset.neodigmWired4sound.split("|")
+        aW4S = eTg.dataset.n55Wired4sound.split("|")
         if( aW4S[0] == "click") neodigmWired4Sound.play( aW4S[1] )
       }
     }, false);
@@ -290,7 +290,7 @@ class NeodigmParallax {
   }
   init () {
     [ ... this._d.querySelectorAll( this._aQ[0] )].filter( ( ndP ) => {
-    if( neodigmUtils.isMobile() ) ndP.dataset.neodigmParallaxMobile = neodigmOpt.PRLX_MOBILE;
+    if( neodigmUtils.isMobile() ) ndP.dataset.n55ParallaxMobile = neodigmOpt.PRLX_MOBILE;
     let ndPDv = ndP.querySelector("aside")
     ndPDv.style.backgroundImage = "url(" + ndP.dataset[ this._aQ[1] ] + ")"
     })
@@ -366,7 +366,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
       pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMarquee; } },
       play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMarquee; } }
     }
-})( document, ["neodigm-marquee", "neodigmMarqueeText"], 112 );
+})( document, ["neodigm-marquee", "n55MarqueeText"], 112 );
 
 //  Neodigm 55 Claire Begin  //
 class NeodigmClaire {
@@ -399,7 +399,7 @@ class NeodigmEnchantedCTA {
     play (){ if( bIsInit ){ bIsPause = false; return this; } }
     setTheme (){ if( bIsInit ){ return this; } }
 }
-let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["neodigm-button-glance"] )
+let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["n55-button-glance"] )
 
 // v0.8.0
 //  Neodigm 55 Confetti Begin  //
