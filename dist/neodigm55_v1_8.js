@@ -161,7 +161,7 @@ class NeodigmSodaPop {
                 neodigmSodaPop.eScrim.classList.add("ndsp__blur");
             }, 96)
             if (this.bIsModal) this.eSoda.classList.add("ndsp__modal")
-            this.eSoda.classList.add("ndsp__size--" + this.eTmpl.dataset.n55SodapopSize)
+            this.eSoda.classList.add("ndsp__size--" + (this.eTmpl.dataset.n55SodapopSize) ? this.eTmpl.dataset.n55SodapopSize:"small") 
             setTimeout(function() {
                 neodigmSodaPop.eSoda.classList.add("ndsp__opened");
             }, 4)
