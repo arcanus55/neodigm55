@@ -298,7 +298,7 @@ class NeodigmParallax {
     return this
   }
 }
-let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "neodigmParallax"] )
+let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "n55Parallax"] )
 
 //  Neodigm 55 Metronome Begin  //
 const neodigmMetronome = ( () =>{
