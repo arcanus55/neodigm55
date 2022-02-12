@@ -126,9 +126,10 @@ class NeodigmSodaPop {
         this.eScrim = this._d.querySelector(this._aQ[0])
         this.eClose = this._d.querySelector(this._aQ[0] + "-close")
         this._d.body.addEventListener("click", (ev) => {
-            if (ev?.target?.dataset?.n55SodapopId) {
+          let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId
+            if ( evAtr ) {
                 ev.preventDefault()
-                neodigmSodaPop.open(ev.target.dataset.n55SodapopId)
+                neodigmSodaPop.open( evAtr )
             }
             if ("NEODIGM-SODAPOP-SCRIM" == ev.target.tagName) {
                 if (this.bIsModal) {
@@ -401,7 +402,7 @@ class NeodigmEnchantedCTA {
 }
 let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["n55-button-glance"] )
 
-// v0.8.0
+// v0.9.0
 //  Neodigm 55 Confetti Begin  //
 //  Neodigm 55 Cypher Type FX Begin  //
 //  Neodigm 55 KPI Card Begin //
@@ -421,6 +422,7 @@ let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["n55-button-glance
 //  Neodigm 55 ToolTip Begin  //
 //  Neodigm 55 Dice Begin  //
 //  Neodigm 55 Popover Begin  //
+//  Neodigm 55 PWA Begin  //
 //  Neodigm 55 Virtual Keyboard Begin  //
 //  Neodigm 55 Vivid Begin  //
 //  Neodigm 55 CAPTCHA Begin //
