@@ -242,7 +242,7 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
     border: solid 1px rgba(255, 255, 255, .4) ;
     color: #fff; cursor: pointer;
     display: inline-block;
-    font-family: 'Roboto',sans-serif;
+    font-family: 'Roboto',sans-serif; font-weight: 300;
     overflow: hidden;
     position: relative;
     text-decoration: none;
