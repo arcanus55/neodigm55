@@ -1,5 +1,5 @@
 /*
-Neodigm 55 UX v1.8.0
+Neodigm 55 UX v1.9.0
 Copyright (c) 2022, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
 
 Neodigm 55 is an eclectic JavaScript UX micro-library.
@@ -11,7 +11,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
-    ver: "1.8.0",
+    ver: "1.9.0",
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
     fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback

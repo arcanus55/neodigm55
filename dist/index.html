@@ -3,14 +3,16 @@
     <title>Neodigm 55</title>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=2, minimum-scale=1, width=device-width, height=device-height"/>
+
+
+<link rel="stylesheet" href="neodigm55_v1_9.css">
+<script>
+let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true }
+</script>
+<script src="neodigm55_v1_9.js"></script>
 </head>
 <body style="background-color: #868686;">
-    <link rel="stylesheet" href="neodigm55_v1_8.css">
 
-    <script>
-        let neodigmOptCustom = { neodigmWired4Sound_EVENTS:false }
-    </script>
-    <script src="neodigm55_v1_8.js"></script>
 
 
     <button data-n55-sodapop-id="js-pop-basic__id">Try Me (Declr)</button>
@@ -39,17 +41,17 @@
     <button onClick="neodigmToast.setTheme('warning').q('warning')">Toast Theme warning</button>
     <button onClick="neodigmToast.setTheme('info').q('info')">Toast Theme info</button>
 <hr>
-<a data-n55-enchanted-cta href="https://github.com/arcanus55/neodigm55"
-target="_blank" rel="noopener"
+<a data-n55-enchanted-cta
+target="_blank" rel="noopener" tabindex="0"
+data-n55-sodapop-id="js-cheatsheet--id"
 data-n55-enchanted-cta-size="small"
 data-n55-enchanted-cta-theme="brand">
-    <span class="show">Star ⭐ on Github</span>
-    <span class="reveal">⭐ ⭐ ⭐ ⭐ ⭐</span>
+    <span>Star ⭐ on Github</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
 </a>
 
-<neodigm-marquee data-n55-marquee-text=" Yikes It creates a resonance in the mind of the Audience...  "
+<neodigm-marquee data-n55-marquee-text=" It creates a resonance in the mind of the Audience...  "
 data-n55-marquee-size="small">
-    <pre class="QQQQmarquee--alt" data-n55-theme="warning"></pre>
+    <pre data-n55-theme="warning"></pre>
 </neodigm-marquee>
 <br><hr><br>
 <neodigm-marquee data-n55-marquee-text=" Do not go gentle into that good night, Old age should burn and rave at close of day; Rage, rage against the dying of the light. "
@@ -58,11 +60,11 @@ data-n55-marquee-size="medium">
 </neodigm-marquee>
 <br><hr><br>
 
-<template id="js-pop-basic__id2" data-n55-sodapop-modal="false"  data-n55-sodapop-size="small">
+<template id="js-pop-basic__id2" data-n55-sodapop-modal="false"  data-n55-sodapop-size="medium">
     Second popup
 </template>
     
-    <template id="js-pop-basic__id" data-n55-sodapop-modal="false"  data-n55-sodapop-size="small">
+    <template id="js-pop-basic__id" data-n55-sodapop-modal="false"  data-n55-sodapop-size="medium">
         <neodigm-marquee data-n55-marquee-text=" It creates a resonance in the mind of the Audience that helps establish mood, feeling, and emotion. It plays with our #warning#subconscious#warning# in ways that can achieve a connection with the reader deeper then emotioning. ">
             <pre class="marquee--alt"></pre>
         </neodigm-marquee>
@@ -200,6 +202,29 @@ data-n55-marquee-size="medium">
       color: #757575;
     }
 </style>
+
+
+<template id="js-cheatsheet--id" data-n55-sodapop-modal="false" data-n55-sodapop-size="medium">
+    <neodigm-marquee data-n55-marquee-text=" Cheatsheet Infographic | Right-Click then Save Image As ... You should Star it on Github! Simple JavaScript Popups micro-library (only 9k). An eclectic low-code vanilla JavaScript UX micro-library for those that defiantly think for themselves. Neodigm 55 is low-code, performant, accessible, and open source. Because it’s so easy to get started it is the perfect solution for quick landing pages or event sites. The Audio can be toggled ON and OFF by the developer or the end user.  "
+    data-n55-marquee-size="small">
+        <pre></pre>
+    </neodigm-marquee>
+    <section class="readable__doc" style="border-top: solid #EDBA08 1px; height: 76vh; overflow-y: scroll">
+        <article style="padding: 12px 12px;">
+            <div class="h-center">
+                <img src="https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/25.jpg"
+                style="width: 96%;">
+                <br>
+                <a data-n55-enchanted-cta href="https://github.com/arcanus55/neodigm55" data-n55-wired4sound="click|5"
+                target="_blank" rel="noopener"
+                data-n55-enchanted-cta-size="small"
+                data-n55-enchanted-cta-theme="brand">
+                    <span>Star ⭐ on Github</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
+                </a>
+            </div>
+        </article>
+    </section>
+</template>
 
 </body>
 
