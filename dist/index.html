@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=2, minimum-scale=1, width=device-width, height=device-height"/>
 
-
 <link rel="stylesheet" href="neodigm55_v1_9.css">
 <script>
 let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true }
@@ -14,24 +13,26 @@ let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true }
 <body style="background-color: #868686;">
 
 
+    <button data-n55-sodapop-id="js-pop-modal__id">Try Me Modeal (Declr)</button>
+    <button data-n55-sodapop-id="js-pop-not-modal__id">Try Me Not Modeal (Declr)</button>
+<br>
 
-    <button data-n55-sodapop-id="js-pop-basic__id">Try Me (Declr)</button>
-
-    <button onClick="neodigmSodaPop.autoOpen('js-pop-basic__id')">Try Me (autoOpen)</button>
+    <button onClick="neodigmSodaPop.autoOpen('js-pop-modal__id')">Try Me Modal(autoOpen)</button>
 <hr>
-    <button data-n55-wired4sound="click|0">Pop Shake 0</button>
-    <button data-n55-wired4sound="click|1">Toast 1</button>
-    <button data-n55-wired4sound="click|2">Pop Open 2</button>
-    <button data-n55-wired4sound="click|3">Pop Close 3</button>
-    <button data-n55-wired4sound="click|4">Pro Tip 4</button>
-    <button data-n55-wired4sound="click|5">Sound 5</button>
-    <button data-n55-wired4sound="click|6">Sound 6</button>
-    <button data-n55-wired4sound="click|8">Sound 8</button>
-    <button data-n55-wired4sound="click|9">Sound 9</button>
-    <button data-n55-wired4sound="click|10">Sound 10</button>
-    <button data-n55-wired4sound="click|11">Sound 11</button>
-    <button data-n55-wired4sound="click|12">Sound 12</button>
-    <button data-n55-wired4sound="click|13">Sound 13 (1)</button>
+    <button data-n55-wired4sound-click="0">Pop Shake 0</button>
+    <button data-n55-wired4sound-click="1">Toast 1</button>
+    <button data-n55-wired4sound-click="2">Pop Open 2</button>
+    <button data-n55-wired4sound-click="3">Pop Close 3</button>
+    <button data-n55-wired4sound-click="4">Pro Tip 4</button>
+    <button data-n55-wired4sound-click="5">Sound 5</button>
+    <button data-n55-wired4sound-click="6">Sound 6</button>
+    <button data-n55-wired4sound-click="7">Sound 7</button>
+    <button data-n55-wired4sound-click="8">Sound 8</button>
+    <button data-n55-wired4sound-click="9">Sound 9</button>
+    <button data-n55-wired4sound-click="1">Sound 10</button>
+    <button data-n55-wired4sound-click="1">Sound 11</button>
+    <button data-n55-wired4sound-click="1">Sound 12</button>
+    <button data-n55-wired4sound-click="1">Sound 13 (1)</button>
     <br>
     <button onClick="neodigmToast.setTheme('brand').q('brand')">Toast Theme brand</button>
     <button onClick="neodigmToast.setTheme('primary').q('primary')">Toast Theme primary</button>
@@ -43,24 +44,56 @@ let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true }
 <hr>
 <a data-n55-enchanted-cta
 target="_blank" rel="noopener" tabindex="0"
-data-n55-sodapop-id="js-cheatsheet--id"
+data-n55-wired4sound-click="7"
 data-n55-enchanted-cta-size="small"
-data-n55-enchanted-cta-theme="brand">
-    <span>Star ⭐ on Github</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
+data-n55-enchanted-cta-ambient="emit"
+data-n55-theme="brand">
+    <span  data-n55-wired4sound-mouseover="3">Brand</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
 </a>
 <a data-n55-enchanted-cta
 target="_blank" rel="noopener" tabindex="0"
-data-n55-sodapop-id="js-cheatsheet--id"
-data-n55-enchanted-cta-size="medium"
-data-n55-enchanted-cta-theme="brand">
-    <span>Star ⭐ on Github</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
+data-n55-wired4sound-click="7"
+data-n55-enchanted-cta-size="small"
+data-n55-theme="primary">
+    <span  data-n55-wired4sound-mouseover="3">Primary</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
 </a>
 <a data-n55-enchanted-cta
 target="_blank" rel="noopener" tabindex="0"
-data-n55-sodapop-id="js-cheatsheet--id"
-data-n55-enchanted-cta-size="large"
-data-n55-enchanted-cta-theme="info">
-    <span>Star ⭐ on Github</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
+data-n55-wired4sound-click="7"
+data-n55-enchanted-cta-size="small"
+data-n55-theme="secondary">
+    <span  data-n55-wired4sound-mouseover="3">Secondary</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
+</a>
+<a data-n55-enchanted-cta
+target="_blank" rel="noopener" tabindex="0"
+data-n55-wired4sound-click="7"
+data-n55-enchanted-cta-size="small"
+data-n55-enchanted-cta-ambient="emit"
+data-n55-theme="success">
+    <span  data-n55-wired4sound-mouseover="3">Success</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
+</a>
+<a data-n55-enchanted-cta
+target="_blank" rel="noopener" tabindex="0"
+data-n55-wired4sound-click="7"
+data-n55-enchanted-cta-size="small"
+data-n55-theme="danger">
+    <span  data-n55-wired4sound-mouseover="3">Danger</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
+</a>
+<a data-n55-enchanted-cta
+target="_blank" rel="noopener" tabindex="0"
+data-n55-wired4sound-click="7"
+data-n55-enchanted-cta-size="small"
+data-n55-enchanted-cta-ambient="emit"
+data-n55-theme="warning">
+    <span  data-n55-wired4sound-mouseover="3">Warning</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
+</a>
+<a data-n55-enchanted-cta
+target="_blank" rel="noopener" tabindex="0"
+data-n55-wired4sound-click="7"
+data-n55-enchanted-cta-size="small"
+data-n55-enchanted-cta-ambient="emit"
+data-n55-theme="info">
+    <span  data-n55-wired4sound-mouseover="3">Info</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
 </a>
 
 <neodigm-marquee data-n55-marquee-text=" It creates a resonance in the mind of the Audience...  "
@@ -73,43 +106,15 @@ data-n55-marquee-size="medium">
     <pre data-n55-theme="danger"></pre>
 </neodigm-marquee>
 <br><hr><br>
-
-<template id="js-pop-basic__id2" data-n55-sodapop-modal="false"  data-n55-sodapop-size="medium">
-    Second popup
-</template>
     
-    <template id="js-pop-basic__id" data-n55-sodapop-modal="false"  data-n55-sodapop-size="medium">
-        <neodigm-marquee data-n55-marquee-text=" It creates a resonance in the mind of the Audience that helps establish mood, feeling, and emotion. It plays with our #warning#subconscious#warning# in ways that can achieve a connection with the reader deeper then emotioning. ">
-            <pre class="marquee--alt"></pre>
-        </neodigm-marquee>
-        <p>Use Cases:</p>
-        <p>Open and Close callback functions for analytics</p>
-        <br>
-        <button onclick="neodigmSodaPop.close()">Ok</button>
-        <button onclick="neodigmSodaPop.close()">Cancel</button>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <button data-n55-sodapop-id="js-pop-basic__id2">Try Me</button>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-        <p>YOUR CONTENT HERE</p>
-    </template>
+<template id="js-pop-modal__id" data-n55-sodapop-modal="true"  data-n55-sodapop-size="medium">
+<p>This is a modal</p>
+<button onclick="neodigmSodaPop.close()">Close</button>
+</template>
+
+<template id="js-pop-not-modal__id" data-n55-sodapop-modal="false"  data-n55-sodapop-size="small">
+<p>This is a modal</p>
+</template>
 
     <div style="width: 610px; height: 120vh; background-color: #edba08;">
         <h1>scroll test</h1>
@@ -216,29 +221,6 @@ data-n55-marquee-size="medium">
       color: #757575;
     }
 </style>
-
-
-<template id="js-cheatsheet--id" data-n55-sodapop-modal="false" data-n55-sodapop-size="medium">
-    <neodigm-marquee data-n55-marquee-text=" Cheatsheet Infographic | Right-Click then Save Image As ... You should Star it on Github! Simple JavaScript Popups micro-library (only 9k). An eclectic low-code vanilla JavaScript UX micro-library for those that defiantly think for themselves. Neodigm 55 is low-code, performant, accessible, and open source. Because it’s so easy to get started it is the perfect solution for quick landing pages or event sites. The Audio can be toggled ON and OFF by the developer or the end user.  "
-    data-n55-marquee-size="small">
-        <pre></pre>
-    </neodigm-marquee>
-    <section class="readable__doc" style="border-top: solid #EDBA08 1px; height: 76vh; overflow-y: scroll">
-        <article style="padding: 12px 12px;">
-            <div class="h-center">
-                <img src="https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/25.jpg"
-                style="width: 96%;">
-                <br>
-                <a data-n55-enchanted-cta href="https://github.com/arcanus55/neodigm55" data-n55-wired4sound="click|5"
-                target="_blank" rel="noopener"
-                data-n55-enchanted-cta-size="small"
-                data-n55-enchanted-cta-theme="brand">
-                    <span>Star ⭐ on Github</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
-                </a>
-            </div>
-        </article>
-    </section>
-</template>
 
 </body>
 

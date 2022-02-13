@@ -34,7 +34,8 @@ const neodigmUtils = ( ( _d ) =>{
           }
       });
       return aDret.join("");
-    }
+    },
+    capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || ""
   }
 })( document );
 
@@ -152,8 +153,9 @@ class NeodigmSodaPop {
             if (this.fOnBeforeOpen) this.fOnBeforeOpen()
             this.bIsModal = (this.eTmpl.dataset.n55SodapopModal == "true")
             if (this.bIsModal) {
-                this.eScrim.classList.add("ndsp__modal")
-                this.eClose.classList.add("ndsp__modal")
+              this.eClose.classList.add("ndsp__modal")
+            }else{
+              this.eClose.classList.remove("ndsp__modal")
             }
             this.eScrim.dataset.n55SodapopScrim = "opened"
             this.eClose.dataset.n55SodapopScrim = "opened"
@@ -254,14 +256,14 @@ class NeodigmWired4Sound {
     this.bIsInit = false
   }
   init () {
-    this._d.querySelector( this._aQ[0] ).addEventListener("click", ( ev )=>{
-      let eTg = ev.target
-      if( eTg && eTg.dataset.n55Wired4sound ){
-        let aW4S = []
-        aW4S = eTg.dataset.n55Wired4sound.split("|")
-        if( aW4S[0] == "click") neodigmWired4Sound.play( aW4S[1] )
-      }
-    }, false);
+    ["click", "mouseover", "xmouseout"].forEach(( evName ) => {
+      this._d.querySelector( this._aQ[0] ).addEventListener(evName, ( ev )=>{
+        let sAtr = "n55Wired4sound" + neodigmUtils.capFirst( evName )
+        let evAtr = ev?.target?.dataset[ sAtr ] || ev?.srcElement?.parentNode?.dataset[ sAtr ]
+        if( evAtr ) neodigmWired4Sound.play( evAtr )
+      }, false);
+    })
+
     this.bIsInit = true
     return this
   }
