@@ -47,11 +47,13 @@ let neodigmOpt = {
     N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
     N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
   neodigmWired4Sound: true,
+    W4S_VOLUME: .076,
     EVENT_SOUNDS: true,
   neodigmParallax: true,
     PRLX_MOBILE: false,
   neodigmMarquee: true,
-  neodigmButtonGlance: true,
+  neodigmEnchantedCTA: true,
+    N55_GTM_DL_CTA: "n55_gtm_dl_cta",
     CONSOLE_LOG: true}
 
 if( typeof neodigmOptCustom != 'undefined' ){
@@ -256,14 +258,13 @@ class NeodigmWired4Sound {
     this.bIsInit = false
   }
   init () {
-    ["click", "mouseover", "xmouseout"].forEach(( evName ) => {
+    ["click", "mouseover"].forEach(( evName ) => {
       this._d.querySelector( this._aQ[0] ).addEventListener(evName, ( ev )=>{
         let sAtr = "n55Wired4sound" + neodigmUtils.capFirst( evName )
         let evAtr = ev?.target?.dataset[ sAtr ] || ev?.srcElement?.parentNode?.dataset[ sAtr ]
         if( evAtr ) neodigmWired4Sound.play( evAtr )
       }, false);
     })
-
     this.bIsInit = true
     return this
   }
@@ -395,14 +396,20 @@ class NeodigmEnchantedCTA {
         this.bIsInit = false; this.bIsPause = false
     }
     init () {
-        this.bIsInit = true
-        return this
+      [ ... this._d.querySelectorAll( this._aQ[0] )].filter(function(eCta){
+        eCta.addEventListener("click", ( ev )=>{
+          let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
+          if( window.dataLayer && neodigmOpt.N55_GTM_DL_CTA ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_CTA, "id": sId } )
+        }, false);
+      })
+      this.bIsInit = true
+      return this
     }
     pause (){ if( bIsInit ){ bIsPause = true;  return this; } }
     play (){ if( bIsInit ){ bIsPause = false; return this; } }
     setTheme (){ if( bIsInit ){ return this; } }
 }
-let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["n55-button-glance"] )
+let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchanted-cta]"] )
 
 // v0.9.0
 //  Neodigm 55 Confetti Begin  //
@@ -454,6 +461,7 @@ document.addEventListener("DOMContentLoaded", function(ev) {
     if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.init()
     if( neodigmOpt.neodigmParallax ) neodigmParallax.init()
     if( neodigmOpt.neodigmMarquee ) neodigmMarquee.init()
+    if( neodigmOpt.neodigmEnchantedCTA ) neodigmEnchantedCTA.init()
   }, 56)
 });
 
@@ -461,7 +469,7 @@ document.addEventListener("DOMContentLoaded", function(ev) {
 // MIT License - Copyright 2019 Frank Force
 // https://github.com/KilledByAPixel/ZzFX
 let zzfx,zzfxV,zzfxX
-zzfxV=.07
+zzfxV=neodigmOpt.W4S_VOLUME;
 zzfx=(p=1,k=.05,b=220,e=0,r=0,t=.1,q=0,D=1,u=0,y=0,v=0,z=0,l=0,E=0,A=0,F=0,c=0,w=1,m=0,B=0)=>{let
 M=Math,R=44100,d=2*M.PI,G=u*=500*d/R/R,C=b*=(1-k+2*k*M.random(k=[]))*d/R,g=0,H=0,a=0,n=1,I=0
 ,J=0,f=0,x,h;e=R*e+9;m*=R;r*=R;t*=R;c*=R;y*=500*d/R**3;A*=d/R;v*=d/R;z*=R;l=R*l|0;for(h=e+m+
