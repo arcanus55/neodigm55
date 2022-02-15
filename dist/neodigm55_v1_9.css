@@ -134,22 +134,9 @@ neodigm-sodapop.ndsp__opened {
 neodigm-sodapop.ndsp__opened--shake1 {
     animation-duration: 0.2s;
     animation-iteration-count: 4;
-    animation-name: shake-1;
+    animation-name: touch_shake;
 }
 
-@keyframes shake-1 {
-    0%  { transform: translate(1px, -2px) rotate(-1deg); }
-    10% { transform: translate(-1px, 2px) rotate(-1deg); }
-    20% { transform: translate(1px, 2px) rotate(0deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, -2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(-3px, 0px) rotate(1deg); }
-    100%{ transform: translate(1px, 1px) rotate(0deg); }
-  }
 neodigm-sodapop.ndsp__size--small  { width: 76%; }
 neodigm-sodapop.ndsp__size--medium { width: 86%; }
 neodigm-sodapop.ndsp__size--large  { width: 96%; }
@@ -255,6 +242,9 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
 [data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='radius']{
     animation: touch_radius 2s forwards infinite ease;
 }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='shake']{
+    animation: touch_shake 2s forwards infinite ease;
+}
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']{
     font-size: 16px;
     line-height: 1.4;
@@ -305,25 +295,26 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
 [data-n55-enchanted-cta][data-n55-theme='info']      { background: linear-gradient(var(--neodigm-theme-info), var(--neodigm-theme-info-alt)); }
 
 @keyframes touch_emit{
-	0%{
-		box-shadow: 0 0 0 0 rgba(255,255,56, .25);
-	}
-	70%{
-		box-shadow: 0 0 0 20px rgba(255,181,56, 0);
-	}
-	100%{
-		box-shadow: 0 0 0 0 rgba(255,181,56, 0);
-	}
+	0%{ box-shadow: 0 0 0 0 rgba(255,255,56, .25);}
+	70%{ box-shadow: 0 0 0 20px rgba(255,181,56, 0);}
+	100%{ box-shadow: 0 0 0 0 rgba(255,181,56, 0);}
 }
 @keyframes touch_radius{
-	0%{
-        border-radius: 6px 22px;
-	}
-	50%{
-        border-radius: 22px 6px;
-	}
-	100%{
-        border-radius: 6px 22px;
-	}
+	0%{ border-radius: 6px 22px; }
+	50%{ border-radius: 22px 6px; }
+	100%{ border-radius: 6px 22px; }
 }
+@keyframes touch_shake{
+    0%  { transform: translate(1px, -2px) rotate(-1deg); }
+    10% { transform: translate(-1px, 2px) rotate(-1deg); }
+    20% { transform: translate(1px, 2px) rotate(0deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, -2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(-3px, 0px) rotate(1deg); }
+    100%{ transform: translate(1px, 1px) rotate(0deg); }
+  }
 /*  Neodigm Enchanted CTA End  */

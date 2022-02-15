@@ -47,7 +47,7 @@ let neodigmOpt = {
     N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
     N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
   neodigmWired4Sound: true,
-    W4S_VOLUME: .076,
+    W4S_VOLUME: .068,
     EVENT_SOUNDS: true,
   neodigmParallax: true,
     PRLX_MOBILE: false,
@@ -383,9 +383,9 @@ class NeodigmClaire {
         this.bIsInit = true
         return this
     }
-    pause (){ if( bIsInit ){ bIsPause = true;  return this; } }
-    play (){ if( bIsInit ){ bIsPause = false; return this; } }
-    setTheme (){ if( bIsInit ){ return this; } }
+    pause (){ if( this.bIsInit ){ this.bIsPause = true;  return this; } }
+    play (){ if( this.bIsInit ){ this.bIsPause = false; return this; } }
+    setTheme (){ if( this.bIsInit ){ return this; } }
 }
 let neodigmClaire = new NeodigmClaire( document, ["neodigm-claire"] )
 
@@ -394,20 +394,46 @@ class NeodigmEnchantedCTA {
     constructor( _d, _aQ ) {
         this._d = _d; this._aQ = _aQ
         this.bIsInit = false; this.bIsPause = false
+        this.aE = []
     }
     init () {
-      [ ... this._d.querySelectorAll( this._aQ[0] )].filter(function(eCta){
+      this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )].filter(function(eCta){
         eCta.addEventListener("click", ( ev )=>{
           let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
           if( window.dataLayer && neodigmOpt.N55_GTM_DL_CTA ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_CTA, "id": sId } )
         }, false);
+        return true;
       })
       this.bIsInit = true
       return this
     }
-    pause (){ if( bIsInit ){ bIsPause = true;  return this; } }
-    play (){ if( bIsInit ){ bIsPause = false; return this; } }
-    setTheme (){ if( bIsInit ){ return this; } }
+    pause (){ if( this.bIsInit ){ this.bIsPause = true;  return this; } }
+    play (){ if( this.bIsInit ){ this.bIsPause = false; return this; } }
+    setTheme ( sTheme, sId ){
+      if( this.bIsInit && !this.bIsPause ){
+        this.aE.forEach( (eC) => {  //  orig once
+          if( eC.dataset.n55Theme && !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
+          if( sId ){
+            if( eC?.id == sId ) eC.dataset.n55Theme = sTheme
+          }else{
+            eC.dataset.n55Theme = sTheme
+          }
+        });
+      }
+    return this;
+    }
+    revertTheme ( sId ){
+      if( this.bIsInit && !this.bIsPause ){
+        this.aE.forEach( (eC) => {  //  orig once
+          if( sId ){
+            if( (eC?.id == sId) && eC.dataset.n55Theme && eC.n55Theme ) eC.dataset.n55Theme = eC.n55Theme
+          }else{
+            if( eC.dataset.n55Theme && eC.n55Theme ) eC.dataset.n55Theme = eC.n55Theme
+          }
+        });
+      }
+    return this;
+    }
 }
 let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchanted-cta]"] )
 
