@@ -54,11 +54,12 @@ let neodigmOpt = {
   neodigmMarquee: true,
   neodigmEnchantedCTA: true,
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
-    CONSOLE_LOG: true}
+    CONSOLE_LOG_VER: true,
+    DEBUG_lOG: false}
 
 if( typeof neodigmOptCustom != 'undefined' ){
     for( cnfgProp in neodigmOptCustom ){  //  Import Custom Objects props if exists
-        if( neodigmOpt[ cnfgProp ] ) neodigmOpt[ cnfgProp ] = neodigmOptCustom[ cnfgProp ]
+      neodigmOpt[ cnfgProp ] = neodigmOptCustom[ cnfgProp ]
     }
 }
 
@@ -404,6 +405,7 @@ class NeodigmEnchantedCTA {
         }, false);
         return true;
       })
+      if( neodigmOpt.DEBUG_lOG ) console.table( this.aE )
       this.bIsInit = true
       return this
     }
@@ -481,7 +483,7 @@ document.addEventListener("DOMContentLoaded", function(ev) {
   setTimeout( ()=>{
     neodigmMetronome.init()
     neodigmClaire.init()
-    if( neodigmOpt.CONSOLE_LOG ) console.log("%c Neodigm 55 the eclectic JavaScript UX micro-library ⭐ v" + neodigmUtils.ver, "background: #000; color: #f4dc5e; font-size: 20px");
+    if( neodigmOpt.CONSOLE_LOG_VER ) console.log("%c Neodigm 55 the eclectic JavaScript UX micro-library ⭐ v" + neodigmUtils.ver, "background: #000; color: #f4dc5e; font-size: 20px");
     if( neodigmOpt.neodigmToast ) neodigmToast.init()
     if( neodigmOpt.neodigmSodaPop ) neodigmSodaPop.init()
     if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.init()
