@@ -14,6 +14,7 @@ const neodigmUtils = ( ( _d ) =>{
     ver: "1.9.0",
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
+    f02x: function(x){ return (Math.floor(Math.random() * x)); },  //  0 to x
     fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback
       var _js = _d.createElement( "script" )
       _js.type = "text/javascript"
@@ -53,9 +54,10 @@ let neodigmOpt = {
     PRLX_MOBILE: false,
   neodigmMarquee: true,
   neodigmEnchantedCTA: true,
+    N55_RND_CTA_TOUCH: 10000,  //  Touch a random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
-    CONSOLE_LOG_VER: true,
-    DEBUG_lOG: false}
+  CONSOLE_LOG_VER: true,
+  DEBUG_lOG: false}
 
 if( typeof neodigmOptCustom != 'undefined' ){
     for( cnfgProp in neodigmOptCustom ){  //  Import Custom Objects props if exists
@@ -77,11 +79,11 @@ let neodigmToast = (function(_d, eID, _q) {
       if( _aQ[0].indexOf("##") != -1){
         _eSb.dataset.n55Theme = _sTheme = "brand"
       }else{
-        if ( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.play( 1 )
+        if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.play( 1 )
       }
     _eSb.classList.add("snackbar__cont--show")
-    if ("vibrate" in navigator) window.navigator.vibrate([16, 8])
-      setTimeout(_fClose, _nTimeout)
+    if("vibrate" in navigator) window.navigator.vibrate([16, 8])
+    setTimeout(_fClose, _nTimeout)
   };
   return {
       init: function(){
@@ -92,7 +94,7 @@ let neodigmToast = (function(_d, eID, _q) {
                   _aQ.shift()
                   _eSb.classList.remove("snackbar__cont--show")
                   _eSb.classList.add("snackbar__cont--hide")
-                  if (_aQ.length != 0) {
+                  if(_aQ.length != 0) {
                       setTimeout(_fOpen, 1200)
                   }
                   _eSb.classList.remove("snackbar__cont--alt")
@@ -105,9 +107,9 @@ let neodigmToast = (function(_d, eID, _q) {
           }, true)
       },
       q: function( sMsg ) {
-          if (sMsg && sMsg != _aQ[0]) _aQ.push(sMsg) // temporal debounce
+          if(sMsg && sMsg != _aQ[0]) _aQ.push(sMsg) // temporal debounce
           if( window.dataLayer && neodigmOpt.N55_GTM_DL_TOAST ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_TOAST, "msg": sMsg } )
-          if (_aQ.length == 1) {
+          if(_aQ.length == 1) {
               _fOpen()
           }
         return neodigmToast
@@ -131,18 +133,18 @@ class NeodigmSodaPop {
         this.eClose = this._d.querySelector(this._aQ[0] + "-close")
         this._d.body.addEventListener("click", (ev) => {
           let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId
-            if ( evAtr ) {
+            if( evAtr ) {
                 ev.preventDefault()
                 neodigmSodaPop.open( evAtr )
             }
-            if ("NEODIGM-SODAPOP-SCRIM" == ev.target.tagName) {
-                if (this.bIsModal) {
+            if("NEODIGM-SODAPOP-SCRIM" == ev.target.tagName) {
+                if(this.bIsModal) {
                     this.shake()
                 } else {
                     this.close()
                 }
             }
-            if ("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) {
+            if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) {
                 this.close()
             }
         }, false)
@@ -150,12 +152,12 @@ class NeodigmSodaPop {
         return this
     }
     open(_sId) {
-    if (this.bIsOpen) this.close(true)
+    if(this.bIsOpen) this.close(true)
         this.eTmpl = this._d.getElementById(_sId)
-        if (this.bIsInit && this.eTmpl && this.eScrim) {
-            if (this.fOnBeforeOpen) this.fOnBeforeOpen()
+        if(this.bIsInit && this.eTmpl && this.eScrim) {
+            if(this.fOnBeforeOpen) this.fOnBeforeOpen()
             this.bIsModal = (this.eTmpl.dataset.n55SodapopModal == "true")
-            if (this.bIsModal) {
+            if(this.bIsModal) {
               this.eClose.classList.add("ndsp__modal")
             }else{
               this.eClose.classList.remove("ndsp__modal")
@@ -166,25 +168,25 @@ class NeodigmSodaPop {
             setTimeout(function() {
                 neodigmSodaPop.eScrim.classList.add("ndsp__blur");
             }, 96)
-            if (this.bIsModal) this.eSoda.classList.add("ndsp__modal")
+            if(this.bIsModal) this.eSoda.classList.add("ndsp__modal")
             this.eSoda.classList.add("ndsp__size--" + this.eTmpl.dataset.n55SodapopSize ) 
             setTimeout(function() {
                 neodigmSodaPop.eSoda.classList.add("ndsp__opened");
             }, 4)
             this.eSoda.innerHTML = this.eTmpl.innerHTML
             this._d.body.appendChild(this.eSoda)
-            if ("vibrate" in navigator) window.navigator.vibrate([16, 8])
-            if (neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.play(7)
+            if("vibrate" in navigator) window.navigator.vibrate([16, 8])
+            if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.play(7)
             this.bIsOpen = true;
-            if (this.fOnAfterOpen) this.fOnAfterOpen()
+            if(this.fOnAfterOpen) this.fOnAfterOpen()
             if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_OPEN ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_OPEN, "id": _sId } )
         }
         return neodigmSodaPop
     }
     close(_bFast) {
-        if (this.bIsInit && this.bIsOpen) {
+        if(this.bIsInit && this.bIsOpen) {
             this.eClose.dataset.n55SodapopScrim = "closed"
-            if (_bFast) {
+            if(_bFast) {
                 this.eSoda.remove()
                 this.eScrim.dataset.n55SodapopScrim = "closed"
                 this.eScrim.classList.remove("ndsp__blur", "ndsp__modal")
@@ -197,21 +199,22 @@ class NeodigmSodaPop {
                     }, 304)
                 }, 176)
             }
-            if (this.fOnClose) this.fOnClose()
-            if ("vibrate" in navigator) window.navigator.vibrate([8, 16])
-            if (neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.play(3)
+            if(this.fOnClose) this.fOnClose()
+            if("vibrate" in navigator) window.navigator.vibrate([8, 16])
+            if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.play(3)
             this.bIsOpen = false
             if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_CLOSE ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_CLOSE } )
         }
         return this
     }
     shake() {
-        if (this.bIsInit && this.bIsOpen) {
+        if(this.bIsInit && this.bIsOpen) {
             neodigmSodaPop.eSoda.classList.add("ndsp__opened--shake1");
             setTimeout(function(){
                 neodigmSodaPop.eSoda.classList.remove("ndsp__opened--shake1");
             }, 460)
-            if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.play(9) 
+            if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.play(9)
+            if("vibrate" in navigator) window.navigator.vibrate([16, 32])
         }
         return this
     }
@@ -405,6 +408,10 @@ class NeodigmEnchantedCTA {
         }, false);
         return true;
       })
+      if( neodigmOpt.N55_RND_CTA_TOUCH ){
+console.log("neodigmOpt.N55_RND_CTA_TOUCH",neodigmOpt.N55_RND_CTA_TOUCH )
+       neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_RND_CTA_TOUCH )
+      }
       if( neodigmOpt.DEBUG_lOG ) console.table( this.aE )
       this.bIsInit = true
       return this
@@ -424,9 +431,9 @@ class NeodigmEnchantedCTA {
       }
     return this;
     }
-    revertTheme ( sId ){
+    revertTheme ( sId ){ //  Revert to orig theme at point of init
       if( this.bIsInit && !this.bIsPause ){
-        this.aE.forEach( (eC) => {  //  orig once
+        this.aE.forEach( (eC) => {
           if( sId ){
             if( (eC?.id == sId) && eC.dataset.n55Theme && eC.n55Theme ) eC.dataset.n55Theme = eC.n55Theme
           }else{
@@ -435,6 +442,21 @@ class NeodigmEnchantedCTA {
         });
       }
     return this;
+    }
+    touch (){
+      let eCta = this.aE[ neodigmUtils.f02x( this.aE.length ) ]
+      if( this.bIsInit && !this.bIsPause ){
+        if( eCta.dataset.n55EnchantedCtaAmbient && !eCta.n55EnchantedCtaAmbient ) eCta.n55EnchantedCtaAmbient = eCta.dataset.n55EnchantedCtaAmbient
+        eCta.dataset.n55EnchantedCtaAmbient = ["emit", "radius", "shake"][ neodigmUtils.f02x(2) ]
+        setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCta ) }, 8000)
+      }
+    return this;
+    }
+    revertTouch ( eCta ){
+      if( this.bIsInit && !this.bIsPause ){
+        eCta.dataset.n55EnchantedCtaAmbient = ""
+        if( eCta.n55EnchantedCtaAmbient ) eCta.dataset.n55EnchantedCtaAmbient = eCta.n55EnchantedCtaAmbient
+      }
     }
 }
 let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchanted-cta]"] )
