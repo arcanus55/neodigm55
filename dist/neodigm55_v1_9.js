@@ -54,7 +54,7 @@ let neodigmOpt = {
     PRLX_MOBILE: false,
   neodigmMarquee: true,
   neodigmEnchantedCTA: true,
-    N55_RND_CTA_TOUCH: 12001,  //  Touch a random CTA button every Xms
+    N55_RND_CTA_TOUCH: 16001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
   CONSOLE_LOG_VER: true,
   DEBUG_lOG: false}
@@ -152,36 +152,36 @@ class NeodigmSodaPop {
         return this
     }
     open(_sId) {
-    if(this.bIsOpen) this.close(true)
-        this.eTmpl = this._d.getElementById(_sId)
-        if(this.bIsInit && this.eTmpl && this.eScrim) {
-            if(this.fOnBeforeOpen) this.fOnBeforeOpen()
-            this.bIsModal = (this.eTmpl.dataset.n55SodapopModal == "true")
-            if(this.bIsModal) {
-              this.eClose.classList.add("ndsp__modal")
-            }else{
-              this.eClose.classList.remove("ndsp__modal")
-            }
-            this.eScrim.dataset.n55SodapopScrim = "opened"
-            this.eClose.dataset.n55SodapopScrim = "opened"
-            this.eSoda = this._d.createElement(this._aQ[1])
-            setTimeout(function() {
-                neodigmSodaPop.eScrim.classList.add("ndsp__blur");
-            }, 96)
-            if(this.bIsModal) this.eSoda.classList.add("ndsp__modal")
-            this.eSoda.classList.add("ndsp__size--" + this.eTmpl.dataset.n55SodapopSize ) 
-            setTimeout(function() {
-                neodigmSodaPop.eSoda.classList.add("ndsp__opened");
-            }, 4)
-            this.eSoda.innerHTML = this.eTmpl.innerHTML
-            this._d.body.appendChild(this.eSoda)
-            if("vibrate" in navigator) window.navigator.vibrate([16, 8])
-            if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.play(7)
-            this.bIsOpen = true;
-            if(this.fOnAfterOpen) this.fOnAfterOpen()
-            if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_OPEN ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_OPEN, "id": _sId } )
-        }
-        return neodigmSodaPop
+      if(this.bIsOpen) this.close(true)
+      this.eTmpl = this._d.getElementById(_sId)
+      if(this.bIsInit && this.eTmpl && this.eScrim) {
+          if(this.fOnBeforeOpen) this.fOnBeforeOpen()
+          this.bIsModal = (this.eTmpl.dataset.n55SodapopModal == "true")
+          if(this.bIsModal) {
+            this.eClose.classList.add("ndsp__modal")
+          }else{
+            this.eClose.classList.remove("ndsp__modal")
+          }
+          this.eScrim.dataset.n55SodapopScrim = "opened"
+          this.eClose.dataset.n55SodapopScrim = "opened"
+          this.eSoda = this._d.createElement(this._aQ[1])
+          setTimeout(function() {
+              neodigmSodaPop.eScrim.classList.add("ndsp__blur");
+          }, 96)
+          if(this.bIsModal) this.eSoda.classList.add("ndsp__modal")
+          this.eSoda.classList.add("ndsp__size--" + this.eTmpl.dataset.n55SodapopSize ) 
+          setTimeout(function() {
+              neodigmSodaPop.eSoda.classList.add("ndsp__opened");
+          }, 4)
+          this.eSoda.innerHTML = this.eTmpl.innerHTML
+          this._d.body.appendChild(this.eSoda)
+          if("vibrate" in navigator) window.navigator.vibrate([16, 8])
+          if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.play(7)
+          this.bIsOpen = true;
+          if(this.fOnAfterOpen) this.fOnAfterOpen()
+          if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_OPEN ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_OPEN, "id": _sId } )
+      }
+      return neodigmSodaPop
     }
     close(_bFast) {
         if(this.bIsInit && this.bIsOpen) {
