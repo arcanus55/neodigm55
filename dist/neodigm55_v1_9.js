@@ -54,7 +54,7 @@ let neodigmOpt = {
     PRLX_MOBILE: false,
   neodigmMarquee: true,
   neodigmEnchantedCTA: true,
-    N55_RND_CTA_TOUCH: 10000,  //  Touch a random CTA button every Xms
+    N55_RND_CTA_TOUCH: 12000,  //  Touch a random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
   CONSOLE_LOG_VER: true,
   DEBUG_lOG: false}
