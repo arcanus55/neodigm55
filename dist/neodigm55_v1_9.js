@@ -446,7 +446,7 @@ class NeodigmEnchantedCTA {
       let eCta = this.aE[ neodigmUtils.f02x( this.aE.length ) ]
       if( this.bIsInit && !this.bIsPause ){
         if( eCta.dataset.n55EnchantedCtaAmbient && !eCta.n55EnchantedCtaAmbient ) eCta.n55EnchantedCtaAmbient = eCta.dataset.n55EnchantedCtaAmbient
-        eCta.dataset.n55EnchantedCtaAmbient = ["emit", "radius", "shake"][ neodigmUtils.f02x(2) ]
+        eCta.dataset.n55EnchantedCtaAmbient = ["emit", "radius", "shake"][ neodigmUtils.f02x(2) + 1 ]
         setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCta ) }, 8000)
       }
     return this;
