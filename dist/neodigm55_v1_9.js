@@ -133,20 +133,20 @@ class NeodigmSodaPop {
         this.eClose = this._d.querySelector(this._aQ[0] + "-close")
         this._d.body.addEventListener("click", (ev) => {
           let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId
-            if( evAtr ) {
-                ev.preventDefault()
-                neodigmSodaPop.open( evAtr )
-            }
-            if("NEODIGM-SODAPOP-SCRIM" == ev.target.tagName) {
-                if(this.bIsModal) {
-                    this.shake()
-                } else {
-                    this.close()
-                }
-            }
-            if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) {
-                this.close()
-            }
+          if( evAtr ) {
+              ev.preventDefault()
+              neodigmSodaPop.open( evAtr )
+          }
+          if("NEODIGM-SODAPOP-SCRIM" == ev.target.tagName) {
+              if(this.bIsModal) {
+                  this.shake()
+              } else {
+                  this.close()
+              }
+          }
+          if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) {
+              this.close()
+          }
         }, false)
         this.bIsInit = true
         return this
@@ -404,13 +404,14 @@ class NeodigmEnchantedCTA {
         this.aE = []
     }
     init () {
-      this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )].filter(function(eCta){
-        eCta.addEventListener("click", ( ev )=>{
-          let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
-          if( window.dataLayer && neodigmOpt.N55_GTM_DL_CTA ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_CTA, "id": sId } )
-        }, false);
-        return true;
-      })
+
+this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
+
+      if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {
+        let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
+        let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset) 
+        if( bCta && window.dataLayer && neodigmOpt.N55_GTM_DL_CTA ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_CTA, "id": sId } )
+      }, false)
       if( neodigmOpt.N55_RND_CTA_TOUCH ){
         neodigmMetronome.unsubscribe( neodigmOpt.N55_RND_CTA_TOUCH )
         neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_RND_CTA_TOUCH )
