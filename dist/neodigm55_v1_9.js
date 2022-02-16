@@ -54,7 +54,7 @@ let neodigmOpt = {
     PRLX_MOBILE: false,
   neodigmMarquee: true,
   neodigmEnchantedCTA: true,
-    N55_RND_CTA_TOUCH: 12000,  //  Touch a random CTA button every Xms
+    N55_RND_CTA_TOUCH: 12001,  //  Touch a random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
   CONSOLE_LOG_VER: true,
   DEBUG_lOG: false}
@@ -334,6 +334,9 @@ const neodigmMetronome = ( () =>{
       }
       return neodigmMetronome;
     },
+    unsubscribe: function( t ){  //  TODO
+      return neodigmMetronome;
+    },
     pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMetronome; } },
     play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMetronome; } },
   }
@@ -409,7 +412,8 @@ class NeodigmEnchantedCTA {
         return true;
       })
       if( neodigmOpt.N55_RND_CTA_TOUCH ){
-       neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_RND_CTA_TOUCH )
+        neodigmMetronome.unsubscribe( neodigmOpt.N55_RND_CTA_TOUCH )
+        neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_RND_CTA_TOUCH )
       }
       if( neodigmOpt.DEBUG_lOG ) console.table( this.aE )
       this.bIsInit = true
