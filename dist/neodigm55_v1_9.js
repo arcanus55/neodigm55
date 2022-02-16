@@ -409,7 +409,6 @@ class NeodigmEnchantedCTA {
         return true;
       })
       if( neodigmOpt.N55_RND_CTA_TOUCH ){
-console.log("neodigmOpt.N55_RND_CTA_TOUCH",neodigmOpt.N55_RND_CTA_TOUCH )
        neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_RND_CTA_TOUCH )
       }
       if( neodigmOpt.DEBUG_lOG ) console.table( this.aE )
@@ -431,7 +430,7 @@ console.log("neodigmOpt.N55_RND_CTA_TOUCH",neodigmOpt.N55_RND_CTA_TOUCH )
       }
     return this;
     }
-    revertTheme ( sId ){ //  Revert to orig theme at point of init
+    revertTheme ( sId ){  //  Revert to orig theme at point of init
       if( this.bIsInit && !this.bIsPause ){
         this.aE.forEach( (eC) => {
           if( sId ){
