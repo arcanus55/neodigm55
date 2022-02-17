@@ -11,8 +11,8 @@ All rights reserved. Redistributions of source code must retain the above copyri
 :root {
     --neodigm-theme-brand: #edba08;   --neodigm-theme-brand-alt: #915E00;  /* Custom Override */
 
-    --neodigm-theme-primary: #92a8d1;   --neodigm-theme-primary-alt: #364C75;  /* Serenity aprox 30% darker */
-    --neodigm-theme-secondary: #939597; --neodigm-theme-secondary-alt: #37393B;  /* Ultimate Gray */
+    --neodigm-theme-primary: #92a8d1;   --neodigm-theme-primary-alt: #364C75;  /* Serenity aprox 20-30% darker */
+    --neodigm-theme-secondary: #DECDBE; --neodigm-theme-secondary-alt: #AB9A8B;  /* Sandollar */
     --neodigm-theme-success: #009473;   --neodigm-theme-success-alt: #003817;  /* Emerald */
     --neodigm-theme-danger: #DD4124;    --neodigm-theme-danger-alt: #810000;  /* Tangerine Tango */
     --neodigm-theme-warning: #F5DF4D;   --neodigm-theme-warning-alt: #998301;  /* Illuminating */

@@ -8,6 +8,31 @@ The lightweight components come together in a unique way that will make your web
 All rights reserved. Redistributions of source code must retain the above copyright and notice.
 */
 
+//  Neodigm 55 Options Custom Config Begin  //
+let neodigmOpt = {
+  neodigmToast: true,
+    N55_GTM_DL_TOAST: "n55_gtm_dl_toast",
+  neodigmSodaPop: true,
+    N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
+    N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
+  neodigmWired4Sound: true,
+    W4S_VOLUME: .068,
+    EVENT_SOUNDS: true,
+  neodigmParallax: true,
+    PRLX_MOBILE: false,
+  neodigmMarquee: true,
+  neodigmEnchantedCTA: true,
+    N55_RND_CTA_TOUCH: 16001,  //  Touch random CTA button every Xms
+    N55_GTM_DL_CTA: "n55_gtm_dl_cta",
+  CONSOLE_LOG_VER: true,
+  DEBUG_lOG: true}
+
+if( typeof neodigmOptCustom != 'undefined' ){
+    for( cnfgProp in neodigmOptCustom ){  //  Import Custom Objects props if exists
+      neodigmOpt[ cnfgProp ] = neodigmOptCustom[ cnfgProp ]
+    }
+}
+
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
@@ -39,31 +64,6 @@ const neodigmUtils = ( ( _d ) =>{
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || ""
   }
 })( document );
-
-//  Neodigm 55 Options Custom Config Begin  //
-let neodigmOpt = {
-  neodigmToast: true,
-    N55_GTM_DL_TOAST: "n55_gtm_dl_toast",
-  neodigmSodaPop: true,
-    N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
-    N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
-  neodigmWired4Sound: true,
-    W4S_VOLUME: .068,
-    EVENT_SOUNDS: true,
-  neodigmParallax: true,
-    PRLX_MOBILE: false,
-  neodigmMarquee: true,
-  neodigmEnchantedCTA: true,
-    N55_RND_CTA_TOUCH: 16001,  //  Touch random CTA button every Xms
-    N55_GTM_DL_CTA: "n55_gtm_dl_cta",
-  CONSOLE_LOG_VER: true,
-  DEBUG_lOG: true}
-
-if( typeof neodigmOptCustom != 'undefined' ){
-    for( cnfgProp in neodigmOptCustom ){  //  Import Custom Objects props if exists
-      neodigmOpt[ cnfgProp ] = neodigmOptCustom[ cnfgProp ]
-    }
-}
 
 //  Neodigm 55 Toast Begin  //
 let neodigmToast = (function(_d, eID, _q) {
@@ -446,25 +446,28 @@ class NeodigmEnchantedCTA {
     }
     touch (){
       if( this.bIsInit && !this.bIsPause && (this.aE.length >= 1) ){
-        let eCta = this.aE[ neodigmUtils.f02x( this.aE.length ) ]
-        if( eCta.dataset.n55EnchantedCtaAmbient && !eCta.n55EnchantedCtaAmbient ) eCta.n55EnchantedCtaAmbient = eCta.dataset.n55EnchantedCtaAmbient
-        eCta.dataset.n55EnchantedCtaAmbient = ["emit", "radius", "shake"][ neodigmUtils.f02x(2) ]
-        setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCta ) }, 8000)
+        let eCt = this.aE[ neodigmUtils.f02x( this.aE.length ) ]  //  TODO Exclusion logic !ambient?
+        if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.n55EnchantedCtaAmbient ) eCt.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbient
+        eCt.dataset.n55EnchantedCtaAmbient = ["emit", "radius", "shake"][ neodigmUtils.f02x(2) ]
+        if( neodigmOpt.DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] )
+        setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCt ) }, 8000)
       }
     return this;
     }
-    revertTouch ( eCta ){
+    revertTouch ( eCt ){
       if( this.bIsInit && !this.bIsPause ){
-        eCta.dataset.n55EnchantedCtaAmbient = ""
-        if( eCta.n55EnchantedCtaAmbient ) eCta.dataset.n55EnchantedCtaAmbient = eCta.n55EnchantedCtaAmbient
+        eCt.dataset.n55EnchantedCtaAmbient = ""
+        if( eCt.n55EnchantedCtaAmbient ) eCt.dataset.n55EnchantedCtaAmbient = eCt.n55EnchantedCtaAmbient
       }
     }
 }
 let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchanted-cta]"] )
 
-// v0.9.0
+// v1.9.0 - Refactor Toast and Metronome
 //  Neodigm 55 Confetti Begin  //
 //  Neodigm 55 Cypher Type FX Begin  //
+
+// v2.0.0
 //  Neodigm 55 KPI Card Begin //
 
 //  Neodigm 55 Tradecraft Redact Begin  //
@@ -506,7 +509,7 @@ document.addEventListener("DOMContentLoaded", function(ev) {
   setTimeout( ()=>{
     neodigmMetronome.init()
     neodigmClaire.init()
-    if( neodigmOpt.CONSOLE_LOG_VER ) console.log("%c Neodigm 55 the eclectic JavaScript UX micro-library ⭐ v" + neodigmUtils.ver, "background: #000; color: #f4dc5e; font-size: 20px");
+    if( neodigmOpt.CONSOLE_LOG_VER ) console.log("%c Neodigm 55 the eclectic JavaScript UX micro-library ✨ v" + neodigmUtils.ver, "background: #000; color: #F5DF4D; font-size: 20px");
     if( neodigmOpt.neodigmToast ) neodigmToast.init()
     if( neodigmOpt.neodigmSodaPop ) neodigmSodaPop.init()
     if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.init()
