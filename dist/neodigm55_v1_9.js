@@ -54,7 +54,7 @@ let neodigmOpt = {
     PRLX_MOBILE: false,
   neodigmMarquee: true,
   neodigmEnchantedCTA: true,
-    N55_RND_CTA_TOUCH: 16001,  //  Touch random CTA button every Xms
+    N55_RND_CTA_TOUCH: 10001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
   CONSOLE_LOG_VER: true,
   DEBUG_lOG: false}
@@ -221,7 +221,7 @@ class NeodigmSodaPop {
     autoOpen(_sId) {
         setTimeout(function() {
             neodigmSodaPop.open(_sId)
-        }, 400);
+        }, 256);
         return this
     }
     isOpen() {
@@ -404,16 +404,13 @@ class NeodigmEnchantedCTA {
         this.aE = []
     }
     init () {
-
-this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
-
-      if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {
+      this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
+      if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once
         let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
         let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset) 
         if( bCta && window.dataLayer && neodigmOpt.N55_GTM_DL_CTA ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_CTA, "id": sId } )
       }, false)
-      if( neodigmOpt.N55_RND_CTA_TOUCH ){
-        neodigmMetronome.unsubscribe( neodigmOpt.N55_RND_CTA_TOUCH )
+      if( neodigmOpt.N55_RND_CTA_TOUCH && !this.bIsInit ){  //  once
         neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_RND_CTA_TOUCH )
       }
       if( neodigmOpt.DEBUG_lOG ) console.table( this.aE )
