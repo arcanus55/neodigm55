@@ -445,7 +445,7 @@ class NeodigmEnchantedCTA {
     return this;
     }
     touch (){
-      if( this.bIsInit && !this.bIsPause && this.aE ){
+      if( this.bIsInit && !this.bIsPause && (this.aE.length >= 1) ){
         let eCta = this.aE[ neodigmUtils.f02x( this.aE.length ) ]
         if( eCta.dataset.n55EnchantedCtaAmbient && !eCta.n55EnchantedCtaAmbient ) eCta.n55EnchantedCtaAmbient = eCta.dataset.n55EnchantedCtaAmbient
         eCta.dataset.n55EnchantedCtaAmbient = ["emit", "radius", "shake"][ neodigmUtils.f02x(2) + 1 ]
