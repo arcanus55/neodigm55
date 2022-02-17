@@ -11,7 +11,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 :root {
     --neodigm-theme-brand: #edba08;   --neodigm-theme-brand-alt: #915E00;  /* Custom Override */
 
-    --neodigm-theme-primary: #92a8d1;   --neodigm-theme-primary-alt: #364C75;  /* Serenity aprox 20-30% darker */
+    --neodigm-theme-primary: #92a8d1;   --neodigm-theme-primary-alt: #364C75;  /* Serenity aprox 25% darker */
     --neodigm-theme-secondary: #DECDBE; --neodigm-theme-secondary-alt: #AB9A8B;  /* Sandollar */
     --neodigm-theme-success: #009473;   --neodigm-theme-success-alt: #003817;  /* Emerald */
     --neodigm-theme-danger: #DD4124;    --neodigm-theme-danger-alt: #810000;  /* Tangerine Tango */
@@ -245,23 +245,23 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
 [data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='shake']{
     animation: touch_shake 2s forwards infinite ease;
 }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='scroll'] span:nth-of-type(1){
+    animation: touch_scroll_1 2s forwards infinite ease;
+}
+[data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='scroll'] span:nth-of-type(2){
+    animation: touch_scroll_2 2s forwards infinite ease;
+}
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']{
-    font-size: 18px;
-    line-height: 1.4;
-    padding: 12px 20px;
-    min-width: 104px;
+    font-size: 18px; line-height: 1.4;
+    padding: 12px 20px; min-width: 104px;
 }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='medium']{
-    font-size: 20px;
-    line-height: 1.4;
-    padding: 16px 24px;
-    min-width: 196px;
+    font-size: 20px; line-height: 1.4;
+    padding: 16px 24px; min-width: 196px;
 }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='large']{
-    font-size: 22px;
-    line-height: 1.4;
-    padding: 20px 28px;
-    min-width: 216px;
+    font-size: 22px; line-height: 1.4;
+    padding: 20px 28px; min-width: 216px;
 }
 [data-n55-enchanted-cta] span:nth-of-type(1){
 	display: block;
@@ -318,4 +318,16 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
     90% { transform: translate(-3px, 0px) rotate(1deg); }
     100%{ transform: translate(1px, 1px) rotate(0deg); }
   }
+
+@keyframes touch_scroll_1{
+    0%{ transform: translateY(80px);}
+    50%{ transform: translateY(0px); }
+    100%{ transform: translateY(80px); }
+}
+
+@keyframes touch_scroll_2{
+    0%{ transform: translateY(0px);}
+    50%{ transform: translateY(140px); }
+    100%{ transform: translateY(0px); }
+}
 /*  Neodigm Enchanted CTA End  */

@@ -79,7 +79,7 @@ let neodigmToast = (function(_d, eID, _q) {
       if( _aQ[0].indexOf("##") != -1){
         _eSb.dataset.n55Theme = _sTheme = "brand"
       }else{
-        if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.play( 1 )
+        if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 1 )
       }
     _eSb.classList.add("snackbar__cont--show")
     if("vibrate" in navigator) window.navigator.vibrate([16, 8])
@@ -176,7 +176,7 @@ class NeodigmSodaPop {
           this.eSoda.innerHTML = this.eTmpl.innerHTML
           this._d.body.appendChild(this.eSoda)
           if("vibrate" in navigator) window.navigator.vibrate([16, 8])
-          if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.play(7)
+          if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(7)
           this.bIsOpen = true;
           if(this.fOnAfterOpen) this.fOnAfterOpen()
           if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_OPEN ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_OPEN, "id": _sId } )
@@ -201,7 +201,7 @@ class NeodigmSodaPop {
             }
             if(this.fOnClose) this.fOnClose()
             if("vibrate" in navigator) window.navigator.vibrate([8, 16])
-            if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.play(3)
+            if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(3)
             this.bIsOpen = false
             if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_CLOSE ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_CLOSE } )
         }
@@ -213,7 +213,7 @@ class NeodigmSodaPop {
             setTimeout(function(){
                 neodigmSodaPop.eSoda.classList.remove("ndsp__opened--shake1");
             }, 460)
-            if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.play(9)
+            if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound(9)
             if("vibrate" in navigator) window.navigator.vibrate([16, 8])
         }
         return this
@@ -266,14 +266,19 @@ class NeodigmWired4Sound {
       this._d.querySelector( this._aQ[0] ).addEventListener(evName, ( ev )=>{
         let sAtr = "n55Wired4sound" + neodigmUtils.capFirst( evName )
         let evAtr = ev?.target?.dataset[ sAtr ] || ev?.srcElement?.parentNode?.dataset[ sAtr ]
-        if( evAtr ) neodigmWired4Sound.play( evAtr )
+        if( evAtr ) neodigmWired4Sound.sound( evAtr )
       }, false);
     })
     this.bIsInit = true
     return this
   }
-  play ( nSnd ) {
-    if( this.bIsInit ){
+  pause (){ if( this.bIsInit ){ this.bIsPause = true;  return this; } }
+  play ( sSnd ){ if( this.bIsInit ){
+    if( sSnd ) this.sound( sSnd )  //  Legacy compat
+    this.bIsPause = false; return this;
+  } }
+  sound ( nSnd ) {
+    if( this.bIsInit && !this.bIsPause){
       if(typeof nSnd  === "object"){
         if( zzfx ) zzfx(... nSnd )
       }else{
@@ -446,9 +451,9 @@ class NeodigmEnchantedCTA {
     }
     touch (){
       if( this.bIsInit && !this.bIsPause && (this.aE.length >= 1) ){
-        let eCt = this.aE[ neodigmUtils.f02x( this.aE.length ) ]  //  TODO Exclusion logic !ambient?
+        let eCt = this.aE[ neodigmUtils.f02x( this.aE.length ) ]  //  TODO Exclusion logic !ambient? Ghost
         if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.n55EnchantedCtaAmbient ) eCt.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbient
-        eCt.dataset.n55EnchantedCtaAmbient = ["emit", "radius", "shake"][ neodigmUtils.f02x(2) ]
+        eCt.dataset.n55EnchantedCtaAmbient = ["emit", "radius", "shake", "scroll"][ 3 ];//neodigmUtils.f02x(4)
         if( neodigmOpt.DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] )
         setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCt ) }, 8000)
       }
