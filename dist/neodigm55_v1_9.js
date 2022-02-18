@@ -22,7 +22,7 @@ let neodigmOpt = {
     PRLX_MOBILE: false,
   neodigmMarquee: true,
   neodigmEnchantedCTA: true,
-    N55_RND_CTA_TOUCH: 16001,  //  Touch random CTA button every Xms
+    N55_RND_CTA_TOUCH: 12001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
   CONSOLE_LOG_VER: true,
   DEBUG_lOG: true}
@@ -342,8 +342,8 @@ const neodigmMetronome = ( () =>{
     unsubscribe: function( t ){  //  TODO
       return neodigmMetronome;
     },
-    pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMetronome; } },
-    play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMetronome; } },
+    pause: function(){ bIsPause = true;  return neodigmMarquee; },
+    play:  function(){ bIsPause = false; return neodigmMarquee; }
   }
 })();
 
@@ -379,8 +379,8 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
         }
       },
       toggleDir: function(){ if( bIsInit ){ bLTR = !bLTR; return neodigmMarquee; } },
-      pause: function(){ if( bIsInit ){ bIsPause = true;  return neodigmMarquee; } },
-      play:  function(){ if( bIsInit ){ bIsPause = false; return neodigmMarquee; } }
+      pause: function(){ bIsPause = true;  return neodigmMarquee; },
+      play:  function(){ bIsPause = false; return neodigmMarquee; }
     }
 })( document, ["neodigm-marquee", "n55MarqueeText"], 112 );
 
@@ -395,8 +395,8 @@ class NeodigmClaire {
         this.bIsInit = true
         return this
     }
-    pause (){ if( this.bIsInit ){ this.bIsPause = true;  return this; } }
-    play (){ if( this.bIsInit ){ this.bIsPause = false; return this; } }
+    pause (){ this.bIsPause = true; return this; }
+    play (){ this.bIsPause = false; return this; }
     setTheme (){ if( this.bIsInit ){ return this; } }
 }
 let neodigmClaire = new NeodigmClaire( document, ["neodigm-claire"] )
@@ -422,8 +422,8 @@ class NeodigmEnchantedCTA {
       this.bIsInit = true
       return this
     }
-    pause (){ if( this.bIsInit ){ this.bIsPause = true;  return this; } }
-    play (){ if( this.bIsInit ){ this.bIsPause = false; return this; } }
+    pause (){ this.bIsPause = true; return this; }
+    play (){ this.bIsPause = false; return this; }
     setTheme ( sTheme, sId ){
       if( this.bIsInit && !this.bIsPause ){
         this.aE.forEach( (eC) => {  //  orig once
@@ -451,11 +451,13 @@ class NeodigmEnchantedCTA {
     }
     touch (){
       if( this.bIsInit && !this.bIsPause && (this.aE.length >= 1) ){
-        let eCt = this.aE[ neodigmUtils.f02x( this.aE.length ) ]  //  TODO Exclusion logic !ambient? Ghost
-        if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.n55EnchantedCtaAmbient ) eCt.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbient
-        eCt.dataset.n55EnchantedCtaAmbient = ["emit", "radius", "shake", "scroll"][ neodigmUtils.f02x(4) ];//3
-        if( neodigmOpt.DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] )
-        setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCt ) }, 8000)
+        let eCt = this.aE[ neodigmUtils.f02x( this.aE.length ) ]
+        if( eCt.dataset?.n55Theme !== "ghost" ){
+          if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.n55EnchantedCtaAmbient ) eCt.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbient
+          eCt.dataset.n55EnchantedCtaAmbient = ["emit", "radius", "shake", "scroll"][ neodigmUtils.f02x(4) ];
+          if( neodigmOpt.DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] )
+          setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCt ) }, 8000)
+        }
       }
     return this;
     }
