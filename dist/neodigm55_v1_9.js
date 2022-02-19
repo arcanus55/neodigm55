@@ -25,7 +25,7 @@ let neodigmOpt = {
     N55_RND_CTA_TOUCH: 12001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
   CONSOLE_LOG_VER: true,
-  N55_DEBUG_lOG: false}
+  N55_DEBUG_lOG: true}
 
 if( typeof neodigmOptCustom != 'undefined' ){
     for( cnfgProp in neodigmOptCustom ){  //  Import Custom Objects props if exists
