@@ -293,7 +293,7 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
 [data-n55-enchanted-cta][data-n55-theme='danger']    { background: linear-gradient(var(--neodigm-theme-danger), var(--neodigm-theme-danger-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='warning']   { background: linear-gradient(var(--neodigm-theme-warning), var(--neodigm-theme-warning-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='info']      { background: linear-gradient(var(--neodigm-theme-info), var(--neodigm-theme-info-alt)); }
-[data-n55-enchanted-cta][data-n55-theme='ghost']     { background: #fff; color: #DD4124; border: #DD4124; }
+[data-n55-enchanted-cta][data-n55-theme='ghost']     { background: #fff; color: #DD4124; border: solid 1px #DD4124; }
 
 @keyframes touch_emit{
 	0%{ box-shadow: 0 0 0 0 rgba(255,255,56, .25);}
