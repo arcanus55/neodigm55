@@ -25,7 +25,7 @@ let neodigmOpt = {
     N55_RND_CTA_TOUCH: 12001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
   CONSOLE_LOG_VER: true,
-  DEBUG_lOG: true}
+  N55_DEBUG_lOG: false}
 
 if( typeof neodigmOptCustom != 'undefined' ){
     for( cnfgProp in neodigmOptCustom ){  //  Import Custom Objects props if exists
@@ -175,7 +175,7 @@ class NeodigmSodaPop {
           }, 4)
           this.eSoda.innerHTML = this.eTmpl.innerHTML
           this._d.body.appendChild(this.eSoda)
-          if("vibrate" in navigator) window.navigator.vibrate([16, 8])
+          if("vibrate" in navigator) window.navigator.vibrate([16, 8]) 
           if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(7)
           this.bIsOpen = true;
           if(this.fOnAfterOpen) this.fOnAfterOpen()
@@ -209,12 +209,13 @@ class NeodigmSodaPop {
     }
     shake() {
         if(this.bIsInit && this.bIsOpen) {
+            if("vibrate" in navigator) window.navigator.vibrate([8, 32, 48])
             neodigmSodaPop.eSoda.classList.add("ndsp__opened--shake1");
             setTimeout(function(){
                 neodigmSodaPop.eSoda.classList.remove("ndsp__opened--shake1");
             }, 460)
             if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound(9)
-            if("vibrate" in navigator) window.navigator.vibrate([16, 8])
+            if("vibrate" in navigator) window.navigator.vibrate([48, 32, 8])
         }
         return this
     }
@@ -418,7 +419,7 @@ class NeodigmEnchantedCTA {
       if( neodigmOpt.N55_RND_CTA_TOUCH && !this.bIsInit ){  //  once
         neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_RND_CTA_TOUCH )
       }
-      if( neodigmOpt.DEBUG_lOG ) console.table( this.aE )
+      if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.aE )
       this.bIsInit = true
       return this
     }
@@ -455,7 +456,7 @@ class NeodigmEnchantedCTA {
         if( eCt.dataset?.n55Theme !== "ghost" ){
           if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.n55EnchantedCtaAmbient ) eCt.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbient
           eCt.dataset.n55EnchantedCtaAmbient = ["emit", "radius", "shake", "scroll"][ neodigmUtils.f02x(4) ];
-          if( neodigmOpt.DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] )
+          if( neodigmOpt.N55_DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] )
           setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCt ) }, 8000)
         }
       }
