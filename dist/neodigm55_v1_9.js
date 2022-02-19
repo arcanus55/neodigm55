@@ -68,9 +68,11 @@ const neodigmUtils = ( ( _d ) =>{
 //  Neodigm 55 Toast Begin  //
 let neodigmToast = (function(_d, eID, _q) {
   let _nTimeout = 5800, _aQ = [], _eSb, _eSbText, _sTheme
+  let bIsInit = bIsPause = false 
   let _fOpen = function() {
       _eSbText.innerHTML = _aQ[0].replace("|", "<br>").replace("##", "")
       _eSb.style.left = ((_d.body.clientWidth / 2) - (_eSb.clientWidth / 2)) + "px"
+      //if( _aQ[0].n55Theme ) _sTheme = _aQ[0].n55Theme
       if( _sTheme ) {
         _eSb.dataset.n55Theme = _sTheme
         _sTheme = ""
@@ -82,7 +84,7 @@ let neodigmToast = (function(_d, eID, _q) {
         if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 1 )
       }
     _eSb.classList.add("snackbar__cont--show")
-    if("vibrate" in navigator) window.navigator.vibrate([16, 8])
+    if("vibrate" in navigator) window.navigator.vibrate([48, 56])
     setTimeout(_fClose, _nTimeout)
   };
   return {
@@ -105,19 +107,24 @@ let neodigmToast = (function(_d, eID, _q) {
                 neodigmToast.q( ev.target.dataset.n55Toast )
             }
           }, true)
+          bIsInit = true
       },
-      q: function( sMsg ) {
-          if(sMsg && sMsg != _aQ[0]) _aQ.push(sMsg) // temporal debounce
-          if( window.dataLayer && neodigmOpt.N55_GTM_DL_TOAST ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_TOAST, "msg": sMsg } )
-          if(_aQ.length == 1) {
-              _fOpen()
+      q: function( sMsg, sTheme ) {
+          if( bIsInit && !bIsPause ){ 
+            if( sMsg && sMsg != _aQ[0] ) _aQ.push(sMsg) // temporal debounce
+            //if( sMsg && sTheme ) _aQ[ _aQ.length - 1 ].n55Theme = sTheme
+            if( window.dataLayer && neodigmOpt.N55_GTM_DL_TOAST ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_TOAST, "msg": sMsg } )
+            if(_aQ.length == 1) _fOpen()
           }
-        return neodigmToast
+          return neodigmToast
       },
       setTheme: function( sTheme ){
-        _sTheme = sTheme
+        if( bIsInit && !bIsPause ){ _sTheme = sTheme }
         return neodigmToast
-      }
+      },
+      getQ: function(){ return _aQ; },
+      pause: function(){ bIsPause = true;  return neodigmToast; },
+      play:  function(){ bIsPause = false; return neodigmToast; }
   }
 })(document, "js-snackbar__id", "[data-n55-toast]");
 
@@ -317,7 +324,7 @@ let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "n55Pa
 //  Neodigm 55 Metronome Begin  //
 const neodigmMetronome = ( () =>{
   let oEmit = {}, aIntv = []
-  let bIsInit = bIsPause = false
+  let bIsInit = bIsPause = false 
   return {
     init: function(){
       oEmit = {}  //  Reset all sans setIntr
