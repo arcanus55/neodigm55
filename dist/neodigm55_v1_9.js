@@ -25,7 +25,7 @@ let neodigmOpt = {
     N55_RND_CTA_TOUCH: 12001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
   CONSOLE_LOG_VER: true,
-  N55_DEBUG_lOG: true}
+  N55_DEBUG_lOG: false}
 
 if( typeof neodigmOptCustom != 'undefined' ){
     for( cnfgProp in neodigmOptCustom ){  //  Import Custom Objects props if exists
@@ -70,15 +70,15 @@ let neodigmToast = (function(_d, eID, _q) {
   let _nTimeout = 5800, _aQ = [], _eSb, _eSbText, _sTheme
   let bIsInit = bIsPause = false 
   let _fOpen = function() {
-      _eSbText.innerHTML = _aQ[0].replace("|", "<br>").replace("##", "")
+      _eSbText.innerHTML = _aQ[0].sMsg.replace("|", "<br>").replace("##", "")
       _eSb.style.left = ((_d.body.clientWidth / 2) - (_eSb.clientWidth / 2)) + "px"
-      //if( _aQ[0].n55Theme ) _sTheme = _aQ[0].n55Theme
+      if( _aQ[0].sTheme ) _eSb.dataset.n55Theme = _aQ[0].sTheme
       if( _sTheme ) {
         _eSb.dataset.n55Theme = _sTheme
         _sTheme = ""
       }
       _eSb.classList.remove("snackbar__cont--hide")
-      if( _aQ[0].indexOf("##") != -1){
+      if( _aQ[0].sMsg.indexOf("##") != -1){
         _eSb.dataset.n55Theme = _sTheme = "brand"
       }else{
         if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 1 )
@@ -111,8 +111,7 @@ let neodigmToast = (function(_d, eID, _q) {
       },
       q: function( sMsg, sTheme ) {
           if( bIsInit && !bIsPause ){ 
-            if( sMsg && sMsg != _aQ[0] ) _aQ.push(sMsg) // temporal debounce
-            //if( sMsg && sTheme ) _aQ[ _aQ.length - 1 ].n55Theme = sTheme
+            if( sMsg && sMsg != _aQ[0]?.sMsg ) _aQ.push( {"sMsg": sMsg, "sTheme":sTheme} ) // temporal debounce
             if( window.dataLayer && neodigmOpt.N55_GTM_DL_TOAST ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_TOAST, "msg": sMsg } )
             if(_aQ.length == 1) _fOpen()
           }
