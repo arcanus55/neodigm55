@@ -129,7 +129,7 @@ let neodigmToast = (function(_d, eID, _q) {
 
 //  Neodigm 55 Soda Pop Begin  //
 class NeodigmSodaPop {
-    constructor(_d, _aQ) {
+    constructor(_d, _aQ) {  //  Flux Capacitor
         this._d = _d; this._aQ = _aQ
         this.eSoda = this.eScrim = this.eClose = this.fOnBeforeOpen = this.fOnAfterOpen = this.fOnClose = null
         this.bIsOpen = this.bIsModal = this.bIsInit = false
@@ -324,7 +324,7 @@ let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "n55Pa
 const neodigmMetronome = ( () =>{
   let oEmit = {}, aIntv = []
   let bIsInit = bIsPause = false 
-  return {
+  return {  //  Oscillation Overthruster
     init: function(){
       oEmit = {}  //  Reset all sans setIntr
       aIntv.forEach( ( i )=>{ clearInterval( i ) } )
