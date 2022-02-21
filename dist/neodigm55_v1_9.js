@@ -19,13 +19,15 @@ let neodigmOpt = {
     W4S_VOLUME: .068,
     EVENT_SOUNDS: true,
   neodigmParallax: true,
-    PRLX_MOBILE: false,
+    PRLX_MOBILE: false,  //  Show Parallax on Mobile
   neodigmMarquee: true,
   neodigmEnchantedCTA: true,
     N55_RND_CTA_TOUCH: 12001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
   CONSOLE_LOG_VER: true,
-  N55_DEBUG_lOG: false}
+  N55_DEBUG_lOG: false,
+  N55_THEME_COLORS: {"brand":["",""], "primary":["",""]}
+}
 
 if( typeof neodigmOptCustom != 'undefined' ){
     for( cnfgProp in neodigmOptCustom ){  //  Import Custom Objects props if exists
@@ -493,6 +495,7 @@ let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchant
 //  Neodigm 55 Slot Begin //
 //  Neodigm 55 Quiz Challenge Begin //
 //  Neodigm 55 Dynamic Infographic Begin //
+//  Neodigm 55 Voice Conversational Marketing //
 
 // Parking lot
 //  Neodigm 55 A11Y skip Begin  //
