@@ -6,7 +6,7 @@
 
 <link rel="stylesheet" href="neodigm55_v1_9.css">
 <script>
-let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, DEBUG_lOG:true }
+let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:true }
 </script>
 <script src="neodigm55_v1_9.js"></script>
 </head>
@@ -42,6 +42,27 @@ let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, DEBUG_lOG:true }
     <button onClick="neodigmToast.setTheme('warning').q('warning')">Toast Theme warning</button>
     <button onClick="neodigmToast.setTheme('info').q('info')">Toast Theme info</button>
 <hr>
+<canvas id="c" width="1920" height="1080"></canvas>
+<hr>
+<script>
+
+c = document.querySelector("#c");
+c.width = 1920;
+c.height = 1080;
+S = Math.sin;
+C = Math.cos;
+T = Math.tan;
+R = function(r,g,b,a) {
+    a = a === undefined ? 1 : a;
+    return "rgba("+(r|0)+","+(g|0)+","+(b|0)+","+a+")";
+};
+x = c.getContext("2d");
+
+      
+
+    
+for(var i=0,b='#',c=Math.random;i<8;i++)b+='13579bdef'[Math.floor(c()*9)];x.fillStyle=b,x.fillRect(c()*1920-99,c()*1080-99,c()*999,c()*999)
+</script>
 <a id="js-brand" data-n55-enchanted-cta  aria-haspopup="true"
 data-n55-sodapop-id="js-pop-modal__id"
 target="_blank" rel="noopener" tabindex="0"

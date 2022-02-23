@@ -463,7 +463,7 @@ class NeodigmEnchantedCTA {
         let eCt = this.aE[ neodigmUtils.f02x( this.aE.length ) ]
         if( eCt.dataset?.n55Theme !== "ghost" ){
           if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.n55EnchantedCtaAmbient ) eCt.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbient
-          eCt.dataset.n55EnchantedCtaAmbient = ["emit", "radius", "shake", "scroll"][ neodigmUtils.f02x(4) ];
+          eCt.dataset.n55EnchantedCtaAmbient = ["emit", "radius", "shake", "scroll", "warn"][ neodigmUtils.f02x(5) ];
           if( neodigmOpt.N55_DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] )
           setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCt ) }, 8000)
         }
