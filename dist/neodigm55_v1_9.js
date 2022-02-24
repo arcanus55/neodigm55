@@ -22,7 +22,7 @@ let neodigmOpt = {
     PRLX_MOBILE: false,  //  Show Parallax on Mobile
   neodigmMarquee: true,
   neodigmEnchantedCTA: true,
-    N55_RND_CTA_TOUCH: 12001,  //  Touch random CTA button every Xms
+    N55_RND_CTA_TOUCH: 10001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
@@ -458,8 +458,19 @@ class NeodigmEnchantedCTA {
       if( this.bIsInit && !this.bIsPause && (this.aE.length >= 1) ){
         let eCt = this.aE[ neodigmUtils.f02x( this.aE.length ) ]
         if( eCt.dataset?.n55Theme !== "ghost" ){
+          let sRndFX = ["emit", "radius", "shake", "scroll", "flash", "alternate"][ neodigmUtils.f02x(6) ]
           if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.n55EnchantedCtaAmbient ) eCt.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbient
-          eCt.dataset.n55EnchantedCtaAmbient = ["emit", "radius", "shake", "scroll", "flash"][ neodigmUtils.f02x(5) ];
+          eCt.dataset.n55EnchantedCtaAmbient = sRndFX
+          switch( "alternate" ){
+            case "alternate":
+              console.log("alternate")
+              if( eCt.dataset.n55EnchantedCtaAlt ){
+                eCt["n55EnchantedCtaAlt"] = eCt.innerHTML
+                eCt.querySelectorAll("span")[0].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[0]
+                eCt.querySelectorAll("span")[1].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[1]
+              }
+              break;
+          }
           if( neodigmOpt.N55_DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] )
           setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCt ) }, 8000)
         }
@@ -470,6 +481,7 @@ class NeodigmEnchantedCTA {
       if( this.bIsInit && !this.bIsPause ){
         eCt.dataset.n55EnchantedCtaAmbient = ""
         if( eCt.n55EnchantedCtaAmbient ) eCt.dataset.n55EnchantedCtaAmbient = eCt.n55EnchantedCtaAmbient
+        if( eCt.n55EnchantedCtaAlt ) eCt.innerHTML = eCt.n55EnchantedCtaAlt
       }
     }
 }

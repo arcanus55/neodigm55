@@ -251,6 +251,12 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
 [data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='scroll'] span:nth-of-type(2){
     animation: touch_scroll_2 4s forwards infinite ease;
 }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='alternate'] span:nth-of-type(1){
+    animation: touch_alternate_1 4s forwards infinite ease;
+}
+[data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='alternate'] span:nth-of-type(2){
+    animation: touch_alternate_2 4s forwards infinite ease;
+}
 [data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='flash']{
     animation: touch_flash 4s forwards infinite ease;
 }
@@ -333,6 +339,19 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
     50%{ transform: translateY(140px); }
     100%{ transform: translateY(0px); }
 }
+
+@keyframes touch_alternate_1{
+    0%{ transform: translateY(80px);}
+    50%{ transform: translateY(0px); }
+    100%{ transform: translateY(80px); }
+}
+
+@keyframes touch_alternate_2{
+    0%{ transform: translateY(0px);}
+    50%{ transform: translateY(140px); }
+    100%{ transform: translateY(0px); }
+}
+
 
 @keyframes touch_flash{
     10%{ background: var(--neodigm-theme-danger-alt); }
