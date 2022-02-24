@@ -80,11 +80,7 @@ let neodigmToast = (function(_d, eID, _q) {
         _sTheme = ""
       }
       _eSb.classList.remove("snackbar__cont--hide")
-      if( _aQ[0].sMsg.indexOf("##") != -1){
-        _eSb.dataset.n55Theme = _sTheme = "brand"
-      }else{
-        if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 1 )
-      }
+      if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 1 )
     _eSb.classList.add("snackbar__cont--show")
     if("vibrate" in navigator) window.navigator.vibrate([48, 56])
     setTimeout(_fClose, _nTimeout)
