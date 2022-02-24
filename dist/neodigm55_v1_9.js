@@ -420,7 +420,7 @@ class NeodigmEnchantedCTA {
         let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset) 
         if( bCta && window.dataLayer && neodigmOpt.N55_GTM_DL_CTA ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_CTA, "id": sId } )
       }, false)
-      if( neodigmOpt.N55_RND_CTA_TOUCH && !this.bIsInit ){  //  once
+      if( neodigmOpt.N55_RND_CTA_TOUCH ){
         neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_RND_CTA_TOUCH )
       }
       if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.aE )
