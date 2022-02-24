@@ -336,7 +336,9 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
 
 @keyframes touch_warn{
     0%{ background: var(--neodigm-theme-danger-alt); }
-    50%{ background: var(--neodigm-theme-warning-alt); }
+    20%{ background: var(--neodigm-theme-warning); }
+    50%{ background: var(--neodigm-theme-danger-alt); }
+    80%{ background: var(--neodigm-theme-warning); }
     100%{ background: var(--neodigm-theme-danger-alt); }
 }
 /*  Neodigm Enchanted CTA End  */
