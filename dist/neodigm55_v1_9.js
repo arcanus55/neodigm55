@@ -458,7 +458,7 @@ class NeodigmEnchantedCTA {
       if( this.bIsInit && !this.bIsPause && (this.aE.length >= 1) ){
         let eCt = this.aE[ neodigmUtils.f02x( this.aE.length ) ]
         if( eCt.dataset?.n55Theme !== "ghost" ){
-          let sRndFX = ["emit", "radius", "shake", "scroll", "flash", "alternate"][ neodigmUtils.f02x(6) ]
+          let sRndFX = ["emit", "radius", "shake", "scroll", "flash", "alternate", "rainbow"][ neodigmUtils.f02x(7) ]
           if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.n55EnchantedCtaAmbient ) eCt.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbient
           eCt.dataset.n55EnchantedCtaAmbient = sRndFX
           switch( "alternate" ){
