@@ -461,9 +461,8 @@ class NeodigmEnchantedCTA {
           let sRndFX = ["emit", "radius", "shake", "scroll", "flash", "alternate", "rainbow"][ neodigmUtils.f02x(7) ]
           if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.n55EnchantedCtaAmbient ) eCt.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbient
           eCt.dataset.n55EnchantedCtaAmbient = sRndFX
-          switch( "alternate" ){
+          switch( sRndFX ){
             case "alternate":
-              console.log("alternate")
               if( eCt.dataset.n55EnchantedCtaAlt ){
                 eCt["n55EnchantedCtaAlt"] = eCt.innerHTML
                 eCt.querySelectorAll("span")[0].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[0]
