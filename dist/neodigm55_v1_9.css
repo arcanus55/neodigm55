@@ -358,18 +358,19 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
 @keyframes touch_flash{
     0%{ background:   var(--neodigm-theme-danger-alt); }
     20%{ background:  var(--neodigm-theme-warning-alt); }
-    40%{ background:  var(--neodigm-theme-danger); }
-    60%{ background:  var(--neodigm-theme-warning); }
+    40%{ background:  var(--neodigm-theme-danger-alt); }
+    60%{ background:  var(--neodigm-theme-warning-alt); }
     80%{ background:  var(--neodigm-theme-danger-alt); }
     100%{ background: var(--neodigm-theme-warning-alt); }
 }
 
 @keyframes touch_rainbow{
-    15%{ background:   var(--neodigm-theme-brand-alt); }
+    15%{ background:  var(--neodigm-theme-brand-alt); }
     30%{ background:  var(--neodigm-theme-primary-alt); }
     45%{ background:  var(--neodigm-theme-success-alt); }
     60%{ background:  var(--neodigm-theme-danger-alt); }
     75%{ background:  var(--neodigm-theme-warning-alt); }
-    90%{ background: var(--neodigm-theme-info-alt); }
+    90%{ background:  var(--neodigm-theme-info-alt); }
+    100%{ background: var(--neodigm-theme-brand-alt); }
 }
 /*  Neodigm Enchanted CTA End  */
