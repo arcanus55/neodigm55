@@ -22,7 +22,7 @@ let neodigmOpt = {
     PRLX_MOBILE: false,  //  Show Parallax on Mobile
   neodigmMarquee: true,
   neodigmEnchantedCTA: true,
-    N55_RND_CTA_TOUCH: 10001,  //  Touch random CTA button every Xms
+    N55_RND_CTA_TOUCH: 14001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
@@ -464,7 +464,7 @@ class NeodigmEnchantedCTA {
     touch (){
       if( this.bIsInit && !this.bIsPause && (this.aE.length >= 1) ){
         let eCt = this.aE[ neodigmUtils.f02x( this.aE.length ) ]
-        if( eCt.dataset?.n55Theme !== "ghost" ){
+        if( eCt.dataset?.n55EnchantedCtaDontTouch != "true" ){
           let sRndFX = ["emit", "radius", "shake", "scroll", "flash", "alternate", "rainbow"][ neodigmUtils.f02x(7) ]
           if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.n55EnchantedCtaAmbient ) eCt.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbient
           eCt.dataset.n55EnchantedCtaAmbient = sRndFX
