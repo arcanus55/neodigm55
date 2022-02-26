@@ -454,6 +454,13 @@ class NeodigmEnchantedCTA {
       }
     return this;
     }
+    flashTheme ( sTheme ){
+      if( this.bIsInit && !this.bIsPause && sTheme ){
+        this.setTheme( sTheme )
+        setTimeout( function(){ neodigmEnchantedCTA.revertTheme() }, 2000)
+      }
+    return this;
+    }
     touch (){
       if( this.bIsInit && !this.bIsPause && (this.aE.length >= 1) ){
         let eCt = this.aE[ neodigmUtils.f02x( this.aE.length ) ]
