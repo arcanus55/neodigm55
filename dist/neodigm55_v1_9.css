@@ -225,7 +225,8 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
 [data-n55-enchanted-cta]{
     background: linear-gradient(var(--neodigm-theme-brand), var(--neodigm-theme-brand-alt));
     border-radius: 6px 22px;
-    border: solid 1px rgba(255, 255, 255, .4) ;
+    QQQQborder: solid 1px rgba(255, 255, 255, .4);
+    border: 0px;
     color: #fff; cursor: pointer;
     display: inline-block;
     font-family: 'Roboto',sans-serif; font-weight: 400;
