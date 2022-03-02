@@ -12,7 +12,9 @@ Simply copy the two lines of code and paste into the head of any HTML page that 
 <script src="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v1_7.min.js"></script>
 ```
 
-
+<p align="center">
+  <a target="_blank" href="https://github.com/arcanus55/neodigm55/wiki/cheat-sheet" title="Infographics, UX, PWA, Typescript, Svelte, ThreeJS, Vue, and WASM" alt="TypeScript ⚡ WASM ✨ Svelte">Cheat-sheet</a>
+</p>
 
 <p align="center">
   <a target="_blank" href="https://thescottkrause.com/emerging_tech/neodigm55_ux_library/">
