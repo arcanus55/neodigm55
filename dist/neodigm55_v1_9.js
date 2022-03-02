@@ -521,8 +521,7 @@ let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchant
 //  Neodigm 55 Vivid Begin  //
 //  Neodigm 55 CAPTCHA Begin //
 
-
-document.addEventListener("DOMContentLoaded", function(ev) {
+function doDOMContentLoaded(){
   const neodigmMU = `
 <neodigm-sodapop-scrim></neodigm-sodapop-scrim>
 <neodigm-sodapop-scrim-close>
@@ -548,6 +547,11 @@ document.addEventListener("DOMContentLoaded", function(ev) {
     if( neodigmOpt.neodigmMarquee ) neodigmMarquee.init()
     if( neodigmOpt.neodigmEnchantedCTA ) neodigmEnchantedCTA.init()
   }, 56)
+}
+
+
+document.addEventListener("DOMContentLoaded", function(ev) {
+  doDOMContentLoaded()
 });
 
 // ZzFX - Zuper Zmall Zound Zynth - Micro Edition
