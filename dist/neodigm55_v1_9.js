@@ -392,6 +392,13 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
 //  Neodigm 55 Claire Begin  //
 class NeodigmClaire {
     constructor( _d, _aQ ) {
+/*
+Create hidden canvas the size of
+      All target DOM elements, given the two farthest x/y coordinance
+Paint a generative / procedural dwitter on the hidden canvas
+Directionally paint each DOM el in turn, with it's slice of the hidden canvas
+Fire completed callback
+*/
         this._d = _d; this._aQ = _aQ
         this.bIsInit = false; this.bIsPause = false
         //  Cut Out Layer
@@ -507,7 +514,7 @@ let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchant
 //  Neodigm 55 Horizontal Accordion Begin //
 //  Neodigm 55 Card Deck Begin //
 //  Neodigm 55 Slot Begin //
-//  Neodigm 55 Quiz Challenge Begin //
+//  Neodigm 55 Quiz | Questionnaire Challenge Begin //
 //  Neodigm 55 Dynamic Infographic Begin //
 //  Neodigm 55 Voice Conversational Marketing //
 
