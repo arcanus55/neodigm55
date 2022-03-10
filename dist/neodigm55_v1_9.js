@@ -101,9 +101,9 @@ let neodigmToast = (function(_d, eID, _q) {
               }
           }
           _d.body.addEventListener("click", ( ev )=>{
-            if( ev?.target?.dataset?.n55Toast ){
-                neodigmToast.q( ev.target.dataset.n55Toast )
-            }
+            let evToast = ev?.target?.dataset.n55Toast || ev?.srcElement?.parentNode?.dataset.n55Toast
+            let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
+            if( evToast && (evTheme != "disabled") ) neodigmToast.q( evToast )
           }, true)
           bIsInit = true
       },
@@ -136,8 +136,9 @@ class NeodigmSodaPop {
         this.eScrim = this._d.querySelector(this._aQ[0])
         this.eClose = this._d.querySelector(this._aQ[0] + "-close")
         this._d.body.addEventListener("click", (ev) => {
-          let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId
-          if( evAtr ) {
+          let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId 
+          let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
+          if( evAtr && (evTheme != "disabled") ) {
               ev.preventDefault()
               neodigmSodaPop.open( evAtr )
           }
@@ -271,7 +272,8 @@ class NeodigmWired4Sound {
       this._d.querySelector( this._aQ[0] ).addEventListener(evName, ( ev )=>{
         let sAtr = "n55Wired4sound" + neodigmUtils.capFirst( evName )
         let evAtr = ev?.target?.dataset[ sAtr ] || ev?.srcElement?.parentNode?.dataset[ sAtr ]
-        if( evAtr ) neodigmWired4Sound.sound( evAtr )
+        let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
+        if( evAtr && (evTheme != "disabled") ) neodigmWired4Sound.sound( evAtr )
       }, false);
     })
     this.bIsInit = true
@@ -471,21 +473,23 @@ class NeodigmEnchantedCTA {
     touch (){
       if( this.bIsInit && !this.bIsPause && (this.aE.length >= 1) ){
         let eCt = this.aE[ neodigmUtils.f02x( this.aE.length ) ]
-        if( eCt.dataset?.n55EnchantedCtaDontTouch != "true" ){
-          let sRndFX = ["emit", "radius", "shake", "scroll", "flash", "alternate", "rainbow"][ neodigmUtils.f02x(7) ]
-          if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.n55EnchantedCtaAmbient ) eCt.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbient
-          eCt.dataset.n55EnchantedCtaAmbient = sRndFX
-          switch( sRndFX ){
-            case "alternate":
-              if( eCt.dataset.n55EnchantedCtaAlt ){
-                eCt["n55EnchantedCtaAlt"] = eCt.innerHTML
-                eCt.querySelectorAll("span")[0].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[0]
-                eCt.querySelectorAll("span")[1].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[1]
-              }
-              break;
+        if( eCt.dataset.n55Theme != "disabled" ){
+          if( eCt.dataset?.n55EnchantedCtaDontTouch != "true" ){
+            let sRndFX = ["emit", "radius", "shake", "scroll", "flash", "alternate", "rainbow"][ neodigmUtils.f02x(7) ]
+            if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.n55EnchantedCtaAmbient ) eCt.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbient
+            eCt.dataset.n55EnchantedCtaAmbient = sRndFX
+            switch( sRndFX ){
+              case "alternate":
+                if( eCt.dataset.n55EnchantedCtaAlt ){
+                  eCt["n55EnchantedCtaAlt"] = eCt.innerHTML
+                  eCt.querySelectorAll("span")[0].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[0]
+                  eCt.querySelectorAll("span")[1].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[1]
+                }
+                break;
+            }
+            if( neodigmOpt.N55_DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] )
+            setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCt ) }, 8000)
           }
-          if( neodigmOpt.N55_DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] )
-          setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCt ) }, 8000)
         }
       }
     return this;
