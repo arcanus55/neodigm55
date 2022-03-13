@@ -16,7 +16,7 @@ let neodigmOpt = {
     N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
     N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
   neodigmWired4Sound: true,
-    W4S_VOLUME: .068,
+    W4S_VOLUME: .060,
     EVENT_SOUNDS: true,
   neodigmParallax: true,
     PRLX_MOBILE: false,  //  Show Parallax on Mobile
@@ -507,6 +507,7 @@ let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchant
 // v1.9.0 - Refactor Toast and Metronome
 //  Neodigm 55 Confetti Begin  //
 //  Neodigm 55 Cypher Type FX Begin  //
+//  Neodigm 55 ToolTip Marquee Begin  //
 
 // v2.0.0
 //  Neodigm 55 KPI Card Begin //
@@ -517,14 +518,13 @@ let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchant
 // Claire
 //  Neodigm 55 Horizontal Accordion Begin //
 //  Neodigm 55 Card Deck Begin //
-//  Neodigm 55 Slot Begin //
+//  Neodigm 55 Memory Slots Begin //
 //  Neodigm 55 Quiz | Questionnaire Challenge Begin //
 //  Neodigm 55 Dynamic Infographic Begin //
 //  Neodigm 55 Voice Conversational Marketing //
 
 // Parking lot
 //  Neodigm 55 A11Y skip Begin  //
-//  Neodigm 55 ToolTip Begin  //
 //  Neodigm 55 Dice Begin  //
 //  Neodigm 55 Popover Begin  //
 //  Neodigm 55 PWA Begin  //
