@@ -227,7 +227,7 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
     background: linear-gradient(var(--neodigm-theme-brand), var(--neodigm-theme-brand-alt));
     border-radius: 6px 22px;
     border: 0px;
-    color: #fff; cursor: pointer;
+    color: #fff; cursor: arrow; 
     display: inline-block;
     font-family: 'Roboto',sans-serif; font-weight: 400;
     overflow: hidden;
@@ -237,6 +237,7 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
     user-select: none;
     margin: 4px 8px; 
 }
+[data-n55-enchanted-cta]:not([data-n55-theme="disabled"]) { cursor: pointer; }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='emit']:not([data-n55-theme="disabled"]){ 
     animation: touch_emit 2s forwards infinite ease;
 }
