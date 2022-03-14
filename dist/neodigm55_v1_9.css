@@ -258,11 +258,11 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
 [data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='alternate']:not([data-n55-theme="disabled"]) span:nth-of-type(2){
     animation: touch_alternate_2 4s forwards infinite ease;
 }
-[data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='flash']:not([data-n55-theme="disabled"]){
-    animation: touch_flash 4s forwards infinite ease;
+[data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='flash_danger']:not([data-n55-theme="disabled"]){
+    animation: touch_flash_danger 4s forwards infinite ease;
 }
-[data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='rainbow']:not([data-n55-theme="disabled"]){
-    animation: touch_rainbow 4s forwards infinite ease;
+[data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='flash_warning']:not([data-n55-theme="disabled"]){
+    animation: touch_flash_warning 4s forwards infinite ease;
 }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']{
     font-size: 18px; line-height: 1.4;
@@ -357,22 +357,19 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
     100%{ transform: translateY(0px); }
 }
 
-@keyframes touch_flash{
-    0%{ background:   var(--neodigm-theme-danger-alt); }
-    20%{ background:  var(--neodigm-theme-danger); }
-    40%{ background:  var(--neodigm-theme-danger-alt); }
-    60%{ background:  var(--neodigm-theme-danger); }
-    80%{ background:  var(--neodigm-theme-danger-alt); }
-    100%{ background: var(--neodigm-theme-danger); }
+@keyframes touch_flash_danger{
+    20%{ background:  var(--neodigm-theme-danger-alt); }
+    40%{ background:  var(--neodigm-theme-danger); }
+    60%{ background:  var(--neodigm-theme-danger-alt); }
+    80%{ background:  var(--neodigm-theme-danger); }
+    100%{ background: var(--neodigm-theme-danger-alt); }
 }
 
-@keyframes touch_rainbow{
-    15%{ background:  var(--neodigm-theme-warning-alt); }
-    30%{ background:  var(--neodigm-theme-warning); }
-    45%{ background:  var(--neodigm-theme-warning-alt); }
-    60%{ background:  var(--neodigm-theme-warning); }
-    75%{ background:  var(--neodigm-theme-warning-alt); }
-    90%{ background:  var(--neodigm-theme-warning); }
+@keyframes touch_flash_warning{
+    20%{ background:  var(--neodigm-theme-warning-alt); }
+    40%{ background:  var(--neodigm-theme-warning); }
+    60%{ background:  var(--neodigm-theme-warning-alt); }
+    80%{ background:  var(--neodigm-theme-warning); }
     100%{ background: var(--neodigm-theme-warning-alt); }
 }
 /*  Neodigm Enchanted CTA End  */

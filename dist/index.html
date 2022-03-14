@@ -6,7 +6,7 @@
 
 <link rel="stylesheet" href="neodigm55_v1_9.css">
 <script>
-let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:true, N55_RND_CTA_TOUCH: 4000 }
+let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:true, N55_CTA_RND_TOUCH: 4000 }
 </script>
 <script src="neodigm55_v1_9.js"></script>
 </head>
@@ -184,12 +184,17 @@ data-n55-marquee-size="medium">
 
     <div style="width: 610px; height: 120vh; background-color: #edba08;">
         <h1>scroll test</h1>
-        <section class="l-tmp-grd">
-            <output>QQQ</output>
-            <output>QQQ</output>
-            <output>QQQ</output>
-            <output>QQQ</output>
-            <output>QQQ</output>
+        <section class="l-tmp-grd"
+        data-n55-claire="true"
+        data-n55-theme="brand"
+        data-n55-claire-ambient=""
+        >
+            <div>QQQ</div>
+            <div
+            data-n55-claire-dont-touch="">QQQ</div>
+            <div>QQQ</div>
+            <div>QQQ</div>
+            <div>QQQ</div>
         </section>
         <style>
             .l-tmp-grd {

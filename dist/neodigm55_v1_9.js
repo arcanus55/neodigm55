@@ -15,6 +15,7 @@ let neodigmOpt = {
   neodigmSodaPop: true,
     N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
     N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
+  neodigmClare: false,  //  Off for now, later cannot be turned off
   neodigmWired4Sound: true,
     W4S_VOLUME: .060,
     EVENT_SOUNDS: true,
@@ -22,8 +23,9 @@ let neodigmOpt = {
     PRLX_MOBILE: false,  //  Show Parallax on Mobile
   neodigmMarquee: true,
   neodigmEnchantedCTA: true,
-    N55_RND_CTA_TOUCH: 14001,  //  Touch random CTA button every Xms
+    N55_CTA_RND_TOUCH: 14001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
+    N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ],
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
   N55_THEME_COLORS: {"brand":["",""], "primary":["",""]}
@@ -429,8 +431,8 @@ class NeodigmEnchantedCTA {
         let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset) 
         if( bCta && window.dataLayer && neodigmOpt.N55_GTM_DL_CTA ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_CTA, "id": sId } )
       }, false)
-      if( neodigmOpt.N55_RND_CTA_TOUCH ){
-        neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_RND_CTA_TOUCH )
+      if( neodigmOpt.N55_CTA_RND_TOUCH ){
+        neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_CTA_RND_TOUCH )
       }
       if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.aE )
       this.bIsInit = true
@@ -475,7 +477,7 @@ class NeodigmEnchantedCTA {
         let eCt = this.aE[ neodigmUtils.f02x( this.aE.length ) ]
         if( eCt.dataset.n55Theme != "disabled" ){
           if( eCt.dataset?.n55EnchantedCtaDontTouch != "true" ){
-            let sRndFX = ["emit", "radius", "shake", "scroll", "flash", "alternate", "rainbow"][ neodigmUtils.f02x(7) ]
+            let sRndFX = neodigmOpt.N55_CTA_FX[ neodigmUtils.f02x(7) ]
             if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.n55EnchantedCtaAmbient ) eCt.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbient
             eCt.dataset.n55EnchantedCtaAmbient = sRndFX
             switch( sRndFX ){
@@ -550,7 +552,7 @@ function doDOMContentLoaded(){
   document.body.appendChild(eMU);
   setTimeout( ()=>{
     neodigmMetronome.init()
-    neodigmClaire.init()
+    if( neodigmOpt.neodigmClaire ) neodigmClaire.init()  //  Note this will be always-on (like metronome)
     if( neodigmOpt.CONSOLE_LOG_VER ) console.log("%c Neodigm 55 the eclectic JavaScript UX micro-library ✨ v" + neodigmUtils.ver, "background: #000; color: #F5DF4D; font-size: 20px");
     if( neodigmOpt.neodigmToast ) neodigmToast.init()
     if( neodigmOpt.neodigmSodaPop ) neodigmSodaPop.init()
@@ -560,7 +562,6 @@ function doDOMContentLoaded(){
     if( neodigmOpt.neodigmEnchantedCTA ) neodigmEnchantedCTA.init()
   }, 56)
 }
-
 
 document.addEventListener("DOMContentLoaded", function(ev) {
   doDOMContentLoaded()
