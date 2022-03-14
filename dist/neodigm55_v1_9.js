@@ -505,9 +505,10 @@ class NeodigmEnchantedCTA {
 let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchanted-cta]"] )
 
 // v1.9.0 - Refactor Toast and Metronome
-//  Neodigm 55 Confetti Begin  //
+//  Neodigm 55 Confetti Begin (Claire) //
 //  Neodigm 55 Cypher Type FX Begin  //
 //  Neodigm 55 ToolTip Marquee Begin  //
+//  Neodigm 55 FAB //
 
 // v2.0.0
 //  Neodigm 55 KPI Card Begin //
