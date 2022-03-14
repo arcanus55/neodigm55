@@ -264,6 +264,14 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
 [data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='flash_warning']:not([data-n55-theme="disabled"]){
     animation: touch_flash_warning 4s forwards infinite ease;
 }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='xsmall']{
+    font-size: 14px; line-height: 1.3;
+    padding: 10px 12px; min-width: 84px;
+    border-radius: 6px 16px;
+}
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='xsmall']:hover span:nth-of-type(2){
+	transform: translateY(8px);
+}
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']{
     font-size: 18px; line-height: 1.4;
     padding: 12px 20px; min-width: 104px;
@@ -275,6 +283,14 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='large']{
     font-size: 22px; line-height: 1.4;
     padding: 20px 28px; min-width: 216px;
+}
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='xlarge']{
+    font-size: 24px; line-height: 1.5;
+    padding: 22px 32px; min-width: 248px;
+    border-radius: 6px 26px;
+}
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='xlarge']:hover span:nth-of-type(2){
+	transform: translateY(12px);
 }
 [data-n55-enchanted-cta] span:nth-of-type(1){
 	display: block;
