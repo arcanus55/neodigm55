@@ -411,6 +411,23 @@ Fire completed callback
         this.bIsInit = true
         return this
     }
+    setCanv ( sQ ){
+      if( this.bIsInit && !this.bIsPause ){
+        let canvCntr = this._d.querySelector( sQ )
+        let aElCanv = [ ... canvCntr.querySelectorAll( ":scope > *" )]
+        if( canvCntr ){
+console.log( "canvCntr | ", canvCntr)
+console.log( "aElCanv | ", aElCanv)
+          aElCanv.forEach(function( el ){
+            let cnv = document.createElement( "canvas" )
+            cnv.style.width = el.clientWidth
+            cnv.style.height = el.clientHeight
+            el.appendChild( cnv )
+          })
+        }
+      }
+      return this
+    }
     pause (){ this.bIsPause = true; return this; }
     play (){ this.bIsPause = false; return this; }
     setTheme (){ if( this.bIsInit ){ return this; } }
