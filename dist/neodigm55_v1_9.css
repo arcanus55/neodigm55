@@ -184,7 +184,11 @@ neodigm-marquee {
     background-color: #282828;
         height: 38px;
 }
-[data-n55-enchanted-cta] neodigm-marquee { background-color: rgba(0,0,0,0) }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='xsmall'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 80px; }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']  neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 94px; }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='medium'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 176px; }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='large']  neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 196px; }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='xlarge'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 226px; }
 
 neodigm-marquee pre {
     color: var(--neodigm-theme-brand);
