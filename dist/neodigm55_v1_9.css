@@ -279,10 +279,10 @@ background-color: rgba( 96, 88, 44, .3);
     animation: touch_alternate_2 4s forwards infinite ease;
 }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='flash_danger']:not([data-n55-theme="disabled"]){
-    animation: touch_flash_danger 4s forwards infinite ease;
+    animation: touch_flash_danger 2s forwards infinite ease;
 }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='flash_warning']:not([data-n55-theme="disabled"]){
-    animation: touch_flash_warning 4s forwards infinite ease;
+    animation: touch_flash_warning 2s forwards infinite ease;
 }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='xsmall']{
     font-size: 14px; line-height: 1.3;
@@ -395,17 +395,25 @@ background-color: rgba( 96, 88, 44, .3);
 }
 
 @keyframes touch_flash_danger{
-    20%{ background:  var(--neodigm-theme-danger-alt); }
+    10%{ background:  var(--neodigm-theme-danger-alt); }
+    20%{ background:  var(--neodigm-theme-danger); }
+    30%{ background:  var(--neodigm-theme-danger-alt); }
     40%{ background:  var(--neodigm-theme-danger); }
-    60%{ background:  var(--neodigm-theme-danger-alt); }
+    50%{ background:  var(--neodigm-theme-danger-alt); }
+    60%{ background:  var(--neodigm-theme-danger); }
+    70%{ background:  var(--neodigm-theme-danger-alt); }
     80%{ background:  var(--neodigm-theme-danger); }
     100%{ background: var(--neodigm-theme-danger-alt); }
 }
 
 @keyframes touch_flash_warning{
-    20%{ background:  var(--neodigm-theme-warning-alt); }
+    10%{ background:  var(--neodigm-theme-warning-alt); }
+    20%{ background:  var(--neodigm-theme-warning); }
+    30%{ background:  var(--neodigm-theme-warning-alt); }
     40%{ background:  var(--neodigm-theme-warning); }
-    60%{ background:  var(--neodigm-theme-warning-alt); }
+    50%{ background:  var(--neodigm-theme-warning-alt); }
+    60%{ background:  var(--neodigm-theme-warning); }
+    70%{ background:  var(--neodigm-theme-warning-alt); }
     80%{ background:  var(--neodigm-theme-warning); }
     100%{ background: var(--neodigm-theme-warning-alt); }
 }

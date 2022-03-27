@@ -12,6 +12,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 let neodigmOpt_pwa = {
   ver: "2.0.0",
   neodigmPWA: true,
+    N55_GTM_DL_PWA_REGISTERED: "n55_gtm_dl_pwa_registered",
     N55_GTM_DL_PWA_INSTALLED: "n55_gtm_dl_pwa_installed"
 }
 
@@ -29,7 +30,7 @@ class NeodigmPWA {
       this.bIsInit = false
   }
   init () {
-    
+
     this.bIsInit = true
     return this
   }
