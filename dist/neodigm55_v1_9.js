@@ -365,8 +365,10 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
         aMarqs = [ ... _d.querySelectorAll( _aQ[0] )]
         aMarqs.forEach( ( eMc )=>{
             eMc.eMp = eMc.querySelector("pre")
-            eMc.addEventListener("mouseover", neodigmMarquee.toggleDir )
-            eMc.addEventListener("mouseout", neodigmMarquee.toggleDir )
+            if( eMc.dataset.n55MarqueeDirection !== "false"){
+              eMc.addEventListener("mouseover", neodigmMarquee.toggleDir )
+              eMc.addEventListener("mouseout", neodigmMarquee.toggleDir )              
+            }
             eMc.addEventListener("mousedown", neodigmMarquee.pause )
             eMc.addEventListener("mouseup", neodigmMarquee.play )
         })
