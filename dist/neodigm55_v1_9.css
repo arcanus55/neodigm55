@@ -28,7 +28,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 	box-shadow: inset var(--neodigm-theme-brand) 0 0 6px 2px;
 	border: solid 1px #d3cdb4;
 	left: 38%;
-	width: 20%; min-width: 188px;
+	min-width: 20%;
 	padding: 0;
 	position: fixed;
 	transition: bottom .6s ease-in-out;
