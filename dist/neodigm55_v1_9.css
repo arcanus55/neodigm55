@@ -159,7 +159,8 @@ neodigm-sodapop:not(.ndsp__modal)::after {
 /*  Neodigm Soda Pop End  */
 
 /*  Neodigm Parallax Begin  */
-neodigm-parallax[data-n55-parallax-mobile='false'] { display: none; }
+neodigm-parallax[data-n55-parallax-mobile='false'],
+neodigm-parallax[data-n55-parallax-mobile='false'] * { display: none; }
 
 neodigm-parallax[data-n55-parallax] aside {
     position: relative; overflow: hidden;
