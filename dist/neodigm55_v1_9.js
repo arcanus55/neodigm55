@@ -402,7 +402,7 @@ class NeodigmClaire {
 Create hidden canvas the size of
       All target DOM elements, given the two farthest x/y coordinance
 Paint a generative / procedural dwitter on the hidden canvas
-Directionally paint each DOM el in turn, with it's slice of the hidden canvas
+Directionally paint each DOM el in turn, with it's slice of the hidden canvas.
 Fire completed callback
 */
         this._d = _d; this._aQ = _aQ
