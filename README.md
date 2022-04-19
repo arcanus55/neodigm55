@@ -8,8 +8,8 @@ Neodigm 55 is low-code, performant, accessible, and open source. Because it’s 
 Simply copy the two lines of code and paste into the head of any HTML page that you want to make enchanted.
 
 ```
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v1_7.min.css">
-<script src="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v1_7.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v1_9.min.css">
+<script src="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v1_9.min.js"></script>
 ```
 
 <p align="center">
@@ -34,7 +34,6 @@ https://user-images.githubusercontent.com/41128567/144532034-16ab92e5-33ae-4465-
   </a>
 </p>
 
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://github.com/arcanus55/neodigm55)
 <p align="center">
   <a target="_blank" href="https://thescottkrause.com/emerging_tech/neodigm55_ux_library/">
     <img src="https://github.com/arcanus55/neodigm55/blob/gh-pages/qrcode_thescottkrause.com.png?raw=true" title="TypeScript ⚡ WASM ✨ Svelte">
