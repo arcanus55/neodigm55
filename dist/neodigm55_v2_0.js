@@ -15,7 +15,6 @@ let neodigmOpt = {
   neodigmSodaPop: true,
     N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
     N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
-  neodigmClare: false,  //  Off for now, later cannot be turned off
   neodigmWired4Sound: true,
     W4S_VOLUME: .060,
     EVENT_SOUNDS: true,
@@ -28,6 +27,7 @@ let neodigmOpt = {
     N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ],
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
+  N55_GENRE_MOTIF: "",  //  steampunk cyberpunk artdeco noir anime
   N55_THEME_COLORS: {"brand":["",""], "primary":["",""]}
 }
 
@@ -397,7 +397,6 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
 
 //  Neodigm 55 Claire Begin  //
 class NeodigmClaire {
-    constructor( _d, _aQ ) {
 /*
 Create hidden canvas the size of
       All target DOM elements, given the two farthest x/y coordinance
@@ -405,6 +404,7 @@ Paint a generative / procedural dwitter on the hidden canvas
 Directionally paint each DOM el in turn, with it's slice of the hidden canvas.
 Fire completed callback
 */
+    constructor( _d, _aQ ) {
         this._d = _d; this._aQ = _aQ
         this.bIsInit = false; this.bIsPause = false
         //  Cut Out Layer
@@ -413,20 +413,28 @@ Fire completed callback
         this.bIsInit = true
         return this
     }
-    setCanv ( sQ ){
+    showCanv ( sQ ){
       if( this.bIsInit && !this.bIsPause ){
-        let canvCntr = this._d.querySelector( sQ )
+        let canvCntr = this._d.querySelector( sQ )  //  One Single
         let aElCanv = [ ... canvCntr.querySelectorAll( ":scope > *" )]
-        if( canvCntr ){
-console.log( "canvCntr | ", canvCntr)
-console.log( "aElCanv | ", aElCanv)
-          aElCanv.forEach(function( el ){
-            let cnv = document.createElement( "canvas" )
-            cnv.style.width = el.clientWidth
-            cnv.style.height = el.clientHeight
-            el.appendChild( cnv )
-          })
+        if( canvCntr && aElCanv ){
+          canvCntr.dataset.n55Claire = "true"
+          if( !canvCntr.aElCanv ){  //  Once
+            canvCntr.aElCanv = aElCanv
+            aElCanv.forEach(function( el ){
+              let cnv = document.createElement( "canvas" )
+              cnv.style.width = el.clientWidth; cnv.style.height = el.clientHeight;
+              el.appendChild( cnv )
+            })            
+          }
         }
+      }
+      return this
+    }
+    hideCanv ( sQ ){
+      if( this.bIsInit && !this.bIsPause ){
+        let canvCntr = this._d.querySelector( sQ )  //  One Single
+        if( canvCntr && canvCntr.aElCanv ) canvCntr.dataset.n55Claire = "false"
       }
       return this
     }
@@ -570,8 +578,8 @@ function doDOMContentLoaded(){
   eMU.innerHTML = neodigmMU;
   document.body.appendChild(eMU);
   setTimeout( ()=>{
-    neodigmMetronome.init()
-    if( neodigmOpt.neodigmClaire ) neodigmClaire.init()  //  Note this will be always-on (like metronome)
+    neodigmMetronome.init()  //  Always-on
+    neodigmClaire.init()
     if( neodigmOpt.CONSOLE_LOG_VER ) console.log("%c Neodigm 55 the eclectic JavaScript UX micro-library ✨ v" + neodigmUtils.ver, "background: #000; color: #F5DF4D; font-size: 20px");
     if( neodigmOpt.neodigmToast ) neodigmToast.init()
     if( neodigmOpt.neodigmSodaPop ) neodigmSodaPop.init()

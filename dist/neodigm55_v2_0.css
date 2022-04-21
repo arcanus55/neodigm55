@@ -235,11 +235,12 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
 
 /*  Neodigm Claire Begin  */
 [data-n55-claire="true"] > * > canvas {
-background-color: rgba( 96, 88, 44, .3);
+background-color: rgba( 96, 88, 44, .4);
     position: absolute;
     top: 1px; left: 1px;
     z-index: 32;
 }
+[data-n55-claire="false"] > * > canvas { display: none }
 /*  Neodigm Claire End  */
 
 /*  Neodigm Enchanted CTA Begin  */
