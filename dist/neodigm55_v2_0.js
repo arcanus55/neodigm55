@@ -420,12 +420,13 @@ Fire completed callback
         if( canvCntr && aElCanv ){
           canvCntr.dataset.n55Claire = "true"
           if( !canvCntr.aElCanv ){  //  Once
-            canvCntr.aElCanv = aElCanv
+            canvCntr.aElCanv = []
             aElCanv.forEach(function( el ){
               let cnv = document.createElement( "canvas" )
               cnv.style.width = el.clientWidth; cnv.style.height = el.clientHeight;
               el.appendChild( cnv )
-            })            
+              canvCntr.aElCanv.push( cnv )
+          })
           }
         }
       }
