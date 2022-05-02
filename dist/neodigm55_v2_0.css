@@ -235,7 +235,7 @@ neodigm-marquee[data-n55-marquee-size='large'] * {
 
 /*  Neodigm Claire Begin  */
 [data-n55-claire="true"] > * > canvas {
-background-color: rgba( 96, 88, 44, .4);
+background-color: rgba( 96, 88, 44, 0);
     position: absolute;
     top: 1px; left: 1px;
     z-index: 32;

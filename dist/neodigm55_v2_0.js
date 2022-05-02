@@ -27,8 +27,10 @@ let neodigmOpt = {
     N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ],
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
-  N55_GENRE_MOTIF: "",  //  steampunk cyberpunk artdeco noir anime
-  N55_THEME_COLORS: {"brand":["",""], "primary":["",""]}
+  N55_GENRE_MOTIF: "neodigm",  //  steampunk cyberpunk artdeco noir anime casino
+  N55_THEME_DEFAULT: "brand",
+  N55_THEME_COLORS: {"brand":["edba08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"],
+   "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"]}
 }
 
 if( typeof neodigmOptCustom != 'undefined' ){
@@ -55,7 +57,7 @@ const neodigmUtils = ( ( _d ) =>{
     data2prop: function( sDset ){  //  Convert HTML data attrib name to JS dataset name
       sDset = sDset.replace("data-", "").toLowerCase();
       let aDset = sDset.split(""), aDret = [], bUpper = false;
-      aDset.forEach( (sVal, nIx) => {
+      aDset.forEach( (sVal ) => {
           if( sVal == "-" ){
               bUpper = true;
           }else{
@@ -131,13 +133,13 @@ let neodigmToast = (function(_d, eID, _q) {
 class NeodigmSodaPop {
     constructor(_d, _aQ) {  //  Flux Capacitor
         this._d = _d; this._aQ = _aQ
-        this.eSoda = this.eScrim = this.eClose = this.fOnBeforeOpen = this.fOnAfterOpen = this.fOnClose = null
+        this.eSoda = this.eScrim = this.eClose = this.fOnBeforeOpen = this.fOnAfterOpen = this.fOnClose = this.fOnBeforeUserExit = null
         this.bIsOpen = this.bIsModal = this.bIsInit = false
     }
     init() {
         this.eScrim = this._d.querySelector(this._aQ[0])
         this.eClose = this._d.querySelector(this._aQ[0] + "-close")
-        this._d.body.addEventListener("click", (ev) => {
+        this._d.body.addEventListener("click", (ev) => {  //  TODO "rapid mouse move up event, as if to close" event
           let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId 
           let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
           if( evAtr && (evTheme != "disabled") ) {
@@ -145,16 +147,13 @@ class NeodigmSodaPop {
               neodigmSodaPop.open( evAtr )
           }
           if("NEODIGM-SODAPOP-SCRIM" == ev.target.tagName) {
-              if(this.bIsModal) {
-                  this.shake()
-              } else {
-                  this.close()
-              }
+              if(this.bIsModal) { this.shake() } else { this.close() }
           }
-          if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) {
-              this.close()
-          }
+          if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) { this.close() }
         }, false)
+        this._d.body.addEventListener("mouseleave", (ev) => {
+          if( this.fOnBeforeUserExit ) this.fOnBeforeUserExit()
+        })
         this.bIsInit = true
         return this
     }
@@ -190,7 +189,7 @@ class NeodigmSodaPop {
       }
       return neodigmSodaPop
     }
-    close(_bFast) {
+    close( _bFast) {
         if(this.bIsInit && this.bIsOpen) {
             this.eClose.dataset.n55SodapopScrim = "closed"
             if(_bFast) {
@@ -221,7 +220,7 @@ class NeodigmSodaPop {
             setTimeout(function(){
                 neodigmSodaPop.eSoda.classList.remove("ndsp__opened--shake1");
             }, 460)
-            if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound(9)
+            if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 9 )
             if("vibrate" in navigator) window.navigator.vibrate([48, 32, 8])
         }
         return this
@@ -232,18 +231,11 @@ class NeodigmSodaPop {
         }, 256);
         return this
     }
-    isOpen() {
-        return this.bIsOpen
-    }
-    setOnBeforeOpen(_f) {
-        this.fOnBeforeOpen = _f
-    }
-    setOnAfterOpen(_f) {
-        this.fOnAfterOpen = _f
-    }
-    setOnClose(_f) {
-        this.fOnClose = _f
-    }
+    isOpen() { return this.bIsOpen }
+    setOnBeforeOpen(_f) { this.fOnBeforeOpen = _f }
+    setOnAfterOpen(_f) { this.fOnAfterOpen = _f }
+    setOnClose(_f) { this.fOnClose = _f }
+    setOnBeforeUserExit(_f) { this.fOnBeforeUserExit = _f }
 }
 let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-n55-sodapop-modal"] )
 
@@ -297,10 +289,7 @@ class NeodigmWired4Sound {
     }
     return this
   }
-  setVolume ( nVol ) {
-    if( zzfxV ) zzfxV = nVol
-    return this
-  }
+  setVolume ( nVol ) { if( zzfxV ) zzfxV = nVol; return this }
 }
 let neodigmWired4Sound = new NeodigmWired4Sound( document, ["body"])
 
@@ -399,21 +388,25 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
 class NeodigmClaire {
 /*
 Create hidden canvas the size of
-      All target DOM elements, given the two farthest x/y coordinance
+      All target DOM child elements, given the two farthest x/y coordinance
 Paint a generative / procedural dwitter on the hidden canvas
 Directionally paint each DOM el in turn, with it's slice of the hidden canvas.
-Fire completed callback
+Fire completed callback  //  Cut Out Layer
 */
     constructor( _d, _aQ ) {
         this._d = _d; this._aQ = _aQ
-        this.bIsInit = false; this.bIsPause = false
-        //  Cut Out Layer
+        this
+        this.particleArray = []
     }
-    init () {
+    static _d = document; static bIsInit = false; static bIsPause = false;
+    static _theme = neodigmOpt.N55_THEME_DEFAULT;  //  brand
+    static get theme (){ return this._theme; }
+
+    static init (){
         this.bIsInit = true
         return this
     }
-    showCanv ( sQ ){
+    static showCanv ( sQ ){
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
         let aElCanv = [ ... canvCntr.querySelectorAll( ":scope > *" )]
@@ -423,27 +416,77 @@ Fire completed callback
             canvCntr.aElCanv = []
             aElCanv.forEach(function( el ){
               let cnv = document.createElement( "canvas" )
-              cnv.style.width = el.clientWidth; cnv.style.height = el.clientHeight;
+              cnv.setAttribute("height", el.clientHeight)
+              cnv.setAttribute("width",  el.clientWidth)
+              cnv.style.height = el.clientHeight; cnv.style.width = el.clientWidth; 
               el.appendChild( cnv )
-              canvCntr.aElCanv.push( cnv )
+              canvCntr.aElCanv.push( [cnv, cnv.getContext("2d"), el.clientHeight, el.clientWidth] )
           })
           }
         }
       }
       return this
     }
-    hideCanv ( sQ ){
+    static hideCanv ( sQ ){
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
         if( canvCntr && canvCntr.aElCanv ) canvCntr.dataset.n55Claire = "false"
       }
       return this
     }
-    pause (){ this.bIsPause = true; return this; }
-    play (){ this.bIsPause = false; return this; }
-    setTheme (){ if( this.bIsInit ){ return this; } }
+    static initCanv ( sQ ){
+      if( this.bIsInit && !this.bIsPause ){
+        let canvCntr = this._d.querySelector( sQ )  //  One Single
+        if( canvCntr && canvCntr?.aElCanv ){
+          canvCntr.aElCanv.forEach(function( aCnv ){
+            let ctx = aCnv[1]
+            ctx.fillStyle = "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][0]
+            ctx.fillRect(0, 0, aCnv[3], aCnv[2])
+          })
+        }
+      }
+      return this;
+    }
+    static waxOn( sQ ){
+      if( this.bIsInit && !this.bIsPause ){
+        let canvCntr = this._d.querySelector( sQ )  //  One Single
+        if( canvCntr ){/*
+          let ctx = canvCntr.aElCanv[0][1] 
+          ctx.height = canvCntr.aElCanv[0][2]
+          ctx.width  = canvCntr.aElCanv[0][3]
+ctx.lineWidth = 10;
+
+ctx.fillStyle = "rgba(100,0,0,.5)"
+ctx.beginPath();
+ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+ctx.stroke();
+ctx.fill();
+
+ctx.fillStyle = "rgba(0,0,0,0)"
+ctx.beginPath();
+ctx.arc(120, 95, 40, 0, 2 * Math.PI);
+ctx.stroke();
+ctx.fill();
+
+ctx.save();
+ctx.globalCompositeOperation = 'destination-out';
+ctx.beginPath();
+ctx.arc(120, 95, 40, 0, 2 * Math.PI, false);
+ctx.stroke();
+ctx.fill();
+ctx.restore();*/
+        }
+      }
+      return this
+    }
+    static waxOff(){
+      return this
+    }
+    static pause (){ this.bIsPause = true; return this; }
+    static play (){ this.bIsPause = false; return this; }
+    static setTheme ( sTheme = "brand" ){ this._theme = sTheme; return this; }
 }
-let neodigmClaire = new NeodigmClaire( document, ["neodigm-claire"] )
+//  let neodigmClaire = new NeodigmClaire( document, ["neodigm-claire"] )
 
 //  Neodigm 55 Enchanted CTA Begin
 class NeodigmEnchantedCTA {
@@ -452,7 +495,7 @@ class NeodigmEnchantedCTA {
         this.bIsInit = false; this.bIsPause = false
         this.aE = []
     }
-    init () {
+    init (){
       this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
       if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once
         let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
@@ -534,15 +577,13 @@ class NeodigmEnchantedCTA {
 }
 let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchanted-cta]"] )
 
-// v1.9.0 - Refactor Toast and Metronome
+// v1.9.0 - Refactor Toast and Metronome STATIC
 //  Neodigm 55 Confetti Begin (Claire) //
 //  Neodigm 55 Cypher Type FX Begin  //
-//  Neodigm 55 ToolTip Marquee Begin  //
-//  Neodigm 55 FAB //
+//  Neodigm 55 FAB Begin //
 
 // v2.0.0
 //  Neodigm 55 KPI Card Begin //
-
 //  Neodigm 55 Tradecraft Redact Begin  //
 //  Neodigm 55 VT100 Begin //
 
@@ -558,7 +599,8 @@ let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchant
 //  Neodigm 55 A11Y skip Begin  //
 //  Neodigm 55 Dice Begin  //
 //  Neodigm 55 Popover Begin  //
-//  Neodigm 55 PWA Begin  //
+//  Neodigm 55 ToolTip Marquee Begin  //
+//  Neodigm 55 PWA Plugin Begin  //
 //  Neodigm 55 Virtual Keyboard Begin  //
 //  Neodigm 55 Vivid Begin  //
 //  Neodigm 55 CAPTCHA Begin //
@@ -580,7 +622,7 @@ function doDOMContentLoaded(){
   document.body.appendChild(eMU);
   setTimeout( ()=>{
     neodigmMetronome.init()  //  Always-on
-    neodigmClaire.init()
+    NeodigmClaire.init()
     if( neodigmOpt.CONSOLE_LOG_VER ) console.log("%c Neodigm 55 the eclectic JavaScript UX micro-library ✨ v" + neodigmUtils.ver, "background: #000; color: #F5DF4D; font-size: 20px");
     if( neodigmOpt.neodigmToast ) neodigmToast.init()
     if( neodigmOpt.neodigmSodaPop ) neodigmSodaPop.init()
@@ -591,9 +633,7 @@ function doDOMContentLoaded(){
   }, 56)
 }
 
-document.addEventListener("DOMContentLoaded", function(ev) {
-  doDOMContentLoaded()
-});
+document.addEventListener("DOMContentLoaded", function() { doDOMContentLoaded() });
 
 // ZzFX - Zuper Zmall Zound Zynth - Micro Edition
 // MIT License - Copyright 2019 Frank Force
