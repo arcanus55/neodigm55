@@ -139,7 +139,7 @@ class NeodigmSodaPop {
     init() {
         this.eScrim = this._d.querySelector(this._aQ[0])
         this.eClose = this._d.querySelector(this._aQ[0] + "-close")
-        this._d.body.addEventListener("click", (ev) => {  //  TODO "rapid mouse move up event, as if to close" event
+        this._d.body.addEventListener("click", (ev) => {
           let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId 
           let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
           if( evAtr && (evTheme != "disabled") ) {
@@ -152,7 +152,7 @@ class NeodigmSodaPop {
           if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) { this.close() }
         }, false)
         this._d.body.addEventListener("mouseleave", (ev) => {
-          if( this.fOnBeforeUserExit ) this.fOnBeforeUserExit()
+          if( this.fOnBeforeUserExit ) this.fOnBeforeUserExit()  //  TODO Once an hour max
         })
         this.bIsInit = true
         return this
@@ -235,7 +235,7 @@ class NeodigmSodaPop {
     setOnBeforeOpen(_f) { this.fOnBeforeOpen = _f }
     setOnAfterOpen(_f) { this.fOnAfterOpen = _f }
     setOnClose(_f) { this.fOnClose = _f }
-    setOnBeforeUserExit(_f) { this.fOnBeforeUserExit = _f }
+    setOnBeforeUserExit(_f) { if( this.bIsInit ) this.fOnBeforeUserExit = _f }
 }
 let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-n55-sodapop-modal"] )
 
