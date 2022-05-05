@@ -152,9 +152,8 @@ class NeodigmSodaPop {
           if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) { this.close() }
         }, false)
         this._d.body.addEventListener("mouseleave", (ev) => {
-          let tsOnce = sessionStorage.getItem( "n55_beforeUserExit" )
-          if( this.fOnBeforeUserExit && !tsOnce ) this.fOnBeforeUserExit()
-          sessionStorage.setItem( "n55_beforeUserExit", Date.now() )
+          if( this.fOnBeforeUserExit && !sessionStorage.getItem( "n55_userExit" ) ) this.fOnBeforeUserExit()
+          sessionStorage.setItem( "n55_userExit", Date.now() )
         })
         this.bIsInit = true
         return this
