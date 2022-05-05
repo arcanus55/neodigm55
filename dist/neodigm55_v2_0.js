@@ -153,7 +153,7 @@ class NeodigmSodaPop {
         }, false)
         this._d.body.addEventListener("mouseleave", (ev) => {
           let tsOnce = sessionStorage.getItem( "n55_beforeUserExit" )
-          if( this.fOnBeforeUserExit && tsOnce ) this.fOnBeforeUserExit()
+          if( this.fOnBeforeUserExit && !tsOnce ) this.fOnBeforeUserExit()
           sessionStorage.setItem( "n55_beforeUserExit", Date.now() )
         })
         this.bIsInit = true
