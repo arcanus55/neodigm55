@@ -16,7 +16,7 @@ let neodigmOpt = {
     N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
     N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
   neodigmWired4Sound: true,
-    W4S_VOLUME: .060,
+    W4S_VOLUME: .050,
     EVENT_SOUNDS: true,
   neodigmParallax: true,
     PRLX_MOBILE: false,  //  Show Parallax on Mobile
@@ -152,7 +152,9 @@ class NeodigmSodaPop {
           if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) { this.close() }
         }, false)
         this._d.body.addEventListener("mouseleave", (ev) => {
-          if( this.fOnBeforeUserExit ) this.fOnBeforeUserExit()  //  TODO Once an hour max
+          let tsOnce = sessionStorage.getItem( "n55_beforeUserExit" )
+          if( this.fOnBeforeUserExit && tsOnce ) this.fOnBeforeUserExit()
+          sessionStorage.setItem( "n55_beforeUserExit", Date.now() )
         })
         this.bIsInit = true
         return this
