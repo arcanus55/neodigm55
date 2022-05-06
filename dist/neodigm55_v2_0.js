@@ -29,7 +29,7 @@ let neodigmOpt = {
   N55_DEBUG_lOG: false,
   N55_GENRE_MOTIF: "neodigm",  //  steampunk cyberpunk artdeco noir anime casino
   N55_THEME_DEFAULT: "brand",
-  N55_THEME_COLORS: {"brand":["edba08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"],
+  N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"],
    "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"]}
 }
 
@@ -531,10 +531,12 @@ class NeodigmEnchantedCTA {
     }
     init (){
       this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
-      if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once
+      if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event
         let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
-        let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset) 
+        let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
         if( bCta && window.dataLayer && neodigmOpt.N55_GTM_DL_CTA ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_CTA, "id": sId } )
+        let sFlashTh = ev?.target?.dataset?.n55FlashTheme
+        if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
       }, false)
       if( neodigmOpt.N55_CTA_RND_TOUCH ){
         neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_CTA_RND_TOUCH )
