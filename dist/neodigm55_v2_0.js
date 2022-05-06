@@ -113,9 +113,11 @@ let neodigmToast = (function(_d, eID, _q) {
       },
       q: function( sMsg, sTheme ) {
           if( bIsInit && !bIsPause ){ 
-            if( sMsg && sMsg != _aQ[0]?.sMsg ) _aQ.push( {"sMsg": sMsg, "sTheme":sTheme} ) // temporal debounce
-            if( window.dataLayer && neodigmOpt.N55_GTM_DL_TOAST ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_TOAST, "msg": sMsg } )
-            if(_aQ.length == 1) _fOpen()
+            if( sMsg && sMsg != _aQ[0]?.sMsg ){
+              _aQ.push( {"sMsg": sMsg, "sTheme":sTheme} ) // temporal debounce
+              if( window.dataLayer && neodigmOpt.N55_GTM_DL_TOAST ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_TOAST, "msg": sMsg } )
+              if(_aQ.length == 1) _fOpen()              
+            }
           }
           return neodigmToast
       },
