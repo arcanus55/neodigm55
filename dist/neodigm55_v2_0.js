@@ -535,7 +535,7 @@ class NeodigmEnchantedCTA {
         let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
         let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
         if( bCta && window.dataLayer && neodigmOpt.N55_GTM_DL_CTA ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_CTA, "id": sId } )
-        let sFlashTh = ev?.target?.dataset?.n55FlashTheme
+        let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
         if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
       }, false)
       if( neodigmOpt.N55_CTA_RND_TOUCH ){
