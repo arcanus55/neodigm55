@@ -44,6 +44,15 @@ All rights reserved. Redistributions of source code must retain the above copyri
 .l-snackbar .snackbar__cont[data-n55-theme='info'] { box-shadow: inset var(--neodigm-theme-info) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-info) 0%, var(--neodigm-theme-info-alt) 100%); }
 .l-snackbar .snackbar__cont[data-n55-theme='night'] { box-shadow: inset var(--neodigm-theme-night) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-night) 0%, var(--neodigm-theme-night-alt) 100%); }
 
+.l-snackbar .snackbar__cont[data-n55-theme='brand'] .snackbar__progbar { background-color: var(--neodigm-theme-brand) }
+.l-snackbar .snackbar__cont[data-n55-theme='primary'] .snackbar__progbar { background-color: var(--neodigm-theme-primary) }
+.l-snackbar .snackbar__cont[data-n55-theme='secondary'] .snackbar__progbar { background-color: var(--neodigm-theme-secondary) }
+.l-snackbar .snackbar__cont[data-n55-theme='success'] .snackbar__progbar { background-color: var(--neodigm-theme-success) }
+.l-snackbar .snackbar__cont[data-n55-theme='danger'] .snackbar__progbar { background-color: var(--neodigm-theme-danger) }
+.l-snackbar .snackbar__cont[data-n55-theme='warning'] .snackbar__progbar { background-color: var(--neodigm-theme-warning) }
+.l-snackbar .snackbar__cont[data-n55-theme='info'] .snackbar__progbar { background-color: var(--neodigm-theme-info) }
+.l-snackbar .snackbar__cont[data-n55-theme='night'] .snackbar__progbar { background-color: var(--neodigm-theme-night) }
+
 .l-snackbar .snackbar__cont--hide {
 	bottom: -112px;
 	transition: bottom .6s ease-in-out
@@ -60,22 +69,20 @@ All rights reserved. Redistributions of source code must retain the above copyri
 }
 
 .l-snackbar .snackbar__progbar {
-	background: linear-gradient(to right, #edba08 64%, #fff 100%);
-	height: 2px;
-	padding: 0;
-	margin: 0;
+	height: 4px;
+	padding: 0; margin: 0;
 	position: relative;
 	top: 2px
 }
 
 .l-snackbar .snackbar__cont--hide .snackbar__progbar {
-	width: 0%;
-	transition: all .1s ease-in-out
+	width: 0;
+	transition: width .1s ease-in-out;
 }
 
 .l-snackbar .snackbar__cont--show .snackbar__progbar {
-	width: 101%;
-	transition: all 6s ease-in-out
+	width: 100%;
+	transition: width 6s ease-in-out;
 }
 
 .l-snackbar .snackbar__msg {
