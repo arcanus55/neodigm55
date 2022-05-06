@@ -1,5 +1,5 @@
 /*
-Neodigm 55 UX v1.9.0
+Neodigm 55 UX v2.0.0
 Copyright (c) 2022, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
 
 Neodigm 55 is an eclectic JavaScript UX micro-library.
@@ -42,7 +42,7 @@ if( typeof neodigmOptCustom != 'undefined' ){
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
-    ver: "1.9.0",
+    ver: "2.0.0",
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
     f02x: function(x){ return (Math.floor(Math.random() * x)); },  //  0 to x
@@ -386,6 +386,23 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
 })( document, ["neodigm-marquee", "n55MarqueeText"], 112 );
 
 //  Neodigm 55 Claire Begin  //
+class NeodigmClaireDot{
+  constructor(x, y, ctx){
+    this.x = x; this.y = y;
+    this.dotCtx = ctx
+    this.size = 8
+    this.density = (Math.random() * 40) + 1
+  }
+  draw(){
+    this.dotCtx.save();
+    this.dotCtx.globalCompositeOperation = 'destination-out';
+    this.dotCtx.beginPath();
+    this.dotCtx.arc(this.x, this.y, this.size++, 0, 2 * Math.PI, false);
+    this.dotCtx.closePath();
+    this.dotCtx.fill();
+    this.dotCtx.restore();
+  }
+}
 class NeodigmClaire {
 /*
 Create hidden canvas the size of
@@ -396,12 +413,11 @@ Fire completed callback  //  Cut Out Layer
 */
     constructor( _d, _aQ ) {
         this._d = _d; this._aQ = _aQ
-        this
-        this.particleArray = []
     }
     static _d = document; static bIsInit = false; static bIsPause = false;
     static _theme = neodigmOpt.N55_THEME_DEFAULT;  //  brand
     static get theme (){ return this._theme; }
+    static particleArray = []
 
     static init (){
         this.bIsInit = true
@@ -410,7 +426,7 @@ Fire completed callback  //  Cut Out Layer
     static showCanv ( sQ ){
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
-        let aElCanv = [ ... canvCntr.querySelectorAll( ":scope > *" )]
+        let aElCanv = [ ... canvCntr.querySelectorAll( ":scope > *" )]  //  1st decendants
         if( canvCntr && aElCanv ){
           canvCntr.dataset.n55Claire = "true"
           if( !canvCntr.aElCanv ){  //  Once
@@ -435,7 +451,7 @@ Fire completed callback  //  Cut Out Layer
       }
       return this
     }
-    static initCanv ( sQ ){
+    static initCanv ( sQ ){  //  Cover Canvas with Themed Rect
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
         if( canvCntr && canvCntr?.aElCanv ){
@@ -448,31 +464,46 @@ Fire completed callback  //  Cut Out Layer
       }
       return this;
     }
+    static anime(){
+      for( let i = 0; i < NeodigmClaire.particleArray.length; i++){
+        NeodigmClaire.particleArray[ i ].draw()
+      }
+      requestAnimationFrame( NeodigmClaire.anime )
+    }
     static waxOn( sQ ){
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
-        if( canvCntr ){/*
-          let ctx = canvCntr.aElCanv[0][1] 
-          ctx.height = canvCntr.aElCanv[0][2]
-          ctx.width  = canvCntr.aElCanv[0][3]
-ctx.lineWidth = 10;
+        if( canvCntr ){
+          canvCntr.aElCanv.forEach(function( elChild ){
+            let ctx = elChild[1]; ctx.height = elChild[2]; ctx.width = elChild[3];
+            let nRndX = (Math.random() * ctx.width  ) + 1
+            let nRndY = (Math.random() * ctx.height ) + 1
+            NeodigmClaire.particleArray.push( new NeodigmClaireDot( nRndX, nRndY, ctx ))
+
+            //canvCntr.aElCanv.push( [cnv, cnv.getContext("2d"), el.clientHeight, el.clientWidth] )
+
+          })
+console.log( "---- dots | ", NeodigmClaire.particleArray )
+NeodigmClaire.anime()
+
+/*ctx.lineWidth = 4;
 
 ctx.fillStyle = "rgba(100,0,0,.5)"
 ctx.beginPath();
-ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+ctx.arc(11, 12, 50, 0, 2 * Math.PI);
 ctx.stroke();
 ctx.fill();
 
 ctx.fillStyle = "rgba(0,0,0,0)"
 ctx.beginPath();
-ctx.arc(120, 95, 40, 0, 2 * Math.PI);
+ctx.arc(22, 12, 40, 0, 2 * Math.PI);
 ctx.stroke();
 ctx.fill();
 
 ctx.save();
 ctx.globalCompositeOperation = 'destination-out';
 ctx.beginPath();
-ctx.arc(120, 95, 40, 0, 2 * Math.PI, false);
+ctx.arc(22, 12, 80, 0, 2 * Math.PI, false);
 ctx.stroke();
 ctx.fill();
 ctx.restore();*/

@@ -1,5 +1,5 @@
 /*
-Neodigm 55 UX v1.9.0
+Neodigm 55 UX v2.0.0
 Copyright (c) 2022, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
 
 Neodigm 55 is an eclectic JavaScript UX micro-library.
@@ -248,7 +248,7 @@ background-color: rgba( 96, 88, 44, 0);
     background: linear-gradient(var(--neodigm-theme-brand), var(--neodigm-theme-brand-alt));
     border-radius: 6px 22px;
     border: 0px;
-    color: #fff; cursor: arrow; 
+    color: #fff; cursor: pointer; 
     display: inline-block;
     font-family: 'Roboto',sans-serif; font-weight: 400;
     overflow: hidden;
@@ -259,6 +259,7 @@ background-color: rgba( 96, 88, 44, 0);
     margin: 4px 8px; 
 }
 [data-n55-enchanted-cta]:not([data-n55-theme="disabled"]) { cursor: pointer; }
+[data-n55-enchanted-cta][data-n55-shape-off] { border-radius: 6px !important; }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='emit']:not([data-n55-theme="disabled"]){ 
     animation: touch_emit 2s forwards infinite ease;
 }
