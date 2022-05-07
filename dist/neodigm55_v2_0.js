@@ -388,21 +388,24 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
 })( document, ["neodigm-marquee", "n55MarqueeText"], 112 );
 
 //  Neodigm 55 Claire Begin  //
-class NeodigmClaireDot{
-  constructor(x, y, ctx){
+class NeodigmClaireAtom{
+  constructor(x, y, ctx, cnvIdx, cnvMax){
+    this.complete = false
     this.x = x; this.y = y;
-    this.dotCtx = ctx
-    this.size = 8
-    this.density = (Math.random() * 40) + 1
+    this.dotCtx = ctx; this.cnvIdx = cnvIdx
+    this.size = 1
+    this.nInverse = cnvMax - cnvIdx
   }
   draw(){
-    this.dotCtx.save();
+    if( !this.complete ) this.size = this.size + (this.nInverse / 3.4)
     this.dotCtx.globalCompositeOperation = 'destination-out';
     this.dotCtx.beginPath();
-    this.dotCtx.arc(this.x, this.y, this.size++, 0, 2 * Math.PI, false);
+    this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
     this.dotCtx.closePath();
     this.dotCtx.fill();
-    this.dotCtx.restore();
+    this.dotCtx.globalCompositeOperation = 'destination-atop';
+    this.complete = (this.size >= (  Math.max(this.dotCtx.height, this.dotCtx.width) * 1.4 ) )
+    return !this.complete
   }
 }
 class NeodigmClaire {
@@ -419,7 +422,7 @@ Fire completed callback  //  Cut Out Layer
     static _d = document; static bIsInit = false; static bIsPause = false;
     static _theme = neodigmOpt.N55_THEME_DEFAULT;  //  brand
     static get theme (){ return this._theme; }
-    static particleArray = []
+    static aAtoms = []
 
     static init (){
         this.bIsInit = true
@@ -467,48 +470,20 @@ Fire completed callback  //  Cut Out Layer
       return this;
     }
     static anime(){
-      for( let i = 0; i < NeodigmClaire.particleArray.length; i++){
-        NeodigmClaire.particleArray[ i ].draw()
-      }
-      requestAnimationFrame( NeodigmClaire.anime )
+      let aAtomRun = NeodigmClaire.aAtoms.filter( ( ar ) => !ar.complete )
+      if( aAtomRun.filter( ( ar ) => ar.draw() ) ){ requestAnimationFrame( NeodigmClaire.anime ) }
     }
     static waxOn( sQ ){
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
         if( canvCntr ){
-          canvCntr.aElCanv.forEach(function( elChild ){
+          NeodigmClaire.aAtoms = []
+          canvCntr.aElCanv.forEach(function( elChild, cnvIdx ){
             let ctx = elChild[1]; ctx.height = elChild[2]; ctx.width = elChild[3];
-            let nRndX = (Math.random() * ctx.width  ) + 1
-            let nRndY = (Math.random() * ctx.height ) + 1
-            NeodigmClaire.particleArray.push( new NeodigmClaireDot( nRndX, nRndY, ctx ))
-
-            //canvCntr.aElCanv.push( [cnv, cnv.getContext("2d"), el.clientHeight, el.clientWidth] )
-
+            let nRndX = neodigmUtils.f02x( ctx.width ), nRndY = neodigmUtils.f02x( ctx.height )
+            NeodigmClaire.aAtoms.push( new NeodigmClaireAtom( nRndX, nRndY, ctx, cnvIdx, canvCntr.aElCanv.length ))
           })
-console.log( "---- dots | ", NeodigmClaire.particleArray )
-NeodigmClaire.anime()
-
-/*ctx.lineWidth = 4;
-
-ctx.fillStyle = "rgba(100,0,0,.5)"
-ctx.beginPath();
-ctx.arc(11, 12, 50, 0, 2 * Math.PI);
-ctx.stroke();
-ctx.fill();
-
-ctx.fillStyle = "rgba(0,0,0,0)"
-ctx.beginPath();
-ctx.arc(22, 12, 40, 0, 2 * Math.PI);
-ctx.stroke();
-ctx.fill();
-
-ctx.save();
-ctx.globalCompositeOperation = 'destination-out';
-ctx.beginPath();
-ctx.arc(22, 12, 80, 0, 2 * Math.PI, false);
-ctx.stroke();
-ctx.fill();
-ctx.restore();*/
+          NeodigmClaire.anime()
         }
       }
       return this
