@@ -69,7 +69,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 }
 
 .l-snackbar .snackbar__progbar {
-	height: 4px;
+	height: 3px;
 	padding: 0; margin: 0;
 	position: relative;
 	top: 2px
