@@ -397,13 +397,13 @@ class NeodigmClaireAtom{
     this.nInverse = cnvMax - cnvIdx
   }
   draw(){
-    if( !this.complete ) this.size = this.size + (this.nInverse / 3.4)
+    if( !this.complete ) this.size = this.size + (this.nInverse / 1.6)
     this.dotCtx.globalCompositeOperation = 'destination-out';
     this.dotCtx.beginPath();
     this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
     this.dotCtx.closePath();
     this.dotCtx.fill();
-    this.dotCtx.globalCompositeOperation = 'destination-atop';
+    this.dotCtx.globalCompositeOperation = 'destination-over';
     this.complete = (this.size >= (  Math.max(this.dotCtx.height, this.dotCtx.width) * 1.4 ) )
     return !this.complete
   }
@@ -471,7 +471,10 @@ Fire completed callback  //  Cut Out Layer
     }
     static anime(){
       let aAtomRun = NeodigmClaire.aAtoms.filter( ( ar ) => !ar.complete )
-      if( aAtomRun.filter( ( ar ) => ar.draw() ) ){ requestAnimationFrame( NeodigmClaire.anime ) }
+      //  if( aAtomRun.filter( ( ar ) => ar.draw() ) ){ requestAnimationFrame( NeodigmClaire.anime ) }
+      if( aAtomRun.filter( ( ar ) => ar.draw() ) ){
+        setTimeout(NeodigmClaire.anime, 48)
+      }
     }
     static waxOn( sQ ){
       if( this.bIsInit && !this.bIsPause ){
@@ -602,7 +605,7 @@ let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchant
 //  Neodigm 55 Horizontal Accordion Begin //
 //  Neodigm 55 Card Deck Begin //
 //  Neodigm 55 Memory Slots Begin //
-//  Neodigm 55 Quiz | Questionnaire Challenge Begin //
+//  Neodigm 55 Quiz | Questionnaire Challenge Begin // T/F, single/multi response, matching, or sequence questions
 //  Neodigm 55 Dynamic Infographic Begin //
 //  Neodigm 55 Voice Conversational Marketing //
 
