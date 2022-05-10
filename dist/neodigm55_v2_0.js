@@ -403,7 +403,7 @@ class NeodigmClaireAtom{
     this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
     this.dotCtx.closePath();
     this.dotCtx.fill();
-    //this.dotCtx.globalCompositeOperation = 'destination-over';
+    this.dotCtx.globalCompositeOperation = 'destination-atop';
     this.complete = (this.size >= (  Math.max(this.dotCtx.height, this.dotCtx.width) * 1.4 ) )
     return !this.complete
   }
