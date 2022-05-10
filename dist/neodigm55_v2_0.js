@@ -398,12 +398,13 @@ class NeodigmClaireAtom{
   }
   draw(){
     if( !this.complete ) this.size = this.size + ( Math.max(this.dotCtx.height, this.dotCtx.width) * this.nInverse ) / 56
-    this.dotCtx.globalCompositeOperation = 'destination-out';
-    this.dotCtx.beginPath();
-    this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
-    this.dotCtx.closePath();
-    this.dotCtx.fill();
-    this.dotCtx.globalCompositeOperation = 'destination-atop';
+    this.dotCtx.globalCompositeOperation = 'destination-out'
+
+    this.dotCtx.beginPath()
+    this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
+    this.dotCtx.closePath()
+    this.dotCtx.fill()
+    this.dotCtx.globalCompositeOperation = 'destination-atop'
     this.complete = (this.size >= (  Math.max(this.dotCtx.height, this.dotCtx.width) * 1.4 ) )
     return !this.complete
   }
@@ -463,7 +464,13 @@ Fire completed callback  //  Cut Out Layer
         if( canvCntr && canvCntr?.aElCanv ){
           canvCntr.aElCanv.forEach(function( aCnv ){
             let ctx = aCnv[1]
-            ctx.fillStyle = "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][0]
+
+            let themeRadGrad = ctx.createLinearGradient(0, 0, aCnv[3], aCnv[2]);
+            themeRadGrad.addColorStop(0, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][0])
+            themeRadGrad.addColorStop(0.8, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][1])
+            ctx.fillStyle = themeRadGrad
+
+            //ctx.fillStyle = "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][0]
             ctx.fillRect(0, 0, aCnv[3], aCnv[2])
           })
         }
@@ -488,8 +495,6 @@ Fire completed callback  //  Cut Out Layer
     static anime( sQ ){
       let _sQ = sQ
       let aAtomRun = NeodigmClaire.aAtoms.filter( ( ar ) => !ar.complete )
-console.log( "--- aAtomRun | ", aAtomRun.length, aAtomRun.filter( function( ar ) { return ar.draw() } ).length )
-      //  if( aAtomRun.filter( ( ar ) => ar.draw() ) ){ requestAnimationFrame( NeodigmClaire.anime ) }
       if( aAtomRun.filter( function( ar ) { return ar.draw() } ).length ){
         setTimeout(function(){NeodigmClaire.anime( sQ )}, 48)
       }else{ NeodigmClaire.hideCanv( _sQ ) }
