@@ -450,6 +450,7 @@ Fire completed callback  //  Cut Out Layer
       return this
     }
     static hideCanv ( sQ ){
+  console.log("--- sQ |", sQ )
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
         if( canvCntr && canvCntr.aElCanv ) canvCntr.dataset.n55Claire = "false"
@@ -469,13 +470,6 @@ Fire completed callback  //  Cut Out Layer
       }
       return this;
     }
-    static anime(){
-      let aAtomRun = NeodigmClaire.aAtoms.filter( ( ar ) => !ar.complete )
-      //  if( aAtomRun.filter( ( ar ) => ar.draw() ) ){ requestAnimationFrame( NeodigmClaire.anime ) }
-      if( aAtomRun.filter( ( ar ) => ar.draw() ) ){
-        setTimeout(NeodigmClaire.anime, 48)
-      }
-    }
     static waxOn( sQ ){
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
@@ -486,10 +480,19 @@ Fire completed callback  //  Cut Out Layer
             let nRndX = neodigmUtils.f02x( ctx.width ), nRndY = neodigmUtils.f02x( ctx.height )
             NeodigmClaire.aAtoms.push( new NeodigmClaireAtom( nRndX, nRndY, ctx, cnvIdx, canvCntr.aElCanv.length ))
           })
-          NeodigmClaire.anime()
+          NeodigmClaire.anime( sQ )
         }
       }
       return this
+    }
+    static anime( sQ ){
+      let _sQ = sQ
+      let aAtomRun = NeodigmClaire.aAtoms.filter( ( ar ) => !ar.complete )
+console.log( "--- aAtomRun | ", aAtomRun.length, aAtomRun.filter( function( ar ) { return ar.draw() } ).length )
+      //  if( aAtomRun.filter( ( ar ) => ar.draw() ) ){ requestAnimationFrame( NeodigmClaire.anime ) }
+      if( aAtomRun.filter( function( ar ) { return ar.draw() } ).length ){
+        setTimeout(function(){NeodigmClaire.anime( sQ )}, 48)
+      }else{ NeodigmClaire.hideCanv( _sQ ) }
     }
     static waxOff(){
       return this
