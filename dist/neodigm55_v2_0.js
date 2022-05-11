@@ -397,7 +397,7 @@ class NeodigmClaireAtom{
     this.nInverse = cnvMax - cnvIdx
   }
   draw(){
-    if( !this.complete ) this.size = this.size + ( Math.max(this.dotCtx.height, this.dotCtx.width) * this.nInverse ) / 24
+    if( !this.complete ) this.size = this.size + ( Math.max(this.dotCtx.height, this.dotCtx.width) * this.nInverse ) / 12
     this.dotCtx.globalCompositeOperation = 'destination-out'
 
     this.dotCtx.beginPath()
