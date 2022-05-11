@@ -397,7 +397,7 @@ class NeodigmClaireAtom{
     this.nInverse = cnvMax - cnvIdx
   }
   draw(){
-    if( !this.complete ) this.size = this.size + ( Math.max(this.dotCtx.height, this.dotCtx.width) * this.nInverse ) / 56
+    if( !this.complete ) this.size = this.size + ( Math.max(this.dotCtx.height, this.dotCtx.width) * this.nInverse ) / 48
     this.dotCtx.globalCompositeOperation = 'destination-out'
 
     this.dotCtx.beginPath()
@@ -451,7 +451,6 @@ Fire completed callback  //  Cut Out Layer
       return this
     }
     static hideCanv ( sQ ){
-  console.log("--- sQ |", sQ )
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
         if( canvCntr && canvCntr.aElCanv ) canvCntr.dataset.n55Claire = "false"
