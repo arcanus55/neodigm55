@@ -496,7 +496,7 @@ Fire completed callback  //  Cut Out Layer
       let _sQ = sQ
       let aAtomRun = NeodigmClaire.aAtoms.filter( ( ar ) => !ar.complete )
       if( aAtomRun.filter( function( ar ) { return ar.draw() } ).length ){
-        setTimeout(function(){NeodigmClaire.anime( sQ )}, 48)
+        setTimeout(function(){NeodigmClaire.anime( sQ )}, 32)
       }else{ NeodigmClaire.hideCanv( _sQ ) }
     }
     static waxOff(){
