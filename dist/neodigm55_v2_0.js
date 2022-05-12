@@ -345,7 +345,7 @@ const neodigmMetronome = ( () =>{
     },
     pause: function( nT ){
       bIsPause = true;
-      if( nT ) setTimeout(function(){ neodigmMetronome.play()}, nT )
+      if( nT ) setTimeout( neodigmMetronome.play, nT )
       return neodigmMarquee; },
     play:  function(){ bIsPause = false; return neodigmMarquee; }
   }
@@ -385,7 +385,10 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
         }
       },
       toggleDir: function(){ if( bIsInit ){ bLTR = !bLTR; return neodigmMarquee; } },
-      pause: function(){ bIsPause = true;  return neodigmMarquee; },
+      pause: function( nT ){
+        bIsPause = true;
+        if( nT ) setTimeout( neodigmMarquee.play, nT )
+        return neodigmMarquee; },
       play:  function(){ bIsPause = false; return neodigmMarquee; }
     }
 })( document, ["neodigm-marquee", "n55MarqueeText"], 112 );
