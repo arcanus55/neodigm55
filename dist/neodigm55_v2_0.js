@@ -416,8 +416,7 @@ class NeodigmClaireAtom{
     this.dotCtx.beginPath()
     this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
     this.dotCtx.closePath()
-    this.dotCtx.lineWidth = neodigmUtils.f02x( 12 ) + 2;
-    this.dotCtx.strokeStyle = "#edba08";
+    this.dotCtx.lineWidth = neodigmUtils.f02x( 22 ) + 4;
     this.dotCtx.stroke();
     this.dotCtx.globalCompositeOperation = "destination-atop";  //  "destination-atop"
 
