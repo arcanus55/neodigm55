@@ -343,7 +343,10 @@ const neodigmMetronome = ( () =>{
     unsubscribe: function( t ){  //  TODO
       return neodigmMetronome;
     },
-    pause: function(){ bIsPause = true;  return neodigmMarquee; },
+    pause: function( nT ){
+      bIsPause = true;
+      if( nT ) setTimeout(function(){ neodigmMetronome.play()}, nT )
+      return neodigmMarquee; },
     play:  function(){ bIsPause = false; return neodigmMarquee; }
   }
 })();
