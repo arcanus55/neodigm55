@@ -412,19 +412,18 @@ class NeodigmClaireAtom{
     this.dotCtx.closePath()
     this.dotCtx.fill()
 
+    this.dotCtx.globalCompositeOperation = "destination-atop";  //  "destination-atop"
+    this.dotCtx.beginPath()
+    this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
+    this.dotCtx.closePath()
+    this.dotCtx.fill()
+
     this.dotCtx.globalCompositeOperation = "destination-out"
     this.dotCtx.beginPath()
     this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
     this.dotCtx.closePath()
     this.dotCtx.fill()
     this.dotCtx.globalCompositeOperation = "destination-atop"
-
-
-    this.dotCtx.globalCompositeOperation = "source-over";  //  "destination-atop"
-    this.dotCtx.beginPath()
-    this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
-    this.dotCtx.closePath()
-    this.dotCtx.fill()
 
 
     this.complete = (this.size >= (  this.nMax * 1.4 ) )
