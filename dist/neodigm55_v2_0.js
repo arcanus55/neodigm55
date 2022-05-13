@@ -394,30 +394,27 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
 })( document, ["neodigm-marquee", "n55MarqueeText"], 112 );
 
 //  Neodigm 55 Claire Begin  //
-class NeodigmClaireAtom{
+class NeodigmClaireAtomOn{
   constructor(x, y, ctx, cnvIdx, cnvMax){
-    this.complete = false
+    this.complete = false; this.size = 1
     this.x = x; this.y = y;
     this.dotCtx = ctx; this.cnvIdx = cnvIdx
-    this.size = 1
     this.nInverse = cnvMax - cnvIdx
     this.nMax = Math.max(this.dotCtx.height, this.dotCtx.width)
   }
   draw(){
     if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 12
-
-
     this.dotCtx.globalCompositeOperation = "destination-out"
     this.dotCtx.beginPath()
-    this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
-    this.dotCtx.closePath()
+      this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
+      this.dotCtx.closePath()
     this.dotCtx.fill()
 
     this.dotCtx.beginPath()
-    this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
-    this.dotCtx.closePath()
-    this.dotCtx.lineWidth = neodigmUtils.f02x( 22 ) + 4;
-    this.dotCtx.stroke();
+      this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
+      this.dotCtx.closePath()
+      this.dotCtx.lineWidth = neodigmUtils.f02x( 22 ) + 4;
+      this.dotCtx.stroke();
     this.dotCtx.globalCompositeOperation = "destination-atop";  //  "destination-atop"
 
     this.complete = (this.size >= (  this.nMax * 1.4 ) )
@@ -483,8 +480,6 @@ Fire completed callback  //  Cut Out Layer
             themeRadGrad.addColorStop(0, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][0])
             themeRadGrad.addColorStop(0.8, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][1])
             ctx.fillStyle = themeRadGrad
-
-            //ctx.fillStyle = "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][0]
             ctx.fillRect(0, 0, aCnv[3], aCnv[2])
           })
         }
@@ -499,7 +494,22 @@ Fire completed callback  //  Cut Out Layer
           canvCntr.aElCanv.forEach(function( elChild, cnvIdx ){
             let ctx = elChild[1]; ctx.height = elChild[2]; ctx.width = elChild[3];
             let nRndX = neodigmUtils.f02x( ctx.width ), nRndY = neodigmUtils.f02x( ctx.height )
-            NeodigmClaire.aAtoms.push( new NeodigmClaireAtom( nRndX, nRndY, ctx, cnvIdx, canvCntr.aElCanv.length ))
+            NeodigmClaire.aAtoms.push( new NeodigmClaireAtomOn( nRndX, nRndY, ctx, cnvIdx, canvCntr.aElCanv.length ))
+          })
+          NeodigmClaire.anime( sQ )
+        }
+      }
+      return this
+    }
+    static waxOff( sQ ){
+      if( this.bIsInit && !this.bIsPause ){
+        let canvCntr = this._d.querySelector( sQ )  //  One Single
+        if( canvCntr ){
+          NeodigmClaire.aAtoms = []
+          canvCntr.aElCanv.forEach(function( elChild, cnvIdx ){
+            let ctx = elChild[1]; ctx.height = elChild[2]; ctx.width = elChild[3];
+            let nRndX = neodigmUtils.f02x( ctx.width ), nRndY = neodigmUtils.f02x( ctx.height )
+            NeodigmClaire.aAtoms.push( new NeodigmClaireAtomOn( nRndX, nRndY, ctx, cnvIdx, canvCntr.aElCanv.length ))
           })
           NeodigmClaire.anime( sQ )
         }
@@ -507,14 +517,13 @@ Fire completed callback  //  Cut Out Layer
       return this
     }
     static anime( sQ ){
-      let _sQ = sQ
-      let aAtomRun = NeodigmClaire.aAtoms.filter( ( ar ) => !ar.complete )
-      if( aAtomRun.filter( function( ar ) { return ar.draw() } ).length ){
-        setTimeout(function(){NeodigmClaire.anime( sQ )}, 24)
-      }else{ NeodigmClaire.hideCanv( _sQ ) }
-    }
-    static waxOff(){
-      return this
+      if( this.bIsInit && !this.bIsPause ){
+        let _sQ = sQ
+        let aAtomRun = NeodigmClaire.aAtoms.filter( ( ar ) => !ar.complete )
+        if( aAtomRun.filter( function( ar ) { return ar.draw() } ).length ){
+          setTimeout(function(){NeodigmClaire.anime( sQ )}, 32)
+        }else{ NeodigmClaire.hideCanv( _sQ ) }
+      }
     }
     static pause (){ this.bIsPause = true; return this; }
     static play (){ this.bIsPause = false; return this; }
