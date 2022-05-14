@@ -206,8 +206,8 @@ class NeodigmSodaPop {
                     setTimeout(function() {
                         neodigmSodaPop.eScrim.dataset.n55SodapopScrim = "closed"
                         neodigmSodaPop.eScrim.classList.remove("ndsp__blur", "ndsp__modal")
-                    }, 304)
-                }, 176)
+                    }, 332)
+                }, 186)
             }
             if("vibrate" in navigator) window.navigator.vibrate([8, 16])
             if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(3)
