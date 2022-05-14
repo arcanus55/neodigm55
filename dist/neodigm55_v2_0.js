@@ -194,6 +194,7 @@ class NeodigmSodaPop {
     }
     close( _bFast) {
         if(this.bIsInit && this.bIsOpen) {
+            if(this.fOnClose) this.fOnClose()
             this.eClose.dataset.n55SodapopScrim = "closed"
             if(_bFast) {
                 this.eSoda.remove()
@@ -208,7 +209,6 @@ class NeodigmSodaPop {
                     }, 304)
                 }, 176)
             }
-            if(this.fOnClose) this.fOnClose()
             if("vibrate" in navigator) window.navigator.vibrate([8, 16])
             if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(3)
             this.bIsOpen = false
