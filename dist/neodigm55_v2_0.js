@@ -421,6 +421,36 @@ class NeodigmClaireAtomOn{
     return !this.complete
   }
 }
+
+class NeodigmClaireAtomOff{
+  constructor(x, y, ctx, cnvIdx, cnvMax){
+    this.complete = false; this.size = 1
+    this.x = x; this.y = y;
+    this.dotCtx = ctx; this.cnvIdx = cnvIdx
+    this.nInverse = cnvMax - cnvIdx
+    this.nMax = Math.max(this.dotCtx.height, this.dotCtx.width)
+  }
+  draw(){
+    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 24
+    this.dotCtx.globalCompositeOperation = "source-over"
+    this.dotCtx.beginPath()
+      //this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
+      //this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
+      this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
+      this.dotCtx.closePath()
+    this.dotCtx.fill()
+/*
+    this.dotCtx.beginPath()
+      this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
+      this.dotCtx.closePath()
+      this.dotCtx.lineWidth = neodigmUtils.f02x( 22 ) + 4;
+      this.dotCtx.stroke();
+    this.dotCtx.globalCompositeOperation = "source-over";  //  "destination-atop"
+*/
+    this.complete = (this.size >= (  this.nMax * 1.4 ) )
+    return !this.complete
+  }
+}
 class NeodigmClaire {
 /*
 Create hidden canvas the size of
@@ -496,7 +526,7 @@ Fire completed callback  //  Cut Out Layer
             let nRndX = neodigmUtils.f02x( ctx.width ), nRndY = neodigmUtils.f02x( ctx.height )
             NeodigmClaire.aAtoms.push( new NeodigmClaireAtomOn( nRndX, nRndY, ctx, cnvIdx, canvCntr.aElCanv.length ))
           })
-          NeodigmClaire.anime( sQ )
+          NeodigmClaire.anime( sQ, true )
         }
       }
       return this
@@ -509,20 +539,21 @@ Fire completed callback  //  Cut Out Layer
           canvCntr.aElCanv.forEach(function( elChild, cnvIdx ){
             let ctx = elChild[1]; ctx.height = elChild[2]; ctx.width = elChild[3];
             let nRndX = neodigmUtils.f02x( ctx.width ), nRndY = neodigmUtils.f02x( ctx.height )
-            NeodigmClaire.aAtoms.push( new NeodigmClaireAtomOn( nRndX, nRndY, ctx, cnvIdx, canvCntr.aElCanv.length ))
+            NeodigmClaire.aAtoms.push( new NeodigmClaireAtomOff( nRndX, nRndY, ctx, cnvIdx, canvCntr.aElCanv.length ))
           })
-          NeodigmClaire.anime( sQ )
+          NeodigmClaire.anime( sQ, false )
         }
       }
       return this
     }
-    static anime( sQ ){
+    static anime( sQ, bClose ){
       if( this.bIsInit && !this.bIsPause ){
         let _sQ = sQ
         let aAtomRun = NeodigmClaire.aAtoms.filter( ( ar ) => !ar.complete )
         if( aAtomRun.filter( function( ar ) { return ar.draw() } ).length ){
           setTimeout(function(){NeodigmClaire.anime( sQ )}, 32)
-        }else{ NeodigmClaire.hideCanv( _sQ ) }
+        }else{ if( bClose ) NeodigmClaire.hideCanv( _sQ )
+        }
       }
     }
     static pause (){ this.bIsPause = true; return this; }
