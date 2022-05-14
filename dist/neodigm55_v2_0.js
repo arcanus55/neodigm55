@@ -403,7 +403,7 @@ class NeodigmClaireAtomOn{
     this.nMax = Math.max(this.dotCtx.height, this.dotCtx.width)
   }
   draw(){
-    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 12
+    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 10
     this.dotCtx.globalCompositeOperation = "destination-out"
     this.dotCtx.beginPath()
       this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
@@ -541,7 +541,7 @@ Fire completed callback  //  Cut Out Layer
         let _sQ = sQ
         let aAtomRun = NeodigmClaire.aAtoms.filter( ( ar ) => !ar.complete )
         if( aAtomRun.filter( function( ar ) { return ar.draw() } ).length ){
-          setTimeout(function(){NeodigmClaire.anime( sQ )}, 32)
+          setTimeout(function(){NeodigmClaire.anime( sQ, bClose )}, 32)
         }else{ if( bClose ) NeodigmClaire.hideCanv( _sQ )
         }
       }
