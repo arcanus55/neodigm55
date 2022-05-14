@@ -413,8 +413,8 @@ class NeodigmClaireAtomOn{
     this.dotCtx.beginPath()
       this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
       this.dotCtx.closePath()
-      this.dotCtx.lineWidth = neodigmUtils.f02x( 22 ) + 4;
-      this.dotCtx.stroke();
+      this.dotCtx.lineWidth = neodigmUtils.f02x( 22 ) + 4
+      this.dotCtx.stroke()
     this.dotCtx.globalCompositeOperation = "destination-atop";  //  "destination-atop"
 
     this.complete = (this.size >= (  this.nMax * 1.4 ) )
@@ -548,8 +548,11 @@ Fire completed callback  //  Cut Out Layer
     }
     static pause (){ this.bIsPause = true; return this; }
     static play (){ this.bIsPause = false; return this; }
-    static setTheme ( sTheme = "brand" ){ this._theme = sTheme; return this; }
-}
+    static setTheme ( sTheme = "brand" ){
+      if( typeof sTheme == "object") sTheme = sTheme[ neodigmUtils.f02x( sTheme.length ) ]  //  array
+      this._theme = sTheme;
+      return this; }
+    }
 //  let neodigmClaire = new NeodigmClaire( document, ["neodigm-claire"] )
 
 //  Neodigm 55 Enchanted CTA Begin
