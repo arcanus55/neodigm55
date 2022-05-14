@@ -431,22 +431,12 @@ class NeodigmClaireAtomOff{
     this.nMax = Math.max(this.dotCtx.height, this.dotCtx.width)
   }
   draw(){
-    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 24
+    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 6
     this.dotCtx.globalCompositeOperation = "source-over"
     this.dotCtx.beginPath()
-      //this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
-      //this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
       this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
       this.dotCtx.closePath()
     this.dotCtx.fill()
-/*
-    this.dotCtx.beginPath()
-      this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
-      this.dotCtx.closePath()
-      this.dotCtx.lineWidth = neodigmUtils.f02x( 22 ) + 4;
-      this.dotCtx.stroke();
-    this.dotCtx.globalCompositeOperation = "source-over";  //  "destination-atop"
-*/
     this.complete = (this.size >= (  this.nMax * 1.4 ) )
     return !this.complete
   }
