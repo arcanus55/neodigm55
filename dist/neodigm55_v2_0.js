@@ -435,7 +435,7 @@ class NeodigmClaireAtomOff{
     this.nMax = Math.max(this.dotCtx.height, this.dotCtx.width)
   }
   draw(){
-    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 6
+    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 4
     this.dotCtx.globalCompositeOperation = "source-over"
     this.dotCtx.beginPath()
       this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
@@ -501,6 +501,22 @@ data-n55-claire-click - confetti
       }
       return this
     }
+    static initCanvOn( sQ ){  //  Cover Canvas with Themed Rect
+      if( this.bIsInit && !this.bIsPause ){
+        let canvCntr = this._d.querySelector( sQ )  //  One Single
+        if( canvCntr && canvCntr?.aElCanv ){
+          canvCntr.aElCanv.forEach(function( aCnv ){
+            let ctx = aCnv[1]
+            let themeRadGrad = ctx.createLinearGradient(0, 0, aCnv[3], aCnv[2]);
+            themeRadGrad.addColorStop(0, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][0])
+            themeRadGrad.addColorStop(0.8, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][1])
+            ctx.fillStyle = themeRadGrad
+            ctx.fillRect(0, 0, aCnv[3], aCnv[2])
+          })
+        }
+      }
+      return this;
+    }
     static initCanvOff ( sQ ){  //  Cover Canvas with Themed Rect
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
@@ -508,23 +524,6 @@ data-n55-claire-click - confetti
           canvCntr.aElCanv.forEach(function( aCnv ){
             let ctx = aCnv[1]
             ctx.globalCompositeOperation = "destination-out"
-            ctx.fillRect(0, 0, aCnv[3], aCnv[2])
-          })
-        }
-      }
-      return this;
-    }
-    static initCanvOn( sQ ){  //  Cover Canvas with Themed Rect
-      if( this.bIsInit && !this.bIsPause ){
-        let canvCntr = this._d.querySelector( sQ )  //  One Single
-        if( canvCntr && canvCntr?.aElCanv ){
-          canvCntr.aElCanv.forEach(function( aCnv ){
-            let ctx = aCnv[1]
-
-            let themeRadGrad = ctx.createLinearGradient(0, 0, aCnv[3], aCnv[2]);
-            themeRadGrad.addColorStop(0, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][0])
-            themeRadGrad.addColorStop(0.8, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][1])
-            ctx.fillStyle = themeRadGrad
             ctx.fillRect(0, 0, aCnv[3], aCnv[2])
           })
         }
