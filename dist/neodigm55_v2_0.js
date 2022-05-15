@@ -160,7 +160,7 @@ class NeodigmSodaPop {
         this.bIsInit = true
         return this
     }
-    open(_sId) {
+    open( _sId ) {
       if(this.bIsOpen) this.close(true)
       this.eTmpl = this._d.getElementById(_sId)
       if(this.bIsInit && this.eTmpl && this.eScrim) {
@@ -184,15 +184,19 @@ class NeodigmSodaPop {
           }, 4)
           this.eSoda.innerHTML = this.eTmpl.innerHTML
           this._d.body.appendChild(this.eSoda)
-          if("vibrate" in navigator) window.navigator.vibrate([16, 8]) 
-          if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(7)
+          if("vibrate" in navigator) window.navigator.vibrate([16, 8])
+          if( this.eTmpl.dataset.n55ClaireWaxon ){
+            if( this.eTmpl.dataset.n55ClaireTheme ) NeodigmClaire.setTheme( this.eTmpl.dataset.n55ClaireTheme )
+            NeodigmClaire.showCanv( this._aQ[1] ).initCanv( this._aQ[1] ).waxOn( this._aQ[1], neodigmOpt.N55_GENRE_MOTIF )
+          }
+          if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7 )
           this.bIsOpen = true;
           if(this.fOnAfterOpen) this.fOnAfterOpen()
           if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_OPEN ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_OPEN, "id": _sId } )
       }
       return neodigmSodaPop
     }
-    close( _bFast) {
+    close( _bFast ) {
         if(this.bIsInit && this.bIsOpen) {
             if(this.fOnClose) this.fOnClose()
             this.eClose.dataset.n55SodapopScrim = "closed"
@@ -449,9 +453,17 @@ Paint a generative / procedural dwitter on the hidden canvas
 Directionally paint each DOM el in turn, with it's slice of the hidden canvas.
 Fire completed callback  //  Cut Out Layer
 */
-    constructor( _d, _aQ ) {
-        this._d = _d; this._aQ = _aQ
-    }
+/*
+Accessed through components via data tags or through JS via API for non-components
+data-n55-claire-theme
+data-n55-claire-waxon
+data-n55-claire-waxoff
+
+data-n55-claire-click - confetti
+*/
+    //constructor( _d, _aQ ) {
+        //this._d = _d; this._aQ = _aQ
+    //}
     static _d = document; static bIsInit = false; static bIsPause = false;
     static _theme = neodigmOpt.N55_THEME_DEFAULT;  //  brand
     static get theme (){ return this._theme; }
@@ -489,7 +501,20 @@ Fire completed callback  //  Cut Out Layer
       }
       return this
     }
-    static initCanv ( sQ ){  //  Cover Canvas with Themed Rect
+    static initCanvOff ( sQ ){  //  Cover Canvas with Themed Rect
+      if( this.bIsInit && !this.bIsPause ){
+        let canvCntr = this._d.querySelector( sQ )  //  One Single
+        if( canvCntr && canvCntr?.aElCanv ){
+          canvCntr.aElCanv.forEach(function( aCnv ){
+            let ctx = aCnv[1]
+            ctx.globalCompositeOperation = "destination-out"
+            ctx.fillRect(0, 0, aCnv[3], aCnv[2])
+          })
+        }
+      }
+      return this;
+    }
+    static initCanvOn( sQ ){  //  Cover Canvas with Themed Rect
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
         if( canvCntr && canvCntr?.aElCanv ){
@@ -542,13 +567,14 @@ Fire completed callback  //  Cut Out Layer
         let aAtomRun = NeodigmClaire.aAtoms.filter( ( ar ) => !ar.complete )
         if( aAtomRun.filter( function( ar ) { return ar.draw() } ).length ){
           setTimeout(function(){NeodigmClaire.anime( sQ, bClose )}, 32)
-        }else{ if( bClose ) NeodigmClaire.hideCanv( _sQ )
+        }else{ if( bClose ) NeodigmClaire.hideCanv( _sQ, bClose )
         }
       }
     }
     static pause (){ this.bIsPause = true; return this; }
     static play (){ this.bIsPause = false; return this; }
     static setTheme ( sTheme = "brand" ){
+      if( sTheme.indexOf("[") != -1 ) sTheme = JSON.parse( sTheme )  //  from HTML attrb
       if( typeof sTheme == "object") sTheme = sTheme[ neodigmUtils.f02x( sTheme.length ) ]  //  array
       this._theme = sTheme;
       return this; }
