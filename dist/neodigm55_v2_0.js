@@ -449,12 +449,12 @@ class NeodigmClaireAtomOff{
 class NeodigmClaireConfetti{
   constructor( ctx ){
     this.size = ( neodigmUtils.f02x( 8 ) + 8 );
-    this.dotCtx = ctx; //this.cnvIdx = cnvIdx //this.nInverse = cnvMax - cnvIdx
+    this.cCtx = ctx; //this.cnvIdx = cnvIdx //this.nInverse = cnvMax - cnvIdx
 
     this.aTape = []
-    while( this.aTape.length <= (this.dotCtx.width / 12) ){
+    while( this.aTape.length <= (this.cCtx.width / 12) ){
       this.aTape.push({
-        "x": neodigmUtils.f02x( this.dotCtx.width ), "y": -26,
+        "x": neodigmUtils.f02x( this.cCtx.width ), "y": -26,
         "sizeH": ( neodigmUtils.f02x( 14 ) + 4 ), "sizeW": ( neodigmUtils.f02x( 14 ) + 4 ),
         "speed": (neodigmUtils.f02x( 48 ) + 28), "gravity": (neodigmUtils.f02x( 10 ) + 4),
         "rotation": 9,
@@ -462,22 +462,19 @@ class NeodigmClaireConfetti{
         "theme": neodigmOpt.N55_THEME_COLORS[ ["warning","info","danger","secondary","primary","night"][neodigmUtils.f02x( 5 )] ][ neodigmUtils.f02x( 2 ) ]
       })
     }
-    this.nMax = Math.max(this.dotCtx.height, this.dotCtx.width)
+    this.nMax = Math.max(this.cCtx.height, this.cCtx.width)
   }
   draw(){
-    this.dotCtx.clearRect(0, 0, this.dotCtx.width, this.dotCtx.height)
+    this.cCtx.clearRect(0, 0, this.cCtx.width, this.cCtx.height)
     var _this = this
     this.aTape = this.aTape.filter(function(oTape){
-      if( !oTape.complete ) oTape.y = oTape.y + (oTape.speed / oTape.gravity);
-      _this.dotCtx.globalCompositeOperation = "source-over"
-      //_this.dotCtx.beginPath()
-        //_this.dotCtx.arc(oTape.x, oTape.y, oTape.size, 0, 2 * Math.PI, false)
-        _this.dotCtx.fillStyle = "#" + oTape.theme
-        _this.dotCtx.fillRect(oTape.x, oTape.y, oTape.sizeW, oTape.sizeH)
-       // _this.dotCtx.closePath()
-      _this.dotCtx.fill()
+      if( !oTape.complete ) oTape.y = oTape.y + ( oTape.speed / oTape.gravity );
+      _this.cCtx.globalCompositeOperation = "source-over"
+        _this.cCtx.fillStyle = "#" + oTape.theme
+        _this.cCtx.fillRect( oTape.x, oTape.y, oTape.sizeW, oTape.sizeH )
+      _this.cCtx.fill()
 
-      oTape.complete = (oTape.y >= (  _this.nMax + 26 ) )
+      oTape.complete = (oTape.y >= (  _this.nMax + 6 ) )
       return !oTape.complete
     })
     return ( this.aTape.length )
