@@ -541,9 +541,17 @@ data-n55-claire-click - confetti
         if( canvCntr && canvCntr?.aElCanv ){
           canvCntr.aElCanv.forEach(function( aCnv ){
             let ctx = aCnv[1]
-            let themeRadGrad = ctx.createLinearGradient(0, 0, aCnv[3], aCnv[2]);
-            themeRadGrad.addColorStop(0, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][0])
-            themeRadGrad.addColorStop(0.8, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][1])
+let themeLinGrad = ctx.createLinearGradient(0, 0, aCnv[3], aCnv[2]);
+themeLinGrad.addColorStop(0, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][0])
+themeLinGrad.addColorStop(0.8, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][1])
+
+
+            var themeRadGrad = ctx.createRadialGradient(0, 0, 200, aCnv[3], aCnv[2],200);
+            themeRadGrad.addColorStop(0, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][0]);
+            themeRadGrad.addColorStop(.4, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][1]);
+            themeRadGrad.addColorStop(1, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][0]);
+
+
             ctx.fillStyle = themeRadGrad
             ctx.fillRect(0, 0, aCnv[3], aCnv[2])
           })
