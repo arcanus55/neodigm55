@@ -467,7 +467,7 @@ class NeodigmClaireConfetti{
     this.cCtx.clearRect(0, 0, this.cCtx.width, this.cCtx.height)
     var _this = this
     this.aTape = this.aTape.filter(function(oTape){
-      if( !oTape.complete ) oTape.y = oTape.y + ( oTape.speed / oTape.gravity );
+      if( !oTape.complete ) oTape.y = oTape.y + ( oTape.speed * oTape.gravity );
       _this.cCtx.globalCompositeOperation = "source-over"
         _this.cCtx.fillStyle = "#" + oTape.theme
         _this.cCtx.fillRect( oTape.x, oTape.y, oTape.sizeW, oTape.sizeH )
