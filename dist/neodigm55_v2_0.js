@@ -548,7 +548,7 @@ themeLinGrad.addColorStop(0.8, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.
 
             var themeRadGrad = ctx.createRadialGradient(0, 0, aCnv[2], aCnv[3], (aCnv[2] / 2), aCnv[2] );
             themeRadGrad.addColorStop(0, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][0]);
-            themeRadGrad.addColorStop(.4, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][1]);
+            themeRadGrad.addColorStop(.6, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][1]);
             themeRadGrad.addColorStop(1, "#" + neodigmOpt.N55_THEME_COLORS[ NeodigmClaire.theme ][0]);
 
 
