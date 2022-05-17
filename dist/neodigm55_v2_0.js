@@ -455,7 +455,7 @@ class NeodigmClaireConfetti{
       this.aTape.push({
         "x": neodigmUtils.f02x( this.cCtx.width ), "y": -20,
         "sizeH": ( neodigmUtils.f02x( 14 ) + 4 ), "sizeW": ( neodigmUtils.f02x( 14 ) + 4 ),
-        "speed": (neodigmUtils.f02x( 8 ) + 1 ), "gravity": (neodigmUtils.f02x( 3 ) + 1),
+        "speed": (neodigmUtils.f02x( 4 ) + 1 ), "gravity": (neodigmUtils.f02x( 3 ) + 1),
         "rotation": 9,
         "complete": false,
         "theme": neodigmOpt.N55_THEME_COLORS[ ["warning","info","danger","secondary","primary","night"][neodigmUtils.f02x( 5 )] ][ neodigmUtils.f02x( 2 ) ]
