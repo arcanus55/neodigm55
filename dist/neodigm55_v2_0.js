@@ -449,14 +449,13 @@ class NeodigmClaireAtomOff{
 class NeodigmClaireConfetti{
   constructor( ctx ){
     this.size = ( neodigmUtils.f02x( 8 ) + 8 );
-    this.cCtx = ctx; //this.cnvIdx = cnvIdx //this.nInverse = cnvMax - cnvIdx
-
+    this.cCtx = ctx;
     this.aTape = []
-    while( this.aTape.length <= (this.cCtx.width / 12) ){
+    while( this.aTape.length <= (this.cCtx.width / 14) ){
       this.aTape.push({
-        "x": neodigmUtils.f02x( this.cCtx.width ), "y": -26,
+        "x": neodigmUtils.f02x( this.cCtx.width ), "y": -20,
         "sizeH": ( neodigmUtils.f02x( 14 ) + 4 ), "sizeW": ( neodigmUtils.f02x( 14 ) + 4 ),
-        "speed": (neodigmUtils.f02x( 48 ) + 28), "gravity": (neodigmUtils.f02x( 10 ) + 4),
+        "speed": (neodigmUtils.f02x( 56 ) + 32), "gravity": (neodigmUtils.f02x( 14 ) + 8),
         "rotation": 9,
         "complete": false,
         "theme": neodigmOpt.N55_THEME_COLORS[ ["warning","info","danger","secondary","primary","night"][neodigmUtils.f02x( 5 )] ][ neodigmUtils.f02x( 2 ) ]
@@ -474,7 +473,7 @@ class NeodigmClaireConfetti{
         _this.cCtx.fillRect( oTape.x, oTape.y, oTape.sizeW, oTape.sizeH )
       _this.cCtx.fill()
 
-      oTape.complete = (oTape.y >= (  _this.nMax + 6 ) )
+      oTape.complete = ( oTape.y >= ( _this.nMax + 6 ) )
       return !oTape.complete
     })
     return ( this.aTape.length )
