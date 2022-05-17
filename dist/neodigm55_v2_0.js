@@ -435,7 +435,7 @@ class NeodigmClaireAtomOff{
     this.nMax = Math.max(this.dotCtx.height, this.dotCtx.width)
   }
   draw(){
-    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 4
+    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 10
     this.dotCtx.globalCompositeOperation = "source-over"
     this.dotCtx.beginPath()
       this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
@@ -443,6 +443,44 @@ class NeodigmClaireAtomOff{
     this.dotCtx.fill()
     this.complete = (this.size >= (  this.nMax * 1.4 ) )
     return !this.complete
+  }
+}
+
+class NeodigmClaireConfetti{
+  constructor( ctx ){
+    this.size = ( neodigmUtils.f02x( 8 ) + 8 );
+    this.dotCtx = ctx; //this.cnvIdx = cnvIdx //this.nInverse = cnvMax - cnvIdx
+
+    this.aTape = []
+    while( this.aTape.length <= (this.dotCtx.width / 12) ){
+      this.aTape.push({
+        "x": neodigmUtils.f02x( this.dotCtx.width ), "y": -26,
+        "sizeH": ( neodigmUtils.f02x( 14 ) + 4 ), "sizeW": ( neodigmUtils.f02x( 14 ) + 4 ),
+        "speed": (neodigmUtils.f02x( 48 ) + 28), "gravity": (neodigmUtils.f02x( 10 ) + 4),
+        "rotation": 9,
+        "complete": false,
+        "theme": neodigmOpt.N55_THEME_COLORS[ ["warning","info","danger","secondary","primary","night"][neodigmUtils.f02x( 5 )] ][ neodigmUtils.f02x( 2 ) ]
+      })
+    }
+    this.nMax = Math.max(this.dotCtx.height, this.dotCtx.width)
+  }
+  draw(){
+    this.dotCtx.clearRect(0, 0, this.dotCtx.width, this.dotCtx.height)
+    var _this = this
+    this.aTape = this.aTape.filter(function(oTape){
+      if( !oTape.complete ) oTape.y = oTape.y + (oTape.speed / oTape.gravity);
+      _this.dotCtx.globalCompositeOperation = "source-over"
+      //_this.dotCtx.beginPath()
+        //_this.dotCtx.arc(oTape.x, oTape.y, oTape.size, 0, 2 * Math.PI, false)
+        _this.dotCtx.fillStyle = "#" + oTape.theme
+        _this.dotCtx.fillRect(oTape.x, oTape.y, oTape.sizeW, oTape.sizeH)
+       // _this.dotCtx.closePath()
+      _this.dotCtx.fill()
+
+      oTape.complete = (oTape.y >= (  _this.nMax + 26 ) )
+      return !oTape.complete
+    })
+    return ( this.aTape.length )
   }
 }
 class NeodigmClaire {
@@ -560,12 +598,27 @@ data-n55-claire-click - confetti
       }
       return this
     }
+    static doConfetti( sQ ){
+      if( this.bIsInit && !this.bIsPause ){
+        let canvCntr = this._d.querySelector( sQ )  //  One Single
+        if( canvCntr ){
+          NeodigmClaire.aAtoms = []
+          canvCntr.aElCanv.forEach(function( elChild ){
+            let ctx = elChild[1]; ctx.height = elChild[2]; ctx.width = elChild[3];
+            let nCnt = 0
+            NeodigmClaire.aAtoms.push( new NeodigmClaireConfetti( ctx ))
+          })
+          NeodigmClaire.anime( sQ, true )
+        }
+      }
+      return this
+    }
     static anime( sQ, bClose ){
       if( this.bIsInit && !this.bIsPause ){
         let _sQ = sQ
         let aAtomRun = NeodigmClaire.aAtoms.filter( ( ar ) => !ar.complete )
         if( aAtomRun.filter( function( ar ) { return ar.draw() } ).length ){
-          setTimeout(function(){NeodigmClaire.anime( sQ, bClose )}, 32)
+          setTimeout(function(){NeodigmClaire.anime( sQ, bClose )}, 56)
         }else{ if( bClose ) NeodigmClaire.hideCanv( _sQ, bClose )
         }
       }
