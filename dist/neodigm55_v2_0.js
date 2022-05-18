@@ -181,7 +181,7 @@ class NeodigmSodaPop {
           this.eSoda.classList.add("ndsp__size--" + this.eTmpl.dataset.n55SodapopSize ) 
           setTimeout(function() {
               neodigmSodaPop.eSoda.classList.add("ndsp__opened");
-          }, 64)
+          }, 256)
           this.eSoda.innerHTML = this.eTmpl.innerHTML
           this._d.body.appendChild(this.eSoda)
           if("vibrate" in navigator) window.navigator.vibrate([16, 8])
