@@ -181,7 +181,7 @@ class NeodigmSodaPop {
           this.eSoda.classList.add("ndsp__size--" + this.eTmpl.dataset.n55SodapopSize ) 
           setTimeout(function() {
               neodigmSodaPop.eSoda.classList.add("ndsp__opened");
-          }, 4)
+          }, 64)
           this.eSoda.innerHTML = this.eTmpl.innerHTML
           this._d.body.appendChild(this.eSoda)
           if("vibrate" in navigator) window.navigator.vibrate([16, 8])
@@ -435,7 +435,7 @@ class NeodigmClaireAtomOff{
     this.nMax = Math.max(this.dotCtx.height, this.dotCtx.width)
   }
   draw(){
-    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 8
+    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 6
     this.dotCtx.globalCompositeOperation = "source-over"
     this.dotCtx.beginPath()
       this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
