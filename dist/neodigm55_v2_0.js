@@ -435,7 +435,7 @@ class NeodigmClaireAtomOff{
     this.nMax = Math.max(this.dotCtx.height, this.dotCtx.width)
   }
   draw(){
-    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 6
+    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 4
     this.dotCtx.globalCompositeOperation = "source-over"
     this.dotCtx.beginPath()
       this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
