@@ -153,7 +153,6 @@ class NeodigmSodaPop {
           }
           if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) this.close()
           if("SUMMARY" == ev.target.tagName) {
-            //if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( ev.currentTarget.parentElement.hasAttribute( "open" ) ? 9 : 7 )
             if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( ev.target.parentElement.hasAttribute( "open" ) ? 9 : 7 )
           }
         }, false)
