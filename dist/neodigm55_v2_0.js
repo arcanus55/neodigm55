@@ -141,7 +141,7 @@ class NeodigmSodaPop {
     init() {
         this.eScrim = this._d.querySelector(this._aQ[0])
         this.eClose = this._d.querySelector(this._aQ[0] + "-close")
-        this._d.body.addEventListener("click", (ev) => {
+        this._d.body.addEventListener("click", ( ev ) => {
           let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId 
           let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
           if( evAtr && (evTheme != "disabled") ) {
@@ -153,7 +153,8 @@ class NeodigmSodaPop {
           }
           if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) this.close()
           if("SUMMARY" == ev.target.tagName) {
-            if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( ev.currentTarget.parentElement.hasAttribute( "open" ) ? 9 : 7 )
+            //if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( ev.currentTarget.parentElement.hasAttribute( "open" ) ? 9 : 7 )
+            if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( ev.target.parentElement.hasAttribute( "open" ) ? 9 : 7 )
           }
         }, false)
         this._d.body.addEventListener("mouseleave", (ev) => {
