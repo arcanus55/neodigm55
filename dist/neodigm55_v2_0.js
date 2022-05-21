@@ -407,6 +407,7 @@ class NeodigmClaireAtomOn{
     this.nMax = Math.max(this.dotCtx.height, this.dotCtx.width)
   }
   draw(){
+    let nRings = 0
     if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 10
     this.dotCtx.globalCompositeOperation = "destination-out"
     this.dotCtx.beginPath()
@@ -414,11 +415,14 @@ class NeodigmClaireAtomOn{
       this.dotCtx.closePath()
     this.dotCtx.fill()
 
-    this.dotCtx.beginPath()
-      this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
-      this.dotCtx.closePath()
-      this.dotCtx.lineWidth = neodigmUtils.f02x( 22 ) + 4
-      this.dotCtx.stroke()
+    while( nRings++ <= 3 ){
+      this.dotCtx.beginPath()
+        this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
+        this.dotCtx.closePath()
+        this.dotCtx.lineWidth = neodigmUtils.f02x( 22 ) + 4
+        this.dotCtx.stroke()
+    }
+
     this.dotCtx.globalCompositeOperation = "destination-atop";  //  "destination-atop"
 
     this.complete = (this.size >= (  this.nMax * 1.4 ) )
@@ -445,7 +449,6 @@ class NeodigmClaireAtomOff{
     return !this.complete
   }
 }
-
 class NeodigmClaireConfetti{
   constructor( ctx ){
     this.size = ( neodigmUtils.f02x( 8 ) + 8 );
