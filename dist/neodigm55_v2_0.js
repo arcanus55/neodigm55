@@ -415,11 +415,11 @@ class NeodigmClaireAtomOn{
       this.dotCtx.closePath()
     this.dotCtx.fill()
 
-    while( nRings++ <= 3 ){
+    while( nRings++ <= 2 ){
       this.dotCtx.beginPath()
         this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
         this.dotCtx.closePath()
-        this.dotCtx.lineWidth = neodigmUtils.f02x( 22 ) + 4
+        this.dotCtx.lineWidth = neodigmUtils.f02x( 18 ) + 2
         this.dotCtx.stroke()
     }
 
