@@ -151,7 +151,10 @@ class NeodigmSodaPop {
           if("NEODIGM-SODAPOP-SCRIM" == ev.target.tagName) {
               if(this.bIsModal) { this.shake() } else { this.close() }
           }
-          if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) { this.close() }
+          if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) this.close()
+          if("SUMMARY" == ev.target.tagName) {
+            if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( ev.currentTarget.parentElement.hasAttribute( "open" ) ? 9 : 7 )
+          }
         }, false)
         this._d.body.addEventListener("mouseleave", (ev) => {
           if( this.fOnBeforeUserExit && !sessionStorage.getItem( "n55_userExit" ) ) this.fOnBeforeUserExit()
