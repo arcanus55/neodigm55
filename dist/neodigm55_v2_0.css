@@ -124,7 +124,7 @@ neodigm-sodapop-scrim-close:not(.ndsp__modal)[data-n55-sodapop-scrim='opened'] {
 }
 neodigm-sodapop {
     background-color: #fff;
-    border-radius: 30px; transition: all .68s;
+    border-radius: 20px; transition: all .68s;
     border: solid 1px #767676;
     box-shadow: 0 0 4px rgba(100,100,100,0.4);
     display: block !important;
