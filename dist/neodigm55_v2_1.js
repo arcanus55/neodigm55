@@ -30,7 +30,7 @@ let neodigmOpt = {
   N55_GENRE_MOTIF: "neodigm",  //  steampunk cyberpunk artdeco noir anime casino
   N55_THEME_DEFAULT: "brand",
   N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"],
-   "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"]}
+   "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"]}
 }
 
 if( typeof neodigmOptCustom != 'undefined' ){
@@ -141,7 +141,7 @@ class NeodigmSodaPop {
     init() {
         this.eScrim = this._d.querySelector(this._aQ[0])
         this.eClose = this._d.querySelector(this._aQ[0] + "-close")
-        this._d.body.addEventListener("click", ( ev ) => {  //  TODO Keyboard trap
+        this._d.body.addEventListener("click", ( ev ) => {  //  TODO a11y Keyboard trap
           let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId 
           let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
           if( evAtr && (evTheme != "disabled") ) {
@@ -737,6 +737,7 @@ let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchant
 //  Neodigm 55 KPI Card Begin //
 //  Neodigm 55 Tradecraft Redact Begin  //
 //  Neodigm 55 VT100 Begin //
+//  Neodigm 55 Hot Keys Hover and Tripple Click Begin //
 
 // Claire
 //  Neodigm 55 Horizontal Accordion Begin //
