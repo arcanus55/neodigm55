@@ -228,6 +228,8 @@ neodigm-marquee pre[data-n55-theme='info'],
 neodigm-marquee pre [data-n55-theme='info'] { color: var(--neodigm-theme-info); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-info-alt), 0.2rem 0.2rem 1rem #fff }
 neodigm-marquee pre[data-n55-theme='night'],
 neodigm-marquee pre [data-n55-theme='night'] { color: var(--neodigm-theme-night-alt); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-night), 0.2rem 0.1rem 1rem #fff}
+neodigm-marquee pre[data-n55-theme='marcom'],
+neodigm-marquee pre [data-n55-theme='marcom'] { color: var(--neodigm-theme-marcom-alt); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-marcom), 0.2rem 0.1rem 1rem #fff}
 
 neodigm-marquee[data-n55-marquee-size='small'] { height: 28px; }
 neodigm-marquee[data-n55-marquee-size='small'] * {
