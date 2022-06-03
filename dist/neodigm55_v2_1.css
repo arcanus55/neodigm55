@@ -361,7 +361,8 @@ background-color: rgba( 96, 88, 44, 0);
 [data-n55-enchanted-cta][data-n55-theme='warning']   { background: linear-gradient(var(--neodigm-theme-warning), var(--neodigm-theme-warning-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='info']      { background: linear-gradient(var(--neodigm-theme-info), var(--neodigm-theme-info-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='disabled']  { background: linear-gradient(var(--neodigm-theme-disabled), var(--neodigm-theme-disabled-alt)); }
-[data-n55-enchanted-cta][data-n55-theme='night']  { background: linear-gradient(var(--neodigm-theme-night), var(--neodigm-theme-night-alt)); }
+[data-n55-enchanted-cta][data-n55-theme='night']     { background: linear-gradient(var(--neodigm-theme-night), var(--neodigm-theme-night-alt)); }
+[data-n55-enchanted-cta][data-n55-theme='marcom']    { background: linear-gradient(var(--neodigm-theme-marcom), var(--neodigm-theme-marcom-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='ghost']     { background: #fff; color: #DD4124; border: solid 1px #DD4124; }
 
 @keyframes touch_emit{
