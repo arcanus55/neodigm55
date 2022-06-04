@@ -23,7 +23,7 @@ Simply copy the two lines of code and paste into the head of any HTML page that 
 </p>
 
 <p align="center">
-  <a target="_blank" href="https://codepen.io/neodigm24/pen/oNGqzyO" title="Infographics, UX, PWA, Typescript, Svelte Interactive Infographic, ThreeJS, Vue, and WASM" alt="TypeScript ⚡ WASM ✨ Svelte Interactive Infographic PWA">CodePen</a>
+  <a target="_blank" href="https://codepen.io/neodigm24/full/oNGqzyO" title="Infographics, UX, PWA, Typescript, Svelte Interactive Infographic, ThreeJS, Vue, and WASM" alt="TypeScript ⚡ WASM ✨ Svelte Interactive Infographic PWA">CodePen</a>
 </p>
 
 https://user-images.githubusercontent.com/41128567/144532034-16ab92e5-33ae-4465-b0be-41be82f9e59e.mp4
