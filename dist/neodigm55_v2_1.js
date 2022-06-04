@@ -418,7 +418,7 @@ class NeodigmClaireAtomOn{
       this.dotCtx.closePath()
     this.dotCtx.fill()
 
-    while( nRings++ <= 2 ){
+    while( nRings++ <= 3 ){
       this.dotCtx.beginPath()
         this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
         this.dotCtx.closePath()
