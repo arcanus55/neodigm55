@@ -106,8 +106,8 @@ let neodigmToast = (function(_d, eID, _q) {
           }
           _d.body.addEventListener("click", ( ev )=>{
             let evToast = ev?.target?.dataset.n55Toast || ev?.srcElement?.parentNode?.dataset.n55Toast
-            let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
-            if( evToast && (evTheme != "disabled") ) neodigmToast.q( evToast )
+            let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme || "brand"
+            if( evToast && (evTheme != "disabled") ) neodigmToast.q( evToast, evTheme )
           }, true)
           bIsInit = true
       },
@@ -711,7 +711,7 @@ class NeodigmEnchantedCTA {
                 }
                 break;
             }
-            if( neodigmOpt.N55_DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] )
+            if( neodigmOpt.N55_DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] ) // !iPad
             setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCt ) }, 8000)
           }
         }
