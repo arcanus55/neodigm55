@@ -574,7 +574,7 @@ data-n55-claire-click - confetti
       }
       return this;
     }
-    static waxOn( sQ ){
+    static waxOn( sQ, scene="circle" ){
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
         if( canvCntr ){
@@ -604,6 +604,10 @@ data-n55-claire-click - confetti
       }
       return this
     }
+    static doWaxOn( sQ, theme, scene="circle", nOpc=1){
+      this.showCanv( sQ, nOpc).setTheme( theme ).initCanvOn( sQ ).waxOn( sQ, scene="circle" )
+    }
+    // NeodigmClaire.doWaxOn( DOM query, option, opacity )
     static doConfetti( sQ ){
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
