@@ -146,12 +146,9 @@ class NeodigmSodaPop {
         this._d.body.addEventListener("click", ( ev ) => {  //  TODO a11y Keyboard trap
           let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId 
           let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
-          let evFS = ev?.target?.dataset.n55Fullscreen || ev?.srcElement?.parentNode?.dataset.n55Fullscreen
-  console.log("===== evFS | " + evFS)
           if( evAtr && (evTheme != "disabled") ) {
               ev.preventDefault()
               neodigmSodaPop.open( evAtr )
-              if( evFS == "true" ) document.body.requestFullscreen()
           }
           if("NEODIGM-SODAPOP-SCRIM" == ev.target.tagName) {
               if(this.bIsModal) { this.shake() } else { this.close() }
@@ -184,6 +181,7 @@ class NeodigmSodaPop {
           this.eSoda = this._d.createElement(this._aQ[1])
           setTimeout(function() {
               neodigmSodaPop.eScrim.classList.add("ndsp__blur");
+              if( this.eTmpl.dataset.n55SodapopFullscreen == "true" ) document.body.requestFullscreen()
           }, 96)
           if(this.bIsModal) this.eSoda.classList.add("ndsp__modal")
           this.eSoda.classList.add("ndsp__size--" + this.eTmpl.dataset.n55SodapopSize ) 
