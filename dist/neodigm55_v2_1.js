@@ -138,7 +138,7 @@ class NeodigmSodaPop {
     constructor(_d, _aQ) {  //  Flux Capacitor
         this._d = _d; this._aQ = _aQ
         this.eSoda = this.eScrim = this.eClose = this.fOnBeforeOpen = this.fOnAfterOpen = this.fOnClose = this.fOnBeforeUserExit = null
-        this.bIsOpen = this.bIsModal = this.bIsInit = false
+        this.bIsOpen = this.bIsModal = this.bIsInit = this.bIsFS = false
     }
     init() {
         this.eScrim = this._d.querySelector(this._aQ[0])
@@ -194,7 +194,8 @@ class NeodigmSodaPop {
             NeodigmClaire.showCanv( this._aQ[1] ).initCanv( this._aQ[1] ).waxOn( this._aQ[1], neodigmOpt.N55_GENRE_MOTIF )
           }
           if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7 )
-          if( this.eTmpl.dataset.n55SodapopFullscreen == "true" ) _d.body.requestFullscreen()
+          this.bIsFS = ( this.eTmpl.dataset.n55SodapopFullscreen == "true" )
+          if( this.bIsFS ) _d.body.requestFullscreen()
           this.bIsOpen = true;
           if(this.fOnAfterOpen) this.fOnAfterOpen()
           if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_OPEN ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_OPEN, "id": _sId } )
@@ -221,6 +222,7 @@ class NeodigmSodaPop {
             if("vibrate" in navigator) window.navigator.vibrate([8, 16])
             if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(3)
             this.bIsOpen = false
+            if( this.bIsFS ) _d.exitFullscreen();
             if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_CLOSE ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_CLOSE } )
         }
         return this
@@ -606,9 +608,11 @@ data-n55-claire-click - confetti
     }
     static doWaxOn( sQ, theme="brand", scene="circle", nOpc=1 ){
       this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOn( sQ ).waxOn( sQ, scene )
+      return this
     }
     static doWaxOff( sQ, theme="brand", scene="circle", nOpc=1 ){
       this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOff( sQ ).waxOff( sQ, scene )
+      return this
     }
     // NeodigmClaire.doWaxOn( DOM query, option, opacity )
     static doConfetti( sQ ){
