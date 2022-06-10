@@ -146,9 +146,11 @@ class NeodigmSodaPop {
         this._d.body.addEventListener("click", ( ev ) => {  //  TODO a11y Keyboard trap
           let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId 
           let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
+          let evFS = ev?.target?.dataset.n55Fullscreen || ev?.srcElement?.parentNode?.dataset.n55Fullscreen
           if( evAtr && (evTheme != "disabled") ) {
               ev.preventDefault()
               neodigmSodaPop.open( evAtr )
+              if( evFS == "true" ) document.body.requestFullscreen()
           }
           if("NEODIGM-SODAPOP-SCRIM" == ev.target.tagName) {
               if(this.bIsModal) { this.shake() } else { this.close() }
@@ -605,7 +607,7 @@ data-n55-claire-click - confetti
       return this
     }
     static doWaxOn( sQ, theme, scene="circle", nOpc=1){
-      this.showCanv( sQ, nOpc).setTheme( theme ).initCanvOn( sQ ).waxOn( sQ, scene="circle" )
+      this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOn( sQ ).waxOn( sQ, scene="circle" )
     }
     // NeodigmClaire.doWaxOn( DOM query, option, opacity )
     static doConfetti( sQ ){
