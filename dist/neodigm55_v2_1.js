@@ -194,9 +194,7 @@ class NeodigmSodaPop {
             NeodigmClaire.showCanv( this._aQ[1] ).initCanv( this._aQ[1] ).waxOn( this._aQ[1], neodigmOpt.N55_GENRE_MOTIF )
           }
           if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7 )
-console.log( "==== ==== ==== | " + this.eTmpl.dataset.n55SodapopFullscreen )
-console.log( "==== ==== ==== | ", this.eTmpl.dataset )
-if( this.eTmpl.dataset.n55SodapopFullscreen == "true" ) document.body.requestFullscreen()
+          if( this.eTmpl.dataset.n55SodapopFullscreen == "true" ) _d.body.requestFullscreen()
           this.bIsOpen = true;
           if(this.fOnAfterOpen) this.fOnAfterOpen()
           if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_OPEN ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_OPEN, "id": _sId } )
