@@ -195,7 +195,7 @@ class NeodigmSodaPop {
           }
           if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7 )
 console.log( "==== ==== ==== | " + this.eTmpl.dataset.n55SodapopFullscreen )
-console.log( "==== ==== ==== | " + this.eTmpl.dataset )
+console.log( "==== ==== ==== | ", this.eTmpl.dataset )
 if( this.eTmpl.dataset.n55SodapopFullscreen == "true" ) document.body.requestFullscreen()
           this.bIsOpen = true;
           if(this.fOnAfterOpen) this.fOnAfterOpen()
