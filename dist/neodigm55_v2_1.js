@@ -605,10 +605,10 @@ data-n55-claire-click - confetti
       return this
     }
     static doWaxOn( sQ, theme="brand", scene="circle", nOpc=1 ){
-      this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOn( sQ ).waxOn( sQ, scene="circle" )
+      this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOn( sQ ).waxOn( sQ, scene )
     }
     static doWaxOff( sQ, theme="brand", scene="circle", nOpc=1 ){
-      this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOff( sQ ).waxOff( sQ, scene="circle" )
+      this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOff( sQ ).waxOff( sQ, scene )
     }
     // NeodigmClaire.doWaxOn( DOM query, option, opacity )
     static doConfetti( sQ ){
