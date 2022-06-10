@@ -147,6 +147,7 @@ class NeodigmSodaPop {
           let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId 
           let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
           let evFS = ev?.target?.dataset.n55Fullscreen || ev?.srcElement?.parentNode?.dataset.n55Fullscreen
+  console.log("===== evFS | " + evFS)
           if( evAtr && (evTheme != "disabled") ) {
               ev.preventDefault()
               neodigmSodaPop.open( evAtr )
