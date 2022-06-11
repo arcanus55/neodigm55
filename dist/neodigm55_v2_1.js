@@ -521,20 +521,22 @@ data-n55-claire-click - confetti
     static showCanv ( sQ, nOpc ){
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
-        let aElCanv = [ ... canvCntr.querySelectorAll( ":scope > *" )]  //  1st decendants
-        if( canvCntr && aElCanv ){
-          canvCntr.dataset.n55Claire = "true"
-          if( !canvCntr.aElCanv ){  //  Once
-            canvCntr.aElCanv = []
-            aElCanv.forEach(function( el ){
-              let cnv = document.createElement( "canvas" )
-              cnv.setAttribute("height", el.clientHeight)
-              cnv.setAttribute("width",  el.clientWidth)
-              cnv.style.height = el.clientHeight; cnv.style.width = el.clientWidth; 
-              if( nOpc ) cnv.style.opacity = nOpc; 
-              el.appendChild( cnv )
-              canvCntr.aElCanv.push( [cnv, cnv.getContext("2d"), el.clientHeight, el.clientWidth] )
-          })
+        if( canvCntr ){
+          let aElCanv = [ ... canvCntr.querySelectorAll( ":scope > *" )]  //  1st decendants
+          if( canvCntr && aElCanv ){
+            canvCntr.dataset.n55Claire = "true"
+            if( !canvCntr.aElCanv ){  //  Once
+              canvCntr.aElCanv = []
+              aElCanv.forEach(function( el ){
+                let cnv = document.createElement( "canvas" )
+                cnv.setAttribute("height", el.clientHeight)
+                cnv.setAttribute("width",  el.clientWidth)
+                cnv.style.height = el.clientHeight; cnv.style.width = el.clientWidth; 
+                if( nOpc ) cnv.style.opacity = nOpc; 
+                el.appendChild( cnv )
+                canvCntr.aElCanv.push( [cnv, cnv.getContext("2d"), el.clientHeight, el.clientWidth] )
+            })
+            }
           }
         }
       }
