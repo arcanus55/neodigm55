@@ -26,7 +26,7 @@ let neodigmOpt = {
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
     N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ],
   CONSOLE_LOG_VER: true,
-  N55_DEBUG_lOG: true,
+  N55_DEBUG_lOG: false,
   N55_GENRE_MOTIF: "neodigm",  //  steampunk cyberpunk artdeco noir anime casino
   N55_THEME_DEFAULT: "brand",
   N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"],
