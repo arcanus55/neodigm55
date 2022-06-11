@@ -614,8 +614,8 @@ data-n55-claire-click - confetti
       this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOff( sQ ).waxOff( sQ, scene )
       return this
     }
-    // NeodigmClaire.doWaxOn( DOM query, option, opacity )
-    static doConfetti( sQ ){
+    static doConfetti( sQ, theme="random", nOpc=1 ){
+      this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOff( sQ )
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
         if( canvCntr ){
@@ -645,6 +645,7 @@ data-n55-claire-click - confetti
     static setTheme ( sTheme = "brand" ){
       if( sTheme.indexOf("[") != -1 ) sTheme = JSON.parse( sTheme )  //  from HTML attrb
       if( typeof sTheme == "object") sTheme = sTheme[ neodigmUtils.f02x( sTheme.length ) ]  //  array
+      if( sTheme == "random" ) sTheme = neodigmOpt.N55_THEME_COLORS[ ["warning","info","danger","secondary","primary","night","marcom"][neodigmUtils.f02x( 6 )] ]
       this._theme = sTheme;
       return this; }
     }
