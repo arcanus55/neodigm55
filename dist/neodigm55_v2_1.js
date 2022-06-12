@@ -205,11 +205,7 @@ class NeodigmSodaPop {
     }
     close( _bFast ) {
         if(this.bIsInit && this.bIsOpen) {
-    console.log("--------------- PRE ON CLOSE | ", this.fOnClose[0])
-    if(this.fOnClose.length) {
-    console.log("--------------- NOT FIRING ON CLOSE | ", this.fOnClose[0])
-              //  this.fOnClose[0]()//this.fOnClose.forEach( (f)=> f())
-            }
+            if(this.fOnClose.length) this.fOnClose.forEach( (f)=> f())
             this.eClose.dataset.n55SodapopScrim = "closed"
             if(_bFast) {
                 this.eSoda.remove()
@@ -255,7 +251,7 @@ class NeodigmSodaPop {
     setOnAfterOpen(_f) { this.fOnAfterOpen.push(_f)}
     setOnClose(_f) {
 console.log("======== SET CLOSE yo | ", _f)
-      //this.fOnClose.push(_f)
+      this.fOnClose.push(_f)
     }
     setOnBeforeUserExit(_f) { if( this.bIsInit ) this.fOnBeforeUserExit.push(_f)}
 }
@@ -441,10 +437,10 @@ class NeodigmClaireAtomOn{
         this.dotCtx.lineWidth = neodigmUtils.f02x( 18 ) + 2
         this.dotCtx.stroke()
 
-        this.dotCtx.beginPath()
-          this.dotCtx.rect(neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ))
-          this.dotCtx.lineWidth = neodigmUtils.f02x( 22 ) + 3
-          this.dotCtx.stroke()
+this.dotCtx.beginPath()
+  this.dotCtx.rect(neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ))
+  this.dotCtx.lineWidth = neodigmUtils.f02x( 16 ) + 2
+  this.dotCtx.stroke()
     }
 
     this.dotCtx.globalCompositeOperation = "destination-atop";  //  "destination-atop"
