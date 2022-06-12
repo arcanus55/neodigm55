@@ -407,7 +407,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
 
 //  Neodigm 55 Claire Begin  //
 class NeodigmClaireAtomOn{
-  constructor(x, y, ctx, cnvIdx, cnvMax){
+  constructor(x, y, ctx, cnvIdx, cnvMax, sceen="circle"){
     this.complete = false; this.size = 1
     this.x = x; this.y = y;
     this.dotCtx = ctx; this.cnvIdx = cnvIdx
@@ -416,7 +416,7 @@ class NeodigmClaireAtomOn{
   }
   draw(){
     let nRings = 0
-    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 10
+    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 11
     this.dotCtx.globalCompositeOperation = "destination-out"
     this.dotCtx.beginPath()
       this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
