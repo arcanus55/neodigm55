@@ -160,7 +160,7 @@ class NeodigmSodaPop {
           }
         }, false)
         this._d.body.addEventListener("mouseleave", (ev) => {
-          if( this.fOnBeforeUserExit && !sessionStorage.getItem( "n55_userExit" ) ) this.fOnBeforeUserExit.forEach( (f)=> f())
+          if( this.fOnBeforeUserExit.length && !sessionStorage.getItem( "n55_userExit" ) ) this.fOnBeforeUserExit.forEach( (f)=> f())
           sessionStorage.setItem( "n55_userExit", Date.now() )
         })
         this.bIsInit = true
@@ -191,8 +191,8 @@ class NeodigmSodaPop {
           this._d.body.appendChild(this.eSoda)
           if("vibrate" in navigator) window.navigator.vibrate([16, 8])
           if( this.eTmpl.dataset.n55ClaireWaxon ){
-            if( this.eTmpl.dataset.n55ClaireTheme ) NeodigmClaire.setTheme( this.eTmpl.dataset.n55ClaireTheme )
-            NeodigmClaire.showCanv( this._aQ[1] ).initCanv( this._aQ[1] ).waxOn( this._aQ[1], neodigmOpt.N55_GENRE_MOTIF )
+            //if( this.eTmpl.dataset.n55ClaireTheme ) NeodigmClaire.setTheme( this.eTmpl.dataset.n55ClaireTheme )
+            //NeodigmClaire.showCanv( this._aQ[1] ).initCanv( this._aQ[1] ).waxOn( this._aQ[1], neodigmOpt.N55_GENRE_MOTIF )
           }
           if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7 )
           this.bIsFS = ( this.eTmpl.dataset.n55SodapopFullscreen == "true" )
