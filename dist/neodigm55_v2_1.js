@@ -414,7 +414,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
 
 //  Neodigm 55 Claire Begin  //
 class NeodigmClaireAtomOn{
-  constructor(x, y, ctx, cnvIdx, cnvMax){
+  constructor(x, y, ctx, cnvIdx, cnvMax, sceen="circle"){
     this.complete = false; this.size = 1
     this.x = x; this.y = y;
     this.dotCtx = ctx; this.cnvIdx = cnvIdx
@@ -429,6 +429,10 @@ class NeodigmClaireAtomOn{
       this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
       this.dotCtx.closePath()
     this.dotCtx.fill()
+        /*this.dotCtx.fill()
+    this.dotCtx.beginPath()
+    this.dotCtx.rect( (this.x - this.size), (this.y - this.size), this.size, this.size )
+    this.dotCtx.fill()*/
 
     while( nRings++ <= 3 ){
       this.dotCtx.beginPath()
@@ -436,6 +440,11 @@ class NeodigmClaireAtomOn{
         this.dotCtx.closePath()
         this.dotCtx.lineWidth = neodigmUtils.f02x( 18 ) + 2
         this.dotCtx.stroke()
+
+        this.dotCtx.beginPath()
+          this.dotCtx.rect(neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ))
+          this.dotCtx.lineWidth = neodigmUtils.f02x( 22 ) + 3
+          this.dotCtx.stroke()
     }
 
     this.dotCtx.globalCompositeOperation = "destination-atop";  //  "destination-atop"
