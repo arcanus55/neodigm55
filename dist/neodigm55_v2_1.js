@@ -798,12 +798,15 @@ class NeodigmEnchantedCTA {
 }
 let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchanted-cta]"] )
 
-// v1.9.0 - Refactor Toast and Metronome STATIC
+// v2.3.0 - Refactor Toast and Metronome STATIC
+//  Neodigm 55 SodaPop Simple Tab Plug-in //
+//  Neodigm 55 Enchanted CTA FlashTheme Round-robin //
+//  Neodigm 55 Claire Declaire-itive //
 //  Neodigm 55 Confetti Begin (Claire) //
 //  Neodigm 55 Cypher Type FX Begin  //
-//  Neodigm 55 FAB Begin //
 
-// v2.0.0
+// v2.x.0
+//  Neodigm 55 FAB Begin //
 //  Neodigm 55 KPI Card Begin //
 //  Neodigm 55 Tradecraft Redact Begin  //
 //  Neodigm 55 VT100 Begin //
