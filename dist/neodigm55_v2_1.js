@@ -249,10 +249,7 @@ class NeodigmSodaPop {
     isOpen() { return this.bIsOpen }
     setOnBeforeOpen(_f) { this.fOnBeforeOpen.push(_f)}
     setOnAfterOpen(_f) { this.fOnAfterOpen.push(_f)}
-    setOnClose(_f) {
-console.log("======== SET CLOSE yo | ", _f)
-      this.fOnClose.push(_f)
-    }
+    setOnClose(_f) { this.fOnClose.push(_f) }
     setOnBeforeUserExit(_f) { if( this.bIsInit ) this.fOnBeforeUserExit.push(_f)}
 }
 let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-n55-sodapop-modal"] )
