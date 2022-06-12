@@ -414,6 +414,38 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
 
 //  Neodigm 55 Claire Begin  //
 class NeodigmClaireAtomOn{
+  constructor(x, y, ctx, cnvIdx, cnvMax){
+    this.complete = false; this.size = 1
+    this.x = x; this.y = y;
+    this.dotCtx = ctx; this.cnvIdx = cnvIdx
+    this.nInverse = cnvMax - cnvIdx
+    this.nMax = Math.max(this.dotCtx.height, this.dotCtx.width)
+  }
+  draw(){
+    let nRings = 0
+    if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 10
+    this.dotCtx.globalCompositeOperation = "destination-out"
+    this.dotCtx.beginPath()
+      this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
+      this.dotCtx.closePath()
+    this.dotCtx.fill()
+
+    while( nRings++ <= 3 ){
+      this.dotCtx.beginPath()
+        this.dotCtx.arc( neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ) + 8, 0, 2 * Math.PI, false)
+        this.dotCtx.closePath()
+        this.dotCtx.lineWidth = neodigmUtils.f02x( 18 ) + 2
+        this.dotCtx.stroke()
+    }
+
+    this.dotCtx.globalCompositeOperation = "destination-atop";  //  "destination-atop"
+
+    this.complete = (this.size >= (  this.nMax * 1.4 ) )
+    return !this.complete
+  }
+}
+
+class NeodigmClaireAtomOnQQQ{
   constructor(x, y, ctx, cnvIdx, cnvMax, sceen="circle"){
     this.complete = false; this.size = 1
     this.x = x; this.y = y;
@@ -606,14 +638,14 @@ data-n55-claire-click - confetti
           canvCntr.aElCanv.forEach(function( elChild, cnvIdx ){
             let ctx = elChild[1]; ctx.height = elChild[2]; ctx.width = elChild[3];
             let nRndX = neodigmUtils.f02x( ctx.width ), nRndY = neodigmUtils.f02x( ctx.height )
-            NeodigmClaire.aAtoms.push( new NeodigmClaireAtomOn( nRndX, nRndY, ctx, cnvIdx, canvCntr.aElCanv.length ))
+            NeodigmClaire.aAtoms.push( new NeodigmClaireAtomOn( nRndX, nRndY, ctx, cnvIdx, canvCntr.aElCanv.length, scene ))
           })
           NeodigmClaire.anime( sQ, true )
         }
       }
       return this
     }
-    static waxOff( sQ ){
+    static waxOff( sQ, scene="circle" ){
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
         if( canvCntr ){
@@ -621,7 +653,7 @@ data-n55-claire-click - confetti
           canvCntr.aElCanv.forEach(function( elChild, cnvIdx ){
             let ctx = elChild[1]; ctx.height = elChild[2]; ctx.width = elChild[3];
             let nRndX = neodigmUtils.f02x( ctx.width ), nRndY = neodigmUtils.f02x( ctx.height )
-            NeodigmClaire.aAtoms.push( new NeodigmClaireAtomOff( nRndX, nRndY, ctx, cnvIdx, canvCntr.aElCanv.length ))
+            NeodigmClaire.aAtoms.push( new NeodigmClaireAtomOff( nRndX, nRndY, ctx, cnvIdx, canvCntr.aElCanv.length, scene ))
           })
           NeodigmClaire.anime( sQ, false )
         }
