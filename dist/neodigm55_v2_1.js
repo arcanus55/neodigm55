@@ -432,6 +432,7 @@ class NeodigmClaireAtomOn{
 
         this.dotCtx.beginPath();
           this.dotCtx.rect(neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ));
+          this.dotCtx.lineWidth = neodigmUtils.f02x( 22 ) + 3
           this.dotCtx.stroke();
     }
 
