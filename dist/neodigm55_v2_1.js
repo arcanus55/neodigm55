@@ -418,9 +418,12 @@ class NeodigmClaireAtomOn{
     let nRings = 0
     if( !this.complete ) this.size = this.size + ( this.nMax * this.nInverse ) / 11
     this.dotCtx.globalCompositeOperation = "destination-out"
-    this.dotCtx.beginPath()
+    /*this.dotCtx.beginPath()
       this.dotCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false)
       this.dotCtx.closePath()
+    this.dotCtx.fill()*/
+    this.dotCtx.beginPath()
+    this.dotCtx.rect( this.x, this.y, this.size, this.size )
     this.dotCtx.fill()
 
     while( nRings++ <= 6 ){/*
@@ -430,10 +433,10 @@ class NeodigmClaireAtomOn{
         this.dotCtx.lineWidth = neodigmUtils.f02x( 18 ) + 2
         this.dotCtx.stroke()*/
 
-        this.dotCtx.beginPath();
-          this.dotCtx.rect(neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ));
+        this.dotCtx.beginPath()
+          this.dotCtx.rect(neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ), neodigmUtils.f02x( this.nMax ))
           this.dotCtx.lineWidth = neodigmUtils.f02x( 22 ) + 3
-          this.dotCtx.stroke();
+          this.dotCtx.stroke()
     }
 
     this.dotCtx.globalCompositeOperation = "destination-atop";  //  "destination-atop"
