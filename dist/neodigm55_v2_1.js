@@ -160,7 +160,7 @@ class NeodigmSodaPop {
           }
         }, false)
         this._d.body.addEventListener("mouseleave", (ev) => {
-          if( this.fOnBeforeUserExit.length && !sessionStorage.getItem( "n55_userExit" ) ) this.fOnBeforeUserExit[0]()//this.fOnBeforeUserExit.forEach( (f)=> f())
+          if( this.fOnBeforeUserExit.length && !sessionStorage.getItem( "n55_userExit" ) ) this.fOnBeforeUserExit.forEach( (f)=> f())
           sessionStorage.setItem( "n55_userExit", Date.now() )
         })
         this.bIsInit = true
@@ -170,7 +170,7 @@ class NeodigmSodaPop {
       if(this.bIsOpen) this.close(true)
       this.eTmpl = this._d.getElementById(_sId)
       if(this.bIsInit && this.eTmpl && this.eScrim) {
-          if(this.fOnBeforeOpen.length) this.fOnBeforeOpen[0]()//this.fOnBeforeOpen.forEach( (f)=> f())
+          if(this.fOnBeforeOpen.length) this.fOnBeforeOpen.forEach( (f)=> f())
           this.bIsModal = (this.eTmpl.dataset.n55SodapopModal == "true")
           if(this.bIsModal) {
             this.eClose.classList.add("ndsp__modal")
@@ -198,7 +198,7 @@ class NeodigmSodaPop {
           this.bIsFS = ( this.eTmpl.dataset.n55SodapopFullscreen == "true" )
           if( this.bIsFS ) _d.body.requestFullscreen()
           this.bIsOpen = true;
-          if(this.fOnAfterOpen.length) this.fOnAfterOpen[0]()//this.fOnAfterOpen.forEach( (f)=> f())
+          if(this.fOnAfterOpen.length) this.fOnAfterOpen.forEach( (f)=> f())
           if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_OPEN ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_OPEN, "id": _sId } )
       }
       return neodigmSodaPop
