@@ -423,7 +423,7 @@ class NeodigmClaireAtomOn{
       this.dotCtx.closePath()
     this.dotCtx.fill()*/
     this.dotCtx.beginPath()
-    this.dotCtx.rect( this.x, this.y, this.size, this.size )
+    this.dotCtx.rect( (this.x - this.size), (this.y - this.size), this.size, this.size )
     this.dotCtx.fill()
 
     while( nRings++ <= 6 ){/*
