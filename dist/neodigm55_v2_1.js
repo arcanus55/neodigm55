@@ -205,7 +205,11 @@ class NeodigmSodaPop {
     }
     close( _bFast ) {
         if(this.bIsInit && this.bIsOpen) {
-            if(this.fOnClose.length) this.fOnClose[0]()//this.fOnClose.forEach( (f)=> f())
+    console.log("--------------- PRE ON CLOSE | ", this.fOnClose[0])
+    if(this.fOnClose.length) {
+    console.log("--------------- FIRING ON CLOSE | ", this.fOnClose[0])
+              this.fOnClose[0]()//this.fOnClose.forEach( (f)=> f())
+            }
             this.eClose.dataset.n55SodapopScrim = "closed"
             if(_bFast) {
                 this.eSoda.remove()
