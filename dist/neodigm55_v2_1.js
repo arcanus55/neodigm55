@@ -86,7 +86,7 @@ let neodigmToast = (function(_d, eID, _q) {
       _eSb.classList.remove("snackbar__cont--hide")
       if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 1 )
     _eSb.classList.add("snackbar__cont--show")
-    if("vibrate" in navigator) window.navigator.vibrate([48, 56])
+    try { if("vibrate" in navigator) window.navigator.vibrate([48, 56]) }catch {}
     setTimeout(_fClose, _nTimeout)
   };
   return {
@@ -189,14 +189,14 @@ class NeodigmSodaPop {
           }, 276)
           this.eSoda.innerHTML = this.eTmpl.innerHTML
           this._d.body.appendChild(this.eSoda)
-          if("vibrate" in navigator) window.navigator.vibrate([16, 8])
+          try { if("vibrate" in navigator) window.navigator.vibrate([16, 8]) }catch {}
           if( this.eTmpl.dataset.n55ClaireWaxon ){
             //if( this.eTmpl.dataset.n55ClaireTheme ) NeodigmClaire.setTheme( this.eTmpl.dataset.n55ClaireTheme )
             //NeodigmClaire.showCanv( this._aQ[1] ).initCanv( this._aQ[1] ).waxOn( this._aQ[1], neodigmOpt.N55_GENRE_MOTIF )
           }
           if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7 )
           this.bIsFS = ( this.eTmpl.dataset.n55SodapopFullscreen == "true" )
-          if( this.bIsFS ) _d.body.requestFullscreen()
+          if( this.bIsFS ) this._d.body.requestFullscreen()
           this.bIsOpen = true;
           if(this.fOnAfterOpen.length) this.fOnAfterOpen.forEach( (f)=> f())
           if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_OPEN ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_OPEN, "id": _sId } )
@@ -220,7 +220,7 @@ class NeodigmSodaPop {
                     }, 332)
                 }, 186)
             }
-            if("vibrate" in navigator) window.navigator.vibrate([8, 16])
+            try { if("vibrate" in navigator) window.navigator.vibrate([8, 16]) }catch {}
             if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(3)
             this.bIsOpen = false
             if( this.bIsFS ) _d.exitFullscreen();
@@ -230,13 +230,13 @@ class NeodigmSodaPop {
     }
     shake() {
         if(this.bIsInit && this.bIsOpen) {
-            if("vibrate" in navigator) window.navigator.vibrate([8, 32, 48])
+          try { if("vibrate" in navigator) window.navigator.vibrate([8, 32, 48]) }catch {}
             neodigmSodaPop.eSoda.classList.add("ndsp__opened--shake1");
             setTimeout(function(){
                 neodigmSodaPop.eSoda.classList.remove("ndsp__opened--shake1");
             }, 460)
             if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 9 )
-            if("vibrate" in navigator) window.navigator.vibrate([48, 32, 8])
+            try { if("vibrate" in navigator) window.navigator.vibrate([48, 32, 8]) }catch {}
         }
         return this
     }
@@ -711,18 +711,30 @@ data-n55-claire-click - confetti
 class NeodigmEnchantedCTA {
     constructor( _d, _aQ ) {
         this._d = _d; this._aQ = _aQ
-        this.bIsInit = false; this.bIsPause = false
+        this.bIsInit = this.bIsPause = this.bIsHover = false
         this.aE = []
     }
     init (){
       this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
-      if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event
-        let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
-        let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
-        if( bCta && window.dataLayer && neodigmOpt.N55_GTM_DL_CTA ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_CTA, "id": sId } )
-        let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
-        if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
-      }, false)
+      if( !this.bIsInit ){ //  once event
+        this._d.body.addEventListener("click", ( ev ) => { 
+console.log("===== == == == == = click")
+let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
+          let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
+          if( bCta && window.dataLayer && neodigmOpt.N55_GTM_DL_CTA ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_CTA, "id": sId } )
+          let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
+          if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
+        }, false)
+        this._d.body.addEventListener("mouseenter", ( ev ) => {
+          this.bIsHover = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
+console.log("===== == == == == = enter", this.bIsHover)
+        }, false)
+        this._d.body.addEventListener("mouseleave", ( ev ) => {
+          this.bIsHover = !("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
+console.log("===== == == == == = exit", this.bIsHover)
+        }, false)
+      }
+
       if( neodigmOpt.N55_CTA_RND_TOUCH ){
         neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_CTA_RND_TOUCH )
       }

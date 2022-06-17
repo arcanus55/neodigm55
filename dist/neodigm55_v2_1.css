@@ -195,7 +195,7 @@ neodigm-marquee {
     background-color: #282828;
         height: 38px;
 }
-[data-n55-enchanted-cta][data-n55-enchanted-cta-size='xsmall'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 96px; }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='xsmall'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width:  96px; }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']  neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 186px; }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='medium'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 206px; }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='large']  neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 236px; }
