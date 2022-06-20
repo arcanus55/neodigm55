@@ -4,402 +4,63 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=2, minimum-scale=1, width=device-width, height=device-height"/>
 
-<link rel="stylesheet" href="neodigm55_v2_1.css">
+<link rel="stylesheet" href="neodigm55_v2_2.css">
 <script>
 let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:false, N55_CTA_RND_TOUCH: 5000 }
 </script>
-<script src="neodigm55_v2_1.js"></script>
+<script src="neodigm55_v2_2.js"></script>
 </head>
-<body style="background-color: #868686;">
+<body style="background-color: #000;">
 
-
-    <button data-n55-sodapop-id="js-pop-modal__id">Try Me Modeal (Declr)</button>
-    <button data-n55-sodapop-id="js-pop-not-modal__id">Try Me Not Modeal (Declr)</button>
-<br>
-
-    <button onClick="neodigmSodaPop.autoOpen('js-pop-modal__id')">Try Me Modal(autoOpen)</button>
-<hr>
-    <button data-n55-wired4sound-click="0">Pop Shake 0</button>
-    <button data-n55-wired4sound-click="1">Toast 1</button>
-    <button data-n55-wired4sound-click="2">Pop Open 2</button>
-    <button data-n55-wired4sound-click="3">Pop Close 3</button>
-    <button data-n55-wired4sound-click="4">Pro Tip 4</button>
-    <button data-n55-wired4sound-click="5">Sound 5</button>
-    <button data-n55-wired4sound-click="6">Sound 6</button>
-    <button data-n55-wired4sound-click="7">Sound 7</button>
-    <button data-n55-wired4sound-click="8">Sound 8</button>
-    <button data-n55-wired4sound-click="9">Sound 9</button>
-    <button data-n55-wired4sound-click="1">Sound 10</button>
-    <button data-n55-wired4sound-click="1">Sound 11</button>
-    <button data-n55-wired4sound-click="1">Sound 12</button>
-    <button data-n55-wired4sound-click="1">Sound 13 (1)</button>
-    <br>
-    <button onClick="neodigmToast.setTheme('brand').q('brand')">Toast Theme brand</button>
-    <button onClick="neodigmToast.setTheme('primary').q('primary')">Toast Theme primary</button>
-    <button onClick="neodigmToast.setTheme('secondary').q('secondary')">Toast Theme secondary</button>
-    <button onClick="neodigmToast.setTheme('success').q('success')">Toast Theme success</button>
-    <button onClick="neodigmToast.setTheme('danger').q('danger')">Toast Theme danger</button>
-    <button onClick="neodigmToast.setTheme('warning').q('warning')">Toast Theme warning</button>
-    <button onClick="neodigmToast.setTheme('info').q('info')">Toast Theme info</button>
-<hr>
-<a id="js-fucko" data-n55-enchanted-cta data-n55-shape-off data-n55-flash-theme="info"
-data-n55-toast="yikes"
+<a id="js-open" data-n55-enchanted-cta
+data-n55-sodapop-id="myPopup_id"
+data-n55-toast="Toast Message"
 target="_blank" rel="noopener" tabindex="0" aria-haspopup="true"
-data-n55-wired4sound-click="7" data-n55-enchanted-cta-dont-touch="true"
+data-n55-wired4sound-click="7"
 data-n55-enchanted-cta-size="medium"
 data-n55-enchanted-cta-ambient="emit"
 data-n55-enchanted-cta-alt="Text|Alternate"
-data-n55-theme="marcom">
-    <span data-n55-wired4sound-mouseover="3">
-Theme 2 Toast
-</span>
-    <span>
-<neodigm-marquee data-n55-marquee-text=" Support our open source development! ⭐ ⭐ ⭐ ⭐ ⭐ " data-n55-flash-theme="info"
-data-n55-marquee-size="small"
-data-n55-marquee-direction="false"><pre data-n55-theme="warning"></pre></neodigm-marquee>
-</span>
-</a>
-
-<a id="js-brand__xl" data-n55-enchanted-cta
-data-n55-sodapop-id="js-pop-modal__id"
-data-n55-toast="yikes"
-target="_blank" rel="noopener" tabindex="0" aria-haspopup="true"
-data-n55-wired4sound-click="7" data-n55-enchanted-cta-dont-touch="false"
-data-n55-enchanted-cta-size="xlarge"
-data-n55-enchanted-cta-ambient="emit"
-data-n55-enchanted-cta-alt="Text|Alternate"
-data-n55-theme="brand">
-    <span  data-n55-wired4sound-mouseover="3">Brand</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
-</a>
-
-<a id="js-brand" data-n55-enchanted-cta
-data-n55-sodapop-id="js-pop-modal__id"
-data-n55-toast="yikes"
-target="_blank" rel="noopener" tabindex="0" aria-haspopup="true"
-data-n55-wired4sound-click="7" data-n55-enchanted-cta-dont-touch="true"
-data-n55-enchanted-cta-size="small"
-data-n55-enchanted-cta-ambient="emit"
-data-n55-enchanted-cta-alt="Text|Alternate"
-data-n55-theme="brand">
-    <span  data-n55-wired4sound-mouseover="3">Brand</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
-</a>
-<a id="js-brand-dis" data-n55-enchanted-cta
-data-n55-sodapop-id="js-pop-modal__id"
-data-n55-toast="yikes"
-target="_blank" rel="noopener" tabindex="0" aria-haspopup="true"
-data-n55-wired4sound-click="7" QQQQdata-n55-enchanted-cta-dont-touch="true"
-data-n55-enchanted-cta-size="large"
-data-n55-enchanted-cta-ambient="emit"
-data-n55-enchanted-cta-alt="Text|Alternate"
-data-n55-theme="disabled">
-    <span  data-n55-wired4sound-mouseover="3">Disabled</span><span>This is hidden</span>
-</a>
-<a id="js-primary-id" data-n55-enchanted-cta aria-haspopup="true"
-data-n55-toast="yikes primary"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7" data-n55-enchanted-cta-dont-touch="true"
-data-n55-enchanted-cta-size="small"
-data-n55-enchanted-cta-ambient="radius"
-data-n55-enchanted-cta-alt="Text|Alternate"
-data-n55-theme="primary">
-    <span  data-n55-wired4sound-mouseover="3">Primary</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
-</a>
-<a id="js-secondary-id" data-n55-enchanted-cta aria-haspopup="true"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7" data-n55-enchanted-cta-dont-touch="true"
-data-n55-enchanted-cta-size="medium"
-data-n55-enchanted-cta-ambient="radius"
-data-n55-enchanted-cta-alt="Text|Alternate"
-data-n55-theme="secondary">
-    <span  data-n55-wired4sound-mouseover="3">Secondary</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
-</a>
-<a id="js-success-id" data-n55-enchanted-cta aria-haspopup="true"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7" data-n55-enchanted-cta-dont-touch="true"
-data-n55-enchanted-cta-size="small"
-data-n55-enchanted-cta-ambient="shake"
-data-n55-enchanted-cta-alt="Text|Alternate"
-data-n55-theme="success">
-    <span  data-n55-wired4sound-mouseover="3">Success</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
-</a>
-<a id="js-danger-id" data-n55-enchanted-cta aria-haspopup="true"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7" data-n55-enchanted-cta-dont-touch="true"
-data-n55-enchanted-cta-size="small"
-data-n55-theme="danger">
-    <span  data-n55-wired4sound-mouseover="3">Danger</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
-</a>
-<a id="js-warning-id" data-n55-enchanted-cta aria-haspopup="true"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7"
-data-n55-enchanted-cta-size="small"
-data-n55-enchanted-cta-ambient="emit"
-data-n55-enchanted-cta-alt="Text|Alternate"
-data-n55-theme="warning">
-    <span  data-n55-wired4sound-mouseover="3">Warning</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
-</a>
-<a id="js-info-id" data-n55-enchanted-cta aria-haspopup="true"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7"
-data-n55-enchanted-cta-size="small"
-data-n55-enchanted-cta-ambient="emit"
-data-n55-enchanted-cta-alt="Text|Alternate"
-data-n55-theme="info">
-    <span  data-n55-wired4sound-mouseover="3">Info</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
-</a>
-<a id="js-ghost-id" data-n55-enchanted-cta aria-haspopup="true"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7"
-data-n55-enchanted-cta-size="small"
-data-n55-enchanted-cta-alt="Text|Alternate"
-data-n55-theme="ghost">
-    <span  data-n55-wired4sound-mouseover="3">ghost</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
-</a>
-<a id="js-night-id" data-n55-enchanted-cta aria-haspopup="true"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7"
-data-n55-enchanted-cta-size="xsmall"
-data-n55-enchanted-cta-alt="Text|Alternate"
 data-n55-theme="night">
-    <span  data-n55-wired4sound-mouseover="3">night</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
+<span  data-n55-wired4sound-mouseover="3">Star ⭐ on Github</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
 </a>
-<hr>
-    <input id="js-selectall-1" data-n55-checkbox type="checkbox" value="value1">
-    <label for="js-selectall-1">aaa</label>
-<br>
-    <input id="js-selectall-2" data-n55-checkbox type="checkbox" value="value1" checked>
-    <label for="js-selectall-2">bbb</label>
-<hr>
 
-<neodigm-marquee data-n55-marquee-text=" It creates a resonance in the mind of the Audience...  "
-data-n55-marquee-size="small">
-    <pre data-n55-theme="warning"></pre>
-</neodigm-marquee>
-<br><hr><br>
-<neodigm-marquee data-n55-marquee-text=" Do not go gentle into that good night, Old age should burn and rave at close of day; Rage, rage against the dying of the light. "
-data-n55-marquee-size="medium">
-    <pre data-n55-theme="marcom"></pre>
-</neodigm-marquee>
-<br><hr><br>
-    
-<template id="js-pop-modal__id" data-n55-sodapop-modal="true"  data-n55-sodapop-size="medium" data-n55-sodapop-fullscreen="true"
-data-n55-claire-theme='["info","warning"]'
-data-n55-claire-waxon="atomic"
-data-n55-claire-waxoff="gear"
->
-<p>This is a modal with waxon off</p>
-    <button onclick="neodigmSodaPop.close()">Close</button>
-<section style="background-color: #868686;">
-    <a id="js-modal-primary-id" data-n55-enchanted-cta
-    target="_blank" rel="noopener" tabindex="0"
-    data-n55-wired4sound-click="7"
-    data-n55-enchanted-cta-size="small"
-    data-n55-enchanted-cta-ambient="emit"
-    data-n55-theme="primary">
-        <span  data-n55-wired4sound-mouseover="3">emit</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
-    </a>
 
-    <a id="js-modal-secondary-id" data-n55-enchanted-cta
-    target="_blank" rel="noopener" tabindex="0"
-    data-n55-wired4sound-click="7"
-    data-n55-enchanted-cta-size="small"
-    data-n55-enchanted-cta-ambient="radius"
-    data-n55-theme="secondary">
-        <span  data-n55-wired4sound-mouseover="3">radius</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
-    </a>
-</section>
+<template id="myPopup_id" data-n55-sodapop-modal="false" 
+data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
+<div>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br></div>
 </template>
-
-<template id="js-pop-not-modal__id" data-n55-sodapop-modal="false" data-n55-sodapop-size="medium" data-n55-sodapop-fullscreen="true">
-    <div style="height: 1600px; overflow: scroll;">
-<p>This is NOT a modal: fire neodigmParallax.init()</p>
-<neodigm-parallax data-n55-parallax="/img/neodigm_code.png">
-    <section>
-        <aside>
-            <h3 class="document__title h_ital h-center text-coy_2017">The Progressive JavaScript Framework</h3>
-        </aside>
-    </section>
-</neodigm-parallax>
-</div>
-</template>
-
-    <div style="background-color: #cb4ab8;">
-        <h1>Claire Test</h1>
-<section class="l-tmp-grd"
-data-n55-claire="true"
-data-n55-theme="brand"
-data-n55-claire-ambient=""
->
-    <div>QQQ<hr>QQQ<hr>QQQ</div>
-    <div>QQQ</div>
-    <div><button>QQQ</button></div>
-    <div>QQQ</div>
-    <div>QQQ</div>
-    <div>QQQ</div>
-    <div>QQQ</div>
-    <div>QQQ</div>
-</section>s
-
-<a id="js-claire-on" data-n55-enchanted-cta data-n55-shape-off aria-haspopup="true"
-    onclick="NeodigmClaire.showCanv('.l-tmp-grd', .4).setTheme( ['brand','warning','danger','night'] )"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7"
-data-n55-enchanted-cta-size="xsmall"
-data-n55-theme="night">
-    <span  data-n55-wired4sound-mouseover="3">showCanv</span><span>life cycle</span>
-</a>
-
-<a id="js-claire-on" data-n55-enchanted-cta data-n55-shape-off aria-haspopup="true"
-onclick="NeodigmClaire.initCanvOn('.l-tmp-grd')"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7"
-data-n55-enchanted-cta-size="xsmall"
-data-n55-theme="night">
-    <span  data-n55-wired4sound-mouseover="3">initCanvOn</span><span>life cycle</span>
-</a>
-
-<a id="js-claire-on" data-n55-enchanted-cta aria-haspopup="true"
-onclick="NeodigmClaire.waxOn( '.l-tmp-grd' )"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7"
-data-n55-enchanted-cta-size="xsmall"
-data-n55-theme="night">
-    <span  data-n55-wired4sound-mouseover="3">waxOn</span><span>life cycle</span>
-</a>
-
-<a id="js-claire-off" data-n55-enchanted-cta aria-haspopup="true"
-onclick="NeodigmClaire.hideCanv('.l-tmp-grd')"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7"
-data-n55-enchanted-cta-size="xsmall"
-data-n55-theme="info">
-    <span  data-n55-wired4sound-mouseover="3">hideCanv</span><span>life cycle</span>
-</a>
-
-<a id="js-claire-off" data-n55-enchanted-cta aria-haspopup="true"
-onclick="NeodigmClaire.initCanvOff('.l-tmp-grd')"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7"
-data-n55-enchanted-cta-size="xsmall"
-data-n55-theme="info">
-    <span  data-n55-wired4sound-mouseover="3">initCanvOff</span><span>life cycle</span>
-</a>
-
-<a id="js-claire-off" data-n55-enchanted-cta aria-haspopup="true"
-onclick="NeodigmClaire.waxOff('.l-tmp-grd')"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7"
-data-n55-enchanted-cta-size="xsmall"
-data-n55-theme="info">
-    <span  data-n55-wired4sound-mouseover="3">waxOff</span><span>life cycle</span>
-</a>
-
-<a id="js-claire-off" data-n55-enchanted-cta aria-haspopup="true"
-onclick="NeodigmClaire.doConfetti('.l-tmp-grd')"
-target="_blank" rel="noopener" tabindex="0"
-data-n55-wired4sound-click="7"
-data-n55-enchanted-cta-size="xsmall"
-data-n55-theme="warning">
-    <span  data-n55-wired4sound-mouseover="3">doConfetti</span><span>life cycle</span>
-</a>
-
-        <style>
-            .l-tmp-grd {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                grid-template-rows: repeat(2, 1fr);
-                grid-column-gap: 0px;
-                grid-row-gap: 0px;
-            }
-            .l-tmp-grd > * {
-                position: relative !important;
-                display: inline;
-                margin: 2px; padding: 2px;
-                height: 256px; width: 256px;
-                border: solid 1px #999;
-                background-color: pink;
-            }
-        </style>
-
-    </div>
-
-<neodigm-parallax data-n55-parallax="/img/neodigm_code.png">
-    <section>
-        <aside>
-            <h3 class="document__title h_ital h-center text-coy_2017">The Progressive JavaScript Framework</h3>
-        </aside>
-    </section>
-</neodigm-parallax>
-
-    <div style="width: 610px; height: 120vh; background-color: #edba08;">scroll test</div>
-
-    <neodigm-parallax data-n55-parallax="/img/neodigm_code.png" data-n55-parallax-size="small">
-        <section>
-            <aside>
-                <h3 class="document__title h_ital h-center text-coy_2017">The Progressive JavaScript Framework</h3>
-            </aside>
-        </section>
-    </neodigm-parallax> 
-
-    <div style="width: 610px; height: 120vh; background-color: #edba08;">scroll test</div>
-
-<div class="container">
-<div class="text"></div>
-</div>
 
 <script>
-    var $jscomp=$jscomp||{};$jscomp.scope={};$jscomp.createTemplateTagFirstArg=function(a){return a.raw=a};$jscomp.createTemplateTagFirstArgWithRaw=function(a,d){a.raw=d;return a};var neodigmRandText=function(a){this.el=a;this.chars="!_<_>_-_|@_~[_]{_}\u2014_=+_*^?#";this.update=this.update.bind(this)};
-        neodigmRandText.prototype.setText=function(a){var d=this,b=this.el.innerText,h=Math.max(b.length,a.length),c=new Promise(function(k){return d.resolve=k});this.queue=[];for(var e=0;e<h;e++){var f=Math.floor(40*Math.random());this.queue.push({from:b[e]||"",to:a[e]||"",start:f,end:f+Math.floor(40*Math.random())})}cancelAnimationFrame(this.frameRequest);this.frame=0;this.update();return c};
-        neodigmRandText.prototype.update=function(){for(var a="",d=0,b=0,h=this.queue.length;b<h;b++){var c=this.queue[b],e=c.from,f=c.to,k=c.start,g=c["char"];if(this.frame>=c.end)d++,a+=f;else if(this.frame>=k){if(!g||.28>Math.random())g=this.randomChar(),this.queue[b]["char"]=g;a+='<span class="dud">'+g+"</span>"}else a+=e}this.el.innerHTML=a;d===this.queue.length?this.resolve():(this.frameRequest=requestAnimationFrame(this.update),this.frame++)};
-        neodigmRandText.prototype.randomChar=function(){return this.chars[Math.floor(Math.random()*this.chars.length)]};
-  
-  const phrases = [
-"Applied Tricknology",
-"Interactivity is the Active Ingredient",
-"Invest in Easy to Use",
-"Knowtify Me",
-"Opinion Ninjaneering",
-"Predictive Quantifiable Actionable",
-"Prove-o-matic",
-"Show and Tell Rainmaker",
-"And yes, Precisely",
-];
-  
-  
-  const el = document.querySelector('.text');
-  const fx = new neodigmRandText(el);
-  
-  let counter = 0;
-  const next = () => {
-    fx.setText(phrases[counter]).then(() => {
-      setTimeout(next, 800);
-    });
-    counter = (counter + 1) % phrases.length;
-  };
-  
-  next();
+console.log( "=== cowboy baby | ", neodigmSodaPop, neodigmMarquee, neodigmEnchantedCTA )
+window.addEventListener('DOMContentLoaded', (ev) => {
+    setTimeout(function(){
+        if( neodigmSodaPop && neodigmMarquee && neodigmEnchantedCTA ){
+            neodigmSodaPop.setOnAfterOpen( function(){
+//NeodigmClaire.doWaxOn("neodigm-sodapop", ['brand','danger','info','marcom'], "circle", .6)
+NeodigmClaire.showCanv('neodigm-sodapop').setTheme( ['brand','danger','info'] ).initCanvOn('neodigm-sodapop').waxOn('neodigm-sodapop')
+                neodigmMetronome.init().pause( 2200 )
+                    neodigmMarquee.init().pause( 2400 )
+                        neodigmEnchantedCTA.init()
+            });
+            neodigmSodaPop.setOnBeforeUserExit( function(){
+                neodigmToast.q("Thanks for Vistiting|Bookmark, Star, and Install as PWA!", "marcom")
+//NeodigmClaire.doWaxOn("picture.hero-single", ['brand','danger','info','marcom'], "circle", .6)
+
+            })
+//NeodigmClaire.doWaxOn("picture.hero-single", ['brand','danger','info','marcom'], "circle", .6)
+        }
+    }, 3e3)
+    setTimeout(function(){
+        if( neodigmSodaPop && NeodigmClaire ){
+            neodigmSodaPop.setOnClose( function(){
+                //NeodigmClaire.doWaxOff("neodigm-sodapop", ['brand','danger','info','marcom'], "circle", .6)
+            });
+            /*document.querySelector("picture.hero-single").addEventListener("click", function(ev){
+                NeodigmClaire.doWaxOn("picture.hero-single", ['brand','danger','info','marcom'], "circle", .6)
+            })*/
+        }
+    }, 4e3)
+});
 </script>
-<style>
-    .container {
-      height: 100%;
-      width: 100%;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      font-family: 'Roboto Mono', monospace;
-      background: #212121;
-      height: 100px;
-    }
-    .text {
-      font-weight: 100;
-      font-size: 28px;
-      color: #fafafa;
-    }
-    .dud {
-      color: #757575;
-    }
-</style>
-
 </body>
-
 </html>
