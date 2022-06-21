@@ -571,6 +571,11 @@ data-n55-claire-click - confetti
       }
       return this;
     }
+    static doWaxOn( sQ, theme="brand", scene="circle", nOpc=1 ){
+      this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOn( sQ ).waxOn( sQ, scene )
+      //NeodigmClaire.showCanv('neodigm-sodapop').setTheme( ['brand','danger','info'] ).initCanvOn('neodigm-sodapop').waxOn('neodigm-sodapop')
+      return this
+    }
     static waxOn( sQ ){
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
