@@ -19,6 +19,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
     --neodigm-theme-info: #7BC4C4;      --neodigm-theme-info-alt: #1F6868;  /* Aqua Sky */
     --neodigm-theme-disabled: #868686;  --neodigm-theme-disabled-alt: #767676;  /* Just Gray */
     --neodigm-theme-night: #6a6a6a;      --neodigm-theme-night-alt: #242424;  /* Charcole */
+    --neodigm-theme-marcom: #B163A3;      --neodigm-theme-marcom-alt: #5F4B8B;  /* Radiant Orchid | Ultra Violet */
 }
 
 /*  Neodigm Toast Begin  */
@@ -43,15 +44,17 @@ All rights reserved. Redistributions of source code must retain the above copyri
 .l-snackbar .snackbar__cont[data-n55-theme='warning'] { box-shadow: inset var(--neodigm-theme-warning) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-warning) 0%, var(--neodigm-theme-warning-alt) 100%); }
 .l-snackbar .snackbar__cont[data-n55-theme='info'] { box-shadow: inset var(--neodigm-theme-info) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-info) 0%, var(--neodigm-theme-info-alt) 100%); }
 .l-snackbar .snackbar__cont[data-n55-theme='night'] { box-shadow: inset var(--neodigm-theme-night) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-night) 0%, var(--neodigm-theme-night-alt) 100%); }
+.l-snackbar .snackbar__cont[data-n55-theme='marcom'] { box-shadow: inset var(--neodigm-theme-marcom) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-marcom) 0%, var(--neodigm-theme-marcom-alt) 100%); }
 
-.l-snackbar .snackbar__cont[data-n55-theme='brand'] .snackbar__progbar { background-color: var(--neodigm-theme-brand) }
-.l-snackbar .snackbar__cont[data-n55-theme='primary'] .snackbar__progbar { background-color: var(--neodigm-theme-primary) }
-.l-snackbar .snackbar__cont[data-n55-theme='secondary'] .snackbar__progbar { background-color: var(--neodigm-theme-secondary) }
-.l-snackbar .snackbar__cont[data-n55-theme='success'] .snackbar__progbar { background-color: var(--neodigm-theme-success) }
-.l-snackbar .snackbar__cont[data-n55-theme='danger'] .snackbar__progbar { background-color: var(--neodigm-theme-danger) }
-.l-snackbar .snackbar__cont[data-n55-theme='warning'] .snackbar__progbar { background-color: var(--neodigm-theme-warning) }
-.l-snackbar .snackbar__cont[data-n55-theme='info'] .snackbar__progbar { background-color: var(--neodigm-theme-info) }
-.l-snackbar .snackbar__cont[data-n55-theme='night'] .snackbar__progbar { background-color: var(--neodigm-theme-night) }
+.l-snackbar .snackbar__cont[data-n55-theme='brand'] .snackbar__progbar { background-color: var(--neodigm-theme-brand-alt) }
+.l-snackbar .snackbar__cont[data-n55-theme='primary'] .snackbar__progbar { background-color: var(--neodigm-theme-primary-alt) }
+.l-snackbar .snackbar__cont[data-n55-theme='secondary'] .snackbar__progbar { background-color: var(--neodigm-theme-secondary-alt) }
+.l-snackbar .snackbar__cont[data-n55-theme='success'] .snackbar__progbar { background-color: var(--neodigm-theme-success-alt) }
+.l-snackbar .snackbar__cont[data-n55-theme='danger'] .snackbar__progbar { background-color: var(--neodigm-theme-danger-alt) }
+.l-snackbar .snackbar__cont[data-n55-theme='warning'] .snackbar__progbar { background-color: var(--neodigm-theme-warning-alt) }
+.l-snackbar .snackbar__cont[data-n55-theme='info'] .snackbar__progbar { background-color: var(--neodigm-theme-info-alt) }
+.l-snackbar .snackbar__cont[data-n55-theme='night'] .snackbar__progbar { background-color: var(--neodigm-theme-night-alt) }
+.l-snackbar .snackbar__cont[data-n55-theme='marcom'] .snackbar__progbar { background-color: var(--neodigm-theme-marcom-alt) }
 
 .l-snackbar .snackbar__cont--hide {
 	bottom: -112px;
@@ -192,7 +195,7 @@ neodigm-marquee {
     background-color: #282828;
         height: 38px;
 }
-[data-n55-enchanted-cta][data-n55-enchanted-cta-size='xsmall'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 96px; }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='xsmall'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width:  96px; }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']  neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 186px; }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='medium'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 206px; }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='large']  neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 236px; }
@@ -225,6 +228,8 @@ neodigm-marquee pre[data-n55-theme='info'],
 neodigm-marquee pre [data-n55-theme='info'] { color: var(--neodigm-theme-info); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-info-alt), 0.2rem 0.2rem 1rem #fff }
 neodigm-marquee pre[data-n55-theme='night'],
 neodigm-marquee pre [data-n55-theme='night'] { color: var(--neodigm-theme-night-alt); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-night), 0.2rem 0.1rem 1rem #fff}
+neodigm-marquee pre[data-n55-theme='marcom'],
+neodigm-marquee pre [data-n55-theme='marcom'] { color: var(--neodigm-theme-marcom); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-marcom-alt), 0.2rem 0.1rem 1rem #fff}
 
 neodigm-marquee[data-n55-marquee-size='small'] { height: 28px; }
 neodigm-marquee[data-n55-marquee-size='small'] * {
@@ -356,7 +361,8 @@ background-color: rgba( 96, 88, 44, 0);
 [data-n55-enchanted-cta][data-n55-theme='warning']   { background: linear-gradient(var(--neodigm-theme-warning), var(--neodigm-theme-warning-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='info']      { background: linear-gradient(var(--neodigm-theme-info), var(--neodigm-theme-info-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='disabled']  { background: linear-gradient(var(--neodigm-theme-disabled), var(--neodigm-theme-disabled-alt)); }
-[data-n55-enchanted-cta][data-n55-theme='night']  { background: linear-gradient(var(--neodigm-theme-night), var(--neodigm-theme-night-alt)); }
+[data-n55-enchanted-cta][data-n55-theme='night']     { background: linear-gradient(var(--neodigm-theme-night), var(--neodigm-theme-night-alt)); }
+[data-n55-enchanted-cta][data-n55-theme='marcom']    { background: linear-gradient(var(--neodigm-theme-marcom), var(--neodigm-theme-marcom-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='ghost']     { background: #fff; color: #DD4124; border: solid 1px #DD4124; }
 
 @keyframes touch_emit{
