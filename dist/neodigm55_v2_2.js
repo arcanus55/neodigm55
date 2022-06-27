@@ -513,7 +513,7 @@ data-n55-claire-click - confetti
         this.bIsInit = true
         return this
     }
-    static showCanv ( sQ ){
+    static showCanv ( sQ, nOpc=1 ){
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._d.querySelector( sQ )  //  One Single
         let aElCanv = [ ... canvCntr.querySelectorAll( ":scope > *" )]  //  1st decendants
@@ -525,7 +525,8 @@ data-n55-claire-click - confetti
               let cnv = document.createElement( "canvas" )
               cnv.setAttribute("height", el.clientHeight)
               cnv.setAttribute("width",  el.clientWidth)
-              cnv.style.height = el.clientHeight; cnv.style.width = el.clientWidth; 
+              cnv.style.height = el.clientHeight; cnv.style.width = el.clientWidth;
+              if( nOpc ) cnv.style.opacity = nOpc; 
               el.appendChild( cnv )
               canvCntr.aElCanv.push( [cnv, cnv.getContext("2d"), el.clientHeight, el.clientWidth] )
           })
@@ -571,11 +572,11 @@ data-n55-claire-click - confetti
       }
       return this;
     }
-    static doWaxOn( sQ, theme="brand", scene="circle", nOpc=1 ){
+    static doWaxOn( sQ, theme="brand", scene="circle", nOpc=.6 ){
       this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOn( sQ ).waxOn( sQ, scene )
       return this
     }
-    static doWaxOff( sQ, theme="brand", scene="circle", nOpc=1 ){
+    static doWaxOff( sQ, theme="brand", scene="circle", nOpc=.6 ){
       this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOff( sQ ).waxOff( sQ, scene )
       return this
     }
