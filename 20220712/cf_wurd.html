@@ -892,7 +892,7 @@ this.elWrdApp.addEventListener("mousedown", function( ev ){WrdPlay.doAudio() }) 
                             this.wrdGuesses.forEach(function( g, nDx ){ g.setActive( WrdPlay.wrdGuessCur == nDx ) })
                             this.wrdGuesses[ this.wrdGuessCur ].doKey( WrdKey.newGuess( aEval ) )
                             if( this.wrdGuessCur <= ( this.MAXGUESSES - 1 ) ) this.wrdGuesses[ this.wrdGuessCur ].doBlinkFirst()                                
-                            WrdTypeOn.doType("#pag2__cap", "Take a guess ...", 204)
+                            WrdTypeOn.doType("#pag2__cap", "take a guess ...", 204)
                         }
                     }
                     if( WrdPlay.GAMEOVER != WrdPlay.PAGES.PLAY ) setTimeout( function(){ WrdPlay.doPage( WrdPlay.GAMEOVER ) }, 4880 )
@@ -1048,11 +1048,11 @@ class WrdKey {  //  Keyboard State
                 if( charVal.length == 1 && (WrdKey.oPointer.value == charVal) ){
                     if( WrdKey.oPointer.lock ){
                         if(ev.target.dataset.wrdKyExcluded == "true"){
-                            WrdTypeOn.doType("#pag2__cap", "The letter " + charVal.toUpperCase() + " is excluded", 120)
+                            WrdTypeOn.doType("#pag2__cap", "the letter " + charVal.toUpperCase() + " is excluded", 120)
                             WrdKey.oPointer.down = WrdKey.oPointer.lock = WrdKey.oPointer.value = false
                             return;  //  Do not populate Guess the first time char is excluded
                         }else{
-                            WrdTypeOn.doType("#pag2__cap", "The letter " + charVal.toUpperCase() + " is included", 120)
+                            WrdTypeOn.doType("#pag2__cap", "the letter " + charVal.toUpperCase() + " is included", 120)
                         }
                     }
                 }
@@ -1068,8 +1068,8 @@ class WrdKey {  //  Keyboard State
                             if( elBS ) elBS.dataset.wrdKyDisabled = "false"
                         }
                     }else{
-                        if( (charVal) && (charVal != "cr") && ( WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1 ) ) ){
-                            AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_LetterEntry_00 )
+                        if( (charVal) && (charVal != "cr") && ( WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1 ) ) ){  //  One of three rand key click sounds
+                            AudioFX.playAudioFile( [AudioFX.SOUNDS.ACT_LetterEntry_00, AudioFX.SOUNDS.ACT_LetterEntry_03, AudioFX.SOUNDS.ACT_LetterEntry_08] )
                             let nCursor = WrdKey.getCursorNext()
                             ev.target.dataset.wrdKyDisabled = "true"
                             WrdKey.sKBChars[ nCursor ] = charVal
@@ -1143,9 +1143,18 @@ class WrdKey {  //  Keyboard State
 
 class AudioFX{  //  Binary Audio Assets
     static CnfState = {"audio": false}
-    static SOUNDS = {"ACT_GameOver_Success": 1, "ACT_GameOver_Fail": 2, "ENV_Startup_Whirr": 3, "ENV_Startup_TextIn": 4, "ENV_Startup_TextOut": 5, "ACT_LetterEntry_00": 6, "ACT_LetterEntry_Delete": 7, "ACT_LetterEntry_Enter": 8, "": 9, "":10}
+    static SOUNDS = {"ACT_GameOver_Success": 1,
+    "ACT_GameOver_Fail": 2,
+    "ENV_Startup_Whirr": 3,
+    "ENV_Startup_TextIn": 4,
+    "ENV_Startup_TextOut": 5,
+    "ACT_LetterEntry_00": 6,
+    "ACT_LetterEntry_03": 7,
+    "ACT_LetterEntry_08": 8,
+    "ACT_LetterEntry_Delete": 9,
+    "ACT_LetterEntry_Enter": 10}
     static AudioContext = window.AudioContext || false
-    static oAudContx = null; static oAJAXReq = null; static aAudioBuffer = null; static fetchSoundConfig = {sound_max: 8, sound_current: 1};
+    static oAudContx = null; static oAJAXReq = null; static aAudioBuffer = null; static fetchSoundConfig = {sound_max: 10, sound_current: 1};
     static init (){
         if (AudioContext) {
             this.CnfState.audio = true;
@@ -1173,8 +1182,11 @@ class AudioFX{  //  Binary Audio Assets
         });
     }
     static playAudioFile( nSound ){
-        if( WrdPlay.isAudio && AudioFX.CnfState.audio ){  //  Play MP3 if sound toggle is true
-          try{
+        if( WrdPlay.isAudio && AudioFX.CnfState.audio ){  //  Play MP3/WAV if sound toggle is true
+            if( Array.isArray( nSound ) ){
+                nSound = nSound[ wrdUtils.f02x( nSound.length ) ]
+            }
+            try{
             var oSrc =  AudioFX.oAudContx.createBufferSource();
             var volume =  AudioFX.oAudContx.createGain();
             oSrc.buffer = AudioFX.aAudioBuffer[nSound];
@@ -1182,7 +1194,7 @@ class AudioFX{  //  Binary Audio Assets
             volume.connect( AudioFX.oAudContx.destination);
             oSrc.connect( AudioFX.oAudContx.destination);
             oSrc.start( AudioFX.oAudContx.currentTime);
-          } catch( e ){ console.log(  e ) }
+            } catch( e ){ console.log(  e ) }
         }
     }
 }
