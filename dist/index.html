@@ -12,24 +12,42 @@ let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:false, N5
 </head>
 <body style="background-color: #000;">
 
-<a id="js-open"
+<a id="js-open-pup--sm"
 target="_blank" rel="noopener" tabindex="0" aria-haspopup="true"
 data-n55-enchanted-cta
 data-n55-enchanted-cta-alt="Text|Alternate"
 data-n55-enchanted-cta-ambient="emit"
+data-n55-enchanted-cta-dont-touch="false"
 data-n55-enchanted-cta-size="medium"
 data-n55-flash-theme="marcom"
-data-n55-sodapop-id="myPopup_id"
+data-n55-sodapop-id="myPopup--sm"
 data-n55-theme="night"
 data-n55-toast="Toast Message"
 data-n55-wired4sound-click="7"
->
-<span data-n55-wired4sound-mouseover="3">Open Popup ⭐ Small</span><span>Toast Msg ⭐ Flash Theme</span>
+><span data-n55-wired4sound-mouseover="3">Open Popup ⭐ Small</span><span>Toast Msg ⭐ Flash Theme</span>
 </a>
 
+<a id="js-open__lc-roller"
+target="_blank" rel="noopener" tabindex="0" aria-haspopup="true"
+data-n55-enchanted-cta
+data-n55-enchanted-cta-alt="Build Your Own|Website Builder"
+data-n55-enchanted-cta-ambient="radius"
+data-n55-enchanted-cta-dont-touch="false"
+data-n55-enchanted-cta-size="medium"
+data-n55-flash-theme="marcom"
+data-n55-sodapop-id="pup__lc-roller--md"
+data-n55-theme="primary"
+data-n55-toast="Launch Complete|Custom Roller"
+data-n55-wired4sound-click="5"
+><span data-n55-wired4sound-mouseover="3">Launch Complete</span><span>Custom Roller</span>
+</a>
 
-<template id="myPopup_id" data-n55-sodapop-modal="false" 
-data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
+<template id="pup__lc-roller--md" data-n55-sodapop-modal="true" data-n55-sodapop-size="large" data-n55-sodapop-fullscreen="false">
+<div>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br></div>
+</template>
+
+
+<template id="myPopup--sm" data-n55-sodapop-modal="false" data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
 <div>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br>YOUR CONTENT HERE<br></div>
 </template>
 
@@ -40,7 +58,7 @@ window.addEventListener('DOMContentLoaded', (ev) => {
         if( neodigmSodaPop && neodigmMarquee && neodigmEnchantedCTA ){
             neodigmSodaPop.setOnAfterOpen( function(){
 //NeodigmClaire.doWaxOn("neodigm-sodapop", ['brand','danger','info','marcom'], "circle", .6)
-NeodigmClaire.showCanv('neodigm-sodapop').setTheme( ['brand','danger','info'] ).initCanvOn('neodigm-sodapop').waxOn('neodigm-sodapop')
+NeodigmClaire.showCanv('neodigm-sodapop').setTheme( ['brand','danger','info','marcom'] ).initCanvOn('neodigm-sodapop').waxOn('neodigm-sodapop')
                 neodigmMetronome.init().pause( 2200 )
                     neodigmMarquee.init().pause( 2400 )
                         neodigmEnchantedCTA.init()
