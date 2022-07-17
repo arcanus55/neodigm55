@@ -1,0 +1,175 @@
+/*
+Neodigm 55 plugin Launch Complete
+Copyright (c) 2022, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
+
+Neodigm 55 is an eclectic JavaScript UX micro-library.
+The lightweight components come together in a unique way that will make your website playful and fun.
+
+All rights reserved. Redistributions of source code must retain the above copyright and notice.
+*/
+/*  Global Helpers */
+:root {
+    --m5lc-theme-danger: #DD4124; --m5lc-theme-danger-alt: #810000;  /* Tangerine Tango */
+    --m5lc-theme-info:   #7BC4C4; --m5lc-theme-info-alt:   #1F6868;  /* Aqua Sky */
+    --m5lc-theme-night:  #6a6a6a; --m5lc-theme-night-alt:  #242424;  /* Charcole */
+}
+html, body {margin: 0; padding: 0;}
+input, textarea, button, select, aside,
+a { -webkit-tap-highlight-color: rgba(0,0,0,0); outline: none; user-select: none !important; }
+
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: rgba(0,66,0, .2); }
+*::-webkit-scrollbar-thumb { background: var( --m5lc-theme-info-alt ); }
+::selection { color: #fff; background:  var( --m5lc-theme-info ); text-shadow: none; }
+
+.h-center { text-align: center;}
+.h-left { text-align: left;}
+.h-smaller {font-size: smaller !important;}
+.h-nowrap {white-space: nowrap;}
+.h-ital {font-style: italic;}
+.h-under {text-decoration: underline;}
+.h-ds__none {display: none;}
+.h-ds__block {display: block;}
+.h-ds__inline {display: inline;}
+.h-fade { opacity: 0.4; filter: blur(8px); transition: .88s filter linear;}
+
+/*  lgo  */
+.lgo {
+font-family: 'Comfortaa', cursive;
+font-size: 38px; color: var( --m5lc-theme-info );
+margin-top: 32px;
+}
+.lgo > span:nth-of-type(1) { font-weight: 500;}
+.lgo > span:nth-of-type(2) { font-weight: 300;}
+
+/*  type  */
+h1, h2, h3 ,h4, p {
+font-family: 'Roboto', sans-serif; font-weight: 100;
+margin: 8px 0; padding: 1px;
+}
+h1 {font-size: 32px;}
+h2 {font-size: 28px;}
+h3 {font-size: 22px;}
+h4 {font-size: 20px;}
+p  { margin: 8px 0; padding: 1px; }
+
+[data-pref-scheme="light"] h1,
+[data-pref-scheme="light"] h2,
+[data-pref-scheme="light"] h3,
+[data-pref-scheme="light"] h4 {color: var( --m5lc-theme-info-alt );}
+[data-pref-scheme="light"] p {color: #000;}
+
+[data-pref-scheme="dark"] h1,
+[data-pref-scheme="dark"] h2,
+[data-pref-scheme="dark"] h3,
+[data-pref-scheme="dark"] h4 {color: var( --m5lc-theme-info );} 
+[data-pref-scheme="dark"] p {color: #fff} 
+
+.txt-readable {
+font-family: 'Roboto', sans-serif;
+font-size: 18px; color: #000;
+font-weight: 300;
+}
+.txt-white { color: #fff;}
+/*  Layout  */
+main > section > QQQQQarticle {
+
+margin: 0 auto;
+}
+section.sec-inverse__gray { background-color: #f2f2f2; }
+section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-alt ); }
+
+/* Pan Fried Monkey Fisticufs grid begin */
+section.pfmf-grid {
+display: grid;
+grid-area: box-content;
+margin: 0 auto; padding: 8px;
+align-content: center;  
+box-sizing: border-box;
+width: 86%; max-width: 1400px;
+}
+section.pfmf-grid__25_25_25_25  { grid-template-columns: 100%; }
+section.pfmf-grid__25_25_25_25 > div:nth-child(1) { order: 1; }
+
+section.pfmf-grid__40_60  { grid-template-columns: 100%; }
+section.pfmf-grid__40_60 > div:nth-child(1) { order: 1; }
+
+section.pfmf-grid__50_50  { grid-template-columns: 100%; }
+section.pfmf-grid__50_50 > div:nth-child(1) { order: 1; }
+
+section.pfmf-grid__60_40  { grid-template-columns: 100%; }
+section.pfmf-grid__60_40 > div:nth-child(1) { order: 1; }
+section.pfmf-grid__70_30  { grid-template-columns: 100%; }
+section.pfmf-grid__70_30 > div:nth-child(1) { order: 1; }
+section.pfmf-grid__30_70  { grid-template-columns: 100%; }
+section.pfmf-grid__100    { grid-template-columns: 100%; }
+section.pfmf-grid__33_33_33 { grid-template-columns: 100%; }
+
+section.pfmf-grid > div > article {
+margin: 8px; padding: 6px;
+}
+section.pfmf-grid > div > article.pfmf-crd--black {
+background-color: #262626;
+}
+
+@media only screen and (min-width:48.1em) and (max-width:62em){/* med */
+section.pfmf-grid__25_25_25_25 > div:nth-child(1) { order: 0; }
+section.pfmf-grid__25_25_25_25  { grid-template-columns: 50% 50%; }
+section.pfmf-grid__40_60 > div:nth-child(1) { order: 0; }
+section.pfmf-grid__40_60  { grid-template-columns: 40% 60%; }
+section.pfmf-grid__50_50 > div:nth-child(1) { order: 0; }
+section.pfmf-grid__50_50  { grid-template-columns: 50% 50%; }
+section.pfmf-grid__60_40 > div:nth-child(1) { order: 0; }
+section.pfmf-grid__60_40  { grid-template-columns: 60% 40%; }
+section.pfmf-grid__70_30 > div:nth-child(1) { order: 0; }
+section.pfmf-grid__70_30  { grid-template-columns: 70% 30%; }
+section.pfmf-grid__30_70  { grid-template-columns: 30% 70%; }
+section.pfmf-grid__33_33_33 { grid-template-columns: 33.3% 33.3% 33.4%; }
+section.pfmf-grid { width: 86%; }
+}
+@media only screen and (min-width:62.1em){/* lg */
+section.pfmf-grid__25_25_25_25 > div:nth-child(1) { order: 0; }
+section.pfmf-grid__25_25_25_25  { grid-template-columns: 25% 25% 25% 25%; }
+section.pfmf-grid__40_60 > div:nth-child(1) { order: 0; }
+section.pfmf-grid__40_60  { grid-template-columns: 40% 60%; }
+section.pfmf-grid__50_50 > div:nth-child(1) { order: 0; }
+section.pfmf-grid__50_50  { grid-template-columns: 50% 50%; }
+section.pfmf-grid__60_40 > div:nth-child(1) { order: 0; }
+section.pfmf-grid__60_40  { grid-template-columns: 60% 40%; }
+section.pfmf-grid__70_30 > div:nth-child(1) { order: 0; }
+section.pfmf-grid__70_30  { grid-template-columns: 70% 30%; }
+section.pfmf-grid__30_70  { grid-template-columns: 30% 70%; }
+section.pfmf-grid__33_33_33 { grid-template-columns: 33.3% 33.3% 33.4%; }
+section.pfmf-grid { width: 86%; }
+}
+/* Pan Fried Monkey Fisticufs grid end */
+
+/* Formz */
+neodigm-sodapop, neodigm-sodapop > * {background-color: #dfebc0;}
+input.semb-input, textarea.semb-input {
+display: block;
+color: #383838;
+font-family: 'Montserrat', sans-serif; font-size: 18px;
+line-height: 1.1;
+border: solid 1px #585858; border-radius: 20px;
+width: 76%;
+margin: 8px auto; padding: 10px 8px;
+}
+
+/*  Bullets  */
+.l-bullets {
+display: grid;
+grid-template-columns: 48px 100%;
+align-items: center;
+}
+.vec-bullet {
+cursor: pointer;
+height: 32px; width: 32px;
+fill: var(  --m5lc-theme-info-alt );
+}
+.vec-bullet:hover { fill: var(  --m5lc-theme-info ); }
+
+/*  MQ  */
+@media only screen and (min-width:48.1em){/* med *//* lg */
+
+}
