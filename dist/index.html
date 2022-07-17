@@ -12,16 +12,19 @@ let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:false, N5
 </head>
 <body style="background-color: #000;">
 
-<a id="js-open" data-n55-enchanted-cta
-data-n55-sodapop-id="myPopup_id"
-data-n55-toast="Toast Message"
+<a id="js-open"
 target="_blank" rel="noopener" tabindex="0" aria-haspopup="true"
-data-n55-wired4sound-click="7"
-data-n55-enchanted-cta-size="medium"
-data-n55-enchanted-cta-ambient="emit"
+data-n55-enchanted-cta
 data-n55-enchanted-cta-alt="Text|Alternate"
-data-n55-theme="night">
-<span  data-n55-wired4sound-mouseover="3">Star ⭐ on Github</span><span>⭐ ⭐ ⭐ ⭐ ⭐</span>
+data-n55-enchanted-cta-ambient="emit"
+data-n55-enchanted-cta-size="medium"
+data-n55-flash-theme="marcom"
+data-n55-sodapop-id="myPopup_id"
+data-n55-theme="night"
+data-n55-toast="Toast Message"
+data-n55-wired4sound-click="7"
+>
+<span data-n55-wired4sound-mouseover="3">Open Popup ⭐ Small</span><span>Toast Msg ⭐ Flash Theme</span>
 </a>
 
 
@@ -42,7 +45,7 @@ NeodigmClaire.showCanv('neodigm-sodapop').setTheme( ['brand','danger','info'] ).
                     neodigmMarquee.init().pause( 2400 )
                         neodigmEnchantedCTA.init()
             });
-            neodigmSodaPop.setOnBeforeUserExit( function(){
+            neodigmSodaPop.setOnBeforeUserExit( function(){  //  last chance plea (body blur)
                 neodigmToast.q("Thanks for Vistiting|Bookmark, Star, and Install as PWA!", "marcom")
 //NeodigmClaire.doWaxOn("picture.hero-single", ['brand','danger','info','marcom'], "circle", .6)
 
