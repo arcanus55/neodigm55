@@ -274,7 +274,8 @@ background-color: rgba( 96, 88, 44, 0);
     margin: 4px 8px; 
 }
 [data-n55-enchanted-cta]:not([data-n55-theme="disabled"]) { cursor: pointer; }
-[data-n55-enchanted-cta][data-n55-shape-off] { border-radius: 6px !important; }
+  [data-n55-enchanted-cta][data-n55-shape-off] { border-radius: 6px !important; }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-shape-off='true'] { border-radius: 6px !important; }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-ambient='emit']:not([data-n55-theme="disabled"]){ 
     animation: touch_emit 2s forwards infinite ease;
 }
