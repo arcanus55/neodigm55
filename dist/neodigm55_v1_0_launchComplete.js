@@ -11,10 +11,12 @@ All rights reserved. Redistributions of source code must retain the above copyri
 //  Neodigm 55 Options Custom Config Begin  //
 let neodigmOpt_launchComplete = {
   ver: "1.0.0",
-  N55_LC_TAG1: "SEMbright 🚀 Digital Marketing That Moves",
-  N55_LC_COLOR_BRAND: "7BC4C4",
-  N55_GTM_DL_PWA_REGISTERED: "n55_gtm_dl_pwa_registered",
-  N55_GTM_DL_PWA_INSTALLED: "n55_gtm_dl_pwa_installed"
+  N55_LC_DOMAIN: ["SEMbright.com", 256],
+  N55_LC_TAG1: ["SEMbright 🚀 Digital Marketing That Moves", 256],
+  N55_LC_TAG2: ["SEMbright 🚀 Digital Marketing That Moves", 256],
+  N55_LC_TAG3: ["SEMbright 🚀 Digital Marketing That Moves", 256],
+  N55_LC_COLOR_BRAND: ["7BC4C4", 256],
+  N55_LC_KEYWORDS: [["A", "B"], 256],
 }
 
 if( typeof neodigmOpt_launchCompleteCustom != 'undefined' ){
@@ -24,4 +26,4 @@ if( typeof neodigmOpt_launchCompleteCustom != 'undefined' ){
 }
 
 //  N55 PWA Console Brand begin  //
-console.log("%c " + neodigmOpt_launchComplete.N55_LC_TAG1, "background: #000; color: #" + neodigmOpt_launchComplete.N55_LC_COLOR_BRAND + "; font-size: 38px");
+console.log("%c " + neodigmOpt_launchComplete.N55_LC_TAG1[0], "background: #000; color: #" + neodigmOpt_launchComplete.N55_LC_COLOR_BRAND[0] + "; font-size: 38px");
