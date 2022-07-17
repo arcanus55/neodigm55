@@ -10,10 +10,11 @@ All rights reserved. Redistributions of source code must retain the above copyri
 
 //  Neodigm 55 Options Custom Config Begin  //
 let neodigmOpt_launchComplete = {
-  ver: "2.0.0",
-  neodigmPWA: true,
-    N55_GTM_DL_PWA_REGISTERED: "n55_gtm_dl_pwa_registered",
-    N55_GTM_DL_PWA_INSTALLED: "n55_gtm_dl_pwa_installed"
+  ver: "1.0.0",
+  N55_LC_TAG1: "SEMbright 🚀 Digital Marketing That Moves",
+  N55_LC_COLOR_BRAND: "7BC4C4",
+  N55_GTM_DL_PWA_REGISTERED: "n55_gtm_dl_pwa_registered",
+  N55_GTM_DL_PWA_INSTALLED: "n55_gtm_dl_pwa_installed"
 }
 
 if( typeof neodigmOpt_launchCompleteCustom != 'undefined' ){
@@ -22,37 +23,5 @@ if( typeof neodigmOpt_launchCompleteCustom != 'undefined' ){
     }
 }
 
-//  Neodigm 55 PWA Begin  //
-
-class NeodigmPWA {
-  constructor( _d, _aQ ) {
-      this._d = _d; this._aQ = _aQ
-      this.bIsInit = false
-  }
-  init () {
-
-    this.bIsInit = true
-    return this
-  }
-}
-let neodigmPWA = new NeodigmPWA( document, ["neodigm-", "n55"] )
-
-function doDOMContentLoaded_pwa(){
-  const neodigmMU = `
-<p>
-</p>`;
-  let eMU = document.createElement("output");
-  eMU.innerHTML = neodigmMU;
-  document.body.appendChild(eMU);
-  setTimeout( ()=>{
-
-
-    if( neodigmOpt_pwa.neodigmPWA ) neodigmPWA.init()
-
-
-  }, 96)
-}
-
-document.addEventListener("DOMContentLoaded", function(ev) {
-  doDOMContentLoaded_pwa()
-});
+//  N55 PWA Console Brand begin  //
+console.log("%c " + neodigmOpt_launchComplete.N55_LC_TAG1, "background: #000; color: #" + neodigmOpt_launchComplete.N55_LC_COLOR_BRAND + "; font-size: 38px");
