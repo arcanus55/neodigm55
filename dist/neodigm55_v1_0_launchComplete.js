@@ -1,5 +1,5 @@
 /*
-Neodigm 55 UX v2.0.0
+Neodigm 55 plugin Launch Complete
 Copyright (c) 2022, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
 
 Neodigm 55 is an eclectic JavaScript UX micro-library.
@@ -9,16 +9,16 @@ All rights reserved. Redistributions of source code must retain the above copyri
 */
 
 //  Neodigm 55 Options Custom Config Begin  //
-let neodigmOpt_pwa = {
+let neodigmOpt_launchComplete = {
   ver: "2.0.0",
   neodigmPWA: true,
     N55_GTM_DL_PWA_REGISTERED: "n55_gtm_dl_pwa_registered",
     N55_GTM_DL_PWA_INSTALLED: "n55_gtm_dl_pwa_installed"
 }
 
-if( typeof neodigmOpt_pwaCustom != 'undefined' ){
-    for( cnfgProp in neodigmOpt_pwaCustom ){  //  Import Custom Objects props if exists
-      neodigmOpt_pwa[ cnfgProp ] = neodigmOpt_pwaCustom[ cnfgProp ]
+if( typeof neodigmOpt_launchCompleteCustom != 'undefined' ){
+    for( cnfgProp in neodigmOpt_launchCompleteCustom ){  //  Import Custom Objects props if exists
+      neodigmOpt_launchComplete[ cnfgProp ] = neodigmOpt_launchCompleteCustom[ cnfgProp ]
     }
 }
 
