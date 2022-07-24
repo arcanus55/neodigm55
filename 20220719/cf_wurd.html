@@ -84,7 +84,7 @@
         overflow-y: scroll;
     }
 
-    [data-wrd-has-kb].l-wrd { grid-template-rows: 28px 28px calc(1fr - 300px) 204px; }
+    [data-wrd-has-kb].l-wrd { grid-template-rows: 28px 28px calc(1fr - 320px) 204px; }
     [data-wrd-tutorial].l-wrd { grid-template-rows: 28px 1fr 204px; }
     .l-wrd .wrd-nav-1 {
         display: grid;
@@ -921,7 +921,8 @@ class WrdPlay {  //  Application Controller
                     if( WrdPlay.GAMEOVER != WrdPlay.PAGES.PLAY ) setTimeout( function(){ WrdPlay.doPage( WrdPlay.GAMEOVER ) }, 4880 )
                 }else{
                     WrdTypeOn.doType("#pag2__cap", sKeys.join("") + " is not a word ...", 100, function(){
-                        WrdTypeOn.doType("#pag2__cap", "take another guess .. ..", 180)
+                        AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_GameOver_Fail )
+                        WrdTypeOn.doType("#pag2__cap", "take another guess .....", 180)
                     } )
                 }
             }else{
@@ -1238,7 +1239,7 @@ class AudioFX{  //  Binary Audio Assets
             var volume =  AudioFX.oAudContx.createGain();
             oSrc.buffer = AudioFX.aAudioBuffer[nSound];
             oSrc.connect( volume ).connect( AudioFX.oAudContx.destination );
-            volume.gain.value = -.6;
+            volume.gain.value = -.2;
             oSrc.start( AudioFX.oAudContx.currentTime);
             } catch( e ){ console.log(  e ) }
         }
