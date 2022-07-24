@@ -84,7 +84,7 @@
         overflow-y: scroll;
     }
 
-    [data-wrd-has-kb].l-wrd { grid-template-rows: 28px 28px calc(1fr - 258px) 204px; }
+    [data-wrd-has-kb].l-wrd { grid-template-rows: 28px 28px calc(1fr - 300px) 204px; }
     [data-wrd-tutorial].l-wrd { grid-template-rows: 28px 1fr 204px; }
     .l-wrd .wrd-nav-1 {
         display: grid;
@@ -921,7 +921,7 @@ class WrdPlay {  //  Application Controller
                     if( WrdPlay.GAMEOVER != WrdPlay.PAGES.PLAY ) setTimeout( function(){ WrdPlay.doPage( WrdPlay.GAMEOVER ) }, 4880 )
                 }else{
                     WrdTypeOn.doType("#pag2__cap", sKeys.join("") + " is not a word ...", 100, function(){
-                        WrdTypeOn.doType("#pag2__cap", "take another guess ....", 180)
+                        WrdTypeOn.doType("#pag2__cap", "take another guess .. ..", 180)
                     } )
                 }
             }else{
