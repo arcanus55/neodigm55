@@ -84,7 +84,7 @@
         overflow-y: scroll;
     }
 
-    [data-wrd-has-kb].l-wrd { grid-template-rows: 28px 28px 1fr 204px; }
+    [data-wrd-has-kb].l-wrd { grid-template-rows: 28px 28px calc(1fr - 204px) 204px; }
     [data-wrd-tutorial].l-wrd { grid-template-rows: 28px 1fr 204px; }
     .l-wrd .wrd-nav-1 {
         display: grid;
@@ -142,7 +142,7 @@
     }
     wrd-guess wrd-feedback output {
         position: absolute;
-        top: 1px; left: 1px; right: 1px; bottom: 1px;
+        top: 0; left: 0; right: 0; bottom: 0;
     }
     wrd-guess wrd-feedback output > div {
         position: absolute;
@@ -725,6 +725,18 @@
                 <div></div>
             </wrd-page>
 
+            <wrd-page class="l-wrd" data-wrd-page="8">
+                <nav class="wrd-nav-1">
+                    <div></div><div></div><div></div>
+                </nav>
+                <section class="wrd-panel">
+                    <br>
+                    <p class="txt txt__1" data-wrd-type><span id="pag8__cap1"></span></p> <br>
+                    <p class="txt txt__1" data-wrd-type><span id="pag8__cap2"></span></p>
+                </section>
+                <div></div>
+            </wrd-page>
+
         </wrd-app>
 
     <script>
@@ -763,8 +775,8 @@ const wrdUtils = ( ( _d ) =>{
 class WrdPlay {  //  Application Controller
     static _d = document;
     static isInit = false; static isPaused = false; static isAudio = true; static requireWord = true;
-    static wrdPage = {"cur": 1, "max": 7, "el": null};
-    static PAGES = {"SPLASH" : 1, "PLAY": 2, "TUT1": 3, "TUT2": 4, "TIPS":5, "WIN":6, "LOSE":7 }
+    static wrdPage = {"cur": 1, "max": 8, "el": null};
+    static PAGES = {"SPLASH" : 1, "PLAY": 2, "TUT1": 3, "TUT2": 4, "TIPS":5, "WIN":6, "LOSE":7, "ERROR":8 }
     static GAMEOVER = WrdPlay.PAGES.PLAY
     static wrdGuesses = []; static wrdGuessCur = 0; static GesBlinkCursor = -1
     static wrd = ""
@@ -779,9 +791,6 @@ class WrdPlay {  //  Application Controller
         this.elAudioSwitch = this._d.querySelector( ".wrd-nav__equ" )
         this.wrdPage.el = [ ... this._d.querySelectorAll( "wrd-page" )]
         let tutPanels = [ ... this._d.querySelectorAll( "[data-wrd-tutorial] .wrd-panel" )]
-
-    //WrdAPI.getWrd()
-        
 
         this.elAudioSwitch.addEventListener("click", function( ev ){
             WrdPlay.toggleAudio()
@@ -834,9 +843,9 @@ class WrdPlay {  //  Application Controller
                 switch( pageNo ){
                     case 1:
                         WrdAPI.getWrd(function(){ if( WrdAPI?.fields?.wod6 ) WrdPlay.wrd = WrdAPI.fields.wod6 })
-                        AudioFX.playAudioFile( AudioFX.SOUNDS.ENV_Startup_Whirr )
+                        //  AudioFX.playAudioFile( AudioFX.SOUNDS.ENV_Startup_Whirr )
                         WrdTypeOn.doType("#pag1__cap", "wurd", 580, function(){
-                            AudioFX.playAudioFile( AudioFX.SOUNDS.ENV_Startup_TextOut )
+                            //  AudioFX.playAudioFile( AudioFX.SOUNDS.ENV_Startup_TextOut )
                             WrdTypeOn.doUnType("#pag1__cap", "wurd", 460, function(){
                                 setTimeout( function(){ WrdPlay.doPage( WrdPlay.GAMEOVER ) }, 900)
                             } )
@@ -854,7 +863,7 @@ class WrdPlay {  //  Application Controller
                                     WrdTypeOn.doType("#pag6__cap4", "current streak: " + "1", 60, function(){  //  TODO
                                         WrdTypeOn.doType("#pag6__cap5", "best streak: " + "1", 80, function(){  //  TODO
                                             WrdTypeOn.doType("#pag6__cap6", "next wurd in: " + "00:00:00", 80, function(){
-                                                if( !WrdAPI.si ) WrdAPI.si = setInterval(function(){ WrdAPI.tick() }, 600)
+                                                if( !WrdAPI.si ) WrdAPI.si = setInterval(function(){ WrdAPI.tick() }, 1000)
                                             } )
                                         } )
                                     } )
@@ -870,11 +879,17 @@ class WrdPlay {  //  Application Controller
                                 WrdTypeOn.doType("#pag7__cap3", "the correct wurd was: " + WrdPlay.wrd.toLocaleLowerCase(), 60, function(){  //  TODO
                                     WrdTypeOn.doType("#pag7__cap4", "best streak: " + "0", 80, function(){  //  TODO
                                         WrdTypeOn.doType("#pag7__cap5", "next wurd in: " + "00:00:00", 80, function(){
-                                            if( !WrdAPI.si ) WrdAPI.si = setInterval(function(){ WrdAPI.tick() }, 600)
+                                            if( !WrdAPI.si ) WrdAPI.si = setInterval(function(){ WrdAPI.tick() }, 1000)
                                         } )
                                     } )
                                 } )
                             } )
+                        } )
+                    break;
+                    case 8:
+                        WrdTypeOn.resetPage( 8 )
+                        WrdTypeOn.doType("#pag8__cap1", "error: wurd of the day counldn't be retrieved from the server :(", 80, function(){
+                            WrdTypeOn.doType("#pag8__cap2", "please try again later", 80)
                         } )
                     break;
                 }
@@ -1249,7 +1264,10 @@ class WrdAPI{  //  REST consumption
                     this.fields.deadline = data.fields.deadline.timestampValue
                 }
                 if( cb ) cb()
-        })
+            }).catch(error => {
+                console.log( error )
+                WrdPlay.doPage( WrdPlay.PAGES.ERROR )
+            })
     }
     static getUntil(){
         if( this.fields.deadline ){
