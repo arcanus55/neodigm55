@@ -13,6 +13,7 @@
     :root { --wrd-color: #00ff00; --wrd-color-half: #008800;  --wrd-color-qtr: #005500; --wrd-color-alt: #003300; --wrd-color-bg: #000;
         ; --wrd-color-focus: #ff0000; }
     html, body { max-width: 100%; overflow-x: hidden; -webkit-touch-callout: none !important; }
+    * { -webkit-user-select: none !important; user-select: none !important; }
     input, textarea, button, select, aside,
     a { -webkit-tap-highlight-color: rgba(0,0,0,0); outline: none; user-select: none !important; }
 
@@ -262,6 +263,7 @@
         padding-bottom: 0;
         padding-top: 2px;
         text-align: center;
+        user-select: none;
     }
     wrd-ky:hover { border: solid 1px var( --wrd-color ); }
     wrd-ky[data-wrd-ky-excluded="true"],
@@ -1150,16 +1152,10 @@ class WrdKey {  //  Keyboard State
     }
     static getTotalChars(){ return WrdKey.sKBChars.filter(function(c){ return c }).length }
     static getCursorNext(){
-        //let nFirst = 0
-        //for( let nDx=0; nDx <= WrdKey.sKBChars.length; nDx++){
-            //if( !WrdKey.sKBChars[ nDx ] ){ nFirst = nDx; break; }
-       // }
         if( WrdPlay.GesBlinkCursor != -1 ){  //  Random Access Tap Semaphore
-            //nFirst = WrdPlay.GesBlinkCursor
             WrdKey.KeyBlinkCursor = WrdPlay.GesBlinkCursor
             WrdPlay.GesBlinkCursor = -1
         }
-        //return nFirst
         return WrdKey.KeyBlinkCursor
     }
 }
@@ -1191,7 +1187,7 @@ class AudioFX{  //  Binary Audio Assets
                     elBody.dispatchEvent( evMU )
                     elBody.click()
                     AudioFX.init()
-                    AudioFX.oAudContx.resume()
+                    //AudioFX.oAudContx.resume()
                 }, 2)
             }, 2) 
         }
@@ -1225,7 +1221,7 @@ class AudioFX{  //  Binary Audio Assets
     static playAudioFile( nSound ){
         if( WrdPlay.isAudio && AudioFX.CnfState.audio ){  //  Play MP3/WAV if sound toggle is true
             WrdPlay.doAudio()
-            AudioFX.oAudContx.resume()
+            //AudioFX.oAudContx.resume()
             if( Array.isArray( nSound ) ){
                 nSound = nSound[ wrdUtils.f02x( nSound.length ) ]
             }
