@@ -106,8 +106,10 @@ let neodigmToast = (function(_d, eID, _q) {
           }
           _d.body.addEventListener("click", ( ev )=>{
             let evToast = ev?.target?.dataset.n55Toast || ev?.srcElement?.parentNode?.dataset.n55Toast
-            let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
-            if( evToast && (evTheme != "disabled") ) neodigmToast.q( evToast )
+            if( evToast ){
+              let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme || "brand"
+              if( evTheme && evTheme != "disabled" ) neodigmToast.q( evToast, evTheme )              
+            }
           }, true)
           bIsInit = true
       },
