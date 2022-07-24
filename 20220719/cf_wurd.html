@@ -1237,9 +1237,8 @@ class AudioFX{  //  Binary Audio Assets
             var oSrc =  AudioFX.oAudContx.createBufferSource();
             var volume =  AudioFX.oAudContx.createGain();
             oSrc.buffer = AudioFX.aAudioBuffer[nSound];
-            oSrc.connect(volume);
-            volume.connect( AudioFX.oAudContx.destination);
-            oSrc.connect( AudioFX.oAudContx.destination);
+            oSrc.connect( volume ).connect( AudioFX.oAudContx.destination );
+            volume.gain.value = -.6;
             oSrc.start( AudioFX.oAudContx.currentTime);
             } catch( e ){ console.log(  e ) }
         }
@@ -1269,7 +1268,7 @@ class WrdAPI{  //  REST consumption
                 WrdPlay.doPage( WrdPlay.PAGES.ERROR )
             })
     }
-    static getUntil(){
+    static getUntil(){  //  Time until 1AM Sanfran
         if( this.fields.deadline ){
             let dateFuture = new Date( this.fields.deadline )
             let dateNow = new Date()
