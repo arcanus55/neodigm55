@@ -780,18 +780,8 @@ class WrdPlay {  //  Application Controller
         this.wrdPage.el = [ ... this._d.querySelectorAll( "wrd-page" )]
         let tutPanels = [ ... this._d.querySelectorAll( "[data-wrd-tutorial] .wrd-panel" )]
 
-        fetch("https://firestore.googleapis.com/v1/projects/cf-game-d359b/databases/(default)/documents/wurd/currentwod/", {
-            "headers": {
-              "accept": "*/*",
-              "accept-language": "en-US,en;q=0.9,pt;q=0.8",
-              "cache-control": "no-cache",
-              "pragma": "no-cache",
-            }
-          }).then(response => response.json())
-          .then((data) => {
-              if( data?.fields?.wod6?.stringValue  ) WrdPlay.wrd = data.fields.wod6.stringValue
-        })
-
+    //WrdAPI.getWrd()
+        
 
         this.elAudioSwitch.addEventListener("click", function( ev ){
             WrdPlay.toggleAudio()
@@ -843,6 +833,7 @@ class WrdPlay {  //  Application Controller
                 WrdPlay.animBorder()
                 switch( pageNo ){
                     case 1:
+                        WrdAPI.getWrd(function(){ if( WrdAPI?.fields?.wod6 ) WrdPlay.wrd = WrdAPI.fields.wod6 })
                         AudioFX.playAudioFile( AudioFX.SOUNDS.ENV_Startup_Whirr )
                         WrdTypeOn.doType("#pag1__cap", "wurd", 580, function(){
                             AudioFX.playAudioFile( AudioFX.SOUNDS.ENV_Startup_TextOut )
@@ -862,7 +853,8 @@ class WrdPlay {  //  Application Controller
                                 WrdTypeOn.doType("#pag6__cap3", "you cracked it in " + (WrdPlay.wrdGuessCur + 1) + " guesses", 80, function(){
                                     WrdTypeOn.doType("#pag6__cap4", "current streak: " + "1", 60, function(){  //  TODO
                                         WrdTypeOn.doType("#pag6__cap5", "best streak: " + "1", 80, function(){  //  TODO
-                                            WrdTypeOn.doType("#pag6__cap6", "next wurd in : " + "00:00:00", 80, function(){  //  TODO
+                                            WrdTypeOn.doType("#pag6__cap6", "next wurd in: " + "00:00:00", 80, function(){
+                                                if( !WrdAPI.si ) WrdAPI.si = setInterval(function(){ WrdAPI.tick() }, 600)
                                             } )
                                         } )
                                     } )
@@ -877,7 +869,8 @@ class WrdPlay {  //  Application Controller
                             WrdTypeOn.doType("#pag7__cap2", "you didn't crack today's wurd.", 80, function(){
                                 WrdTypeOn.doType("#pag7__cap3", "the correct wurd was: " + WrdPlay.wrd.toLocaleLowerCase(), 60, function(){  //  TODO
                                     WrdTypeOn.doType("#pag7__cap4", "best streak: " + "0", 80, function(){  //  TODO
-                                        WrdTypeOn.doType("#pag7__cap5", "next wurd in : " + "00:00:00", 80, function(){  //  TODO
+                                        WrdTypeOn.doType("#pag7__cap5", "next wurd in: " + "00:00:00", 80, function(){
+                                            if( !WrdAPI.si ) WrdAPI.si = setInterval(function(){ WrdAPI.tick() }, 600)
                                         } )
                                     } )
                                 } )
@@ -1086,7 +1079,7 @@ class WrdKey {  //  Keyboard State
                         }
                     }else{
                         if( (charVal) && (charVal != "cr") ){
-                            if( (WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES )) || WrdPlay.GesBlinkCursor != -1 ){
+                            if( (WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1)) || WrdPlay.GesBlinkCursor != -1 ){  //  -1
                                 //  One of three rand key click sounds
                                 AudioFX.playAudioFile( [AudioFX.SOUNDS.ACT_LetterEntry_00, AudioFX.SOUNDS.ACT_LetterEntry_03, AudioFX.SOUNDS.ACT_LetterEntry_08] )
                                 let nCursor = WrdKey.getCursorNext()
@@ -1238,6 +1231,53 @@ class AudioFX{  //  Binary Audio Assets
     }
 }
 
+class WrdAPI{  //  REST consumption
+    static fields = {"wod6":"", "dayIndex":"", "deadline":""}
+    static si = null
+    static getWrd( cb ){
+        this.fields = {"wod6":"", "dayIndex":"", "deadline":""}
+        fetch("https://firestore.googleapis.com/v1/projects/cf-game-d359b/databases/(default)/documents/wurd/currentwod/", {
+            "headers": {
+              "accept": "*/*", "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+              "cache-control": "no-cache", "pragma": "no-cache",
+            }
+          }).then(response => response.json())
+          .then((data) => {
+                if( data?.fields?.wod6?.stringValue ){
+                    this.fields.wod6 = data.fields.wod6.stringValue
+                    this.fields.dayIndex = data.fields.dayIndex.integerValue
+                    this.fields.deadline = data.fields.deadline.timestampValue
+                }
+                if( cb ) cb()
+        })
+    }
+    static getUntil(){
+        if( this.fields.deadline ){
+            let dateFuture = new Date( this.fields.deadline )
+            let dateNow = new Date()
+
+            var seconds = Math.floor((dateFuture - (dateNow))/1000);
+            var minutes = Math.floor(seconds/60);
+            var hours = Math.floor(minutes/60);
+            var days = Math.floor(hours/24);
+            
+            hours = hours-(days*24);
+            minutes = minutes-(days*24*60)-(hours*60);
+            seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
+
+            return hours + ":" + minutes + ":" + seconds
+        }
+        return "00:00:00"
+    }
+    static tick(){
+        let txt1 = document.querySelector("#pag6__cap6")
+        let txt2 = document.querySelector("#pag7__cap5")
+        if( txt1 && txt2 ){
+            txt1.innerHTML = "next wurd in: " + this.getUntil()
+            txt2.innerHTML = "next wurd in: " + this.getUntil()
+        }
+    }
+}
 
 WrdPlay.init().doPage( WrdPlay.PAGES.SPLASH )
     </script>
