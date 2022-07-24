@@ -84,7 +84,7 @@
         overflow-y: scroll;
     }
 
-    [data-wrd-has-kb].l-wrd { grid-template-rows: 28px 28px calc(1fr - 320px) 204px; }
+    [data-wrd-has-kb].l-wrd { grid-template-rows: 28px 28px calc(1fr - 360px) 204px; }
     [data-wrd-tutorial].l-wrd { grid-template-rows: 28px 1fr 204px; }
     .l-wrd .wrd-nav-1 {
         display: grid;
@@ -852,6 +852,7 @@ class WrdPlay {  //  Application Controller
                         } )
                     break;
                     case 2:
+                        if("vibrate" in navigator) window.navigator.vibrate([48, 56])
                         WrdTypeOn.doType("#pag2__cap", "take a guess ...", 180, function(){ } )
                     break;
                     case 6:
@@ -922,7 +923,7 @@ class WrdPlay {  //  Application Controller
                 }else{
                     WrdTypeOn.doType("#pag2__cap", sKeys.join("") + " is not a word ...", 100, function(){
                         AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_GameOver_Fail )
-                        WrdTypeOn.doType("#pag2__cap", "take another guess .....", 180)
+                        WrdTypeOn.doType("#pag2__cap", "take another guess ..", 180)
                     } )
                 }
             }else{
