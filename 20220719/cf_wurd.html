@@ -932,8 +932,8 @@ class WrdPlay {  //  Application Controller
                     }
                     if( WrdPlay.GAMEOVER != WrdPlay.PAGES.PLAY ) setTimeout( function(){ WrdPlay.doPage( WrdPlay.GAMEOVER ) }, 4880 )
                 }else{
+                    AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_GameOver_Fail )
                     WrdTypeOn.doType("#pag2__cap", sKeys.join("") + " is not a word ...", 100, function(){
-                        AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_GameOver_Fail )
                         WrdTypeOn.doType("#pag2__cap", "take another guess ...", 180)
                     } )
                 }
@@ -1069,8 +1069,10 @@ class WrdKey {  //  Keyboard State
         let _this = this
 
         if( this.eKB && this.eCR ){
-            [ ((wrdUtils.isTouch()) ? "tapstart":"mousedown") ].forEach(function( evName ){
+            //[ ((wrdUtils.isTouch()) ? "tapstart":"mousedown") ].forEach(function( evName ){
+            ["tapstart", "mousedown"].forEach(function( evName ){
                 _this.eKB.addEventListener( evName, function( ev ){
+                    ev.preventDefault()
                     let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
                     WrdKey.oPointer.down = true; WrdKey.oPointer.value = charVal
                     WrdKey.oPointer.cb = setTimeout(function(){  //  Slow Tap
@@ -1084,8 +1086,10 @@ class WrdKey {  //  Keyboard State
                 } )
             });
 
-            [ ((wrdUtils.isTouch()) ? "tapend":"mouseup") ].forEach(function( evName ){
+            //[ ((wrdUtils.isTouch()) ? "tapend":"mouseup") ].forEach(function( evName ){
+            ["tapend", "mouseup"].forEach(function( evName ){
                 _this.eKB.addEventListener( evName, function( ev ){
+                    ev.preventDefault()
                     let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
                     if( WrdKey.oPointer.cb ) clearTimeout( WrdKey.oPointer.cb )
                     if( charVal.length == 1 && (WrdKey.oPointer.value == charVal) ){
