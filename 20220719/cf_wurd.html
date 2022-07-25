@@ -1212,7 +1212,7 @@ class AudioFX{  //  Binary Audio Assets
             }, 2) 
         }
     }
-    static init (){
+    static init(){
         if( AudioContext ) {
             setTimeout( function(){ AudioFX.fetchSound(); }, 1800);
             this.CnfState.audio = true;
@@ -1221,7 +1221,7 @@ class AudioFX{  //  Binary Audio Assets
             this.aAudioBuffer = new Array(10);
           }
     }
-    static fetchSound (){  //  AJAX a single sound binary
+    static fetchSound(){  //  AJAX a single sound binary
         this.oAJAXReq.open("GET", "assets/audio/a" + AudioFX.fetchSoundConfig.sound_current + ".wav", true);
         this.oAJAXReq.responseType = "arraybuffer";
         this.oAJAXReq.send();
@@ -1250,10 +1250,11 @@ class AudioFX{  //  Binary Audio Assets
             var volume =  AudioFX.oAudContx.createGain();
             oSrc.buffer = AudioFX.aAudioBuffer[nSound];
             oSrc.connect( volume ).connect( AudioFX.oAudContx.destination );
-            volume.gain.value = -.2;
+            volume.gain.value = .4;
             oSrc.start( AudioFX.oAudContx.currentTime);
             } catch( e ){ console.log(  e ) }
         }
+        if("vibrate" in navigator) window.navigator.vibrate([48, 56])
     }
 }
 
