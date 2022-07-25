@@ -933,7 +933,7 @@ class WrdPlay {  //  Application Controller
                 }else{
                     WrdTypeOn.doType("#pag2__cap", sKeys.join("") + " is not a word ...", 100, function(){
                         AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_GameOver_Fail )
-                        WrdTypeOn.doType("#pag2__cap", "take another guess ..", 180)
+                        WrdTypeOn.doType("#pag2__cap", "take another guess ...", 180)
                     } )
                 }
             }else{
@@ -1075,6 +1075,7 @@ class WrdKey {  //  Keyboard State
                     WrdKey.oPointer.cb = setTimeout(function(){  //  Slow Tap
                         WrdKey.oPointer.lock = WrdKey.oPointer.down
                         if( ev.target.innerHTML.length == 1 ){
+                            AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_LetterEntry_Enter )
                             ev.target.dataset.wrdKyExcluded = (ev.target.dataset.wrdKyExcluded == "true") ? "false" : "true"
                         }
                     }, 1000)
