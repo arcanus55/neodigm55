@@ -746,6 +746,7 @@ const wrdUtils = ( ( _d ) =>{
     return {
       ver: "0.1.0",
       isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
+      isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
       f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
       f02x: function(x){ return (Math.floor(Math.random() * x)); },  //  0 to x
       fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback
@@ -1068,7 +1069,7 @@ class WrdKey {  //  Keyboard State
         let _this = this
 
         if( this.eKB && this.eCR ){
-            ["mousedown"].forEach(function( evName ){
+            [ ((wrdUtils.isTouch()) ? "tapstart":"mousedown") ].forEach(function( evName ){
                 _this.eKB.addEventListener( evName, function( ev ){
                     let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
                     WrdKey.oPointer.down = true; WrdKey.oPointer.value = charVal
@@ -1083,7 +1084,7 @@ class WrdKey {  //  Keyboard State
                 } )
             });
 
-            ["mouseup"].forEach(function( evName ){
+            [ ((wrdUtils.isTouch()) ? "tapend":"mouseup") ].forEach(function( evName ){
                 _this.eKB.addEventListener( evName, function( ev ){
                     let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
                     if( WrdKey.oPointer.cb ) clearTimeout( WrdKey.oPointer.cb )
@@ -1259,7 +1260,7 @@ class AudioFX{  //  Binary Audio Assets
             var volume =  AudioFX.oAudContx.createGain();
             oSrc.buffer = AudioFX.aAudioBuffer[nSound];
             oSrc.connect( volume ).connect( AudioFX.oAudContx.destination );
-            volume.gain.value = .76;
+            volume.gain.value = .84;
             oSrc.start( AudioFX.oAudContx.currentTime);
             } catch( e ){ console.log(  e ) }
         }
