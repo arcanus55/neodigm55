@@ -1065,65 +1065,71 @@ class WrdKey {  //  Keyboard State
         this.eKB = document.querySelector(".wrd-ky__panel")
         this.eCR = document.querySelector("[data-wrd-key-val='cr']")
         this.aKys = [ ... document.querySelectorAll(".wrd-ky__panel wrd-ky")]
+        let _this = this
+
         if( this.eKB && this.eCR ){
-            //this.eKB.addEventListener("mousedown", function( ev ){
-            this.eKB.addEventListener("touchstart", function( ev ){
-                let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
-                WrdKey.oPointer.down = true; WrdKey.oPointer.value = charVal
-                WrdKey.oPointer.cb = setTimeout(function(){  //  Slow Tap
-                    WrdKey.oPointer.lock = WrdKey.oPointer.down
-                    if( ev.target.innerHTML.length == 1 ){
-                        ev.target.dataset.wrdKyExcluded = (ev.target.dataset.wrdKyExcluded == "true") ? "false" : "true"
-                    }
-                }, 1000)
-                window.focus()
-            } )
-            //this.eKB.addEventListener("mouseup", function( ev ){
-            this.eKB.addEventListener("touchend", function( ev ){
-                let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
-                if( WrdKey.oPointer.cb ) clearTimeout( WrdKey.oPointer.cb )
-                if( charVal.length == 1 && (WrdKey.oPointer.value == charVal) ){
-                    if( WrdKey.oPointer.lock ){
-                        if(ev.target.dataset.wrdKyExcluded == "true"){
-                            WrdTypeOn.doType("#pag2__cap", "the letter " + charVal.toUpperCase() + " is excluded", 120)
-                            WrdKey.oPointer.down = WrdKey.oPointer.lock = WrdKey.oPointer.value = false
-                            return;  //  Do not populate Guess the first time char is excluded
-                        }else{
-                            WrdTypeOn.doType("#pag2__cap", "the letter " + charVal.toUpperCase() + " is included", 120)
+            ["mousedown", "touchstart"].forEach(function( evName ){
+                _this.eKB.addEventListener( evName, function( ev ){
+                    let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
+                    WrdKey.oPointer.down = true; WrdKey.oPointer.value = charVal
+                    WrdKey.oPointer.cb = setTimeout(function(){  //  Slow Tap
+                        WrdKey.oPointer.lock = WrdKey.oPointer.down
+                        if( ev.target.innerHTML.length == 1 ){
+                            ev.target.dataset.wrdKyExcluded = (ev.target.dataset.wrdKyExcluded == "true") ? "false" : "true"
                         }
-                    }
-                }
-                WrdKey.oPointer.down = WrdKey.oPointer.lock = WrdKey.oPointer.value = false
-                //  Allow entering a char that already exists if typing over it
-                if( (charVal.length <= 2) && ((WrdKey.sKBChars.indexOf( charVal ) == -1)  ||  ( charVal == WrdKey.sKBChars[ WrdKey.KeyBlinkCursor ] )) ){
-                    if( (charVal == "cr") && (WrdKey.getTotalChars() == ( WrdPlay.MAXGUESSES  ) ) ) AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_LetterEntry_Enter ) 
-                    if( (charVal == "cr") && (WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1 ) ) ) charVal = null
-                    if( charVal == "bs" ){
-                        if( WrdKey.getTotalChars() ){
-                            if( WrdKey.KeyBlinkCursor >= 1 ) WrdKey.KeyBlinkCursor--;
-                            AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_LetterEntry_Delete )
-                            WrdKey.sKBChars[ WrdKey.KeyBlinkCursor ] = null
-                            let elBS = WrdKey.sKBEls[ WrdKey.KeyBlinkCursor ] = null
-                            if( elBS ) elBS.dataset.wrdKyDisabled = "false"
-                        }
-                    }else{
-                        if( (charVal) && (charVal != "cr") ){
-                            if( (WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1)) || WrdPlay.GesBlinkCursor != -1 ){  //  -1
-                                //  One of three rand key click sounds
-                                AudioFX.playAudioFile( [AudioFX.SOUNDS.ACT_LetterEntry_00, AudioFX.SOUNDS.ACT_LetterEntry_03, AudioFX.SOUNDS.ACT_LetterEntry_08] )
-                                let nCursor = WrdKey.getCursorNext()
-                                ev.target.dataset.wrdKyDisabled = "true"
-                                WrdKey.sKBChars[ nCursor ] = charVal
-                                WrdKey.sKBEls[ nCursor  ] = ev.target
-                                if( WrdKey.KeyBlinkCursor <= 5 ) WrdKey.KeyBlinkCursor++;
+                    }, 1000)
+                    window.focus()
+                } )
+            });
+
+            ["mouseup", "touchend"].forEach(function( evName ){
+                _this.eKB.addEventListener( evName, function( ev ){
+                    let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
+                    if( WrdKey.oPointer.cb ) clearTimeout( WrdKey.oPointer.cb )
+                    if( charVal.length == 1 && (WrdKey.oPointer.value == charVal) ){
+                        if( WrdKey.oPointer.lock ){
+                            if(ev.target.dataset.wrdKyExcluded == "true"){
+                                WrdTypeOn.doType("#pag2__cap", "the letter " + charVal.toUpperCase() + " is excluded", 120)
+                                WrdKey.oPointer.down = WrdKey.oPointer.lock = WrdKey.oPointer.value = false
+                                return;  //  Do not populate Guess the first time char is excluded
+                            }else{
+                                WrdTypeOn.doType("#pag2__cap", "the letter " + charVal.toUpperCase() + " is included", 120)
                             }
                         }
                     }
-                    WrdKey.eCR.dataset.wrdKyDisabled = ( WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1 ) ) ? "true" : "false"
-                    if( charVal ) WrdPlay.doKey( charVal, WrdKey.sKBChars, WrdKey.sKBEls )  //  Tell the App
-                    WrdKey.syncDisabled()
-                }
+                    WrdKey.oPointer.down = WrdKey.oPointer.lock = WrdKey.oPointer.value = false
+                    //  Allow entering a char that already exists if typing over it
+                    if( (charVal.length <= 2) && ((WrdKey.sKBChars.indexOf( charVal ) == -1)  ||  ( charVal == WrdKey.sKBChars[ WrdKey.KeyBlinkCursor ] )) ){
+                        if( (charVal == "cr") && (WrdKey.getTotalChars() == ( WrdPlay.MAXGUESSES  ) ) ) AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_LetterEntry_Enter ) 
+                        if( (charVal == "cr") && (WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1 ) ) ) charVal = null
+                        if( charVal == "bs" ){
+                            if( WrdKey.getTotalChars() ){
+                                if( WrdKey.KeyBlinkCursor >= 1 ) WrdKey.KeyBlinkCursor--;
+                                AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_LetterEntry_Delete )
+                                WrdKey.sKBChars[ WrdKey.KeyBlinkCursor ] = null
+                                let elBS = WrdKey.sKBEls[ WrdKey.KeyBlinkCursor ] = null
+                                if( elBS ) elBS.dataset.wrdKyDisabled = "false"
+                            }
+                        }else{
+                            if( (charVal) && (charVal != "cr") ){
+                                if( (WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1)) || WrdPlay.GesBlinkCursor != -1 ){  //  -1
+                                    //  One of three rand key click sounds
+                                    AudioFX.playAudioFile( [AudioFX.SOUNDS.ACT_LetterEntry_00, AudioFX.SOUNDS.ACT_LetterEntry_03, AudioFX.SOUNDS.ACT_LetterEntry_08] )
+                                    let nCursor = WrdKey.getCursorNext()
+                                    ev.target.dataset.wrdKyDisabled = "true"
+                                    WrdKey.sKBChars[ nCursor ] = charVal
+                                    WrdKey.sKBEls[ nCursor  ] = ev.target
+                                    if( WrdKey.KeyBlinkCursor <= 5 ) WrdKey.KeyBlinkCursor++;
+                                }
+                            }
+                        }
+                        WrdKey.eCR.dataset.wrdKyDisabled = ( WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1 ) ) ? "true" : "false"
+                        if( charVal ) WrdPlay.doKey( charVal, WrdKey.sKBChars, WrdKey.sKBEls )  //  Tell the App
+                        WrdKey.syncDisabled()
+                    }
+                })
             })
+            
             document.addEventListener("keyup", function( ev ){  //  Physical KB support
                 let elKey = null
                 let sKeyVal = ev.key.toLowerCase()
