@@ -1250,7 +1250,7 @@ class AudioFX{  //  Binary Audio Assets
             var volume =  AudioFX.oAudContx.createGain();
             oSrc.buffer = AudioFX.aAudioBuffer[nSound];
             oSrc.connect( volume ).connect( AudioFX.oAudContx.destination );
-            volume.gain.value = .4;
+            volume.gain.value = .76;
             oSrc.start( AudioFX.oAudContx.currentTime);
             } catch( e ){ console.log(  e ) }
         }
