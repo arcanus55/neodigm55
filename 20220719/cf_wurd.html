@@ -873,9 +873,9 @@ class WrdPlay {  //  Application Controller
                                 WrdTypeOn.doType("#pag6__cap3", "you cracked it in " + (WrdPlay.wrdGuessCur + 1) + " guesses", 80, function(){
                                     WrdTypeOn.doType("#pag6__cap4", "current streak: " + "1", 60, function(){  //  TODO
                                         WrdTypeOn.doType("#pag6__cap5", "best streak: " + "1", 80, function(){  //  TODO
-                                            WrdTypeOn.doType("#pag6__cap6", "next wurd in: " + "00:00:00", 80, function(){
+                                            //WrdTypeOn.doType("#pag6__cap6", "next wurd in: ", 80, function(){
                                                 if( !WrdAPI.si ) WrdAPI.si = setInterval(function(){ WrdAPI.tick() }, 1000)
-                                            } )
+                                            //} )
                                         } )
                                     } )
                                 } )
@@ -889,9 +889,9 @@ class WrdPlay {  //  Application Controller
                             WrdTypeOn.doType("#pag7__cap2", "you didn't crack today's wurd.", 80, function(){
                                 WrdTypeOn.doType("#pag7__cap3", "the correct wurd was: " + WrdPlay.wrd.toLocaleLowerCase(), 60, function(){  //  TODO
                                     WrdTypeOn.doType("#pag7__cap4", "best streak: " + "0", 80, function(){  //  TODO
-                                        WrdTypeOn.doType("#pag7__cap5", "next wurd in: " + "00:00:00", 80, function(){
+                                        //WrdTypeOn.doType("#pag7__cap5", "next wurd in: ", 80, function(){
                                             if( !WrdAPI.si ) WrdAPI.si = setInterval(function(){ WrdAPI.tick() }, 1000)
-                                        } )
+                                        //} )
                                     } )
                                 } )
                             } )
@@ -1066,7 +1066,8 @@ class WrdKey {  //  Keyboard State
         this.eCR = document.querySelector("[data-wrd-key-val='cr']")
         this.aKys = [ ... document.querySelectorAll(".wrd-ky__panel wrd-ky")]
         if( this.eKB && this.eCR ){
-            this.eKB.addEventListener("mousedown", function( ev ){
+            //this.eKB.addEventListener("mousedown", function( ev ){
+            this.eKB.addEventListener("touchstart", function( ev ){
                 let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
                 WrdKey.oPointer.down = true; WrdKey.oPointer.value = charVal
                 WrdKey.oPointer.cb = setTimeout(function(){  //  Slow Tap
@@ -1077,7 +1078,8 @@ class WrdKey {  //  Keyboard State
                 }, 1000)
                 window.focus()
             } )
-            this.eKB.addEventListener("mouseup", function( ev ){
+            //this.eKB.addEventListener("mouseup", function( ev ){
+            this.eKB.addEventListener("touchend", function( ev ){
                 let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
                 if( WrdKey.oPointer.cb ) clearTimeout( WrdKey.oPointer.cb )
                 if( charVal.length == 1 && (WrdKey.oPointer.value == charVal) ){
@@ -1283,13 +1285,13 @@ class WrdAPI{  //  REST consumption
     }
     static getUntil(){  //  Time until 1AM Sanfran
         if( this.fields.deadline ){
-            let dateFuture = new Date( this.fields.deadline )
-            let dateNow = new Date()
+            const dateFuture = new Date( this.fields.deadline )
+            const dateNow = new Date()
 
-            var seconds = Math.floor((dateFuture - (dateNow))/1000);
-            var minutes = Math.floor(seconds/60);
-            var hours = Math.floor(minutes/60);
-            var days = Math.floor(hours/24);
+            let seconds = Math.floor((dateFuture - (dateNow))/1000);
+            let minutes = Math.floor(seconds/60);
+            let hours = Math.floor(minutes/60);
+            let days = Math.floor(hours/24);
             
             hours = hours-(days*24);
             minutes = minutes-(days*24*60)-(hours*60);
@@ -10728,7 +10730,6 @@ zymase
 zymite
 zymoid
 zythum`
-//WrdPlay.wrd =  sDict.split("\n")[ wrdUtils.f02x( 940 ) ]
     </script>
     </body>
 </html>
