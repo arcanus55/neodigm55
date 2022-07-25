@@ -84,7 +84,7 @@
         overflow-y: scroll;
     }
 
-    [data-wrd-has-kb].l-wrd { grid-template-rows: 28px 28px calc(1fr - 360px) 204px; }
+    [data-wrd-has-kb].l-wrd { grid-template-rows: 28px 28px auto 204px; }
     [data-wrd-tutorial].l-wrd { grid-template-rows: 28px 1fr 204px; }
     .l-wrd .wrd-nav-1 {
         display: grid;
@@ -451,6 +451,7 @@
                             </output>
                         </wrd-feedback>
                     </wrd-guess>
+                    <br>
                 </section>
                 <section class="wrd-ky__panel">
                     <wrd-kb-row class="kb-row__1"> <wrd-ky>q</wrd-ky> <wrd-ky>w</wrd-ky> <wrd-ky>e</wrd-ky> <wrd-ky>r</wrd-ky> <wrd-ky>t</wrd-ky> <wrd-ky>y</wrd-ky> <wrd-ky>u</wrd-ky> <wrd-ky>i</wrd-ky> <wrd-ky>o</wrd-ky> <wrd-ky>p</wrd-ky>
@@ -854,6 +855,15 @@ class WrdPlay {  //  Application Controller
                     case 2:
                         if("vibrate" in navigator) window.navigator.vibrate([48, 56])
                         WrdTypeOn.doType("#pag2__cap", "take a guess ...", 180, function(){ } )
+                    break;
+                    case 3:
+                        if("vibrate" in navigator) window.navigator.vibrate([48, 56])
+                    break;
+                    case 4:
+                        if("vibrate" in navigator) window.navigator.vibrate([48, 56])
+                    break;
+                    case 5:
+                        if("vibrate" in navigator) window.navigator.vibrate([48, 56])
                     break;
                     case 6:
                         AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_GameOver_Success )
