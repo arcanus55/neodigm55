@@ -1068,7 +1068,7 @@ class WrdKey {  //  Keyboard State
         let _this = this
 
         if( this.eKB && this.eCR ){
-            ["mousedown", "touchstart"].forEach(function( evName ){
+            ["mousedown"].forEach(function( evName ){
                 _this.eKB.addEventListener( evName, function( ev ){
                     let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
                     WrdKey.oPointer.down = true; WrdKey.oPointer.value = charVal
@@ -1083,7 +1083,7 @@ class WrdKey {  //  Keyboard State
                 } )
             });
 
-            ["mouseup", "touchend"].forEach(function( evName ){
+            ["mouseup"].forEach(function( evName ){
                 _this.eKB.addEventListener( evName, function( ev ){
                     let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
                     if( WrdKey.oPointer.cb ) clearTimeout( WrdKey.oPointer.cb )
