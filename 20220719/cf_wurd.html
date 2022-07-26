@@ -1125,7 +1125,7 @@ ev.preventDefault()
                                     ev.target.dataset.wrdKyDisabled = "true"
                                     WrdKey.sKBChars[ nCursor ] = charVal
                                     WrdKey.sKBEls[ nCursor  ] = ev.target
-                                    if( WrdKey.KeyBlinkCursor <= 5 ) WrdKey.KeyBlinkCursor++;
+                                    if( WrdKey.KeyBlinkCursor <= 4 ) WrdKey.KeyBlinkCursor++;  //  prevent 7 keys
                                 }
                             }
                         }
