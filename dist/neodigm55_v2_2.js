@@ -44,6 +44,7 @@ const neodigmUtils = ( ( _d ) =>{
   return {
     ver: "2.2.0",
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
+    isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
     f02x: function(x){ return (Math.floor(Math.random() * x)); },  //  0 to x
     fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback
@@ -704,7 +705,7 @@ class NeodigmEnchantedCTA {
     flashTheme ( sTheme ){
       if( this.bIsInit && !this.bIsPause && sTheme ){
         this.setTheme( sTheme )
-        setTimeout( function(){ neodigmEnchantedCTA.revertTheme() }, 256)
+        setTimeout( function(){ neodigmEnchantedCTA.revertTheme() }, 384 )
       }
     return this;
     }

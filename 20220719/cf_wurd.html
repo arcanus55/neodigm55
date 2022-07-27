@@ -819,7 +819,7 @@ class WrdPlay {  //  Application Controller
         AudioFX.preInit()
         return this
     }
-    static calcEvals( sChars, sKBEls ){  //  Determine validity of the guess
+    static calcEvals( sChars, sKBEls ){  //  Determine validity of the guess | score
         let nMatch = 0, aOffsets = [], aTmp = [], nWrong = 0
         const aWrd = WrdPlay.wrd.toLowerCase().split("")
         aWrd.forEach(function( c, nDx ){
@@ -1016,6 +1016,7 @@ class WrdGuess {
         this.elGLetters.forEach(function( l, nDx ){
             l.addEventListener("click", function( ev ){  //  Random Access Cursor Placement
                 if( _this.isActive ){
+                    AudioFX.playAudioFile( AudioFX.SOUNDS.Key_Unvoided )
                     WrdPlay.GesBlinkCursor = nDx
                     _this.elGLetters.forEach(function(l, nDx){
                         l.dataset.wrdBlink = ( nDx == WrdPlay.GesBlinkCursor ) ? "true" : "false"
@@ -1118,14 +1119,15 @@ ev.preventDefault()
                             }
                         }else{
                             if( (charVal) && (charVal != "cr") ){
-                                if( (WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1)) || WrdPlay.GesBlinkCursor != -1 ){  //  -1
-                                    //  One of three rand key click sounds
+                                if( (WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1)) && WrdKey.KeyBlinkCursor != 6 ){
                                     AudioFX.playAudioFile( [AudioFX.SOUNDS.ACT_LetterEntry_00, AudioFX.SOUNDS.ACT_LetterEntry_03, AudioFX.SOUNDS.ACT_LetterEntry_08] )
                                     let nCursor = WrdKey.getCursorNext()
                                     ev.target.dataset.wrdKyDisabled = "true"
-                                    WrdKey.sKBChars[ nCursor ] = charVal
-                                    WrdKey.sKBEls[ nCursor  ] = ev.target
-                                    if( WrdKey.KeyBlinkCursor <= 4 ) WrdKey.KeyBlinkCursor++;  //  prevent 7 keys
+                                    if( nCursor <= 5 ){
+                                        WrdKey.sKBChars[ nCursor ] = charVal
+                                        WrdKey.sKBEls[ nCursor  ] = ev.target                                        
+                                    }
+                                    if( WrdKey.KeyBlinkCursor <= 5 ) WrdKey.KeyBlinkCursor++;
                                 }
                             }
                         }
@@ -1205,9 +1207,10 @@ class AudioFX{  //  Binary Audio Assets
     "ACT_LetterEntry_03": 7,
     "ACT_LetterEntry_08": 8,
     "ACT_LetterEntry_Delete": 9,
-    "ACT_LetterEntry_Enter": 10}
+    "ACT_LetterEntry_Enter": 10,
+    "Key_Unvoided":11}
     static AudioContext = window.AudioContext || false
-    static oAudContx = null; static oAJAXReq = null; static aAudioBuffer = null; static fetchSoundConfig = {sound_max: 10, sound_current: 1};
+    static oAudContx = null; static oAJAXReq = null; static aAudioBuffer = null; static fetchSoundConfig = {sound_max: 11, sound_current: 1};
     static preInit (){
         let elBody = document.body
         if( elBody ){  //  Simulate click
