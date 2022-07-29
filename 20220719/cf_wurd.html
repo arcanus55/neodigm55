@@ -923,7 +923,7 @@ class WrdPlay {  //  Application Controller
                         if( this.wrdGuessCur == this.MAXGUESSES ){
                             WrdPlay.GAMEOVER = WrdPlay.PAGES.LOSE  //  Failure
                             WrdTypeOn.doType("#pag2__cap", "too bad :(", 204)
-                    }else{  //  Only one active
+                        }else{  //  Only one active
                             this.wrdGuesses.forEach(function( g, nDx ){ g.setActive( WrdPlay.wrdGuessCur == nDx ) })
                             this.wrdGuesses[ this.wrdGuessCur ].doKey( WrdKey.newGuess( aEval ) )
                             if( this.wrdGuessCur <= ( this.MAXGUESSES - 1 ) ) this.wrdGuesses[ this.wrdGuessCur ].doBlinkFirst()                                
@@ -1113,9 +1113,12 @@ class WrdKey {  //  Keyboard State
 ev.preventDefault()
                                 if( WrdKey.KeyBlinkCursor >= 1 ) WrdKey.KeyBlinkCursor--;
                                 AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_LetterEntry_Delete )
+                                //  Last char BS if focused via Guess tap
+                                if( WrdPlay.GesBlinkCursor == 5 ) WrdKey.KeyBlinkCursor  = WrdPlay.GesBlinkCursor
                                 WrdKey.sKBChars[ WrdKey.KeyBlinkCursor ] = null
                                 let elBS = WrdKey.sKBEls[ WrdKey.KeyBlinkCursor ] = null
                                 if( elBS ) elBS.dataset.wrdKyDisabled = "false"
+                                if( !WrdKey.getTotalChars() ) WrdKey.KeyBlinkCursor = 0 // Reset kb cursor if no more chars
                             }
                         }else{
                             if( (charVal) && (charVal != "cr") ){
