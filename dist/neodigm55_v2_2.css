@@ -116,15 +116,17 @@ neodigm-sodapop-scrim[data-n55-sodapop-scrim='opened'].ndsp__blur {
 }
 neodigm-sodapop-scrim-close { display: none; }
 neodigm-sodapop-scrim-close:not(.ndsp__modal)[data-n55-sodapop-scrim='opened'] {
-    pointer-events: none;
     display: block!important;
     cursor: pointer;
     position: fixed;
-    top: 4px;
-    right: 6px;
+    top: 4px; right: 4px;
     overflow-x: hidden;
+    transform: rotate(0deg);
+    transition: all .4s ease-in-out;
     z-index: 258;
 }
+neodigm-sodapop-scrim-close:not(.ndsp__modal)[data-n55-sodapop-scrim='opened'] svg { pointer-events: none; }
+neodigm-sodapop-scrim-close:hover:not(.ndsp__modal)[data-n55-sodapop-scrim='opened'] { transform: rotate(90deg); }
 neodigm-sodapop {
     background-color: #fff;
     border-radius: 20px; transition: all .68s;
