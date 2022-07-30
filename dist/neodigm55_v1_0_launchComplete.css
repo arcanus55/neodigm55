@@ -44,7 +44,7 @@ margin-top: 32px;
 .lgo > span:nth-of-type(2) { font-weight: 300;}
 
 /*  type  */
-h1, h2, h3 ,h4, p {
+h1, h2, h3 ,h4, p, summary {
 font-family: 'Roboto', sans-serif; font-weight: 100;
 margin: 8px 0; padding: 1px;
 }
@@ -146,13 +146,13 @@ section.pfmf-grid { width: 86%; }
 /* Pan Fried Monkey Fisticufs grid end */
 
 /* Formz */
-neodigm-sodapop, neodigm-sodapop > * {background-color: #dfebc0;}
+neodigm-sodapop, neodigm-sodapop > * {background-color: #f6f6f6;}
 input.n55-lc__input, textarea.n55-lc__input {
 display: block;
 color: #383838;
-font-family: 'Montserrat', sans-serif; font-size: 18px;
+font-family: 'Roboto', sans-serif; font-size: 18px;
 line-height: 1.1;
-border: solid 1px #585858; border-radius: 20px;
+border: solid 1px #848484; border-radius: 8px;
 width: 76%;
 margin: 8px auto; padding: 10px 8px;
 }
@@ -173,6 +173,59 @@ height: 32px; width: 32px;
 fill: var(  --m5lc-theme-info-alt );
 }
 .vec-bullet:hover { fill: var(  --m5lc-theme-info ); }
+
+ /* Color of the Year begin */
+ .bg-coy_1999  {background-color: #000000;}  /* Black */
+ .bg-coy_2000  {background-color: #9BB7D4;}  /* Cerulean */
+ .bg-coy_2001  {background-color: #C74375;}  /* Fuchsia Rose */
+ .bg-coy_2002  {background-color: #BF1932;}  /* True Red */
+ .bg-coy_2003  {background-color: #7BC4C4;}  /* Aqua Sky */
+ .bg-coy_2004  {background-color: #E2583E;}  /* Tigerlily */
+ .bg-coy_2005  {background-color: #53B0AE;}  /* Blue Turquoise */
+ .bg-coy_2006  {background-color: #DECDBE;}  /* Sand Dollar */
+ .bg-coy_2007  {background-color: #9B1B30;}  /* Chili Pepper */
+ .bg-coy_2008  {background-color: #5A5B9F;}  /* Blue Iris */
+ .bg-coy_2009  {background-color: #F0C05A;}  /* Mimosa */
+ .bg-coy_2010  {background-color: #45B5AA;}  /* Turquoise */
+ .bg-coy_2011  {background-color: #D94F70;}  /* Honeysuckle */
+ .bg-coy_2012  {background-color: #DD4124;}  /* Tangerine Tango */
+ .bg-coy_2013  {background-color: #009473;}  /* Emerald */
+ .bg-coy_2014  {background-color: #B163A3;}  /* Radiant Orchid */
+ .bg-coy_2015  {background-color: #955251;}  /* Marsala */
+ .bg-coy_2016  {background-color: #F7CAC9;}  /* Rose Quartz */
+ .bg-coy_2016b {background-color: #92A8D1;}  /* Serenity */
+ .bg-coy_2017  {background-color: #88B04B;}  /* Greenery */
+ .bg-coy_2018  {background-color: #5F4B8B;}  /* Ultra Violet */
+ .bg-coy_2019  {background-color: #FF6F61;}  /* Living Coral */
+ .bg-coy_2020  {background-color: #0F4C81;}  /* Classic Blue */
+ .bg-coy_2021  {background-color: #939597;}  /* Ultimate Gray */
+ .bg-coy_2021b {background-color: #F5DF4D;}  /* Illuminating */
+
+ .text-coy_1999  {color: #000000;}  /* Black */
+ .text-coy_2000  {color: #9BB7D4;}  /* Cerulean */
+ .text-coy_2001  {color: #C74375;}  /* Fuchsia Rose */
+ .text-coy_2002  {color: #BF1932;}  /* True Red */
+ .text-coy_2003  {color: #7BC4C4;}  /* Aqua Sky */
+ .text-coy_2004  {color: #E2583E;}  /* Tigerlily */
+ .text-coy_2005  {color: #53B0AE;}  /* Blue Turquoise */
+ .text-coy_2006  {color: #DECDBE;}  /* Sand Dollar */
+ .text-coy_2007  {color: #9B1B30;}  /* Chili Pepper */
+ .text-coy_2008  {color: #5A5B9F;}  /* Blue Iris */
+ .text-coy_2009  {color: #F0C05A;}  /* Mimosa */
+ .text-coy_2010  {color: #45B5AA;}  /* Turquoise */
+ .text-coy_2011  {color: #D94F70;}  /* Honeysuckle */
+ .text-coy_2012  {color: #DD4124;}  /* Tangerine Tango */
+ .text-coy_2013  {color: #009473;}  /* Emerald */
+ .text-coy_2014  {color: #B163A3;}  /* Radiant Orchid */
+ .text-coy_2015  {color: #955251;}  /* Marsala */
+ .text-coy_2016  {color: #F7CAC9;}  /* Rose Quartz */
+ .text-coy_2016b {color: #92A8D1;}  /* Serenity */
+ .text-coy_2017  {color: #88B04B;}  /* Greenery */
+ .text-coy_2018  {color: #5F4B8B;}  /* Ultra Violet */
+ .text-coy_2019  {color: #FF6F61;}  /* Living Coral */
+ .text-coy_2020  {color: #0F4C81;}  /* Classic Blue */
+ .text-coy_2021  {color: #939597;}  /* Ultimate Gray */
+ .text-coy_2021b {color: #F5DF4D;}  /* Illuminating */
 
 /*  MQ  */
 @media only screen and (min-width:48.1em){/* med *//* lg */
