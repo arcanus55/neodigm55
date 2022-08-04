@@ -1,5 +1,5 @@
 /*
-Neodigm 55 plugin Launch Complete
+Neodigm 55 plugin m5m Launch Complete
 Copyright (c) 2022, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
 
 Neodigm 55 is an eclectic JavaScript UX micro-library.
