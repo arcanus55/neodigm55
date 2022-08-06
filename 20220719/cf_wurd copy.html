@@ -844,7 +844,7 @@ class WrdPlay {  //  Application Controller
                 WrdPlay.animBorder()
                 switch( pageNo ){
                     case 1:
-                        WrdAPI.getWrdInit(function(){ if( WrdAPI?.fields?.wod6 ) WrdPlay.wrd = WrdAPI.fields.wod6 })
+                        WrdAPI.getWrd(function(){ if( WrdAPI?.fields?.wod6 ) WrdPlay.wrd = WrdAPI.fields.wod6 })
                         //  AudioFX.playAudioFile( AudioFX.SOUNDS.ENV_Startup_Whirr )
                         WrdTypeOn.doType("#pag1__cap", "wurd", 580, function(){
                             //  AudioFX.playAudioFile( AudioFX.SOUNDS.ENV_Startup_TextOut )
@@ -867,7 +867,6 @@ class WrdPlay {  //  Application Controller
                         if("vibrate" in navigator) window.navigator.vibrate([48, 56])
                     break;
                     case 6:
-                        WrdAPI.updateLS( { page: pageNo, guesses: (WrdPlay.wrdGuessCur + 1) })  //  Persist
                         AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_GameOver_Success )
                         WrdTypeOn.resetPage( 6 )
                         WrdTypeOn.doType("#pag6__cap1", "well done :)", 80, function(){
@@ -885,7 +884,6 @@ class WrdPlay {  //  Application Controller
                         } )
                     break;
                     case 7:
-                        WrdAPI.updateLS( { page: pageNo, guesses: (WrdPlay.wrdGuessCur + 1) })  //  Persist
                         AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_GameOver_Fail )
                         WrdTypeOn.resetPage( 7 )
                         WrdTypeOn.doType("#pag7__cap1", "too bad :(", 80, function(){
@@ -1281,9 +1279,10 @@ class AudioFX{  //  Binary Audio Assets
 }
 
 class WrdAPI{  //  REST consumption
-    static fields = {"wod6":"", "dayIndex":"", "deadline":"", "page": WrdPlay.PAGES.LOSE, "streakCurrent":0, "streakBest":0, "guesses":0}
+    static fields = {"wod6":"", "dayIndex":"", "deadline":""}
     static si = null
-    static getWrdInit( cb ){
+    static getWrd( cb ){
+        this.fields = {"wod6":"", "dayIndex":"", "deadline":""}
         fetch("https://firestore.googleapis.com/v1/projects/cf-game-d359b/databases/(default)/documents/wurd/currentwod/", {
             "headers": {
               "accept": "*/*", "accept-language": "en-US,en;q=0.9,pt;q=0.8",
@@ -1292,27 +1291,16 @@ class WrdAPI{  //  REST consumption
           }).then(response => response.json())
           .then((data) => {
                 if( data?.fields?.wod6?.stringValue ){
-                    WrdAPI.fields.wod6 = data.fields.wod6.stringValue
-                    WrdAPI.fields.dayIndex = data.fields.dayIndex.integerValue
-                    WrdAPI.fields.deadline = data.fields.deadline.timestampValue
-                    if(localStorage.getItem("w" + WrdAPI.fields.dayIndex )){
-                        WrdAPI.fields = JSON.parse( localStorage.getItem("w" + WrdAPI.fields.dayIndex ) )
-                        // TODO Calc streaks
-WrdPlay.doPage( WrdAPI.fields.page )
-                    }else{
-                        localStorage.setItem("w" + WrdAPI.fields.dayIndex, JSON.stringify( WrdAPI.fields ) )
-                    }
+                    this.fields.wod6 = data.fields.wod6.stringValue
+                    this.fields.dayIndex = data.fields.dayIndex.integerValue
+                    this.fields.deadline = data.fields.deadline.timestampValue
+                    localStorage.setItem("w" + this.fields.dayIndex, JSON.stringify( this.fields ) )
                 }
                 if( cb ) cb()
             }).catch(error => {
                 console.log( error )
                 WrdPlay.doPage( WrdPlay.PAGES.ERROR )
             })
-    }
-    static updateLS( oFields ){
-        WrdAPI.fields.page = oFields.page
-        WrdAPI.fields.guesses = oFields.guesses
-        localStorage.setItem("w" + WrdAPI.fields.dayIndex, JSON.stringify( WrdAPI.fields ) )
     }
     static getUntil(){  //  Time until 1AM Sanfran
         if( this.fields.deadline ){
