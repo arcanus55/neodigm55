@@ -770,7 +770,15 @@ const wrdUtils = ( ( _d ) =>{
         });
         return aDret.join("");
       },
-      capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || ""
+      capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
+      mockStreak: function( nMock ){
+        localStorage.setItem("wrdstrk" + nMock, JSON.stringify( {"wod6":"", "dayIndex":"", "deadline":"", "page": WrdPlay.PAGES.WIN, "streakCurrent":0, "streakBest":0, "guesses":0} ) )
+      },
+      mockStreaks: function( nMock ){
+        for(var m = 0; m <= nMock; m++ ){
+            localStorage.setItem("wrdstrk" + m, JSON.stringify( {"wod6":"", "dayIndex":"", "deadline":"", "page": WrdPlay.PAGES.WIN, "streakCurrent":0, "streakBest":0, "guesses":0} ) )
+        }
+      }
     }
 })( document );
 
@@ -845,6 +853,7 @@ class WrdPlay {  //  Application Controller
                 switch( pageNo ){
                     case 1:
                         WrdAPI.getWrdInit(function(){ if( WrdAPI?.fields?.wod6 ) WrdPlay.wrd = WrdAPI.fields.wod6 })
+                        if( document.location.href.indexOf("debug") != -1 ) WrdPlay.doPage( WrdPlay.PAGES.PLAY )
                         //  AudioFX.playAudioFile( AudioFX.SOUNDS.ENV_Startup_Whirr )
                         WrdTypeOn.doType("#pag1__cap", "wurd", 580, function(){
                             //  AudioFX.playAudioFile( AudioFX.SOUNDS.ENV_Startup_TextOut )
@@ -867,17 +876,15 @@ class WrdPlay {  //  Application Controller
                         if("vibrate" in navigator) window.navigator.vibrate([48, 56])
                     break;
                     case 6:
-                        WrdAPI.updateLS( { page: pageNo, guesses: (WrdPlay.wrdGuessCur + 1) })  //  Persist
+                        WrdAPI.updateLS( { page: pageNo, guesses: Math.max( (WrdPlay.wrdGuessCur + 1), WrdAPI.fields.guesses ) })  //  Persist
                         AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_GameOver_Success )
                         WrdTypeOn.resetPage( 6 )
                         WrdTypeOn.doType("#pag6__cap1", "well done :)", 80, function(){
                             WrdTypeOn.doType("#pag6__cap2", "today's wurd was: " +  WrdPlay.wrd.toLocaleLowerCase(), 60, function(){
-                                WrdTypeOn.doType("#pag6__cap3", "you cracked it in " + (WrdPlay.wrdGuessCur + 1) + " guesses", 80, function(){
-                                    WrdTypeOn.doType("#pag6__cap4", "current streak: " + "1", 60, function(){  //  TODO
-                                        WrdTypeOn.doType("#pag6__cap5", "best streak: " + "1", 80, function(){  //  TODO
-                                            //WrdTypeOn.doType("#pag6__cap6", "next wurd in: ", 80, function(){
-                                                if( !WrdAPI.si ) WrdAPI.si = setInterval(function(){ WrdAPI.tick() }, 1000)
-                                            //} )
+                                WrdTypeOn.doType("#pag6__cap3", "you cracked it in " + WrdAPI.fields.guesses + " guesses", 80, function(){
+                                    WrdTypeOn.doType("#pag6__cap4", "current streak: " + WrdAPI.calcStreaks().streakCurrent, 60, function(){
+                                        WrdTypeOn.doType("#pag6__cap5", "best streak: " + WrdAPI.calcStreaks().streakBest, 80, function(){
+                                            if( !WrdAPI.si ) WrdAPI.si = setInterval(function(){ WrdAPI.tick() }, 1000)
                                         } )
                                     } )
                                 } )
@@ -885,16 +892,14 @@ class WrdPlay {  //  Application Controller
                         } )
                     break;
                     case 7:
-                        WrdAPI.updateLS( { page: pageNo, guesses: (WrdPlay.wrdGuessCur + 1) })  //  Persist
+                        WrdAPI.updateLS( { page: pageNo, guesses: WrdPlay.MAXGUESSES })  //  Persist
                         AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_GameOver_Fail )
                         WrdTypeOn.resetPage( 7 )
                         WrdTypeOn.doType("#pag7__cap1", "too bad :(", 80, function(){
                             WrdTypeOn.doType("#pag7__cap2", "you didn't crack today's wurd.", 80, function(){
-                                WrdTypeOn.doType("#pag7__cap3", "the correct wurd was: " + WrdPlay.wrd.toLocaleLowerCase(), 60, function(){  //  TODO
-                                    WrdTypeOn.doType("#pag7__cap4", "best streak: " + "0", 80, function(){  //  TODO
-                                        //WrdTypeOn.doType("#pag7__cap5", "next wurd in: ", 80, function(){
-                                            if( !WrdAPI.si ) WrdAPI.si = setInterval(function(){ WrdAPI.tick() }, 1000)
-                                        //} )
+                                WrdTypeOn.doType("#pag7__cap3", "the correct wurd was: " + WrdPlay.wrd.toLocaleLowerCase(), 60, function(){
+                                    WrdTypeOn.doType("#pag7__cap4", "best streak: " + WrdAPI.calcStreaks().streakBest, 80, function(){
+                                        if( !WrdAPI.si ) WrdAPI.si = setInterval(function(){ WrdAPI.tick() }, 1000)
                                     } )
                                 } )
                             } )
@@ -1280,7 +1285,7 @@ class AudioFX{  //  Binary Audio Assets
     }
 }
 
-class WrdAPI{  //  REST consumption
+class WrdAPI{  //  REST consumption and LS persistence
     static fields = {"wod6":"", "dayIndex":"", "deadline":"", "page": WrdPlay.PAGES.LOSE, "streakCurrent":0, "streakBest":0, "guesses":0}
     static si = null
     static getWrdInit( cb ){
@@ -1295,12 +1300,13 @@ class WrdAPI{  //  REST consumption
                     WrdAPI.fields.wod6 = data.fields.wod6.stringValue
                     WrdAPI.fields.dayIndex = data.fields.dayIndex.integerValue
                     WrdAPI.fields.deadline = data.fields.deadline.timestampValue
-                    if(localStorage.getItem("w" + WrdAPI.fields.dayIndex )){
-                        WrdAPI.fields = JSON.parse( localStorage.getItem("w" + WrdAPI.fields.dayIndex ) )
-                        // TODO Calc streaks
+                    if(localStorage.getItem("wrdstrk" + WrdAPI.fields.dayIndex )){
+                        WrdAPI.fields = JSON.parse( localStorage.getItem("wrdstrk" + WrdAPI.fields.dayIndex ) )
+                        WrdAPI.fields.streakCurrent = WrdAPI.calcStreaks().streakCurrent
+                        WrdAPI.fields.streakBest = WrdAPI.calcStreaks().streakBest
 WrdPlay.doPage( WrdAPI.fields.page )
                     }else{
-                        localStorage.setItem("w" + WrdAPI.fields.dayIndex, JSON.stringify( WrdAPI.fields ) )
+                        localStorage.setItem("wrdstrk" + WrdAPI.fields.dayIndex, JSON.stringify( WrdAPI.fields ) )
                     }
                 }
                 if( cb ) cb()
@@ -1312,7 +1318,46 @@ WrdPlay.doPage( WrdAPI.fields.page )
     static updateLS( oFields ){
         WrdAPI.fields.page = oFields.page
         WrdAPI.fields.guesses = oFields.guesses
-        localStorage.setItem("w" + WrdAPI.fields.dayIndex, JSON.stringify( WrdAPI.fields ) )
+        WrdAPI.fields.streakCurrent = WrdAPI.calcStreaks().streakCurrent
+        WrdAPI.fields.streakBest = WrdAPI.calcStreaks().streakBest
+        localStorage.setItem("wrdstrk" + WrdAPI.fields.dayIndex, JSON.stringify( WrdAPI.fields ) )
+    }
+    static calcStreaks(){
+        let nCur = 0, nBst = 0, nCnt = 0, nPrv = 0
+        let aStreak = [], aSeq = [0]
+        for (var nDx = 0; nDx < localStorage.length; nDx++){
+            if( localStorage.key( nDx ).indexOf("wrdstrk") != -1 ){
+                let LS = JSON.parse( localStorage.getItem( localStorage.key( nDx ) ) )
+                if( LS.page == WrdPlay.PAGES.WIN ) aStreak.push( localStorage.key( nDx ).replace("wrdstrk", "") )
+            }
+        }
+        aStreak.sort(function(a,b){ return a - b })  //  Numeric ASC
+        //  Current
+        if( aStreak.indexOf( WrdAPI.fields.dayIndex ) != -1 ){  //  WIN
+            let aRev = aStreak.reverse(), nCurInc = ( Number(WrdAPI.fields.dayIndex) + 1 )
+            aRev.forEach(function( lsKey ){
+                if( lsKey == ( --nCurInc ) ) nCur++
+            })
+        }
+        //  Best
+        
+        nPrv = aStreak[0]
+        aStreak.forEach(function( lsKey, nDx ){
+console.log("---- ---- | key=" + lsKey + " | prv=" + nPrv + " | cnt=" + nCnt )        
+            if( nDx >= 1 ){
+                if( lsKey == (nPrv - 1) ){
+                    nCnt++
+                }else{
+                    aSeq.push( nCnt )
+                    nCnt = 0
+                }                
+            }
+            nPrv = lsKey
+        })
+console.log("==== ==== | ", aStreak )        
+console.log("==== ==== | ", aSeq )
+        nBst = Math.max( ... aSeq )
+        return { streakCurrent: nCur, streakBest: nBst };        
     }
     static getUntil(){  //  Time until 1AM Sanfran
         if( this.fields.deadline ){
