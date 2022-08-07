@@ -775,7 +775,7 @@ const wrdUtils = ( ( _d ) =>{
         localStorage.setItem("wrdstrk" + nMock, JSON.stringify( {"wod6":"", "dayIndex":"", "deadline":"", "page": WrdPlay.PAGES.WIN, "streakCurrent":0, "streakBest":0, "guesses":0} ) )
       },
       mockStreaks: function( nMock ){
-        for(var m = 0; m <= nMock; m++ ){
+        for(var m = 1; m <= nMock; m++ ){
             localStorage.setItem("wrdstrk" + m, JSON.stringify( {"wod6":"", "dayIndex":"", "deadline":"", "page": WrdPlay.PAGES.WIN, "streakCurrent":0, "streakBest":0, "guesses":0} ) )
         }
       }
@@ -1304,7 +1304,7 @@ class WrdAPI{  //  REST consumption and LS persistence
                         WrdAPI.fields = JSON.parse( localStorage.getItem("wrdstrk" + WrdAPI.fields.dayIndex ) )
                         WrdAPI.fields.streakCurrent = WrdAPI.calcStreaks().streakCurrent
                         WrdAPI.fields.streakBest = WrdAPI.calcStreaks().streakBest
-WrdPlay.doPage( WrdAPI.fields.page )
+                        WrdPlay.doPage( WrdAPI.fields.page )
                     }else{
                         localStorage.setItem("wrdstrk" + WrdAPI.fields.dayIndex, JSON.stringify( WrdAPI.fields ) )
                     }
@@ -1331,33 +1331,23 @@ WrdPlay.doPage( WrdAPI.fields.page )
                 if( LS.page == WrdPlay.PAGES.WIN ) aStreak.push( localStorage.key( nDx ).replace("wrdstrk", "") )
             }
         }
-        aStreak.sort(function(a,b){ return a - b })  //  Numeric ASC
+        aStreak.sort(function(a,b){ return b - a })  //  Numeric DESC
         //  Current
         if( aStreak.indexOf( WrdAPI.fields.dayIndex ) != -1 ){  //  WIN
-            let aRev = aStreak.reverse(), nCurInc = ( Number(WrdAPI.fields.dayIndex) + 1 )
-            aRev.forEach(function( lsKey ){
-                if( lsKey == ( --nCurInc ) ) nCur++
-            })
+            let nCurInc = ( Number(WrdAPI.fields.dayIndex) + 1 )
+            aStreak.forEach(function( lsKey ){ if( lsKey == ( --nCurInc ) ) nCur++ })
         }
         //  Best
-        
         nPrv = aStreak[0]
         aStreak.forEach(function( lsKey, nDx ){
-console.log("---- ---- | key=" + lsKey + " | prv=" + nPrv + " | cnt=" + nCnt )        
             if( nDx >= 1 ){
-                if( lsKey == (nPrv - 1) ){
-                    nCnt++
-                }else{
-                    aSeq.push( nCnt )
-                    nCnt = 0
-                }                
+                if( lsKey == (nPrv - 1) ){ nCnt++ }else{ nCnt = 0 }                
             }
+            aSeq.push( nCnt )
             nPrv = lsKey
         })
-console.log("==== ==== | ", aStreak )        
-console.log("==== ==== | ", aSeq )
         nBst = Math.max( ... aSeq )
-        return { streakCurrent: nCur, streakBest: nBst };        
+        return { streakCurrent: nCur, streakBest: ++nBst };        
     }
     static getUntil(){  //  Time until 1AM Sanfran
         if( this.fields.deadline ){
@@ -1378,8 +1368,8 @@ console.log("==== ==== | ", aSeq )
         return "00:00:00"
     }
     static tick(){
-        let txt1 = document.querySelector("#pag6__cap6")
-        let txt2 = document.querySelector("#pag7__cap5")
+        let txt1 = document.querySelector("#pag6__cap5")
+        let txt2 = document.querySelector("#pag7__cap6")
         if( txt1 && txt2 ){
             txt1.innerHTML = "next wurd in: " + this.getUntil()
             txt2.innerHTML = "next wurd in: " + this.getUntil()
