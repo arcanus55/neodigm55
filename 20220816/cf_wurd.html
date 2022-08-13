@@ -937,7 +937,11 @@ class WrdPlay {  //  Application Controller
                             WrdTypeOn.doType("#pag2__cap", "take a guess ...", 204)
                         }
                     }
-                    if( WrdPlay.GAMEOVER != WrdPlay.PAGES.PLAY ) setTimeout( function(){ WrdPlay.doPage( WrdPlay.GAMEOVER ) }, 4880 )
+                    if( WrdPlay.GAMEOVER == WrdPlay.PAGES.PLAY ){  //  Still playing, persist a loss
+                        WrdAPI.updateLS( { page: WrdPlay.PAGES.LOSE, guesses: Math.max( (WrdPlay.wrdGuessCur + 1), WrdAPI.fields.guesses ) })  //  Persist
+                    }else{
+                        setTimeout( function(){ WrdPlay.doPage( WrdPlay.GAMEOVER ) }, 4880 )
+                    }
                 }else{
                     AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_GameOver_Fail )
                     WrdTypeOn.doType("#pag2__cap", sKeys.join("") + " is not a word ...", 100, function(){
@@ -1305,8 +1309,6 @@ class WrdAPI{  //  REST consumption and LS persistence
                         WrdAPI.fields.streakCurrent = WrdAPI.calcStreaks().streakCurrent
                         WrdAPI.fields.streakBest = WrdAPI.calcStreaks().streakBest
                         WrdPlay.doPage( WrdAPI.fields.page )
-                    }else{
-                        localStorage.setItem("wrdstrk" + WrdAPI.fields.dayIndex, JSON.stringify( WrdAPI.fields ) )
                     }
                 }
                 if( cb ) cb()
