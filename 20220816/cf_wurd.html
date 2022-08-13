@@ -301,18 +301,10 @@
         }
     }
     @keyframes h_blink {
-        0% {
-            opacity: 1;
-        }
-        25% {
-            opacity: 0;
-        }
-        75% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 1;
-        }
+        0% { opacity: 1; }
+        25% { opacity: 0; }
+        75% { opacity: 1; }
+        100% { opacity: 1; }
     }
     /* tut grid */
     section.tut-grid {
@@ -688,7 +680,7 @@
 
             <wrd-page class="l-wrd" data-wrd-page="6">
                 <nav class="wrd-nav-1">
-                    <aside class="wrd-nav__btn" data-wrd-do-page="1" tabindex="0">
+                    <aside class="wrd-nav__btn" data-wrd-do-page="0" tabindex="0">
                         <svg height="28px" widht="28px" pointer-events="none" viewBox="0 0 24 24"><path d="M14.71 6.71a.996.996 0 0 0-1.41 0L8.71 11.3a.996.996 0 0 0 0 1.41l4.59 4.59a.996.996 0 1 0 1.41-1.41L10.83 12l3.88-3.88c.39-.39.38-1.03 0-1.41z" fill="currentColor"></path></svg>
                     </aside>
                     <div></div>
@@ -708,7 +700,7 @@
 
             <wrd-page class="l-wrd" data-wrd-page="7">
                 <nav class="wrd-nav-1">
-                    <aside class="wrd-nav__btn" data-wrd-do-page="1" tabindex="0">
+                    <aside class="wrd-nav__btn" data-wrd-do-page="0" tabindex="0">
                         <svg height="28px" widht="28px" pointer-events="none" viewBox="0 0 24 24"><path d="M14.71 6.71a.996.996 0 0 0-1.41 0L8.71 11.3a.996.996 0 0 0 0 1.41l4.59 4.59a.996.996 0 1 0 1.41-1.41L10.83 12l3.88-3.88c.39-.39.38-1.03 0-1.41z" fill="currentColor"></path></svg>
                     </aside>
                     <div></div>
@@ -862,7 +854,7 @@ class WrdPlay {  //  Application Controller
                             } )
                         } )
                     break;
-                    case 2:
+                    case WrdPlay.PAGES.PLAY:
                         if("vibrate" in navigator) window.navigator.vibrate([48, 56])
                         WrdTypeOn.doType("#pag2__cap", "take a guess ...", 180, function(){ } )
                     break;
@@ -912,6 +904,8 @@ class WrdPlay {  //  Application Controller
                         } )
                     break;
                 }
+            }else{
+                setTimeout(function(){document.location.reload()},4)
             }
         }
         return this
@@ -1283,7 +1277,7 @@ class AudioFX{  //  Binary Audio Assets
             oSrc.connect( volume ).connect( AudioFX.oAudContx.destination );
             volume.gain.value = .84;
             oSrc.start( AudioFX.oAudContx.currentTime);
-            } catch( e ){ console.log(  e ) }
+            } catch( e ){ console.log( e ) }
         }
         if("vibrate" in navigator) window.navigator.vibrate([48, 56])
     }
@@ -1308,6 +1302,7 @@ class WrdAPI{  //  REST consumption and LS persistence
                         WrdAPI.fields = JSON.parse( localStorage.getItem("wrdstrk" + WrdAPI.fields.dayIndex ) )
                         WrdAPI.fields.streakCurrent = WrdAPI.calcStreaks().streakCurrent
                         WrdAPI.fields.streakBest = WrdAPI.calcStreaks().streakBest
+//WrdPlay.GAMEOVER = WrdAPI.fields.page
                         WrdPlay.doPage( WrdAPI.fields.page )
                     }
                 }
