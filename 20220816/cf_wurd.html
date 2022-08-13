@@ -1133,7 +1133,7 @@ ev.preventDefault()
                             }
                         }else{
                             if( (charVal) && (charVal != "cr") ){
-                                if( (WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1)) && WrdKey.KeyBlinkCursor != 6 ){
+                                if( (WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES )) && WrdKey.KeyBlinkCursor != 6 ){
                                     AudioFX.playAudioFile( [AudioFX.SOUNDS.ACT_LetterEntry_00, AudioFX.SOUNDS.ACT_LetterEntry_03, AudioFX.SOUNDS.ACT_LetterEntry_08] )
                                     let nCursor = WrdKey.getCursorNext()
                                     ev.target.dataset.wrdKyDisabled = "true"
