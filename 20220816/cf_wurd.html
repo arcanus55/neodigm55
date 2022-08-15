@@ -905,7 +905,7 @@ class WrdPlay {  //  Application Controller
                     break;
                 }
             }else{
-                setTimeout(function(){document.location.reload()},4)
+                setTimeout(function(){document.location.reload()}, 4)
             }
         }
         return this
@@ -932,7 +932,7 @@ class WrdPlay {  //  Application Controller
                         }
                     }
                     if( WrdPlay.GAMEOVER == WrdPlay.PAGES.PLAY ){  //  Still playing, persist a loss
-                        WrdAPI.updateLS( { page: WrdPlay.PAGES.LOSE, guesses: Math.max( (WrdPlay.wrdGuessCur + 1), WrdAPI.fields.guesses ) })  //  Persist
+//  WrdAPI.updateLS( { page: WrdPlay.PAGES.LOSE, guesses: Math.max( (WrdPlay.wrdGuessCur + 1), WrdAPI.fields.guesses ) })  //  Persist
                     }else{
                         setTimeout( function(){ WrdPlay.doPage( WrdPlay.GAMEOVER ) }, 4880 )
                     }
@@ -1343,9 +1343,9 @@ class WrdAPI{  //  REST consumption and LS persistence
             aSeq.push( nCnt )
             nPrv = lsKey
         })
-console.log("=== === | " + nBst )
-if( nBst ) nBst++;
         nBst = Math.max( ... aSeq )
+        if( nBst ) nBst++;
+        if( nBst <= nCur ) nBst = nCur
         return { streakCurrent: nCur, streakBest: nBst };        
     }
     static getUntil(){  //  Time until 1AM Sanfran
