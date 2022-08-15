@@ -1347,7 +1347,8 @@ class WrdAPI{  //  REST consumption and LS persistence
             nPrv = lsKey
         })
         nBst = Math.max( ... aSeq )
-        return { streakCurrent: nCur, streakBest: ++nBst };        
+        if( nBst ) nBst++;
+        return { streakCurrent: nCur, streakBest: nBst };        
     }
     static getUntil(){  //  Time until 1AM Sanfran
         if( this.fields.deadline ){
