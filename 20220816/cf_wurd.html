@@ -736,7 +736,7 @@
 //  Wurd Utils Begin  //
 const wrdUtils = ( ( _d ) =>{
     return {
-      ver: "0.1.0",
+      ver: "1.0.0",
       isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
       isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
       f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
@@ -1075,8 +1075,8 @@ class WrdKey {  //  Keyboard State
         let _this = this
 
         if( this.eKB && this.eCR ){
-            //[ ((wrdUtils.isTouch()) ? "tapstart":"mousedown") ].forEach(function( evName ){
-            ["tapstart", "mousedown"].forEach(function( evName ){
+            [ ((wrdUtils.isTouch()) ? "tapstart":"mousedown") ].forEach(function( evName ){
+            //["tapstart", "mousedown"].forEach(function( evName ){
                 _this.eKB.addEventListener( evName, function( ev ){
 //ev.preventDefault()
                     let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
@@ -1092,8 +1092,8 @@ class WrdKey {  //  Keyboard State
                 } )
             });
 
-            //[ ((wrdUtils.isTouch()) ? "tapend":"mouseup") ].forEach(function( evName ){
-            ["tapend", "mouseup"].forEach(function( evName ){
+            [ ((wrdUtils.isTouch()) ? "tapend":"mouseup") ].forEach(function( evName ){
+            //["tapend", "mouseup"].forEach(function( evName ){
                 _this.eKB.addEventListener( evName, function( ev ){
                     let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
                     if( WrdKey.oPointer.cb ) clearTimeout( WrdKey.oPointer.cb )
