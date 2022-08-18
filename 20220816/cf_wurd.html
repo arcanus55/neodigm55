@@ -847,9 +847,9 @@ class WrdPlay {  //  Application Controller
                         WrdAPI.getWrdInit(function(){ if( WrdAPI?.fields?.wod6 ) WrdPlay.wrd = WrdAPI.fields.wod6 })
                         if( document.location.href.indexOf("debug") != -1 ) WrdPlay.doPage( WrdPlay.PAGES.PLAY )
                         //  AudioFX.playAudioFile( AudioFX.SOUNDS.ENV_Startup_Whirr )
-                        WrdTypeOn.doType("#pag1__cap", "wurd", 580, function(){
+                        WrdTypeOn.doType("#pag1__cap", "wurd1", 580, function(){
                             //  AudioFX.playAudioFile( AudioFX.SOUNDS.ENV_Startup_TextOut )
-                            WrdTypeOn.doUnType("#pag1__cap", "wurd", 460, function(){
+                            WrdTypeOn.doUnType("#pag1__cap", "wurd1", 460, function(){
                                 setTimeout( function(){ WrdPlay.doPage( WrdPlay.GAMEOVER ) }, 900)
                             } )
                         } )
