@@ -1078,6 +1078,7 @@ class WrdKey {  //  Keyboard State
             [ ((wrdUtils.isTouch()) ? "tapstart":"mousedown") ].forEach(function( evName ){
             //["tapstart", "mousedown"].forEach(function( evName ){
                 _this.eKB.addEventListener( evName, function( ev ){
+console.log("======== | down", ev)                    
 //ev.preventDefault()
                     let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
                     WrdKey.oPointer.down = true; WrdKey.oPointer.value = charVal
@@ -1095,6 +1096,7 @@ class WrdKey {  //  Keyboard State
             [ ((wrdUtils.isTouch()) ? "tapend":"mouseup") ].forEach(function( evName ){
             //["tapend", "mouseup"].forEach(function( evName ){
                 _this.eKB.addEventListener( evName, function( ev ){
+console.log("======== | up", ev)                    
                     let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
                     if( WrdKey.oPointer.cb ) clearTimeout( WrdKey.oPointer.cb )
                     if( charVal.length == 1 && (WrdKey.oPointer.value == charVal) ){
@@ -1115,7 +1117,7 @@ class WrdKey {  //  Keyboard State
                         if( (charVal == "cr") && (WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1 ) ) ) charVal = null
                         if( charVal == "bs" ){
                             if( WrdKey.getTotalChars() ){
-ev.preventDefault()
+//ev.preventDefault()
                                 if( WrdKey.KeyBlinkCursor >= 1 ) WrdKey.KeyBlinkCursor--;
                                 AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_LetterEntry_Delete )
                                 //  Last char BS if focused via Guess tap
