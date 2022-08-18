@@ -1076,7 +1076,7 @@ class WrdKey {  //  Keyboard State
 
         if( this.eKB && this.eCR ){
             //[ ((wrdUtils.isTouch()) ? "touchstart":"mousedown") ].forEach(function( evName ){
-            [ ((wrdUtils.isTouch()) ? "touchstart":"mousedown") ].forEach(function( evName ){
+            [ ((wrdUtils.isTouch()) ? "mousedown":"mousedown") ].forEach(function( evName ){
             //["touchstart", "mousedown"].forEach(function( evName ){
                 _this.eKB.addEventListener( evName, function( ev ){
 console.log("======== | down", ev)                     
@@ -1095,7 +1095,7 @@ console.log("======== | down", ev)
             });
 
             //[ ((wrdUtils.isTouch()) ? "touchend":"mouseup") ].forEach(function( evName ){
-            [ ((wrdUtils.isTouch()) ? "touchend":"mouseup") ].forEach(function( evName ){
+            [ ((wrdUtils.isTouch()) ? "mouseup":"mouseup") ].forEach(function( evName ){
             //["touchend", "mouseup"].forEach(function( evName ){
                 _this.eKB.addEventListener( evName, function( ev ){
 console.log("======== | up", ev)                     
