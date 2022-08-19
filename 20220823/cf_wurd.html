@@ -301,18 +301,10 @@
         }
     }
     @keyframes h_blink {
-        0% {
-            opacity: 1;
-        }
-        25% {
-            opacity: 0;
-        }
-        75% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 1;
-        }
+        0% { opacity: 1; }
+        25% { opacity: 0; }
+        75% { opacity: 1; }
+        100% { opacity: 1; }
     }
     /* tut grid */
     section.tut-grid {
@@ -688,7 +680,7 @@
 
             <wrd-page class="l-wrd" data-wrd-page="6">
                 <nav class="wrd-nav-1">
-                    <aside class="wrd-nav__btn" data-wrd-do-page="1" tabindex="0">
+                    <aside class="wrd-nav__btn" data-wrd-do-page="0" tabindex="0">
                         <svg height="28px" widht="28px" pointer-events="none" viewBox="0 0 24 24"><path d="M14.71 6.71a.996.996 0 0 0-1.41 0L8.71 11.3a.996.996 0 0 0 0 1.41l4.59 4.59a.996.996 0 1 0 1.41-1.41L10.83 12l3.88-3.88c.39-.39.38-1.03 0-1.41z" fill="currentColor"></path></svg>
                     </aside>
                     <div></div>
@@ -708,7 +700,7 @@
 
             <wrd-page class="l-wrd" data-wrd-page="7">
                 <nav class="wrd-nav-1">
-                    <aside class="wrd-nav__btn" data-wrd-do-page="1" tabindex="0">
+                    <aside class="wrd-nav__btn" data-wrd-do-page="0" tabindex="0">
                         <svg height="28px" widht="28px" pointer-events="none" viewBox="0 0 24 24"><path d="M14.71 6.71a.996.996 0 0 0-1.41 0L8.71 11.3a.996.996 0 0 0 0 1.41l4.59 4.59a.996.996 0 1 0 1.41-1.41L10.83 12l3.88-3.88c.39-.39.38-1.03 0-1.41z" fill="currentColor"></path></svg>
                     </aside>
                     <div></div>
@@ -744,7 +736,7 @@
 //  Wurd Utils Begin  //
 const wrdUtils = ( ( _d ) =>{
     return {
-      ver: "0.1.0",
+      ver: "1.0.0",
       isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
       isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
       f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
@@ -862,7 +854,7 @@ class WrdPlay {  //  Application Controller
                             } )
                         } )
                     break;
-                    case 2:
+                    case WrdPlay.PAGES.PLAY:
                         if("vibrate" in navigator) window.navigator.vibrate([48, 56])
                         WrdTypeOn.doType("#pag2__cap", "take a guess ...", 180, function(){ } )
                     break;
@@ -912,6 +904,8 @@ class WrdPlay {  //  Application Controller
                         } )
                     break;
                 }
+            }else{
+                setTimeout(function(){document.location.reload()}, 4)
             }
         }
         return this
@@ -937,7 +931,11 @@ class WrdPlay {  //  Application Controller
                             WrdTypeOn.doType("#pag2__cap", "take a guess ...", 204)
                         }
                     }
-                    if( WrdPlay.GAMEOVER != WrdPlay.PAGES.PLAY ) setTimeout( function(){ WrdPlay.doPage( WrdPlay.GAMEOVER ) }, 4880 )
+                    if( WrdPlay.GAMEOVER == WrdPlay.PAGES.PLAY ){  //  Still playing, persist a loss
+//  WrdAPI.updateLS( { page: WrdPlay.PAGES.LOSE, guesses: Math.max( (WrdPlay.wrdGuessCur + 1), WrdAPI.fields.guesses ) })  //  Persist
+                    }else{
+                        setTimeout( function(){ WrdPlay.doPage( WrdPlay.GAMEOVER ) }, 4880 )
+                    }
                 }else{
                     AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_GameOver_Fail )
                     WrdTypeOn.doType("#pag2__cap", sKeys.join("") + " is not a word ...", 100, function(){
@@ -957,7 +955,7 @@ class WrdPlay {  //  Application Controller
         this.isAudio = !this.isAudio  //  TODO local storage
         WrdTypeOn.doType("#pag2__cap", "sound fx " + (( this.isAudio ) ? "on" : "off"), 176)
     }
-    static doAudio ( sound = 0 ){
+    static doAudio( sound = 0 ){
         if( this.isAudio ){
             if( WrdPlay.elAudioSwitch ){
                 WrdPlay.elAudioSwitch.dataset.equOpen = "true"
@@ -1077,9 +1075,11 @@ class WrdKey {  //  Keyboard State
         let _this = this
 
         if( this.eKB && this.eCR ){
-            //[ ((wrdUtils.isTouch()) ? "tapstart":"mousedown") ].forEach(function( evName ){
-            ["tapstart", "mousedown"].forEach(function( evName ){
+            //[ ((wrdUtils.isTouch()) ? "touchstart":"mousedown") ].forEach(function( evName ){
+            [ ((wrdUtils.isTouch()) ? "mousedown":"mousedown") ].forEach(function( evName ){
+            //["touchstart", "mousedown"].forEach(function( evName ){
                 _this.eKB.addEventListener( evName, function( ev ){
+console.log("======== | down", ev)                     
 //ev.preventDefault()
                     let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
                     WrdKey.oPointer.down = true; WrdKey.oPointer.value = charVal
@@ -1094,9 +1094,11 @@ class WrdKey {  //  Keyboard State
                 } )
             });
 
-            //[ ((wrdUtils.isTouch()) ? "tapend":"mouseup") ].forEach(function( evName ){
-            ["tapend", "mouseup"].forEach(function( evName ){
+            //[ ((wrdUtils.isTouch()) ? "touchend":"mouseup") ].forEach(function( evName ){
+            [ ((wrdUtils.isTouch()) ? "mouseup":"mouseup") ].forEach(function( evName ){
+            //["touchend", "mouseup"].forEach(function( evName ){
                 _this.eKB.addEventListener( evName, function( ev ){
+console.log("======== | up", ev)                     
                     let charVal = (ev.target?.dataset?.wrdKeyVal || ev.target.innerHTML)
                     if( WrdKey.oPointer.cb ) clearTimeout( WrdKey.oPointer.cb )
                     if( charVal.length == 1 && (WrdKey.oPointer.value == charVal) ){
@@ -1117,11 +1119,11 @@ class WrdKey {  //  Keyboard State
                         if( (charVal == "cr") && (WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1 ) ) ) charVal = null
                         if( charVal == "bs" ){
                             if( WrdKey.getTotalChars() ){
-ev.preventDefault()
+//ev.preventDefault()
                                 if( WrdKey.KeyBlinkCursor >= 1 ) WrdKey.KeyBlinkCursor--;
                                 AudioFX.playAudioFile( AudioFX.SOUNDS.ACT_LetterEntry_Delete )
                                 //  Last char BS if focused via Guess tap
-                                if( WrdPlay.GesBlinkCursor == 5 ) WrdKey.KeyBlinkCursor  = WrdPlay.GesBlinkCursor
+                                if( WrdPlay.GesBlinkCursor != -1 ) WrdKey.KeyBlinkCursor  = WrdPlay.GesBlinkCursor
                                 WrdKey.sKBChars[ WrdKey.KeyBlinkCursor ] = null
                                 let elBS = WrdKey.sKBEls[ WrdKey.KeyBlinkCursor ] = null
                                 if( elBS ) elBS.dataset.wrdKyDisabled = "false"
@@ -1129,7 +1131,7 @@ ev.preventDefault()
                             }
                         }else{
                             if( (charVal) && (charVal != "cr") ){
-                                if( (WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES - 1)) && WrdKey.KeyBlinkCursor != 6 ){
+                                if( (WrdKey.getTotalChars() <= ( WrdPlay.MAXGUESSES )) && WrdKey.KeyBlinkCursor != 6 ){
                                     AudioFX.playAudioFile( [AudioFX.SOUNDS.ACT_LetterEntry_00, AudioFX.SOUNDS.ACT_LetterEntry_03, AudioFX.SOUNDS.ACT_LetterEntry_08] )
                                     let nCursor = WrdKey.getCursorNext()
                                     ev.target.dataset.wrdKyDisabled = "true"
@@ -1279,7 +1281,7 @@ class AudioFX{  //  Binary Audio Assets
             oSrc.connect( volume ).connect( AudioFX.oAudContx.destination );
             volume.gain.value = .84;
             oSrc.start( AudioFX.oAudContx.currentTime);
-            } catch( e ){ console.log(  e ) }
+            } catch( e ){ console.log( e ) }
         }
         if("vibrate" in navigator) window.navigator.vibrate([48, 56])
     }
@@ -1304,9 +1306,8 @@ class WrdAPI{  //  REST consumption and LS persistence
                         WrdAPI.fields = JSON.parse( localStorage.getItem("wrdstrk" + WrdAPI.fields.dayIndex ) )
                         WrdAPI.fields.streakCurrent = WrdAPI.calcStreaks().streakCurrent
                         WrdAPI.fields.streakBest = WrdAPI.calcStreaks().streakBest
+//WrdPlay.GAMEOVER = WrdAPI.fields.page
                         WrdPlay.doPage( WrdAPI.fields.page )
-                    }else{
-                        localStorage.setItem("wrdstrk" + WrdAPI.fields.dayIndex, JSON.stringify( WrdAPI.fields ) )
                     }
                 }
                 if( cb ) cb()
@@ -1347,8 +1348,8 @@ class WrdAPI{  //  REST consumption and LS persistence
             nPrv = lsKey
         })
         nBst = Math.max( ... aSeq )
-console.log("=== === | " + nBst )
         if( nBst ) nBst++;
+        if( nBst <= nCur ) nBst = nCur
         return { streakCurrent: nCur, streakBest: nBst };        
     }
     static getUntil(){  //  Time until 1AM Sanfran
@@ -1361,9 +1362,9 @@ console.log("=== === | " + nBst )
             let hours = Math.floor(minutes/60);
             let days = Math.floor(hours/24);
             
-            hours = hours-(days*24);
-            minutes = minutes-(days*24*60)-(hours*60);
-            seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
+            hours = hours-(days*24); hours = String( "0" + hours ).slice(-2);
+            minutes = minutes-(days*24*60)-(hours*60); minutes = String( "0" + minutes ).slice(-2);
+            seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60); seconds = String( "0" + seconds ).slice(-2);
 
             return hours + ":" + minutes + ":" + seconds
         }
