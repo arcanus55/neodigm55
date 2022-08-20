@@ -8,8 +8,7 @@
 <style>
     body{ margin: 0; padding: 0; background-color: #000; }
 </style>
-<style>
-    /* doc app helpers */
+<style>/* doc app helpers */
     :root { --wrd-color: #00ff00; --wrd-color-half: #008800;  --wrd-color-qtr: #005500; --wrd-color-alt: #003300; --wrd-color-bg: #000;
         ; --wrd-color-focus: #ff0000; }
     html, body { max-width: 100%; overflow-x: hidden; -webkit-touch-callout: none !important; }
@@ -34,6 +33,7 @@
     .h-fade { opacity: 0.4; filter: blur(8px); transition: .88s filter linear;}
     .h-blink,
     [data-wrd-blink="true"] { animation: h_blink .8s infinite; }
+    .h-half {height: 6px; margin: 0; padding: 0;}
 
     /* type */
     @font-face {
@@ -245,7 +245,7 @@
         gap: 4px;
         grid-area: box-content;
         justify-content: center;
-        margin: 8px 0; padding: 0 12px;
+        margin: 6px 0; padding: 0 12px;
     }
     wrd-kb-row.kb-row__1 { grid-template-columns: repeat(10, 32px); }
     wrd-kb-row.kb-row__2 { grid-template-columns: repeat(9,  32px); }
@@ -293,13 +293,13 @@
         display: inline-flex;
         text-shadow: 0 0 2.5px #000, 0 0 5px #000, 0 0 7px var( --wrd-color ), 0 0 10px var( --wrd-color ), 0 0 3px var( --wrd-color ), 0 0 5px var( --wrd-color ), 0 0 8px var( --wrd-color );
     }
-    @keyframes glow {
+    /*@keyframes glow {
         from {
             text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 15px var( --wrd-color ), 0 0 20px var( --wrd-color ), 0 0 25px var( --wrd-color ), 0 0 30px var( --wrd-color ), 0 0 35px var( --wrd-color );
         } to {
             text-shadow: 0 0 10px #000, 0 0 15px var( --wrd-color-alt ), 0 0 20px var( --wrd-color-alt ), 0 0 25px var( --wrd-color-alt ), 0 0 30px var( --wrd-color-alt ), 0 0 35px var( --wrd-color-alt ), 0 0 40px var( --wrd-color-alt );
         }
-    }
+    }*/
     @keyframes h_blink {
         0% { opacity: 1; }
         25% { opacity: 0; }
@@ -443,7 +443,7 @@
                             </output>
                         </wrd-feedback>
                     </wrd-guess>
-                    <br>
+                    <div class="h-half"></div>
                 </section>
                 <section class="wrd-ky__panel">
                     <wrd-kb-row class="kb-row__1"> <wrd-ky>q</wrd-ky> <wrd-ky>w</wrd-ky> <wrd-ky>e</wrd-ky> <wrd-ky>r</wrd-ky> <wrd-ky>t</wrd-ky> <wrd-ky>y</wrd-ky> <wrd-ky>u</wrd-ky> <wrd-ky>i</wrd-ky> <wrd-ky>o</wrd-ky> <wrd-ky>p</wrd-ky>
