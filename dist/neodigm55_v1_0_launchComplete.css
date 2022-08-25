@@ -148,7 +148,7 @@ section.pfmf-grid { width: 86%; }
 /* Pan Fried Monkey Fisticufs grid end */
 
 /* Formz */
-neodigm-sodapop, neodigm-sodapop > * {background-color: #f6f6f6;}
+body[data-pref-scheme='light'] neodigm-sodapop, neodigm-sodapop > * {background-color: #f6f6f6;}
 input.n55-lc__input, textarea.n55-lc__input {
 display: block;
 color: #383838;
