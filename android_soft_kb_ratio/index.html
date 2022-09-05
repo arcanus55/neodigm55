@@ -1,0 +1,182 @@
+
+<html>
+    <head>
+        <title>Android Soft KB Aspect Ratio</title>
+        <meta author content="Scott C. Krause"/>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=2, minimum-scale=1, width=device-width, height=device-height"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v2_2.min.css"></link>
+        <script src="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v2_2.min.js"></script>
+    </head>
+    <body data-pref-scheme="dark" onresize="console.log( updateDims() )">
+        <style>
+/*  type  */
+.hd1, .hd2, .hd3, .hd4, .prg, .sum {
+font-family: 'Roboto', sans-serif; font-weight: 100;
+margin: 8px 0; padding: 1px;
+}
+.hd1 {font-size: 56px;}
+.hd2 {font-size: 28px;}
+.hd3 {font-size: 22px;}
+.hd4 {font-size: 20px;}
+.prg  { margin: 8px 0; padding: 1px; }
+
+[data-pref-scheme="light"] .hd1,
+[data-pref-scheme="light"] .hd2,
+[data-pref-scheme="light"] .hd3,
+[data-pref-scheme="light"] .hd4 {color: var( --m5lc-theme-info-alt );}
+[data-pref-scheme="light"] .sum,
+[data-pref-scheme="light"] .prg {color: #323232;}
+
+[data-pref-scheme="dark"] .hd1,
+[data-pref-scheme="dark"] .hd2,
+[data-pref-scheme="dark"] .hd3,
+[data-pref-scheme="dark"] .hd4 {color: var( --m5lc-theme-info );} 
+[data-pref-scheme="dark"] .sum,
+[data-pref-scheme="dark"] .prg {color: #fff} 
+
+.txt-readable {
+font-family: 'Roboto', sans-serif;
+font-size: 18px; color: #323232;
+font-weight: 300;
+}
+.txt-white { color: #fff;}
+/*  Global Helpers */
+:root {
+    --m5lc-theme-danger: #DD4124; --m5lc-theme-danger-alt: #810000;  /* Tangerine Tango */
+    --m5lc-theme-info:   #7BC4C4; --m5lc-theme-info-alt:   #1F6868;  /* Aqua Sky */
+    --m5lc-theme-night:  #6a6a6a; --m5lc-theme-night-alt:  #242424;  /* Charcole */
+}
+html, body {margin: 0; padding: 0;}
+input, textarea, button, select, aside,
+a { -webkit-tap-highlight-color: rgba(0,0,0,0); outline: none; user-select: none !important; }
+
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: rgba(0,66,0, .2); }
+*::-webkit-scrollbar-thumb { background: var( --m5lc-theme-info-alt ); }
+::selection { color: #fff; background:  var( --m5lc-theme-info ); text-shadow: none; }
+
+.h-center { text-align: center;}
+.h-ds__block {display: block;}
+.h-ds__inline {display: inline;}
+.h-ds__none {display: none;}
+.h-fade { opacity: 0.4; filter: blur(8px); transition: .88s filter linear;}
+.h-ital {font-style: italic;}
+.h-left { text-align: left;}
+.h-nowrap {white-space: nowrap;}
+.h-pro-tip, summary {cursor: pointer;user-select: none; margin-top: 8px;}
+.h-smaller {font-size: smaller !important;}
+.h-under {text-decoration: underline;}
+
+/* Formz */
+body[data-pref-scheme='light'] neodigm-sodapop, body[data-pref-scheme='light'] neodigm-sodapop > * {background-color: #f6f6f6;}
+input.n55-lc__input, textarea.n55-lc__input {
+display: block;
+color: #383838;
+font-family: 'Roboto', sans-serif; font-size: 18px;
+line-height: 1.1;
+border: solid 1px #848484; border-radius: 8px;
+width: 76%;
+margin: 8px auto; padding: 10px 8px;
+}
+input.n55-lc__input--inv, textarea.n55-lc__input--inv {
+    font-family: monospace; font-size: 14px;
+    color: #fff; background-color: #383838;
+}
+
+#l-artc__long {
+    padding: 12px;
+    height: 200vh;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 8%, rgba(32,24,14,1) 100%);
+}
+
+
+.LTDOrderSummary__ButtonSection {
+    position: fixed;
+    border: solid 1px #888;
+    background-color: #686868;
+    padding: 12px;
+    width: 100vw;
+    bottom: 0; left: 0;
+}
+@media (min-aspect-ratio: 15/28) {
+    .QQQLTDOrderSummary__ButtonSection { background: #edba08; position: unset;}
+}
+
+@media (min-aspect-ratio: 15/28) and (hover: none) {
+    .LTDOrderSummary__ButtonSection { background: #edba08; position: unset;}
+  }
+        </style>
+<neodigm-marquee data-n55-marquee-text=" On an Android device / legacy browser, focus the first INPUT field below, this will cause the soft keyboard to push the viewport up, making it difficult to use if there are sticky elements. The media query conditions on this page should remove the sticky behavior when the aspect ratio becomes distorted. "
+data-n55-marquee-size="small">
+<pre data-n55-theme="info"></pre>
+</neodigm-marquee>
+      <h2 class="hd2 h-center">Android Soft Keyboard Aspect Ratio</h2>
+            <article id="l-artc__long">
+                <form autocomplete="off" novalidate="" onsubmit="return false">
+                    <br>
+                    <input id="tsk_contact_us_email" name="email" class="n55-lc__input" type="email" placeholder="Email Address">
+                    <textarea id="tsk_contact_us_message" name="message" class="n55-lc__input" type="text" rows="10" placeholder="Message"
+                    style="font-size: 8px;"></textarea>
+                </form>
+            </article>
+            <section class="LTDOrderSummary__ButtonSection h-center">
+<a id="js-open-pup--sm"
+target="_blank" rel="noopener" tabindex="0" aria-haspopup="true"
+data-n55-enchanted-cta
+data-n55-enchanted-cta-alt="Copy and Paste|CSS Media Query"
+data-n55-enchanted-cta-ambient="emit"
+data-n55-enchanted-cta-dont-touch="true"
+data-n55-enchanted-cta-shape-off="false"
+data-n55-enchanted-cta-size="medium"
+data-n55-flash-theme="marcom"
+data-n55-sodapop-id="myPopup--sm"
+data-n55-theme="info"
+data-n55-toast="Copy and Paste|CSS Media Query"
+data-n55-wired4sound-click="7"
+><span data-n55-wired4sound-mouseover="3">View CSS Solution</span><span>Copy Source Code</span>
+</a>
+            </section>
+      <script>
+        setTimeout(function(){
+            if( neodigmToast ) neodigmToast.q("Android Proof of Concept|Soft KB behavior", "night");
+            updateDims();
+        }, 2600)
+        const updateDims = function( _q = "#tsk_contact_us_message"){
+            let elFB = document.querySelector(  _q )
+            elFB.innerHTML = JSON.stringify( getDims() ) + "\n" + elFB.innerHTML
+        }
+        const gcd = (a, b) => {
+            return b
+              ? gcd(b, a % b)
+              : a;
+        };
+          
+        const aspectRatio = (width, height)  => {
+            const divisor = gcd(width, height);
+            return `${width / divisor}:${height / divisor}`;
+        };
+        const getDims = function(){
+            if(window.innerWidth !== undefined && window.innerHeight !== undefined) { 
+              var w = Number( window.innerWidth )
+              var h = Number( window.innerHeight )
+              var a = aspectRatio( w, h )
+            } else {
+              var w = Number( document.documentElement.clientWidth )
+              var h = Number( document.documentElement.clientHeight )
+              var a = aspectRatio( w, h )
+            }
+            return {"ratio": a, "h": h, "w": w};
+          }
+      </script>
+<template id="myPopup--sm" data-n55-sodapop-modal="false" data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
+<code>
+@media (min-aspect-ratio: 15/28) {
+    .LTDOrderSummary__ButtonSection { position: unset; width: 100%;}
+}
+</code>
+</template>
+    </body>
+</html>
+    
