@@ -48,6 +48,7 @@ margin-top: 32px;
 font-family: 'Roboto', sans-serif; font-weight: 100;
 margin: 8px 0; padding: 1px;
 }
+
 .hd1 {font-size: 48px;}
 .hd2 {font-size: 24px;}
 .hd3 {font-size: 18px;}
@@ -166,7 +167,7 @@ input.n55-lc__input--inv, textarea.n55-lc__input--inv {
 /*  Bullets  */
 .l-bullets {
 display: grid;
-grid-template-columns: 48px 100%;
+grid-template-columns: 48px 96%;
 align-items: center;
 }
 .vec-bullet {
