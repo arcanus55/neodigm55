@@ -48,10 +48,10 @@ margin-top: 32px;
 font-family: 'Roboto', sans-serif; font-weight: 100;
 margin: 8px 0; padding: 1px;
 }
-.hd1 {font-size: 56px;}
-.hd2 {font-size: 28px;}
-.hd3 {font-size: 22px;}
-.hd4 {font-size: 20px;}
+.hd1 {font-size: 48px;}
+.hd2 {font-size: 24px;}
+.hd3 {font-size: 18px;}
+.hd4 {font-size: 16px;}
 .prg  { margin: 8px 0; padding: 1px; }
 
 [data-pref-scheme="light"] .hd1,
@@ -231,5 +231,8 @@ fill: var(  --m5lc-theme-info-alt );
 
 /*  MQ  */
 @media only screen and (min-width:48.1em){/* med *//* lg */
-
+    .hd1 {font-size: 56px;}
+    .hd2 {font-size: 28px;}
+    .hd3 {font-size: 22px;}
+    .hd4 {font-size: 20px;}
 }

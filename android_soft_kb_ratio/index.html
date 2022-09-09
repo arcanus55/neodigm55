@@ -100,13 +100,6 @@ input.n55-lc__input--inv, textarea.n55-lc__input--inv {
     width: 100vw;
     bottom: 0; left: 0; right: 0;
 }
-@media (min-aspect-ratio: 15/28) {
-    .QQQLTDOrderSummary__ButtonSection { background: #edba08; position: unset;}
-}
-
-@media (min-aspect-ratio: 15/28) and (hover: none) {
-.QQQLTDOrderSummary__ButtonSection { background: #edba08; position: unset;}
-}
 
 @media  (max-height: 480px) {
 .LTDOrderSummary__ButtonSection { background: #edba08; position: unset;}
@@ -163,6 +156,7 @@ data-n55-wired4sound-click="7"
             const divisor = gcd(width, height);
             return `${width / divisor}:${height / divisor}`;
         };
+        
         const getDims = function(){
             if(window.innerWidth !== undefined && window.innerHeight !== undefined) { 
               var w = Number( window.innerWidth )
