@@ -81,10 +81,11 @@ section.sec-inverse__gray { background-color: #f2f2f2; }
 section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-alt ); }
 
 /*  SaaS Matrix Card  */
-article.sm-crd-inver__night-alt {
+.l-saas-crd .sm-crd-inver__night-alt {
     background-color: var( --m5lc-theme-night-alt ); border-radius: 12px;
     margin: 8px; padding: 12px;
 }
+.l-saas-crd .banner-cap {font-size: 44px; font-weight: 500; color: #fff;}
 
 /* Pan Fried Monkey Fisticufs grid begin */
 section.pfmf-grid {
