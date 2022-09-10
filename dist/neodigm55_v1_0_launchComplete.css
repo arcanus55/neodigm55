@@ -71,15 +71,12 @@ margin: 8px 0; padding: 1px;
 
 .txt-readable {
 font-family: 'Roboto', sans-serif;
-font-size: 18px; color: #323232;
+font-size: 15px; color: #323232;
 font-weight: 300;
 }
 .txt-white { color: #fff;}
 /*  Layout  */
-main > section > QQQQQarticle {
-
-margin: 0 auto;
-}
+main > section > QQQQQarticle { margin: 0 auto;}
 section.sec-inverse__gray { background-color: #f2f2f2; }
 section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-alt ); }
 
@@ -233,7 +230,8 @@ fill: var(  --m5lc-theme-info-alt );
 /*  MQ  */
 @media only screen and (min-width:48.1em){/* med *//* lg */
     .hd1 {font-size: 56px;}
-    .hd2 {font-size: 28px;}
-    .hd3 {font-size: 22px;}
-    .hd4 {font-size: 20px;}
+    .hd2 {font-size: 32px;}
+    .hd3 {font-size: 26px;}
+    .hd4 {font-size: 22px;}
+    .txt-readable {font-size: 19px;}
 }
