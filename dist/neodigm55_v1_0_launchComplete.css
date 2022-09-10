@@ -86,7 +86,7 @@ section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-alt );
     margin: 8px; padding: 12px;
 }
 .l-saas-crd .banner-cap {font-family: 'Roboto', sans-serif;
-     font-size: 32px;
+     font-size: 28px;
      font-weight: 300;
      color: #fff;
      line-height: 1.6;
