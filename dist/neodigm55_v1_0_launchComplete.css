@@ -92,7 +92,7 @@ section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-alt );
      line-height: 1.6;
 }
 .saas-crd__rib--side > div { position: absolute; margin: 0 32px; }
-.saas-crd NAV { position: absolute; bottom: 22px; right: 6px; left: 6px; }
+.l-saas-crd NAV { position: absolute; bottom: 22px; right: 6px; left: 6px; }
 
 /* Pan Fried Monkey Fisticufs grid begin */
 section.pfmf-grid {
