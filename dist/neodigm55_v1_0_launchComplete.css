@@ -83,7 +83,7 @@ section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-alt );
 /*  SaaS Matrix Card  */
 article.sm-crd-inver__night-alt {
     background-color: var( --m5lc-theme-night-alt ); border-radius: 12px;
-    margin: 8px; padding: 8px;
+    margin: 8px; padding: 12px;
 }
 
 /* Pan Fried Monkey Fisticufs grid begin */
