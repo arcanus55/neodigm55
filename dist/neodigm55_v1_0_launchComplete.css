@@ -91,6 +91,9 @@ section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-alt );
      color: #fff;
      line-height: 1.6;
 }
+.saas-crd__rib--side > div {
+    position: absolute; margin: 0 44px;
+}
 
 /* Pan Fried Monkey Fisticufs grid begin */
 section.pfmf-grid {
