@@ -33,7 +33,7 @@ a { -webkit-tap-highlight-color: rgba(0,0,0,0); outline: none; user-select: none
 .h-pro-tip, summary {cursor: pointer;user-select: none; margin-top: 8px;}
 .h-smaller {font-size: smaller !important;}
 .h-under {text-decoration: underline;}
-.h-txt-dec-none {text-decoration: none;}
+.h-txt-dec-unset {text-decoration: unset;}
 .h-pos__abs {position: absolute;}
 .h-pos__rel {position: relative;}
 
