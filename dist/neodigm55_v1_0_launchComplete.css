@@ -95,6 +95,37 @@ section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-alt );
      line-height: 1.6;
 }
 .saas-crd__rib--side > div { position: absolute; margin: 0 32px; }
+      
+[class^=saas-crd__rib-] {
+    position: relative;
+    margin-bottom: 12px;
+  }
+  [class^=saas-crd__rib-]:before, [class^=saas-crd__rib-]:after {
+    content: "";
+    position: absolute;
+  }
+  
+  .saas-crd__rib--side {
+    width: 150px;
+    height: 50px;
+    background: #DD4124;
+    left: -18px;
+  }
+  .saas-crd__rib--side:before {
+    height: 0;
+    width: 0;
+    border-bottom: 8px solid #810000;
+    border-left: 8px solid transparent;
+    top: -8px;
+  }
+  .saas-crd__rib--side:after {
+    height: 0;
+    width: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 15px solid #DD4124;
+    right: -15px;
+  }
 .l-saas-crd NAV { position: absolute; bottom: 22px; right: 6px; left: 6px; }
 .l-saas-crd ARTICLE > MAIN { margin: 14px 4px 96px 4px; padding: 0; }
 
