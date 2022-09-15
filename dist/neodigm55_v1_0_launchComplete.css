@@ -93,6 +93,7 @@ section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-alt );
      font-weight: 300;
      color: #fff;
      line-height: 1.6;
+     user-select: none;
 }
 .saas-crd__rib--side > div { position: absolute; margin: 0 32px; }
       
