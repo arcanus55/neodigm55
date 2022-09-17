@@ -74,7 +74,7 @@ margin: 8px 0; padding: 1px;
 
 .txt-readable {
 font-family: 'Roboto', sans-serif;
-font-size: 15px; color: #323232;
+font-size: 17px; color: #323232;
 font-weight: 300;
 }
 .txt-white { color: #fff;}
@@ -214,7 +214,7 @@ input.n55-lc__input--inv, textarea.n55-lc__input--inv {
 /*  Bullets  */
 .l-bullets {
 display: grid;
-grid-template-columns: 48px 96%;
+grid-template-columns: 48px 90%;
 align-items: center;
 }
 .vec-bullet {
