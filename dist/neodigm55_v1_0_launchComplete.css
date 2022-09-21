@@ -36,6 +36,7 @@ a { -webkit-tap-highlight-color: rgba(0,0,0,0); outline: none; user-select: none
 .h-txt-dec-unset {text-decoration: unset;}
 .h-pos__abs {position: absolute;}
 .h-pos__rel {position: relative;}
+.h-hvr__danger:hover {color: var( --m5lc-theme-danger );}
 
 /*  lgo  */
 .lgo {
