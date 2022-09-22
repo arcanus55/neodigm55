@@ -85,7 +85,7 @@ font-weight: 200;
 /*  Layout  */
 main > section > QQQQQarticle { margin: 0 auto;}
 section.sec-inverse__gray { background-color: #f2f2f2; }
-section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-alt ); }
+section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-mid ); }
 
 /*  SaaS Matrix Card  */
 .l-saas-crd .sm-crd-inver__night-alt {
