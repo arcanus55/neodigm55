@@ -36,6 +36,7 @@ a { -webkit-tap-highlight-color: rgba(0,0,0,0); outline: none; user-select: none
 .h-txt-dec-unset {text-decoration: unset;}
 .h-pos__abs {position: absolute;}
 .h-pos__rel {position: relative;}
+.h-strike {text-decoration: line-through;}
 .h-hvr__danger:hover {color: var( --m5lc-theme-danger ) !important;}
 summary.h-marker__danger::marker {color: var( --m5lc-theme-danger ) !important;}
 
@@ -91,8 +92,9 @@ section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-alt );
     background-color: var( --m5lc-theme-night-alt ); border-radius: 12px;
     margin: 8px; padding: 12px;
 }
-.l-saas-crd .banner-cap {font-family: 'Roboto', sans-serif;
-     font-size: 28px;
+.l-saas-crd .banner-cap {
+    font-family: 'Roboto', sans-serif;
+     font-size: 26px;
      font-weight: 300;
      color: #fff;
      line-height: 1.6;
