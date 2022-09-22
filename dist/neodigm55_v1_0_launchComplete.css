@@ -79,7 +79,7 @@ font-family: 'Roboto', sans-serif;
 font-size: 17px; color: #323232;
 font-weight: 200;
 }
-.txt-read__15 { font-size: 15px; }
+.txt-read__15 { font-size: 15px !important; }
 .txt-white { color: #fff;}
 /*  Layout  */
 main > section > QQQQQarticle { margin: 0 auto;}
