@@ -11,7 +11,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 :root {
     --m5lc-theme-danger: #DD4124; --m5lc-theme-danger-alt: #810000;  /* Tangerine Tango */
     --m5lc-theme-info:   #7BC4C4; --m5lc-theme-info-alt:   #1F6868;  /* Aqua Sky */
-    --m5lc-theme-night:  #6a6a6a; --m5lc-theme-night-alt:  #242424;  --m5lc-theme-night-mid:  #323232;  /* Charcole */
+    --m5lc-theme-night:  #6a6a6a; --m5lc-theme-night-alt:  #242424;  --m5lc-theme-night-mid:  #323232;  /* Charcoal */
 }
 html, body {margin: 0; padding: 0;}
 input, textarea, button, select, aside,
