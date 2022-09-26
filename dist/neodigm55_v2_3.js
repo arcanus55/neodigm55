@@ -25,6 +25,8 @@ let neodigmOpt = {
     N55_CTA_RND_TOUCH: 14001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
     N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ],
+neodigmKPI: true,
+    N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
   N55_GENRE_MOTIF: "neodigm",  //  steampunk cyberpunk artdeco noir anime casino
@@ -662,7 +664,7 @@ class NeodigmEnchantedCTA {
     }
     init (){
       this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
-      if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event
+      if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
         let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
         let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
         if( bCta && window.dataLayer && neodigmOpt.N55_GTM_DL_CTA ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_CTA, "id": sId } )
@@ -744,6 +746,48 @@ class NeodigmEnchantedCTA {
 }
 let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchanted-cta]"] )
 
+//  Neodigm 55 KPI Card Begin //
+class NeodigmKPI {
+  constructor( _d, _aQ ) {
+      this._d = _d; this._aQ = _aQ
+      this.bIsInit = false; this.bIsPause = false
+      this.aE = []
+  }
+  init (){
+    this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
+    if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
+      let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
+      let bCta = ("n55Kpi" in ev?.target?.dataset) || ("n55Kpi" in ev?.srcElement?.parentNode?.dataset)
+      if( bCta && window.dataLayer && neodigmOpt.N55_GTM_DL_KPI ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_KPI, "id": sId } )
+      let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
+      if( sFlashTh ) neodigmKPI.flashTheme( sFlashTh )
+    }, false)
+    if( neodigmOpt.N55_CTA_RND_TOUCH ){
+      neodigmMetronome.subscribe( function(){ neodigmKPI.touch() }, neodigmOpt.N55_CTA_RND_TOUCH )
+    }
+    if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.aE )
+    this.bIsInit = true
+    return this
+  }
+  pause (){ this.bIsPause = true; return this; }
+  play (){ this.bIsPause = false; return this; }
+  setTheme ( sTheme, sId ){
+    if( this.bIsInit && !this.bIsPause ){
+      this.aE.forEach( (eC) => {  //  orig once
+        if( eC.dataset.n55Theme && !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
+        if( sId ){
+          if( eC?.id == sId ) eC.dataset.n55Theme = sTheme
+        }else{
+          eC.dataset.n55Theme = sTheme
+        }
+      });
+    }
+  return this;
+  }
+}
+let neodigmKPI = new NeodigmKPI( document, ["[data-n55-kpi]"] )
+
+
 // v2.3.0 - Refactor Toast and Metronome STATIC
 //  Neodigm 55 SodaPop Simple Tab Plug-in //
 //  Neodigm 55 Enchanted CTA FlashTheme Round-robin //
@@ -753,7 +797,7 @@ let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchant
 
 // v2.x.0
 //  Neodigm 55 FAB Begin //
-//  Neodigm 55 KPI Card Begin //
+//  -Neodigm 55 KPI Card Begin //
 //  Neodigm 55 Tradecraft Redact Begin  //
 //  Neodigm 55 VT100 Begin //
 //  Neodigm 55 Hot Keys Hover and Tripple Click Begin //
@@ -773,7 +817,7 @@ let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchant
 //  Neodigm 55 ToolTip Marquee Begin  //
 //  Neodigm 55 PWA Plugin Begin  //
 //  Neodigm 55 Virtual Keyboard Begin  //
-//  Neodigm 55 Vivid Begin  //
+//  Neodigm 55 Vivid Type Begin  //
 //  Neodigm 55 CAPTCHA Begin //
 
 function doDOMContentLoaded(){
@@ -801,6 +845,7 @@ function doDOMContentLoaded(){
     if( neodigmOpt.neodigmParallax ) neodigmParallax.init()
     if( neodigmOpt.neodigmMarquee ) neodigmMarquee.init()
     if( neodigmOpt.neodigmEnchantedCTA ) neodigmEnchantedCTA.init()
+    if( neodigmOpt.neodigmEnchantedKPI ) neodigmEnchantedKPI.init()
   }, 56)
 }
 
