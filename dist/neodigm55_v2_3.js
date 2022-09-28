@@ -773,7 +773,7 @@ class NeodigmKPI {
   play (){ this.bIsPause = false; return this; }
   setTheme ( sTheme, sId ){
     if( this.bIsInit && !this.bIsPause ){
-      this.aE.forEach( (eC) => {  //  orig once
+      this.aE.forEach( (eC) => {  //  orig once n55Theme Property
         if( eC.dataset.n55Theme && !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
         if( sId ){
           if( eC?.id == sId ) eC.dataset.n55Theme = sTheme
