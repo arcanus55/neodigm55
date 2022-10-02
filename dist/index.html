@@ -4,13 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=2, minimum-scale=1, width=device-width, height=device-height"/>
 
-<link rel="stylesheet" href="neodigm55_v2_3.css">
-<link rel="stylesheet" href="neodigm55_v1_0_launchComplete.css">
+<link rel="stylesheet" href="dist/neodigm55_v2_3.css">
+<link rel="stylesheet" href="dist/neodigm55_v1_0_launchComplete.css">
 
 <script>
 let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:false, N55_CTA_RND_TOUCH: 5000 }
 </script>
-<script src="neodigm55_v2_3.js"></script>
+<script src="dist/neodigm55_v2_3.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|Roboto+Slab:300,400" rel="stylesheet" type="text/css">
 
 </head>
 <body style="background-color: #000;">
@@ -49,17 +51,59 @@ data-n55-wired4sound-click="5"
 <br><br>
 <br><br>
 <neodigm-kpi id="kpi-1"
-data-n55-enchanted-kpi
-data-n55-enchanted-kpi-tooltip="Regional Sales Goal Year to Date"
-data-n55-enchanted-kpi-ambient="radius"
-data-n55-enchanted-kpi-dont-touch="false"
-data-n55-enchanted-kpi-shape-off="false"
-data-n55-enchanted-kpi-size="medium"
+data-n55-kpi
+data-n55-kpi-tooltip="Regional Sales Goal Year to Date"
+data-n55-kpi-ambient="radius"
+data-n55-kpi-dont-touch="false"
+data-n55-kpi-shape-off="false"
+data-n55-kpi-size="xsmall"
+data-n55-flash-theme="marcom"
+data-n55-theme="brand"
+data-n55-toast="You've reached X% of your|YTD sales goal"
+data-n55-wired4sound-click="5"
+><h5 data-n55-wired4sound-mouseover="3">100%</h5><h6>YTD Sales Target</h6>
+</neodigm-kpi>
+
+<neodigm-kpi id="kpi-2"
+data-n55-kpi
+data-n55-kpi-tooltip="Regional Sales Goal Year to Date"
+data-n55-kpi-ambient="radius"
+data-n55-kpi-dont-touch="false"
+data-n55-kpi-shape-off="false"
+data-n55-kpi-size="small"
+data-n55-flash-theme="marcom"
+data-n55-theme="info"
+data-n55-toast="You've reached X% of your|YTD sales goal"
+data-n55-wired4sound-click="5"
+><h5 data-n55-wired4sound-mouseover="3">100%</h5><h6>YTD Sales Target</h6>
+</neodigm-kpi>
+
+<neodigm-kpi id="kpi-3"
+data-n55-kpi
+data-n55-kpi-tooltip="Regional Sales Goal Year to Date"
+data-n55-kpi-ambient="radius"
+data-n55-kpi-dont-touch="false"
+data-n55-kpi-shape-off="false"
+data-n55-kpi-size="medium"
 data-n55-flash-theme="marcom"
 data-n55-theme="primary"
 data-n55-toast="You've reached X% of your|YTD sales goal"
 data-n55-wired4sound-click="5"
-><span data-n55-wired4sound-mouseover="3">87%</span><span>YTD Sales Target</span>
+><h5 data-n55-wired4sound-mouseover="3">100%</h5><h6>YTD Sales Target</h6>
+</neodigm-kpi>
+
+<neodigm-kpi id="kpi-4"
+data-n55-kpi
+data-n55-kpi-tooltip="Regional Sales Goal Year to Date"
+data-n55-kpi-ambient="radius"
+data-n55-kpi-dont-touch="false"
+data-n55-kpi-shape-off="false"
+data-n55-kpi-size="large"
+data-n55-flash-theme="marcom"
+data-n55-theme="warning"
+data-n55-toast="You've reached X% of your|YTD sales goal"
+data-n55-wired4sound-click="5"
+><h5 data-n55-wired4sound-mouseover="3">100%</h5><h6>YTD Sales Target</h6>
 </neodigm-kpi>
 
 <template id="pup__lc-wizard--md" data-n55-sodapop-modal="true" data-n55-sodapop-size="large" data-n55-sodapop-fullscreen="false">
