@@ -747,6 +747,7 @@ class NeodigmEnchantedCTA {
 let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchanted-cta]"] )
 
 //  Neodigm 55 KPI Card Begin //
+// notes: lets figure out a dataLayer util function. Lets find a JS interface for various other frameworks day/night actions
 class NeodigmKPI {
   constructor( _d, _aQ ) {
       this._d = _d; this._aQ = _aQ
