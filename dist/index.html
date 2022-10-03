@@ -15,10 +15,11 @@ let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:false, N5
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|Roboto+Slab:300,400" rel="stylesheet" type="text/css">
 
 </head>
-<body style="background-color: #000;">
+<body data-a55-ampm-theme="dark">
 
 <a id="js-toggle-dark--sm"
 target="_blank" rel="noopener" tabindex="0" aria-haspopup="true"
+onclick="toggleAMPM()"
 data-n55-enchanted-cta
 data-n55-enchanted-cta-ambient=""
 data-n55-enchanted-cta-dont-touch="true"
@@ -290,5 +291,20 @@ NeodigmClaire.showCanv('neodigm-sodapop').setTheme( ['brand','danger','info','ma
     }, 4e3)
 });
 </script>
+<script>
+    let toggleAMPM = function(){
+        let current = document.body.dataset.a55AmpmTheme || "light"
+        if( current == "light" ){
+            document.body.dataset.a55AmpmTheme = "dark"
+        }else{
+            document.body.dataset.a55AmpmTheme = "light"
+        }
+    }
+</script>
+<style>
+    /**/
+    body[data-a55-ampm-theme="light"] {background-color: #fff;}
+    body[data-a55-ampm-theme="dark"]  {background-color: #000;}
+</style>
 </body>
 </html>
