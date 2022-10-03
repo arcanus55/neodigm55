@@ -459,7 +459,7 @@ neodigm-kpi > h5,
 neodigm-kpi > h6 {
     position: relative; overflow: hidden;
     text-align: center;
-    color: rgb(81, 44, 44);
+    color: #fff;
     font-family: 'Roboto Condensed',sans-serif; font-weight: 300;
     margin: 4px; padding: 4px;
     text-decoration: none;
