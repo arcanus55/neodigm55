@@ -71,6 +71,10 @@ const neodigmUtils = ( ( _d ) =>{
       });
       return aDret.join("");
     },
+    dataLayer: function( event, msg ){
+      if( neodigmOpt.N55_DEBUG_lOG ) console.log( "ga | " + event + " | " + msg )
+      if( window.dataLayer ) window.dataLayer.push( { "event": event, "msg": msg } )
+    },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || ""
   }
 })( document );
@@ -121,7 +125,8 @@ let neodigmToast = (function(_d, eID, _q) {
           if( bIsInit && !bIsPause ){ 
             if( sMsg && sMsg != _aQ[0]?.sMsg ){
               _aQ.push( {"sMsg": sMsg, "sTheme":sTheme} ) // temporal debounce
-              if( window.dataLayer && neodigmOpt.N55_GTM_DL_TOAST ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_TOAST, "msg": sMsg } )
+              //if( window.dataLayer && neodigmOpt.N55_GTM_DL_TOAST ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_TOAST, "msg": sMsg } )
+              if( neodigmOpt.N55_GTM_DL_TOAST ) neodigmUtils.dataLayer( neodigmOpt.N55_GTM_DL_TOAST, sMsg )
               if(_aQ.length == 1) _fOpen()              
             }
           }
