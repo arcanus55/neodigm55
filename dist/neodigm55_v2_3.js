@@ -16,7 +16,7 @@ let neodigmOpt = {
     N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
     N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
   neodigmWired4Sound: true,
-    W4S_VOLUME: .050,
+    W4S_VOLUME: .040,
     EVENT_SOUNDS: true,
   neodigmParallax: true,
     PRLX_MOBILE: false,  //  Show Parallax on Mobile
@@ -25,10 +25,11 @@ let neodigmOpt = {
     N55_CTA_RND_TOUCH: 14001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
     N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ],
-neodigmKPI: true,
+  neodigmKPI: true,
     N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
+  N55_AMPM_THEME: "light",
   N55_GENRE_MOTIF: "neodigm",  //  steampunk cyberpunk artdeco noir anime casino
   N55_THEME_DEFAULT: "brand",
   N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"],
@@ -747,7 +748,7 @@ class NeodigmEnchantedCTA {
 let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchanted-cta]"] )
 
 //  Neodigm 55 KPI Card Begin //
-// notes: lets figure out a dataLayer util function. Lets find a JS interface for various other frameworks day/night actions
+// notes: lets figure out a dataLayer util function.
 class NeodigmKPI {
   constructor( _d, _aQ ) {
       this._d = _d; this._aQ = _aQ
@@ -839,6 +840,7 @@ function doDOMContentLoaded(){
   setTimeout( ()=>{
     neodigmMetronome.init()  //  Always-on
     NeodigmClaire.init()
+    if( neodigmOpt.N55_AMPM_THEME && !document.body.dataset.n55AmpmTheme ) document.body.dataset.n55AmpmTheme = neodigmOpt.N55_AMPM_THEME
     if( neodigmOpt.CONSOLE_LOG_VER ) console.log("%c Neodigm 55 the eclectic JavaScript UX micro-library ✨ v" + neodigmUtils.ver, "background: #000; color: #F5DF4D; font-size: 20px");
     if( neodigmOpt.neodigmToast ) neodigmToast.init()
     if( neodigmOpt.neodigmSodaPop ) neodigmSodaPop.init()
@@ -846,7 +848,7 @@ function doDOMContentLoaded(){
     if( neodigmOpt.neodigmParallax ) neodigmParallax.init()
     if( neodigmOpt.neodigmMarquee ) neodigmMarquee.init()
     if( neodigmOpt.neodigmEnchantedCTA ) neodigmEnchantedCTA.init()
-    if( neodigmOpt.neodigmEnchantedKPI ) neodigmEnchantedKPI.init()
+    if( neodigmOpt.neodigmKPI ) neodigmKPI.init()
   }, 56)
 }
 
