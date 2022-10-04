@@ -757,6 +757,12 @@ let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchant
 
 //  Neodigm 55 KPI Card Begin //
 class NeodigmKPI {
+  /*
+  Anim count up and down
+  percent
+  on scroll triggers
+  container queries
+  */
   constructor( _d, _aQ ) {
       this._d = _d; this._aQ = _aQ
       this.bIsInit = false; this.bIsPause = false
