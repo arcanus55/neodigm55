@@ -761,8 +761,6 @@ class NeodigmKPI {
       let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
       let bCta = ("n55Kpi" in ev?.target?.dataset) || ("n55Kpi" in ev?.srcElement?.parentNode?.dataset)
       if( bCta && window.dataLayer && neodigmOpt.N55_GTM_DL_KPI ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_KPI, "id": sId } )
-      let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
-      if( sFlashTh ) neodigmKPI.flashTheme( sFlashTh )
     }, false)
     if( neodigmOpt.N55_CTA_RND_TOUCH ){
       neodigmMetronome.subscribe( function(){ neodigmKPI.touch() }, neodigmOpt.N55_CTA_RND_TOUCH )
@@ -786,6 +784,7 @@ class NeodigmKPI {
     }
   return this;
   }
+  touch (){ return this; }
 }
 let neodigmKPI = new NeodigmKPI( document, ["[data-n55-kpi]"] )
 
