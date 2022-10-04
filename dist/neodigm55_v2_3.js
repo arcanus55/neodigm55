@@ -125,7 +125,6 @@ let neodigmToast = (function(_d, eID, _q) {
           if( bIsInit && !bIsPause ){ 
             if( sMsg && sMsg != _aQ[0]?.sMsg ){
               _aQ.push( {"sMsg": sMsg, "sTheme":sTheme} ) // temporal debounce
-              //if( window.dataLayer && neodigmOpt.N55_GTM_DL_TOAST ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_TOAST, "msg": sMsg } )
               if( neodigmOpt.N55_GTM_DL_TOAST ) neodigmUtils.dataLayer( neodigmOpt.N55_GTM_DL_TOAST, sMsg )
               if(_aQ.length == 1) _fOpen()              
             }
@@ -209,7 +208,7 @@ class NeodigmSodaPop {
           if( this.bIsFS ) this._d.body.requestFullscreen()
           this.bIsOpen = true;
           if(this.fOnAfterOpen) this.fOnAfterOpen()
-          if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_OPEN ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_OPEN, "id": _sId } )
+          if( neodigmOpt.N55_GTM_DL_POP_OPEN ) neodigmUtils.dataLayer( neodigmOpt.N55_GTM_DL_POP_OPEN, _sId )
       }
       return neodigmSodaPop
     }
@@ -234,7 +233,7 @@ class NeodigmSodaPop {
             if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(3)
             this.bIsOpen = false
             if( this.bIsFS ) _d.exitFullscreen();
-            if( window.dataLayer && neodigmOpt.N55_GTM_DL_POP_CLOSE ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_POP_CLOSE } )
+            if( neodigmOpt.N55_GTM_DL_POP_CLOSE ) neodigmUtils.dataLayer( neodigmOpt.N55_GTM_DL_POP_CLOSE, "close" )
         }
         return this
     }
@@ -677,7 +676,7 @@ class NeodigmEnchantedCTA {
       if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
         let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
         let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
-        if( bCta && window.dataLayer && neodigmOpt.N55_GTM_DL_CTA ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_CTA, "id": sId } )
+        if( bCta && neodigmOpt.N55_GTM_DL_CTA ) neodigmUtils.dataLayer( neodigmOpt.N55_GTM_DL_CTA, sId )
         let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
         if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
       }, false)
@@ -757,7 +756,6 @@ class NeodigmEnchantedCTA {
 let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchanted-cta]"] )
 
 //  Neodigm 55 KPI Card Begin //
-// notes: lets figure out a dataLayer util function.
 class NeodigmKPI {
   constructor( _d, _aQ ) {
       this._d = _d; this._aQ = _aQ
@@ -769,7 +767,7 @@ class NeodigmKPI {
     if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
       let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
       let bCta = ("n55Kpi" in ev?.target?.dataset) || ("n55Kpi" in ev?.srcElement?.parentNode?.dataset)
-      if( bCta && window.dataLayer && neodigmOpt.N55_GTM_DL_KPI ) window.dataLayer.push( {"event": neodigmOpt.N55_GTM_DL_KPI, "id": sId } )
+      if( bCta && neodigmOpt.N55_GTM_DL_KPI ) neodigmUtils.dataLayer( neodigmOpt.N55_GTM_DL_KPI, sId )
     }, false)
     if( neodigmOpt.N55_CTA_RND_TOUCH ){
       neodigmMetronome.subscribe( function(){ neodigmKPI.touch() }, neodigmOpt.N55_CTA_RND_TOUCH )
