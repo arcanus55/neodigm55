@@ -33,7 +33,7 @@ let neodigmOpt = {
   N55_GENRE_MOTIF: "neodigm",  //  steampunk cyberpunk artdeco noir anime casino
   N55_THEME_DEFAULT: "brand",
   N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"],
-   "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"]}
+   "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"], "party":["FF6F61","D94F70"]}
 }
 
 if( typeof neodigmOptCustom != 'undefined' ){

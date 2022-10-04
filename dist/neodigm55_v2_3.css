@@ -18,8 +18,9 @@ All rights reserved. Redistributions of source code must retain the above copyri
     --neodigm-theme-warning: #F5DF4D;   --neodigm-theme-warning-alt: #988200;  /* Illuminating */
     --neodigm-theme-info: #7BC4C4;      --neodigm-theme-info-alt: #1F6868;  /* Aqua Sky */
     --neodigm-theme-disabled: #868686;  --neodigm-theme-disabled-alt: #767676;  /* Just Gray */
-    --neodigm-theme-night: #6a6a6a;      --neodigm-theme-night-alt: #242424;  /* Charcoal */
-    --neodigm-theme-marcom: #B163A3;      --neodigm-theme-marcom-alt: #5F4B8B;  /* Radiant Orchid | Ultra Violet */
+    --neodigm-theme-night: #6a6a6a;     --neodigm-theme-night-alt: #242424;  /* Charcoal */
+    --neodigm-theme-marcom: #B163A3;    --neodigm-theme-marcom-alt: #5F4B8B;  /* Radiant Orchid | Ultra Violet */
+    --neodigm-theme-party: #FF6F61;     --neodigm-theme-party-alt: #D94F70;  /* Living Coral | Honeysuckle */
 }
 
 /*  Neodigm Toast Begin  */
@@ -45,6 +46,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 .l-snackbar .snackbar__cont[data-n55-theme='info'] { box-shadow: inset var(--neodigm-theme-info) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-info) 0%, var(--neodigm-theme-info-alt) 100%); }
 .l-snackbar .snackbar__cont[data-n55-theme='night'] { box-shadow: inset var(--neodigm-theme-night) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-night) 0%, var(--neodigm-theme-night-alt) 100%); }
 .l-snackbar .snackbar__cont[data-n55-theme='marcom'] { box-shadow: inset var(--neodigm-theme-marcom) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-marcom) 0%, var(--neodigm-theme-marcom-alt) 100%); }
+.l-snackbar .snackbar__cont[data-n55-theme='party'] { box-shadow: inset var(--neodigm-theme-party) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-party) 0%, var(--neodigm-theme-party-alt) 100%); }
 
 .l-snackbar .snackbar__cont[data-n55-theme='brand'] .snackbar__progbar { background-color: var(--neodigm-theme-brand-alt) }
 .l-snackbar .snackbar__cont[data-n55-theme='primary'] .snackbar__progbar { background-color: var(--neodigm-theme-primary-alt) }
@@ -55,6 +57,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 .l-snackbar .snackbar__cont[data-n55-theme='info'] .snackbar__progbar { background-color: var(--neodigm-theme-info-alt) }
 .l-snackbar .snackbar__cont[data-n55-theme='night'] .snackbar__progbar { background-color: var(--neodigm-theme-night-alt) }
 .l-snackbar .snackbar__cont[data-n55-theme='marcom'] .snackbar__progbar { background-color: var(--neodigm-theme-marcom-alt) }
+.l-snackbar .snackbar__cont[data-n55-theme='party'] .snackbar__progbar { background-color: var(--neodigm-theme-party-alt) }
 
 .l-snackbar .snackbar__cont--hide {
 	bottom: -112px;
@@ -232,6 +235,8 @@ neodigm-marquee pre[data-n55-theme='night'],
 neodigm-marquee pre [data-n55-theme='night'] { color: var(--neodigm-theme-night-alt); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-night), 0.2rem 0.1rem 1rem #fff}
 neodigm-marquee pre[data-n55-theme='marcom'],
 neodigm-marquee pre [data-n55-theme='marcom'] { color: var(--neodigm-theme-marcom); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-marcom-alt), 0.2rem 0.1rem 1rem #fff}
+neodigm-marquee pre[data-n55-theme='party'],
+neodigm-marquee pre [data-n55-theme='party'] { color: var(--neodigm-theme-party); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-party-alt), 0.2rem 0.1rem 1rem #fff}
 
 neodigm-marquee[data-n55-marquee-size='small'] { height: 28px; }
 neodigm-marquee[data-n55-marquee-size='small'] * {
@@ -365,6 +370,7 @@ background-color: rgba( 96, 88, 44, 0);
 [data-n55-enchanted-cta][data-n55-theme='disabled']  { background: linear-gradient(var(--neodigm-theme-disabled), var(--neodigm-theme-disabled-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='night']     { background: linear-gradient(var(--neodigm-theme-night), var(--neodigm-theme-night-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='marcom']    { background: linear-gradient(var(--neodigm-theme-marcom), var(--neodigm-theme-marcom-alt)); }
+[data-n55-enchanted-cta][data-n55-theme='party']    { background: linear-gradient(var(--neodigm-theme-party), var(--neodigm-theme-party-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='ghost']     { background: #fff; color: #DD4124; border: solid 1px #DD4124; }
 
 @keyframes touch_emit{
@@ -478,6 +484,7 @@ neodigm-kpi > h6 { top: 10%; }
 [data-n55-ampm-theme="light"] neodigm-kpi[data-n55-theme='info']      { background: radial-gradient(circle, var( --neodigm-theme-info ) 0%, var( --neodigm-theme-info-alt ) 100%); }
 [data-n55-ampm-theme="light"] neodigm-kpi[data-n55-theme='night']     { background: radial-gradient(circle, var( --neodigm-theme-night ) 0%, var( --neodigm-theme-night-alt ) 100%); }
 [data-n55-ampm-theme="light"] neodigm-kpi[data-n55-theme='marcom']    { background: radial-gradient(circle, var( --neodigm-theme-marcom ) 0%, var( --neodigm-theme-marcom-alt ) 100%); }
+[data-n55-ampm-theme="light"] neodigm-kpi[data-n55-theme='party']     { background: radial-gradient(circle, var( --neodigm-theme-party ) 0%, var( --neodigm-theme-party-alt ) 100%); }
 
 [data-n55-ampm-theme="dark"]  neodigm-kpi[data-n55-theme='brand']     { background: radial-gradient(circle, var( --neodigm-theme-brand-alt ) 0%, var( --neodigm-theme-brand ) 100%); }
 [data-n55-ampm-theme="dark"]  neodigm-kpi[data-n55-theme='primary']   { background: radial-gradient(circle, var( --neodigm-theme-primary-alt ) 0%, var( --neodigm-theme-primary ) 100%); }
@@ -488,6 +495,7 @@ neodigm-kpi > h6 { top: 10%; }
 [data-n55-ampm-theme="dark"]  neodigm-kpi[data-n55-theme='info']      { background: radial-gradient(circle, var( --neodigm-theme-info-alt ) 0%, var( --neodigm-theme-info ) 100%); }
 [data-n55-ampm-theme="dark"]  neodigm-kpi[data-n55-theme='night']     { background: radial-gradient(circle, var( --neodigm-theme-night-alt ) 0%, var( --neodigm-theme-night ) 100%); }
 [data-n55-ampm-theme="dark"]  neodigm-kpi[data-n55-theme='marcom']    { background: radial-gradient(circle, var( --neodigm-theme-marcom-alt ) 0%, var( --neodigm-theme-marcom ) 100%); }
+[data-n55-ampm-theme="dark"]  neodigm-kpi[data-n55-theme='party']     { background: radial-gradient(circle, var( --neodigm-theme-party-alt ) 0%, var( --neodigm-theme-party ) 100%); }
 
 neodigm-kpi[data-n55-kpi-size='xsmall'] { height: 96px; width: 96px; }
 neodigm-kpi[data-n55-kpi-size='xsmall'] > h5 { font-size: 2rem;} /*  3/5  */
