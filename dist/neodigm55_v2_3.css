@@ -20,7 +20,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
     --neodigm-theme-disabled: #868686;  --neodigm-theme-disabled-alt: #767676;  /* Just Gray */
     --neodigm-theme-night: #6a6a6a;     --neodigm-theme-night-alt: #242424;  /* Charcoal */
     --neodigm-theme-marcom: #B163A3;    --neodigm-theme-marcom-alt: #5F4B8B;  /* Radiant Orchid | Ultra Violet */
-    --neodigm-theme-party: #FF6F61;     --neodigm-theme-party-alt: #D94F70;  /* Living Coral | Honeysuckle */
+    --neodigm-theme-party: #FF6F61;     --neodigm-theme-party-alt: #C93F60;  /* Living Coral | Honeysuckle */
 }
 
 /*  Neodigm Toast Begin  */
@@ -370,7 +370,7 @@ background-color: rgba( 96, 88, 44, 0);
 [data-n55-enchanted-cta][data-n55-theme='disabled']  { background: linear-gradient(var(--neodigm-theme-disabled), var(--neodigm-theme-disabled-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='night']     { background: linear-gradient(var(--neodigm-theme-night), var(--neodigm-theme-night-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='marcom']    { background: linear-gradient(var(--neodigm-theme-marcom), var(--neodigm-theme-marcom-alt)); }
-[data-n55-enchanted-cta][data-n55-theme='party']    { background: linear-gradient(var(--neodigm-theme-party), var(--neodigm-theme-party-alt)); }
+[data-n55-enchanted-cta][data-n55-theme='party']     { background: linear-gradient(var(--neodigm-theme-party), var(--neodigm-theme-party-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='ghost']     { background: #fff; color: #DD4124; border: solid 1px #DD4124; }
 
 @keyframes touch_emit{
