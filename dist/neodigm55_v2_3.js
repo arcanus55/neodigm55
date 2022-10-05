@@ -244,7 +244,7 @@ class NeodigmSodaPop {
             setTimeout(function(){
                 neodigmSodaPop.eSoda.classList.remove("ndsp__opened--shake1");
             }, 460)
-            if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 9 )
+            if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 13 )
             if("vibrate" in navigator) window.navigator.vibrate([48, 32, 8])
         }
         return this
