@@ -95,7 +95,7 @@ let neodigmToast = (function(_d, eID, _q) {
       _eSb.classList.remove("snackbar__cont--hide")
       if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 1 )
     _eSb.classList.add("snackbar__cont--show")
-    if("vibrate" in navigator) window.navigator.vibrate([48, 56])
+    if( neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator) window.navigator.vibrate([48, 56])
     setTimeout(_fClose, _nTimeout)
   };
   return {
@@ -199,7 +199,7 @@ class NeodigmSodaPop {
           }, 276)
           this.eSoda.innerHTML = this.eTmpl.innerHTML
           this._d.body.appendChild(this.eSoda)
-          if("vibrate" in navigator) window.navigator.vibrate([16, 8])
+          if( neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator) window.navigator.vibrate([16, 8])
           if( this.eTmpl.dataset.n55ClaireWaxon ){
             // if( this.eTmpl.dataset.n55ClaireTheme ) NeodigmClaire.setTheme( this.eTmpl.dataset.n55ClaireTheme )
             // NeodigmClaire.showCanv( this._aQ[1] ).initCanv( this._aQ[1] ).waxOn( this._aQ[1], neodigmOpt.N55_GENRE_MOTIF )
@@ -230,7 +230,7 @@ class NeodigmSodaPop {
                     }, 332)
                 }, 186)
             }
-            if("vibrate" in navigator) window.navigator.vibrate([8, 16])
+            if( neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator) window.navigator.vibrate([8, 16])
             if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(3)
             this.bIsOpen = false
             if( this.bIsFS ) _d.exitFullscreen();
@@ -240,13 +240,13 @@ class NeodigmSodaPop {
     }
     shake() {
         if(this.bIsInit && this.bIsOpen) {
-            if("vibrate" in navigator) window.navigator.vibrate([8, 32, 48])
+            if( neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator) window.navigator.vibrate([8, 32, 48])
             neodigmSodaPop.eSoda.classList.add("ndsp__opened--shake1");
             setTimeout(function(){
                 neodigmSodaPop.eSoda.classList.remove("ndsp__opened--shake1");
             }, 460)
             if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 13 )
-            if("vibrate" in navigator) window.navigator.vibrate([48, 32, 8])
+            if( neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator) window.navigator.vibrate([48, 32, 8])
         }
         return this
     }
