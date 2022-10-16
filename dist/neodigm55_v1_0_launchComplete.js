@@ -17,6 +17,7 @@ let neodigmOpt_launchComplete = {
   N55_LC_TAG3: ["SEMbright 🚀 Digital Marketing That Moves", 256],
   N55_LC_COLOR_BRAND: ["7BC4C4", 256],
   N55_LC_KEYWORDS: [["A", "B"], 256],
+  CONSOLE_LOG_VER: true,
 }
 
 if( typeof neodigmOpt_launchCompleteCustom != 'undefined' ){
@@ -26,4 +27,4 @@ if( typeof neodigmOpt_launchCompleteCustom != 'undefined' ){
 }
 
 //  N55 PWA Console Brand begin  //
-console.log("%c " + neodigmOpt_launchComplete.N55_LC_TAG1[0], "background: #000; color: #" + neodigmOpt_launchComplete.N55_LC_COLOR_BRAND[0] + "; font-size: 38px");
+if( neodigmOpt_launchComplete.CONSOLE_LOG_VER ) console.log("%c " + neodigmOpt_launchComplete.N55_LC_TAG1[0], "background: #000; color: #" + neodigmOpt_launchComplete.N55_LC_COLOR_BRAND[0] + "; font-size: 38px");
