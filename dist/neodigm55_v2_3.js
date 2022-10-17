@@ -816,7 +816,7 @@ class NeodigmPWA {
       this._beforeinstallprompt = null
   }
   init (){
-    this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
+    this.aE = [ ... this._d.querySelectorAll( "#" + this._aQ[0] )]
     if( this.aE ){
       window.addEventListener("DOMContentLoaded", function(){
         window.addEventListener("beforeinstallprompt", function( ev ){
