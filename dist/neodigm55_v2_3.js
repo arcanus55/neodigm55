@@ -818,13 +818,6 @@ class NeodigmPWA {
   init (){
     this.aE = [ ... this._d.querySelectorAll( "#" + this._aQ[0] )]
     if( this.aE ){
-      window.addEventListener("beforeinstallprompt", function( ev ){
-console.log(" ~~~ ev | ", ev)
-
-          neodigmUtils.dataLayer( "event", "beforeInstallPrompt" )
-          this._beforeinstallprompt = ev
-          if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55 pwa | beforeinstallprompt" )
-      })
       window.addEventListener("appinstalled", () => {
         setTimeout(function(){
             neodigmToast.q("Application Installed ✨", "brand")
@@ -836,6 +829,13 @@ console.log(" ~~~ ev | ", ev)
       this.bIsInit = true      
     }
     return this
+  }
+  beforeinstallprompt ( ev ){
+    console.log(" ~~~ ev | ", ev)
+
+    neodigmUtils.dataLayer( "event", "beforeInstallPrompt" )
+    this._beforeinstallprompt = ev
+    if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55 pwa | beforeinstallprompt" )
   }
   autoOpen ( pause = 0 ){ 
 console.log(" ~~~ | ", this.bIsInit, this._beforeinstallprompt, neodigmSodaPop.isOpen(), this.isInStandaloneMode() )
