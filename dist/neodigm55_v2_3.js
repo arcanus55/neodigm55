@@ -27,6 +27,8 @@ let neodigmOpt = {
     N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ],
   neodigmKPI: true,
     N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
+  neodigmPWA: true,
+    N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
   N55_AMPM_THEME: "light",
@@ -802,6 +804,57 @@ class NeodigmKPI {
 }
 let neodigmKPI = new NeodigmKPI( document, ["[data-n55-kpi]"] )
 
+//  Neodigm 55 PWA Begin //
+class NeodigmPWA {
+  /*
+  open soda after about 5 min - IF complient, no open sodas, and not in standalone
+  fire install (and toast) if CTA clicked. Add event to datalayer.
+  */
+  constructor( _d, _aQ ) {
+      this._d = _d; this._aQ = _aQ
+      this.bIsInit = false
+      this._beforeinstallprompt = null
+  }
+  init (){
+    this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
+    if( this.aE ){
+      window.addEventListener("DOMContentLoaded", function(){
+        window.addEventListener("beforeinstallprompt", function( ev ){
+            neodigmUtils.dataLayer( "event", "beforeInstallPrompt" )
+            this._beforeinstallprompt = ev
+            if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55 pwa | beforeinstallprompt" )
+        })
+      })
+      window.addEventListener("appinstalled", () => {
+        setTimeout(function(){
+            neodigmToast.q("Application Installed ✨", "brand")
+            if( neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 8 )
+            neodigmUtils.dataLayer( "event", "appinstalled" )
+        }, 1200)
+        if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55 pwa | appinstalled" )
+      });
+      this.bIsInit = true      
+    }
+    return this
+  }
+  autoOpen ( pause = 0 ){
+    if( this.bIsInit ){
+      setTimeout(function(){
+        if( this._beforeinstallprompt && !neodigmSodaPop.isOpen() && !this.isInStandaloneMode() ) neodigmSodaPop.autoOpen( this._aQ[0] )
+      }, pause)      
+    }
+    return this;
+  }
+  install (){
+    if( this.bIsInit ){
+      if( this._beforeinstallprompt ) this._beforeinstallprompt.prompt(), this._beforeinstallprompt = null
+    }
+  }
+  isInStandaloneMode = () => ( "standalone" in window.navigator ) && ( window.navigator.standalone )
+}
+let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
+
+
 
 // v2.3.0 - Refactor Toast and Metronome STATIC
 //  Neodigm 55 SodaPop Simple Tab Plug-in //
@@ -862,6 +915,7 @@ function doDOMContentLoaded(){
     if( neodigmOpt.neodigmMarquee ) neodigmMarquee.init()
     if( neodigmOpt.neodigmEnchantedCTA ) neodigmEnchantedCTA.init()
     if( neodigmOpt.neodigmKPI ) neodigmKPI.init()
+    if( neodigmOpt.neodigmPWA ) neodigmPWA.init()
   }, 56)
 }
 
