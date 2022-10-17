@@ -818,12 +818,10 @@ class NeodigmPWA {
   init (){
     this.aE = [ ... this._d.querySelectorAll( "#" + this._aQ[0] )]
     if( this.aE ){
-      window.addEventListener("DOMContentLoaded", function(){
-        window.addEventListener("beforeinstallprompt", function( ev ){
-            neodigmUtils.dataLayer( "event", "beforeInstallPrompt" )
-            this._beforeinstallprompt = ev
-            if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55 pwa | beforeinstallprompt" )
-        })
+      window.addEventListener("beforeinstallprompt", function( ev ){
+          neodigmUtils.dataLayer( "event", "beforeInstallPrompt" )
+          this._beforeinstallprompt = ev
+          if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55 pwa | beforeinstallprompt" )
       })
       window.addEventListener("appinstalled", () => {
         setTimeout(function(){
