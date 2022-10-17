@@ -838,6 +838,7 @@ class NeodigmPWA {
     return this
   }
   autoOpen ( pause = 0 ){ 
+console.log(" ~~~ | ", this.bIsInit, this._beforeinstallprompt, neodigmSodaPop.isOpen(), this.isInStandaloneMode() )
     if( this.bIsInit ){
       setTimeout(function(){
         if( this._beforeinstallprompt && !neodigmSodaPop.isOpen() && !this.isInStandaloneMode() ) neodigmSodaPop.autoOpen( this._aQ[0] )
