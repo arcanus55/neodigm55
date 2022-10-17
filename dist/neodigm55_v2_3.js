@@ -839,7 +839,7 @@ class NeodigmPWA {
 console.log(" ~~~ | ", this.bIsInit, this._beforeinstallprompt, neodigmSodaPop.isOpen(), this.isInStandaloneMode() )
     if( this.bIsInit ){
       setTimeout(function(){
-        if( this._beforeinstallprompt && !neodigmSodaPop.isOpen() && !this.isInStandaloneMode() ) neodigmSodaPop.autoOpen( this._aQ[0] )
+        if( neodigmPWA._beforeinstallprompt && !neodigmSodaPop.isOpen() && !neodigmPWA.isInStandaloneMode() ) neodigmSodaPop.autoOpen( neodigmPWA._aQ[0] )
       }, pause)      
     }
     return this;
