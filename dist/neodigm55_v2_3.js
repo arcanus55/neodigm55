@@ -831,14 +831,11 @@ class NeodigmPWA {
     return this
   }
   beforeinstallprompt ( ev ){
-    console.log(" ~~~ ev | ", ev)
-
     neodigmUtils.dataLayer( "event", "beforeInstallPrompt" )
     this._beforeinstallprompt = ev
     if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55 pwa | beforeinstallprompt" )
   }
   autoOpen ( pause = 0 ){ 
-console.log(" ~~~ | ", this.bIsInit, this._beforeinstallprompt, neodigmSodaPop.isOpen(), this.isInStandaloneMode() )
     if( this.bIsInit ){
       setTimeout(function(){
         if( neodigmPWA._beforeinstallprompt && !neodigmSodaPop.isOpen() && !neodigmPWA.isInStandaloneMode() ) neodigmSodaPop.autoOpen( neodigmPWA._aQ[0] )
