@@ -235,7 +235,7 @@ class NeodigmSodaPop {
             if( neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator) window.navigator.vibrate([8, 16])
             if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(3)
             this.bIsOpen = false
-            if( this.bIsFS ) _d.exitFullscreen();
+            if( this.bIsFS ) this._d.exitFullscreen();
             if( neodigmOpt.N55_GTM_DL_POP_CLOSE ) neodigmUtils.dataLayer( neodigmOpt.N55_GTM_DL_POP_CLOSE, "close" )
         }
         return this
@@ -830,7 +830,7 @@ class NeodigmPWA {
     }
     return this
   }
-  beforeinstallprompt ( ev ){
+  beforeinstallprompt ( ev ){  //  TODO update global body data attr INSTALLABLE
     neodigmUtils.dataLayer( "event", "beforeInstallPrompt" )
     this._beforeinstallprompt = ev
     if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55 pwa | beforeinstallprompt" )
