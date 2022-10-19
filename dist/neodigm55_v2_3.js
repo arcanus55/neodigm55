@@ -16,7 +16,7 @@ let neodigmOpt = {
     N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
     N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
   neodigmWired4Sound: true,
-    W4S_VOLUME: .040,
+    W4S_VOLUME: .032,
     EVENT_SOUNDS: true,
   neodigmParallax: true,
     PRLX_MOBILE: false,  //  Show Parallax on Mobile
@@ -807,7 +807,7 @@ let neodigmKPI = new NeodigmKPI( document, ["[data-n55-kpi]"] )
 //  Neodigm 55 PWA Begin //
 class NeodigmPWA {
   /*
-  open soda after about 5 min - IF complient, no open sodas, and not in standalone
+  open soda after about 5 min (host logic) - IF compliant, no open sodas, and not in (standalone?)
   fire install (and toast) if CTA clicked. Add event to datalayer.
   */
   constructor( _d, _aQ ) {
@@ -837,7 +837,7 @@ class NeodigmPWA {
   }
   autoOpen ( pause = 0 ){ 
     if( this.bIsInit ){
-      setTimeout(function(){
+      setTimeout(function(){  //  TODO SessionStorage semaphore
         if( neodigmPWA._beforeinstallprompt && !neodigmSodaPop.isOpen() && !neodigmPWA.isInStandaloneMode() ) neodigmSodaPop.autoOpen( neodigmPWA._aQ[0] )
       }, pause)      
     }
