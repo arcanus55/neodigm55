@@ -36,7 +36,8 @@ let neodigmOpt = {
   N55_GENRE_MOTIF: "neodigm",  //  steampunk cyberpunk artdeco noir anime casino
   N55_THEME_DEFAULT: "brand",
   N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"],
-   "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"], "party":["FF6F61","C93F60"]}
+   "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"], "party":["FF6F61","C93F60"]},
+  N55_APP_STATE: {"FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXT": false, "FOCUS": true, "AMPM": "light"}
 }
 
 if( typeof neodigmOptCustom != 'undefined' ){
@@ -74,9 +75,21 @@ const neodigmUtils = ( ( _d ) =>{
       });
       return aDret.join("");
     },
-    dataLayer: function( event, msg ){
+    doDataLayer: function( event, msg ){
       if( neodigmOpt.N55_DEBUG_lOG ) console.log( "ga | " + event + " | " + msg )
       if( window.dataLayer ) window.dataLayer.push( { "event": event, "msg": msg } )
+    },
+    doHaptic: function( aVib ){
+      if( neodigmOpt.N55_APP_STATE.FIRST_TAP && neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator){
+        if( neodigmOpt.N55_DEBUG_lOG ) console.log( "haptic | ", aVib )
+        window.navigator.vibrate( aVib )
+      }
+    },
+    appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
+      const qContext = "body"
+      document[ qContext ].addEventListener( "click", function( ev ){
+        if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
+      })
     },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || ""
   }
@@ -97,7 +110,7 @@ let neodigmToast = (function(_d, eID, _q) {
       _eSb.classList.remove("snackbar__cont--hide")
       if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 1 )
     _eSb.classList.add("snackbar__cont--show")
-    if( neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator) window.navigator.vibrate([48, 56])
+    neodigmUtils.doHaptic([48, 56])
     setTimeout(_fClose, _nTimeout)
   };
   return {
@@ -128,7 +141,7 @@ let neodigmToast = (function(_d, eID, _q) {
           if( bIsInit && !bIsPause ){ 
             if( sMsg && sMsg != _aQ[0]?.sMsg ){
               _aQ.push( {"sMsg": sMsg, "sTheme":sTheme} ) // temporal debounce
-              if( neodigmOpt.N55_GTM_DL_TOAST ) neodigmUtils.dataLayer( neodigmOpt.N55_GTM_DL_TOAST, sMsg )
+              if( neodigmOpt.N55_GTM_DL_TOAST ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_TOAST, sMsg )
               if(_aQ.length == 1) _fOpen()              
             }
           }
@@ -201,7 +214,7 @@ class NeodigmSodaPop {
           }, 276)
           this.eSoda.innerHTML = this.eTmpl.innerHTML
           this._d.body.appendChild(this.eSoda)
-          if( neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator) window.navigator.vibrate([16, 8])
+          neodigmUtils.doHaptic([16, 8])
           if( this.eTmpl.dataset.n55ClaireWaxon ){
             // if( this.eTmpl.dataset.n55ClaireTheme ) NeodigmClaire.setTheme( this.eTmpl.dataset.n55ClaireTheme )
             // NeodigmClaire.showCanv( this._aQ[1] ).initCanv( this._aQ[1] ).waxOn( this._aQ[1], neodigmOpt.N55_GENRE_MOTIF )
@@ -211,7 +224,7 @@ class NeodigmSodaPop {
           if( this.bIsFS ) this._d.body.requestFullscreen()
           this.bIsOpen = true;
           if(this.fOnAfterOpen) this.fOnAfterOpen()
-          if( neodigmOpt.N55_GTM_DL_POP_OPEN ) neodigmUtils.dataLayer( neodigmOpt.N55_GTM_DL_POP_OPEN, _sId )
+          if( neodigmOpt.N55_GTM_DL_POP_OPEN ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_POP_OPEN, _sId )
       }
       return neodigmSodaPop
     }
@@ -232,23 +245,23 @@ class NeodigmSodaPop {
                     }, 332)
                 }, 186)
             }
-            if( neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator) window.navigator.vibrate([8, 16])
+            neodigmUtils.doHaptic([8, 16])
             if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(3)
             this.bIsOpen = false
             if( this.bIsFS ) this._d.exitFullscreen();
-            if( neodigmOpt.N55_GTM_DL_POP_CLOSE ) neodigmUtils.dataLayer( neodigmOpt.N55_GTM_DL_POP_CLOSE, "close" )
+            if( neodigmOpt.N55_GTM_DL_POP_CLOSE ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_POP_CLOSE, "close" )
         }
         return this
     }
     shake() {
         if(this.bIsInit && this.bIsOpen) {
-            if( neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator) window.navigator.vibrate([8, 32, 48])
+            neodigmUtils.doHaptic([8, 32, 48])
             neodigmSodaPop.eSoda.classList.add("ndsp__opened--shake1");
             setTimeout(function(){
                 neodigmSodaPop.eSoda.classList.remove("ndsp__opened--shake1");
             }, 460)
             if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 13 )
-            if( neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator) window.navigator.vibrate([48, 32, 8])
+            neodigmUtils.doHaptic([48, 32, 8])
         }
         return this
     }
@@ -310,7 +323,7 @@ class NeodigmWired4Sound {
     this.bIsPause = false; return this;
   } }
   sound ( nSnd ) {
-    if( this.bIsInit && !this.bIsPause){
+    if( this.bIsInit && !this.bIsPause && neodigmOpt.N55_APP_STATE.FIRST_TAP ){
       if(typeof nSnd  === "object"){
         if( zzfx ) zzfx(... nSnd )
       }else{
@@ -679,7 +692,7 @@ class NeodigmEnchantedCTA {
       if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
         let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
         let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
-        if( bCta && neodigmOpt.N55_GTM_DL_CTA ) neodigmUtils.dataLayer( neodigmOpt.N55_GTM_DL_CTA, sId )
+        if( bCta && neodigmOpt.N55_GTM_DL_CTA ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CTA, sId )
         let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
         if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
       }, false)
@@ -776,7 +789,7 @@ class NeodigmKPI {
     if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
       let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
       let bCta = ("n55Kpi" in ev?.target?.dataset) || ("n55Kpi" in ev?.srcElement?.parentNode?.dataset)
-      if( bCta && neodigmOpt.N55_GTM_DL_KPI ) neodigmUtils.dataLayer( neodigmOpt.N55_GTM_DL_KPI, sId )
+      if( bCta && neodigmOpt.N55_GTM_DL_KPI ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_KPI, sId )
     }, false)
     if( neodigmOpt.N55_CTA_RND_TOUCH ){
       neodigmMetronome.subscribe( function(){ neodigmKPI.touch() }, neodigmOpt.N55_CTA_RND_TOUCH )
@@ -822,7 +835,7 @@ class NeodigmPWA {
         setTimeout(function(){
             neodigmToast.q("Application Installed ✨", "brand")
             if( neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 8 )
-            neodigmUtils.dataLayer( "event", "appinstalled" )
+            neodigmUtils.doDataLayer( "event", "appinstalled" )
         }, 1200)
         if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55 pwa | appinstalled" )
       });
@@ -831,7 +844,7 @@ class NeodigmPWA {
     return this
   }
   beforeinstallprompt ( ev ){  //  TODO update global body data attr INSTALLABLE
-    neodigmUtils.dataLayer( "event", "beforeInstallPrompt" )
+    neodigmUtils.doDataLayer( "event", "beforeInstallPrompt" )
     this._beforeinstallprompt = ev
     if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55 pwa | beforeinstallprompt" )
   }
@@ -902,6 +915,7 @@ function doDOMContentLoaded(){
   eMU.innerHTML = neodigmMU;
   document.body.appendChild(eMU);
   setTimeout( ()=>{
+    neodigmUtils.appStateListen()  //  Bind to Host
     neodigmMetronome.init()  //  Always-on
     NeodigmClaire.init()
     if( neodigmOpt.N55_AMPM_THEME && !document.body.dataset.n55AmpmTheme ) document.body.dataset.n55AmpmTheme = neodigmOpt.N55_AMPM_THEME
