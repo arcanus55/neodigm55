@@ -79,12 +79,6 @@ const neodigmUtils = ( ( _d ) =>{
       if( neodigmOpt.N55_DEBUG_lOG ) console.log( "ga | " + event + " | " + msg )
       if( window.dataLayer ) window.dataLayer.push( { "event": event, "msg": msg } )
     },
-    doHaptic: function( aVib ){
-      if( neodigmOpt.N55_APP_STATE.FIRST_TAP && neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator){
-        if( neodigmOpt.N55_DEBUG_lOG ) console.log( "haptic | ", aVib )
-        window.navigator.vibrate( aVib )
-      }
-    },
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
       const qContext = "body"
       document[ qContext ].addEventListener( "click", function( ev ){
@@ -110,7 +104,7 @@ let neodigmToast = (function(_d, eID, _q) {
       _eSb.classList.remove("snackbar__cont--hide")
       if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 1 )
     _eSb.classList.add("snackbar__cont--show")
-    neodigmUtils.doHaptic([48, 56])
+    if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([48, 56])
     setTimeout(_fClose, _nTimeout)
   };
   return {
@@ -214,7 +208,7 @@ class NeodigmSodaPop {
           }, 276)
           this.eSoda.innerHTML = this.eTmpl.innerHTML
           this._d.body.appendChild(this.eSoda)
-          neodigmUtils.doHaptic([16, 8])
+          if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([16, 8])
           if( this.eTmpl.dataset.n55ClaireWaxon ){
             // if( this.eTmpl.dataset.n55ClaireTheme ) NeodigmClaire.setTheme( this.eTmpl.dataset.n55ClaireTheme )
             // NeodigmClaire.showCanv( this._aQ[1] ).initCanv( this._aQ[1] ).waxOn( this._aQ[1], neodigmOpt.N55_GENRE_MOTIF )
@@ -245,7 +239,7 @@ class NeodigmSodaPop {
                     }, 332)
                 }, 186)
             }
-            neodigmUtils.doHaptic([8, 16])
+            if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([8, 16])
             if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(3)
             this.bIsOpen = false
             if( this.bIsFS ) this._d.exitFullscreen();
@@ -255,13 +249,13 @@ class NeodigmSodaPop {
     }
     shake() {
         if(this.bIsInit && this.bIsOpen) {
-            neodigmUtils.doHaptic([8, 32, 48])
+            if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([8, 32, 48])
             neodigmSodaPop.eSoda.classList.add("ndsp__opened--shake1");
             setTimeout(function(){
                 neodigmSodaPop.eSoda.classList.remove("ndsp__opened--shake1");
             }, 460)
             if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 13 )
-            neodigmUtils.doHaptic([48, 32, 8])
+            if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([48, 32, 8])
         }
         return this
     }
@@ -332,6 +326,12 @@ class NeodigmWired4Sound {
       }
     }
     return this
+  }
+  doHaptic ( aVib ){
+    if( neodigmOpt.N55_APP_STATE.FIRST_TAP && neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator){
+      if( neodigmOpt.N55_DEBUG_lOG ) console.log( "haptic | ", aVib )  //  delete this line
+      window.navigator.vibrate( aVib )
+    }
   }
   setVolume ( nVol ) { if( zzfxV ) zzfxV = nVol; return this }
 }
