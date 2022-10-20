@@ -81,7 +81,7 @@ const neodigmUtils = ( ( _d ) =>{
     },
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
       const qContext = "body"
-      document[ qContext ].addEventListener( "touchend", function( ev ){
+      document[ qContext ].addEventListener( "click", function( ev ){
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
       })
     },
