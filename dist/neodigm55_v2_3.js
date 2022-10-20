@@ -308,8 +308,7 @@ class NeodigmWired4Sound {
         if( evAtr && (evTheme != "disabled") ) neodigmWired4Sound.sound( evAtr )
       }, false);
     })
-    this.bIsInit = true
-    return this
+    this.bIsInit = true; return this
   }
   pause (){ if( this.bIsInit ){ this.bIsPause = true;  return this; } }
   play ( sSnd ){ if( this.bIsInit ){
@@ -329,9 +328,9 @@ class NeodigmWired4Sound {
   }
   doHaptic ( aVib ){
     if( neodigmOpt.N55_APP_STATE.FIRST_TAP && neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator){
-      if( neodigmOpt.N55_DEBUG_lOG ) console.log( "haptic | ", aVib )  //  delete this line
       window.navigator.vibrate( aVib )
     }
+    return this
   }
   setVolume ( nVol ) { if( zzfxV ) zzfxV = nVol; return this }
 }
