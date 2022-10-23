@@ -5,11 +5,12 @@ Neodigm 55 is low-code, performant, accessible, and open source. Because it’s 
 
 # Getting Started
 
-Simply copy the two lines of code and paste into the head of any HTML page that you want to make enchanted.
+Simply copy the three lines of code and paste into the head of any HTML page that you want to make enchanted.
 
 ```
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v2_0.min.css">
-<script src="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v2_0.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v2_3.min.css"></link>
+<script src="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55_v2_3.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|Roboto+Slab:300,400" rel="stylesheet" type="text/css"></link>
 ```
 
 <p align="center">
