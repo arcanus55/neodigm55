@@ -139,14 +139,17 @@ neodigm-sodapop {
     margin: 0 auto; padding: 10px;
     position: fixed;
     top: 74px; right: 0; left: 0;
-    max-height: calc(100vh - 176px);
+     max-height: calc(100vh - 156px);
     overflow-y: scroll; overflow-x: hidden;
     z-index: 258;
 }
+neodigm-sodapop[data-n55-sodapop-fullscreen='true'] { max-height: calc(100vh - 24px); }
+neodigm-sodapop[data-n55-sodapop-fullscreen='true'].ndsp__opened { top: 24px; }
+
 neodigm-sodapop.ndsp__opened {
     border-radius: 12px;
 	transform: rotate(0deg);
-    min-height: 176px;
+    min-height: 156px;
     top: 60px;
 }
 neodigm-sodapop.ndsp__opened--shake1 {
