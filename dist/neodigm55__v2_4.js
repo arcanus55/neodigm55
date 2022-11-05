@@ -215,7 +215,10 @@ class NeodigmSodaPop {
           }
           if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7 )
           this.bIsFS = ( this.eTmpl.dataset.n55SodapopFullscreen == "true" && neodigmOpt.N55_APP_STATE.FIRST_TAP )
-          if( this.bIsFS ) this._d.body.requestFullscreen()
+          if( this.bIsFS ){
+            this._d.body.requestFullscreen()
+            if(this.bIsModal) this.eSoda.classList.add("ndsp__full")
+          }
           this.bIsOpen = true;
           if(this.fOnAfterOpen) this.fOnAfterOpen()
           if( neodigmOpt.N55_GTM_DL_POP_OPEN ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_POP_OPEN, _sId )
