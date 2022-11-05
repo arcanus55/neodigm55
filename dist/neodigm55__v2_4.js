@@ -195,8 +195,7 @@ class NeodigmSodaPop {
           }else{
             this.eClose.classList.remove("ndsp__modal")
           }
-          this.eScrim.dataset.n55SodapopScrim = "opened"
-          this.eClose.dataset.n55SodapopScrim = "opened"
+          this.eScrim.dataset.n55SodapopScrim = this.eClose.dataset.n55SodapopScrim = "opened"
           this.eSoda = this._d.createElement(this._aQ[1])
           setTimeout(function() {
               neodigmSodaPop.eScrim.classList.add("ndsp__blur");
