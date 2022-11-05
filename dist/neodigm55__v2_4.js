@@ -217,7 +217,7 @@ class NeodigmSodaPop {
           this.bIsFS = ( this.eTmpl.dataset.n55SodapopFullscreen == "true" && neodigmOpt.N55_APP_STATE.FIRST_TAP )
           if( this.bIsFS ){
             this._d.body.requestFullscreen()
-            if(this.bIsModal) this.eSoda.classList.add("ndsp__full")
+            if(this.bIsModal) this.eSoda.classList.add("n55SodapopFullscreen")
           }
           this.bIsOpen = true;
           if(this.fOnAfterOpen) this.fOnAfterOpen()
