@@ -143,7 +143,7 @@ neodigm-sodapop {
     overflow-y: scroll; overflow-x: hidden;
     z-index: 258;
 }
-neodigm-sodapop.n55SodapopFullscreen.ndsp__opened { max-height: calc(100vh - 24px); }
+neodigm-sodapop.n55SodapopFullscreen.ndsp__opened { max-height: calc(100vh - 56px); max-height: calc(100vh - 56px); }
 neodigm-sodapop.n55SodapopFullscreen.ndsp__opened { top: 16px; }
 
 neodigm-sodapop.ndsp__opened {
