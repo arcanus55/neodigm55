@@ -215,7 +215,10 @@ class NeodigmSodaPop {
           if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7 )
           this.bIsFS = ( this.eTmpl.dataset.n55SodapopFullscreen == "true" && neodigmOpt.N55_APP_STATE.FIRST_TAP )
           if( this.bIsFS ){
-            this._d.body.requestFullscreen()
+            this._d.body.requestFullscreen().catch(( e )=>{
+              console.log( "no fullscreen", e )
+              this.bIsFS = false 
+            })
             neodigmSodaPop.eSoda.classList.add("n55SodapopFullscreen")
           }
           this.bIsOpen = true;
