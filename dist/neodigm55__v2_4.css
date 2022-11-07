@@ -347,10 +347,10 @@ background-color: rgba( 96, 88, 44, 0);
     line-height: 1;
 	text-align: center;
 }
-[data-n55-enchanted-cta]:hover:not([data-n55-theme="disabled"]) span:nth-of-type(1){
+[data-n55-enchanted-cta]:hover:not([data-n55-theme="disabled"], [data-n55-enchanted-cta-hover-an="false"]) span:nth-of-type(1){
 	transform: translateY(60px);
 }
-[data-n55-enchanted-cta] span:nth-of-type(2){
+[data-n55-enchanted-cta]:not([data-n55-theme="disabled"], [data-n55-enchanted-cta-hover-an="false"]) span:nth-of-type(2){
 	display: block;
 	left: 0; top: 0;
 	position: absolute;
@@ -359,9 +359,13 @@ background-color: rgba( 96, 88, 44, 0);
 	transition: all .5s ease;
 	width: 100%;
 }
-[data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']:hover:not([data-n55-theme="disabled"])  span:nth-of-type(2){ transform: translateY(8px); }
-[data-n55-enchanted-cta][data-n55-enchanted-cta-size='medium']:hover:not([data-n55-theme="disabled"]) span:nth-of-type(2){ transform: translateY(12px); }
-[data-n55-enchanted-cta][data-n55-enchanted-cta-size='large']:hover:not([data-n55-theme="disabled"])  span:nth-of-type(2){ transform: translateY(14px); }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-hover-an="false"] span:nth-of-type(2){
+	display: none;
+}
+
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']:hover:not([data-n55-theme="disabled"], [data-n55-enchanted-cta-hover-an="false"])  span:nth-of-type(2){ transform: translateY(8px); }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='medium']:hover:not([data-n55-theme="disabled"], [data-n55-enchanted-cta-hover-an="false"]) span:nth-of-type(2){ transform: translateY(12px); }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='large']:hover:not([data-n55-theme="disabled"], [data-n55-enchanted-cta-hover-an="false"])  span:nth-of-type(2){ transform: translateY(14px); }
 
 [data-n55-enchanted-cta][data-n55-theme='brand']     { background: linear-gradient(var(--neodigm-theme-brand), var(--neodigm-theme-brand-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='primary']   { background: linear-gradient(var(--neodigm-theme-primary), var(--neodigm-theme-primary-alt)); }
