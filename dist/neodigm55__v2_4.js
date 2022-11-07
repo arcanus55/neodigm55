@@ -84,6 +84,9 @@ const neodigmUtils = ( ( _d ) =>{
       document[ qContext ].addEventListener( "click", function( ev ){
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
       })
+      document[ qContext ].addEventListener( "touchstart", function( ev ){
+        if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
+      })
     },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || ""
   }
