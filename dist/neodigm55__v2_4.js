@@ -153,12 +153,12 @@ let neodigmToast = (function(_d, eID, _q) {
       play:  function(){ bIsPause = false; return neodigmToast; }
   }
 })(document, "js-snackbar__id", "[data-n55-toast]");
-
 //  Neodigm 55 Soda Pop Begin  //
 class NeodigmSodaPop {
     constructor(_d, _aQ) {  //  Flux Capacitor
-        this._d = _d; this._aQ = _aQ
-        this.eSoda = this.eScrim = this.eClose = this.fOnBeforeOpen = this.fOnAfterOpen = this.fOnClose = this.fOnBeforeUserExit = null
+        this._d = _d; this._aQ = _aQ; this.sId = ""
+        this.eSoda = this.eScrim = this.eClose = this.fOnBeforeUserExit = null
+        this.fOnBeforeOpen = {}; this.fOnAfterOpen = {}; this.fOnClose = {}
         this.bIsOpen = this.bIsModal = this.bIsInit = false
     }
     init() {
@@ -188,10 +188,12 @@ class NeodigmSodaPop {
         return this
     }
     open( _sId ) {
+      this.sId = _sId
       if(this.bIsOpen) this.close(true)
       this.eTmpl = this._d.getElementById(_sId)
       if(this.bIsInit && this.eTmpl && this.eScrim) {
-          if(this.fOnBeforeOpen) this.fOnBeforeOpen()
+          if(this.fOnBeforeOpen[_sId]) this.fOnBeforeOpen[_sId]()
+          if(this.fOnBeforeOpen["def"]) this.fOnBeforeOpen["def"]()
           this.bIsModal = (this.eTmpl.dataset.n55SodapopModal == "true")
           if(this.bIsModal) {
             this.eClose.classList.add("ndsp__modal")
@@ -225,14 +227,16 @@ class NeodigmSodaPop {
             neodigmSodaPop.eSoda.classList.add("n55SodapopFullscreen")
           }
           this.bIsOpen = true;
-          if(this.fOnAfterOpen) this.fOnAfterOpen()
+          if(this.fOnAfterOpen[_sId]) this.fOnAfterOpen[_sId]()
+          if(this.fOnAfterOpen["def"]) this.fOnAfterOpen["def"]()
           if( neodigmOpt.N55_GTM_DL_POP_OPEN ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_POP_OPEN, _sId )
       }
       return neodigmSodaPop
     }
     close( _bFast ) {
         if(this.bIsInit && this.bIsOpen) {
-            if(this.fOnClose) this.fOnClose()
+            if(this.fOnClose[this.sId]) this.fOnClose[this.sId]()
+            if(this.fOnClose["def"]) this.fOnClose["def"]()
             this.eClose.dataset.n55SodapopScrim = "closed"
             if(_bFast) {
                 this.eSoda.remove()
@@ -273,11 +277,11 @@ class NeodigmSodaPop {
         }, 256);
         return this
     }
-    isOpen() { return this.bIsOpen }
-    setOnBeforeOpen(_f) { this.fOnBeforeOpen = _f }
-    setOnAfterOpen(_f) { this.fOnAfterOpen = _f }
-    setOnClose(_f) { this.fOnClose = _f }
-    setOnBeforeUserExit(_f) { if( this.bIsInit ) this.fOnBeforeUserExit = _f }
+    isOpen(){ return this.bIsOpen }
+    setOnBeforeOpen( _f, id="def"){ this.fOnBeforeOpen[ id ] = _f }
+    setOnAfterOpen( _f, id="def"){ this.fOnAfterOpen[ id ] = _f }
+    setOnClose( _f, id="def"){ this.fOnClose[ id ] = _f }
+    setOnBeforeUserExit(_f){ this.fOnBeforeUserExit = _f }
 }
 let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-n55-sodapop-modal"] )
 
