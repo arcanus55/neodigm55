@@ -176,6 +176,32 @@ neodigm-sodapop:not(.ndsp__modal)::after {
 }
 /*  Neodigm Soda Pop End  */
 
+/*  Neodigm Carousel Begin  */
+neodigm-carousel {
+    position: relative;
+    display: block;
+    height: 100%; width: 100%;
+    overflow-y:scroll;
+}
+neodigm-carousel > section {
+    position: relative;
+    display: grid;
+    grid-area: box-content;
+    margin: 0 auto; padding: 8px;
+    align-content: center;  
+    box-sizing: border-box;
+background-color: #edba08;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+width: 3000px;
+}
+neodigm-carousel > section > section {
+    position: relative;
+    display: block;
+    border: solid 1px #810000;
+}
+/*  Neodigm Carousel End  */
+
+
 /*  Neodigm Parallax Begin  */
 neodigm-parallax[data-n55-parallax-mobile='false'],
 neodigm-parallax[data-n55-parallax-mobile='false'] * { display: none; }

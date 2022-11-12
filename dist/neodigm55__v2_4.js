@@ -29,6 +29,8 @@ let neodigmOpt = {
     N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
   neodigmPWA: true,
     N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
+neodigmCarousel: false,
+    N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
   N55_AMPM_THEME: "light",
@@ -799,8 +801,8 @@ class NeodigmKPI {
     this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
     if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
       let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
-      let bCta = ("n55Kpi" in ev?.target?.dataset) || ("n55Kpi" in ev?.srcElement?.parentNode?.dataset)
-      if( bCta && neodigmOpt.N55_GTM_DL_KPI ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_KPI, sId )
+      let bKPI = ("n55Kpi" in ev?.target?.dataset) || ("n55Kpi" in ev?.srcElement?.parentNode?.dataset)
+      if( bKPI && neodigmOpt.N55_GTM_DL_KPI ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_KPI, sId )
     }, false)
     if( neodigmOpt.N55_CTA_RND_TOUCH ){
       neodigmMetronome.subscribe( function(){ neodigmKPI.touch() }, neodigmOpt.N55_CTA_RND_TOUCH )
@@ -827,6 +829,57 @@ class NeodigmKPI {
   touch (){ return this; }
 }
 let neodigmKPI = new NeodigmKPI( document, ["[data-n55-kpi]"] )
+
+//  Neodigm 55 Carousel  Begin //
+class NeodigmCarousel {
+  /*
+  More than one carousel at a time may exist
+  listen to window resize?
+  on scroll triggers horz
+  js nav by index, prev, or next
+
+  data-n55-carousel-nav={id:"myCarousel", nav: "index|next|prev"}
+  */
+  constructor( _d, _aQ ) {
+      this._d = _d; this._aQ = _aQ
+      this.bIsInit = false; this.bIsPause = false
+      this.aE = []
+  }
+  init (){
+    this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
+    if( this.aE.length ){
+      this.aE.forEach(function( eC ){
+        console.log( " ~~~ | ", eC.firstElementChild )
+        console.log( " ~~~ | ", eC.firstElementChild.style)
+        console.log( " ~~~ | ", eC.firstElementChild.style.gridTemplateColumns)
+      })
+      if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
+        let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
+        let bCarsl = ("n55CarsouelNav" in ev?.target?.dataset) || ("n55CarsouelNav" in ev?.srcElement?.parentNode?.dataset)
+        if( bCarsl && neodigmOpt.N55_GTM_DL_CARSL ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CARSL, sId )
+      }, false)
+      if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.aE )
+      this.bIsInit = true
+    }
+    return this
+  }
+  pause (){ this.bIsPause = true; return this; } // TODO Support a timer param
+  play (){ this.bIsPause = false; return this; }
+  setTheme ( sTheme, sId ){
+    if( this.bIsInit && !this.bIsPause ){
+      this.aE.forEach( (eC) => {  //  orig once n55Theme Property
+        if( eC.dataset.n55Theme && !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
+        if( sId ){
+          if( eC?.id == sId ) eC.dataset.n55Theme = sTheme
+        }else{
+          eC.dataset.n55Theme = sTheme
+        }
+      });
+    }
+  return this;
+  }
+}
+let neodigmCarousel = new NeodigmCarousel( document, ["neodigm-carousel"] )
 
 //  Neodigm 55 PWA Begin //
 class NeodigmPWA {
@@ -939,6 +992,7 @@ function doDOMContentLoaded(){
     if( neodigmOpt.neodigmEnchantedCTA ) neodigmEnchantedCTA.init()
     if( neodigmOpt.neodigmKPI ) neodigmKPI.init()
     if( neodigmOpt.neodigmPWA ) neodigmPWA.init()
+    if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
   }, 56)
 }
 
