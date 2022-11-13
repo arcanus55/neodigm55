@@ -29,7 +29,7 @@ let neodigmOpt = {
     N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
   neodigmPWA: true,
     N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
-neodigmCarousel: false,
+neodigmCarousel: true,
     N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
@@ -837,22 +837,26 @@ class NeodigmCarousel {
   listen to window resize?
   on scroll triggers horz
   js nav by index, prev, or next
+    top level temp3.scrollLeft = 900
 
   data-n55-carousel-nav={id:"myCarousel", nav: "index|next|prev"}
   */
   constructor( _d, _aQ ) {
       this._d = _d; this._aQ = _aQ
       this.bIsInit = false; this.bIsPause = false
-      this.aE = []
+      this.aelNC = []
   }
   init (){
-    this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
-    if( this.aE.length ){
-      this.aE.forEach(function( eC ){
-        console.log( " ~~~ | ", eC.firstElementChild )
-        console.log( " ~~~ | ", eC.firstElementChild.style)
-        console.log( " ~~~ | ", eC.firstElementChild.style.gridTemplateColumns)
+    this.aelNC = [ ... this._d.querySelectorAll( this._aQ[0] )] // All Carousels within DOM
+    if( this.aelNC.length ){
+      this.aelNC.forEach(function( elNC ){
+        elNC.n55State = {nIdx: 1, width: elNC.offsetWidth}
+        let elNCCntr = elNC.firstElementChild
+        elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll("section") ]  //  Tab Containers
+        elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.offsetWidth ) + "px" // First Section contr width * num children
+        elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
       })
+//  TODO Fire Carousel init on resize listener
       if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
         let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
         let bCarsl = ("n55CarsouelNav" in ev?.target?.dataset) || ("n55CarsouelNav" in ev?.srcElement?.parentNode?.dataset)
@@ -863,7 +867,29 @@ class NeodigmCarousel {
     }
     return this
   }
-  pause (){ this.bIsPause = true; return this; } // TODO Support a timer param
+  nav ( oNav ){
+    if( oNav?.id && this.bIsInit && !this.bIsPause ){
+      let elNC = this.aelNC.filter(function( el ){ return ( oNav.id == el.id ); })[0]
+      if( elNC ){
+        let elNCCntr = elNC.firstElementChild
+        let oState = elNC.n55State
+        switch( oNav.nav ){
+          case "next":
+            if( oState.nIdx < oState.aTabCntr.length) oState.nIdx++
+          break;
+          case "prev":
+            if( oState.nIdx != 1 ) oState.nIdx--
+          break;
+          default:
+            if( ( oNav.nav >= 1 ) && ( oNav.nav < (oState.aTabCntr.length + 1) ) ) oState.nIdx = elNC.n55State.nIdx = oNav.nav
+        }
+        let nSP = ( oState.nIdx - 1 ) * oState.width  //  Scroll Position
+        elNCCntr.style.marginLeft = ( nSP ) - ( nSP * 2 ) + "px"
+      }
+    }  //  TODO datalayer
+    return this;
+  }
+  pause (){ this.bIsPause = true; return this; } // TODO Support a timer param?
   play (){ this.bIsPause = false; return this; }
   setTheme ( sTheme, sId ){
     if( this.bIsInit && !this.bIsPause ){
