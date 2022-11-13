@@ -847,20 +847,25 @@ class NeodigmCarousel {
       this.aelNC = []
   }
   init (){
+    const NOFFSET = 0
     this.aelNC = [ ... this._d.querySelectorAll( this._aQ[0] )] // All Carousels within DOM
     if( this.aelNC.length ){
       this.aelNC.forEach(function( elNC ){
-        elNC.n55State = {nIdx: 1, width: elNC.offsetWidth}
+        elNC.n55State = {nIdx: 1, width: (elNC.offsetWidth - NOFFSET)}
         let elNCCntr = elNC.firstElementChild
         elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll("section") ]  //  Tab Containers
-        elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.offsetWidth ) + "px" // First Section contr width * num children
+        elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
         elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
       })
 //  TODO Fire Carousel init on resize listener
       if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
-        let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
-        let bCarsl = ("n55CarsouelNav" in ev?.target?.dataset) || ("n55CarsouelNav" in ev?.srcElement?.parentNode?.dataset)
-        if( bCarsl && neodigmOpt.N55_GTM_DL_CARSL ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CARSL, sId )
+        let bCarsl = ("n55CarouselNav" in ev?.target?.dataset) || ("n55CarouselNav" in ev?.srcElement?.parentNode?.dataset)
+        if( bCarsl ){
+          let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
+          let oNav = JSON.parse(ev.target.dataset.n55CarouselNav)
+          neodigmCarousel.nav( {id: oNav.id, nav: oNav.nav} )
+          if( neodigmOpt.N55_GTM_DL_CARSL ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CARSL, sId )
+        }
       }, false)
       if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.aE )
       this.bIsInit = true

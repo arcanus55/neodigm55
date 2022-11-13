@@ -180,18 +180,15 @@ neodigm-sodapop:not(.ndsp__modal)::after {
 neodigm-carousel {
     position: relative; display: block;
     height: 100%; width: 100%;
-    overflow:hidden;
+    overflow: hidden;
 }
 neodigm-carousel > section {
-    position: relative; display: grid;
+    position: relative; display: grid; gap: 8px;
     grid-area: box-content; box-sizing: border-box; align-content: center;  
-    margin: 0 auto; padding: 8px;
-    margin-left: 1px;
-	transition: all 1s ease-in-out;
+    margin: 0 auto; padding: 8px; margin-left: 1px;
+	transition: all .86s ease-in-out;
 }
-neodigm-carousel > section > section {
-    position: relative; display: block;
-}
+neodigm-carousel > section > section { position: relative; display: block; }
 /*  Neodigm Carousel End  */
 
 
