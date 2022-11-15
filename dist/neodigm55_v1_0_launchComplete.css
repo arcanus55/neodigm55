@@ -110,6 +110,7 @@ section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-mid );
 }
 .l-saas-crd .banner-cap-sm {
   font-size: 18px;
+  line-height: 2.6;
 }
 .saas-crd__rib--side > div { position: absolute; margin: 0 32px; }
       
