@@ -257,6 +257,10 @@ neodigm-marquee pre [data-n55-theme='marcom'] { color: var(--neodigm-theme-marco
 neodigm-marquee pre[data-n55-theme='party'],
 neodigm-marquee pre [data-n55-theme='party'] { color: var(--neodigm-theme-party); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-party-alt), 0.2rem 0.1rem 1rem #fff}
 
+neodigm-marquee[data-n55-marquee-size='xsmall'] { height: 24px; }
+neodigm-marquee[data-n55-marquee-size='xsmall'] * {
+    font-size: 14px; line-height: 1;
+}
 neodigm-marquee[data-n55-marquee-size='small'] { height: 28px; }
 neodigm-marquee[data-n55-marquee-size='small'] * {
     font-size: 20px; line-height: 1;
