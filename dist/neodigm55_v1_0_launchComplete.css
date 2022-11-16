@@ -122,6 +122,10 @@ section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-mid );
     content: "";
     position: absolute;
   }
+
+  .saas-crd__rib--side-lg {
+    width: 224px;
+  }
   
   .saas-crd__rib--side {
     width: 150px;
