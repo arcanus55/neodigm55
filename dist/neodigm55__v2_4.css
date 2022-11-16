@@ -273,6 +273,10 @@ neodigm-marquee[data-n55-marquee-size='large'] { height: 38px; }
 neodigm-marquee[data-n55-marquee-size='large'] * {
     font-size: 30px; line-height: 1.1;
 }
+neodigm-marquee[data-n55-marquee-size='xlarge'] { height: 48px; }
+neodigm-marquee[data-n55-marquee-size='xlarge'] * {
+    font-size: 38px; line-height: 1.2;
+}
 /*  Neodigm Marquee End  */
 
 /*  Neodigm Claire Begin  */
