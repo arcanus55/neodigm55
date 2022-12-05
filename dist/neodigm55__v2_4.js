@@ -89,6 +89,7 @@ const neodigmUtils = ( ( _d ) =>{
       document[ qContext ].addEventListener( "touchstart", function( ev ){
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
       })
+      window.addEventListener("resize", function( ev ){ if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init() })
     },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || ""
   }
