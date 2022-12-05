@@ -850,6 +850,7 @@ class NeodigmCarousel {
   init (){
     const NOFFSET = 0
     this.aelNC = [ ... this._d.querySelectorAll( this._aQ[0] )] // All Carousels within DOM
+console.log("~~~ ~~~ init | " + this.aelNC )
     if( this.aelNC.length ){
       this.aelNC.forEach(function( elNC ){
         elNC.n55State = {nIdx: 1, width: (elNC.offsetWidth - NOFFSET)}
