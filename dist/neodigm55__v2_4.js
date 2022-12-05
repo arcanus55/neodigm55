@@ -833,15 +833,6 @@ let neodigmKPI = new NeodigmKPI( document, ["[data-n55-kpi]"] )
 
 //  Neodigm 55 Carousel  Begin //
 class NeodigmCarousel {
-  /*
-  More than one carousel at a time may exist
-  listen to window resize?
-  on scroll triggers horz
-  js nav by index, prev, or next
-    top level temp3.scrollLeft = 900
-
-  data-n55-carousel-nav={id:"myCarousel", nav: "index|next|prev"}
-  */
   constructor( _d, _aQ ) {
       this._d = _d; this._aQ = _aQ
       this.bIsInit = false; this.bIsPause = false
@@ -850,7 +841,6 @@ class NeodigmCarousel {
   init (){
     const NOFFSET = 0
     this.aelNC = [ ... this._d.querySelectorAll( this._aQ[0] )] // All Carousels within DOM
-console.log("~~~ ~~~ init | " + this.aelNC )
     if( this.aelNC.length ){
       this.aelNC.forEach(function( elNC ){
         elNC.n55State = {nIdx: 1, width: (elNC.offsetWidth - NOFFSET)}
@@ -859,7 +849,6 @@ console.log("~~~ ~~~ init | " + this.aelNC )
         elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
         elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
       })
-//  TODO Fire Carousel init on resize listener
       if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
         let bCarsl = ("n55CarouselNav" in ev?.target?.dataset) || ("n55CarouselNav" in ev?.srcElement?.parentNode?.dataset)
         if( bCarsl ){
