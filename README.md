@@ -1,7 +1,11 @@
 # Simple JavaScript Popups micro-library | Small & Fast
+
+Neodigm 55 is different. It's an eclectic JavaScript UX micro-library. The lightweight components come together in a unique way that makes your website playful, fun, and bounceproof.
+
+Neodigm 55 is low-code, performant, accessible, and . Because it’s so easy to get started it is the perfect solution for quick landing pages, business accelerators, or event sites.
+
 An eclectic low-code vanilla [JavaScript UX micro-library](https://thescottkrause.com/emerging_tech/neodigm55_ux_library/) for those that defiantly think for themselves.
 
-Neodigm 55 is low-code, performant, accessible, and open source. Because it’s so easy to get started it is the perfect solution for quick landing pages or event sites.
 
 # Getting Started
 
