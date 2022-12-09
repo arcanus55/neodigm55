@@ -260,7 +260,8 @@ fill: var(  --m5lc-theme-info-alt );
   font-family: 'Roboto', sans-serif; font-weight: 100; font-size: 1.2rem;
 }
 .l-faq > details { padding: 0; margin: 4px; border: solid 1px #6a6a6a; border-radius: 0; }
-.l-faq > details > summary { text-align: center; list-style: none; cursor: pointer; color: #fff; background-color: #242424; padding: 16px 4px; margin: 0; border: solid 1px #edba08;}
+.l-faq > details > summary { text-align: center; list-style: none; cursor: pointer; color: #fff; background-color: #242424; padding: 16px 4px; margin: 0; border: solid 1px #8a8a8a;}
+.l-faq > details:hover > summary { border: solid 1px #edba08;}
 .l-faq > details > p { text-align: left; margin: 12px; }
 [data-n55-ampm-theme="light"] .l-faq > details > p { color: #000; }
 [data-n55-ampm-theme="dark"]  .l-faq > details > p { color: #fff; }
