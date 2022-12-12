@@ -1,5 +1,5 @@
 /*
-Neodigm 55 UX v2.5.0
+Neodigm 55 UX v2.4.0
 Copyright (c) 2021-2023, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
 
 Neodigm 55 is an eclectic JavaScript UX micro-library.
@@ -51,7 +51,7 @@ if( typeof neodigmOptCustom != 'undefined' ){
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
-    ver: "2.5.0",
+    ver: "2.4.0",
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
@@ -953,7 +953,7 @@ let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 
 
 
-// v2.5.0 - Refactor Toast and Metronome STATIC
+// v2.4.0 - Refactor Toast and Metronome STATIC
 //  Neodigm 55 SodaPop Simple Tab Plug-in //
 //  Neodigm 55 Enchanted CTA FlashTheme Round-robin //
 //  Neodigm 55 Claire Declaire-itive //
