@@ -839,15 +839,17 @@ class NeodigmCarousel {
       this.aelNC = []
   }
   init (){
-    const NOFFSET = 0
     this.aelNC = [ ... this._d.querySelectorAll( this._aQ[0] )] // All Carousels within DOM
     if( this.aelNC.length ){
       this.aelNC.forEach(function( elNC ){
-        elNC.n55State = {nIdx: 1, width: (elNC.offsetWidth - NOFFSET)}
-        let elNCCntr = elNC.firstElementChild
-        elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll("section") ]  //  Tab Containers
-        elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
-        elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
+        if( elNC.id ){
+          elNC.n55State = {nIdx: ( elNC.n55State?.nIdx ) ? elNC.n55State.nIdx : 1, width: elNC.offsetWidth}
+          let elNCCntr = elNC.firstElementChild
+          elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll("section") ]  //  Tab Containers
+          elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
+          elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
+          neodigmCarousel.nav( {id: elNC.id , nav: elNC.n55State.nIdx } )
+        }
       })
       if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
         let bCarsl = ("n55CarouselNav" in ev?.target?.dataset) || ("n55CarouselNav" in ev?.srcElement?.parentNode?.dataset)
@@ -954,10 +956,10 @@ let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 
 
 // v2.5.0 - Refactor Toast and Metronome STATIC
-//  Neodigm 55 SodaPop Simple Tab Plug-in //
+//  -Neodigm 55 SodaPop Simple Tab (Carosel) //
 //  Neodigm 55 Enchanted CTA FlashTheme Round-robin //
 //  Neodigm 55 Claire Declaire-itive //
-//  Neodigm 55 Confetti Begin (Claire) //
+//  -Neodigm 55 Confetti Begin (Claire) //
 //  Neodigm 55 Cypher Type FX Begin  //
 
 // v2.x.0
