@@ -63,34 +63,28 @@ All rights reserved. Redistributions of source code must retain the above copyri
 	bottom: -112px;
 	transition: bottom .6s ease-in-out
 }
-
 .l-snackbar .snackbar__cont--show {
 	bottom: 4px;
 	transition: bottom .6s ease-in-out
 }
-
 .l-snackbar .snackbar__cont--alt {
 	background: linear-gradient(45deg, #685b2d 0%, #d8ad12 100%) !important; 
 	box-shadow: inset #685b2d 0 0 6px 2px !important; 
 }
-
 .l-snackbar .snackbar__progbar {
 	height: 3px;
 	padding: 0; margin: 0;
 	position: relative;
 	top: 2px
 }
-
 .l-snackbar .snackbar__cont--hide .snackbar__progbar {
 	width: 0;
 	transition: width .1s ease-in-out;
 }
-
 .l-snackbar .snackbar__cont--show .snackbar__progbar {
 	width: 100%;
 	transition: width 6s ease-in-out;
 }
-
 .l-snackbar .snackbar__msg {
 	color: #fff;
 	font-family: sans-serif;
@@ -190,7 +184,6 @@ neodigm-carousel > section {
 }
 neodigm-carousel > section > section { position: relative; display: block; }
 /*  Neodigm Carousel End  */
-
 
 /*  Neodigm Parallax Begin  */
 neodigm-parallax[data-n55-parallax-mobile='false'],
@@ -381,9 +374,7 @@ background-color: rgba( 96, 88, 44, 0);
 	transition: all .5s ease;
 	width: 100%;
 }
-[data-n55-enchanted-cta][data-n55-enchanted-cta-hover-an="false"] span:nth-of-type(2){
-	display: none;
-}
+[data-n55-enchanted-cta][data-n55-enchanted-cta-hover-an="false"] span:nth-of-type(2){ display: none; }
 
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']:hover:not([data-n55-theme="disabled"], [data-n55-enchanted-cta-hover-an="false"])  span:nth-of-type(2){ transform: translateY(8px); }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='medium']:hover:not([data-n55-theme="disabled"], [data-n55-enchanted-cta-hover-an="false"]) span:nth-of-type(2){ transform: translateY(12px); }
@@ -489,7 +480,6 @@ neodigm-kpi {
     text-align: center;
     margin: 4px; padding: 4px;
 }
-
 neodigm-kpi > h5,
 neodigm-kpi > h6 {
     position: relative; overflow: hidden;
@@ -568,9 +558,14 @@ neodigm-kpi[data-n55-kpi-size='xlarge'] > h6 { font-size: 20px;}
 [data-n55-select][data-n55-theme='night']     { border-color: var(--neodigm-theme-night ); color: var(--neodigm-theme-night ); }
 [data-n55-select][data-n55-theme='marcom']    { border-color: var(--neodigm-theme-marcom ); color: var(--neodigm-theme-night ); }
 [data-n55-select][data-n55-theme='party']     { border-color: var(--neodigm-theme-party ); color: var(--neodigm-theme-night); }
-/*  Neodigm Select End  */ 
 
-/*  Neodigm Standard Checkbox Begins  */
+/*  Neodigm PopTart Begin  */ 
+[neodigm-poptart]{
+    position: absolute;
+    display: block;
+}
+
+/*  Neodigm Standard Checkbox Begin  */
 [data-n55-checkbox] {
     position: absolute;
     opacity: 0;

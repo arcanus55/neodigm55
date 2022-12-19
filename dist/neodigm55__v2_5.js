@@ -25,12 +25,10 @@ let neodigmOpt = {
     N55_CTA_RND_TOUCH: 14001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
     N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ],
-  neodigmKPI: true,
-    N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
-  neodigmPWA: true,
-    N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
-neodigmCarousel: true,
-    N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
+  neodigmKPI: true,  N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
+  neodigmPWA: true,  N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
+  neodigmCarousel: true,  N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
+neodigmPopTart: false,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
   N55_AMPM_THEME: "light",
@@ -156,6 +154,7 @@ let neodigmToast = (function(_d, eID, _q) {
       play:  function(){ bIsPause = false; return neodigmToast; }
   }
 })(document, "js-snackbar__id", "[data-n55-toast]");
+
 //  Neodigm 55 Soda Pop Begin  //
 class NeodigmSodaPop {
     constructor(_d, _aQ) {  //  Flux Capacitor
@@ -287,6 +286,25 @@ class NeodigmSodaPop {
     setOnBeforeUserExit(_f){ this.fOnBeforeUserExit = _f }
 }
 let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-n55-sodapop-modal"] )
+
+//  Neodigm 55 PopTart Begin  //
+class NeodigmPopTart {
+  constructor(_d, _aQ) {  //  Oscillation Overthruster
+      this._d = _d; this._aQ = _aQ; this.sId = ""
+      this.eSoda = this.eScrim = this.eClose = null
+      this.fOnBeforeOpen = {}; this.fOnAfterOpen = {}; this.fOnClose = {}
+      this.bIsOpen = this.bIsModal = this.bIsInit = false
+  }
+  init() {}
+  open() {}
+  close() {}
+  shake() {}
+  isOpen(){ return this.bIsOpen }
+  setOnBeforeOpen( _f, id="def"){ this.fOnBeforeOpen[ id ] = _f }
+  setOnAfterOpen( _f, id="def"){ this.fOnAfterOpen[ id ] = _f }
+  setOnClose( _f, id="def"){ this.fOnClose[ id ] = _f }
+}
+let neodigmPopTart = new NeodigmPopTart( document, ["neodigm-poptart"] )
 
 //  Neodigm 55 Wired4Sound Begin  //
 class NeodigmWired4Sound {
@@ -954,9 +972,9 @@ class NeodigmPWA {
 let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 
 
-
 // v2.5.0 - Refactor Toast and Metronome STATIC
 //  -Neodigm 55 SodaPop Simple Tab (Carosel) //
+//  Neodigm 55 Popover Begin  //
 //  Neodigm 55 Enchanted CTA FlashTheme Round-robin //
 //  Neodigm 55 Claire Declaire-itive //
 //  -Neodigm 55 Confetti Begin (Claire) //
@@ -980,7 +998,6 @@ let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 // Parking lot
 //  Neodigm 55 A11Y skip Begin  //
 //  Neodigm 55 Dice Begin  //
-//  Neodigm 55 Popover Begin  //
 //  Neodigm 55 ToolTip Marquee Begin  //
 //  Neodigm 55 Virtual Keyboard Begin  //
 //  Neodigm 55 Vivid Type Begin  //
@@ -1016,6 +1033,7 @@ function doDOMContentLoaded(){
     if( neodigmOpt.neodigmKPI ) neodigmKPI.init()
     if( neodigmOpt.neodigmPWA ) neodigmPWA.init()
     if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
+    if( neodigmOpt.neodigmPopTart ) neodigmPopTart.init()
   }, 56)
 }
 
