@@ -565,6 +565,9 @@ neodigm-kpi[data-n55-kpi-size='xlarge'] > h6 { font-size: 20px;}
     display: block;
 }
 
+/*  Neodigm i on Begin  */ 
+neodigm-icon { line-height: .1 !important; }
+
 /*  Neodigm Standard Checkbox Begin  */
 [data-n55-checkbox] {
     position: absolute;
