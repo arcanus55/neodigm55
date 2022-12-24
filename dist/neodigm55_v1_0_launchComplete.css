@@ -59,6 +59,7 @@ margin: 8px 0; padding: 1px;
 .hd2 {font-size: 24px;}
 .hd3 {font-size: 18px;}
 .hd4 {font-size: 16px;}
+.hd4 {font-size: 14px;}
 .prg  { margin: 8px 0; padding: 1px; }
 
 [data-pref-scheme="light"] .hd1,
@@ -325,5 +326,6 @@ fill: var(  --m5lc-theme-info-alt );
     .hd2 {font-size: 38px;}
     .hd3 {font-size: 28px;}
     .hd4 {font-size: 24px;}
+    .hd5 {font-size: 20px;}
     .txt-readable {font-size: 22px;}
 }
