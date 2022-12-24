@@ -59,20 +59,22 @@ margin: 8px 0; padding: 1px;
 .hd2 {font-size: 24px;}
 .hd3 {font-size: 18px;}
 .hd4 {font-size: 16px;}
-.hd4 {font-size: 14px;}
+.hd5 {font-size: 14px;}
 .prg  { margin: 8px 0; padding: 1px; }
 
 [data-pref-scheme="light"] .hd1,
 [data-pref-scheme="light"] .hd2,
 [data-pref-scheme="light"] .hd3,
-[data-pref-scheme="light"] .hd4 {color: var( --m5lc-theme-info-alt );}
+[data-pref-scheme="light"] .hd4,
+[data-pref-scheme="light"] .hd5 {color: var( --m5lc-theme-info-alt );}
 [data-pref-scheme="light"] .sum,
 [data-pref-scheme="light"] .prg {color: #323232;}
 
 [data-pref-scheme="dark"] .hd1,
 [data-pref-scheme="dark"] .hd2,
 [data-pref-scheme="dark"] .hd3,
-[data-pref-scheme="dark"] .hd4 {color: var( --m5lc-theme-info );} 
+[data-pref-scheme="dark"] .hd4,
+[data-pref-scheme="dark"] .hd5 {color: var( --m5lc-theme-info );} 
 [data-pref-scheme="dark"] .sum,
 [data-pref-scheme="dark"] .prg {color: #fff} 
 
