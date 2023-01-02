@@ -780,9 +780,11 @@ class NeodigmEnchantedCTA {
             switch( sRndFX ){
               case "alternate":
                 if( eCt.dataset.n55EnchantedCtaAlt ){
-                  eCt["n55EnchantedCtaAlt"] = eCt.innerHTML
-                  eCt.querySelectorAll("span")[0].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[0]
-                  eCt.querySelectorAll("span")[1].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[1]
+                  if( !eCt.querySelector("neodigm-marquee") ){
+                    eCt["n55EnchantedCtaAlt"] = eCt.innerHTML
+                    eCt.querySelectorAll("span")[0].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[0]
+                    eCt.querySelectorAll("span")[1].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[1]                    
+                  }
                 }
                 break;
             }
