@@ -24,7 +24,7 @@ let neodigmOpt = {
   neodigmEnchantedCTA: true,
     N55_CTA_RND_TOUCH: 14001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
-    N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ],
+    N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ], // TODO glance
   neodigmKPI: true,  N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
   neodigmPWA: true,  N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
   neodigmCarousel: true,  N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
@@ -37,7 +37,7 @@ neodigmPopTart: false,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
   N55_THEME_DEFAULT: "brand",
   N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"],
    "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"], "party":["FF6F61","C93F60"]},
-  N55_APP_STATE: {"FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXT": false, "FOCUS": true, "AMPM": "light"}
+  N55_APP_STATE: {"FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXT": false, "FOCUS": true, "AMPM": "light", "REDUCE_MOTION": true}
 }
 
 if( typeof neodigmOptCustom != 'undefined' ){
@@ -69,8 +69,7 @@ const neodigmUtils = ( ( _d ) =>{
           if( sVal == "-" ){
               bUpper = true;
           }else{
-              aDret.push( ( bUpper ) ? sVal.toUpperCase() : sVal );
-              bUpper = false;
+              aDret.push( ( bUpper ) ? sVal.toUpperCase() : sVal ); bUpper = false;
           }
       });
       return aDret.join("");
@@ -88,6 +87,7 @@ const neodigmUtils = ( ( _d ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
       })
       window.addEventListener("resize", function( ev ){ if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init() })
+      neodigmOpt.N55_APP_STATE.REDUCE_MOTION = !window.matchMedia( '(prefers-reduced-motion: no-preference)' ).matches
     },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || ""
   }
@@ -765,7 +765,7 @@ class NeodigmEnchantedCTA {
     flashTheme ( sTheme ){
       if( this.bIsInit && !this.bIsPause && sTheme ){
         this.setTheme( sTheme )
-        setTimeout( function(){ neodigmEnchantedCTA.revertTheme() }, 384 )
+        setTimeout( function(){ neodigmEnchantedCTA.revertTheme() }, 464 )
       }
     return this;
     }
