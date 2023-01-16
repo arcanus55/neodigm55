@@ -95,7 +95,7 @@ const neodigmUtils = ( ( _d ) =>{
 
 //  Neodigm 55 Toast Begin  //
 let neodigmToast = (function(_d, eID, _q) {
-  let _nTimeout = 5800, _aQ = [], _eSb, _eSbText, _sTheme
+  let _nTimeout = 5200, _aQ = [], _eSb, _eSbText, _sTheme
   let bIsInit = bIsPause = false 
   let _fOpen = function() {
       _eSbText.innerHTML = _aQ[0].sMsg.replace("|", "<br>").replace("##", "")

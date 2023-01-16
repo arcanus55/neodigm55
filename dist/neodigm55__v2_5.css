@@ -83,7 +83,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 }
 .l-snackbar .snackbar__cont--show .snackbar__progbar {
 	width: 100%;
-	transition: width 6s ease-in-out;
+	transition: width 5.2s ease-in-out;
 }
 .l-snackbar .snackbar__msg {
 	color: #fff;
