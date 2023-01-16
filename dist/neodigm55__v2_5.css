@@ -48,16 +48,16 @@ All rights reserved. Redistributions of source code must retain the above copyri
 .l-snackbar .snackbar__cont[data-n55-theme='marcom'] { box-shadow: inset var(--neodigm-theme-marcom) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-marcom) 0%, var(--neodigm-theme-marcom-alt) 100%); }
 .l-snackbar .snackbar__cont[data-n55-theme='party'] { box-shadow: inset var(--neodigm-theme-party) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-party) 0%, var(--neodigm-theme-party-alt) 100%); }
 
-.l-snackbar .snackbar__cont[data-n55-theme='brand'] .snackbar__progbar { background-color: var(--neodigm-theme-brand-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='primary'] .snackbar__progbar { background-color: var(--neodigm-theme-primary-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='secondary'] .snackbar__progbar { background-color: var(--neodigm-theme-secondary-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='success'] .snackbar__progbar { background-color: var(--neodigm-theme-success-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='danger'] .snackbar__progbar { background-color: var(--neodigm-theme-danger-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='warning'] .snackbar__progbar { background-color: var(--neodigm-theme-warning-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='info'] .snackbar__progbar { background-color: var(--neodigm-theme-info-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='night'] .snackbar__progbar { background-color: var(--neodigm-theme-night-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='marcom'] .snackbar__progbar { background-color: var(--neodigm-theme-marcom-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='party'] .snackbar__progbar { background-color: var(--neodigm-theme-party-alt) }
+.l-snackbar .snackbar__cont[data-n55-theme='brand'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-brand-alt) 0%, var(--neodigm-theme-brand) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='primary'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-primary-alt) 0%, var(--neodigm-theme-primary) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='secondary'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-secondary-alt) 0%, var(--neodigm-theme-secondary) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='success'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-success-alt) 0%, var(--neodigm-theme-success) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='danger'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-danger-alt) 0%, var(--neodigm-theme-danger) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='warning'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-warning-alt) 0%, var(--neodigm-theme-warning) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='info'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-info-alt) 0%, var(--neodigm-theme-info) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='night'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-night-alt) 0%, var(--neodigm-theme-night) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='marcom'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-marcom-alt) 0%, var(--neodigm-theme-marcom) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='party'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-party-alt) 0%, var(--neodigm-theme-party) 100%) }
 
 .l-snackbar .snackbar__cont--hide {
 	bottom: -112px;
@@ -72,7 +72,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 	box-shadow: inset #685b2d 0 0 6px 2px !important; 
 }
 .l-snackbar .snackbar__progbar {
-	height: 3px;
+	height: 4px;
 	padding: 0; margin: 0;
 	position: relative;
 	top: 2px
