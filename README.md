@@ -18,7 +18,7 @@ Simply copy the three lines of code and paste into the head of any HTML page tha
 ```
 
 <p align="center">
-  <a target="_blank" href="https://github.com/arcanus55/neodigm55/wiki/Cheat-Cheet" title="Infographics, UX, PWA, Typescript, Svelte, ThreeJS, Vue, and WASM" alt="TypeScript ⚡ WASM ✨ Svelte Interactive Infographic PWA">Cheat-sheet</a>
+  <a target="_blank" href="https://github.com/arcanus55/neodigm55/wiki/Cheat-Sheet" title="Infographics, UX, PWA, Typescript, Svelte, ThreeJS, Vue, and WASM" alt="TypeScript ⚡ WASM ✨ Svelte Interactive Infographic PWA">Cheat-sheet</a>
 </p>
 <p align="center">
   <a target="_blank" href="https://github.com/arcanus55/neodigm55/wiki/Neodigm-55-Declarative-Attributes-API" title="Interactive Infographics, UX, PWA, Typescript, Svelte," alt="TypeScript ⚡ WASM ✨ Svelte Interactive Infographic PWA">Attribute API Docs</a>
