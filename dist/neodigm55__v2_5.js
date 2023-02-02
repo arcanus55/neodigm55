@@ -89,7 +89,10 @@ const neodigmUtils = ( ( _d ) =>{
       window.addEventListener("resize", function( ev ){ if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init() })
       neodigmOpt.N55_APP_STATE.REDUCE_MOTION = !window.matchMedia( '(prefers-reduced-motion: no-preference)' ).matches
     },
-    capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || ""
+    capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
+    countTo: function( _q, nVal, fCb ){  //  Whole number
+
+    }
   }
 })( document );
 
