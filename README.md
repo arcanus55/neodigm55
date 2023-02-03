@@ -6,6 +6,11 @@ Neodigm 55 is low-code, performant, accessible, and . Because it’s so easy to 
 
 An eclectic low-code vanilla [JavaScript UX micro-library](https://thescottkrause.com/emerging_tech/neodigm55_ux_library/) for those that defiantly think for themselves.
 
+<p align="center">
+  <a target="_blank" href="https://thescottkrause.com/emerging_tech/neodigm55_ux_library/">
+    <img src="https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/38.jpg" title="Infographics, UX, ✨ Cypress && JavaScript && TypeScript && Vue.js 🪐">
+  </a>
+</p>
 
 # Getting Started
 
