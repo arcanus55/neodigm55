@@ -760,7 +760,7 @@ class NeodigmEnchantedCTA {
             if( (eC?.id == sId) && eC.dataset.n55Theme && eC.n55Theme ) eC.dataset.n55Theme = eC.n55Theme
           }else{
             if( eC.dataset.n55Theme && eC.n55Theme ){
-              setTimeout( function(){  eC.dataset.n55Theme = eC.n55Theme }, ( nDx * 76 ) )              
+              setTimeout( function(){  eC.dataset.n55Theme = eC.n55Theme }, ( nDx * 32 ) )              
             }
           }
         });
@@ -985,7 +985,7 @@ let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 // v2.5.0 - Refactor Toast and Metronome STATIC
 //  -Neodigm 55 SodaPop Simple Tab (Carosel) //
 //  Neodigm 55 Popover Begin  //
-//  Neodigm 55 Enchanted CTA FlashTheme Round-robin //
+//  -Neodigm 55 Enchanted CTA FlashTheme Round-robin //
 //  Neodigm 55 Claire Declaire-itive //
 //  -Neodigm 55 Confetti Begin (Claire) //
 //  Neodigm 55 Cypher Type FX Begin  //
