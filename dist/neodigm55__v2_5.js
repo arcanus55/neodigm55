@@ -759,7 +759,9 @@ class NeodigmEnchantedCTA {
           if( sId ){
             if( (eC?.id == sId) && eC.dataset.n55Theme && eC.n55Theme ) eC.dataset.n55Theme = eC.n55Theme
           }else{
-            if( eC.dataset.n55Theme && eC.n55Theme ) eC.dataset.n55Theme = eC.n55Theme
+            if( eC.dataset.n55Theme && eC.n55Theme ){
+              setTimeout( function(){  eC.dataset.n55Theme = eC.n55Theme }, Number(276) + neodigmUtils.f02x( 576 ) )              
+            }
           }
         });
       }
@@ -768,7 +770,7 @@ class NeodigmEnchantedCTA {
     flashTheme ( sTheme ){
       if( this.bIsInit && !this.bIsPause && sTheme ){
         this.setTheme( sTheme )
-        setTimeout( function(){ neodigmEnchantedCTA.revertTheme() }, Number(364) + neodigmUtils.f02x( 46 ) )
+        setTimeout( function(){ neodigmEnchantedCTA.revertTheme() }, 476 )
       }
     return this;
     }
