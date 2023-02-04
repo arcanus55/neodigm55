@@ -768,7 +768,7 @@ class NeodigmEnchantedCTA {
     flashTheme ( sTheme ){
       if( this.bIsInit && !this.bIsPause && sTheme ){
         this.setTheme( sTheme )
-        setTimeout( function(){ neodigmEnchantedCTA.revertTheme() }, 364 + neodigmUtils.f02x( 1464 ) )
+        setTimeout( function(){ neodigmEnchantedCTA.revertTheme() }, Number(364) + neodigmUtils.f02x( 46 ) )
       }
     return this;
     }
