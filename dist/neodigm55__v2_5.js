@@ -24,7 +24,7 @@ let neodigmOpt = {
   neodigmEnchantedCTA: true,
     N55_CTA_RND_TOUCH: 14001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
-    N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ], // TODO glance
+    N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ], // TODO glance!
   neodigmKPI: true,  N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
   neodigmPWA: true,  N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
   neodigmCarousel: true,  N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
@@ -768,7 +768,7 @@ class NeodigmEnchantedCTA {
     flashTheme ( sTheme ){
       if( this.bIsInit && !this.bIsPause && sTheme ){
         this.setTheme( sTheme )
-        setTimeout( function(){ neodigmEnchantedCTA.revertTheme() }, 464 )
+        setTimeout( function(){ neodigmEnchantedCTA.revertTheme() }, 364 + neodigmUtils.f02x( 1464 ) )
       }
     return this;
     }
