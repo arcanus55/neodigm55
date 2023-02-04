@@ -755,12 +755,12 @@ class NeodigmEnchantedCTA {
     }
     revertTheme ( sId ){  //  Revert to orig theme at point of init
       if( this.bIsInit && !this.bIsPause ){
-        this.aE.forEach( (eC) => {
+        this.aE.forEach( ( eC, nDx ) => {
           if( sId ){
             if( (eC?.id == sId) && eC.dataset.n55Theme && eC.n55Theme ) eC.dataset.n55Theme = eC.n55Theme
           }else{
             if( eC.dataset.n55Theme && eC.n55Theme ){
-              setTimeout( function(){  eC.dataset.n55Theme = eC.n55Theme }, Number(276) + neodigmUtils.f02x( 576 ) )              
+              setTimeout( function(){  eC.dataset.n55Theme = eC.n55Theme }, ( nDx * 76 ) )              
             }
           }
         });
