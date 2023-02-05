@@ -754,8 +754,8 @@ class NeodigmEnchantedCTA {
     return this;
     }
     robinTheme ( sTheme ){  //  Round Robin
-      const NDELAY = 32
       if( this.bIsInit && !this.bIsPause && sTheme ){
+        const NDELAY = 32
         this.aE.forEach( ( eC, nDx ) => {
           if( eC.dataset.n55Theme && eC.n55Theme ){
             setTimeout( function(){  eC.dataset.n55Theme = sTheme }, ( nDx * NDELAY ) )              
