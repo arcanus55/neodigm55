@@ -90,6 +90,17 @@ const neodigmUtils = ( ( _d ) =>{
       neodigmOpt.N55_APP_STATE.REDUCE_MOTION = !window.matchMedia( '(prefers-reduced-motion: no-preference)' ).matches
     },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
+    robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
+      if( true ){
+        let aE = [ ... document.querySelectorAll("[data-n55-theme") ]
+        const NDELAY = 48
+        aE.forEach( ( eC, nDx ) => {
+          if( !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
+            setTimeout( function(){ eC.dataset.n55Theme = sTheme }, ( nDx * NDELAY ) )              
+            setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + 24) ) )
+        });
+      }
+    },
     countTo: function( _q, nVal, fCb ){  //  Whole number
 
     }
@@ -748,18 +759,6 @@ class NeodigmEnchantedCTA {
             if( eC?.id == sId ) eC.dataset.n55Theme = sTheme
           }else{
             eC.dataset.n55Theme = sTheme
-          }
-        });
-      }
-    return this;
-    }
-    robinTheme ( sTheme ){  //  Round Robin
-      if( this.bIsInit && !this.bIsPause && sTheme ){
-        const NDELAY = 48
-        this.aE.forEach( ( eC, nDx ) => {
-          if( eC.dataset.n55Theme && eC.n55Theme ){
-            setTimeout( function(){ eC.dataset.n55Theme = sTheme }, ( nDx * NDELAY ) )              
-            setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + 24 ) ) )
           }
         });
       }
