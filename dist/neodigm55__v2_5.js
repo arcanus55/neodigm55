@@ -91,9 +91,8 @@ const neodigmUtils = ( ( _d ) =>{
     },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
     robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
-      if( true ){
-        let aE = [ ... document.querySelectorAll("[data-n55-theme") ]
-        const NDELAY = 48
+      if( neodigmMetronome.isPaused() ){
+        let aE = [ ... document.querySelectorAll("[data-n55-theme") ]; const NDELAY = 48;
         aE.forEach( ( eC, nDx ) => {
           if( !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
             setTimeout( function(){ eC.dataset.n55Theme = sTheme }, ( nDx * NDELAY ) )              
@@ -434,6 +433,7 @@ const neodigmMetronome = ( () =>{
       bIsPause = true;
       if( nT ) setTimeout( neodigmMetronome.play, nT )
       return neodigmMarquee; },
+    isPaused: function(){ return bIsPause },
     play:  function(){ bIsPause = false; return neodigmMarquee; }
   }
 })();
