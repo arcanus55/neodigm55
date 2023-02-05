@@ -765,7 +765,7 @@ class NeodigmEnchantedCTA {
       }
     return this;
     }
-    revertTheme ( sId ){  //  Revert to orig theme at point of init
+    revertTheme ( sId ){  //  Revert orig theme at point of init
       if( this.bIsInit && !this.bIsPause ){
         this.aE.forEach( ( eC, nDx ) => {
           if( sId ){
