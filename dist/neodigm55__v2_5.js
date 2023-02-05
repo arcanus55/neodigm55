@@ -759,7 +759,7 @@ class NeodigmEnchantedCTA {
         this.aE.forEach( ( eC, nDx ) => {
           if( eC.dataset.n55Theme && eC.n55Theme ){
             setTimeout( function(){ eC.dataset.n55Theme = sTheme }, ( nDx * NDELAY ) )              
-            setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + (NDELAY / 4)) ) )              
+            setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + (NDELAY / 3)) ) )              
           }
         });
       }
