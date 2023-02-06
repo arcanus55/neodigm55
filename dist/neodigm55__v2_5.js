@@ -96,7 +96,7 @@ const neodigmUtils = ( ( _d ) =>{
         aE.forEach( ( eC, nDx ) => {
           if( !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
             setTimeout( function(){ eC.dataset.n55Theme = sTheme }, ( nDx * NDELAY ) )              
-            setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + 24) ) )
+            setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + 8) ) )
         });
       }
     },
