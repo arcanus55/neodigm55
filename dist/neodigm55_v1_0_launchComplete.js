@@ -42,11 +42,13 @@ class NeodigmWidget {
     this.aeWdgs.forEach( ( oeWdg ) => { 
       console.log(" ~~~ | " , oeWdg.dataset.n55WidgetId )
         if( oeWdg.dataset.n55WidgetId ){
-          fetch( "https://arcanus55.github.io/neodigm55/dist/widgets/" + oeWdg.dataset.n55WidgetId + ".json" )
+          const sURI = "https://arcanus55.github.io/neodigm55/dist/widgets/" + oeWdg.dataset.n55WidgetId
+          fetch( sURI + ".json" )
           .then( rs => rs.json() )
           .then( rs => {
             if(  rs[0].compressed && LZString ){
               oeWdg.innerHTML = LZString.decompressFromEncodedURIComponent( rs[0].compressed )
+              if( neodigmUtils ) neodigmUtils.fAsyncJS( this._d, sURI + ".js" )
             }
             console.log(" ~~~ | ", rs[0].compressed )
           } )
