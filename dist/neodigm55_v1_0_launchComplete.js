@@ -42,7 +42,7 @@ class NeodigmWidget {
     this.aeWdgs.forEach( ( oeWdg ) => { 
       console.log(" ~~~ | " , oeWdg.dataset.n55WidgetId )
         if( oeWdg.dataset.n55WidgetId ){
-          fetch( "dist/widgets/" + oeWdg.dataset.n55WidgetId + ".json" )
+          fetch( "https://arcanus55.github.io/neodigm55/dist/widgets/" + oeWdg.dataset.n55WidgetId + ".json" )
           .then( rs => rs.json() )
           .then( rs => {
             if(  rs[0].compressed && LZString ){
