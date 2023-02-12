@@ -29,3 +29,31 @@ var LZString=function(){function o(o,r){if(!t[o]){t[o]={};for(var n=0;n<o.length
 
 //  N55 PWA Console Brand begin  //
 if( neodigmOpt_launchComplete.CONSOLE_LOG_VER ) console.log("%c " + neodigmOpt_launchComplete.N55_LC_TAG1[0], "background: #000; color: #" + neodigmOpt_launchComplete.N55_LC_COLOR_BRAND[0] + "; font-size: 38px");
+
+//  Neodigm 55 Widget Begin  //
+class NeodigmWidget {
+  constructor(_d, _aQ) {  //  plugin extension manifest
+      this._d = _d; this._aQ = _aQ;
+      this.aeWdgs = [];
+      this.bIsInit = false
+  }
+  async init() {
+    this.aeWdgs = [ ... this._d.querySelectorAll( this._aQ[0] )]
+    this.aeWdgs.forEach( ( oeWdg ) => { 
+      console.log(" ~~~ | " , oeWdg.dataset.n55WidgetId )
+        if( oeWdg.dataset.n55WidgetId ){
+          fetch( "dist/widgets/" + oeWdg.dataset.n55WidgetId + ".json" )
+          .then( rs => rs.json() )
+          .then( rs => {
+            if(  rs[0].compressed && LZString ){
+              oeWdg.innerHTML = LZString.decompressFromEncodedURIComponent( rs[0].compressed )
+            }
+            console.log(" ~~~ | ", rs[0].compressed )
+          } )
+        }
+    } )
+  }
+  async stuff() {}
+}
+let neodigmWidget = new NeodigmWidget( document, ["neodigm-widget"] )
+addEventListener('DOMContentLoaded', ( ev ) => {neodigmWidget.init()});
