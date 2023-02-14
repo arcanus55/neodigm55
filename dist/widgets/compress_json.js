@@ -108,3 +108,4 @@ let doAction = function( sAct ){
     }
     return false;
 }
+neodigmMarquee.init();
