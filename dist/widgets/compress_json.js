@@ -77,7 +77,7 @@ let doAction = function( sAct ){
                 neodigmToast.q("Unexpected Error|" + er , "danger")
             }
         }
-        if( sAct == "fromClear" ){ eTermFrom.value = "" }
+        if( sAct == "fromClear" ){ eTermFrom.value = ""; neodigmUtils.robinTheme("danger"); }
 
         if( sAct == "toCopy" ){
             if( eTermTo.value ){
@@ -102,7 +102,7 @@ let doAction = function( sAct ){
                 neodigmToast.q("Unexpected Error|" + er , "danger")
             }
         }
-        if( sAct == "toClear" ){ eTermTo.value = "" }
+        if( sAct == "toClear" ){ eTermTo.value = ""; neodigmUtils.robinTheme("danger"); }
         eKPIFrom.textContent = eTermFrom.value.length
         eKPITo.textContent = eTermTo.value.length
     }
