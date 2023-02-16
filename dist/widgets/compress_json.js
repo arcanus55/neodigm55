@@ -109,3 +109,4 @@ let doAction = function( sAct ){
     return false;
 }
 neodigmMarquee.init();
+neodigmEnchantedCTA.init();
