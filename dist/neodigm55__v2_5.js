@@ -412,23 +412,26 @@ const neodigmMetronome = ( () =>{
       return neodigmMetronome;
     },
     tick: function( t ){
-      if( bIsInit && !bIsPause ){ oEmit[ t ].forEach( ( f )=>{ f() }) }
+      if( bIsInit && !bIsPause ){ oEmit[ t ].forEach( ( f )=>{
+        if( oEmit[ t ].mx || oEmit[ t ].mx == 0 ){
+          if( oEmit[ t ].mx ){ f( --oEmit[ t ].mx ) }
+        }else{ f() }
+      } ) }
       return neodigmMetronome;
     },
-    subscribe: function( f, t ){  //  Usage: .subscribe(f, 1000)
+    subscribe: function( f, t, mx ){  //  Usage: .subscribe(f, 1000, 5)
       if( bIsInit ){
         let _t = t
         if( !oEmit[ _t ] ){
           oEmit[ _t ] = []
-          aIntv.push( setInterval( ()=>{ neodigmMetronome.tick( _t ) }, _t) )
+          aIntv.push( setInterval( ()=>{ neodigmMetronome.tick( _t ) }, _t ) )
         }
         oEmit[ _t ].push( f )
+        if( mx ) oEmit[ _t ].mx = mx
       }
       return neodigmMetronome;
-    },
-    unsubscribe: function( t ){  //  TODO
-      return neodigmMetronome;
-    },
+    },  //  TODO 
+    unsubscribe: function( t ){  return neodigmMetronome; },
     pause: function( nT ){
       bIsPause = true;
       if( nT ) setTimeout( neodigmMetronome.play, nT )
