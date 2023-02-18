@@ -100,8 +100,19 @@ const neodigmUtils = ( ( _d ) =>{
         });
       }
     },
-    countTo: function( _q, nVal, fCb ){  //  Whole number
-
+    countTo: function( _q, nVal ){  //  Whole number
+      let aFB = [ ... document.querySelectorAll( _q ) ]
+      if( aFB ){
+        aFB.forEach(function( e, nDx ){
+          neodigmMetronome.unsubscribe( 96 + nDx ).subscribe( function( mx ){
+            let nCur =  Number( e.textContent )
+            if( !Number.isNaN( nCur ) && !isNaN( nCur ) && nVal != nCur ){
+              let nVal10 = nVal / 10
+              e.textContent = ( nCur < nVal ) ? nCur + nVal10 : nCur - nVal10
+            }
+          }, 96 + nDx, 10 )
+        })
+      }
     }
   }
 })( document );
@@ -405,9 +416,9 @@ const neodigmMetronome = ( () =>{
   let oEmit = {}, aIntv = []
   let bIsInit = bIsPause = false 
   return {  //  Oscillation Overthruster
-    init: function(){
-      oEmit = {}  //  Reset all sans setIntr
-      aIntv.forEach( ( i )=>{ clearInterval( i ) } )
+    init: function(){  //  Reset all
+      oEmit = {}
+      aIntv.forEach( ( i )=>{ clearInterval( i[0] ) } )
       bIsInit = true
       return neodigmMetronome;
     },
@@ -420,18 +431,25 @@ const neodigmMetronome = ( () =>{
       return neodigmMetronome;
     },
     subscribe: function( f, t, mx ){  //  Usage: .subscribe(f, 1000, 5)
+      let _t = t
       if( bIsInit ){
-        let _t = t
         if( !oEmit[ _t ] ){
           oEmit[ _t ] = []
-          aIntv.push( setInterval( ()=>{ neodigmMetronome.tick( _t ) }, _t ) )
+          aIntv.push( [setInterval( ()=>{ neodigmMetronome.tick( _t ) }, _t ), t] )
         }
         oEmit[ _t ].push( f )
         if( mx ) oEmit[ _t ].mx = mx
       }
       return neodigmMetronome;
-    },  //  TODO 
-    unsubscribe: function( t ){  return neodigmMetronome; },
+    },
+    unsubscribe: function( t ){ 
+      oEmit[ t ] = null;
+      aIntv = aIntv.filter( ( i )=>{
+        if( i[1] == t ){clearInterval( i[0] ); return false; }
+        return true;
+      } )
+      return neodigmMetronome;
+    },
     pause: function( nT ){
       bIsPause = true;
       if( nT ) setTimeout( neodigmMetronome.play, nT )
