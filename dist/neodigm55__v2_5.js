@@ -107,7 +107,7 @@ const neodigmUtils = ( ( _d ) =>{
           neodigmMetronome.unsubscribe( 96 + nDx ).subscribe( function( mx ){
             let nCur =  Number( e.textContent )
             if( !Number.isNaN( nCur ) && !isNaN( nCur ) && nVal != nCur ){
-              let nVal10 = nVal / 10
+              let nVal10 = Math.round(nVal / 10)
               e.textContent = ( nCur < nVal ) ? nCur + nVal10 : nCur - nVal10
             }
           }, 96 + nDx, 10 )
