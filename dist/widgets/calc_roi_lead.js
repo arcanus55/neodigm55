@@ -1,3 +1,4 @@
+if( neodigmCarousel && neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
 if( neodigmWired4Sound ) neodigmWired4Sound.setVolume( .04 )
 let jWS = `[
 {"code":"001", "title":"Advocacy",             "ctr_src":"4.41%", "ctr_gdn":"0.59%", "cpc_src":"$1.43", "cpc_gdn":"$0.62", "cvr_src":"1.96%", "cvr_gdn":"1.00%", "cpa_src":"$96.55",  "cpa_gdn":"$70.69"},
@@ -96,4 +97,3 @@ function ROIFormVal( nPage, aIds ){
         }
     }
 }
-if( neodigmCarousel && neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
