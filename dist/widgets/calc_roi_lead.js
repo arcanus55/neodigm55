@@ -97,3 +97,4 @@ function ROIFormVal( nPage, aIds ){
         }
     }
 }
+if( neodigmCarousel && neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
