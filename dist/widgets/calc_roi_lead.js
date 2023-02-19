@@ -73,14 +73,14 @@ function ROIFormVal( nPage, aIds ){
                 elAdBudget = document.querySelector( aIds[0] )
                 elLeadsPerMonth = document.querySelector( aIds[1] )
                 if( elAdBudget && elLeadsPerMonth ){
+                    if( !elAdBudget.value ){
+                        isVal = false; valMsg = "Ad Budget is|Required";
+                    }
                     if( !elLeadsPerMonth.value ){
                         isVal = false; valMsg = "Leads Per Month is|Required";
                     }
                     if( Number.isNaN( elAdBudget ) ){
                         isVal = false; valMsg = "Ad Budget is|Invalid";
-                    }
-                    if( !elAdBudget.value ){
-                        isVal = false; valMsg = "Ad Budget is|Required";
                     }
                 }
             break;
@@ -93,8 +93,17 @@ function ROIFormVal( nPage, aIds ){
             neodigmCarousel.nav({"id": "js-caro-roic", "nav": nPage + 1 })
             if( nPage == 2 ) neodigmSodaPop.autoOpen("js-roic-asses-id")
         }else{
-            // error audio
+            neodigmUtils.robinTheme("danger")
+            neodigmWired4Sound.sound("9")
             if( neodigmToast ){ neodigmToast.q( valMsg, "danger" ); }
         }
     }
 }
+setTimeout(function(){
+    if( neodigmSodaPop && neodigmMarquee ) neodigmSodaPop.setOnAfterOpen( function(){
+        neodigmCarousel.init()
+        neodigmMetronome.init()
+        neodigmMarquee.init()
+        document.querySelector("#roic-asses__caption--fb").textContent = document.querySelector("[data-selected-title]").dataset.selectedTitle
+    }, "js-roic-asses-id")            
+}, 3200)
