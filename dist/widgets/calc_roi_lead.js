@@ -1,5 +1,4 @@
-    if( neodigmWired4Sound ) neodigmWired4Sound.setVolume( .04 )
-    
+if( neodigmWired4Sound ) neodigmWired4Sound.setVolume( .04 )
 let jWS = `[
 {"code":"001", "title":"Advocacy",             "ctr_src":"4.41%", "ctr_gdn":"0.59%", "cpc_src":"$1.43", "cpc_gdn":"$0.62", "cvr_src":"1.96%", "cvr_gdn":"1.00%", "cpa_src":"$96.55",  "cpa_gdn":"$70.69"},
 {"code":"002", "title":"Auto",                 "ctr_src":"4.00%", "ctr_gdn":"0.60%", "cpc_src":"$2.46", "cpc_gdn":"$0.58", "cvr_src":"6.03%", "cvr_gdn":"1.19%", "cpa_src":"$33.52",  "cpa_gdn":"$23.68"},
@@ -18,31 +17,83 @@ let jWS = `[
 {"code":"015", "title":"Technology",           "ctr_src":"2.09%", "ctr_gdn":"0.39%", "cpc_src":"$3.80", "cpc_gdn":"$0.51", "cvr_src":"2.92%", "cvr_gdn":"0.86%", "cpa_src":"$133.52", "cpa_gdn":"$103.60"},
 {"code":"016", "title":"Travel & Hospitality", "ctr_src":"4.68%", "ctr_gdn":"0.47%", "cpc_src":"$1.53", "cpc_gdn":"$0.44", "cvr_src":"3.55%", "cvr_gdn":"0.51%", "cpa_src":"$44.73",  "cpa_gdn":"$99.13"}
 ]`
-    setTimeout(function(){// Populate list box from json
-        let elLB = document.querySelector(".l-listbox")
-        let sMU = `<div><p class="hd5">##title##</p></div>`
-        if( elLB && jWS ){
-            let aNAICS = JSON.parse( jWS ).sort(function(a, b){
-                return ( a.title < b.title ) ? -1 : 1
-            })
-            aNAICS.forEach( ( oIndu ) => {
-                if( oIndu.code.length == 3 ){
-                    let elDiv = document.createElement("div")
-                    elLB.appendChild( elDiv )
-                    elDiv.innerHTML = sMU.replace("##title##", oIndu.title )
-                }
-            })            
-        }
-        [ ... document.querySelectorAll( ".l-listbox > div") ].forEach( ( elLB ) => {// bind events single select
-            elLB.addEventListener("click", function( ev ){
-            [ ... document.querySelectorAll( ".l-listbox > div") ].forEach( ( elLBunsel ) => { elLBunsel.dataset.selected = "false" })
-            ev.currentTarget.dataset.selected = "true"
-        }, true)
+setTimeout(function(){// Populate list box from json
+    let elLB = document.querySelector(".l-listbox")
+    let sMU = `<div><p class="hd5">##title##</p></div>`
+    if( elLB && jWS ){
+        let aNAICS = JSON.parse( jWS ).sort(function(a, b){
+            return ( a.title < b.title ) ? -1 : 1
         })
-    }, 800)
-    let fResetCar = function(){
-        neodigmCarousel.nav({"id": "js-caro-roic", "nav": 1});
-        neodigmCarousel.nav({"id": "js-caro-roic-1", "nav": 1});
-        neodigmCarousel.nav({"id": "js-caro-roic-2", "nav": 1});
-        neodigmCarousel.nav({"id": "js-caro-roic-3", "nav": 1});
+        aNAICS.forEach( ( oIndu ) => {
+            if( oIndu.code.length == 3 ){
+                let elDiv = document.createElement("div")
+                elLB.appendChild( elDiv )
+                elDiv.innerHTML = sMU.replace("##title##", oIndu.title )
+            }
+        })            
     }
+    [ ... document.querySelectorAll( ".l-listbox > div") ].forEach( ( elLB ) => {// bind events single select
+        elLB.addEventListener("click", function( ev ){
+        [ ... document.querySelectorAll( ".l-listbox > div") ].forEach( ( elLBunsel ) => { elLBunsel.dataset.selected = "false" })
+        ev.currentTarget.dataset.selected = "true"
+        ev.currentTarget.parentNode.dataset.selectedTitle = ev.currentTarget.querySelector(".hd5").textContent
+    }, true)
+    })
+}, 800)
+let fResetCar = function(){ // Reset right panel carousels
+    neodigmCarousel.nav({"id": "js-caro-roic", "nav": 1});
+    neodigmCarousel.nav({"id": "js-caro-roic-1", "nav": 1});
+    neodigmCarousel.nav({"id": "js-caro-roic-2", "nav": 1});
+    neodigmCarousel.nav({"id": "js-caro-roic-3", "nav": 1});
+}
+function ROIFormVal( nPage, aIds ){
+    let isVal = true;
+    let valMsg = null;
+    if( nPage && aIds ){
+        e = document.querySelector("#js-caro-roic")
+        switch( nPage ){
+            case 1:
+                elEmail = document.querySelector( aIds[0] )
+                elIndustry = document.querySelector( aIds[1] )
+                if( elEmail && elIndustry ){
+                    if( (elEmail.value.indexOf("@") === -1) || (elEmail.value.indexOf(".") === -1) ){
+                        isVal = false; valMsg = "Email Address is|Invalid";
+                    }
+                    if( !elEmail.value ){
+                        isVal = false; valMsg = "Email Address is|Required";
+                    }
+                    if( !elIndustry.dataset.selectedTitle ){
+                        isVal = false; valMsg = "Please Select an|Industry";
+                    }
+                }
+            break;
+            case 2:
+                debugger
+                elAdBudget = document.querySelector( aIds[0] )
+                elLeadsPerMonth = document.querySelector( aIds[1] )
+                if( elAdBudget && elLeadsPerMonth ){
+                    if( Number.isNaN( elAdBudget ) ){
+                        isVal = false; valMsg = "Ad Budget is|Invalid";
+                    }
+                    if( !elAdBudget.value ){
+                        isVal = false; valMsg = "Ad Budget is|Required";
+                    }
+                    if( !elLeadsPerMonth.value ){
+                        isVal = false; valMsg = "Leads Per Month is|Required";
+                    }
+                }
+            break;
+            
+            default:
+                console.warn( "Page " + nPage, " does not exist.");
+        }
+        if( isVal ) {
+            // next
+            neodigmCarousel.nav({"id": "js-caro-roic", "nav": nPage + 1 })
+            if( nPage == 2 ) neodigmSodaPop.autoOpen("js-roic-asses-id")
+        }else{
+            // error audio
+            if( neodigmToast ){ neodigmToast.q( valMsg, "danger" ); }
+        }
+    }
+}
