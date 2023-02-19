@@ -56,14 +56,14 @@ function ROIFormVal( nPage, aIds ){
                 elEmail = document.querySelector( aIds[0] )
                 elIndustry = document.querySelector( aIds[1] )
                 if( elEmail && elIndustry ){
+                    if( !elIndustry.dataset.selectedTitle ){
+                        isVal = false; valMsg = "Please Select an|Industry";
+                    }
                     if( (elEmail.value.indexOf("@") === -1) || (elEmail.value.indexOf(".") === -1) ){
                         isVal = false; valMsg = "Email Address is|Invalid";
                     }
                     if( !elEmail.value ){
                         isVal = false; valMsg = "Email Address is|Required";
-                    }
-                    if( !elIndustry.dataset.selectedTitle ){
-                        isVal = false; valMsg = "Please Select an|Industry";
                     }
                 }
             break;
@@ -72,14 +72,13 @@ function ROIFormVal( nPage, aIds ){
                 elAdBudget = document.querySelector( aIds[0] )
                 elLeadsPerMonth = document.querySelector( aIds[1] )
                 if( elAdBudget && elLeadsPerMonth ){
-                    if( Number.isNaN( elAdBudget ) ){
+                    if( !elLeadsPerMonth.value ){
+                        isVal = false; valMsg = "Leads Per Month is|Required";
+                    }                    if( Number.isNaN( elAdBudget ) ){
                         isVal = false; valMsg = "Ad Budget is|Invalid";
                     }
                     if( !elAdBudget.value ){
                         isVal = false; valMsg = "Ad Budget is|Required";
-                    }
-                    if( !elLeadsPerMonth.value ){
-                        isVal = false; valMsg = "Leads Per Month is|Required";
                     }
                 }
             break;
