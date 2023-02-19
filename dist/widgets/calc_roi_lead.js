@@ -75,7 +75,8 @@ function ROIFormVal( nPage, aIds ){
                 if( elAdBudget && elLeadsPerMonth ){
                     if( !elLeadsPerMonth.value ){
                         isVal = false; valMsg = "Leads Per Month is|Required";
-                    }                    if( Number.isNaN( elAdBudget ) ){
+                    }
+                    if( Number.isNaN( elAdBudget ) ){
                         isVal = false; valMsg = "Ad Budget is|Invalid";
                     }
                     if( !elAdBudget.value ){
