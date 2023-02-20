@@ -104,6 +104,7 @@ setTimeout(function(){
         neodigmCarousel.init()
         neodigmMetronome.init()
         neodigmMarquee.init()
-        document.querySelector("#roic-asses__caption--fb").textContent = document.querySelector("[data-selected-title]").dataset.selectedTitle
+        let sYear = new Date().getFullYear() 
+        document.querySelector("#roic-asses__caption--fb").textContent = document.querySelector("[data-selected-title]").dataset.selectedTitle + " " + sYear
     }, "js-roic-asses-id")            
 }, 3200)
