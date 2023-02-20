@@ -104,13 +104,16 @@ const neodigmUtils = ( ( _d ) =>{
       const NTIMES = [16, 124];
       [ ... document.querySelectorAll( _q ) ].forEach(function( e, nDx ){
           let nDif = Math.abs( Number( e.textContent ) - nVal )
-          neodigmMetronome.unsubscribe( NTIMES[1] + nDx ).subscribe( function(){
+          neodigmMetronome.unsubscribe( NTIMES[1] + nDx ).subscribe( function( mx ){
             let nCur =  Number( e.textContent )
             if( !Number.isNaN( nCur ) && !isNaN( nCur ) && nVal != nCur ){
               let nValC = ( nDif ) / NTIMES[0]
               nValC = Math.round( nValC )
-  //console.log( " ``` | " + nVal + " | " + nCur + " | " + nDif + " | " + nValC )
-              e.textContent = ( nCur < nVal ) ? nCur + nValC : nCur - nValC
+              if( mx != 0 ){
+                e.textContent = ( nCur < nVal ) ? nCur + nValC : nCur - nValC
+              }else{
+                e.textContent = nVal
+              }
             }
           }, NTIMES[1] + nDx, NTIMES[0] )
       })
