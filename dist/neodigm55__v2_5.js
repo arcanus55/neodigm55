@@ -101,18 +101,19 @@ const neodigmUtils = ( ( _d ) =>{
       }
     },
     countTo: function( _q, nVal ){  //  Whole number
-      let aFB = [ ... document.querySelectorAll( _q ) ]
-      if( aFB ){
-        aFB.forEach(function( e, nDx ){
-          neodigmMetronome.unsubscribe( 96 + nDx ).subscribe( function( mx ){
+      const NTIMES = [16, 124];
+      [ ... document.querySelectorAll( _q ) ].forEach(function( e, nDx ){
+          let nDif = Math.abs( Number( e.textContent ) - nVal )
+          neodigmMetronome.unsubscribe( NTIMES[1] + nDx ).subscribe( function(){
             let nCur =  Number( e.textContent )
             if( !Number.isNaN( nCur ) && !isNaN( nCur ) && nVal != nCur ){
-              let nVal10 = Math.round(nVal / 16)
-              e.textContent = ( nCur < nVal ) ? nCur + nVal10 : nCur - nVal10
+              let nValC = ( nDif ) / NTIMES[0]
+              nValC = Math.round( nValC )
+  //console.log( " ``` | " + nVal + " | " + nCur + " | " + nDif + " | " + nValC )
+              e.textContent = ( nCur < nVal ) ? nCur + nValC : nCur - nValC
             }
-          }, 96 + nDx, 16 )
-        })
-      }
+          }, NTIMES[1] + nDx, NTIMES[0] )
+      })
     }
   }
 })( document );
