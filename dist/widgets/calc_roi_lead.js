@@ -104,7 +104,23 @@ setTimeout(function(){
         neodigmCarousel.init()
         neodigmMetronome.init()
         neodigmMarquee.init()
-        let sYear = new Date().getFullYear() 
-        document.querySelector("#roic-asses__caption--fb").textContent = document.querySelector("[data-selected-title]").dataset.selectedTitle + " " + sYear
+        let sYear = new Date().getFullYear()
+        let sIndy = document.querySelector("[data-selected-title]").dataset.selectedTitle
+        let jsnWS = JSON.parse( jWS )
+        if( sIndy && jsnWS ){
+            oIndy = jsnWS.filter( ( oI )=>{ return ( oI.title == sIndy ); } )[0]
+            document.getElementById( "kpi-fb-ctr_src" ).textContent = oIndy.ctr_src
+            document.getElementById( "kpi-fb-ctr_gdn" ).textContent = oIndy.ctr_gdn
+
+            document.getElementById( "kpi-fb-cpc_src" ).textContent = oIndy.cpc_src
+            document.getElementById( "kpi-fb-cpc_gdn" ).textContent = oIndy.cpc_gdn
+
+            document.getElementById( "kpi-fb-cvr_src" ).textContent = oIndy.cvr_src
+            document.getElementById( "kpi-fb-cvr_gdn" ).textContent = oIndy.cvr_gdn
+
+            document.getElementById( "kpi-fb-cpa_src" ).textContent = oIndy.cpa_src
+            document.getElementById( "kpi-fb-cpa_gdn" ).textContent = oIndy.cpa_gdn
+        }
+        document.querySelector("#roic-asses__caption--fb").textContent = sIndy + " " + sYear
     }, "js-roic-asses-id")            
-}, 3200)
+}, 2400)
