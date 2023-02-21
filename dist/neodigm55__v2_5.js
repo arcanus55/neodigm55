@@ -100,8 +100,8 @@ const neodigmUtils = ( ( _d ) =>{
         });
       }
     },
-    countTo: function( _q, nVal ){  //  Whole number
-      const NTIMES = [16, 124];
+    countTo: function( _q, nVal, t=124 ){  //  Whole number
+      const NTIMES = [16, t];
       [ ... document.querySelectorAll( _q ) ].forEach(function( e, nDx ){
           let nDif = Math.abs( Number( e.textContent ) - nVal )
           neodigmMetronome.unsubscribe( NTIMES[1] + nDx ).subscribe( function( mx ){
