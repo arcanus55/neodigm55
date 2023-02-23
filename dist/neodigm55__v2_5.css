@@ -172,7 +172,7 @@ neodigm-sodapop:not(.ndsp__modal)::after {
     neodigm-sodapop.ndsp__size--large  { width: 88%; }
 }
 @media print {
-    .neodigm-sodapop-scrim-close { display: none;}
+    .neodigm-sodapop-scrim-close { display: none !important;}
 }
 /*  Neodigm Soda Pop End  */
 
