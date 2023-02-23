@@ -1,171 +1,174 @@
-<style>
-    *::-webkit-scrollbar-track { background: rgba( 57, 66, 82, .2); }
-    *::-webkit-scrollbar-thumb { background: #364C75; }
-    ::selection { color: #fff; background:  #92a8d1; text-shadow: none; }
-    .l-listbox {
-        display: block;
-        border: solid 1px #848484; border-radius: 8px 0 0 8px;
-        height: 32vh; width: 78%;
-        margin: 2px auto; padding: 0;
-        cursor: pointer; user-select: none;
-        overflow-x: hidden; overflow-y: scroll;
-    }
-    .l-listbox > div > p { margin: 2px; }
-    .l-listbox > div {
-        text-align: center;
-        margin: 0; padding: 6px;
-        border-bottom: solid 1px #cfcfcf;
-        color: #1e2a41;
-    }
-    .l-listbox > div:hover {
-        color: #fff; background-color: #92a8d1;
-    }
-    .l-listbox > div[data-selected='true'] {
-        color: #fff; background-color: #364C75;
-    }
-</style>
 
-<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:wght@100;300;400|Roboto+Slab:wght@100;300;400" type="text/css"></link>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0" type="text/css"></link>
+            <style>
+                *::-webkit-scrollbar-track { background: rgba( 57, 66, 82, .2); }
+                *::-webkit-scrollbar-thumb { background: #364C75; }
+                ::selection { color: #fff; background:  #92a8d1; text-shadow: none; }
+                .l-listbox {
+                    display: block;
+                    border: solid 1px #848484; border-radius: 8px 0 0 8px;
+                    height: 32vh; width: 78%;
+                    margin: 2px auto; padding: 0;
+                    cursor: pointer; user-select: none;
+                    overflow-x: hidden; overflow-y: scroll;
+                }
+                .l-listbox > div > p { margin: 2px; }
+                .l-listbox > div {
+                    text-align: center;
+                    margin: 0; padding: 6px;
+                    border-bottom: solid 1px #cfcfcf;
+                    color: #1e2a41;
+                }
+                .l-listbox > div:hover {
+                    color: #fff; background-color: #92a8d1;
+                }
+                .l-listbox > div[data-selected='true'] {
+                    color: #fff; background-color: #364C75;
+                }
+            </style>
 
-<section>
-    <article>
-        <br>
-        <h6 class="hd4 h-center" style="font-size: 32px;color: #000">Lead ROI Assessment by Industry</h6>
-    </article>
-    <neodigm-carousel id="js-caro-roic">
-        <section>
+            <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:wght@100;300;400|Roboto+Slab:wght@100;300;400" type="text/css"></link>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0" type="text/css"></link>
+
             <section>
-                <h6 class="hd4 h-center" style="font-size: 28px;">Get Started ...</h6>
-                <hr style="height: 1px; background-color: #cfcfcf; border: none;">
-                <section class="pfmf-grid pfmf-grid__80_20">
-                    <div>
-                        <article>
-                            <h2 class="hd4 h-center">Enter your email address and select an industry</h2>
-                            <br>
-                            <input id="roic_email" class="n55-lc__input" type="email" tabindex="-1"
-                            placeholder="Company Email Address">
-                            <br>
-                            <section id="roic_industry" class="l-listbox"></section>
-                        </article>
-                    </div>
-                    <nav class="h-center" style="background-color: #f1f1f1; border-radius: 12px; padding: 8px;">
-                        <neodigm-carousel id="js-caro-roic-1" style="height: auto;">
-                            <section>
-                                <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-1", "nav": "loop"})'>
-                                   <!-- <section onclick='neodigmSodaPop.autoOpen("js-roic-asses-id")'>-->
-                                    
-                                    <neodigm-kpi id="kpi-roic-1" data-n55-kpi data-n55-kpi-percent="false" data-n55-kpi-ambient="radius" data-n55-kpi-dont-touch="true" data-n55-kpi-shape-off="false" data-n55-kpi-size="xsmall" data-n55-theme="primary"
-                                        data-n55-toast="We will only ask you for 4|simple pieces of information"
-                                        data-n55-wired4sound-click="5"
-                                        ><h5>1 of 2<span>%</span></h5><h6>Halfway Done</h6>
-                                    </neodigm-kpi>
-                                    
-                                    <p class="hd4">Understand the Impact of Your Marketing Efforts</p>
-                                    <p class="hd5 h-just">Identify opportunities for improving your strategies and maximizing the impact your time and effort.</p>
-                                </section>
-                                <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-1", "nav": "loop"})'>
-                                    <p class="hd3">What Is Cost per Lead (CPL) in Marketing?</p>
-                                    <p class="hd5 h-just">Cost per lead, or CPL, is the amount of money that is spent to acquire one new lead from a marketing campaign. CPL helps sales teams to measure the cost-effectiveness of their campaigns, and it's the number that most sales development representative (SDR) quotas are set to. This is the outcome virtually all sales development managers focus on. </p>
-                                </section>
-                                <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-1", "nav": "loop"})'>
-                                    <p class="hd5 h-just">When you track this metric, you can guide your strategy in a way to maximize your return on everything you do.</p>
-                                </section>
+                <article>
+                    <br>
+                    <h6 class="hd4 h-center" style="font-size: 32px;color: #000">Lead ROI Assessment by Industry</h6>
+                </article>
+                <neodigm-carousel id="js-caro-roic">
+                    <section>
+                        <section>
+                            <h6 class="hd4 h-center" style="font-size: 28px;">Get Started ...</h6>
+                            <hr style="height: 1px; background-color: #cfcfcf; border: none;">
+                            <section class="pfmf-grid pfmf-grid__80_20">
+                                <div>
+                                    <article>
+                                        <h2 class="hd4 h-center">Enter your email address and select an industry</h2>
+                                        <br>
+                                        <input id="roic_email" class="n55-lc__input" type="email" tabindex="-1"
+                                        placeholder="Company Email Address">
+                                        <br>
+                                        <section id="roic_industry" class="l-listbox"></section>
+                                    </article>
+                                </div>
+                                <nav class="h-center" style="background-color: #f1f1f1; border-radius: 12px; padding: 8px;">
+                                    <neodigm-carousel id="js-caro-roic-1" style="height: auto;">
+                                        <section>
+<section onclick='neodigmCarousel.nav({"id": "js-caro-roic-1", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                               <!-- <section onclick='neodigmSodaPop.autoOpen("js-roic-asses-id")'>-->
+                                                
+                                                <neodigm-kpi id="kpi-roic-1" data-n55-kpi data-n55-kpi-percent="false" data-n55-kpi-ambient="radius" data-n55-kpi-dont-touch="true" data-n55-kpi-shape-off="false" data-n55-kpi-size="xsmall" data-n55-theme="primary"
+                                                    data-n55-toast="We will only ask you for 4|simple pieces of information"
+                                                    data-n55-wired4sound-click="5"
+                                                    ><h5>1 of 2<span>%</span></h5><h6>Halfway Done</h6>
+                                                </neodigm-kpi>
+                                                
+                                                <p class="hd4">Understand the Impact of Your Marketing Efforts</p>
+                                                <p class="hd5 h-just">Identify opportunities for improving your strategies and maximizing the impact your time and effort.</p>
+                                            </section>
+                                            <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-1", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                                <p class="hd3">What Is Cost per Lead (CPL) in Marketing?</p>
+                                                <p class="hd5 h-just">Cost per lead, or CPL, is the amount of money that is spent to acquire one new lead from a marketing campaign. CPL helps sales teams to measure the cost-effectiveness of their campaigns, and it's the number that most sales development representative (SDR) quotas are set to. This is the outcome virtually all sales development managers focus on. </p>
+                                            </section>
+                                            <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-1", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                                <p class="hd5 h-just">When you track this metric, you can guide your strategy in a way to maximize your return on everything you do.</p>
+                                            </section>
+                                        </section>
+                                    </neodigm-carousel>
+
+                                </nav>
                             </section>
-                        </neodigm-carousel>
-
-                    </nav>
-                </section>
-                <section class="pfmf-grid pfmf-grid__100">
-                    <nav class="h-center">
-                        <a id="js-nav-roic-1"
-                        onclick="ROIFormVal(1, ['#roic_email', '#roic_industry'] ); return false;"
-                        data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
-                        data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
-                        data-n55-enchanted-cta-size="medium" data-n55-theme="primary"
-                        ><span>Continue <neodigm-icon class="material-symbols-outlined">navigate_next</neodigm-icon></span><span>Next Page <neodigm-icon class="material-symbols-outlined">navigate_next</neodigm-icon></span>
-                        </a>
-                    </nav>
-                </section>
-
-            </section>
-
-            <section>
-                <h6 class="hd1 h-center" style="font-size: 28px;">Ad Spend and Average Leads</h6>
-                <hr style="height: 1px; background-color: #cfcfcf; border: none;">
-                <section class="pfmf-grid pfmf-grid__80_20">
-                    <div>
-                        <article>
-                            <h3 class="hd4 h-center">Enter the monthly ad budget</h3>
-                            <br>
-                            <input id="roic_ad_budget" class="n55-lc__input" type="text" tabindex="-1"
-                            placeholder="$ Monthly Ad Budget">
-                            <br>
-                            <h3 class="hd4 h-center">Enter the average number of leads per month</h3>
-                            <br>
-                            <input id="roic_ad_leads" class="n55-lc__input" type="number" tabindex="-1"
-                            placeholder="Average Leads per Month (approximate)">
-                            <br>
-                        </article>
-                    </div>
-                    <nav class="h-center" style="background-color: #f1f1f1; border-radius: 12px; padding: 8px;">
-                        <neodigm-carousel id="js-caro-roic-2" style="height: auto;">
-                            <section>
-                                <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-2", "nav": "loop"})'>
-                                    <neodigm-kpi id="kpi-roic-2"
-                                        data-n55-kpi
-                                        data-n55-kpi-tooltip="We will only ask you for 4|simple pieces of information"
-                                        data-n55-kpi-percent="false"
-                                        data-n55-kpi-ambient="radius"
-                                        data-n55-kpi-dont-touch="true"
-                                        data-n55-kpi-shape-off="false"
-                                        data-n55-kpi-size="xsmall"
-                                        data-n55-theme="primary"
-                                        data-n55-toast="Please approximate values|as best you can"
-                                        data-n55-wired4sound-click="5"
-                                        ><h5>2 of 2<span>%</span></h5><h6>Almost Done</h6>
-                                    </neodigm-kpi>
-                                    <p class="hd4">Lorem ipsum dolor sit amet, elit, sed do eiusmod ut labore et dolore magna aliqua.</p>
-                                </section>
-                                <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-2", "nav": "loop"})'>
-                                    <p class="hd4">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                </section>
-                                <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-2", "nav": "loop"})'>
-                                    <p class="hd4">Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </section>
+                            <section class="pfmf-grid pfmf-grid__100">
+                                <nav class="h-center">
+                                    <a id="js-nav-roic-1"
+                                    onclick="ROIFormVal(1, ['#roic_email', '#roic_industry'] ); return false;"
+                                    data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
+                                    data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                                    data-n55-enchanted-cta-size="medium" data-n55-theme="primary" data-n55-flash-theme="marcom"
+                                    ><span>Continue <neodigm-icon class="material-symbols-outlined">navigate_next</neodigm-icon></span><span>Next Page <neodigm-icon class="material-symbols-outlined">navigate_next</neodigm-icon></span>
+                                    </a>
+                                </nav>
                             </section>
-                        </neodigm-carousel>
-                    </nav>
-                </section>
-                <section class="pfmf-grid pfmf-grid__100">
-                    <nav class="h-center">
-                        <a id="js-nav-roic-3"
-                        onclick='fResetCar(); return false;'
-                        data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
-                        data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
-                        data-n55-enchanted-cta-size="medium" data-n55-theme="night"
-                        ><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Back</span><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Previous Page</span>
-                        </a>
-                        <a id="js-nav-roic-2"
-                        onclick="ROIFormVal(2, ['#roic_ad_budget', '#roic_ad_leads'] ); return false;"
-                        data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
-                        data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
-                        data-n55-enchanted-cta-size="medium" data-n55-theme="primary"
-                        ><span>Continue  <neodigm-icon class="material-symbols-outlined">monitoring</neodigm-icon></span><span>Lets do this!</span>
-                        </a>
-                    </nav>
-                </section>
-            </section>
-            
-            <section>
-                <h6 class="hd1 h-center" style="font-size: 28px;">Share, Print, and Download</h6>
-                <hr style="height: 1px; background-color: #cfcfcf; border: none;">
-                <section class="pfmf-grid pfmf-grid__80_20">
-                    <div>
-                        <article>
-                            <h3 class="hd4 h-center">De Finibus Bonorum et Malorum. Upsell Dui accumsan sit amet nulla facilisi morbi. Orci Upsell eu lobortis elementum Upsell nibh tellus molestie nunc. Magna Upsell tempor orci eu lobortis Upsell elementum.</h3>
-                            <br>
-                            <p class="h-center">
+
+                        </section>
+
+                        <section>
+                            <h6 class="hd1 h-center" style="font-size: 28px;">Ad Spend and Average Leads</h6>
+                            <hr style="height: 1px; background-color: #cfcfcf; border: none;">
+                            <section class="pfmf-grid pfmf-grid__80_20">
+                                <div>
+                                    <article>
+                                        <h3 class="hd5 h-center">Enter the monthly ad budget</h3>
+                                        <br>
+                                        <input id="roic_ad_budget" class="n55-lc__input" type="text" tabindex="-1"
+                                        onfocus="neodigmCarousel.nav({'id': 'js-caro-roic-2', 'nav': 2 })"
+                                        placeholder="$ Monthly Ad Budget">
+                                        <br>
+                                        <h3 class="hd5 h-center">Enter the average number of leads per month</h3>
+                                        <br>
+                                        <input id="roic_ad_leads" class="n55-lc__input" type="number" tabindex="-1"
+                                        onfocus="neodigmCarousel.nav({'id': 'js-caro-roic-2', 'nav': 3 })"
+                                        placeholder="Average Leads per Month (approximate)">
+                                        <br>
+                                    </article>
+                                </div>
+                                <nav class="h-center" style="background-color: #f1f1f1; border-radius: 12px; padding: 8px;">
+                                    <neodigm-carousel id="js-caro-roic-2" style="height: auto;">
+                                        <section>
+                                            <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-2", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                                <neodigm-kpi id="kpi-roic-2"
+                                                    data-n55-kpi
+                                                    data-n55-kpi-tooltip="We will only ask you for 4|simple pieces of information"
+                                                    data-n55-kpi-percent="false"
+                                                    data-n55-kpi-ambient="radius"
+                                                    data-n55-kpi-dont-touch="true"
+                                                    data-n55-kpi-shape-off="false"
+                                                    data-n55-kpi-size="xsmall"
+                                                    data-n55-theme="primary"
+                                                    data-n55-toast="Please approximate values|as best you can"
+                                                    data-n55-wired4sound-click="5"
+                                                    ><h5>2 of 2<span>%</span></h5><h6>Almost Done</h6>
+                                                </neodigm-kpi>
+                                                <p class="hd4">Enter your ad budget and the average number of new leads per month.</p>
+                                            </section>
+                                            <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-2", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                                <p class="hd4">Think about the actual costs of running an ad. Consider hidden costs such as design, administration, testing, and the cyclical efforts to analyze the results.</p>
+                                            </section>
+                                            <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-2", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                                <p class="hd4">Approximate the number of new leads within one month. Consider all channels.</p>
+                                            </section>
+                                        </section>
+                                    </neodigm-carousel>
+                                </nav>
+                            </section>
+                            <section class="pfmf-grid pfmf-grid__100">
+                                <nav class="h-center">
+                                    <a id="js-nav-roic-3"
+                                    onclick='fResetCar(); return false;'
+                                    data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
+                                    data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                                    data-n55-enchanted-cta-size="medium" data-n55-theme="night" data-n55-flash-theme="marcom"
+                                    ><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Back</span><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Previous Page</span>
+                                    </a>
+                                    <a id="js-nav-roic-2"
+                                    onclick="ROIFormVal(2, ['#roic_ad_budget', '#roic_ad_leads'] ); return false;"
+                                    data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
+                                    data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                                    data-n55-enchanted-cta-size="medium" data-n55-theme="primary" data-n55-flash-theme="marcom"
+                                    ><span>Continue  <neodigm-icon class="material-symbols-outlined">monitoring</neodigm-icon></span><span>Lets do this!</span>
+                                    </a>
+                                </nav>
+                            </section>
+                        </section>
+                        
+                        <section>
+                            <h6 class="hd1 h-center" style="font-size: 28px;">Share, Print, and Download</h6>
+                            <hr style="height: 1px; background-color: #cfcfcf; border: none;">
+                            <section class="pfmf-grid pfmf-grid__80_20">
+                                <div>
+                                    <article>
+                                        <h3 class="hd5 h-center">De Finibus Bonorum et Malorum. Upsell Dui accumsan sit amet nulla facilisi morbi. Orci Upsell eu lobortis elementum Upsell nibh tellus molestie nunc. Magna Upsell tempor orci eu lobortis Upsell elementum.</h3>
+                                        <br>
+                                        <p class="h-center">
 <a id="js-toggle-dark--sm"
 target="_blank" rel="noopener" tabindex="-1" aria-haspopup="true" data-n55-enchanted-cta-hover-an="true" data-n55-enchanted-cta data-n55-enchanted-cta-ambient="emit" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-size="xsmall"
 data-n55-flash-theme="primary"
@@ -198,223 +201,233 @@ data-n55-wired4sound-click="7"
 <span><neodigm-icon class="material-symbols-outlined">email</neodigm-icon> Email</span>
 <span><neodigm-icon class="material-symbols-outlined">email</neodigm-icon> Send</span>
 </a>
-
-
-                            </p>
-                            <br>
-                        </article>
-                    </div>
-                    <nav class="h-center" style="background-color: #f1f1f1; border-radius: 12px; padding: 8px;">
-                        <neodigm-carousel id="js-caro-roic-3" style="height: auto;">
-                            <section>
-                                <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-3", "nav": "loop"})'>
-
-                                    <p class="hd4">Lorem ipsum dolor sit amet, elit, sed do eiusmod ut labore et dolore magna aliqua.</p>
-                                </section>
-                                <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-3", "nav": "loop"})'>
-                                    <p class="hd4">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                </section>
-                                <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-3", "nav": "loop"})'>
-                                    <p class="hd4">Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    <br>
-                                    <a id="js-powered-by--sm" href="https://www.theScottKrause.com/emerging_tech/neodigm55_ux_library/?poweredby=Neodigm55"
-                                    target="_blank" rel="noopener" tabindex="-1" aria-haspopup="true"
-                                    data-n55-enchanted-cta-hover-an="true"
-                                    data-n55-enchanted-cta
+                                        </p>
+                                        <br>
+                                    </article>
+                                </div>
+                                <nav class="h-center" style="background-color: #f1f1f1; border-radius: 12px; padding: 8px;">
+                                    <neodigm-carousel id="js-caro-roic-3" style="height: auto;">
+                                        <section>
+                                            <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-3", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                                <p class="hd4">Lorem ipsum dolor sit amet, elit, sed do eiusmod ut labore et dolore magna aliqua.</p>
+                                            </section>
+                                            <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-3", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                                <p class="hd4">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                            </section>
+                                            <section onclick='neodigmCarousel.nav({"id": "js-caro-roic-3", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                                <p class="hd4">Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                <br>
+                                                <a id="js-powered-by--sm" href="https://www.theScottKrause.com/emerging_tech/neodigm55_ux_library/?poweredby=Neodigm55"
+                                                target="_blank" rel="noopener" tabindex="-1" aria-haspopup="true"
+                                                data-n55-enchanted-cta-hover-an="true"
+                                                data-n55-enchanted-cta
+                                                data-n55-enchanted-cta-ambient="emit"
+                                                data-n55-enchanted-cta-dont-touch="true"
+                                                data-n55-enchanted-cta-shape-off="false"
+                                                data-n55-enchanted-cta-size="small"
+                                                data-n55-flash-theme="marcom"
+                                                data-n55-theme="night"
+                                                data-n55-toast="Powered by Neodigm ✨ 55"
+                                                data-n55-wired4sound-click="7"
+                                                ><span data-n55-wired4sound-mouseover="3">Powered by Neodigm ✨ 55</span>
+                                                <span>
+                                                    <neodigm-marquee data-n55-marquee-text=" Neodigm 55 is different. It's an eclectic UX micro-library.  The lightweight components come together in a unique way that makes your website playful, fun, and bounceproof. "
+                                                    data-n55-flash-theme="party"
+                                                    data-n55-wired4sound-click="5" data-n55-wired4sound-mouseover="14"
+                                                    data-n55-marquee-size="xsmall" data-n55-marquee-direction="false"><pre data-n55-theme="warning"></pre></neodigm-marquee>
+                                                </span>
+                                                </a>
+                                            </section>
+                                        </section>
+                                    </neodigm-carousel>
+                                    <br><br>
+                                    <a id="js-nav-roic-2"
+                                    onclick="olark('api.box.expand'); return false;"
+                                    data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
+                                    data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                                    data-n55-enchanted-cta-size="medium" data-n55-theme="primary"
                                     data-n55-enchanted-cta-ambient="emit"
-                                    data-n55-enchanted-cta-dont-touch="true"
-                                    data-n55-enchanted-cta-shape-off="false"
-                                    data-n55-enchanted-cta-size="small"
-                                    data-n55-flash-theme="marcom"
-                                    data-n55-theme="night"
-                                    data-n55-toast="Powered by Neodigm ✨ 55"
-                                    data-n55-wired4sound-click="7"
-                                    ><span data-n55-wired4sound-mouseover="3">Powered by Neodigm ✨ 55</span>
-                                    <span>
-                                        <neodigm-marquee data-n55-marquee-text="  Neodigm 55 is different. It's an eclectic UX micro-library.  The lightweight components come together in a unique way that makes your website playful, fun, and bounceproof.  "
-                                        data-n55-flash-theme="party"
-                                        data-n55-wired4sound-click="5" data-n55-wired4sound-mouseover="3"
-                                        data-n55-marquee-size="xsmall" data-n55-marquee-direction="false"><pre data-n55-theme="party"></pre></neodigm-marquee>
-                                    </span>
+                                    ><span>Let's Chat  <neodigm-icon class="material-symbols-outlined">chat</neodigm-icon></span><span>Got Questions?</span>
                                     </a>
-                                </section>
+                                </nav>
                             </section>
-                        </neodigm-carousel>
-                        <br><br>
-                        <a id="js-nav-roic-2"
-                        onclick="olark('api.box.expand'); return false;"
-                        data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
-                        data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
-                        data-n55-enchanted-cta-size="medium" data-n55-theme="primary"
-                        data-n55-enchanted-cta-ambient="emit"
-                        ><span>Let's Chat  <neodigm-icon class="material-symbols-outlined">chat</neodigm-icon></span><span>Got Questions?</span>
-                        </a>
-                    </nav>
-                </section>
-                <section class="pfmf-grid pfmf-grid__100">
-                    <nav class="h-center">
-                        <a id="js-nav-roic-3"
-                        onclick='fResetCar()'
-                        data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
-                        data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
-                        data-n55-enchanted-cta-size="medium" data-n55-theme="night"
-                        ><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Back</span><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Previous Page</span>
-                        </a>
-                    </nav>
-                </section>
-            </section>
+                            <section class="pfmf-grid pfmf-grid__100">
+                                <nav class="h-center">
+                                    <a id="js-nav-roic-3"
+                                    onclick='fResetCar()'
+                                    data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
+                                    data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                                    data-n55-enchanted-cta-size="medium" data-n55-theme="night" data-n55-flash-theme="marcom"
+                                    ><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Back</span><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Previous Page</span>
+                                    </a>
+                                </nav>
+                            </section>
+                        </section>
 
-        </section>
-    </neodigm-carousel>
-</section>
-<hr style="height: 1px; background-color: #cfcfcf; border: none;">
-</main>
-</body>
+                    </section>
+                </neodigm-carousel>
+            </section>
+            <hr style="height: 1px; background-color: #cfcfcf; border: none;">
+        </main>
+    </body>
 
 <template id="js-roic-asses-id" data-n55-sodapop-modal="false" data-n55-sodapop-size="large" data-n55-sodapop-fullscreen="false">
-<div class="h-center">
-<h2 id="roic-asses__caption--fb" class="hd3"></h2>
+    <div class="h-center">
+        <h2 id="roic-asses__caption--fb" class="hd3"></h2>
 
-<section class="pfmf-grid pfmf-grid__50_50">
-<div>
-    <article>
-        <neodigm-carousel id="js-carousel-ctr_src">
-            <section>
-                <section onclick='neodigmCarousel.nav({"id": "js-carousel-ctr_src", "nav": "loop"})'>
-                    <h3 class="hd4 h-center">Average Click Through Rate (CTR)</h3>
+        <section class="pfmf-grid pfmf-grid__100">
+            <div>
+                <article>
+                    <h2 class="hd4 h-center">Cost Per Lead (CPL)</h3>
                     <hr style="height: 1px; background-color: #cfcfcf; border: none;">
-                    <neodigm-kpi id="kpi-ctr_src" data-n55-kpi data-n55-kpi-percent="true"
-                    data-n55-kpi-size="xsmall" data-n55-flash-theme="primary" data-n55-theme="primary" data-n55-wired4sound-mouseover="3"
-                    ><h5 id="kpi-fb-ctr_src">8<span>%</span></h5><h6>Search</h6>
+                    <neodigm-kpi id="kpi-ctr_src" data-n55-kpi data-n55-kpi-percent="false"
+                    data-n55-kpi-size="small" data-n55-flash-theme="success" data-n55-theme="success"
+                    ><h5><kpi-fb id="kpi-fb-cpl" style="font-size: 44px;">$0</kpi-fb></h5><h6>Monthly CPL</h6>
                     </neodigm-kpi>
+                </article>
+            </div>
+        </section>
 
-                    <neodigm-kpi id="kpi-ctr_gdn" data-n55-kpi data-n55-kpi-percent="true"
-                    data-n55-kpi-size="xsmall" data-n55-flash-theme="marcom" data-n55-theme="marcom" data-n55-wired4sound-mouseover="3"
-                    ><h5 id="kpi-fb-ctr_gdn">12<span>%</span></h5><h6>Display</h6>
-                    </neodigm-kpi>
-                </section>
-                <section onclick='neodigmCarousel.nav({"id": "js-carousel-ctr_src", "nav": "loop"})'>
-                    <neodigm-marquee data-n55-marquee-text="  Average Click-Through Rate in Google Ads by Industry. "
-                    style="border-radius: 6px; max-width: 324px;"
-                    data-n55-marquee-size="small"> <pre data-n55-theme="warning"></pre>
-                    </neodigm-marquee>
-                    <p class="hd5">The average click-through rate in AdWords across all industries is 3.17% on the search network and 0.46% on the display network.</p>
-                    <br>
-                    <a id="js-nav-back-carousel-cpc_src"
-                    data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
-                    data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true" data-n55-enchanted-cta-size="small" data-n55-theme="night"
-                    ><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Back</span><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> KPI</span>
-                    </a>
-                </section> 
-            </section>
-         </neodigm-carousel>
-    </article>
-</div>
-<div>
-    <article>
-        <neodigm-carousel id="js-carousel-cpc_src">
-            <section>
-                <section onclick='neodigmCarousel.nav({"id": "js-carousel-cpc_src", "nav": "loop"})'>
-                    <h3 class="hd4 h-center">Average Cost Per Click (CPC)</h3>
-                    <hr style="height: 1px; background-color: #cfcfcf; border: none;">
-                    <neodigm-kpi id="kpi-cpc_src" data-n55-kpi data-n55-kpi-percent="true"
-                    data-n55-kpi-size="xsmall" data-n55-flash-theme="primary" data-n55-theme="primary" data-n55-wired4sound-mouseover="3"
-                    ><h5 id="kpi-fb-cpc_src">86<span>%</span></h5><h6>Search</h6>
-                    </neodigm-kpi>
+        <section class="pfmf-grid pfmf-grid__50_50">
+            <div>
+                <article>
+                    <neodigm-carousel id="js-carousel-ctr_src">
+                        <section>
+                            <section onclick='neodigmCarousel.nav({"id": "js-carousel-ctr_src", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                <h3 class="hd5 h-center">Average Click Through Rate (CTR)</h3>
+                                <hr style="height: 1px; background-color: #cfcfcf; border: none;">
+                                <neodigm-kpi id="kpi-ctr_src" data-n55-kpi data-n55-kpi-percent="false"
+                                data-n55-kpi-size="xsmall" data-n55-flash-theme="primary" data-n55-theme="primary"
+                                ><h5><kpi-fb id="kpi-fb-ctr_src">1</kpi-fb><span>%</span></h5><h6>Search</h6>
+                                </neodigm-kpi>
 
-                    <neodigm-kpi id="kpi-ctr_gdn" data-n55-kpi data-n55-kpi-percent="true"
-                    data-n55-kpi-size="xsmall" data-n55-flash-theme="marcom" data-n55-theme="marcom" data-n55-wired4sound-mouseover="3"
-                    ><h5 id="kpi-fb-cpc_gdn">33<span>%</span></h5><h6>Display</h6>
-                    </neodigm-kpi>
-                </section>
-                <section onclick='neodigmCarousel.nav({"id": "js-carousel-cpc_src", "nav": "loop"})'>
-                    <neodigm-marquee data-n55-marquee-text="  Average Cost Per Click Rate in Google Ads by Industry "
-                    style="border-radius: 6px; max-width: 324px;"
-                    data-n55-marquee-size="small"> <pre data-n55-theme="primary"></pre>
-                    </neodigm-marquee>
-                    <p class="hd5">Lorem ipsum dolor sit amet, elit, sed do eiusmod ut labore et dolore magna aliqua.</p>
-                    <br>
-                    <a id="js-nav-back-carousel-cpc_src"
-                    data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
-                    data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true" data-n55-enchanted-cta-size="small" data-n55-theme="night"
-                    ><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Back</span><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> KPI</span>
-                    </a>
-                </section> 
-            </section>
-         </neodigm-carousel>
-    </article>
-</div>
-</section>
+                                <neodigm-kpi id="kpi-ctr_gdn" data-n55-kpi data-n55-kpi-percent="false"
+                                data-n55-kpi-size="xsmall" data-n55-flash-theme="marcom" data-n55-theme="marcom"
+                                ><h5><kpi-fb id="kpi-fb-ctr_gdn">2</kpi-fb><span>%</span></h5><h6>Display</h6>
+                                </neodigm-kpi>
+                            </section>
+                            <section onclick='neodigmCarousel.nav({"id": "js-carousel-ctr_src", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                <neodigm-marquee data-n55-marquee-text="  Average Click-Through Rate in Google Ads by Industry. "
+                                style="border-radius: 6px; max-width: 324px;"
+                                data-n55-marquee-size="small"> <pre data-n55-theme="warning"></pre>
+                                </neodigm-marquee>
+                                <p class="hd5">The average click-through rate in AdWords across all industries is 3.17% on the search network and 0.46% on the display network.</p>
+                                <br>
+                                <a id="js-nav-back-carousel-cpc_src"
+                                data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
+                                data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true" data-n55-enchanted-cta-size="small" data-n55-theme="night"
+                                ><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Back</span><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> KPI</span>
+                                </a>
+                            </section> 
+                        </section>
+                     </neodigm-carousel>
+                </article>
+            </div>
+            <div>
+                <article>
+                    <neodigm-carousel id="js-carousel-cpc_src">
+                        <section>
+                            <section onclick='neodigmCarousel.nav({"id": "js-carousel-cpc_src", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                <h3 class="hd5 h-center">Average Cost Per Click (CPC)</h3>
+                                <hr style="height: 1px; background-color: #cfcfcf; border: none;">
+                                <neodigm-kpi id="kpi-cpc_src" data-n55-kpi data-n55-kpi-percent="false"
+                                data-n55-kpi-size="xsmall" data-n55-flash-theme="primary" data-n55-theme="primary"
+                                ><h5><kpi-fb id="kpi-fb-cpc_src">$3</kpi-fb><span>%</span></h5><h6>Search</h6>
+                                </neodigm-kpi>
 
-<section class="pfmf-grid pfmf-grid__50_50">
-<div>
-    <article>
-        <neodigm-carousel id="js-carousel-cvr_src">
-            <section>
-                <section onclick='neodigmCarousel.nav({"id": "js-carousel-cvr_src", "nav": "loop"})'>
-                    <h3 class="hd4 h-center">Average Conversion Rate (CVR)</h3>
-                    <hr style="height: 1px; background-color: #cfcfcf; border: none;">
-                    <neodigm-kpi id="kpi-cvr_src" data-n55-kpi data-n55-kpi-percent="true"
-                    data-n55-kpi-size="xsmall" data-n55-flash-theme="primary" data-n55-theme="primary" data-n55-wired4sound-mouseover="3"
-                    ><h5 id="kpi-fb-cvr_src">22<span>%</span></h5><h6>Search</h6>
-                    </neodigm-kpi>
+                                <neodigm-kpi id="kpi-ctr_gdn" data-n55-kpi data-n55-kpi-percent="false"
+                                data-n55-kpi-size="xsmall" data-n55-flash-theme="marcom" data-n55-theme="marcom"
+                                ><h5><kpi-fb id="kpi-fb-cpc_gdn">$4</kpi-fb><span>%</span></h5><h6>Display</h6>
+                                </neodigm-kpi>
+                            </section>
+                            <section onclick='neodigmCarousel.nav({"id": "js-carousel-cpc_src", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                <neodigm-marquee data-n55-marquee-text="  Average Cost Per Click Rate in Google Ads by Industry "
+                                style="border-radius: 6px; max-width: 324px;"
+                                data-n55-marquee-size="small"> <pre data-n55-theme="primary"></pre>
+                                </neodigm-marquee>
+                                <p class="hd5">Lorem ipsum dolor sit amet, elit, sed do eiusmod ut labore et dolore magna aliqua.</p>
+                                <br>
+                                <a id="js-nav-back-carousel-cpc_src"
+                                data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
+                                data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true" data-n55-enchanted-cta-size="small" data-n55-theme="night"
+                                ><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Back</span><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> KPI</span>
+                                </a>
+                            </section> 
+                        </section>
+                     </neodigm-carousel>
+                </article>
+            </div>
+        </section>
 
-                    <neodigm-kpi id="kpi-cvr_gdn" data-n55-kpi data-n55-kpi-percent="true"
-                    data-n55-kpi-size="xsmall" data-n55-flash-theme="marcom" data-n55-theme="marcom" data-n55-wired4sound-mouseover="3"
-                    ><h5 id="kpi-fb-cvr_gdn">68<span>%</span></h5><h6>Display</h6>
-                    </neodigm-kpi>
-                </section>
-                <section onclick='neodigmCarousel.nav({"id": "js-carousel-cvr_src", "nav": "loop"})'>
-                    <neodigm-marquee data-n55-marquee-text="  Average Conversion Rate in Google Ads by Industry  "
-                    style="border-radius: 6px; max-width: 324px;"
-                    data-n55-marquee-size="small"> <pre data-n55-theme="brand"></pre>
-                    </neodigm-marquee>
-                    <p class="hd5">Lorem ipsum dolor sit amet, elit, sed do eiusmod ut labore et dolore magna aliqua.</p>
-                    <br>
-                    <a id="js-nav-back-carousel-cvr_src"
-                    data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
-                    data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true" data-n55-enchanted-cta-size="small" data-n55-theme="night"
-                    ><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Back</span><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> KPI</span>
-                    </a>
-                </section> 
-            </section>
-         </neodigm-carousel>
-    </article>
-</div>
-<div>
-    <article>
-        <neodigm-carousel id="js-carousel-cpa_src">
-            <section>
-                <section onclick='neodigmCarousel.nav({"id": "js-carousel-cpa_src", "nav": "loop"})'>
-                    <h3 class="hd4 h-center">Average Cost Per Action (CPA)</h3>
-                    <hr style="height: 1px; background-color: #cfcfcf; border: none;">
-                    <neodigm-kpi id="kpi-cpa_src" data-n55-kpi data-n55-kpi-percent="true"
-                    data-n55-kpi-size="xsmall" data-n55-flash-theme="primary" data-n55-theme="primary" data-n55-wired4sound-mouseover="3"
-                    ><h5 id="kpi-fb-cpa_src">32<span>%</span></h5><h6>Search</h6>
-                    </neodigm-kpi>
+        <section class="pfmf-grid pfmf-grid__50_50">
+            <div>
+                <article>
+                    <neodigm-carousel id="js-carousel-cvr_src">
+                        <section>
+                            <section onclick='neodigmCarousel.nav({"id": "js-carousel-cvr_src", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                <h3 class="hd5 h-center">Average Conversion Rate (CVR)</h3>
+                                <hr style="height: 1px; background-color: #cfcfcf; border: none;">
+                                <neodigm-kpi id="kpi-cvr_src" data-n55-kpi data-n55-kpi-percent="false"
+                                data-n55-kpi-size="xsmall" data-n55-flash-theme="primary" data-n55-theme="primary"
+                                ><h5 id="kpi-fb-cvr_src">5<span>%</span></h5><h6>Search</h6>
+                                </neodigm-kpi>
 
-                    <neodigm-kpi id="kpi-ctr_gdn" data-n55-kpi data-n55-kpi-percent="true"
-                    data-n55-kpi-size="xsmall" data-n55-flash-theme="marcom" data-n55-theme="marcom" data-n55-wired4sound-mouseover="3"
-                    ><h5 id="kpi-fb-cpa_gdn">48<span>%</span></h5><h6>Display</h6>
-                    </neodigm-kpi>
-                </section>
-                <section onclick='neodigmCarousel.nav({"id": "js-carousel-cpa_src", "nav": "loop"})'>
-                    <neodigm-marquee data-n55-marquee-text="  Average Cost Per Action Rate in Google Ads by Industry "
-                    style="border-radius: 6px; max-width: 324px;"
-                    data-n55-marquee-size="small"> <pre data-n55-theme="info"></pre>
-                    </neodigm-marquee>
-                    <p class="hd5">Lorem ipsum dolor sit amet, elit, sed do eiusmod ut labore et dolore magna aliqua.</p>
-                    <br>
-                    <a id="js-nav-back-carousel-cpa_src"
-                    data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
-                    data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true" data-n55-enchanted-cta-size="small" data-n55-theme="night"
-                    ><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Back</span><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> KPI</span>
-                    </a>
-                </section> 
-            </section>
-         </neodigm-carousel>
-    </article>
-</div>
-</section>
-</div>
+                                <neodigm-kpi id="kpi-cvr_gdn" data-n55-kpi data-n55-kpi-percent="false"
+                                data-n55-kpi-size="xsmall" data-n55-flash-theme="marcom" data-n55-theme="marcom"
+                                ><h5 id="kpi-fb-cvr_gdn">6<span>%</span></h5><h6>Display</h6>
+                                </neodigm-kpi>
+                            </section>
+                            <section onclick='neodigmCarousel.nav({"id": "js-carousel-cvr_src", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                <neodigm-marquee data-n55-marquee-text="  Average Conversion Rate in Google Ads by Industry  "
+                                style="border-radius: 6px; max-width: 324px;"
+                                data-n55-marquee-size="small"> <pre data-n55-theme="brand"></pre>
+                                </neodigm-marquee>
+                                <p class="hd5">Lorem ipsum dolor sit amet, elit, sed do eiusmod ut labore et dolore magna aliqua.</p>
+                                <br>
+                                <a id="js-nav-back-carousel-cvr_src"
+                                data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
+                                data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true" data-n55-enchanted-cta-size="small" data-n55-theme="night"
+                                ><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Back</span><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> KPI</span>
+                                </a>
+                            </section> 
+                        </section>
+                     </neodigm-carousel>
+                </article>
+            </div>
+            <div>
+                <article>
+                    <neodigm-carousel id="js-carousel-cpa_src">
+                        <section>
+                            <section onclick='neodigmCarousel.nav({"id": "js-carousel-cpa_src", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                <h3 class="hd5 h-center">Average Cost Per Action (CPA)</h3>
+                                <hr style="height: 1px; background-color: #cfcfcf; border: none;">
+                                <neodigm-kpi id="kpi-cpa_src" data-n55-kpi data-n55-kpi-percent="false"
+                                data-n55-kpi-size="xsmall" data-n55-flash-theme="primary" data-n55-theme="primary"
+                                ><h5><kpi-fb id="kpi-fb-cpa_src">$7</kpi-fb><span>%</span></h5><h6>Search</h6>
+                                </neodigm-kpi>
+
+                                <neodigm-kpi id="kpi-ctr_gdn" data-n55-kpi data-n55-kpi-percent="false"
+                                data-n55-kpi-size="xsmall" data-n55-flash-theme="marcom" data-n55-theme="marcom"
+                                ><h5><kpi-fb id="kpi-fb-cpa_gdn">$8</kpi-fb><span>%</span></h5><h6>Display</h6>
+                                </neodigm-kpi>
+                            </section>
+                            <section onclick='neodigmCarousel.nav({"id": "js-carousel-cpa_src", "nav": "loop"}); neodigmWired4Sound.sound("10"); neodigmUtils.robinTheme("marcom")'>
+                                <neodigm-marquee data-n55-marquee-text="  Average Cost Per Action Rate in Google Ads by Industry "
+                                style="border-radius: 6px; max-width: 324px;"
+                                data-n55-marquee-size="small"> <pre data-n55-theme="info"></pre>
+                                </neodigm-marquee>
+                                <p class="hd5">Lorem ipsum dolor sit amet, elit, sed do eiusmod ut labore et dolore magna aliqua.</p>
+                                <br>
+                                <a id="js-nav-back-carousel-cpa_src"
+                                data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true"
+                                data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true" data-n55-enchanted-cta-size="small" data-n55-theme="night"
+                                ><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> Back</span><span><neodigm-icon class="material-symbols-outlined">navigate_before</neodigm-icon> KPI</span>
+                                </a>
+                            </section> 
+                        </section>
+                     </neodigm-carousel>
+                </article>
+            </div>
+        </section>
+    </div>
 </template>

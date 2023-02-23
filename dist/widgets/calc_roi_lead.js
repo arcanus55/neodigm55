@@ -69,14 +69,13 @@ function ROIFormVal( nPage, aIds ){
                 }
             break;
             case 2:
-                debugger
                 elAdBudget = document.querySelector( aIds[0] )
                 elLeadsPerMonth = document.querySelector( aIds[1] )
                 if( elAdBudget && elLeadsPerMonth ){
                     if( !elAdBudget.value ){
                         isVal = false; valMsg = "Ad Budget is|Required";
                     }
-                    if( !elLeadsPerMonth.value ){
+                    if( !elLeadsPerMonth.value || elLeadsPerMonth.value == "0" ){
                         isVal = false; valMsg = "Leads Per Month is|Required";
                     }
                     if( Number.isNaN( elAdBudget ) ){
@@ -110,6 +109,15 @@ setTimeout(function(){
             let jsnWS = JSON.parse( jWS )
             if( sIndy && jsnWS ){
                 oIndy = jsnWS.filter( ( oI )=>{ return ( oI.title == sIndy ); } )[0]
+
+                let elAdBudget = document.querySelector( "#roic_ad_budget" )
+                let elLeadsPerMonth = document.querySelector( "#roic_ad_leads" )
+                elAdBudget = elAdBudget.value.replace("$","")
+                elLeadsPerMonth = elLeadsPerMonth.value
+                if( elAdBudget && elLeadsPerMonth ){
+                    document.getElementById( "kpi-fb-cpl" ).textContent = "$" + Math.round(( ( elAdBudget / elLeadsPerMonth ) + Number.EPSILON) * 100) / 100
+                }
+
                 document.getElementById( "kpi-fb-ctr_src" ).textContent = oIndy.ctr_src
                 document.getElementById( "kpi-fb-ctr_gdn" ).textContent = oIndy.ctr_gdn
 
@@ -121,6 +129,7 @@ setTimeout(function(){
 
                 document.getElementById( "kpi-fb-cpa_src" ).textContent = oIndy.cpa_src
                 document.getElementById( "kpi-fb-cpa_gdn" ).textContent = oIndy.cpa_gdn
+
             }
             document.querySelector("#roic-asses__caption--fb").textContent = sIndy + " " + sYear
         }, "js-roic-asses-id")
