@@ -93,6 +93,9 @@ All rights reserved. Redistributions of source code must retain the above copyri
 	text-align: center;
 	white-space: nowrap
 }
+@media print {
+    .l-snackbar { display: none;}
+}
 /*  Neodigm Toast End  */
 
 /*  Neodigm Soda Pop Begin  */
