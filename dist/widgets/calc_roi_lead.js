@@ -139,3 +139,14 @@ setTimeout(function(){
     }
 
 }, 2400)
+function doCopyString( sTxt, sTheme="night" ){
+    if( sTxt ) {
+        sTxt = sTxt.replaceAll("__","'")
+        try {
+            navigator.clipboard.writeText( sTxt );
+            neodigmToast.q( sTxt+"|Copied to Clipboard", sTheme )
+        } catch (err) {
+            console.warn('Failed to copy', err)
+        }
+    }
+}
