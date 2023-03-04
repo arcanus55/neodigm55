@@ -942,6 +942,9 @@ class NeodigmCarousel {
           case "loop":
             if( oState.nIdx < oState.aTabCntr.length) { oState.nIdx++ }else{ oState.nIdx = 1 }
           break;
+          case "getPage":
+            return oState.nIdx;
+          break;
           default:
             if( ( oNav.nav >= 1 ) && ( oNav.nav < (oState.aTabCntr.length + 1) ) ) oState.nIdx = elNC.n55State.nIdx = oNav.nav
         }
