@@ -827,7 +827,7 @@ class NeodigmEnchantedCTA {
                     eCt.querySelectorAll("span")[1].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[1]                    
                   }
                 }
-                break;
+              break;
             }
             if( neodigmOpt.N55_DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] )
             setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCt ) }, 8000)
