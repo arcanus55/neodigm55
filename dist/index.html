@@ -119,7 +119,7 @@ data-n55-wired4sound-click="7"
 ><span data-n55-wired4sound-mouseover="3">PWA Template</span><span>Template Code</span>
 </a>
 
-<a id="js-open-pup--countOn__1000"
+<a id="js-open-pup--countOn__1001"
 onclick="neodigmUtils.countTo( '.countToTarget', 1001 )"
 data-n55-enchanted-cta
 data-n55-enchanted-cta-alt="Text|Alternate"
@@ -310,12 +310,12 @@ data-n55-wired4sound-click="5"
 console.log( "=== cowboy baby | ", neodigmSodaPop, neodigmMarquee, neodigmEnchantedCTA )
 window.addEventListener('DOMContentLoaded', (ev) => {
     setTimeout(function(){
+        if( neodigmEnchantedCTA ) neodigmEnchantedCTA.setOnLongTap( function(){ alert("count to 1001 long tap"); }, "js-open-pup--countOn__1001")
         if( neodigmSodaPop && neodigmMarquee && neodigmEnchantedCTA ){
             neodigmSodaPop.setOnAfterOpen( function(){  //  Carousel
                 neodigmCarousel.init()
             }, "myPopup--carousel");
             neodigmSodaPop.setOnAfterOpen( function(){
-console.log(" ~~~ setOnAfterOpen | " + this)
 NeodigmClaire.showCanv('neodigm-sodapop').setTheme( ['brand','danger','info','marcom'] ).initCanvOn('neodigm-sodapop').waxOn('neodigm-sodapop')
                 neodigmMetronome.init().pause( 2200 )
                     neodigmMarquee.init().pause( 2400 )

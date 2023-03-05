@@ -24,6 +24,7 @@ let neodigmOpt = {
   neodigmEnchantedCTA: true,
     N55_CTA_RND_TOUCH: 14001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
+    N55_CTA_LONG_TAP: true,
     N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ], // TODO glance!
   neodigmKPI: true,  N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
   neodigmPWA: true,  N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
@@ -222,7 +223,7 @@ class NeodigmSodaPop {
       if(this.bIsOpen) this.close(true)
       this.eTmpl = this._d.getElementById(_sId)
       if(this.bIsInit && this.eTmpl && this.eScrim) {
-          if(this.fOnBeforeOpen[_sId]) this.fOnBeforeOpen[_sId]()
+          if(this.fOnBeforeOpen[ _sId]) this.fOnBeforeOpen[ _sId]()
           if(this.fOnBeforeOpen["def"]) this.fOnBeforeOpen["def"]()
           this.bIsModal = (this.eTmpl.dataset.n55SodapopModal == "true")
           if(this.bIsModal) {
@@ -756,17 +757,40 @@ class NeodigmEnchantedCTA {
     constructor( _d, _aQ ) {
         this._d = _d; this._aQ = _aQ
         this.bIsInit = false; this.bIsPause = false
+        this.fOnLongTap = {}; this.bLongTap = false
         this.aE = []
     }
     init (){
       this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
-      if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
-        let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
-        let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
-        if( bCta && neodigmOpt.N55_GTM_DL_CTA ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CTA, sId )
-        let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
-        if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
-      }, false)
+      if( !this.bIsInit ){  //  once events body
+        this._d.body.addEventListener("click", ( ev ) => {
+          let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
+          let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
+          if( bCta && neodigmOpt.N55_GTM_DL_CTA ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CTA, sId )
+          let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
+          if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
+
+        }, false)
+        if( neodigmOpt.N55_CTA_LONG_TAP ){
+          this._d.body.addEventListener("mousedown", ( ev ) => {
+            let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
+            let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
+            if( bCta ){
+              neodigmEnchantedCTA.bLongTap = true
+              setTimeout( function(){
+                if( neodigmEnchantedCTA.bLongTap ){
+                  neodigmEnchantedCTA.bLongTap = false
+                  if(neodigmEnchantedCTA.fOnLongTap[ sId ]) neodigmEnchantedCTA.fOnLongTap[ sId ]()
+                  if(neodigmEnchantedCTA.fOnLongTap["def"]) neodigmEnchantedCTA.fOnLongTap["def"]()                     
+                }
+              }, 4000 )            
+            }
+          }, false)
+          this._d.body.addEventListener("mouseup", ( ev ) => {
+            neodigmEnchantedCTA.bLongTap = false
+          }, false)          
+        }
+      }
       if( neodigmOpt.N55_CTA_RND_TOUCH ){
         neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_CTA_RND_TOUCH )
       }
@@ -843,6 +867,7 @@ class NeodigmEnchantedCTA {
         if( eCt.n55EnchantedCtaAlt ) eCt.innerHTML = eCt.n55EnchantedCtaAlt
       }
     }
+    setOnLongTap( _f, id="def"){ this.fOnLongTap[ id ] = _f }
 }
 let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchanted-cta]"] )
 
