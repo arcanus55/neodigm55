@@ -24,7 +24,7 @@ let neodigmOpt = {
   neodigmEnchantedCTA: true,
     N55_CTA_RND_TOUCH: 14001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
-    N55_CTA_LONG_TAP: true,
+    N55_CTA_LONG_TAP: true,  //  Wait 3.4s before firing cust LC func
     N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ], // TODO glance!
   neodigmKPI: true,  N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
   neodigmPWA: true,  N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
@@ -783,7 +783,7 @@ class NeodigmEnchantedCTA {
                   if(neodigmEnchantedCTA.fOnLongTap[ sId ]) neodigmEnchantedCTA.fOnLongTap[ sId ]()
                   if(neodigmEnchantedCTA.fOnLongTap["def"]) neodigmEnchantedCTA.fOnLongTap["def"]()                     
                 }
-              }, 4000 )            
+              }, 3400 )            
             }
           }, false)
           this._d.body.addEventListener("mouseup", ( ev ) => {
