@@ -9,8 +9,76 @@
 <script src="/dist/neodigm55_v1_0_launchComplete.js"></script>
 
 <script>
-let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:false, N55_CTA_RND_TOUCH: 5000 }
+let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:true, N55_CTA_RND_TOUCH: 5000, neodigmWWInterval:true }
 </script>
+<template>
+(function(){
+    let n55Timr;
+    function createWorker(){
+        let fWorkerSource = function(){
+            let idMap = {};
+            self.onmessage = function( e ){
+                if (e.data.type === 'setInterval'){
+                    idMap[ e.data.id ] = setInterval(function(){
+                        self.postMessage({ type: 'tick', id: e.data.id });
+                    }, e.data.delay);
+                } else if (e.data.type === 'clearInterval'){
+                    clearInterval(idMap[ e.data.id ]);
+                    delete idMap[ e.data.id ];
+                } else if (e.data.type === 'setTimeout'){
+                    idMap[ e.data.id ] = setTimeout(function(){
+                        self.postMessage({ type: 'tick', id: e.data.id });
+                        delete idMap[ e.data.id ];
+                    }, e.data.delay);
+                } else if (e.data.type === 'clearCallback'){
+                    clearTimeout(idMap[ e.data.id ]);
+                    delete idMap[ e.data.id ];
+                }
+            };
+        };
+        return new Worker(URL.createObjectURL(new Blob([
+            '(',
+            fWorkerSource.toString(),
+            ')();'
+        ], {type: 'application/javascript'})));
+    }
+    n55Timr = { worker: createWorker(), idToCallback: {}, currentId: 0};
+    function generateId(){ return n55Timr.currentId++ }
+    function overloadSetInterval(callback, delay){
+        let intervalId = generateId();
+        if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55Timr setIntr | " + delay )
+        n55Timr.idToCallback[ intervalId ] = callback;
+        n55Timr.worker.postMessage({ type: 'setInterval', delay: delay, id: intervalId });
+        return intervalId;
+    }
+    function overloadClearInterval( intervalId ){
+        n55Timr.worker.postMessage({ type: 'clearInterval', id: intervalId });
+        delete n55Timr.idToCallback[ intervalId ];
+    }
+    function overloadSetTimeout(callback, delay){
+        if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55Timr setTime | " + delay )
+        let intervalId = generateId();
+        n55Timr.idToCallback[ intervalId ] = function(){
+            callback();
+            delete n55Timr.idToCallback[ intervalId ];
+        };
+        n55Timr.worker.postMessage({ type: 'setTimeout', delay: delay, id: intervalId });
+        return intervalId;
+    }
+    function overloadClearTimeout( intervalId ){
+        n55Timr.worker.postMessage({ type: 'clearInterval', id: intervalId });
+        delete n55Timr.idToCallback[ intervalId ];
+    }
+    n55Timr.worker.onmessage = function(e){
+        if (e.data.type === 'tick'){
+            if( typeof n55Timr.idToCallback[ e.data.id ] == "function" ) n55Timr.idToCallback[ e.data.id ]();
+        }
+    };
+    window.n55Timr = n55Timr;
+    window.setTimeout = overloadSetTimeout; window.clearTimeout = overloadClearTimeout;
+    window.setInterval = overloadSetInterval; window.clearInterval = overloadClearInterval;
+})();
+</template>
 <script src="/dist/neodigm55__v2_5.js"></script>
 
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|Roboto+Slab:300,400" rel="stylesheet" type="text/css">

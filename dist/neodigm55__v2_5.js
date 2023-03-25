@@ -30,6 +30,7 @@ let neodigmOpt = {
   neodigmPWA: true,  N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
   neodigmCarousel: true,  N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
 neodigmPopTart: false,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
+neodigmWWInterval: false,
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
   N55_AMPM_THEME: "light",
@@ -425,6 +426,74 @@ const neodigmMetronome = ( () =>{
       oEmit = {}
       aIntv.forEach( ( i )=>{ clearInterval( i[0] ) } )
       bIsInit = true
+      if( neodigmOpt.neodigmWWInterval ){
+        (function(){
+          let n55Timr;
+          function createWorker(){
+              let fWorkerSource = function(){
+                  let idMap = {};
+                  self.onmessage = function( e ){
+                      if (e.data.type === 'setInterval'){
+                          idMap[ e.data.id ] = setInterval(function(){
+                              self.postMessage({ type: 'tick', id: e.data.id });
+                          }, e.data.delay);
+                      } else if (e.data.type === 'clearInterval'){
+                          clearInterval(idMap[ e.data.id ]);
+                          delete idMap[ e.data.id ];
+                      } else if (e.data.type === 'setTimeout'){
+                          idMap[ e.data.id ] = setTimeout(function(){
+                              self.postMessage({ type: 'tick', id: e.data.id });
+                              delete idMap[ e.data.id ];
+                          }, e.data.delay);
+                      } else if (e.data.type === 'clearCallback'){
+                          clearTimeout(idMap[ e.data.id ]);
+                          delete idMap[ e.data.id ];
+                      }
+                  };
+              };
+              return new Worker(URL.createObjectURL(new Blob([
+                  '(',
+                  fWorkerSource.toString(),
+                  ')();'
+              ], {type: 'application/javascript'})));
+          }
+          n55Timr = { worker: createWorker(), idToCallback: {}, currentId: 0};
+          function generateId(){ return n55Timr.currentId++ }
+          function overloadSetInterval(callback, delay){
+              let intervalId = generateId();
+              if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55Timr setIntr | " + delay )
+              n55Timr.idToCallback[ intervalId ] = callback;
+              n55Timr.worker.postMessage({ type: 'setInterval', delay: delay, id: intervalId });
+              return intervalId;
+          }
+          function overloadClearInterval( intervalId ){
+              n55Timr.worker.postMessage({ type: 'clearInterval', id: intervalId });
+              delete n55Timr.idToCallback[ intervalId ];
+          }
+          function overloadSetTimeout(callback, delay){
+              if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55Timr setTime | " + delay )
+              let intervalId = generateId();
+              n55Timr.idToCallback[ intervalId ] = function(){
+                  callback();
+                  delete n55Timr.idToCallback[ intervalId ];
+              };
+              n55Timr.worker.postMessage({ type: 'setTimeout', delay: delay, id: intervalId });
+              return intervalId;
+          }
+          function overloadClearTimeout( intervalId ){
+              n55Timr.worker.postMessage({ type: 'clearInterval', id: intervalId });
+              delete n55Timr.idToCallback[ intervalId ];
+          }
+          n55Timr.worker.onmessage = function(e){
+              if (e.data.type === 'tick'){
+                  if( typeof n55Timr.idToCallback[ e.data.id ] == "function" ) n55Timr.idToCallback[ e.data.id ]();
+              }
+          };
+          window.n55Timr = n55Timr;
+          window.setTimeout = overloadSetTimeout; window.clearTimeout = overloadClearTimeout;
+          window.setInterval = overloadSetInterval; window.clearInterval = overloadClearInterval;
+        })();
+      }
       return neodigmMetronome;
     },
     tick: function( t ){
