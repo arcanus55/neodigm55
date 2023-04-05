@@ -94,6 +94,32 @@ font-weight: 200;
 }
 .txt-read__16 { font-size: 16px !important; }
 .txt-white { color: #fff;}
+
+/*  a11y skip  */
+a.skip__main:active, a.skip__main:focus {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 2px solid #000;
+  color: #000;
+  font-size: 1.2em;
+  height: auto; width: 16%;
+  left: auto;
+  margin: 8px 42%;
+  overflow: auto;
+  padding: 4px;
+  text-align: center;
+  top: auto;
+  z-index: 1024;
+}
+a.skip__main {
+  left: -1024px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 1px; height: 1px;
+  z-index: -1024;
+}
+
 /*  Layout  */
 main > section > QQQQQarticle { margin: 0 auto;}
 section.sec-inverse__gray { background-color: #f2f2f2; }
