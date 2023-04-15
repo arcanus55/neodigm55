@@ -23,8 +23,10 @@ function fHorzScrlInit(){
         });
     }
 }
-if( gsap ){
-    fHorzScrlInit()
-}else{
-    setTimeout( fHorzScrlInit, 800 )
-}
+setTimeout( function(){
+    if( gsap && ScrollToPlugin && ScrollTrigger){
+        fHorzScrlInit()
+    }else{
+        setTimeout( fHorzScrlInit, 2800 )
+    }
+}, 600 )
