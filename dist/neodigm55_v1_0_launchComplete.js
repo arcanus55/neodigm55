@@ -49,7 +49,7 @@ class NeodigmWidget {
               oeWdg.innerHTML = LZString.decompressFromEncodedURIComponent( rs[0].compressed )
               if( neodigmUtils ){
                 if( rs[0]?.js ){  //  Inject script elms from manifest
-                  rs[0].js.forEach( ( js )=>{ neodigmUtils.fAsyncJS( this._d, js ) } )
+                  rs[0].js.forEach( ( js )=>{ neodigmUtils.fAsyncJS( document, js ) } )
                 }
                 neodigmUtils.fAsyncJS( this._d, sURI + ".js" )
               }
