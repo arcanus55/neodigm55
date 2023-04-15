@@ -1,4 +1,3 @@
-<script>
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 /* Main navigation */
@@ -46,4 +45,3 @@ tween = gsap.to(panels, {
     end: () => "+=" + (panelsContainer.offsetWidth - innerWidth)
   }
 });
-</script>
