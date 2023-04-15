@@ -7,20 +7,16 @@
   https://greensock.com/st-demos/
 -->
 <style>
-body {
-  overflow-x: hidden;
-}
-#region #region-container {
-  background-color: #ddd;
+body { overflow-x: hidden; }
+n55-wdg-horz-scrl { display: block; }
+n55-wdg-horz-scrl #region-container {
   display: flex;
   flex-wrap: nowrap;
   height: 100vh;
   overflow: hidden;
   padding: 0;
 }
-#region #region-container .panel {
-  border-right: 1px solid #f00;
-  color: #333;
+n55-wdg-horz-scrl #region-container .panel {
   display: flex;
   height: 100vh; width: 100%;
   overflow: hidden;
@@ -29,7 +25,7 @@ body {
 }
 </style>
 
-<section id="region">
+<n55-wdg-horz-scrl id="region">
   <div id="region-container" style="width: 500%;">
 
     <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/1.webp);">
@@ -45,7 +41,7 @@ body {
 
     <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/2.webp);">
     </article>
-    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/6.webp);">
+    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/7.webp);">
     </article>
     <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/9.webp);">
     </article>
@@ -53,16 +49,17 @@ body {
     </article>
     <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/17.webp);">
     </article>
-
   </div>
-</section>
+</n55-wdg-horz-scrl>
 
 <script>
-gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
-let regionContainer = document.querySelector("#region-container");
-let tween;
-const region = gsap.utils.toArray("#region-container .panel");
-tween = gsap.to(region, {
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
+let elRegCont = document.querySelector("n55-wdg-horz-scrl #region-container")
+if( elRegCont ){
+  let tween;
+  const region = gsap.utils.toArray("#region-container .panel")
+  elRegCont.style.width = "1000%";
+  tween = gsap.to(region, {
   xPercent: -100 * (region.length - 1),
   ease: "none",
   scrollTrigger: {
@@ -75,7 +72,8 @@ tween = gsap.to(region, {
       inertia: false,
       duration: { min: 0.1, max: 0.1 }
     },
-    end: () => "+=" + (regionContainer.offsetWidth - innerWidth)
+    end: () => "+=" + (elRegCont.offsetWidth - innerWidth)
   }
-});
+  });
+}
 </script>
