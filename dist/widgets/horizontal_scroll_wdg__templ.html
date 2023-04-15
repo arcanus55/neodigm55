@@ -3,280 +3,73 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollToPlugin.min.js"></script>
 
 <!-- 
-  
   https://greensock.com/docs/v3/Plugins/ScrollTrigger
   https://greensock.com/st-demos/
 -->
-
 <style>
-/* Most of these styles could be removed but are for the demo to look better */
-
-html,
-body {
-  margin: 0;
-  height: 100%;
-  font-weight: 300;
-}
 body {
   overflow-x: hidden;
 }
-
-a {
-  color: white;
-}
-
-h1,
-h2 {
-  text-align: center;
-}
-
-.full-screen {
-  display: block;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-#intro {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#masthead {
-  position: fixed;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  z-index: 9999;
-}
-#masthead a {
-  padding: 1rem 2rem;
-}
-
-#panels #panels-container {
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  padding: 0;
-  overflow: hidden;
+#region #region-container {
   background-color: #ddd;
-}
-#panels #panels-container .panel {
-  position: relative;
-  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
   height: 100vh;
   overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  color: #333;
-  text-align: left;
+  padding: 0;
+}
+#region #region-container .panel {
   border-right: 1px solid #f00;
-}
-#panels #panels-container .panel img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-#panels #panels-container .panel .panels-navigation {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  color: #333;
   display: flex;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
-#panels #panels-container .panel .anchor-panel,
-#panels #panels-container .panel .nav-panel {
-  color: #000;
-  text-transform: uppercase;
-  margin-right: 2rem;
-}
-#panels #panels-container .panels-navigation {
-  position: absolute;
-  width: 100%;
-  bottom: 2rem;
-  right: 2rem;
+  height: 100vh; width: 100%;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
 }
 </style>
 
+<section id="region">
+  <div id="region-container" style="width: 500%;">
 
+    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/1.webp);">
+qqqq
+    </article>
+    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/4.webp);">
+qqqq
+    </article>
+    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/8.webp);">
+qqqq
+    </article>
+    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/16.webp);">
+qqqq
+    </article>
+    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/24.webp);">
+qqqq
+    </article>
 
-<div id="page" class="site">
-
-  <div id="feather" class="feather"></div>
-
-  <main id="content" class="site-content" role="main">
-
-    <section id="intro" class="full-screen pt-5 blue">
-      <h1>A cool title</h1>
-
-      <div id="clouds-layer-1" class="clouds"></div>
-      <div id="clouds-layer-2" class="clouds"></div>
-    </section>
-
-    <section id="panels">
-
-      <div id="panels-container" style="width: 500%;">
-        <article id="panel-1" class="panel full-screen red">
-          <div class="container">
-            <div class="row">
-              <div class="col-6">
-
-                <img src="" alt="">
-
-              </div>
-              <div class="col-6 d-flex flex-column">
-
-                <h2>Panel 1</h2>
-
-                <p class="step-description">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Including versions of Lorem Ipsum.
-                </p>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article id="panel-2" class="panel full-screen orange">
-          <div class="container">
-            <div class="row">
-              <div class="col-6">
-
-                <img src="" alt="">
-
-              </div>
-              <div class="col-6 d-flex flex-column">
-
-                <h2>Panel 2</h2>
-
-                <p class="step-description">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Including versions of Lorem Ipsum.
-                </p>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article id="panel-3" class="panel full-screen purple">
-          <div class="container">
-            <div class="row">
-              <div class="col-6">
-
-                <img src="" alt="">
-
-              </div>
-              <div class="col-6 d-flex flex-column">
-
-                <h2>Panel 3</h2>
-
-                <p class="step-description">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Including versions of Lorem Ipsum.
-                </p>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article id="panel-4" class="panel full-screen green">
-          <div class="container">
-            <div class="row">
-              <div class="col-6">
-
-                <img src="" alt="">
-
-              </div>
-              <div class="col-6 d-flex flex-column">
-
-                <h2>Panel 4</h2>
-
-                <p class="step-description">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Including versions of Lorem Ipsum.
-                </p>
-
-              </div>
-            </div>
-          </div>
-        </article>
-        <article id="panel-5" class="panel full-screen gray">
-          <div class="container">
-            <div class="row">
-              <div class="col-6">
-
-                <img src="" alt="">
-
-              </div>
-              <div class="col-6 d-flex flex-column">
-
-                <h2>Panel 5</h2>
-
-                <p class="step-description">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Including versions of Lorem Ipsum.
-                </p>
-
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="map" class="full-screen">
-      full screen?
-    </section>
-
-  </main>
-
-</div>
+  </div>
+</section>
 
 <script>
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
-
-/* Main navigation */
-let panelsSection = document.querySelector("#panels"),
-  panelsContainer = document.querySelector("#panels-container"),
-  tween;
-document.querySelectorAll(".anchor").forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    let targetElem = document.querySelector(e.target.getAttribute("href")),
-      y = targetElem;
-    if (targetElem && panelsContainer.isSameNode(targetElem.parentElement)) {
-      let totalScroll = tween.scrollTrigger.end - tween.scrollTrigger.start,
-        totalMovement = (panels.length - 1) * targetElem.offsetWidth;
-      y = Math.round(
-        tween.scrollTrigger.start +
-          (targetElem.offsetLeft / totalMovement) * totalScroll
-      );
-    }
-    gsap.to(window, {
-      scrollTo: {
-        y: y,
-        autoKill: false
-      },
-      duration: 1
-    });
-  });
-});
-
-/* Panels */
-const panels = gsap.utils.toArray("#panels-container .panel");
-tween = gsap.to(panels, {
-  xPercent: -100 * (panels.length - 1),
+let regionContainer = document.querySelector("#region-container");
+let tween;
+const region = gsap.utils.toArray("#region-container .panel");
+tween = gsap.to(region, {
+  xPercent: -100 * (region.length - 1),
   ease: "none",
   scrollTrigger: {
-    trigger: "#panels-container",
+    trigger: "#region-container",
     pin: true,
     start: "top top",
     scrub: 1,
     snap: {
-      snapTo: 1 / (panels.length - 1),
+      snapTo: 1 / (region.length - 1),
       inertia: false,
       duration: { min: 0.1, max: 0.1 }
     },
-    end: () => "+=" + (panelsContainer.offsetWidth - innerWidth)
+    end: () => "+=" + (regionContainer.offsetWidth - innerWidth)
   }
 });
 </script>
