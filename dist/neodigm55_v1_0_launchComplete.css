@@ -65,6 +65,7 @@ margin: 8px 0; padding: 1px;
 .hd5 {font-size: 14px;}
 .prg  { margin: 8px 0; padding: 1px; }
 
+[data-pref-scheme="light"] .hd0,
 [data-pref-scheme="light"] .hd1,
 [data-pref-scheme="light"] .hd2,
 [data-pref-scheme="light"] .hd3,
@@ -73,6 +74,7 @@ margin: 8px 0; padding: 1px;
 [data-pref-scheme="light"] .sum,
 [data-pref-scheme="light"] .prg {color: #323232;}
 
+[data-pref-scheme="dark"] .hd0,
 [data-pref-scheme="dark"] .hd1,
 [data-pref-scheme="dark"] .hd2,
 [data-pref-scheme="dark"] .hd3,
