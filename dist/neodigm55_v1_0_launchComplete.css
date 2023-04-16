@@ -52,7 +52,7 @@ margin-top: 32px;
 .lgo > span:nth-of-type(2) { font-weight: 300;}
 
 /*  type  */
-.hd1, .hd2, .hd3, .hd4, .hd5, .prg, .sum {
+.hd0, .hd1, .hd2, .hd3, .hd4, .hd5, .prg, .sum {
 font-family: 'Roboto Condensed', 'Roboto', sans-serif; font-weight: 100;
 margin: 8px 0; padding: 1px;
 }
