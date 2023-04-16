@@ -57,6 +57,7 @@ font-family: 'Roboto Condensed', 'Roboto', sans-serif; font-weight: 100;
 margin: 8px 0; padding: 1px;
 }
 
+.hd2 {font-size: 256px;}
 .hd1 {font-size: 48px;}
 .hd2 {font-size: 24px;}
 .hd3 {font-size: 18px;}
