@@ -1,11 +1,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollToPlugin.min.js"></script>
+<link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.css"></link>
 
 <!-- 
   https://greensock.com/docs/v3/Plugins/ScrollTrigger
   https://greensock.com/st-demos/
 -->
+
+<!-- Template begin -->
 <style>
 body { overflow-x: hidden; }
 n55-wdg-horz-scrl { display: block; }
@@ -24,16 +27,20 @@ n55-wdg-horz-scrl #region-container .panel {
   text-align: left;
 }
 </style>
+<!-- Template end -->
 
 <n55-wdg-horz-scrl id="region">
   <div id="region-container" style="width: 500%;">
 
     <article class="panel" style="background-color: #fff;" data-pref-scheme="light">
-      <div class="h-just">
-        <p class="hd1">As the crow flies, back channel cellaphane digital first gobsmacked Mighty Marvelous perceptual performance Reminisce TANSTAAFL tomfoolery.</p>
+      <div class="h-just" style="padding: 16px;">
+        <p class="hd0">As the crow flies, back channel cellaphane digital first gobsmacked Mighty Marvelous perceptual performance Reminisce TANSTAAFL tomfoolery.</p>
       </div>
     </article>
     <article class="panel" style="background-color: #6a6a6a;" data-pref-scheme="dark">
+      <div class="h-just" style="padding: 16px;">
+        <p class="hd1">As the crow flies, back channel cellaphane digital first gobsmacked Mighty Marvelous perceptual performance Reminisce TANSTAAFL tomfoolery.</p>
+      </div>
     </article>
     <article class="panel" style="background-color: #fff;" data-pref-scheme="light">
     </article>
@@ -68,6 +75,8 @@ n55-wdg-horz-scrl #region-container .panel {
 </n55-wdg-horz-scrl>
 
 <script>
+/* Template begin */
+
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 let elRegCont = document.querySelector("n55-wdg-horz-scrl #region-container")
 if( elRegCont ){
@@ -91,4 +100,7 @@ if( elRegCont ){
   }
   });
 }
+
+/* Template end */
+
 </script>
