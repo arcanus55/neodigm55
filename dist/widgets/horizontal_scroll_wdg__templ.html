@@ -20,7 +20,7 @@ n55-wdg-horz-scrl #region-container {
   padding: 0;
 }
 n55-wdg-horz-scrl #region-container .panel {
-  display: flex;
+  QQQQdisplay: flex;
   height: 100vh; width: 100%;
   overflow: hidden;
   position: relative;
@@ -30,56 +30,33 @@ n55-wdg-horz-scrl #region-container .panel {
 <!-- Template end -->
 
 <n55-wdg-horz-scrl id="region">
-  <div id="region-container" style="width: 500%;">
+  <div id="region-container" style="width: 400%;">
 
-    <article class="panel" style="background-color: #fff;" data-pref-scheme="light">
-      <div class="h-left" style="padding: 16px; margin: 32px;">
-        <p class="hd0">As the crow flies, back channel cellaphane digital first gobsmacked.</p>
+      <article class="panel" style="background-color: #242424;" data-pref-scheme="dark">
+      <div class="h-left" style="padding: 32px; margin: 32px; display: flex; align-items: center;">
+          <div><br><p class="hd0">phenomenal storytelling</p>
+          <p class="hd0">that resonates</p></div>
       </div>
-    </article>
-    <article class="panel" style="background-color: #242424;" data-pref-scheme="dark">
-      <div class="h-left" style="padding: 16px; margin: 32px;">
-        <p class="hd0">Think. Mighty Marvelous perceptual performance Reminisce tomfoolery.</p>
+      </article>
+      <article class="panel" style="background-color: #fff;" data-pref-scheme="light">
+      <div class="h-left" style="padding: 32px; margin: 32px; display: flex; align-items: center;">
+          <div><br><p class="hd0">interactivity is the</p>
+          <p class="hd0">active ingredient</p></div>
       </div>
-    </article>
-    <article class="panel" style="background-color: #fff;" data-pref-scheme="light">
-      <div class="h-left" style="padding: 16px; margin: 32px;">
-        <p class="hd0">Innovation inspire intelegent information introspective irrefutable isomorphic.</p>
+      </article>
+      <article class="panel" style="background-color: #242424;"data-pref-scheme="dark">
+      <div class="h-left" style="padding: 32px; margin: 32px; display: flex; align-items: center;">
+          <div><br><p class="hd0">hyper-persuasive</p>
+          <p class="hd0">infographics</p></div>
       </div>
-    </article>
-    <article class="panel" style="background-color: #242424;"data-pref-scheme="dark">
-      <div class="h-left" style="padding: 16px; margin: 32px;">
-        <p class="hd0">Customer centricity decisive defiant deliberate deliver delve.</p>
+      </article>
+      <article class="panel" style="background-color: #fff;" data-pref-scheme="light">
+      <div class="h-left" style="padding: 32px; margin: 32px; display: flex; align-items: center;">
+          <div><br><p class="hd0">succinct data</p>
+          <p class="hd0">visualizations</p></div>
       </div>
-    </article>
-    <article class="panel" style="background-color: #fff;" data-pref-scheme="light">
-      <div class="h-left" style="padding: 16px; margin: 32px;">
-        <p class="hd0">Post Digital Predictive Quintessence Rainmaker Reinvigorated folklore.</p>
-      </div>
-    </article>
-<!--
-    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/1.webp);">
-    </article>
-    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/4.webp);">
-    </article>
-    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/8.webp);">
-    </article>
-    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/16.webp);">
-    </article>
-    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/24.webp);">
-    </article>
+      </article>
 
-    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/2.webp);">
-    </article>
-    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/7.webp);">
-    </article>
-    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/9.webp);">
-    </article>
-    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/15.webp);">
-    </article>
-    <article class="panel" style="background-image: url(https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/17.webp);">
-    </article>
-    -->
   </div>
 </n55-wdg-horz-scrl>
 
@@ -102,8 +79,8 @@ if( elRegCont ){
     scrub: 1,
     snap: {
       snapTo: 1 / (region.length - 1),
-      inertia: false,
-      duration: { min: 0.1, max: 0.1 }
+      inertia: true,
+      duration: { min: 0.8, max: 1.8 }
     },
     end: () => "+=" + (elRegCont.offsetWidth - innerWidth)
   }

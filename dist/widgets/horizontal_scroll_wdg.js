@@ -16,7 +16,7 @@ function fHorzScrlInit(){
                 snap: {
                     snapTo: 1 / (region.length - 1),
                     inertia: false,
-                    duration: { min: 0.1, max: 0.1 }
+                    duration: { min: 0.8, max: 1.8 }
                 },
                 end: () => "+=" + (elRegCont.offsetWidth - innerWidth)
             }
