@@ -12,7 +12,7 @@ function fHorzScrlInit(){
                 trigger: "#region-container",
                 pin: true,
                 start: "top top",
-                scrub: 1,
+                scrub: .6,
                 snap: {
                     snapTo: 1 / (region.length - 1),
                     inertia: false,
