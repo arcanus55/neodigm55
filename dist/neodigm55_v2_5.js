@@ -1,5 +1,5 @@
 /*
-Neodigm 55 UX v2.4.0
+Neodigm 55 UX v2.5.0
 Copyright (c) 2021-2023, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
 
 Neodigm 55 is an eclectic JavaScript UX micro-library.
@@ -24,13 +24,13 @@ let neodigmOpt = {
   neodigmEnchantedCTA: true,
     N55_CTA_RND_TOUCH: 14001,  //  Touch random CTA button every Xms
     N55_GTM_DL_CTA: "n55_gtm_dl_cta",
-    N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ],
-  neodigmKPI: true,
-    N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
-  neodigmPWA: true,
-    N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
-neodigmCarousel: true,
-    N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
+    N55_CTA_LONG_TAP: true,  //  Wait 3.4s before firing cust LC func
+    N55_CTA_FX: [ "alternate", "emit", "flash_danger", "flash_warning", "radius", "scroll", "shake" ], // TODO glance!
+  neodigmKPI: true,  N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
+  neodigmPWA: true,  N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
+  neodigmCarousel: true,  N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
+neodigmPopTart: false,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
+neodigmWWInterval: false,
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
   N55_AMPM_THEME: "light",
@@ -39,7 +39,7 @@ neodigmCarousel: true,
   N55_THEME_DEFAULT: "brand",
   N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"],
    "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"], "party":["FF6F61","C93F60"]},
-  N55_APP_STATE: {"FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXT": false, "FOCUS": true, "AMPM": "light"}
+  N55_APP_STATE: {"FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXT": false, "FOCUS": true, "AMPM": "light", "REDUCE_MOTION": true}
 }
 
 if( typeof neodigmOptCustom != 'undefined' ){
@@ -51,7 +51,7 @@ if( typeof neodigmOptCustom != 'undefined' ){
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
-    ver: "2.4.0",
+    ver: "2.5.0",
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
@@ -71,8 +71,7 @@ const neodigmUtils = ( ( _d ) =>{
           if( sVal == "-" ){
               bUpper = true;
           }else{
-              aDret.push( ( bUpper ) ? sVal.toUpperCase() : sVal );
-              bUpper = false;
+              aDret.push( ( bUpper ) ? sVal.toUpperCase() : sVal ); bUpper = false;
           }
       });
       return aDret.join("");
@@ -89,15 +88,45 @@ const neodigmUtils = ( ( _d ) =>{
       document[ qContext ].addEventListener( "touchstart", function( ev ){
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
       })
-      window.addEventListener("resize", function( ev ){ if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init() })
+      window.addEventListener( "resize", function( ev ){ if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init() })
+      window.addEventListener( "orientationchange", function( ev ){ if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init() })
+      neodigmOpt.N55_APP_STATE.REDUCE_MOTION = !window.matchMedia( '(prefers-reduced-motion: no-preference)' ).matches
     },
-    capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || ""
+    capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
+    robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
+      if( !neodigmMetronome.isPaused() ){ // TODO test OS/UA motion
+        let aE = [ ... document.querySelectorAll("[data-n55-theme") ]; const NDELAY = 56;
+        aE.forEach( ( eC, nDx ) => {
+          if( !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
+            setTimeout( function(){ eC.dataset.n55Theme = sTheme }, ( nDx * NDELAY ) )              
+            setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + 16) ) )
+        });
+      }
+    },
+    countTo: function( _q, nVal, t=124 ){  //  Whole number
+      const NTIMES = [16, t];
+      [ ... document.querySelectorAll( _q ) ].forEach(function( e, nDx ){
+          let nDif = Math.abs( Number( e.textContent ) - nVal )
+          neodigmMetronome.unsubscribe( NTIMES[1] + nDx ).subscribe( function( mx ){
+            let nCur =  Number( e.textContent )
+            if( !Number.isNaN( nCur ) && !isNaN( nCur ) && nVal != nCur ){
+              let nValC = ( nDif ) / NTIMES[0]
+              nValC = Math.round( nValC )
+              if( mx != 0 ){
+                e.textContent = ( nCur < nVal ) ? nCur + nValC : nCur - nValC
+              }else{
+                e.textContent = nVal
+              }
+            }
+          }, NTIMES[1] + nDx, NTIMES[0] )
+      })
+    }
   }
 })( document );
 
 //  Neodigm 55 Toast Begin  //
 let neodigmToast = (function(_d, eID, _q) {
-  let _nTimeout = 5800, _aQ = [], _eSb, _eSbText, _sTheme
+  let _nTimeout = 5200, _aQ = [], _eSb, _eSbText, _sTheme
   let bIsInit = bIsPause = false 
   let _fOpen = function() {
       _eSbText.innerHTML = _aQ[0].sMsg.replace("|", "<br>").replace("##", "")
@@ -156,6 +185,7 @@ let neodigmToast = (function(_d, eID, _q) {
       play:  function(){ bIsPause = false; return neodigmToast; }
   }
 })(document, "js-snackbar__id", "[data-n55-toast]");
+
 //  Neodigm 55 Soda Pop Begin  //
 class NeodigmSodaPop {
     constructor(_d, _aQ) {  //  Flux Capacitor
@@ -195,7 +225,7 @@ class NeodigmSodaPop {
       if(this.bIsOpen) this.close(true)
       this.eTmpl = this._d.getElementById(_sId)
       if(this.bIsInit && this.eTmpl && this.eScrim) {
-          if(this.fOnBeforeOpen[_sId]) this.fOnBeforeOpen[_sId]()
+          if(this.fOnBeforeOpen[ _sId]) this.fOnBeforeOpen[ _sId]()
           if(this.fOnBeforeOpen["def"]) this.fOnBeforeOpen["def"]()
           this.bIsModal = (this.eTmpl.dataset.n55SodapopModal == "true")
           if(this.bIsModal) {
@@ -262,14 +292,14 @@ class NeodigmSodaPop {
         }
         return this
     }
-    shake() {
+    shake( bSound = true) {
         if(this.bIsInit && this.bIsOpen) {
             if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([8, 32, 48])
             neodigmSodaPop.eSoda.classList.add("ndsp__opened--shake1");
             setTimeout(function(){
                 neodigmSodaPop.eSoda.classList.remove("ndsp__opened--shake1");
             }, 460)
-            if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 13 )
+            if( bSound && neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 13 )
             if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([48, 32, 8])
         }
         return this
@@ -287,6 +317,25 @@ class NeodigmSodaPop {
     setOnBeforeUserExit(_f){ this.fOnBeforeUserExit = _f }
 }
 let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-n55-sodapop-modal"] )
+
+//  Neodigm 55 PopTart Begin  //
+class NeodigmPopTart {
+  constructor(_d, _aQ) {  //  Oscillation Overthruster
+      this._d = _d; this._aQ = _aQ; this.sId = ""
+      this.eSoda = this.eScrim = this.eClose = null
+      this.fOnBeforeOpen = {}; this.fOnAfterOpen = {}; this.fOnClose = {}
+      this.bIsOpen = this.bIsModal = this.bIsInit = false
+  }
+  init() {}
+  open() {}
+  close() {}
+  shake() {}
+  isOpen(){ return this.bIsOpen }
+  setOnBeforeOpen( _f, id="def"){ this.fOnBeforeOpen[ id ] = _f }
+  setOnAfterOpen( _f, id="def"){ this.fOnAfterOpen[ id ] = _f }
+  setOnClose( _f, id="def"){ this.fOnClose[ id ] = _f }
+}
+let neodigmPopTart = new NeodigmPopTart( document, ["neodigm-poptart"] )
 
 //  Neodigm 55 Wired4Sound Begin  //
 class NeodigmWired4Sound {
@@ -374,34 +423,113 @@ const neodigmMetronome = ( () =>{
   let oEmit = {}, aIntv = []
   let bIsInit = bIsPause = false 
   return {  //  Oscillation Overthruster
-    init: function(){
-      oEmit = {}  //  Reset all sans setIntr
-      aIntv.forEach( ( i )=>{ clearInterval( i ) } )
+    init: function(){  //  Reset all
+      oEmit = {}
+      aIntv.forEach( ( i )=>{ clearInterval( i[0] ) } )
       bIsInit = true
-      return neodigmMetronome;
-    },
-    tick: function( t ){
-      if( bIsInit && !bIsPause ){ oEmit[ t ].forEach( ( f )=>{ f() }) }
-      return neodigmMetronome;
-    },
-    subscribe: function( f, t ){  //  Usage: .subscribe(f, 1000)
-      if( bIsInit ){
-        let _t = t
-        if( !oEmit[ _t ] ){
-          oEmit[ _t ] = []
-          aIntv.push( setInterval( ()=>{ neodigmMetronome.tick( _t ) }, _t) )
-        }
-        oEmit[ _t ].push( f )
+      if( neodigmOpt.neodigmWWInterval ){
+        (function(){
+          let n55Timr;
+          function createWorker(){
+              let fWorkerSource = function(){
+                  let idMap = {};
+                  self.onmessage = function( e ){
+                      if (e.data.type === 'setInterval'){
+                          idMap[ e.data.id ] = setInterval(function(){
+                              self.postMessage({ type: 'tick', id: e.data.id });
+                          }, e.data.delay);
+                      } else if (e.data.type === 'clearInterval'){
+                          clearInterval(idMap[ e.data.id ]);
+                          delete idMap[ e.data.id ];
+                      } else if (e.data.type === 'setTimeout'){
+                          idMap[ e.data.id ] = setTimeout(function(){
+                              self.postMessage({ type: 'tick', id: e.data.id });
+                              delete idMap[ e.data.id ];
+                          }, e.data.delay);
+                      } else if (e.data.type === 'clearCallback'){
+                          clearTimeout(idMap[ e.data.id ]);
+                          delete idMap[ e.data.id ];
+                      }
+                  };
+              };
+              return new Worker(URL.createObjectURL(new Blob([
+                  '(',
+                  fWorkerSource.toString(),
+                  ')();'
+              ], {type: 'application/javascript'})));
+          }
+          n55Timr = { worker: createWorker(), idToCallback: {}, currentId: 0};
+          function generateId(){ return n55Timr.currentId++ }
+          function overloadSetInterval(callback, delay){
+              let intervalId = generateId();
+              if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55Timr setIntr | " + delay )
+              n55Timr.idToCallback[ intervalId ] = callback;
+              n55Timr.worker.postMessage({ type: 'setInterval', delay: delay, id: intervalId });
+              return intervalId;
+          }
+          function overloadClearInterval( intervalId ){
+              n55Timr.worker.postMessage({ type: 'clearInterval', id: intervalId });
+              delete n55Timr.idToCallback[ intervalId ];
+          }
+          function overloadSetTimeout(callback, delay){
+              if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55Timr setTime | " + delay )
+              let intervalId = generateId();
+              n55Timr.idToCallback[ intervalId ] = function(){
+                  callback();
+                  delete n55Timr.idToCallback[ intervalId ];
+              };
+              n55Timr.worker.postMessage({ type: 'setTimeout', delay: delay, id: intervalId });
+              return intervalId;
+          }
+          function overloadClearTimeout( intervalId ){
+              n55Timr.worker.postMessage({ type: 'clearInterval', id: intervalId });
+              delete n55Timr.idToCallback[ intervalId ];
+          }
+          n55Timr.worker.onmessage = function(e){
+              if (e.data.type === 'tick'){
+                  if( typeof n55Timr.idToCallback[ e.data.id ] == "function" ) n55Timr.idToCallback[ e.data.id ]();
+              }
+          };
+          window.n55Timr = n55Timr;
+          window.setTimeout = overloadSetTimeout; window.clearTimeout = overloadClearTimeout;
+          window.setInterval = overloadSetInterval; window.clearInterval = overloadClearInterval;
+        })();
       }
       return neodigmMetronome;
     },
-    unsubscribe: function( t ){  //  TODO
+    tick: function( t ){
+      if( bIsInit && !bIsPause ){ oEmit[ t ].forEach( ( f )=>{
+        if( oEmit[ t ].mx || oEmit[ t ].mx == 0 ){
+          if( oEmit[ t ].mx ){ f( --oEmit[ t ].mx ) }
+        }else{ f() }
+      } ) }
+      return neodigmMetronome;
+    },
+    subscribe: function( f, t, mx ){  //  Usage: .subscribe(f, 1000, 5)
+      let _t = t
+      if( bIsInit ){
+        if( !oEmit[ _t ] ){
+          oEmit[ _t ] = []
+          aIntv.push( [setInterval( ()=>{ neodigmMetronome.tick( _t ) }, _t ), t] )
+        }
+        oEmit[ _t ].push( f )
+        if( mx ) oEmit[ _t ].mx = mx
+      }
+      return neodigmMetronome;
+    },
+    unsubscribe: function( t ){ 
+      oEmit[ t ] = null;
+      aIntv = aIntv.filter( ( i )=>{
+        if( i[1] == t ){clearInterval( i[0] ); return false; }
+        return true;
+      } )
       return neodigmMetronome;
     },
     pause: function( nT ){
       bIsPause = true;
       if( nT ) setTimeout( neodigmMetronome.play, nT )
       return neodigmMarquee; },
+    isPaused: function(){ return bIsPause },
     play:  function(){ bIsPause = false; return neodigmMarquee; }
   }
 })();
@@ -699,17 +827,40 @@ class NeodigmEnchantedCTA {
     constructor( _d, _aQ ) {
         this._d = _d; this._aQ = _aQ
         this.bIsInit = false; this.bIsPause = false
+        this.fOnLongTap = {}; this.bLongTap = false
         this.aE = []
     }
     init (){
       this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
-      if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
-        let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
-        let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
-        if( bCta && neodigmOpt.N55_GTM_DL_CTA ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CTA, sId )
-        let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
-        if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
-      }, false)
+      if( !this.bIsInit ){  //  once events body
+        this._d.body.addEventListener("click", ( ev ) => {
+          let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
+          let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
+          if( bCta && neodigmOpt.N55_GTM_DL_CTA ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CTA, sId )
+          let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
+          if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
+
+        }, false)
+        if( neodigmOpt.N55_CTA_LONG_TAP ){
+          this._d.body.addEventListener("mousedown", ( ev ) => {
+            let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
+            let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
+            if( bCta ){
+              neodigmEnchantedCTA.bLongTap = true
+              setTimeout( function(){
+                if( neodigmEnchantedCTA.bLongTap ){
+                  neodigmEnchantedCTA.bLongTap = false
+                  if(neodigmEnchantedCTA.fOnLongTap[ sId ]) neodigmEnchantedCTA.fOnLongTap[ sId ]()
+                  if(neodigmEnchantedCTA.fOnLongTap["def"]) neodigmEnchantedCTA.fOnLongTap["def"]()                     
+                }
+              }, 3400 )            
+            }
+          }, false)
+          this._d.body.addEventListener("mouseup", ( ev ) => {
+            neodigmEnchantedCTA.bLongTap = false
+          }, false)          
+        }
+      }
       if( neodigmOpt.N55_CTA_RND_TOUCH ){
         neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_CTA_RND_TOUCH )
       }
@@ -732,13 +883,15 @@ class NeodigmEnchantedCTA {
       }
     return this;
     }
-    revertTheme ( sId ){  //  Revert to orig theme at point of init
+    revertTheme ( sId ){  //  Revert orig theme at point of init
       if( this.bIsInit && !this.bIsPause ){
-        this.aE.forEach( (eC) => {
+        this.aE.forEach( ( eC, nDx ) => {
           if( sId ){
             if( (eC?.id == sId) && eC.dataset.n55Theme && eC.n55Theme ) eC.dataset.n55Theme = eC.n55Theme
           }else{
-            if( eC.dataset.n55Theme && eC.n55Theme ) eC.dataset.n55Theme = eC.n55Theme
+            if( eC.dataset.n55Theme && eC.n55Theme ){
+              setTimeout( function(){  eC.dataset.n55Theme = eC.n55Theme }, ( nDx * 24 ) )              
+            }
           }
         });
       }
@@ -747,7 +900,7 @@ class NeodigmEnchantedCTA {
     flashTheme ( sTheme ){
       if( this.bIsInit && !this.bIsPause && sTheme ){
         this.setTheme( sTheme )
-        setTimeout( function(){ neodigmEnchantedCTA.revertTheme() }, 384 )
+        setTimeout( function(){ neodigmEnchantedCTA.revertTheme() }, 76 )
       }
     return this;
     }
@@ -762,11 +915,13 @@ class NeodigmEnchantedCTA {
             switch( sRndFX ){
               case "alternate":
                 if( eCt.dataset.n55EnchantedCtaAlt ){
-                  eCt["n55EnchantedCtaAlt"] = eCt.innerHTML
-                  eCt.querySelectorAll("span")[0].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[0]
-                  eCt.querySelectorAll("span")[1].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[1]
+                  if( !eCt.querySelector("neodigm-marquee") ){
+                    eCt["n55EnchantedCtaAlt"] = eCt.innerHTML
+                    eCt.querySelectorAll("span")[0].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[0]
+                    eCt.querySelectorAll("span")[1].innerText = eCt.dataset.n55EnchantedCtaAlt.split("|")[1]                    
+                  }
                 }
-                break;
+              break;
             }
             if( neodigmOpt.N55_DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] )
             setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCt ) }, 8000)
@@ -782,6 +937,7 @@ class NeodigmEnchantedCTA {
         if( eCt.n55EnchantedCtaAlt ) eCt.innerHTML = eCt.n55EnchantedCtaAlt
       }
     }
+    setOnLongTap( _f, id="def"){ this.fOnLongTap[ id ] = _f }
 }
 let neodigmEnchantedCTA = new NeodigmEnchantedCTA( document, ["[data-n55-enchanted-cta]"] )
 
@@ -839,15 +995,17 @@ class NeodigmCarousel {
       this.aelNC = []
   }
   init (){
-    const NOFFSET = 0
     this.aelNC = [ ... this._d.querySelectorAll( this._aQ[0] )] // All Carousels within DOM
     if( this.aelNC.length ){
       this.aelNC.forEach(function( elNC ){
-        elNC.n55State = {nIdx: 1, width: (elNC.offsetWidth - NOFFSET)}
-        let elNCCntr = elNC.firstElementChild
-        elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll("section") ]  //  Tab Containers
-        elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
-        elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
+        if( elNC.id ){
+          elNC.n55State = {nIdx: ( elNC.n55State?.nIdx ) ? elNC.n55State.nIdx : 1, width: elNC.offsetWidth}
+          let elNCCntr = elNC.firstElementChild
+          elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll("section") ]  //  Tab Containers
+          elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
+          elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
+          neodigmCarousel.nav( {id: elNC.id , nav: elNC.n55State.nIdx } )
+        }
       })
       if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
         let bCarsl = ("n55CarouselNav" in ev?.target?.dataset) || ("n55CarouselNav" in ev?.srcElement?.parentNode?.dataset)
@@ -875,6 +1033,12 @@ class NeodigmCarousel {
           break;
           case "prev":
             if( oState.nIdx != 1 ) oState.nIdx--
+          break;
+          case "loop":
+            if( oState.nIdx < oState.aTabCntr.length) { oState.nIdx++ }else{ oState.nIdx = 1 }
+          break;
+          case "getPage":
+            return oState.nIdx;
           break;
           default:
             if( ( oNav.nav >= 1 ) && ( oNav.nav < (oState.aTabCntr.length + 1) ) ) oState.nIdx = elNC.n55State.nIdx = oNav.nav
@@ -952,12 +1116,12 @@ class NeodigmPWA {
 let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 
 
-
 // v2.5.0 - Refactor Toast and Metronome STATIC
-//  Neodigm 55 SodaPop Simple Tab Plug-in //
-//  Neodigm 55 Enchanted CTA FlashTheme Round-robin //
+//  -Neodigm 55 SodaPop Simple Tab (Carosel) //
+//  Neodigm 55 Popover Begin  //
+//  -Neodigm 55 Enchanted CTA FlashTheme Round-robin //
 //  Neodigm 55 Claire Declaire-itive //
-//  Neodigm 55 Confetti Begin (Claire) //
+//  -Neodigm 55 Confetti Begin (Claire) //
 //  Neodigm 55 Cypher Type FX Begin  //
 
 // v2.x.0
@@ -978,7 +1142,6 @@ let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 // Parking lot
 //  Neodigm 55 A11Y skip Begin  //
 //  Neodigm 55 Dice Begin  //
-//  Neodigm 55 Popover Begin  //
 //  Neodigm 55 ToolTip Marquee Begin  //
 //  Neodigm 55 Virtual Keyboard Begin  //
 //  Neodigm 55 Vivid Type Begin  //
@@ -1014,6 +1177,7 @@ function doDOMContentLoaded(){
     if( neodigmOpt.neodigmKPI ) neodigmKPI.init()
     if( neodigmOpt.neodigmPWA ) neodigmPWA.init()
     if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
+    if( neodigmOpt.neodigmPopTart ) neodigmPopTart.init()
   }, 56)
 }
 

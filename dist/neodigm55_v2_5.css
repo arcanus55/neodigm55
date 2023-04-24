@@ -1,5 +1,5 @@
 /*
-Neodigm 55 UX v2.4.0
+Neodigm 55 UX v2.5.0
 Copyright (c) 2021-2023, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
 
 Neodigm 55 is an eclectic JavaScript UX micro-library.
@@ -48,49 +48,43 @@ All rights reserved. Redistributions of source code must retain the above copyri
 .l-snackbar .snackbar__cont[data-n55-theme='marcom'] { box-shadow: inset var(--neodigm-theme-marcom) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-marcom) 0%, var(--neodigm-theme-marcom-alt) 100%); }
 .l-snackbar .snackbar__cont[data-n55-theme='party'] { box-shadow: inset var(--neodigm-theme-party) 0 0 6px 2px; background: linear-gradient(45deg, var(--neodigm-theme-party) 0%, var(--neodigm-theme-party-alt) 100%); }
 
-.l-snackbar .snackbar__cont[data-n55-theme='brand'] .snackbar__progbar { background-color: var(--neodigm-theme-brand-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='primary'] .snackbar__progbar { background-color: var(--neodigm-theme-primary-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='secondary'] .snackbar__progbar { background-color: var(--neodigm-theme-secondary-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='success'] .snackbar__progbar { background-color: var(--neodigm-theme-success-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='danger'] .snackbar__progbar { background-color: var(--neodigm-theme-danger-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='warning'] .snackbar__progbar { background-color: var(--neodigm-theme-warning-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='info'] .snackbar__progbar { background-color: var(--neodigm-theme-info-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='night'] .snackbar__progbar { background-color: var(--neodigm-theme-night-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='marcom'] .snackbar__progbar { background-color: var(--neodigm-theme-marcom-alt) }
-.l-snackbar .snackbar__cont[data-n55-theme='party'] .snackbar__progbar { background-color: var(--neodigm-theme-party-alt) }
+.l-snackbar .snackbar__cont[data-n55-theme='brand'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-brand-alt) 0%, var(--neodigm-theme-brand) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='primary'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-primary-alt) 0%, var(--neodigm-theme-primary) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='secondary'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-secondary-alt) 0%, var(--neodigm-theme-secondary) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='success'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-success-alt) 0%, var(--neodigm-theme-success) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='danger'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-danger-alt) 0%, var(--neodigm-theme-danger) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='warning'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-warning-alt) 0%, var(--neodigm-theme-warning) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='info'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-info-alt) 0%, var(--neodigm-theme-info) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='night'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-night-alt) 0%, var(--neodigm-theme-night) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='marcom'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-marcom-alt) 0%, var(--neodigm-theme-marcom) 100%) }
+.l-snackbar .snackbar__cont[data-n55-theme='party'] .snackbar__progbar { background: linear-gradient(90deg, var(--neodigm-theme-party-alt) 0%, var(--neodigm-theme-party) 100%) }
 
 .l-snackbar .snackbar__cont--hide {
 	bottom: -112px;
 	transition: bottom .6s ease-in-out
 }
-
 .l-snackbar .snackbar__cont--show {
 	bottom: 4px;
 	transition: bottom .6s ease-in-out
 }
-
 .l-snackbar .snackbar__cont--alt {
 	background: linear-gradient(45deg, #685b2d 0%, #d8ad12 100%) !important; 
 	box-shadow: inset #685b2d 0 0 6px 2px !important; 
 }
-
 .l-snackbar .snackbar__progbar {
-	height: 3px;
+	height: 4px;
 	padding: 0; margin: 0;
 	position: relative;
 	top: 2px
 }
-
 .l-snackbar .snackbar__cont--hide .snackbar__progbar {
 	width: 0;
 	transition: width .1s ease-in-out;
 }
-
 .l-snackbar .snackbar__cont--show .snackbar__progbar {
 	width: 100%;
-	transition: width 6s ease-in-out;
+	transition: width 5.2s ease-in-out;
 }
-
 .l-snackbar .snackbar__msg {
 	color: #fff;
 	font-family: sans-serif;
@@ -98,6 +92,9 @@ All rights reserved. Redistributions of source code must retain the above copyri
 	margin: 18px;
 	text-align: center;
 	white-space: nowrap
+}
+@media print {
+    .l-snackbar { display: none;}
 }
 /*  Neodigm Toast End  */
 
@@ -174,6 +171,7 @@ neodigm-sodapop:not(.ndsp__modal)::after {
     neodigm-sodapop.ndsp__size--medium { width: 66%; }
     neodigm-sodapop.ndsp__size--large  { width: 88%; }
 }
+@media print { neodigm-sodapop-scrim-close { z-index: -256;} }
 /*  Neodigm Soda Pop End  */
 
 /*  Neodigm Carousel Begin  */
@@ -190,7 +188,6 @@ neodigm-carousel > section {
 }
 neodigm-carousel > section > section { position: relative; display: block; }
 /*  Neodigm Carousel End  */
-
 
 /*  Neodigm Parallax Begin  */
 neodigm-parallax[data-n55-parallax-mobile='false'],
@@ -381,9 +378,7 @@ background-color: rgba( 96, 88, 44, 0);
 	transition: all .5s ease;
 	width: 100%;
 }
-[data-n55-enchanted-cta][data-n55-enchanted-cta-hover-an="false"] span:nth-of-type(2){
-	display: none;
-}
+[data-n55-enchanted-cta][data-n55-enchanted-cta-hover-an="false"] span:nth-of-type(2){ display: none; }
 
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']:hover:not([data-n55-theme="disabled"], [data-n55-enchanted-cta-hover-an="false"])  span:nth-of-type(2){ transform: translateY(8px); }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='medium']:hover:not([data-n55-theme="disabled"], [data-n55-enchanted-cta-hover-an="false"]) span:nth-of-type(2){ transform: translateY(12px); }
@@ -489,7 +484,6 @@ neodigm-kpi {
     text-align: center;
     margin: 4px; padding: 4px;
 }
-
 neodigm-kpi > h5,
 neodigm-kpi > h6 {
     position: relative; overflow: hidden;
@@ -545,7 +539,40 @@ neodigm-kpi[data-n55-kpi-size='xlarge'] > h5 { font-size: 8rem;}
 neodigm-kpi[data-n55-kpi-size='xlarge'] > h6 { font-size: 20px;}
 /*  Neodigm KPI End  */
 
-/*  Neodigm Standard Checkbox Begins  */
+/*  Neodigm Select Begin  */
+[data-n55-select]{
+    border: solid 3px #edba08; border-radius: 6px;
+    color: #edba08;
+    text-align-last: center;
+}
+[data-n55-select][data-n55-size='xsmall']{ font-size: 14px; line-height: 1;   padding: 10px 12px; min-width: 84px; }
+[data-n55-select][data-n55-size='small'] { font-size: 18px; line-height: 1;   padding: 12px 20px; min-width: 104px; }
+[data-n55-select][data-n55-size='medium']{ font-size: 20px; line-height: 1.1; padding: 16px 44px; min-width: 196px; }
+[data-n55-select][data-n55-size='large'] { font-size: 22px; line-height: 1.2; padding: 20px 28px; min-width: 216px; }
+[data-n55-select][data-n55-size='xlarge']{ font-size: 24px; line-height: 1.3; padding: 22px 32px; min-width: 248px; }
+
+[data-n55-select][data-n55-theme='brand']     { border-color: var(--neodigm-theme-brand ); color: var(--neodigm-theme-night ); }
+[data-n55-select][data-n55-theme='primary']   { border-color: var(--neodigm-theme-primary ); color: var(--neodigm-theme-night ); }
+[data-n55-select][data-n55-theme='secondary'] { border-color: var(--neodigm-theme-secondary ); color: var(--neodigm-theme-night ); }
+[data-n55-select][data-n55-theme='success']   { border-color: var(--neodigm-theme-success ); color: var(--neodigm-theme-night ); }
+[data-n55-select][data-n55-theme='danger']    { border-color: var(--neodigm-theme-danger ); color: var(--neodigm-theme-night ); }
+[data-n55-select][data-n55-theme='warning']   { border-color: var(--neodigm-theme-warning ); color: var(--neodigm-theme-night ); }
+[data-n55-select][data-n55-theme='info']      { border-color: var(--neodigm-theme-info ); color: var(--neodigm-theme-night ); }
+[data-n55-select][data-n55-theme='disabled']  { border-color: var(--neodigm-theme-disabled ); color: var(--neodigm-theme-night ); }
+[data-n55-select][data-n55-theme='night']     { border-color: var(--neodigm-theme-night ); color: var(--neodigm-theme-night ); }
+[data-n55-select][data-n55-theme='marcom']    { border-color: var(--neodigm-theme-marcom ); color: var(--neodigm-theme-night ); }
+[data-n55-select][data-n55-theme='party']     { border-color: var(--neodigm-theme-party ); color: var(--neodigm-theme-night); }
+
+/*  Neodigm PopTart Begin  */ 
+[neodigm-poptart]{
+    position: absolute;
+    display: block;
+}
+
+/*  Neodigm icon Begin  */ 
+[data-n55-enchanted-cta] neodigm-icon { line-height: .1 !important; position: relative; bottom: -5px;  }
+
+/*  Neodigm Standard Checkbox Begin  */
 [data-n55-checkbox] {
     position: absolute;
     opacity: 0;
