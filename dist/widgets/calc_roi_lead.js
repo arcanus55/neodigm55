@@ -1,5 +1,7 @@
+
 if( neodigmCarousel && neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
-if( neodigmWired4Sound ) neodigmWired4Sound.setVolume( .04 )
+//EVENT_SOUNDS
+if( neodigmWired4Sound ) neodigmWired4Sound.setVolume( 0 )
 let jWS = `[
 {"code":"001", "title":"Advocacy",             "ctr_src":"4.41%", "ctr_gdn":"0.59%", "cpc_src":"$1.43", "cpc_gdn":"$0.62", "cvr_src":"1.96%", "cvr_gdn":"1.00%", "cpa_src":"$96.55",  "cpa_gdn":"$70.69"},
 {"code":"002", "title":"Auto",                 "ctr_src":"4.00%", "ctr_gdn":"0.60%", "cpc_src":"$2.46", "cpc_gdn":"$0.58", "cvr_src":"6.03%", "cvr_gdn":"1.19%", "cpa_src":"$33.52",  "cpa_gdn":"$23.68"},
@@ -93,7 +95,7 @@ function ROIFormVal( nPage, aIds ){
             if( nPage == 2 ) neodigmSodaPop.autoOpen("js-roic-asses-id")
         }else{
             neodigmUtils.robinTheme("danger")
-            neodigmWired4Sound.sound("9")
+            //neodigmWired4Sound.sound("9")
             if( neodigmToast ){ neodigmToast.q( valMsg, "danger" ); }
         }
     }
