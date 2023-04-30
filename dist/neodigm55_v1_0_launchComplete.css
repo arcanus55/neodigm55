@@ -265,6 +265,7 @@ section.pfmf-grid { width: 86%; }
 
 /* Formz */
 body[data-pref-scheme='light'] neodigm-sodapop, body[data-pref-scheme='light'] neodigm-sodapop > * {background-color: #f6f6f6;}
+::placeholder { color: #767676; }
 input.n55-lc__input, textarea.n55-lc__input {
 display: block;
 color: #383838;
