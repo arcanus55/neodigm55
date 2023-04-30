@@ -14,7 +14,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
     --m5lc-theme-night:  #6a6a6a; --m5lc-theme-night-alt:  #242424;  --m5lc-theme-night-mid:  #323232;  /* Charcoal */
 }
 html, body {margin: 0; padding: 0;}
-input, textarea, button, select, aside,
+input, textarea, button, select,
 a { -webkit-tap-highlight-color: rgba(0,0,0,0); outline: none; user-select: none !important; }
 
 *::-webkit-scrollbar { width: 8px; height: 8px; }
