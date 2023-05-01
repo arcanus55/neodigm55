@@ -10,11 +10,12 @@ window.addEventListener("load", function () {
                 xPercent: -100 * (region.length - 1),
                 ease: "none",
                 scrollTrigger: {
+                    id:"gsap-st-horz-wdg",
                     trigger: "#region-container",
                     pin: true,
                     //markers: true,
                     start: "top top",
-                    scrub: .6,
+                    scrub: .8,
                     snap: {
                         snapTo: 1 / (region.length - 1),
                         inertia: false,
