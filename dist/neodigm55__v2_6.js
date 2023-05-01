@@ -410,7 +410,16 @@ class NeodigmParallax {
     [ ... this._d.querySelectorAll( this._aQ[0] )].filter( ( ndP ) => {
     if( neodigmUtils.isMobile() ) ndP.dataset.n55ParallaxMobile = neodigmOpt.PRLX_MOBILE;
     let ndPDv = ndP.querySelector("aside")
-    ndPDv.style.backgroundImage = "url(" + ndP.dataset[ this._aQ[1] ] + ")"
+    if( ndPDv && ndP.dataset[ this._aQ[1] ] ){
+      let jRnd = []
+      try{
+        jRnd = JSON.parse( ndP.dataset[ this._aQ[1] ] )
+        jRnd = jRnd[ neodigmUtils.f02x( jRnd.length ) ]
+      }catch{
+        jRnd = ndP.dataset[ this._aQ[1] ]
+      }
+      ndPDv.style.backgroundImage = "url(" + jRnd + ")"
+    }
     })
     this.bIsInit = true
     return this
