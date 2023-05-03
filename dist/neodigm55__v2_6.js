@@ -1132,6 +1132,7 @@ let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 //  Neodigm 55 Claire Declaire-itive //
 //  -Neodigm 55 Confetti Begin (Claire) //
 //  Neodigm 55 Cypher Type FX Begin  //
+//  Neodigm 55 Post-It Begin  //
 
 // v2.x.0
 //  Neodigm 55 FAB Begin //
