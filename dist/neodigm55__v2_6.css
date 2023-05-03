@@ -525,9 +525,9 @@ neodigm-kpi > h6 { top: 10%; }
 neodigm-kpi[data-n55-kpi-size='xsmall'] { height: 96px; width: 96px; }
 neodigm-kpi[data-n55-kpi-size='xsmall'] > h5 { font-size: 2rem;} /*  3/5  */
 neodigm-kpi[data-n55-kpi-size='xsmall'] > h6 { font-size: 10px;}
-neodigm-kpi[data-n55-kpi-size='small'] { height: 186px; width: 186px; }
-neodigm-kpi[data-n55-kpi-size='small'] > h5 { font-size: 5rem;}
-neodigm-kpi[data-n55-kpi-size='small'] > h6 { font-size: 14px;}
+neodigm-kpi[data-n55-kpi-size='small'] { height: 124px; width: 124px; }
+neodigm-kpi[data-n55-kpi-size='small'] > h5 { font-size: 3rem;}
+neodigm-kpi[data-n55-kpi-size='small'] > h6 { font-size: 12px;}
 neodigm-kpi[data-n55-kpi-size='medium'] { height: 206px; width: 206px; }
 neodigm-kpi[data-n55-kpi-size='medium'] > h5 { font-size: 6rem;}
 neodigm-kpi[data-n55-kpi-size='medium'] > h6 { font-size: 16px;}
