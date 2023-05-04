@@ -1,57 +1,82 @@
 let doAction = function( sAct ){
     let eTermFrom = document.querySelector( "#l-term-from" )
     let eTermTo = document.querySelector( "#l-term-to" )
-    let eKPIFrom = document.querySelector( "#kpi-from__fb" )
-    let eKPITo = document.querySelector( "#kpi-to__fb" )
-    
+    let capFirst = (s) => (s && s[0].toUpperCase() + s.slice(1))
     if( eTermFrom && eTermTo ){
-        if( sAct == "cBase64uri" ){
+        if( sAct == "caseTitle" ){
             if( eTermFrom.value ){
-                try{
-                    eTermTo.value = LZString.compressToEncodedURIComponent( eTermFrom.value ).replaceAll(`"`, `_DQ_`)
-                }catch( er ){
-                    neodigmToast.q("Unexpected Error| " + er , "danger")
+                let aTxt = eTermFrom.value.split(" ")
+                if( aTxt.length ){
+                    aTxt = aTxt.map( sW => {
+                        const sDoNotCap = ["a", "an", "and", "as", "at", "but", "by", "for", "if", "in", "nor", "of", "off", "on", "or", "per", "so", "the", "to", "up", "via", "yet"]
+                        let sRet = sW
+                        if( sDoNotCap.indexOf(  sW.toLowerCase() ) == -1 ) sRet = capFirst( sW )
+                        return sRet
+                    });
                 }
+                eTermTo.value = aTxt.join(" ")
+                neodigmToast.q("Case Convert|Title " + eTermFrom.value.length + " characters", "primary")
             }else{
-                neodigmToast.q("Please put some text in|the FROM box.", "danger")
-                neodigmUtils.robinTheme("danger");
+                neodigmToast.q("There is no text to convert.", "danger")
             }
         }
-        if( sAct == "dBase64uri" ){
-            if( eTermTo.value ){
-                try{
-                    eTermFrom.value = LZString.decompressFromEncodedURIComponent( eTermTo.value )
-                }catch( er ){
-                    neodigmToast.q("Unexpected Error| " + er , "danger")
-                }
-            }else{
-                neodigmToast.q("Please put some compressed text in|the TO box.", "danger")
-                neodigmUtils.robinTheme("danger");
-            }
-        }
-        
-        if( sAct == "cUTF16" ){
+        if( sAct == "caseSentence" ){ //  TODO
             if( eTermFrom.value ){
-                try{
-                    eTermTo.value = LZString.compressToUTF16( eTermFrom.value ).replaceAll(`"`, `_DQ_`)
-                }catch( er ){
-                    neodigmToast.q("Unexpected Error| " + er , "danger")
+                let aTxt = eTermFrom.value.split(" ")
+                if( aTxt.length ){
+                    aTxt = aTxt.map( sW => {
+                        let sRet = sW
+                        return sRet
+                    });
                 }
+                eTermTo.value = aTxt.join(" ")
+                neodigmToast.q("Case Convert|Sentence " + eTermFrom.value.length + " characters", "primary")
             }else{
-                neodigmToast.q("Please put some text in|the FROM box.", "danger")
-                neodigmUtils.robinTheme("danger");
+                neodigmToast.q("There is no text to convert.", "danger")
             }
         }
-        if( sAct == "dUTF16" ){
-            if( eTermTo.value ){
-                try{
-                    eTermFrom.value = LZString.decompressFromUTF16( eTermTo.value )
-                }catch( er ){
-                    neodigmToast.q("Unexpected Error| " + er , "danger")
+        if( sAct == "caseLower" ){
+            if( eTermFrom.value ){
+                let aTxt = eTermFrom.value.split(" ")
+                if( aTxt.length ){
+                    aTxt = aTxt.map( sW => {
+                        return sW.toLowerCase()
+                    });
                 }
+                eTermTo.value = aTxt.join(" ")
+                neodigmToast.q("Case Convert|Lowercase " + eTermFrom.value.length + " characters", "primary")
             }else{
-                neodigmToast.q("Please put some compressed text in|the TO box.", "danger")
-                neodigmUtils.robinTheme("danger");
+                neodigmToast.q("There is no text to convert.", "danger")
+            }
+        }
+        if( sAct == "caseUpper" ){
+            if( eTermFrom.value ){
+                let aTxt = eTermFrom.value.split(" ")
+                if( aTxt.length ){
+                    aTxt = aTxt.map( sW => {
+                        return sW.toUpperCase()
+                    });
+                }
+                eTermTo.value = aTxt.join(" ")
+                neodigmToast.q("Case Convert|Uppercase " + eTermFrom.value.length + " characters", "primary")
+            }else{
+                neodigmToast.q("There is no text to convert.", "danger")
+            }
+        }
+        if( sAct == "caseReverse" ){
+            if( eTermFrom.value ){
+                eTermTo.value = eTermFrom.value.split("").reverse().join("")
+                neodigmToast.q("Text Convert|Reverse " + eTermFrom.value.length + " characters", "primary")
+            }else{
+                neodigmToast.q("There is no text to convert.", "danger")
+            }
+        }
+        if( sAct == "share" ){
+            try {
+                navigator.clipboard.writeText( document.location.href );
+                neodigmToast.q("Page Address (URL)|Copied to Clipboard", "brand" )
+            } catch (err) {
+                console.warn('Failed to copy', err)
             }
         }
         if( sAct == "fromCopy" ){
@@ -103,8 +128,6 @@ let doAction = function( sAct ){
             }
         }
         if( sAct == "toClear" ){ eTermTo.value = ""; neodigmUtils.robinTheme("danger"); }
-        eKPIFrom.textContent = eTermFrom.value.length
-        eKPITo.textContent = eTermTo.value.length
     }
     return false;
 }
