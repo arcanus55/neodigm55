@@ -41,7 +41,7 @@ class NeodigmWidget {
     this.aeWdgs = [ ... this._d.querySelectorAll( this._aQ[0] )]
     this.aeWdgs.forEach( ( oeWdg ) => { 
         if( oeWdg.dataset.n55WidgetId ){
-          const sURI = "https://arcanus55.github.io/neodigm55/dist/widgets/" + oeWdg.dataset.n55WidgetId
+          const sURI = "https://arcanus55.github.io/neodigm55/dist/widgets/" + oeWdg.dataset.n55WidgetId + "/" + oeWdg.dataset.n55WidgetId
           fetch( sURI + ".json" )
           .then( rs => rs.json() )
           .then( rs => {
