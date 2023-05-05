@@ -8,7 +8,7 @@ let doAction = function( sAct ){
                 let aTxt = eTermFrom.value.split(" ")
                 if( aTxt.length ){
                     aTxt = aTxt.map( sW => {
-                        const sDoNotCap = ["a", "an", "and", "as", "at", "but", "by", "for", "if", "in", "nor", "of", "off", "on", "or", "per", "so", "the", "to", "up", "via", "yet"]
+                        const sDoNotCap = ["a", "an", "and", "as", "at", "but", "by", "for", "if", "in", "nor", "of", "off", "on", "or", "per", "so", "the", "to", "up", "via", "with", "yet"]
                         let sRet = sW
                         if( sDoNotCap.indexOf(  sW.toLowerCase() ) == -1 ) sRet = capFirst( sW )
                         return sRet

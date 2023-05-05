@@ -90,7 +90,7 @@
     <div>
         <article class="pfmf-crd--black h-center"><p class="readable__doc readable__doc--white">Type or Paste Your Text</p></article>
         <article style="padding: 2px 2px;">
-            <textarea id="l-term-from" class="l-term" rows="16"></textarea>
+            <textarea id="l-term-from" class="l-term" rows="12"></textarea>
         </article>
     </div>
 </section>
@@ -143,7 +143,7 @@
 <section class="pfmf-grid pfmf-grid__100 readable__doc">
     <div>
         <article style="padding: 2px 2px;">
-            <textarea id="l-term-to" class="l-term" rows="16"></textarea>
+            <textarea id="l-term-to" class="l-term" rows="12"></textarea>
         </article>
     </div>
 </section>
@@ -227,7 +227,7 @@ let doAction = function( sAct ){
                 let aTxt = eTermFrom.value.split(" ")
                 if( aTxt.length ){
                     aTxt = aTxt.map( sW => {
-                        const sDoNotCap = ["a", "an", "and", "as", "at", "but", "by", "for", "if", "in", "nor", "of", "off", "on", "or", "per", "so", "the", "to", "up", "via", "yet"]
+                        const sDoNotCap = ["a", "an", "and", "as", "at", "but", "by", "for", "if", "in", "nor", "of", "off", "on", "or", "per", "so", "the", "to", "up", "via", "with", "yet"]
                         let sRet = sW
                         if( sDoNotCap.indexOf(  sW.toLowerCase() ) == -1 ) sRet = capFirst( sW )
                         return sRet
