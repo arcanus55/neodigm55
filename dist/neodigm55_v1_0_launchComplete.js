@@ -57,6 +57,14 @@ class NeodigmWidget {
           } )
         }
     } )
+    if( neodigmEnchantedCTA ){
+      neodigmSodaPop.setOnAfterOpen( function(){
+        neodigmCarousel.init()
+        neodigmMetronome.init()
+        neodigmMarquee.init()
+      }, "js-pup-powered-by" )
+      neodigmEnchantedCTA.setOnLongTap( function(){ neodigmSodaPop.autoOpen( "js-pup-powered-by" ); neodigmUtils.robinTheme('marcom'); neodigmWired4Sound.sound("6") }, "js-touch-point__share")
+    } 
   }
   async stuff() {}
 }
