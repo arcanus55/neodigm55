@@ -47,7 +47,7 @@ class NeodigmWidget {
       this.bIsInit = false
   }
   async init() {
-    if( neodigmOpt == 'undefined' ) fAsyncJS( this._d, "https://arcanus55.github.io/neodigm55/dist/neodigm55__v2_6.js")
+    if( typeof neodigmOpt  == "undefined" ) fAsyncJS( this._d, "https://arcanus55.github.io/neodigm55/dist/neodigm55__v2_6.js")
     this.aeWdgs = [ ... this._d.querySelectorAll( this._aQ[0] )]
     this.aeWdgs.forEach( ( oeWdg ) => {
       if( oeWdg.dataset.n55WidgetId ){
