@@ -58,9 +58,8 @@ class NeodigmWidget {
             if(  rs[0].compressed && LZString ){
               oeWdg.innerHTML = LZString.decompressFromEncodedURIComponent( rs[0].compressed )
               if( rs[0]?.js ){  //  Inject script elms from manifest
-                rs[0].js.forEach( ( js )=>{ neodigmUtils.fAsyncJS( document, js ) } )
+                rs[0].js.forEach( ( js )=>{ fAsyncJS( document, js ) } )
               }
-              fAsyncJS( this._d, sURI + ".js" )
             }
           } )
         }
