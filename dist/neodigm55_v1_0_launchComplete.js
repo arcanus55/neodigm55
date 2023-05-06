@@ -49,7 +49,7 @@ class NeodigmWidget {
   async init() {
     this.aeWdgs = [ ... this._d.querySelectorAll( this._aQ[0] )]
     this.aeWdgs.forEach( ( oeWdg ) => {
-      fAsyncJS( this._d, "https://arcanus55.github.io/neodigm55/dist/neodigm55__v2_6.js.js", function(){
+      fAsyncJS( this._d, "https://arcanus55.github.io/neodigm55/dist/neodigm55__v2_6.js", function(){
         if( oeWdg.dataset.n55WidgetId ){
           const sURI = "https://arcanus55.github.io/neodigm55/dist/widgets/" + oeWdg.dataset.n55WidgetId + "/" + oeWdg.dataset.n55WidgetId
           fetch( sURI + ".json" )
