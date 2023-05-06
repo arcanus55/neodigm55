@@ -47,23 +47,22 @@ class NeodigmWidget {
       this.bIsInit = false
   }
   async init() {
+    if( !neodigmOpt) fAsyncJS( this._d, "https://arcanus55.github.io/neodigm55/dist/neodigm55__v2_6.js")
     this.aeWdgs = [ ... this._d.querySelectorAll( this._aQ[0] )]
     this.aeWdgs.forEach( ( oeWdg ) => {
-      fAsyncJS( this._d, "https://arcanus55.github.io/neodigm55/dist/neodigm55__v2_6.js", function(){
-        if( oeWdg.dataset.n55WidgetId ){
-          const sURI = "https://arcanus55.github.io/neodigm55/dist/widgets/" + oeWdg.dataset.n55WidgetId + "/" + oeWdg.dataset.n55WidgetId
-          fetch( sURI + ".json" )
-          .then( rs => rs.json() )
-          .then( rs => {
-            if(  rs[0].compressed && LZString ){
-              oeWdg.innerHTML = LZString.decompressFromEncodedURIComponent( rs[0].compressed )
-              if( rs[0]?.js ){  //  Inject script elms from manifest
-                rs[0].js.forEach( ( js )=>{ fAsyncJS( document, js ) } )
-              }
+      if( oeWdg.dataset.n55WidgetId ){
+        const sURI = "https://arcanus55.github.io/neodigm55/dist/widgets/" + oeWdg.dataset.n55WidgetId + "/" + oeWdg.dataset.n55WidgetId
+        fetch( sURI + ".json" )
+        .then( rs => rs.json() )
+        .then( rs => {
+          if(  rs[0].compressed && LZString ){
+            oeWdg.innerHTML = LZString.decompressFromEncodedURIComponent( rs[0].compressed )
+            if( rs[0]?.js ){  //  Inject script elms from manifest
+              rs[0].js.forEach( ( js )=>{ fAsyncJS( document, js ) } )
             }
-          } )
-        }
-      } ) 
+          }
+        } )
+      }
     } )
     if( neodigmEnchantedCTA ){
       neodigmEnchantedCTA.setOnLongTap( function(){ neodigmToast.q( "Powered by Neodigm ✨ 55", "night" ); neodigmUtils.robinTheme('marcom'); neodigmWired4Sound.sound("6"); }, "js-touch-point__share")
