@@ -5,6 +5,14 @@ let doAction = function( sAct ){
     let eKPITo = document.querySelector( "#kpi-to__fb" )
     
     if( eTermFrom && eTermTo ){
+        if( sAct == "share" ){
+            try {
+                navigator.clipboard.writeText( document.location.href );
+                neodigmToast.q("Page Address (URL)|Copied to Clipboard", "brand" )
+            } catch (err) {
+                console.warn('Failed to copy', err)
+            }
+        }
         if( sAct == "cBase64uri" ){
             if( eTermFrom.value ){
                 try{
