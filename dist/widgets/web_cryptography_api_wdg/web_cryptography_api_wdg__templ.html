@@ -9,79 +9,9 @@
 
 <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
     <div>
-        <article class="h-center">
-            <a id="js-case-title"
-            onclick="doAction('caseTitle')"
-            data-n55-enchanted-cta
-            data-n55-enchanted-cta-dont-touch="true"
-            data-n55-enchanted-cta-shape-off="true"
-            data-n55-enchanted-cta-hover-an="true"
-            data-n55-enchanted-cta-size="small"
-            data-n55-flash-theme="marcom"
-            data-n55-theme="primary"
-            data-n55-wired4sound-click="7"
-            ><span data-n55-wired4sound-mouseover="3">Title Case</span><span>Cap Significant</span>
-            </a>
-            <!--<a id="js-case-sentence"
-            onclick="doAction('caseSentence')"
-            data-n55-enchanted-cta
-            data-n55-enchanted-cta-dont-touch="true"
-            data-n55-enchanted-cta-shape-off="true"
-            data-n55-enchanted-cta-hover-an="true"
-            data-n55-enchanted-cta-size="small"
-            data-n55-flash-theme="marcom"
-            data-n55-theme="primary"
-            data-n55-wired4sound-click="7"
-            ><span data-n55-wired4sound-mouseover="3">Sentence Case</span><span>Cap First Word</span>
-            </a>-->
-            <a id="js-case-lower"
-            onclick="doAction('caseLower')"
-            data-n55-enchanted-cta
-            data-n55-enchanted-cta-dont-touch="true"
-            data-n55-enchanted-cta-shape-off="true"
-            data-n55-enchanted-cta-hover-an="true"
-            data-n55-enchanted-cta-size="small"
-            data-n55-flash-theme="marcom"
-            data-n55-theme="primary"
-            data-n55-wired4sound-click="5"
-            ><span data-n55-wired4sound-mouseover="3">lowercase</span><span>All Small</span>
-            </a>
-            <a id="js-case-upper"
-            onclick="doAction('caseUpper')"
-            data-n55-enchanted-cta
-            data-n55-enchanted-cta-dont-touch="true"
-            data-n55-enchanted-cta-shape-off="true"
-            data-n55-enchanted-cta-hover-an="true"
-            data-n55-enchanted-cta-size="small"
-            data-n55-flash-theme="marcom"
-            data-n55-theme="primary"
-            data-n55-wired4sound-click="5"
-            ><span data-n55-wired4sound-mouseover="3">UPPERCASE</span><span>SHOUT CAPS</span>
-            </a>
-            <a id="js-case-reverse"
-            onclick="doAction('caseReverse')"
-            data-n55-enchanted-cta
-            data-n55-enchanted-cta-dont-touch="true"
-            data-n55-enchanted-cta-shape-off="true"
-            data-n55-enchanted-cta-hover-an="true"
-            data-n55-enchanted-cta-size="small"
-            data-n55-flash-theme="marcom"
-            data-n55-theme="primary"
-            data-n55-wired4sound-click="9"
-            ><span data-n55-wired4sound-mouseover="3">Reverse</span><span>Mirror</span>
-            </a>
-
-            <a id="js-touch-point__share" onclick="doAction('share');"
-            data-n55-enchanted-cta=""
-            data-n55-enchanted-cta-dont-touch="false"
-            data-n55-enchanted-cta-shape-off="true"
-            data-n55-enchanted-cta-hover-an="true"
-            data-n55-enchanted-cta-size="small"
-            data-n55-theme="brand"
-            data-n55-flash-theme="marcom"
-            data-n55-wired4sound-click="7"
-            ><span data-n55-wired4sound-mouseover="3"><neodigm-icon class="material-symbols-outlined">share</neodigm-icon> Share</span><span><neodigm-icon class="material-symbols-outlined">share</neodigm-icon>  Copy URL</span>
-            </a>
+        <article class="pfmf-crd--black h-center"><p class="readable__doc readable__doc--white">Type or Paste Your Key Below</p></article>
+        <article style="padding: 1px 1px;">
+            <textarea id="l-term-key" class="l-term" rows="3"></textarea>
         </article>
     </div>
 </section>
@@ -136,6 +66,49 @@
                 ><span data-n55-wired4sound-mouseover="3">Clear</span><span>Blank</span>
                 </a>
             </nav>
+        </article>
+    </div>
+</section>
+
+<section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
+    <div>
+        <article class="h-center">
+            <a id="js-crypt-encrypt"
+            onclick="doAction('crypt-encrypt')"
+            data-n55-enchanted-cta
+            data-n55-enchanted-cta-dont-touch="true"
+            data-n55-enchanted-cta-shape-off="true"
+            data-n55-enchanted-cta-hover-an="true"
+            data-n55-enchanted-cta-size="medium"
+            data-n55-flash-theme="marcom"
+            data-n55-theme="primary"
+            data-n55-wired4sound-click="7"
+            ><span data-n55-wired4sound-mouseover="3">Encrypt</span><span>Make Hidden</span>
+            </a>
+            <a id="js-crypt-decrypt"
+            onclick="doAction('crypt-decrypt')"
+            data-n55-enchanted-cta
+            data-n55-enchanted-cta-dont-touch="true"
+            data-n55-enchanted-cta-shape-off="true"
+            data-n55-enchanted-cta-hover-an="true"
+            data-n55-enchanted-cta-size="medium"
+            data-n55-flash-theme="marcom"
+            data-n55-theme="primary"
+            data-n55-wired4sound-click="5"
+            ><span data-n55-wired4sound-mouseover="3">Decrypt</span><span>Make Readable</span>
+            </a>
+
+            <a id="js-touch-point__share" onclick="doAction('share');"
+            data-n55-enchanted-cta=""
+            data-n55-enchanted-cta-dont-touch="false"
+            data-n55-enchanted-cta-shape-off="true"
+            data-n55-enchanted-cta-hover-an="true"
+            data-n55-enchanted-cta-size="medium"
+            data-n55-theme="brand"
+            data-n55-flash-theme="marcom"
+            data-n55-wired4sound-click="7"
+            ><span data-n55-wired4sound-mouseover="3"><neodigm-icon class="material-symbols-outlined">share</neodigm-icon> Share</span><span><neodigm-icon class="material-symbols-outlined">share</neodigm-icon>  Copy URL</span>
+            </a>
         </article>
     </div>
 </section>
