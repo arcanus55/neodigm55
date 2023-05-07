@@ -11,22 +11,13 @@ All rights reserved. Redistributions of source code must retain the above copyri
 //  Neodigm 55 Options Custom Config Begin  //
 let neodigmOpt_launchComplete = {
   ver: "1.0.0",
-  N55_LC_DOMAIN: ["MachFiveMarketing.com", 256],
-  N55_LC_TAG1: ["Mach Five Marketing 🚀 Digital Marketing That Moves", 256],
-  N55_LC_TAG2: ["Mach Five Marketing 🚀 Bold Brands", 256],
-  N55_LC_TAG3: ["Mach Five Marketing 🚀 Cut Through the Noise", 256],
+  N55_LC_DOMAIN: ["SEMbright.com", 256],
+  N55_LC_TAG1: ["SEMbright 🚀 Digital Marketing That Moves", 256],
+  N55_LC_TAG2: ["SEMbright 🚀 Digital Marketing That Moves", 256],
+  N55_LC_TAG3: ["SEMbright 🚀 Digital Marketing That Moves", 256],
   N55_LC_COLOR_BRAND: ["7BC4C4", 256],
   N55_LC_KEYWORDS: [["A", "B"], 256],
   CONSOLE_LOG_VER: true,
-}
-
-function fAsyncJS( _d, _uri, _cb ){  //  Load JS Async then callback
-  var _js = _d.createElement( "script" )
-  _js.type = "text/javascript"
-  _js.async = true
-  if( _cb ) _js.onload = function(){ _cb(); }
-  _js.src = _uri
-  _d.getElementsByTagName( "head" )[0].appendChild( _js )
 }
 
 if( typeof neodigmOpt_launchCompleteCustom != 'undefined' ){
@@ -47,22 +38,24 @@ class NeodigmWidget {
       this.bIsInit = false
   }
   async init() {
-    if( typeof neodigmOpt  == "undefined" ) fAsyncJS( this._d, "https://arcanus55.github.io/neodigm55/dist/neodigm55__v2_6.js")
     this.aeWdgs = [ ... this._d.querySelectorAll( this._aQ[0] )]
-    this.aeWdgs.forEach( ( oeWdg ) => {
-      if( oeWdg.dataset.n55WidgetId ){
-        const sURI = "https://arcanus55.github.io/neodigm55/dist/widgets/" + oeWdg.dataset.n55WidgetId + "/" + oeWdg.dataset.n55WidgetId
-        fetch( sURI + ".json" )
-        .then( rs => rs.json() )
-        .then( rs => {
-          if(  rs[0].compressed && LZString ){
-            oeWdg.innerHTML = LZString.decompressFromEncodedURIComponent( rs[0].compressed )
-            if( rs[0]?.js ){  //  Inject script elms from manifest
-              rs[0].js.forEach( ( js )=>{ fAsyncJS( document, js ) } )
+    this.aeWdgs.forEach( ( oeWdg ) => { 
+        if( oeWdg.dataset.n55WidgetId ){
+          const sURI = "https://arcanus55.github.io/neodigm55/dist/widgets/" + oeWdg.dataset.n55WidgetId + "/" + oeWdg.dataset.n55WidgetId
+          fetch( sURI + ".json" )
+          .then( rs => rs.json() )
+          .then( rs => {
+            if(  rs[0].compressed && LZString ){
+              oeWdg.innerHTML = LZString.decompressFromEncodedURIComponent( rs[0].compressed )
+              if( neodigmUtils ){
+                if( rs[0]?.js ){  //  Inject script elms from manifest
+                  rs[0].js.forEach( ( js )=>{ neodigmUtils.fAsyncJS( document, js ) } )
+                }
+                neodigmUtils.fAsyncJS( this._d, sURI + ".js" )
+              }
             }
-          }
-        } )
-      }
+          } )
+        }
     } )
     if( neodigmEnchantedCTA ){
       neodigmEnchantedCTA.setOnLongTap( function(){ neodigmToast.q( "Powered by Neodigm ✨ 55", "night" ); neodigmUtils.robinTheme('marcom'); neodigmWired4Sound.sound("6"); }, "js-touch-point__share")
