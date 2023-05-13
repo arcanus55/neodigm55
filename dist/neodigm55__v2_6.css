@@ -123,7 +123,7 @@ neodigm-sodapop-scrim-close:not(.ndsp__modal)[data-n55-sodapop-scrim='opened'] {
     overflow-x: hidden;
     transform: rotate(0deg);
     transition: all .4s ease-in-out;
-    z-index: 258;
+    z-index: 264;
 }
 neodigm-sodapop-scrim-close:not(.ndsp__modal)[data-n55-sodapop-scrim='opened'] svg { pointer-events: none; }
 neodigm-sodapop-scrim-close:hover:not(.ndsp__modal)[data-n55-sodapop-scrim='opened'] { transform: rotate(90deg); }
@@ -171,7 +171,7 @@ neodigm-sodapop:not(.ndsp__modal)::after {
     neodigm-sodapop.ndsp__size--medium { width: 66%; }
     neodigm-sodapop.ndsp__size--large  { width: 88%; }
 }
-@media print { neodigm-sodapop-scrim-close { z-index: -256;} }
+@media print { neodigm-sodapop-scrim-close { z-index: -256 !important;} }
 /*  Neodigm Soda Pop End  */
 
 /*  Neodigm Carousel Begin  */
