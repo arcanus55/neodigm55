@@ -202,6 +202,7 @@ neodigm-parallax[data-n55-parallax] aside {
     background-position: middle center;
     width: 100%;
 }
+neodigm-parallax[data-n55-parallax-size='xsmall'] aside { padding: 100px 0; }
 neodigm-parallax[data-n55-parallax-size='small']  aside { padding: 200px 0; }
 neodigm-parallax[data-n55-parallax-size='medium'] aside { padding: 400px 0; }
 neodigm-parallax[data-n55-parallax-size='large']  aside { padding: 600px 0; }
@@ -216,11 +217,11 @@ neodigm-marquee {
     background-color: #282828;
         height: 38px;
 }
-[data-n55-enchanted-cta][data-n55-enchanted-cta-size='xsmall'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width:  96px; }
-[data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']  neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 186px; }
-[data-n55-enchanted-cta][data-n55-enchanted-cta-size='medium'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 206px; }
-[data-n55-enchanted-cta][data-n55-enchanted-cta-size='large']  neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 236px; }
-[data-n55-enchanted-cta][data-n55-enchanted-cta-size='xlarge'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 266px; }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='xsmall'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 128px; }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']  neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 218px; }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='medium'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 238px; }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='large']  neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 268px; }
+[data-n55-enchanted-cta][data-n55-enchanted-cta-size='xlarge'] neodigm-marquee { background-color: rgba(0,0,0,0); max-width: 298px; }
 
 neodigm-marquee pre {
     color: var(--neodigm-theme-brand);

@@ -29,6 +29,7 @@ let neodigmOpt = {
   neodigmKPI: true,  N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
   neodigmPWA: true,  N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
   neodigmCarousel: true,  N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
+neodigmTulip: false,
 neodigmPopTart: false,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
 neodigmWWInterval: false,
   CONSOLE_LOG_VER: true,
@@ -317,6 +318,25 @@ class NeodigmSodaPop {
     setOnBeforeUserExit(_f){ this.fOnBeforeUserExit = _f }
 }
 let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-n55-sodapop-modal"] )
+
+//  Neodigm 55 Tulip Begin  //
+class NeodigmTulip {
+  constructor(_d, _aQ) {
+      this._d = _d; this._aQ = _aQ; this.sId = ""
+      this.eSoda = this.eScrim = this.eClose = null
+      this.fOnBeforeOpen = {}; this.fOnAfterOpen = {}; this.fOnClose = {}
+      this.bIsOpen = this.bIsModal = this.bIsInit = false
+  }
+  init() {}
+  open() {}
+  close() {}
+  shake() {}
+  isOpen(){ return this.bIsOpen }
+  setOnBeforeOpen( _f, id="def"){ this.fOnBeforeOpen[ id ] = _f }
+  setOnAfterOpen( _f, id="def"){ this.fOnAfterOpen[ id ] = _f }
+  setOnClose( _f, id="def"){ this.fOnClose[ id ] = _f }
+}
+let neodigmTulip = new NeodigmTulip( document, ["neodigm-tulip"] )
 
 //  Neodigm 55 PopTart Begin  //
 class NeodigmPopTart {
@@ -1132,7 +1152,7 @@ let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 //  Neodigm 55 Claire Declaire-itive //
 //  -Neodigm 55 Confetti Begin (Claire) //
 //  Neodigm 55 Cypher Type FX Begin  //
-//  Neodigm 55 Post-It Begin  //
+//  Neodigm 55 Post-It Begin (wdg) //
 
 // v2.x.0
 //  Neodigm 55 FAB Begin //
@@ -1165,10 +1185,10 @@ function doDOMContentLoaded(){
 </neodigm-sodapop-scrim-close>
 <neodiigm-snack class="l-snackbar" role="alert">
     <section id="js-snackbar__id" class="snackbar__cont snackbar__cont--hide" aria-live="polite" aria-atomic="true">
-        <div class="snackbar__progbar"></div>
-        <p class="snackbar__msg"></p>
+        <div class="snackbar__progbar"></div><p class="snackbar__msg"></p>
     </section>
-</neodiigm-snack>`;
+</neodiigm-snack>
+<neodigm-poptartclass=""></neodigm-poptart> <neodigm-tulip class=""></neodigm-tulip>`;  //  Universal Templs
   let eMU = document.createElement("output");
   eMU.innerHTML = neodigmMU;
   document.body.appendChild(eMU);
@@ -1187,6 +1207,7 @@ function doDOMContentLoaded(){
     if( neodigmOpt.neodigmKPI ) neodigmKPI.init()
     if( neodigmOpt.neodigmPWA ) neodigmPWA.init()
     if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
+    if( neodigmOpt.neodigmTulip ) neodigmTulip.init()
     if( neodigmOpt.neodigmPopTart ) neodigmPopTart.init()
   }, 56)
 }
