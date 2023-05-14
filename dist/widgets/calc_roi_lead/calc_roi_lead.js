@@ -8,7 +8,7 @@ let jWS = `[
 {"code":"003", "title":"B2B",                  "ctr_src":"2.41%", "ctr_gdn":"0.46%", "cpc_src":"$3.33", "cpc_gdn":"$0.79", "cvr_src":"3.04%", "cvr_gdn":"0.80%", "cpa_src":"$116.13", "cpa_gdn":"$130.36"},
 {"code":"004", "title":"Consumer Services",    "ctr_src":"2.41%", "ctr_gdn":"0.51%", "cpc_src":"$6.40", "cpc_gdn":"$0.81", "cvr_src":"6.64%", "cvr_gdn":"0.98%", "cpa_src":"$90.70",  "cpa_gdn":"$60.48"},
 {"code":"005", "title":"Dating & Personals",   "ctr_src":"6.05%", "ctr_gdn":"0.72%", "cpc_src":"$2.78", "cpc_gdn":"$1.49", "cvr_src":"9.64%", "cvr_gdn":"3.34%", "cpa_src":"$76.76",  "cpa_gdn":"$60.23"},
-{"code":"006", "title":"ECommerce",            "ctr_src":"2.69%", "ctr_gdn":"0.51%", "cpc_src":"$1.16", "cpc_gdn":"$0.45", "cvr_src":"2.81%", "cvr_gdn":"0.59%", "cpa_src":"$45.27",  "cpa_gdn":"$65.80"},
+{"code":"006", "title":"Ecommerce",            "ctr_src":"2.69%", "ctr_gdn":"0.51%", "cpc_src":"$1.16", "cpc_gdn":"$0.45", "cvr_src":"2.81%", "cvr_gdn":"0.59%", "cpa_src":"$45.27",  "cpa_gdn":"$65.80"},
 {"code":"007", "title":"Education",            "ctr_src":"3.78%", "ctr_gdn":"0.53%", "cpc_src":"$2.40", "cpc_gdn":"$0.47", "cvr_src":"3.39%", "cvr_gdn":"0.50%", "cpa_src":"$72.70",  "cpa_gdn":"$143.36"},
 {"code":"008", "title":"Employment Services",  "ctr_src":"2.42%", "ctr_gdn":"0.59%", "cpc_src":"$2.04", "cpc_gdn":"$0.78", "cvr_src":"5.13%", "cvr_gdn":"1.57%", "cpa_src":"$48.04",  "cpa_gdn":"$59.47"},
 {"code":"009", "title":"Finance & Insurance",  "ctr_src":"2.91%", "ctr_gdn":"0.52%", "cpc_src":"$3.44", "cpc_gdn":"$0.86", "cvr_src":"5.10%", "cvr_gdn":"1.19%", "cpa_src":"$81.93",  "cpa_gdn":"$56.76"},
