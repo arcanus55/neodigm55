@@ -263,13 +263,13 @@ function doCopyString( sTxt, sTheme="night" ){
                             <section class="pfmf-grid pfmf-grid__80_20">
                                 <div>
                                     <article>
-                                        <h6 class="hd5 h-center">Enter the monthly ad budget</h6>
+                                        <h6 class="hd5 h-center">Enter your monthly ad budget</h6>
                                         <br>
                                         <input id="roic_ad_budget" class="n55-lc__input" type="text" tabindex="-1"
                                         onfocus="neodigmCarousel.nav({'id': 'js-caro-roic-2', 'nav': 2 })"
                                         placeholder="$ Monthly Ad Budget">
                                         <br>
-                                        <h6 class="hd5 h-center">Enter the average number of leads per month</h6>
+                                        <h6 class="hd5 h-center">Enter your average number of leads per month</h6>
                                         <br>
                                         <input id="roic_ad_leads" class="n55-lc__input" type="number" tabindex="-1"
                                         onfocus="neodigmCarousel.nav({'id': 'js-caro-roic-2', 'nav': 3 })"
@@ -445,15 +445,40 @@ QQQQdata-n55-wired4sound-click="7"
     <div class="h-center">
         <h6 id="roic-asses__caption--fb" class="hd3"></h6>
 
-        <section class="pfmf-grid pfmf-grid__100">
+        <h6 class="hd4 h-center">Lead Summary Report</h6>
+        <hr style="height: 1px; background-color: #cfcfcf; border: none;">
+
+        <section class="pfmf-grid pfmf-grid__33_33_33">
             <div>
                 <article>
-                    <h6 class="hd4 h-center">Cost Per Lead (CPL)</h6>
+                    <h6 class="hd4 h-center">Current Cost Per Lead</h6>
                     <hr style="height: 1px; background-color: #cfcfcf; border: none;">
                     <neodigm-kpi id="kpi-ctr_src" data-n55-kpi data-n55-kpi-percent="false"
                     data-n55-kpi-size="small" data-n55-flash-theme="success" data-n55-theme="success"
                     ><h5><kpi-fb id="kpi-fb-cpl" style="font-size: 44px;">$0</kpi-fb></h5><h6>Monthly CPL</h6>
                     </neodigm-kpi>
+                </article>
+            </div>
+            <div>
+                <article>
+arrow
+                </article>
+            </div>
+            <div>
+                <article>
+                    <h6 class="hd4 h-center">Your Industry Average - CPL</h6>
+                    <hr style="height: 1px; background-color: #cfcfcf; border: none;">
+                    <neodigm-kpi id="kpi-cpa_src" data-n55-kpi data-n55-kpi-percent="false"
+                    data-n55-kpi-size="small" data-n55-flash-theme="primary" data-n55-theme="primary"
+                    ><h5><kpi-fb id="kpi-fb-cpa_src">$7</kpi-fb><span>%</span></h5><h6>Search</h6>
+                    </neodigm-kpi>
+
+                    <neodigm-kpi id="kpi-ctr_gdn" data-n55-kpi data-n55-kpi-percent="false"
+                    data-n55-kpi-size="small" QQQQdata-n55-flash-theme="none" data-n55-theme="marcom"
+                    ><h5><kpi-fb id="kpi-fb-cpa_gdn">$8</kpi-fb><span>%</span></h5><h6>Display</h6>
+                    </neodigm-kpi>
+                    <br>
+                    <p class="hd5">The average CPA in google ads across all industries is $48.96 for search and $75.51 for display.</p>
                 </article>
             </div>
         </section>
