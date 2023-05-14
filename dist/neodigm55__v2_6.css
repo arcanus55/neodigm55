@@ -497,9 +497,9 @@ neodigm-kpi > h6 {
 }
 neodigm-kpi > h5 > span { display: none; }
 neodigm-kpi[data-n55-kpi-percent="true"] > h5 > span { display: inline-block; }
-neodigm-kpi > h5 { top: 19%; letter-spacing: -.08rem; }
+neodigm-kpi > h5 { top: 22%; letter-spacing: -.08rem; }
 neodigm-kpi > h5 > span {font-size: 56%; margin-top: -20px; padding: 0 6px;}
-neodigm-kpi > h6 { top: 24%; }
+neodigm-kpi > h6 { top: 20%; }
 
 [data-n55-ampm-theme="light"]  neodigm-kpi[data-n55-theme='brand']     { background-color: var( --neodigm-theme-brand-alt ); }
 [data-n55-ampm-theme="light"]  neodigm-kpi[data-n55-theme='primary']   { background-color: var( --neodigm-theme-primary-alt ); }
