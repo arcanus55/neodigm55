@@ -133,7 +133,7 @@ setTimeout(function(){
                 document.getElementById( "kpi-fb-cpa_gdn" ).textContent = oIndy.cpa_gdn
 
             }
-            document.querySelector("#roic-asses__caption--fb").textContent = sIndy + " " + sYear
+            document.querySelector("#roic-asses__caption--fb").textContent = "Results for " + sIndy + " " + sYear
         }, "js-roic-asses-id")
         neodigmSodaPop.setOnClose( function(){
             if( NeodigmClaire ) NeodigmClaire.init().doConfetti( "#js-caro-roic-3" )
