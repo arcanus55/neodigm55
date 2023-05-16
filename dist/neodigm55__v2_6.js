@@ -1074,7 +1074,11 @@ class NeodigmCarousel {
         }
         let nSP = ( oState.nIdx - 1 ) * oState.width  //  Scroll Position
 elNCCntr.scrollTop = 0;
+elNC.scrollTop = 0;
 elNCCntr.parentElement.scrollTop = 0;
+elNC.parentElement.scrollTop = 0;
+console.log(" ~~~ | " , elNCCntr )
+console.log(" ~~~ | " , elNC )
         elNCCntr.style.marginLeft = ( nSP ) - ( nSP * 2 ) + "px"
       }
     }  //  TODO datalayer
