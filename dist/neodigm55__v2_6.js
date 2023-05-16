@@ -83,14 +83,31 @@ const neodigmUtils = ( ( _d ) =>{
     },
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
       const qContext = "body"
-      document[ qContext ].addEventListener( "click", function( ev ){
+      document[ qContext ].addEventListener( "click", ( ev ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
+        if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
       })
-      document[ qContext ].addEventListener( "touchstart", function( ev ){
+      document[ qContext ].addEventListener( "touchstart", ( ev ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
+        if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
       })
-      window.addEventListener( "resize", function( ev ){ if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init() })
-      window.addEventListener( "orientationchange", function( ev ){ if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init() })
+      window.addEventListener( "resize", ( ev ) =>{
+        window.requestAnimationFrame(() => {
+          if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
+          if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
+        })
+      })
+      window.addEventListener( "orientationchange", ( ev ) =>{
+        window.requestAnimationFrame(() => {
+          if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
+          if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
+        })
+      })
+      window.addEventListener( "scroll", ( ev ) =>{
+        window.requestAnimationFrame(() => {
+          if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
+        })
+      })
       neodigmOpt.N55_APP_STATE.REDUCE_MOTION = !window.matchMedia( '(prefers-reduced-motion: no-preference)' ).matches
     },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
@@ -327,9 +344,9 @@ class NeodigmTulip {
       this.fOnBeforeOpen = {}; this.fOnAfterOpen = {}; this.fOnClose = {}
       this.bIsOpen = this.bIsModal = this.bIsInit = false
   }
-  init() {}
+  init() { console.log( " ~~~ tulip init | ", this ) }
   open() {}
-  close() {}
+  close() { console.log( " ~~~ tulip close | ", this ) }
   shake() {}
   isOpen(){ return this.bIsOpen }
   setOnBeforeOpen( _f, id="def"){ this.fOnBeforeOpen[ id ] = _f }
