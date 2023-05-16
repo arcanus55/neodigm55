@@ -1073,6 +1073,7 @@ class NeodigmCarousel {
             if( ( oNav.nav >= 1 ) && ( oNav.nav < (oState.aTabCntr.length + 1) ) ) oState.nIdx = elNC.n55State.nIdx = oNav.nav
         }
         let nSP = ( oState.nIdx - 1 ) * oState.width  //  Scroll Position
+elNCCntr.scrollTop = 0;
         elNCCntr.style.marginLeft = ( nSP ) - ( nSP * 2 ) + "px"
       }
     }  //  TODO datalayer
