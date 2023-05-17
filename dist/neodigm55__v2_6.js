@@ -339,12 +339,21 @@ let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "ne
 //  Neodigm 55 Tulip Begin  //
 class NeodigmTulip {
   constructor(_d, _aQ) {
-      this._d = _d; this._aQ = _aQ; this.sId = ""
-      this.eSoda = this.eScrim = this.eClose = null
+      this._d = _d; this._aQ = _aQ;
+      this.eTulip = null
       this.fOnBeforeOpen = {}; this.fOnAfterOpen = {}; this.fOnClose = {}
-      this.bIsOpen = this.bIsModal = this.bIsInit = false
+      this.bIsOpen = this.bIsInit = false
   }
-  init() { console.log( " ~~~ tulip init | ", this ) }
+  init() {
+    this.eTulip = _d.querySelector( this._aQ[0] )
+    if( this.eTulip ){
+
+    console.log( " ~~~ tulip init | ", this )
+      this.bIsInit = true
+      return this      
+    }
+
+  }
   open() {}
   close() { console.log( " ~~~ tulip close | ", this ) }
   shake() {}
@@ -353,7 +362,7 @@ class NeodigmTulip {
   setOnAfterOpen( _f, id="def"){ this.fOnAfterOpen[ id ] = _f }
   setOnClose( _f, id="def"){ this.fOnClose[ id ] = _f }
 }
-let neodigmTulip = new NeodigmTulip( document, ["neodigm-tulip"] )
+let neodigmTulip = new NeodigmTulip( document, ["neodigm-tulip", "[data-n55-tulip]"] )
 
 //  Neodigm 55 PopTart Begin  //
 class NeodigmPopTart {
@@ -1206,7 +1215,8 @@ function doDOMContentLoaded(){
         <div class="snackbar__progbar"></div><p class="snackbar__msg"></p>
     </section>
 </neodiigm-snack>
-<neodigm-poptartclass=""></neodigm-poptart> <neodigm-tulip class=""></neodigm-tulip>`;  //  Universal Templs
+<neodigm-tulip class="l-tulip" role="tooltip"></neodigm-tulip>
+<neodigm-poptartclass=""></neodigm-poptart>`;  //  Universal Templs
   let eMU = document.createElement("output");
   eMU.innerHTML = neodigmMU;
   document.body.appendChild(eMU);
