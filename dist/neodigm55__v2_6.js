@@ -337,6 +337,7 @@ class NeodigmSodaPop {
 let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-n55-sodapop-modal"] )
 
 //  Neodigm 55 Tulip Begin  //
+//   data-n55-tulip='{"msg":"hello", "template":"js-tulip__hello--id", "theme":"RANDOM", "size":"medium","position":"top"}'
 class NeodigmTulip {
   constructor(_d, _aQ) {
       this._d = _d; this._aQ = _aQ;
@@ -345,7 +346,7 @@ class NeodigmTulip {
       this.bIsOpen = this.bIsInit = false
   }
   init() {
-    this.eTulip = _d.querySelector( this._aQ[0] )
+    this.eTulip = this._d.querySelector( this._aQ[0] )
     if( this.eTulip ){
 
     console.log( " ~~~ tulip init | ", this )
