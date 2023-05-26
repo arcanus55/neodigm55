@@ -564,12 +564,75 @@ neodigm-kpi[data-n55-kpi-size='xlarge'] > h6 { font-size: 20px;}
 [data-n55-select][data-n55-theme='night']     { border-color: var(--neodigm-theme-night ); color: var(--neodigm-theme-night ); }
 [data-n55-select][data-n55-theme='marcom']    { border-color: var(--neodigm-theme-marcom ); color: var(--neodigm-theme-night ); }
 [data-n55-select][data-n55-theme='party']     { border-color: var(--neodigm-theme-party ); color: var(--neodigm-theme-night); }
+/*  Neodigm Select End  */
+
+/*  Neodigm Tulip Begin  */ 
+neodigm-tulip{
+    position: absolute; display: block;
+
+top: 1px;
+left: 1px;
+height: 64px;
+
+    border: solid 2px var(--neodigm-theme-brand);
+    border-radius: 4px;
+	background: var(--neodigm-theme-night-alt);
+	min-width: 64px;
+	padding: 0;
+	user-select: none;
+	z-index: 6408
+
+}
+
+neodigm-tulip[data-n55-size='xsmall']{
+    font-size: 14px; line-height: 1.3;
+    padding: 10px 12px; min-width: 84px;
+    border-radius: 6px 16px;
+}
+neodigm-tulip[data-n55-size='small']{
+    font-size: 18px; line-height: 1.4;
+    padding: 12px 20px; min-width: 104px;
+}
+neodigm-tulip[data-n55-size='medium']{
+    font-size: 20px; line-height: 1.4;
+    padding: 16px 24px; min-width: 196px;
+}
+neodigm-tulip[data-n55-size='large']{
+    font-size: 22px; line-height: 1.4;
+    padding: 20px 28px; min-width: 216px;
+}
+neodigm-tulip[data-n55-size='xlarge']{
+    font-size: 24px; line-height: 1.5;
+    padding: 22px 32px; min-width: 248px;
+    border-radius: 6px 26px;
+}
+
+neodigm-tulip > p{
+    color: #fff;
+	font-family: sans-serif;
+	font-size: 18px;
+	margin: 18px;
+	text-align: center;
+	white-space: nowrap
+}
+
+[data-n55-ampm-theme="light"] neodigm-tulip{}
+[data-n55-ampm-theme="dark"]  neodigm-tulip{}
+
+neodigm-tulip.tulip__cont--hide { display: none; }
+neodigm-tulip.tulip__cont--show { display: block; }
+
+@media print {
+    neodigm-tulip { display: none;}
+}
+/*  Neodigm Tulip End  */
 
 /*  Neodigm PopTart Begin  */ 
 [neodigm-poptart]{
     position: absolute;
     display: block;
 }
+/*  Neodigm PopTart End  */ 
 
 /*  Neodigm icon Begin  */ 
 [data-n55-enchanted-cta] neodigm-icon { line-height: .1 !important; position: relative; bottom: -5px;  }
