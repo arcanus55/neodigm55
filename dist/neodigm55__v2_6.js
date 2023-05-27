@@ -84,22 +84,22 @@ const neodigmUtils = ( ( _d ) =>{
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
       document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "click", ( ev ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
-        if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
+        if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class ?
       })
       document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "touchstart", ( ev ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
-        if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
+        if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class ?
       })
       window.addEventListener( "resize", ( ev ) =>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
-          if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
+          if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class ?
         })
       })
       window.addEventListener( "orientationchange", ( ev ) =>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
-          if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
+          if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class ?
         })
       })
       window.addEventListener( "scroll", ( ev ) =>{
@@ -338,6 +338,7 @@ let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "ne
 
 //  Neodigm 55 Tulip Begin  //
 //   data-n55-tulip='{"msg":"hello", "template":"js-tulip__hello--id", "theme":"RANDOM", "size":"medium","position":"top", "icon":{"char":"phone", "theme":"primary"}}'
+// debounce ???
 class NeodigmTulip {
   constructor(_d, _aQ) {
       this._d = _d; this._aQ = _aQ;
@@ -345,29 +346,40 @@ class NeodigmTulip {
       this.bIsOpen = this.bIsInit = this.bIsPause = false
   }
   init() {  //  rinit
-    this.eTulip = this._d.querySelector( this._aQ[0] )
-    if( this.eTulip ){
-      this.eTulip.dataset.n55Size = "xsmall"
-      this.eTulipTxt = this.eTulip.querySelector( "p" );
-      [ ... this._d.querySelectorAll( this._aQ[1] )].forEach( ( eT ) =>{
-        if( !eT?.eventTulip && !neodigmUtils.isMobile() ){
-          eT.eventTulip = true
-          console.log( " ~~~ n55Tulip init | ", eT.dataset.n55Tulip );
-          eT.addEventListener("mouseenter", ( ev ) =>{
-            console.log( " ~~~ mouseenter init | ", ev );
- this.eTulipTxt.textContent = "not firing on kpi"
-            neodigmTulip.open( ev.clientX, ev.clientY )
-          }, false)
-          eT.addEventListener("mouseleave", ( ev ) =>{
-            console.log( " ~~~ mouseleave init | ", ev );
-            neodigmTulip.close()
-          }, false)
-        }
-      })
-      this.bIsInit = true
-      return this      
-    }
 
+    if( !this.bIsInit && !neodigmUtils.isMobile() ){  //  once events app_state.context
+      this.eTulip = this._d.querySelector( this._aQ[0] )
+      if( this.eTulip ){
+        this.eTulip.dataset.n55Size = "xsmall"
+        this.eTulipTxt = this.eTulip.querySelector( "p" );
+this.eTulipTxt.textContent = "not firing on kpi"
+
+        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
+              console.log( " ~~~ mouseover init | ", ev.target )
+              if( ev?.target?.dataset?.n55Tulip ) neodigmTulip.open( ev.clientX, ev.clientY )
+        }, false)
+        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseleave", ( ev ) =>{
+          neodigmTulip.close()
+        }, false)
+
+        /*[ ... this._d.querySelectorAll( this._aQ[1] )].forEach( ( eT ) =>{
+          if( !eT?.eventTulip && !neodigmUtils.isMobile() ){
+            eT.eventTulip = true
+            console.log( " ~~~ n55Tulip init | ", eT.dataset.n55Tulip );
+            eT.addEventListener("mouseenter", ( ev ) =>{
+              console.log( " ~~~ mouseenter init | ", ev );
+              neodigmTulip.open( ev.clientX, ev.clientY )
+            }, false)
+            eT.addEventListener("mouseleave", ( ev ) =>{
+              console.log( " ~~~ mouseleave init | ", ev );
+              neodigmTulip.close()
+            }, false)
+          }
+        })*/
+        this.bIsInit = true
+        return this      
+      }
+    }
   }
   open( x, y ) {
     console.log( " ~~~ tulip open | ", this )
@@ -925,7 +937,7 @@ class NeodigmEnchantedCTA {
     }
     init (){
       this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
-      if( !this.bIsInit ){  //  once events body
+      if( !this.bIsInit ){  //  once events app_state.context
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {
           let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
           let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
@@ -1085,7 +1097,7 @@ class NeodigmCarousel {
   constructor( _d, _aQ ) {
       this._d = _d; this._aQ = _aQ
       this.bIsInit = false; this.bIsPause = false
-      this.aelNC = []
+      this.aelNC = []; this.fOnAfterNav = []  //  TODO fOnBeforeNav
   }
   init (){
     this.aelNC = [ ... this._d.querySelectorAll( this._aQ[0] )] // All Carousels within DOM
@@ -1139,12 +1151,22 @@ class NeodigmCarousel {
         let nSP = ( oState.nIdx - 1 ) * oState.width  //  Scroll Position
         elNC.parentElement.scrollTop = 0;
         elNCCntr.style.marginLeft = ( nSP ) - ( nSP * 2 ) + "px"
+        if(this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]) this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]( elNC.id, oState.nIdx )  //  single pg
+        if(this.fOnAfterNav[ elNC.id ]) this.fOnAfterNav[ elNC.id ]( elNC.id, oState.nIdx )  //  all pages within this Caro
+        if(this.fOnAfterNav["def"]) this.fOnAfterNav["def"]( elNC.id, oState.nIdx )  //  all Caro
       }
     }  //  TODO datalayer
     return this;
   }
   pause (){ this.bIsPause = true; return this; } // TODO Support a timer param?
+  pause ( nT ){
+    if( this.bIsInit ){
+      if( nT ) setTimeout( () =>{ neodigmCarousel.play() }, nT )
+      this.bIsPause = true;  return this;
+    }
+  }
   play (){ this.bIsPause = false; return this; }
+  setOnAfterNav( _f, id="def", pg=""){ this.fOnAfterNav[ ( pg )?(id + "_" + pg):id ] = _f; return this; }
   setTheme ( sTheme, sId ){
     if( this.bIsInit && !this.bIsPause ){
       this.aE.forEach( (eC) => {  //  orig once n55Theme Property

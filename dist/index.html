@@ -344,10 +344,56 @@ data-n55-parallax-size="small">
 <template id="myPopup--carousel" data-n55-sodapop-modal="false" data-n55-sodapop-size="medium" data-n55-sodapop-fullscreen="false">
     <div>
  <h2>Soda Pop Carousel</h2>
- <neodigm-carousel id="js-carousel-inpup">
+ <neodigm-carousel id="js-carousel-inpup"
+ style="background-color: #6688bb;">
     <section>
         <section>
-            <h6>Page Tab Region 1</h6><p>QQQQ</p><p>QQQQ</p>
+            <h6>Page Tab Region 1</h6><p>On After Nav - Array of Callback functions.</p><p>Call without id or pg param to create a default for all caros and all pages (def).</p>
+            <a href="https://github.com/arcanus55/neodigm55/wiki/Cheat-Sheet#neodigm-carousel-life-cycle-events-on-after-nav-this-event-will-fire-your-callback-function-when-any-carousel-instance-navigates-to-a-new-page-andor-when-a-particular-carousel-instance-navigates-to-a-new-page-andor-when-a-particular-carousel-instance-navigates-to-a-particular-page">
+                Wiki Recipe
+            </a>
+            <div class="h-center">
+                <a id="js-caro-cb__page"
+                onClick="neodigmCarousel.setOnAfterNav(function(){neodigmToast.q('n55 Caro OnAfterNav Pg 2','warning');},'js-carousel-inpup',2 )"
+                    tabindex="0" aria-haspopup="true" data-n55-enchanted-cta data-n55-enchanted-cta-ambient="emit" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="large" data-n55-theme="info"
+                    data-n55-tulip="Page 2 (after nav)"
+                    data-n55-toast="Will Fire When|Page 2 (after nav)"
+                ><span>Create OnAfterNav Page CB</span>
+                <span>
+                    <neodigm-marquee data-n55-marquee-text="  This function will execute whenever Page 2 of the Carousel with the id of js-carousel-inpup is presented.  "
+                    data-n55-marquee-size="small" data-n55-marquee-direction="false"><pre data-n55-theme="white"></pre></neodigm-marquee>
+                </span>
+                </a>
+
+                <a id="js-caro-cb__caro"
+                onClick="neodigmCarousel.setOnAfterNav(function(){neodigmToast.q('n55 Caro OnAfterNav All pages','warning');},'js-carousel-inpup' )"
+                    tabindex="0" aria-haspopup="true" data-n55-enchanted-cta data-n55-enchanted-cta-ambient="emit" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="large" data-n55-theme="info"
+                    data-n55-tulip="THIS caro"
+                    data-n55-toast="Will Fire When any page|on THIS caro is presented"
+                ><span>Create OnAfterNav Page CB</span>
+                <span>
+                    <neodigm-marquee data-n55-marquee-text="  This function will execute whenever ANY PAGE of the Carousel with the id of js-carousel-inpup is presented.  "
+                    data-n55-marquee-size="small" data-n55-marquee-direction="false"><pre data-n55-theme="white"></pre></neodigm-marquee>
+                </span>
+                </a>
+
+                <a id="js-caro-cb__all"
+                onClick="neodigmCarousel.setOnAfterNav(function(){neodigmToast.q('n55 Caro OnAfterNav All pages','warning');} )"
+                    tabindex="0" aria-haspopup="true" data-n55-enchanted-cta data-n55-enchanted-cta-ambient="emit" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="large" data-n55-theme="info"
+                    data-n55-tulip="All Caro / Pages"
+                    data-n55-toast="Will Fire When All|Pages are Presented"
+                ><span>Create OnAfterNav Page CB</span>
+                <span>
+                    <neodigm-marquee data-n55-marquee-text="  This function will execute whenever ANY PAGE of ANY Carousel is presented.  "
+                    data-n55-marquee-size="small" data-n55-marquee-direction="false"><pre data-n55-theme="white"></pre></neodigm-marquee>
+                </span>
+                </a>
+
+            </div>
+            <br>
             <a data-n55-carousel-nav='{"id": "js-carousel-inpup", "nav": "next"}'>next</a>
             <a data-n55-carousel-nav='{"id": "js-carousel-inpup", "nav": 2.4}'>2.4</a>
             <a data-n55-carousel-nav='{"id": "js-carousel-inpup", "nav": "prev"}'>prev</a>

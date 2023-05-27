@@ -252,6 +252,8 @@ neodigm-marquee pre[data-n55-theme='marcom'],
 neodigm-marquee pre [data-n55-theme='marcom'] { color: var(--neodigm-theme-marcom); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-marcom-alt), 0.1rem 0.1rem .6rem #fff}
 neodigm-marquee pre[data-n55-theme='party'],
 neodigm-marquee pre [data-n55-theme='party'] { color: var(--neodigm-theme-party); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-party-alt), 0.1rem 0.1rem .6rem #fff}
+neodigm-marquee pre[data-n55-theme='white'],
+neodigm-marquee pre [data-n55-theme='white'] { color: #fff; text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-night), 0.1rem 0.1rem .6rem #fff}
 
 neodigm-marquee[data-n55-marquee-size='xsmall'] { height: 24px; }
 neodigm-marquee[data-n55-marquee-size='xsmall'] * {
