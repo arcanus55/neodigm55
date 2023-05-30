@@ -70,7 +70,7 @@ data-n55-wired4sound-click="7"
     </span>
     </a>
 
-    <a id="js-tulip__decl-simple--id"
+    <!--<a id="js-tulip__decl-simple--id"
     data-n55-tulip='hello'
     data-n55-enchanted-cta-hover-an="true"
     data-n55-enchanted-cta
@@ -84,7 +84,7 @@ data-n55-wired4sound-click="7"
     data-n55-wired4sound-click="7"
     ><span data-n55-wired4sound-mouseover="3">Tulip Declare Simple</span>
     <span data-n55-wired4sound-mouseover="3">Simple String</span>
-    </a>
+    </a>-->
 
     <a id="js-tulip__decl-avanced--id"
     data-n55-tulip='{"msg":"hello", "template":"js-tulip__hello--id", "theme":"RANDOM", "size":"medium","position":"top", "icon":{"char":"phone", "theme":"primary"}}'
@@ -357,7 +357,7 @@ data-n55-parallax-size="small">
                 onClick="neodigmCarousel.setOnAfterNav(function(){neodigmToast.q('n55 Caro OnAfterNav Pg 2','warning');},'js-carousel-inpup',2 )"
                     tabindex="0" aria-haspopup="true" data-n55-enchanted-cta data-n55-enchanted-cta-ambient="emit" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true"
                     data-n55-enchanted-cta-size="large" data-n55-theme="info"
-                    data-n55-tulip="Page 2 (after nav)"
+                    data-n55-tulip='{"msg":"Page 2 (after nav)"}'
                     data-n55-toast="Will Fire When|Page 2 (after nav)"
                 ><span>Create OnAfterNav Page CB</span>
                 <span>
@@ -370,7 +370,7 @@ data-n55-parallax-size="small">
                 onClick="neodigmCarousel.setOnAfterNav(function(){neodigmToast.q('n55 Caro OnAfterNav All pages','warning');},'js-carousel-inpup' )"
                     tabindex="0" aria-haspopup="true" data-n55-enchanted-cta data-n55-enchanted-cta-ambient="emit" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true"
                     data-n55-enchanted-cta-size="large" data-n55-theme="info"
-                    data-n55-tulip="THIS caro"
+                    data-n55-tulip='{"msg":"THIS caro"}'
                     data-n55-toast="Will Fire When any page|on THIS caro is presented"
                 ><span>Create OnAfterNav Page CB</span>
                 <span>
@@ -383,7 +383,7 @@ data-n55-parallax-size="small">
                 onClick="neodigmCarousel.setOnAfterNav(function(){neodigmToast.q('n55 Caro OnAfterNav All pages','warning');} )"
                     tabindex="0" aria-haspopup="true" data-n55-enchanted-cta data-n55-enchanted-cta-ambient="emit" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true"
                     data-n55-enchanted-cta-size="large" data-n55-theme="info"
-                    data-n55-tulip="All Caro / Pages"
+                    data-n55-tulip='{"msg":"All Caro / Pages"}'
                     data-n55-toast="Will Fire When All|Pages are Presented"
                 ><span>Create OnAfterNav Page CB</span>
                 <span>
@@ -400,7 +400,12 @@ data-n55-parallax-size="small">
             <a data-n55-carousel-nav='{"id": "js-carousel-inpup", "nav": "loop"}'>loop</a>
         </section>
         <section>
-            <h6>Page Tab Region 2</h6><p>QQQQ</p><p>QQQQ</p>
+            <h6>Page Tab Region 2</h6>
+            <hr data-n55-theme="brand" data-n55-size="xsmall">
+            <hr data-n55-theme="primary" data-n55-size="small">
+            <hr data-n55-theme="secondary" data-n55-size="medium">
+            <hr data-n55-theme="success" data-n55-size="large">
+            <hr data-n55-theme="danger" data-n55-size="xlarge">
             <a data-n55-carousel-nav='{"id": "js-carousel-inpup", "nav": "next"}'>next</a>
             <a data-n55-carousel-nav='{"id": "js-carousel-inpup", "nav": 5}'>5</a>
             <a data-n55-carousel-nav='{"id": "js-carousel-inpup", "nav": "prev"}'>prev</a>

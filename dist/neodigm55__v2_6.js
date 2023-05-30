@@ -137,6 +137,9 @@ const neodigmUtils = ( ( _d ) =>{
             }
           }, NTIMES[1] + nDx, NTIMES[0] )
       })
+    },
+    getValJSON: function( sAtr, sPrp ){  //  Return object or create an object string msg
+      try { return JSON.parse( sAtr ) } catch(e) { return { sPrp: sAtr } }
     }
   }
 })( document );
@@ -356,26 +359,15 @@ this.eTulipTxt.textContent = "not firing on kpi"
 
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
               console.log( " ~~~ mouseover init | ", ev.target )
-              if( ev?.target?.dataset?.n55Tulip ) neodigmTulip.open( ev.clientX, ev.clientY )
+              if( ev?.target?.dataset?.n55Tulip ){
+                let sMsg = neodigmUtils.getValJSON( ev.target.dataset.n55Tulip, "msg" ).msg
+                this.eTulipTxt.textContent = sMsg
+                neodigmTulip.open( ev.clientX, ev.clientY )
+              }
         }, false)
-        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseleave", ( ev ) =>{
+        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseout", ( ev ) =>{
           neodigmTulip.close()
         }, false)
-
-        /*[ ... this._d.querySelectorAll( this._aQ[1] )].forEach( ( eT ) =>{
-          if( !eT?.eventTulip && !neodigmUtils.isMobile() ){
-            eT.eventTulip = true
-            console.log( " ~~~ n55Tulip init | ", eT.dataset.n55Tulip );
-            eT.addEventListener("mouseenter", ( ev ) =>{
-              console.log( " ~~~ mouseenter init | ", ev );
-              neodigmTulip.open( ev.clientX, ev.clientY )
-            }, false)
-            eT.addEventListener("mouseleave", ( ev ) =>{
-              console.log( " ~~~ mouseleave init | ", ev );
-              neodigmTulip.close()
-            }, false)
-          }
-        })*/
         this.bIsInit = true
         return this      
       }

@@ -636,6 +636,33 @@ neodigm-tulip.tulip__cont--show { display: block; }
 }
 /*  Neodigm PopTart End  */ 
 
+/*  Neodigm HR Begin  */ 
+HR[data-n55-theme]{ height: 1px; border: none; }
+HR[data-n55-size='xsmall']{ height: 1px; } HR[data-n55-size='small']{ height: 2px; } HR[data-n55-size='medium']{ height: 3px; } HR[data-n55-size='large']{ height: 4px; } HR[data-n55-size='xlarge']{ height: 5px; }
+[data-n55-ampm-theme="light"] HR[data-n55-theme='brand']{ background-color: var( --neodigm-theme-brand )}
+[data-n55-ampm-theme="light"] HR[data-n55-theme='primary']{ background-color: var( --neodigm-theme-primary )}
+[data-n55-ampm-theme="light"] HR[data-n55-theme='secondary']{ background-color: var( --neodigm-theme-secondary )}
+[data-n55-ampm-theme="light"] HR[data-n55-theme='success']{ background-color: var( --neodigm-theme-success )}
+[data-n55-ampm-theme="light"] HR[data-n55-theme='danger']{ background-color: var( --neodigm-theme-danger )}
+[data-n55-ampm-theme="light"] HR[data-n55-theme='warning']{ background-color: var( --neodigm-theme-warning )}
+[data-n55-ampm-theme="light"] HR[data-n55-theme='info']{ background-color: var( --neodigm-theme-info )}
+[data-n55-ampm-theme="light"] HR[data-n55-theme='disabled']{ background-color: var( --neodigm-theme-disabled )}
+[data-n55-ampm-theme="light"] HR[data-n55-theme='night']{ background-color: var( --neodigm-theme-night )}
+[data-n55-ampm-theme="light"] HR[data-n55-theme='marcom']{ background-color: var( --neodigm-theme-marcom )}
+[data-n55-ampm-theme="light"] HR[data-n55-theme='party']{ background-color: var( --neodigm-theme-party )}
+[data-n55-ampm-theme="dark"] HR[data-n55-theme='brand']{ background-color: var( --neodigm-theme-brand-alt )}
+[data-n55-ampm-theme="dark"] HR[data-n55-theme='primary']{ background-color: var( --neodigm-theme-primary-alt )}
+[data-n55-ampm-theme="dark"] HR[data-n55-theme='secondary']{ background-color: var( --neodigm-theme-secondary-alt )}
+[data-n55-ampm-theme="dark"] HR[data-n55-theme='success']{ background-color: var( --neodigm-theme-success-alt )}
+[data-n55-ampm-theme="dark"] HR[data-n55-theme='danger']{ background-color: var( --neodigm-theme-danger-alt )}
+[data-n55-ampm-theme="dark"] HR[data-n55-theme='warning']{ background-color: var( --neodigm-theme-warning-alt )}
+[data-n55-ampm-theme="dark"] HR[data-n55-theme='info']{ background-color: var( --neodigm-theme-info-alt )}
+[data-n55-ampm-theme="dark"] HR[data-n55-theme='disabled']{ background-color: var( --neodigm-theme-disabled-alt )}
+[data-n55-ampm-theme="dark"] HR[data-n55-theme='night']{ background-color: var( --neodigm-theme-night-alt )}
+[data-n55-ampm-theme="dark"] HR[data-n55-theme='marcom']{ background-color: var( --neodigm-theme-marcom-alt )}
+[data-n55-ampm-theme="dark"] HR[data-n55-theme='party']{ background-color: var( --neodigm-theme-party-alt )}
+/*  Neodigm HR End  */ 
+
 /*  Neodigm icon Begin  */ 
 [data-n55-enchanted-cta] neodigm-icon { line-height: .1 !important; position: relative; bottom: -5px;  }
 
