@@ -17,7 +17,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
     --neodigm-theme-danger: #DD4124;    --neodigm-theme-danger-alt: #810000;  /* Tangerine Tango */
     --neodigm-theme-warning: #F5DF4D;   --neodigm-theme-warning-alt: #988200;  /* Illuminating */
     --neodigm-theme-info: #7BC4C4;      --neodigm-theme-info-alt: #1F6868;  /* Aqua Sky */
-    --neodigm-theme-disabled: #c6c6c6;  --neodigm-theme-disabled-alt: #a6a6a6;  /* Just Gray */
+    --neodigm-theme-disabled: #d6d6d6;  --neodigm-theme-disabled-alt: #c6c6c6;  /* Light Gray */
     --neodigm-theme-night: #6a6a6a;     --neodigm-theme-night-alt: #242424;  /* Charcoal */
     --neodigm-theme-marcom: #B163A3;    --neodigm-theme-marcom-alt: #5F4B8B;  /* Radiant Orchid | Ultra Violet */
     --neodigm-theme-party: #FF6F61;     --neodigm-theme-party-alt: #C93F60;  /* Living Coral | Honeysuckle */
@@ -304,6 +304,7 @@ background-color: rgba( 96, 88, 44, 0);
     user-select: none;
     margin: 4px 8px; 
 }
+[data-n55-enchanted-cta][data-n55-theme="disabled"] { cursor: default; }
 [data-n55-enchanted-cta][data-n55-theme="disabled"] span:nth-of-type(2){ display: none; }
 [data-n55-enchanted-cta]:not([data-n55-theme="disabled"]) { cursor: pointer; }
   [data-n55-enchanted-cta][data-n55-shape-off] { border-radius: 6px !important; }
