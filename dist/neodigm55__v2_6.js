@@ -347,9 +347,9 @@ class NeodigmTulip {
       this._d = _d; this._aQ = _aQ;
       this.eTulip = this.eTulipTxt = null
       this.bIsOpen = this.bIsInit = this.bIsPause = false
+      this.NDURATION = 2000
   }
   init() {  //  rinit
-
     if( !this.bIsInit && !neodigmUtils.isMobile() ){  //  once events app_state.context
       this.eTulip = this._d.querySelector( this._aQ[0] )
       if( this.eTulip ){
@@ -358,12 +358,12 @@ class NeodigmTulip {
 this.eTulipTxt.textContent = "not firing on kpi"
 
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
-              console.log( " ~~~ mouseover init | ", ev.target )
-              if( ev?.target?.dataset?.n55Tulip ){
-                let sMsg = neodigmUtils.getValJSON( ev.target.dataset.n55Tulip, "msg" ).msg
-                this.eTulipTxt.textContent = sMsg
-                neodigmTulip.open( ev.clientX, ev.clientY )
-              }
+          let oDs = ev?.target?.dataset
+          if( oDs && oDs.n55Tulip && oDs.n55Theme != "disabled"){
+            let sMsg = neodigmUtils.getValJSON( ev.target.dataset.n55Tulip, "msg" ).msg
+            this.eTulipTxt.textContent = sMsg
+            neodigmTulip.open( ev.clientX, ev.clientY )
+          }
         }, false)
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseout", ( ev ) =>{
           neodigmTulip.close()
@@ -374,26 +374,35 @@ this.eTulipTxt.textContent = "not firing on kpi"
     }
   }
   open( x, y ) {
-    console.log( " ~~~ tulip open | ", this )
     if( this.bIsInit && !this.bIsPause ){
       this.eTulip.classList.add("tulip__cont--show")
       this.eTulip.classList.remove("tulip__cont--hide")
       this.eTulip.style.top = y + "px"
       this.eTulip.style.left = x + "px"
       this.bIsOpen = true
+      this.pause( this.NDURATION )
     }
     return this;
   }
   close() {
-    console.log( " ~~~ tulip close | ", this )
-    if( this.bIsInit ){
+    if( this.bIsInit && !this.bIsPause ){
       this.eTulip.classList.add("tulip__cont--hide")
       this.eTulip.classList.remove("tulip__cont--show")
       this.bIsOpen = false
     }
     return this;
   }
-  shake() {}
+  pause ( nT ){
+    if( this.bIsInit ){
+      if( nT ) setTimeout( () =>{neodigmTulip.play()}, nT )
+      this.bIsPause = true;  return this;
+    }
+  }
+  play (){
+    this.bIsPause = false;
+    if( this.bIsOpen ) this.close()
+    return this;
+  }
   isOpen(){ return this.bIsOpen }
   setOnBeforeOpen( _f, id="def"){ this.fOnBeforeOpen[ id ] = _f }
   setOnAfterOpen( _f, id="def"){ this.fOnAfterOpen[ id ] = _f }
@@ -934,9 +943,11 @@ class NeodigmEnchantedCTA {
           let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
           let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
           if( bCta && neodigmOpt.N55_GTM_DL_CTA ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CTA, sId )
-          let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
-          if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
-
+          let sTheme = ev?.target?.dataset?.n55Theme || ev?.srcElement?.parentNode?.dataset?.n55Theme
+          if( sTheme != "disabled" ){
+            let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
+            if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
+          }
         }, false)
         if( neodigmOpt.N55_CTA_LONG_TAP ){
           this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mousedown", ( ev ) => {
