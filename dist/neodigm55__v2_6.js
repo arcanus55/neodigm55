@@ -138,8 +138,10 @@ const neodigmUtils = ( ( _d ) =>{
           }, NTIMES[1] + nDx, NTIMES[0] )
       })
     },
-    getValJSON: function( sAtr, sPrp ){  //  Return object or create an object string msg
-      try { return JSON.parse( sAtr ) } catch(e) { return { sPrp: sAtr } }
+    getValJSON: function( sAtr, sPrp ){  //  Return json object or construct an object w property | msg
+      try { return JSON.parse( sAtr ) } catch(e) {
+        return JSON.parse( '{ "' + sPrp + '": "' + sAtr + '" }' )
+      }
     }
   }
 })( document );
@@ -340,52 +342,59 @@ class NeodigmSodaPop {
 let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-n55-sodapop-modal"] )
 
 //  Neodigm 55 Tulip Begin  //
-//   data-n55-tulip='{"msg":"hello", "template":"js-tulip__hello--id", "theme":"RANDOM", "size":"medium","position":"top", "icon":{"char":"phone", "theme":"primary"}}'
-// debounce ???
 class NeodigmTulip {
   constructor(_d, _aQ) {
       this._d = _d; this._aQ = _aQ;
       this.eTulip = this.eTulipTxt = null
       this.bIsOpen = this.bIsInit = this.bIsPause = false
-      this.NDURATION = 2000
+      this.oCnfDef = {"msg":"tulip","mrq":false,"tmpt":"","thm": neodigmOpt.N55_THEME_DEFAULT,"siz":"small","pos":"top","icn":"","dur":2000}
+      this.oCnfCur = Object.assign( this.oCnfDef )
   }
   init() {  //  rinit
     if( !this.bIsInit && !neodigmUtils.isMobile() ){  //  once events app_state.context
       this.eTulip = this._d.querySelector( this._aQ[0] )
       if( this.eTulip ){
-        this.eTulip.dataset.n55Size = "xsmall"
+        this.eTulip.dataset.n55Size = this.oCnfCur.siz
         this.eTulipTxt = this.eTulip.querySelector( "p" );
-this.eTulipTxt.textContent = "not firing on kpi"
-
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
           let oDs = ev?.target?.dataset
-          if( oDs && oDs.n55Tulip && oDs.n55Theme != "disabled"){
-            let sMsg = neodigmUtils.getValJSON( ev.target.dataset.n55Tulip, "msg" ).msg
-            this.eTulipTxt.textContent = sMsg
-            neodigmTulip.open( ev.clientX, ev.clientY )
+          if( oDs && oDs.n55Tulip && oDs.n55Theme != "disabled" ){
+            if( this.bIsInit && !this.bIsPause ){
+              this.oCnfCur = Object.assign( this.oCnfCur, neodigmUtils.getValJSON( ev.target.dataset.n55Tulip, "msg" ) );
+              this.eTulipTxt.textContent = this.oCnfCur.msg
+              let oCoor = ev.target.getBoundingClientRect();
+              //neodigmTulip.open( ev.clientX, ev.clientY )
+              neodigmTulip.open( oCoor )
+            }
           }
         }, false)
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseout", ( ev ) =>{
-          neodigmTulip.close()
+          //if(  !this.bIsPause ) neodigmTulip.close()
         }, false)
         this.bIsInit = true
         return this      
       }
     }
   }
-  open( x, y ) {
-    if( this.bIsInit && !this.bIsPause ){
-      this.eTulip.classList.add("tulip__cont--show")
-      this.eTulip.classList.remove("tulip__cont--hide")
-      this.eTulip.style.top = y + "px"
-      this.eTulip.style.left = x + "px"
-      this.bIsOpen = true
-      this.pause( this.NDURATION )
+  open( oCrd ) {
+    this.eTulip.classList.add("tulip__cont--show")
+    this.eTulip.classList.remove("tulip__cont--hide")
+    //this.eTulip.style.top = y + "px"; this.eTulip.style.left = x + "px";
+    this.eTulip.style.left = oCrd.left + "px";
+    switch( this.oCnfCur.pos ){
+      case "top":
+        this.eTulip.style.top = oCrd.top - 66 + "px";  //  TODO hc
+      break
+      case "bottom":
+        this.eTulip.style.top = oCrd.bottom + 8 + "px";  //  TODO hc
+      break
     }
+    this.bIsOpen = true
+    this.pause( this.oCnfCur.dur )  //  debounce
     return this;
   }
   close() {
-    if( this.bIsInit && !this.bIsPause ){
+    if( this.bIsInit ){
       this.eTulip.classList.add("tulip__cont--hide")
       this.eTulip.classList.remove("tulip__cont--show")
       this.bIsOpen = false
