@@ -1,4 +1,5 @@
 # Simple JavaScript Popups micro-library | Small & Fast
+# Batteries Included | HTML First | Easy to Use
 
 Neodigm 55 is different. It's an eclectic JavaScript UX micro-library. The lightweight components come together in a unique way that makes your website playful, fun, and bounceproof.
 
