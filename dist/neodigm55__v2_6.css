@@ -652,7 +652,8 @@ neodigm-acticon{
 neodigm-acticon:not([data-n55-theme="disabled"]) { cursor: pointer; }
 
 neodigm-acticon:not([data-n55-theme="disabled"]):not([data-n55-theme="ghost"]):hover{ filter: brightness( 124% ); }
-neodigm-acticon[data-n55-theme="ghost"]:hover{  border-color: var( --neodigm-theme-disabled-alt ); }
+[data-n55-ampm-theme="light"] neodigm-acticon[data-n55-theme="ghost"]:hover{  border-color: var( --neodigm-theme-night-alt ); }
+[data-n55-ampm-theme="dark"]  neodigm-acticon[data-n55-theme="ghost"]:hover{  background-color: rgba(255,255,255, .2); }
 
 [data-n55-ampm-theme="light"] neodigm-acticon:not([data-n55-theme="disabled"]) { color: var( --neodigm-theme-night-alt ); }
 [data-n55-ampm-theme="dark"]  neodigm-acticon { color: #fff; }
