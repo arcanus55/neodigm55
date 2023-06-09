@@ -668,18 +668,18 @@ neodigm-acticon[data-n55-size='medium'] .material-symbols-outlined { font-size: 
 neodigm-acticon[data-n55-size='large'] .material-symbols-outlined  { font-size: 42px; }
 neodigm-acticon[data-n55-size='xlarge'] .material-symbols-outlined { font-size: 50px; }
 
-neodigm-acticon[data-n55-theme='brand']    { background-color: var( --neodigm-theme-brand ); border-color: var( --neodigm-theme-brand-alt ) ;}
-neodigm-acticon[data-n55-theme='primary']  { background-color: var( --neodigm-theme-primary ); border-color: var( --neodigm-theme-primary-alt ) ;}
-neodigm-acticon[data-n55-theme='secondary']{ background-color: var( --neodigm-theme-secondary ); border-color: var( --neodigm-theme-secondary-alt ) ;}
-neodigm-acticon[data-n55-theme='success']  { background-color: var( --neodigm-theme-success ); border-color: var( --neodigm-theme-success-alt ) ;}
-neodigm-acticon[data-n55-theme='danger']   { background-color: var( --neodigm-theme-danger ); border-color: var( --neodigm-theme-danger-alt ) ;}
-neodigm-acticon[data-n55-theme='warning']  { background-color: var( --neodigm-theme-warning ); border-color: var( --neodigm-theme-warning-alt ) ;}
-neodigm-acticon[data-n55-theme='info']     { background-color: var( --neodigm-theme-info ); border-color: var( --neodigm-theme-info-alt ) ;}
-neodigm-acticon[data-n55-theme='night']    { background-color: var( --neodigm-theme-night ); border-color: var( --neodigm-theme-night-alt ) ;}
-neodigm-acticon[data-n55-theme='marcom']   { background-color: var( --neodigm-theme-marcom ); border-color: var( --neodigm-theme-marcom-alt ) ;}
-neodigm-acticon[data-n55-theme='party']    { background-color: var( --neodigm-theme-party ); border-color: var( --neodigm-theme-party-alt ) ;}
-neodigm-acticon[data-n55-theme='disabled'] { background-color: var( --neodigm-theme-disabled ); border-color: var( --neodigm-theme-disabled-alt ) ;}
-[data-n55-ampm-theme="light"] neodigm-acticon[data-n55-theme='ghost'] { background: rgba( 8, 8, 8, 0); color: var( --neodigm-theme-night-alt ); border-color: var( --neodigm-theme-night-alt ); }
+neodigm-acticon[data-n55-theme='brand']    { background-color: var( --neodigm-theme-brand ); border-color: var( --neodigm-theme-brand ) ;}
+neodigm-acticon[data-n55-theme='primary']  { background-color: var( --neodigm-theme-primary ); border-color: var( --neodigm-theme-primary ) ;}
+neodigm-acticon[data-n55-theme='secondary']{ background-color: var( --neodigm-theme-secondary ); border-color: var( --neodigm-theme-secondary ) ;}
+neodigm-acticon[data-n55-theme='success']  { background-color: var( --neodigm-theme-success ); border-color: var( --neodigm-theme-success ) ;}
+neodigm-acticon[data-n55-theme='danger']   { background-color: var( --neodigm-theme-danger ); border-color: var( --neodigm-theme-danger ) ;}
+neodigm-acticon[data-n55-theme='warning']  { background-color: var( --neodigm-theme-warning ); border-color: var( --neodigm-theme-warning ) ;}
+neodigm-acticon[data-n55-theme='info']     { background-color: var( --neodigm-theme-info ); border-color: var( --neodigm-theme-info ) ;}
+neodigm-acticon[data-n55-theme='night']    { background-color: var( --neodigm-theme-night ); border-color: var( --neodigm-theme-night ) ;}
+neodigm-acticon[data-n55-theme='marcom']   { background-color: var( --neodigm-theme-marcom ); border-color: var( --neodigm-theme-marcom ) ;}
+neodigm-acticon[data-n55-theme='party']    { background-color: var( --neodigm-theme-party ); border-color: var( --neodigm-theme-party ) ;}
+neodigm-acticon[data-n55-theme='disabled'] { background-color: var( --neodigm-theme-disabled ); border-color: var( --neodigm-theme-disabled ) ;}
+[data-n55-ampm-theme="light"] neodigm-acticon[data-n55-theme='ghost'] { background: rgba( 8, 8, 8, 0); color: var( --neodigm-theme-night-alt ); border-color: var( --neodigm-theme-night ); }
 [data-n55-ampm-theme="dark"]  neodigm-acticon[data-n55-theme='ghost'] { background: rgba( 8, 8, 8, 0); color: #fff; border-color: #fff; }
 
 /*  Neodigm Acticon End  */ 
@@ -713,7 +713,6 @@ HR[data-n55-size='xsmall']{ height: 1px; } HR[data-n55-size='small']{ height: 2p
 
 /*  Neodigm icon Begin  */ 
 [data-n55-enchanted-cta] neodigm-icon { line-height: .1 !important; position: relative; bottom: -5px;  }
-
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='xsmall'] neodigm-icon { font-size: 18px; }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']  neodigm-icon { font-size: 20px; }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='medium'] neodigm-icon { font-size: 22px; }
