@@ -29,7 +29,7 @@ let neodigmOpt = {
   neodigmKPI: true,  N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
   neodigmPWA: true,  N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
   neodigmCarousel: true,  N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
-neodigmTulip: false,
+neodigmTulip: true,
 neodigmPopTart: false,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
 neodigmWWInterval: false,
   CONSOLE_LOG_VER: true,
@@ -347,29 +347,29 @@ class NeodigmTulip {
       this._d = _d; this._aQ = _aQ;
       this.eTulip = this.eTulipTxt = null
       this.bIsOpen = this.bIsInit = this.bIsPause = false
-      this.oCnfDef = {"msg":"tulip","mrq":false,"tmpt":"","thm": neodigmOpt.N55_THEME_DEFAULT,"siz":"small","pos":"top","icn":"","dur":2000}
+      this.oCnfDef = {"msg":"tulip","mrq":false,"tmpt":"","thm": neodigmOpt.N55_THEME_DEFAULT,"siz":"small","pos":"top","icn":""}
       this.oCnfCur = Object.assign( this.oCnfDef )
   }
   init() {  //  rinit
     if( !this.bIsInit && !neodigmUtils.isMobile() ){  //  once events app_state.context
       this.eTulip = this._d.querySelector( this._aQ[0] )
       if( this.eTulip ){
-        this.eTulip.dataset.n55Size = this.oCnfCur.siz
         this.eTulipTxt = this.eTulip.querySelector( "p" );
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
           let oDs = ev?.target?.dataset
           if( oDs && oDs.n55Tulip && oDs.n55Theme != "disabled" ){
             if( this.bIsInit && !this.bIsPause ){
-              this.oCnfCur = Object.assign( this.oCnfCur, neodigmUtils.getValJSON( ev.target.dataset.n55Tulip, "msg" ) );
+              this.oCnfCur = Object.assign( JSON.parse( JSON.stringify( this.oCnfDef ) ), neodigmUtils.getValJSON( ev.target.dataset.n55Tulip, "msg" ) );
               this.eTulipTxt.textContent = this.oCnfCur.msg
-              let oCoor = ev.target.getBoundingClientRect();
-              //neodigmTulip.open( ev.clientX, ev.clientY )
-              neodigmTulip.open( oCoor )
+              this.eTulip.dataset.n55Size = this.oCnfCur.siz
+              this.eTulip.dataset.n55Theme = this.oCnfCur.thm
+              neodigmTulip.open( ev.target.getBoundingClientRect() )
+              this.oCnfCur = Object.assign( this.oCnfDef )  //  reset 2 default
             }
           }
         }, false)
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseout", ( ev ) =>{
-          //if(  !this.bIsPause ) neodigmTulip.close()
+          if( !this.bIsPause ) neodigmTulip.close()
         }, false)
         this.bIsInit = true
         return this      
@@ -390,7 +390,6 @@ class NeodigmTulip {
       break
     }
     this.bIsOpen = true
-    this.pause( this.oCnfCur.dur )  //  debounce
     return this;
   }
   close() {
