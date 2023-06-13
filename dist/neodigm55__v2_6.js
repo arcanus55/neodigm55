@@ -356,7 +356,9 @@ class NeodigmTulip {
       if( this.eTulip ){
         this.eTulipTxt = this.eTulip.querySelector( "p" );
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
-          let evAtr = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.parentNode?.dataset[ "n55Tulip" ]
+    console.log( " ~~~ ev target | ", ev.target )
+          //let evAtr = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.parentNode?.dataset[ "n55Tulip" ]
+          let evAtr = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ]
           if( evAtr && ev?.target?.dataset?.n55Theme != "disabled" ){
             if( this.bIsInit && !this.bIsPause ){
               this.oCnfCur = Object.assign( JSON.parse( JSON.stringify( this.oCnfDef ) ), neodigmUtils.getValJSON( evAtr, "msg" ) );
