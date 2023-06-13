@@ -347,7 +347,7 @@ class NeodigmTulip {
       this._d = _d; this._aQ = _aQ;
       this.eTulip = this.eTulipTxt = null
       this.bIsOpen = this.bIsInit = this.bIsPause = false
-      this.oCnfDef = {"msg":"tulip","mrq":false,"tmpt":"","thm": neodigmOpt.N55_THEME_DEFAULT,"siz":"small","pos":"top","icn":""}
+      this.oCnfDef = {"msg":"tulip","mrq":false,"tmpt":"","theme": neodigmOpt.N55_THEME_DEFAULT,"size":"small","position":"top","icon":""}
       this.oCnfCur = Object.assign( this.oCnfDef )
   }
   init() {  //  rinit
@@ -361,8 +361,8 @@ class NeodigmTulip {
             if( this.bIsInit && !this.bIsPause ){
               this.oCnfCur = Object.assign( JSON.parse( JSON.stringify( this.oCnfDef ) ), neodigmUtils.getValJSON( evAtr, "msg" ) );
               this.eTulipTxt.textContent = this.oCnfCur.msg
-              this.eTulip.dataset.n55Size = this.oCnfCur.siz
-              this.eTulip.dataset.n55Theme = this.oCnfCur.thm
+              this.eTulip.dataset.n55Size = this.oCnfCur.size
+              this.eTulip.dataset.n55Theme = this.oCnfCur.theme
               neodigmTulip.open( ev.target.getBoundingClientRect() )
               this.oCnfCur = Object.assign( this.oCnfDef )  //  reset 2 default
             }
@@ -381,7 +381,7 @@ class NeodigmTulip {
     this.eTulip.classList.remove("tulip__cont--hide")
     //this.eTulip.style.top = y + "px"; this.eTulip.style.left = x + "px";
     this.eTulip.style.left = oCrd.left + "px";
-    switch( this.oCnfCur.pos ){
+    switch( this.oCnfCur.position ){
       case "top":
         this.eTulip.style.top = oCrd.top - 66 + "px";  //  TODO hc
       break
