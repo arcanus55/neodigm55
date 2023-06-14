@@ -384,10 +384,18 @@ class NeodigmTulip {
     this.eTulip.style.left = oCrd.left + "px";
     switch( this.oCnfCur.position ){
       case "top":
-        this.eTulip.style.top = oCrd.top - 66 + "px";  //  TODO hc
+        this.eTulip.style.top = oCrd.top - 68 + "px";  //  TODO hc
+      break
+      case "right":
+        this.eTulip.style.top = oCrd.top + "px";  //  TODO hc
+        this.eTulip.style.left = ( oCrd.right + 8 ) + "px";  //  TODO hc
       break
       case "bottom":
         this.eTulip.style.top = oCrd.bottom + 8 + "px";  //  TODO hc
+      break
+      case "left":
+          this.eTulip.style.top = oCrd.top + "px";  //  TODO hc
+          this.eTulip.style.left = ( oCrd.left - ( this.eTulip.getBoundingClientRect().width + 8 ) ) + "px";  //  TODO hc
       break
     }
     this.bIsOpen = true
