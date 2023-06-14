@@ -598,6 +598,15 @@ neodigm-tulip[data-n55-size='medium']{ font-size: 18px; line-height: 1;   min-wi
 neodigm-tulip[data-n55-size='large']{  font-size: 22px; line-height: .8;  min-width: 216px; }
 neodigm-tulip[data-n55-size='xlarge']{ font-size: 26px; line-height: .5;  min-width: 248px; }
 
+neodigm-tulip[data-n55-lines='2'][data-n55-size='xsmall']{ line-height: 1.4;}
+neodigm-tulip[data-n55-lines='2'][data-n55-size='small'] { line-height: 1;}
+neodigm-tulip[data-n55-lines='2'][data-n55-size='medium']{ line-height: .9;}
+neodigm-tulip[data-n55-lines='2'][data-n55-size='medium'] > p{ margin: 1% 2px;}
+neodigm-tulip[data-n55-lines='2'][data-n55-size='large']{ line-height: 1;}
+neodigm-tulip[data-n55-lines='2'][data-n55-size='large'] > p{ margin: 1% 2px; font-size: 17px;}
+neodigm-tulip[data-n55-lines='2'][data-n55-size='xlarge']{ line-height: 1;}
+neodigm-tulip[data-n55-lines='2'][data-n55-size='xlarge'] > p{ margin: 1% 2px; font-size: 18px;}
+
 neodigm-tulip > p{
     color: #fff;
 	font-family: sans-serif;

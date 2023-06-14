@@ -361,9 +361,11 @@ class NeodigmTulip {
           if( evAtr && ev?.target?.dataset?.n55Theme != "disabled" ){
             if( this.bIsInit && !this.bIsPause ){
               this.oCnfCur = Object.assign( JSON.parse( JSON.stringify( this.oCnfDef ) ), neodigmUtils.getValJSON( evAtr, "msg" ) );
-              this.eTulipTxt.textContent = this.oCnfCur.msg
-              this.eTulip.dataset.n55Size = this.oCnfCur.size
-              this.eTulip.dataset.n55Theme = this.oCnfCur.theme
+              for ( let sDS in this.oCnfCur ) {  //  Gen elem datast
+                this.eTulip.dataset[ "n55" + neodigmUtils.capFirst( sDS ) ] = this.oCnfCur[ sDS ]
+              }
+              this.eTulip.dataset.n55Lines = ( this.oCnfCur.msg.indexOf( "|" ) == -1 ) ? "1" : "2" 
+              this.eTulipTxt.innerHTML = this.oCnfCur.msg.replace("|", "<br>")
               neodigmTulip.open( ev.target.getBoundingClientRect() )
               this.oCnfCur = Object.assign( this.oCnfDef )  //  reset 2 default
             }
@@ -380,22 +382,20 @@ class NeodigmTulip {
   open( oCrd ) {
     this.eTulip.classList.add("tulip__cont--show")
     this.eTulip.classList.remove("tulip__cont--hide")
-    //this.eTulip.style.top = y + "px"; this.eTulip.style.left = x + "px";
+    this.eTulip.style.top = oCrd.top + "px";
     this.eTulip.style.left = oCrd.left + "px";
     switch( this.oCnfCur.position ){
       case "top":
-        this.eTulip.style.top = oCrd.top - 68 + "px";  //  TODO hc
+        this.eTulip.style.top = oCrd.top - 68 + "px";
       break
       case "right":
-        this.eTulip.style.top = oCrd.top + "px";  //  TODO hc
-        this.eTulip.style.left = ( oCrd.right + 8 ) + "px";  //  TODO hc
+        this.eTulip.style.left = ( oCrd.right + 8 ) + "px";
       break
       case "bottom":
-        this.eTulip.style.top = oCrd.bottom + 8 + "px";  //  TODO hc
+        this.eTulip.style.top = oCrd.bottom + 8 + "px";
       break
       case "left":
-          this.eTulip.style.top = oCrd.top + "px";  //  TODO hc
-          this.eTulip.style.left = ( oCrd.left - ( this.eTulip.getBoundingClientRect().width + 8 ) ) + "px";  //  TODO hc
+          this.eTulip.style.left = ( oCrd.left - ( this.eTulip.getBoundingClientRect().width + 8 ) ) + "px";
       break
     }
     this.bIsOpen = true
