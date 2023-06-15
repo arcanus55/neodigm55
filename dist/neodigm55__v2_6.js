@@ -346,7 +346,7 @@ class NeodigmTulip {
   constructor(_d, _aQ) {
       this._d = _d; this._aQ = _aQ;
       this.eTulip = this.eTulipTxt = null
-      this.bIsOpen = this.bIsInit = this.bIsPause = false
+      this.bIsOpen = this.bIsInit = this.bIsPause = this.bIsAuto = false
       this.oCnfDef = {"msg":"tulip","mrq":false,"tmpt":"","theme": neodigmOpt.N55_THEME_DEFAULT,"size":"small","position":"top","icon":""}
       this.oCnfCur = Object.assign( this.oCnfDef )
   }
@@ -356,18 +356,11 @@ class NeodigmTulip {
       if( this.eTulip ){
         this.eTulipTxt = this.eTulip.querySelector( "p" );
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
-          //let evAtr = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.parentNode?.dataset[ "n55Tulip" ]
-          let evAtr = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ]
-          if( evAtr && ev?.target?.dataset?.n55Theme != "disabled" ){
-            if( this.bIsInit && !this.bIsPause ){
-              this.oCnfCur = Object.assign( JSON.parse( JSON.stringify( this.oCnfDef ) ), neodigmUtils.getValJSON( evAtr, "msg" ) );
-              for ( let sDS in this.oCnfCur ) {  //  Gen elem datast
-                this.eTulip.dataset[ "n55" + neodigmUtils.capFirst( sDS ) ] = this.oCnfCur[ sDS ]
-              }
-              this.eTulip.dataset.n55Lines = ( this.oCnfCur.msg.indexOf( "|" ) == -1 ) ? "1" : "2" 
-              this.eTulipTxt.innerHTML = this.oCnfCur.msg.replace("|", "<br>")
-              neodigmTulip.open( ev.target.getBoundingClientRect() )
-              this.oCnfCur = Object.assign( this.oCnfDef )  //  reset 2 default
+          if( this.bIsInit && !this.bIsPause ){
+            //let sCnf = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.parentNode?.dataset[ "n55Tulip" ]
+            let sCnf = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ]
+            if( sCnf && ev?.target?.dataset?.n55Theme != "disabled" ){
+              neodigmTulip.prepOpen( sCnf, ev.target.getBoundingClientRect() )
             }
           }
         }, false)
@@ -379,30 +372,49 @@ class NeodigmTulip {
       }
     }
   }
-  open( oCrd ) {
+  prepOpen( sCnf, oRct ){
+    this.oCnfCur = Object.assign( JSON.parse( JSON.stringify( this.oCnfDef ) ), neodigmUtils.getValJSON( sCnf, "msg" ) );
+    for ( let sDS in this.oCnfCur ) {  //  Gen elem datast
+      this.eTulip.dataset[ "n55" + neodigmUtils.capFirst( sDS ) ] = this.oCnfCur[ sDS ]
+    }
+    this.eTulip.dataset.n55Lines = ( this.oCnfCur.msg.indexOf( "|" ) == -1 ) ? "1" : "2" 
+    this.eTulipTxt.innerHTML = this.oCnfCur.msg.replace("|", "<br>")
+    neodigmTulip.open( oRct )
+    this.oCnfCur = Object.assign( this.oCnfDef )  //  reset 2 default
+  }
+  autoOpen( sQry ) {  //  DOM query
+    let elTrg = this._d.querySelector( sQry )
+    if( elTrg && elTrg.dataset[ "n55Tulip" ] ){
+      neodigmTulip.prepOpen( elTrg.dataset[ "n55Tulip" ], elTrg.getBoundingClientRect() )
+    }
+    this.bIsAuto = true
+    setTimeout( function(){ neodigmTulip.bIsAuto = false }, 2e3 )
+    return this;
+  }
+  open( oRct ) {
     this.eTulip.classList.add("tulip__cont--show")
     this.eTulip.classList.remove("tulip__cont--hide")
-    this.eTulip.style.top = oCrd.top + "px";
-    this.eTulip.style.left = oCrd.left + "px";
+    this.eTulip.style.top = oRct.top + "px";
+    this.eTulip.style.left = oRct.left + "px";
     switch( this.oCnfCur.position ){
       case "top":
-        this.eTulip.style.top = oCrd.top - 68 + "px";
+        this.eTulip.style.top = oRct.top - 68 + "px";
       break
       case "right":
-        this.eTulip.style.left = ( oCrd.right + 8 ) + "px";
+        this.eTulip.style.left = ( oRct.right + 8 ) + "px";
       break
       case "bottom":
-        this.eTulip.style.top = oCrd.bottom + 8 + "px";
+        this.eTulip.style.top = oRct.bottom + 8 + "px";
       break
       case "left":
-          this.eTulip.style.left = ( oCrd.left - ( this.eTulip.getBoundingClientRect().width + 8 ) ) + "px";
+          this.eTulip.style.left = ( oRct.left - ( this.eTulip.getBoundingClientRect().width + 8 ) ) + "px";
       break
     }
     this.bIsOpen = true
     return this;
   }
   close() {
-    if( this.bIsInit ){
+    if( this.bIsInit && !this.bIsAuto ){
       this.eTulip.classList.add("tulip__cont--hide")
       this.eTulip.classList.remove("tulip__cont--show")
       this.bIsOpen = false
