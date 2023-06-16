@@ -398,20 +398,22 @@ class NeodigmTulip {
   open( oRct ) {
     this.eTulip.classList.add("tulip__cont--show")
     this.eTulip.classList.remove("tulip__cont--hide")
+    let nW = this.eTulip.getBoundingClientRect().width 
     this.eTulip.style.top = oRct.top + "px";
-    this.eTulip.style.left = oRct.left + "px";
     switch( this.oCnfCur.position ){
       case "top":
         this.eTulip.style.top = oRct.top - 68 + "px";
+        this.eTulip.style.left = oRct.left - ( oRct.width / 2 ) + "px";
       break
       case "right":
         this.eTulip.style.left = ( oRct.right + 8 ) + "px";
       break
       case "bottom":
         this.eTulip.style.top = oRct.bottom + 8 + "px";
-      break
+        this.eTulip.style.left = oRct.left - ( oRct.width / 2 ) + "px";
+        break
       case "left":
-          this.eTulip.style.left = ( oRct.left - ( this.eTulip.getBoundingClientRect().width + 8 ) ) + "px";
+          this.eTulip.style.left = ( oRct.left - ( nW + 8 ) ) + "px";
       break
     }
     this.bIsOpen = true
