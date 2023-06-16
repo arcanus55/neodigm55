@@ -269,10 +269,10 @@ class NeodigmSodaPop {
           this.eSoda.innerHTML = this.eTmpl.innerHTML
           this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].appendChild(this.eSoda)
           if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([16, 8])
-          if( this.eTmpl.dataset.n55ClaireWaxon ){
+          //if( this.eTmpl.dataset.n55ClaireWaxon ){
             // if( this.eTmpl.dataset.n55ClaireTheme ) NeodigmClaire.setTheme( this.eTmpl.dataset.n55ClaireTheme )
             // NeodigmClaire.showCanv( this._aQ[1] ).initCanv( this._aQ[1] ).waxOn( this._aQ[1], neodigmOpt.N55_GENRE_MOTIF )
-          }
+          //}
           if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7 )
           this.bIsFS = ( this.eTmpl.dataset.n55SodapopFullscreen == "true" && neodigmOpt.N55_APP_STATE.FIRST_TAP )
           if( this.bIsFS ){
@@ -344,11 +344,12 @@ let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "ne
 //  Neodigm 55 Tulip Begin  //
 class NeodigmTulip {
   constructor(_d, _aQ) {
-      this._d = _d; this._aQ = _aQ;
+      this._d = _d; this._aQ = _aQ; this.sId = "";
       this.eTulip = this.eTulipTxt = null
       this.bIsOpen = this.bIsInit = this.bIsPause = this.bIsAuto = false
       this.oCnfDef = {"msg":"tulip","mrq":false,"tmpt":"","theme": neodigmOpt.N55_THEME_DEFAULT,"size":"small","position":"top","icon":""}
       this.oCnfCur = Object.assign( this.oCnfDef )
+      this.fOnBeforeOpen = {};
   }
   init() {  //  rinit
     if( !this.bIsInit && !neodigmUtils.isMobile() ){  //  once events app_state.context
@@ -358,7 +359,8 @@ class NeodigmTulip {
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
           if( this.bIsInit && !this.bIsPause ){
             //let sCnf = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.parentNode?.dataset[ "n55Tulip" ]
-            let sCnf = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ]
+            let sCnf = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ];
+            this.sId = ev?.target?.id;  //  Assumes tulip is on child (callback)
             if( sCnf && ev?.target?.dataset?.n55Theme != "disabled" ){
               neodigmTulip.prepOpen( sCnf, ev.target.getBoundingClientRect() )
             }
@@ -379,6 +381,8 @@ class NeodigmTulip {
     }
     this.eTulip.dataset.n55Lines = ( this.oCnfCur.msg.indexOf( "|" ) == -1 ) ? "1" : "2" 
     this.eTulipTxt.innerHTML = this.oCnfCur.msg.replace("|", "<br>")
+    if(this.fOnBeforeOpen[ this.sId ]) this.fOnBeforeOpen[ this.sId ]( this.oCnfCur.msg )
+    if(this.fOnBeforeOpen["def"]) this.fOnBeforeOpen["def"]( this.oCnfCur.msg )
     neodigmTulip.open( oRct )
     this.oCnfCur = Object.assign( this.oCnfDef )  //  reset 2 default
   }
@@ -434,8 +438,6 @@ class NeodigmTulip {
   }
   isOpen(){ return this.bIsOpen }
   setOnBeforeOpen( _f, id="def"){ this.fOnBeforeOpen[ id ] = _f }
-  setOnAfterOpen( _f, id="def"){ this.fOnAfterOpen[ id ] = _f }
-  setOnClose( _f, id="def"){ this.fOnClose[ id ] = _f }
 }
 let neodigmTulip = new NeodigmTulip( document, ["neodigm-tulip", "[data-n55-tulip]"] )
 
