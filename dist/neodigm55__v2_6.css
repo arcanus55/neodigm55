@@ -776,6 +776,7 @@ neodigm-juicebar > DIV {
     animation: juicebar_linear 1s infinite ease-in-out;
     transform-origin: 0% 50%;
 }
+neodigm-juicebar[data-n55-show="false"] { visibility: hidden; }
 
 [data-n55-ampm-theme="light"] neodigm-juicebar[data-n55-theme='brand'] > DIV{ background-color: var( --neodigm-theme-brand )}
 [data-n55-ampm-theme="light"] neodigm-juicebar[data-n55-theme='primary'] > DIV{ background-color: var( --neodigm-theme-primary )}
