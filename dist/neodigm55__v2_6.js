@@ -1198,7 +1198,6 @@ class NeodigmCarousel {
     }  //  TODO datalayer
     return this;
   }
-  pause (){ this.bIsPause = true; return this; } // TODO Support a timer param?
   pause ( nT ){
     if( this.bIsInit ){
       if( nT ) setTimeout( () =>{ neodigmCarousel.play() }, nT )
@@ -1227,7 +1226,7 @@ let neodigmCarousel = new NeodigmCarousel( document, ["neodigm-carousel"] )
 class NeodigmPWA {
   /*
   open soda after about 5 min (host logic) - IF compliant, no open sodas, and not in (standalone?)
-  fire install (and toast) if CTA clicked. Add event to datalayer.
+  Fire install (and toast) if CTA clicked. Add event to datalayer.
   */
   constructor( _d, _aQ ) {
       this._d = _d; this._aQ = _aQ
