@@ -114,9 +114,11 @@ const neodigmUtils = ( ( _d ) =>{
       if( !neodigmMetronome.isPaused() ){ // TODO test OS/UA motion mq
         let aE = [ ... document.querySelectorAll("[data-n55-theme") ]; const NDELAY = 56;
         aE.forEach( ( eC, nDx ) => {
-          if( !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
+          if( eC.dataset.n55Theme != "ghost" ){  //  TODO Disabled
+            if( !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
             setTimeout( function(){ eC.dataset.n55Theme = sTheme }, ( nDx * NDELAY ) )              
-            setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + 16) ) )
+            setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + 16) ) )            
+          }
         });
       }
     },
