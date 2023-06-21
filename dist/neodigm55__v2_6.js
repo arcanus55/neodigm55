@@ -1139,8 +1139,8 @@ class NeodigmCarousel {
       this.bIsInit = false; this.bIsPause = false
       this.aelNC = []; this.fOnAfterNav = []  //  TODO fOnBeforeNav
   }
-  init (){
-    this.aelNC = [ ... this._d.querySelectorAll( this._aQ[0] )] // All Carousels within DOM
+  init ( elRootCntx = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ] ){  //  rinit
+    this.aelNC = [ ... elRootCntx.querySelectorAll( this._aQ[0] )] // All Carousels within DOM
     if( this.aelNC.length ){
       this.aelNC.forEach(function( elNC ){
         if( elNC.id ){
@@ -1174,13 +1174,13 @@ class NeodigmCarousel {
         let oState = elNC.n55State
         switch( oNav.nav ){
           case "next":
-            if( oState.nIdx < oState.aTabCntr.length) oState.nIdx++
+            if( oState.nIdx < oState.aTabCntr.length ) oState.nIdx++
           break;
           case "prev":
             if( oState.nIdx != 1 ) oState.nIdx--
           break;
           case "loop":
-            if( oState.nIdx < oState.aTabCntr.length) { oState.nIdx++ }else{ oState.nIdx = 1 }
+            if( oState.nIdx < oState.aTabCntr.length ) { oState.nIdx++ }else{ oState.nIdx = 1 }
           break;
           case "getPage":
             return oState.nIdx;
