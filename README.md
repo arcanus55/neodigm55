@@ -3,7 +3,7 @@
 
 Neodigm 55 is different. It's an eclectic JavaScript UX micro-library. The lightweight components come together in a unique way that makes your website playful, fun, and bounceproof.
 
-Neodigm 55 is low-code, performant, accessible, and . Because it’s so easy to get started it is the perfect solution for quick landing pages, business accelerators, or event sites.
+Neodigm 55 is low-code, performant, accessible, and because it’s so easy to get started it is the perfect solution for quick landing pages, business accelerators, or event sites.
 
 An eclectic low-code vanilla [JavaScript UX micro-library](https://thescottkrause.com/emerging_tech/neodigm55_ux_library/) for those that defiantly think for themselves.
 
