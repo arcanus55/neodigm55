@@ -1140,6 +1140,7 @@ class NeodigmCarousel {
       this.aelNC = []; this.fOnAfterNav = []  //  TODO fOnBeforeNav
   }
   init ( elRootCntx = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ] ){  //  rinit
+    // TODO would like to fire rinit given a ref to a container element (ADD children)
     this.aelNC = [ ... elRootCntx.querySelectorAll( this._aQ[0] )] // All Carousels within DOM
     if( this.aelNC.length ){
       this.aelNC.forEach(function( elNC ){
