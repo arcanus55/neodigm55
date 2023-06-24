@@ -112,12 +112,12 @@ const neodigmUtils = ( ( _d ) =>{
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
     robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
       if( !neodigmMetronome.isPaused() ){ // TODO test OS/UA motion mq
-        let aE = [ ... document.querySelectorAll("[data-n55-theme") ]; const NDELAY = 56;
+        let aE = [ ... document.querySelectorAll("[data-n55-theme") ]; const NDELAY = 32;
         aE.forEach( ( eC, nDx ) => {
           if( eC.dataset.n55Theme != "ghost" ){  //  TODO Disabled
             if( !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
             setTimeout( function(){ eC.dataset.n55Theme = sTheme }, ( nDx * NDELAY ) )              
-            setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + 16) ) )            
+            setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + NDELAY) ) )            
           }
         });
       }
