@@ -649,6 +649,7 @@ neodigm-acticon{
     margin: 6px; padding: 6px;
     transition: all .4s ease-in-out;
     user-select: none;
+    box-sizing: content-box;
 }
 neodigm-acticon:not([data-n55-theme="disabled"]) { cursor: pointer; }
 
@@ -714,7 +715,7 @@ HR[data-n55-size='xsmall']{ height: 1px; } HR[data-n55-size='small']{ height: 2p
 /*  Neodigm HR End  */ 
 
 /*  Neodigm icon Begin  */ 
-[data-n55-enchanted-cta] neodigm-icon { line-height: .1 !important; position: relative; bottom: -5px; box-sizing: content-box; }
+[data-n55-enchanted-cta] neodigm-icon { line-height: .1 !important; position: relative; bottom: -5px; }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='xsmall'] neodigm-icon { font-size: 18px; }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='small']  neodigm-icon { font-size: 20px; }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='medium'] neodigm-icon { font-size: 22px; }
