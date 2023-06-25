@@ -579,18 +579,18 @@ neodigm-tulip{
     position:fixed; display: block;
     text-align: center;
 
-top: 1px;
-left: 1px;
-height: 40px;
+    top: 1px; left: 1px; height: 40px; min-width: 64px;
 
     border: solid 2px var(--neodigm-theme-brand);
     border-radius: 6px;
 	background: var(--neodigm-theme-night-alt);
-	min-width: 64px;
 	padding: 0;
 	user-select: none;
 	z-index: 6408
 }
+neodigm-tulip[data-n55-mrq='true'] neodigm-marquee { margin: 8px 6px; display: inline-block; width: 256px; }
+neodigm-tulip[data-n55-mrq='true'] > P { display: none; }
+neodigm-tulip neodigm-marquee { display: none; }
 
 neodigm-tulip[data-n55-size='xsmall']{ font-size: 10px; line-height: 2.6; min-width: 84px; }
 neodigm-tulip[data-n55-size='small'] { font-size: 14px; line-height: 1.8; min-width: 104px; }

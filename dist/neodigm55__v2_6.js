@@ -347,7 +347,7 @@ let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "ne
 class NeodigmTulip {
   constructor(_d, _aQ) {
       this._d = _d; this._aQ = _aQ; this.sId = "";
-      this.eTulip = this.eTulipTxt = null
+      this.eTulip = this.eTulipTxt = this.eTulMrq = null
       this.bIsOpen = this.bIsInit = this.bIsPause = this.bIsAuto = false
       this.oCnfDef = {"msg":"tulip","mrq":false,"tmpt":"","theme": neodigmOpt.N55_THEME_DEFAULT,"size":"small","position":"top","icon":""}
       this.oCnfCur = Object.assign( this.oCnfDef )
@@ -356,6 +356,8 @@ class NeodigmTulip {
   init() {  //  rinit
     if( !this.bIsInit && !neodigmUtils.isMobile() ){  //  once events app_state.context
       this.eTulip = this._d.querySelector( this._aQ[0] )
+      this.eTulMrq = this.eTulip.querySelector("neodigm-marquee")
+      this.eTulPre = this.eTulMrq.querySelector("pre")
       if( this.eTulip ){
         this.eTulipTxt = this.eTulip.querySelector( "p" );
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
@@ -381,8 +383,15 @@ class NeodigmTulip {
     for ( let sDS in this.oCnfCur ) {  //  Gen elem datast
       this.eTulip.dataset[ "n55" + neodigmUtils.capFirst( sDS ) ] = this.oCnfCur[ sDS ]
     }
-    this.eTulip.dataset.n55Lines = ( this.oCnfCur.msg.indexOf( "|" ) == -1 ) ? "1" : "2" 
-    this.eTulipTxt.innerHTML = this.oCnfCur.msg.replace("|", "<br>")
+    if( this.oCnfCur?.mrq ){
+      this.eTulip.dataset.n55Mrq = "true"
+      this.eTulMrq.dataset.n55MarqueeText = this.eTulPre.value = this.oCnfCur.msg
+      this.eTulPre.dataset.n55Theme = this.oCnfCur.theme
+    }else{
+      this.eTulMrq.dataset.n55MarqueeText = this.eTulPre.value = ""
+      this.eTulip.dataset.n55Lines = ( this.oCnfCur.msg.indexOf( "|" ) == -1 ) ? "1" : "2" 
+      this.eTulipTxt.innerHTML = this.oCnfCur.msg.replace("|", "<br>")      
+    }
     if(this.fOnBeforeOpen[ this.sId ]) this.fOnBeforeOpen[ this.sId ]( this.oCnfCur.msg )
     if(this.fOnBeforeOpen["def"]) this.fOnBeforeOpen["def"]( this.oCnfCur.msg )
     neodigmTulip.open( oRct )
@@ -1315,8 +1324,10 @@ function doDOMContentLoaded(){
         <div class="snackbar__progbar"></div><p class="snackbar__msg"></p>
     </section>
 </neodiigm-snack>
-<neodigm-tulip class="tulip__cont--hide" role="tooltip"><p></p></neodigm-tulip>
+<neodigm-tulip class="tulip__cont--hide" role="tooltip"><p></p> <neodigm-marquee data-n55-marquee-text=" ##msg## " data-n55-marquee-size="xsmall"><pre data-n55-theme="##theme##"></pre></neodigm-marquee> </neodigm-tulip>
 <neodigm-poptartclass=""></neodigm-poptart>`;  //  Universal Templs
+
+
   let eMU = document.createElement("output");
   eMU.innerHTML = neodigmMU;
   document[ neodigmOpt.N55_APP_STATE.CONTEXT ].appendChild(eMU);
