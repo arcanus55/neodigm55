@@ -1201,6 +1201,7 @@ class NeodigmCarousel {
         let nSP = ( oState.nIdx - 1 ) * oState.width  //  Scroll Position
         elNC.parentElement.scrollTop = 0;
         elNCCntr.style.marginLeft = ( nSP ) - ( nSP * 2 ) + "px"
+        if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.fOnAfterNav )
         if(this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]) this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]( elNC.id, oState.nIdx )  //  single pg
         if(this.fOnAfterNav[ elNC.id ]) this.fOnAfterNav[ elNC.id ]( elNC.id, oState.nIdx )  //  all pages within this Caro
         if(this.fOnAfterNav["def"]) this.fOnAfterNav["def"]( elNC.id, oState.nIdx )  //  all Caro
