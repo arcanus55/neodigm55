@@ -423,7 +423,7 @@ class NeodigmTulip {
         this.eTulip.style.left = ( oRct.right + NOFFSET ) + "px";
       break
       case "bottom":
-        this.eTulip.style.top = oRct.bottom + NOFFSET + "px";
+        this.eTulip.style.top = oRct.bottom + (NOFFSET + NOFFSET) + "px";
       break
       case "left":
           this.eTulip.style.left = ( oRct.left - ( nTlW + NOFFSET ) ) + "px";
