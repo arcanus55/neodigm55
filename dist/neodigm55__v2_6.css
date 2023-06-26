@@ -351,7 +351,7 @@ background-color: rgba( 96, 88, 44, 0);
 }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='medium']{
     font-size: 20px; line-height: 1.4;
-    padding: 16px 24px; min-width: 196px;
+    padding: 16px 24px; min-width: 186px;
 }
 [data-n55-enchanted-cta][data-n55-enchanted-cta-size='large']{
     font-size: 22px; line-height: 1.4;
@@ -557,7 +557,7 @@ neodigm-kpi[data-n55-kpi-size='xlarge'] > h6 { font-size: 20px;}
 }
 [data-n55-select][data-n55-size='xsmall']{ font-size: 14px; line-height: 1;   padding: 10px 12px; min-width: 84px; }
 [data-n55-select][data-n55-size='small'] { font-size: 18px; line-height: 1;   padding: 12px 20px; min-width: 104px; }
-[data-n55-select][data-n55-size='medium']{ font-size: 20px; line-height: 1.1; padding: 16px 44px; min-width: 196px; }
+[data-n55-select][data-n55-size='medium']{ font-size: 20px; line-height: 1.1; padding: 16px 44px; min-width: 186px; }
 [data-n55-select][data-n55-size='large'] { font-size: 22px; line-height: 1.2; padding: 20px 28px; min-width: 216px; }
 [data-n55-select][data-n55-size='xlarge']{ font-size: 24px; line-height: 1.3; padding: 22px 32px; min-width: 248px; }
 
@@ -594,7 +594,7 @@ neodigm-tulip neodigm-marquee { display: none; }
 
 neodigm-tulip[data-n55-size='xsmall']{ font-size: 10px; line-height: 2.6; min-width: 84px; }
 neodigm-tulip[data-n55-size='small'] { font-size: 14px; line-height: 1.8; min-width: 104px; }
-neodigm-tulip[data-n55-size='medium']{ font-size: 18px; line-height: 1;   min-width: 196px; }
+neodigm-tulip[data-n55-size='medium']{ font-size: 18px; line-height: 1;   min-width: 186px; }
 neodigm-tulip[data-n55-size='large']{  font-size: 22px; line-height: .8;  min-width: 216px; }
 neodigm-tulip[data-n55-size='xlarge']{ font-size: 26px; line-height: .5;  min-width: 248px; }
 
