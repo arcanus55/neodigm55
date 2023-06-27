@@ -386,7 +386,7 @@ class NeodigmTulip {
     if( this.oCnfCur?.mrq ){
       this.eTulip.dataset.n55Mrq = "true"
       this.eTulMrq.dataset.n55MarqueeText = this.eTulPre.value = this.oCnfCur.msg
-      this.eTulPre.dataset.n55Theme = this.oCnfCur.theme
+      this.eTulMrq.dataset.n55Theme = this.eTulPre.dataset.n55Theme = this.oCnfCur.theme
     }else{
       this.eTulMrq.dataset.n55MarqueeText = this.eTulPre.value = ""
       this.eTulip.dataset.n55Lines = ( this.oCnfCur.msg.indexOf( "|" ) == -1 ) ? "1" : "2" 
