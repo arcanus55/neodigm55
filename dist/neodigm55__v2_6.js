@@ -38,9 +38,10 @@ neodigmWWInterval: false,
   N55_EVENT_HAPTIC: true,
   N55_GENRE_MOTIF: "neodigm",  //  steampunk cyberpunk artdeco noir anime casino expressionist
   N55_THEME_DEFAULT: "brand",
-  N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"],
+  N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"], "white":["FFFFFF","FDFDFD"], "ghost":["6a6a6a","000000"],
    "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"], "party":["FF6F61","C93F60"]},
-  N55_APP_STATE: {"CONTEXT": "body", "FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXTMNU": false, "FOCUS": true, "AMPM": "light", "REDUCE_MOTION": true}
+  N55_APP_STATE: {"CONTEXT": "body", "FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXTMNU": false, "FOCUS": true, "AMPM": "light", "REDUCE_MOTION": true},
+  ROOT: document.querySelector(':root')
 }
 
 if( typeof neodigmOptCustom != 'undefined' ){
@@ -381,8 +382,9 @@ class NeodigmTulip {
   prepOpen( sCnf, oRct ){
     this.oCnfCur = Object.assign( JSON.parse( JSON.stringify( this.oCnfDef ) ), neodigmUtils.getValJSON( sCnf, "msg" ) );
     for ( let sDS in this.oCnfCur ) {  //  Gen elem datast
-      this.eTulip.dataset[ "n55" + neodigmUtils.capFirst( sDS ) ] = this.oCnfCur[ sDS ]
+      this.eTulip.dataset[ "n55" + neodigmUtils.capFirst( sDS ) ] = this.oCnfCur[ sDS ]  //  Set Theme and ...
     }
+    neodigmOpt.ROOT.style.setProperty( "--neodigm-theme-tulip", "#" + neodigmOpt.N55_THEME_COLORS[ this.eTulip.dataset.n55Theme ][0]);
     if( this.oCnfCur?.mrq ){
       this.eTulip.dataset.n55Mrq = "true"
       this.eTulMrq.dataset.n55MarqueeText = this.eTulPre.value = this.oCnfCur.msg
@@ -415,7 +417,7 @@ class NeodigmTulip {
     this.eTulip.style.top = oRct.top + "px";
     this.eTulip.style.left = nPrC - Math.round( nTlW / 2 ) + "px";
     const NOFFSET = 8
-    switch( this.oCnfCur.position ){
+    switch( this.eTulip.dataset.n55Position = this.oCnfCur.position ){
       case "top":
         this.eTulip.style.top = oRct.top - (NOFFSET * NOFFSET) + "px";
       break
