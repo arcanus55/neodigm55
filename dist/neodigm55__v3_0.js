@@ -1,6 +1,6 @@
 /*
-Neodigm 55 UX v2.5.0
-Copyright (c) 2021-2023, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
+Neodigm 55 UX v3.0.0
+Copyright (c) 2021-2025, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
 
 Neodigm 55 is an eclectic JavaScript UX micro-library.
 The lightweight components come together in a unique way that will make your website playful and fun.
@@ -16,7 +16,7 @@ let neodigmOpt = {
     N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
     N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
   neodigmWired4Sound: true,
-    W4S_VOLUME: .032,
+    W4S_VOLUME: .024,
     EVENT_SOUNDS: true,
   neodigmParallax: true,
     PRLX_MOBILE: false,  //  Show Parallax on Mobile
@@ -29,6 +29,7 @@ let neodigmOpt = {
   neodigmKPI: true,  N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
   neodigmPWA: true,  N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
   neodigmCarousel: true,  N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
+neodigmTulip: true,
 neodigmPopTart: false,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
 neodigmWWInterval: false,
   CONSOLE_LOG_VER: true,
@@ -37,9 +38,10 @@ neodigmWWInterval: false,
   N55_EVENT_HAPTIC: true,
   N55_GENRE_MOTIF: "neodigm",  //  steampunk cyberpunk artdeco noir anime casino expressionist
   N55_THEME_DEFAULT: "brand",
-  N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"],
+  N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"], "white":["FFFFFF","FDFDFD"], "ghost":["000000","ffffff"],
    "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"], "party":["FF6F61","C93F60"]},
-  N55_APP_STATE: {"FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXT": false, "FOCUS": true, "AMPM": "light", "REDUCE_MOTION": true}
+  N55_APP_STATE: {"CONTEXT": "body", "FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXTMNU": false, "FOCUS": true, "AMPM": "light", "REDUCE_MOTION": true},
+  ROOT: document.querySelector(':root')
 }
 
 if( typeof neodigmOptCustom != 'undefined' ){
@@ -51,7 +53,7 @@ if( typeof neodigmOptCustom != 'undefined' ){
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
-    ver: "2.5.0",
+    ver: "3.0.0",
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
@@ -81,25 +83,45 @@ const neodigmUtils = ( ( _d ) =>{
       if( window.dataLayer ) window.dataLayer.push( { "event": event, "msg": msg } )
     },
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
-      const qContext = "body"
-      document[ qContext ].addEventListener( "click", function( ev ){
+      document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "click", ( ev ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
+        if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class ?
       })
-      document[ qContext ].addEventListener( "touchstart", function( ev ){
+      document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "touchstart", ( ev ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
+        if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class ?
       })
-      window.addEventListener( "resize", function( ev ){ if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init() })
-      window.addEventListener( "orientationchange", function( ev ){ if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init() })
+      window.addEventListener( "resize", ( ev ) =>{
+        window.requestAnimationFrame(() => {
+          if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
+          if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class ?
+        })
+      })
+      window.addEventListener( "orientationchange", ( ev ) =>{
+        window.requestAnimationFrame(() => {
+          if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
+          if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class ?
+        })
+      })
+      window.addEventListener( "scroll", ( ev ) =>{
+        window.requestAnimationFrame(() => {
+          if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
+        })
+      })
       neodigmOpt.N55_APP_STATE.REDUCE_MOTION = !window.matchMedia( '(prefers-reduced-motion: no-preference)' ).matches
+      let sFirstAMPM = document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "[data-n55-Ampm-theme]" )?.dataset.n55AmpmTheme
+      if( sFirstAMPM ) neodigmOpt.N55_AMPM_THEME = neodigmOpt.N55_APP_STATE.AMPM = sFirstAMPM
     },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
     robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
-      if( !neodigmMetronome.isPaused() ){ // TODO test OS/UA motion
-        let aE = [ ... document.querySelectorAll("[data-n55-theme") ]; const NDELAY = 56;
+      if( !neodigmMetronome.isPaused() ){ // TODO test OS/UA motion mq
+        let aE = [ ... document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelectorAll("[data-n55-theme") ]; const NDELAY = 32;
         aE.forEach( ( eC, nDx ) => {
-          if( !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
+          if( eC.dataset.n55Theme != "ghost" ){  //  TODO Disabled
+            if( !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
             setTimeout( function(){ eC.dataset.n55Theme = sTheme }, ( nDx * NDELAY ) )              
-            setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + 16) ) )
+            setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + NDELAY) ) )            
+          }
         });
       }
     },
@@ -120,6 +142,11 @@ const neodigmUtils = ( ( _d ) =>{
             }
           }, NTIMES[1] + nDx, NTIMES[0] )
       })
+    },
+    getValJSON: function( sAtr, sPrp ){  //  Return json object or construct an object w property | msg
+      try { return JSON.parse( sAtr ) } catch(e) {
+        return JSON.parse( '{ "' + sPrp + '": "' + sAtr + '" }' )
+      }
     }
   }
 })( document );
@@ -157,10 +184,10 @@ let neodigmToast = (function(_d, eID, _q) {
                   _eSb.classList.remove("snackbar__cont--alt")
               }
           }
-          _d.body.addEventListener("click", ( ev )=>{
+          _d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev )=>{
             let evToast = ev?.target?.dataset.n55Toast || ev?.srcElement?.parentNode?.dataset.n55Toast
             if( evToast ){
-              let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme || "brand"
+              let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme || neodigmOpt.N55_THEME_DEFAULT
               if( evTheme && evTheme != "disabled" ) neodigmToast.q( evToast, evTheme )              
             }
           }, true)
@@ -181,8 +208,9 @@ let neodigmToast = (function(_d, eID, _q) {
         return neodigmToast
       },
       getQ: function(){ return _aQ; },
-      pause: function(){ bIsPause = true;  return neodigmToast; },
-      play:  function(){ bIsPause = false; return neodigmToast; }
+      clearQ: function(){ _aQ = []; return neodigmToast; },
+      pause: function(){ bIsPause = true; return neodigmToast; },
+      play: function(){ bIsPause = false; return neodigmToast; }
   }
 })(document, "js-snackbar__id", "[data-n55-toast]");
 
@@ -197,7 +225,7 @@ class NeodigmSodaPop {
     init() {
         this.eScrim = this._d.querySelector(this._aQ[0])
         this.eClose = this._d.querySelector(this._aQ[0] + "-close")
-        this._d.body.addEventListener("click", ( ev ) => {  //  TODO Keyboard trap
+        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  TODO Keyboard trap
           let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId 
           let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
           if( evAtr && (evTheme != "disabled") ) {
@@ -213,7 +241,7 @@ class NeodigmSodaPop {
             if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( ev.target.parentElement.hasAttribute( "open" ) ? 9 : 7 )
           }
         }, false)
-        this._d.body.addEventListener("mouseleave", (ev) => {
+        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mouseleave", (ev) => {
           if( this.fOnBeforeUserExit && !sessionStorage.getItem( "n55_userExit" ) ) this.fOnBeforeUserExit()
           sessionStorage.setItem( "n55_userExit", Date.now() )
         })
@@ -244,12 +272,12 @@ class NeodigmSodaPop {
               neodigmSodaPop.eSoda.classList.add("ndsp__opened");
           }, 276)
           this.eSoda.innerHTML = this.eTmpl.innerHTML
-          this._d.body.appendChild(this.eSoda)
+          this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].appendChild(this.eSoda)
           if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([16, 8])
-          if( this.eTmpl.dataset.n55ClaireWaxon ){
+          //if( this.eTmpl.dataset.n55ClaireWaxon ){
             // if( this.eTmpl.dataset.n55ClaireTheme ) NeodigmClaire.setTheme( this.eTmpl.dataset.n55ClaireTheme )
             // NeodigmClaire.showCanv( this._aQ[1] ).initCanv( this._aQ[1] ).waxOn( this._aQ[1], neodigmOpt.N55_GENRE_MOTIF )
-          }
+          //}
           if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7 )
           this.bIsFS = ( this.eTmpl.dataset.n55SodapopFullscreen == "true" && neodigmOpt.N55_APP_STATE.FIRST_TAP )
           if( this.bIsFS ){
@@ -318,6 +346,120 @@ class NeodigmSodaPop {
 }
 let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-n55-sodapop-modal"] )
 
+//  Neodigm 55 Tulip Begin  //
+class NeodigmTulip {
+  constructor(_d, _aQ) {
+      this._d = _d; this._aQ = _aQ; this.sId = "";
+      this.eTulip = this.eTulipTxt = this.eTulMrq = null
+      this.bIsOpen = this.bIsInit = this.bIsPause = this.bIsAuto = false
+      this.oCnfDef = {"msg":"tulip","mrq":false,"tmpt":"","theme": neodigmOpt.N55_THEME_DEFAULT,"size":"small","position":"top","icon":""}
+      this.oCnfCur = Object.assign( this.oCnfDef )
+      this.fOnBeforeOpen = {};
+  }
+  init() {  //  rinit
+    if( !this.bIsInit && !neodigmUtils.isMobile() ){  //  once events app_state.context
+      this.eTulip = this._d.querySelector( this._aQ[0] )
+      this.eTulMrq = this.eTulip.querySelector("neodigm-marquee")
+      this.eTulPre = this.eTulMrq.querySelector("pre")
+      if( this.eTulip ){
+        this.eTulipTxt = this.eTulip.querySelector( "p" );
+        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
+          if( this.bIsInit && !this.bIsPause ){
+            //let sCnf = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.parentNode?.dataset[ "n55Tulip" ]
+            let sCnf = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ];
+            this.sId = ev?.target?.id;  //  Assumes tulip is on child (callback)
+            if( sCnf && ev?.target?.dataset?.n55Theme != "disabled" ){
+              neodigmTulip.prepOpen( sCnf, ev.target.getBoundingClientRect() )
+            }
+          }
+        }, false)
+        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseout", ( ev ) =>{
+          if( !this.bIsPause ) neodigmTulip.close()
+        }, false)
+        this.bIsInit = true
+        return this      
+      }
+    }
+  }
+  prepOpen( sCnf, oRct ){
+    this.oCnfCur = Object.assign( JSON.parse( JSON.stringify( this.oCnfDef ) ), neodigmUtils.getValJSON( sCnf, "msg" ) );
+    for ( let sDS in this.oCnfCur ) {  //  Gen elem datast
+      this.eTulip.dataset[ "n55" + neodigmUtils.capFirst( sDS ) ] = this.oCnfCur[ sDS ]  //  Set Theme and ...
+    }
+    if( neodigmOpt.ROOT ) neodigmOpt.ROOT.style.setProperty( "--neodigm-theme-tulip", "#" + neodigmOpt.N55_THEME_COLORS[ this.eTulip.dataset.n55Theme ][ ( neodigmOpt.N55_AMPM_THEME =="light" ) ? 0 : 1 ]);
+    if( this.oCnfCur?.mrq ){
+      this.eTulip.dataset.n55Mrq = "true"
+      this.eTulMrq.dataset.n55MarqueeText = this.eTulPre.value = this.oCnfCur.msg
+      this.eTulMrq.dataset.n55Theme = this.eTulPre.dataset.n55Theme = this.oCnfCur.theme
+    }else{
+      this.eTulMrq.dataset.n55MarqueeText = this.eTulPre.value = ""
+      this.eTulip.dataset.n55Lines = ( this.oCnfCur.msg.indexOf( "|" ) == -1 ) ? "1" : "2" 
+      this.eTulipTxt.innerHTML = this.oCnfCur.msg.replace("|", "<br>")      
+    }
+    if(this.fOnBeforeOpen[ this.sId ]) this.fOnBeforeOpen[ this.sId ]( this.oCnfCur.msg )
+    if(this.fOnBeforeOpen["def"]) this.fOnBeforeOpen["def"]( this.oCnfCur.msg )
+    neodigmTulip.open( oRct )
+    this.oCnfCur = Object.assign( this.oCnfDef )  //  reset 2 default
+  }
+  autoOpen( sQry ) {  //  DOM query
+    let elTrg = this._d.querySelector( sQry )
+    if( elTrg && elTrg.dataset[ "n55Tulip" ] ){
+      neodigmTulip.prepOpen( elTrg.dataset[ "n55Tulip" ], elTrg.getBoundingClientRect() )
+    }
+    this.bIsAuto = true
+    setTimeout( function(){ neodigmTulip.bIsAuto = false }, 2e3 )
+    return this;
+  }
+  open( oRct ) {
+    this.eTulip.classList.add("tulip__cont--show")
+    this.eTulip.classList.remove("tulip__cont--hide")
+    let nTlW = this.eTulip.getBoundingClientRect().width
+    let nPrW = oRct.width
+    let nPrC = oRct.left + Math.round( nPrW / 2 )
+    this.eTulip.style.top = oRct.top + "px";
+    this.eTulip.style.left = nPrC - Math.round( nTlW / 2 ) + "px";
+    const NOFFSET = 8
+    switch( this.eTulip.dataset.n55Position = this.oCnfCur.position ){
+      case "top":
+        this.eTulip.style.top = oRct.top - (NOFFSET * NOFFSET) + "px";
+      break
+      case "right":
+        this.eTulip.style.left = ( oRct.right + NOFFSET ) + "px";
+      break
+      case "bottom":
+        this.eTulip.style.top = oRct.bottom + (NOFFSET + NOFFSET) + "px";
+      break
+      case "left":
+          this.eTulip.style.left = ( oRct.left - ( nTlW + NOFFSET ) ) + "px";
+      break
+    }
+    this.bIsOpen = true
+    return this;
+  }
+  close() {
+    if( this.bIsInit && !this.bIsAuto ){
+      this.eTulip.classList.add("tulip__cont--hide")
+      this.eTulip.classList.remove("tulip__cont--show")
+      this.bIsOpen = false
+    }
+    return this;
+  }
+  pause ( nT ){
+    if( this.bIsInit ){
+      if( nT ) setTimeout( () =>{neodigmTulip.play()}, nT )
+      this.bIsPause = true;  return this;
+    }
+  }
+  play (){
+    this.bIsPause = false;
+    if( this.bIsOpen ) this.close()
+    return this;
+  }
+  isOpen(){ return this.bIsOpen }
+  setOnBeforeOpen( _f, id="def"){ this.fOnBeforeOpen[ id ] = _f }
+}
+let neodigmTulip = new NeodigmTulip( document, ["neodigm-tulip", "[data-n55-tulip]"] )
+
 //  Neodigm 55 PopTart Begin  //
 class NeodigmPopTart {
   constructor(_d, _aQ) {  //  Oscillation Overthruster
@@ -374,7 +516,12 @@ class NeodigmWired4Sound {
     })
     this.bIsInit = true; return this
   }
-  pause (){ if( this.bIsInit ){ this.bIsPause = true;  return this; } }
+  pause ( nT ){
+    if( this.bIsInit ){
+      if( nT ) setTimeout( () =>{neodigmWired4Sound.play()}, nT )
+      this.bIsPause = true;  return this;
+    }
+  }
   play ( sSnd ){ if( this.bIsInit ){
     if( sSnd ) this.sound( sSnd )  //  Legacy compat
     this.bIsPause = false; return this;
@@ -398,7 +545,7 @@ class NeodigmWired4Sound {
   }
   setVolume ( nVol ) { if( zzfxV ) zzfxV = nVol; return this }
 }
-let neodigmWired4Sound = new NeodigmWired4Sound( document, ["body"])
+let neodigmWired4Sound = new NeodigmWired4Sound( document, [ neodigmOpt.N55_APP_STATE.CONTEXT ])
 
 //  Neodigm 55 Parallax Begin  //
 class NeodigmParallax {
@@ -410,7 +557,16 @@ class NeodigmParallax {
     [ ... this._d.querySelectorAll( this._aQ[0] )].filter( ( ndP ) => {
     if( neodigmUtils.isMobile() ) ndP.dataset.n55ParallaxMobile = neodigmOpt.PRLX_MOBILE;
     let ndPDv = ndP.querySelector("aside")
-    ndPDv.style.backgroundImage = "url(" + ndP.dataset[ this._aQ[1] ] + ")"
+    if( ndPDv && ndP.dataset[ this._aQ[1] ] ){
+      let jRnd = []
+      try{
+        jRnd = JSON.parse( ndP.dataset[ this._aQ[1] ] )
+        jRnd = jRnd[ neodigmUtils.f02x( jRnd.length ) ]
+      }catch{
+        jRnd = ndP.dataset[ this._aQ[1] ]
+      }
+      ndPDv.style.backgroundImage = "url(" + jRnd + ")"
+    }
     })
     this.bIsInit = true
     return this
@@ -748,11 +904,11 @@ data-n55-claire-click - confetti
       }
       return this;
     }
-    static doWaxOn( sQ, theme="brand", scene="circle", nOpc=.6 ){
+    static doWaxOn( sQ, theme=neodigmOpt.N55_THEME_DEFAULT, scene="circle", nOpc=.6 ){
       this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOn( sQ ).waxOn( sQ, scene )
       return this
     }
-    static doWaxOff( sQ, theme="brand", scene="circle", nOpc=.6 ){
+    static doWaxOff( sQ, theme=neodigmOpt.N55_THEME_DEFAULT, scene="circle", nOpc=.6 ){
       this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOff( sQ ).waxOff( sQ, scene )
       return this
     }
@@ -814,7 +970,7 @@ data-n55-claire-click - confetti
     }
     static pause (){ this.bIsPause = true; return this; }
     static play (){ this.bIsPause = false; return this; }
-    static setTheme ( sTheme = "brand" ){
+    static setTheme ( sTheme = neodigmOpt.N55_THEME_DEFAULT ){
       if( sTheme.indexOf("[") != -1 ) sTheme = JSON.parse( sTheme )  //  from HTML attrb
       if( typeof sTheme == "object") sTheme = sTheme[ neodigmUtils.f02x( sTheme.length ) ]  //  array
       this._theme = sTheme;
@@ -832,17 +988,19 @@ class NeodigmEnchantedCTA {
     }
     init (){
       this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
-      if( !this.bIsInit ){  //  once events body
-        this._d.body.addEventListener("click", ( ev ) => {
+      if( !this.bIsInit ){  //  once events app_state.context
+        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {
           let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
           let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
           if( bCta && neodigmOpt.N55_GTM_DL_CTA ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CTA, sId )
-          let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
-          if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
-
+          let sTheme = ev?.target?.dataset?.n55Theme || ev?.srcElement?.parentNode?.dataset?.n55Theme
+          if( sTheme != "disabled" ){
+            let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
+            if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
+          }
         }, false)
         if( neodigmOpt.N55_CTA_LONG_TAP ){
-          this._d.body.addEventListener("mousedown", ( ev ) => {
+          this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mousedown", ( ev ) => {
             let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
             let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
             if( bCta ){
@@ -856,7 +1014,7 @@ class NeodigmEnchantedCTA {
               }, 3400 )            
             }
           }, false)
-          this._d.body.addEventListener("mouseup", ( ev ) => {
+          this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mouseup", ( ev ) => {
             neodigmEnchantedCTA.bLongTap = false
           }, false)          
         }
@@ -956,7 +1114,7 @@ class NeodigmKPI {
   }
   init (){
     this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
-    if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
+    if( !this.bIsInit ) this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  once event body
       let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
       let bKPI = ("n55Kpi" in ev?.target?.dataset) || ("n55Kpi" in ev?.srcElement?.parentNode?.dataset)
       if( bKPI && neodigmOpt.N55_GTM_DL_KPI ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_KPI, sId )
@@ -992,10 +1150,11 @@ class NeodigmCarousel {
   constructor( _d, _aQ ) {
       this._d = _d; this._aQ = _aQ
       this.bIsInit = false; this.bIsPause = false
-      this.aelNC = []
+      this.aelNC = []; this.fOnAfterNav = []  //  TODO fOnBeforeNav
   }
-  init (){
-    this.aelNC = [ ... this._d.querySelectorAll( this._aQ[0] )] // All Carousels within DOM
+  init ( elRootCntx = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ] ){  //  rinit
+    // TODO would like to fire rinit given a ref to a container element (ADD children)
+    this.aelNC = [ ... elRootCntx.querySelectorAll( this._aQ[0] )] // All Carousels within DOM
     if( this.aelNC.length ){
       this.aelNC.forEach(function( elNC ){
         if( elNC.id ){
@@ -1004,10 +1163,10 @@ class NeodigmCarousel {
           elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll("section") ]  //  Tab Containers
           elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
           elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
-          neodigmCarousel.nav( {id: elNC.id , nav: elNC.n55State.nIdx } )
+          neodigmCarousel.nav( {id: elNC.id, nav: elNC.n55State.nIdx }, false )
         }
       })
-      if( !this.bIsInit ) this._d.body.addEventListener("click", ( ev ) => {  //  once event body
+      if( !this.bIsInit ) this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  once event body
         let bCarsl = ("n55CarouselNav" in ev?.target?.dataset) || ("n55CarouselNav" in ev?.srcElement?.parentNode?.dataset)
         if( bCarsl ){
           let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
@@ -1021,7 +1180,7 @@ class NeodigmCarousel {
     }
     return this
   }
-  nav ( oNav ){
+  nav ( oNav, bFireCB = true ){
     if( oNav?.id && this.bIsInit && !this.bIsPause ){
       let elNC = this.aelNC.filter(function( el ){ return ( oNav.id == el.id ); })[0]
       if( elNC ){
@@ -1029,13 +1188,13 @@ class NeodigmCarousel {
         let oState = elNC.n55State
         switch( oNav.nav ){
           case "next":
-            if( oState.nIdx < oState.aTabCntr.length) oState.nIdx++
+            if( oState.nIdx < oState.aTabCntr.length ) oState.nIdx++
           break;
           case "prev":
             if( oState.nIdx != 1 ) oState.nIdx--
           break;
           case "loop":
-            if( oState.nIdx < oState.aTabCntr.length) { oState.nIdx++ }else{ oState.nIdx = 1 }
+            if( oState.nIdx < oState.aTabCntr.length ) { oState.nIdx++ }else{ oState.nIdx = 1 }
           break;
           case "getPage":
             return oState.nIdx;
@@ -1044,13 +1203,26 @@ class NeodigmCarousel {
             if( ( oNav.nav >= 1 ) && ( oNav.nav < (oState.aTabCntr.length + 1) ) ) oState.nIdx = elNC.n55State.nIdx = oNav.nav
         }
         let nSP = ( oState.nIdx - 1 ) * oState.width  //  Scroll Position
+        elNC.parentElement.scrollTop = 0;
         elNCCntr.style.marginLeft = ( nSP ) - ( nSP * 2 ) + "px"
+        if( bFireCB ){
+          if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.fOnAfterNav )
+          if(this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]) this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]( elNC.id, oState.nIdx )  //  single pg
+          if(this.fOnAfterNav[ elNC.id ]) this.fOnAfterNav[ elNC.id ]( elNC.id, oState.nIdx )  //  all pages within this Caro
+          if(this.fOnAfterNav["def"]) this.fOnAfterNav["def"]( elNC.id, oState.nIdx )  //  all Caro
+        }
       }
     }  //  TODO datalayer
     return this;
   }
-  pause (){ this.bIsPause = true; return this; } // TODO Support a timer param?
+  pause ( nT ){
+    if( this.bIsInit ){
+      if( nT ) setTimeout( () =>{ neodigmCarousel.play() }, nT )
+      this.bIsPause = true;  return this;
+    }
+  }
   play (){ this.bIsPause = false; return this; }
+  setOnAfterNav( _f, id="def", pg=""){ this.fOnAfterNav[ ( pg )?(id + "_" + pg):id ] = _f; return this; }
   setTheme ( sTheme, sId ){
     if( this.bIsInit && !this.bIsPause ){
       this.aE.forEach( (eC) => {  //  orig once n55Theme Property
@@ -1071,7 +1243,7 @@ let neodigmCarousel = new NeodigmCarousel( document, ["neodigm-carousel"] )
 class NeodigmPWA {
   /*
   open soda after about 5 min (host logic) - IF compliant, no open sodas, and not in (standalone?)
-  fire install (and toast) if CTA clicked. Add event to datalayer.
+  Fire install (and toast) if CTA clicked. Add event to datalayer.
   */
   constructor( _d, _aQ ) {
       this._d = _d; this._aQ = _aQ
@@ -1083,7 +1255,7 @@ class NeodigmPWA {
     if( this.aE ){
       window.addEventListener("appinstalled", () => {
         setTimeout(function(){
-            neodigmToast.q("Application Installed ✨", "brand")
+            neodigmToast.q("Application Installed ✨", neodigmOpt.N55_THEME_DEFAULT)
             if( neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 8 )
             neodigmUtils.doDataLayer( "event", "appinstalled" )
         }, 1200)
@@ -1123,6 +1295,7 @@ let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 //  Neodigm 55 Claire Declaire-itive //
 //  -Neodigm 55 Confetti Begin (Claire) //
 //  Neodigm 55 Cypher Type FX Begin  //
+//  Neodigm 55 Post-It Begin (wdg) //
 
 // v2.x.0
 //  Neodigm 55 FAB Begin //
@@ -1141,11 +1314,10 @@ let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 
 // Parking lot
 //  Neodigm 55 A11Y skip Begin  //
+//  Neodigm 55 Debugger - Capture all life cycle  //
 //  Neodigm 55 Dice Begin  //
-//  Neodigm 55 ToolTip Marquee Begin  //
-//  Neodigm 55 Virtual Keyboard Begin  //
+//  -Neodigm 55 ToolTip Marquee Begin  //
 //  Neodigm 55 Vivid Type Begin  //
-//  Neodigm 55 CAPTCHA Begin //
 
 function doDOMContentLoaded(){
   const neodigmMU = `
@@ -1155,18 +1327,21 @@ function doDOMContentLoaded(){
 </neodigm-sodapop-scrim-close>
 <neodiigm-snack class="l-snackbar" role="alert">
     <section id="js-snackbar__id" class="snackbar__cont snackbar__cont--hide" aria-live="polite" aria-atomic="true">
-        <div class="snackbar__progbar"></div>
-        <p class="snackbar__msg"></p>
+        <div class="snackbar__progbar"></div><p class="snackbar__msg"></p>
     </section>
-</neodiigm-snack>`;
+</neodiigm-snack>
+<neodigm-tulip class="tulip__cont--hide" role="tooltip"><p></p> <neodigm-marquee data-n55-marquee-text=" ##msg## " data-n55-marquee-size="xsmall"><pre data-n55-theme="##theme##"></pre></neodigm-marquee> </neodigm-tulip>
+<neodigm-poptartclass=""></neodigm-poptart>`;  //  Universal Templs
+
+
   let eMU = document.createElement("output");
   eMU.innerHTML = neodigmMU;
-  document.body.appendChild(eMU);
+  document[ neodigmOpt.N55_APP_STATE.CONTEXT ].appendChild(eMU);
   setTimeout( ()=>{
     neodigmUtils.appStateListen()  //  Bind to Host
     neodigmMetronome.init()  //  Always-on
     NeodigmClaire.init()
-    if( neodigmOpt.N55_AMPM_THEME && !document.body.dataset.n55AmpmTheme ) document.body.dataset.n55AmpmTheme = neodigmOpt.N55_AMPM_THEME
+    if( neodigmOpt.N55_AMPM_THEME && !document[ neodigmOpt.N55_APP_STATE.CONTEXT ].dataset.n55AmpmTheme ) document[ neodigmOpt.N55_APP_STATE.CONTEXT ].dataset.n55AmpmTheme = neodigmOpt.N55_AMPM_THEME
     if( neodigmOpt.CONSOLE_LOG_VER ) console.log("%c Neodigm 55 the eclectic JavaScript UX micro-library ✨ v" + neodigmUtils.ver, "background: #000; color: #F5DF4D; font-size: 20px");
     if( neodigmOpt.neodigmToast ) neodigmToast.init()
     if( neodigmOpt.neodigmSodaPop ) neodigmSodaPop.init()
@@ -1177,6 +1352,7 @@ function doDOMContentLoaded(){
     if( neodigmOpt.neodigmKPI ) neodigmKPI.init()
     if( neodigmOpt.neodigmPWA ) neodigmPWA.init()
     if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
+    if( neodigmOpt.neodigmTulip ) neodigmTulip.init()
     if( neodigmOpt.neodigmPopTart ) neodigmPopTart.init()
   }, 56)
 }
