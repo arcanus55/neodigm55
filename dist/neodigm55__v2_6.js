@@ -145,6 +145,10 @@ const neodigmUtils = ( ( _d ) =>{
       try { return JSON.parse( sAtr ) } catch(e) {
         return JSON.parse( '{ "' + sPrp + '": "' + sAtr + '" }' )
       }
+    },
+    inheritAMPM: function(){  //  Update Opt w current first DOM AMPM
+      let sFirstAMPM = document.querySelector( "[data-n55-Ampm-theme]" )?.dataset.n55AmpmTheme
+      return ( sFirstAMPM ) ? ( neodigmOpt.N55_AMPM_THEME = sFirstAMPM )  : neodigmOpt.N55_AMPM_THEME
     }
   }
 })( document );
