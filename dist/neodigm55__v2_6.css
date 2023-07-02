@@ -596,13 +596,20 @@ neodigm-tulip{
 	user-select: none;
 	z-index: 6408;
 }
-    neodigm-tulip[data-n55-position='top']::after {
-        content: " "; position: absolute;
-        top: 100%; left: 50%;
-        margin-left: -8px;
-        border: solid 8px;
-        border-color: var( --neodigm-theme-tulip ) transparent transparent transparent;
-    }
+neodigm-tulip[data-n55-position='top']::after {
+    content: " "; position: absolute;
+    top: 100%; left: 50%;
+    margin-left: -8px;
+    border: solid 8px;
+    border-color: var( --neodigm-theme-tulip ) transparent transparent transparent;
+}
+neodigm-tulip[data-n55-position='bottom']::after {
+    content: " "; position: absolute;
+    bottom: 100%; left: 50%;
+    margin-left: -8px;
+    border: solid 8px;
+    border-color: transparent transparent var( --neodigm-theme-tulip ) transparent;
+}
 
 neodigm-tulip[data-n55-mrq='true'] neodigm-marquee { margin: 8px 6px; display: inline-block; width: 256px; }
 neodigm-tulip[data-n55-mrq='true'] > P { display: none; }
