@@ -109,6 +109,8 @@ const neodigmUtils = ( ( _d ) =>{
         })
       })
       neodigmOpt.N55_APP_STATE.REDUCE_MOTION = !window.matchMedia( '(prefers-reduced-motion: no-preference)' ).matches
+      let sFirstAMPM = document.querySelector( "[data-n55-Ampm-theme]" )?.dataset.n55AmpmTheme
+      if( sFirstAMPM ) neodigmOpt.N55_AMPM_THEME = sFirstAMPM
     },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
     robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
