@@ -718,9 +718,9 @@ NeodigmClaire.showCanv('neodigm-sodapop').setTheme( ['brand','danger','info','ma
     let toggleAMPM = function(){
         let current = document.body.dataset.n55AmpmTheme || "light"
         if( current == "light" ){
-            document.body.dataset.n55AmpmTheme = "dark"
+            document.body.dataset.n55AmpmTheme = neodigmOpt.N55_AMPM_THEME =  "dark"
         }else{
-            document.body.dataset.n55AmpmTheme = "light"
+            document.body.dataset.n55AmpmTheme = neodigmOpt.N55_AMPM_THEME =  "light"
         }
     }
 </script>

@@ -109,13 +109,13 @@ const neodigmUtils = ( ( _d ) =>{
         })
       })
       neodigmOpt.N55_APP_STATE.REDUCE_MOTION = !window.matchMedia( '(prefers-reduced-motion: no-preference)' ).matches
-      let sFirstAMPM = document.querySelector( "[data-n55-Ampm-theme]" )?.dataset.n55AmpmTheme
-      if( sFirstAMPM ) neodigmOpt.N55_AMPM_THEME = sFirstAMPM
+      let sFirstAMPM = document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "[data-n55-Ampm-theme]" )?.dataset.n55AmpmTheme
+      if( sFirstAMPM ) neodigmOpt.N55_AMPM_THEME = neodigmOpt.N55_APP_STATE.AMPM = sFirstAMPM
     },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
     robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
       if( !neodigmMetronome.isPaused() ){ // TODO test OS/UA motion mq
-        let aE = [ ... document.querySelectorAll("[data-n55-theme") ]; const NDELAY = 32;
+        let aE = [ ... document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelectorAll("[data-n55-theme") ]; const NDELAY = 32;
         aE.forEach( ( eC, nDx ) => {
           if( eC.dataset.n55Theme != "ghost" ){  //  TODO Disabled
             if( !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
@@ -147,10 +147,6 @@ const neodigmUtils = ( ( _d ) =>{
       try { return JSON.parse( sAtr ) } catch(e) {
         return JSON.parse( '{ "' + sPrp + '": "' + sAtr + '" }' )
       }
-    },
-    inheritAMPM: function(){  //  Update Opt w current first DOM AMPM
-      let sFirstAMPM = document.querySelector( "[data-n55-Ampm-theme]" )?.dataset.n55AmpmTheme
-      return ( sFirstAMPM ) ? ( neodigmOpt.N55_AMPM_THEME = sFirstAMPM )  : neodigmOpt.N55_AMPM_THEME
     }
   }
 })( document );
@@ -1167,7 +1163,7 @@ class NeodigmCarousel {
           elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll("section") ]  //  Tab Containers
           elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
           elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
-          neodigmCarousel.nav( {id: elNC.id , nav: elNC.n55State.nIdx } )
+          neodigmCarousel.nav( {id: elNC.id, nav: elNC.n55State.nIdx }, false )
         }
       })
       if( !this.bIsInit ) this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  once event body
@@ -1184,7 +1180,7 @@ class NeodigmCarousel {
     }
     return this
   }
-  nav ( oNav ){
+  nav ( oNav, bFireCB = true ){
     if( oNav?.id && this.bIsInit && !this.bIsPause ){
       let elNC = this.aelNC.filter(function( el ){ return ( oNav.id == el.id ); })[0]
       if( elNC ){
@@ -1209,10 +1205,12 @@ class NeodigmCarousel {
         let nSP = ( oState.nIdx - 1 ) * oState.width  //  Scroll Position
         elNC.parentElement.scrollTop = 0;
         elNCCntr.style.marginLeft = ( nSP ) - ( nSP * 2 ) + "px"
-        if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.fOnAfterNav )
-        if(this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]) this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]( elNC.id, oState.nIdx )  //  single pg
-        if(this.fOnAfterNav[ elNC.id ]) this.fOnAfterNav[ elNC.id ]( elNC.id, oState.nIdx )  //  all pages within this Caro
-        if(this.fOnAfterNav["def"]) this.fOnAfterNav["def"]( elNC.id, oState.nIdx )  //  all Caro
+        if( bFireCB ){
+          if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.fOnAfterNav )
+          if(this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]) this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]( elNC.id, oState.nIdx )  //  single pg
+          if(this.fOnAfterNav[ elNC.id ]) this.fOnAfterNav[ elNC.id ]( elNC.id, oState.nIdx )  //  all pages within this Caro
+          if(this.fOnAfterNav["def"]) this.fOnAfterNav["def"]( elNC.id, oState.nIdx )  //  all Caro
+        }
       }
     }  //  TODO datalayer
     return this;
