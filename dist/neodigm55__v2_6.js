@@ -384,7 +384,7 @@ class NeodigmTulip {
     for ( let sDS in this.oCnfCur ) {  //  Gen elem datast
       this.eTulip.dataset[ "n55" + neodigmUtils.capFirst( sDS ) ] = this.oCnfCur[ sDS ]  //  Set Theme and ...
     }
-    neodigmOpt.ROOT.style.setProperty( "--neodigm-theme-tulip", "#" + neodigmOpt.N55_THEME_COLORS[ this.eTulip.dataset.n55Theme ][0]);
+    if( neodigmOpt.ROOT ) neodigmOpt.ROOT.style.setProperty( "--neodigm-theme-tulip", "#" + neodigmOpt.N55_THEME_COLORS[ this.eTulip.dataset.n55Theme ][ ( neodigmOpt.N55_AMPM_THEME =="light" ) ? 0 : 1 ]);
     if( this.oCnfCur?.mrq ){
       this.eTulip.dataset.n55Mrq = "true"
       this.eTulMrq.dataset.n55MarqueeText = this.eTulPre.value = this.oCnfCur.msg
@@ -1310,11 +1310,10 @@ let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 
 // Parking lot
 //  Neodigm 55 A11Y skip Begin  //
+//  Neodigm 55 Debugger - Capture all life cycle  //
 //  Neodigm 55 Dice Begin  //
 //  -Neodigm 55 ToolTip Marquee Begin  //
-//  Neodigm 55 Virtual Keyboard Begin  //
 //  Neodigm 55 Vivid Type Begin  //
-//  Neodigm 55 CAPTCHA Begin //
 
 function doDOMContentLoaded(){
   const neodigmMU = `
