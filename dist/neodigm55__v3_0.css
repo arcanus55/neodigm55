@@ -600,29 +600,25 @@ neodigm-tulip[data-n55-position='top']::after {
     content: " "; position: absolute;
     top: 100%; left: 50%;
     margin-left: -8px;
-    border: solid 8px;
-    border-color: var( --neodigm-theme-tulip ) transparent transparent transparent;
+    border: solid 8px; border-color: var( --neodigm-theme-tulip ) transparent transparent transparent;
 }
 neodigm-tulip[data-n55-position='bottom']::after {
     content: " "; position: absolute;
     bottom: 100%; left: 50%;
     margin-left: -8px;
-    border: solid 8px;
-    border-color: transparent transparent var( --neodigm-theme-tulip ) transparent;
+    border: solid 8px; border-color: transparent transparent var( --neodigm-theme-tulip ) transparent;
 }
 neodigm-tulip[data-n55-position='right']::after {
     content: " "; position: absolute;
     top: 32%; right: 100%;
     margin-left: -8px;
-    border: solid 8px;
-    border-color: transparent var( --neodigm-theme-tulip ) transparent transparent;
+    border: solid 8px; border-color: transparent var( --neodigm-theme-tulip ) transparent transparent;
 }
 neodigm-tulip[data-n55-position='left']::after {
     content: " "; position: absolute;
     top: 32%; left: 104%;
     margin-left: -8px;
-    border: solid 8px;
-    border-color: transparent transparent transparent var( --neodigm-theme-tulip );
+    border: solid 8px; border-color: transparent transparent transparent var( --neodigm-theme-tulip );
 }
 
 neodigm-tulip[data-n55-mrq='true'] neodigm-marquee { margin: 8px 6px; display: inline-block; width: 256px; }
@@ -662,6 +658,7 @@ neodigm-tulip[data-n55-theme='info']      { border-color: var( --neodigm-theme-i
 neodigm-tulip[data-n55-theme='night']     { border-color: var( --neodigm-theme-night ); }
 neodigm-tulip[data-n55-theme='marcom']    { border-color: var( --neodigm-theme-marcom ); }
 neodigm-tulip[data-n55-theme='party']     { border-color: var( --neodigm-theme-party ); }
+
 neodigm-tulip[data-n55-theme='white']     { border-color: #fff; }
 [data-n55-ampm-theme="light"] neodigm-tulip[data-n55-theme='ghost'] { border-color: var( --neodigm-theme-night ); background: #fff;}
 [data-n55-ampm-theme="light"] neodigm-tulip[data-n55-theme='ghost'] > P { color: var( --neodigm-theme-night ) !important; }

@@ -38,7 +38,7 @@ neodigmWWInterval: false,
   N55_EVENT_HAPTIC: true,
   N55_GENRE_MOTIF: "neodigm",  //  steampunk cyberpunk artdeco noir anime casino expressionist
   N55_THEME_DEFAULT: "brand",
-  N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"], "white":["FFFFFF","FDFDFD"], "ghost":["000000","ffffff"],
+  N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"], "white":["FFFFFF","FDFDFD"], "ghost":["ffffff","000000"],
    "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"], "party":["FF6F61","C93F60"]},
   N55_APP_STATE: {"CONTEXT": "body", "FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXTMNU": false, "FOCUS": true, "AMPM": "light", "REDUCE_MOTION": true},
   ROOT: document.querySelector(':root')
@@ -386,7 +386,8 @@ class NeodigmTulip {
     for ( let sDS in this.oCnfCur ) {  //  Gen elem datast
       this.eTulip.dataset[ "n55" + neodigmUtils.capFirst( sDS ) ] = this.oCnfCur[ sDS ]  //  Set Theme and ...
     }
-    if( neodigmOpt.ROOT ) neodigmOpt.ROOT.style.setProperty( "--neodigm-theme-tulip", "#" + neodigmOpt.N55_THEME_COLORS[ this.eTulip.dataset.n55Theme ][ ( neodigmOpt.N55_AMPM_THEME =="light" ) ? 0 : 1 ]);
+    let nThemeAlt = ( neodigmOpt.N55_AMPM_THEME =="light" ) ? 1 : 0;  //  Dark alt if ghost /w ampm
+    if( neodigmOpt.ROOT ) neodigmOpt.ROOT.style.setProperty( "--neodigm-theme-tulip", "#" + neodigmOpt.N55_THEME_COLORS[ this.eTulip.dataset.n55Theme ][ ( this.eTulip.dataset.n55Theme == "ghost" ) ? nThemeAlt : 0 ]);
     if( this.oCnfCur?.mrq ){
       this.eTulip.dataset.n55Mrq = "true"
       this.eTulMrq.dataset.n55MarqueeText = this.eTulPre.value = this.oCnfCur.msg
