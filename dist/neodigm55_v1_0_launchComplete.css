@@ -378,4 +378,6 @@ fill: var(  --m5lc-theme-info-alt );
     .h-ds-b__mobile--only  {display: none;}
     .h-ds-i__desktop--only {display: inline;}
     .h-ds-i__mobile--only  {display: none;}
+    .h-ds-g__desktop--only {display: grid;}
+    .h-ds-g__mobile--only  {display: none;}
 }
