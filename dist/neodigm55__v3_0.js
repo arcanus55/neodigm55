@@ -36,7 +36,7 @@ neodigmWWInterval: false,
   N55_DEBUG_lOG: false,
   N55_AMPM_THEME: "light",
   N55_EVENT_HAPTIC: true,
-  N55_GENRE_MOTIF: "neodigm",  //  steampunk cyberpunk artdeco noir anime casino expressionist
+  N55_GENRE_MOTIF: "neodigm",  //  rainforest steampunk cyberpunk artdeco noir anime casino expressionist
   N55_THEME_DEFAULT: "brand",
   N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"], "white":["FFFFFF","FDFDFD"], "ghost":["ffffff","000000"],
    "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"], "party":["FF6F61","C93F60"]},
@@ -113,6 +113,7 @@ const neodigmUtils = ( ( _d ) =>{
       if( sFirstAMPM ) neodigmOpt.N55_AMPM_THEME = neodigmOpt.N55_APP_STATE.AMPM = sFirstAMPM
     },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
+    genHash: sVal => sVal.split("").reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0),
     robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
       if( !neodigmMetronome.isPaused() ){ // TODO test OS/UA motion mq
         let aE = [ ... document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelectorAll("[data-n55-theme") ]; const NDELAY = 32;
