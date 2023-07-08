@@ -1156,17 +1156,10 @@ class NeodigmCarousel {
   }
   init ( elRootCntx = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ] ){  //  rinit
     // TODO would like to fire rinit given a ref to a container element (ADD children)
-    this.aelNC = [ ... elRootCntx.querySelectorAll( this._aQ[0] )] // All Carousels within DOM
+    this.aelNC = [ ... elRootCntx.querySelectorAll( this._aQ[0] )] // All Carousels within DOM context
     if( this.aelNC.length ){
       this.aelNC.forEach(function( elNC ){
-        if( elNC.id ){
-          elNC.n55State = {nIdx: ( elNC.n55State?.nIdx ) ? elNC.n55State.nIdx : 1, width: elNC.offsetWidth}
-          let elNCCntr = elNC.firstElementChild
-          elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll("section") ]  //  Tab Containers
-          elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
-          elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
-          neodigmCarousel.nav( {id: elNC.id, nav: elNC.n55State.nIdx }, false )
-        }
+        if( elNC.id ) neodigmCarousel.formatNewCaro( elNC )
       })
       if( !this.bIsInit ) this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  once event body
         if( ("n55CarouselNav" in ev.target?.dataset) || ("n55CarouselNav" in ev.srcElement?.parentNode?.dataset) ){
@@ -1176,43 +1169,57 @@ class NeodigmCarousel {
           if( neodigmOpt.N55_GTM_DL_CARSL ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CARSL, sId )
         }
       }, false)
-      if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.aE )
+      if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.aelNC )
       this.bIsInit = true
     }
     return this
   }
+  formatNewCaro ( elNC ){  //  TODO set elNC.name from data
+    elNC.n55State = {nIdx: ( elNC.n55State?.nIdx ) ? elNC.n55State.nIdx : 1, width: elNC.offsetWidth}
+    let elNCCntr = elNC.firstElementChild
+    elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll("section") ]  //  Tab Containers
+    elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
+    elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
+    neodigmCarousel.nav( {id: elNC.id, nav: elNC.n55State.nIdx }, false )  //  No CB
+    return elNC
+  }
   nav ( oNav, bFireCB = true ){
     if( oNav?.id && this.bIsInit && !this.bIsPause ){
-      let elNC = this.aelNC.filter(function( el ){ return ( oNav.id == el.id ); })[0]
-      if( elNC ){
-        let elNCCntr = elNC.firstElementChild
-        let oState = elNC.n55State
-        switch( oNav.nav ){
-          case "next":
-            if( oState.nIdx < oState.aTabCntr.length ) oState.nIdx++
-          break;
-          case "prev":
-            if( oState.nIdx != 1 ) oState.nIdx--
-          break;
-          case "loop":
-            if( oState.nIdx < oState.aTabCntr.length ) { oState.nIdx++ }else{ oState.nIdx = 1 }
-          break;
-          case "getPage":
-            return oState.nIdx;
-          break;
-          default:
-            if( ( oNav.nav >= 1 ) && ( oNav.nav < (oState.aTabCntr.length + 1) ) ) oState.nIdx = elNC.n55State.nIdx = oNav.nav
+        let elNC = this.aelNC.filter(function( el ){ return ( oNav.id == el.id ); })[0]
+        if( !elNC ) {  // This caro did not exist durring init, so lets created it
+            let elNewNC = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "#" + oNav.id )
+            if( elNewNC ) this.aelNC.push(elNC = neodigmCarousel.formatNewCaro( elNewNC ))
+            if( neodigmOpt.N55_DEBUG_lOG ) console.log( "caro dyn create | " + oNav.id )
         }
-        let nSP = ( oState.nIdx - 1 ) * oState.width  //  Scroll Position
-        elNC.parentElement.scrollTop = 0;
-        elNCCntr.style.marginLeft = ( nSP ) - ( nSP * 2 ) + "px"
-        if( bFireCB ){
-          if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.fOnAfterNav )
-          if(this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]) this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]( elNC.id, oState.nIdx )  //  single pg
-          if(this.fOnAfterNav[ elNC.id ]) this.fOnAfterNav[ elNC.id ]( elNC.id, oState.nIdx )  //  all pages within this Caro
-          if(this.fOnAfterNav["def"]) this.fOnAfterNav["def"]( elNC.id, oState.nIdx )  //  all Caro
+        if( elNC ){
+            let elNCCntr = elNC.firstElementChild
+            let oState = elNC.n55State
+            switch( oNav.nav ){
+            case "next":
+                if( oState.nIdx < oState.aTabCntr.length ) oState.nIdx++
+            break;
+            case "prev":
+                if( oState.nIdx != 1 ) oState.nIdx--
+            break;
+            case "loop":
+                if( oState.nIdx < oState.aTabCntr.length ) { oState.nIdx++ }else{ oState.nIdx = 1 }
+            break;
+            case "getPage":
+                return oState.nIdx;
+            break;
+            default:
+                if( ( oNav.nav >= 1 ) && ( oNav.nav < (oState.aTabCntr.length + 1) ) ) oState.nIdx = elNC.n55State.nIdx = oNav.nav
+            }
+            let nSP = ( oState.nIdx - 1 ) * oState.width  //  Scroll Position
+            elNC.parentElement.scrollTop = 0;
+            elNCCntr.style.marginLeft = ( nSP ) - ( nSP * 2 ) + "px"
+            if( bFireCB ){
+            if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.fOnAfterNav )
+            if(this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]) this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]( elNC.id, oState.nIdx )  //  single pg
+            if(this.fOnAfterNav[ elNC.id ]) this.fOnAfterNav[ elNC.id ]( elNC.id, oState.nIdx )  //  all pages within this Caro
+            if(this.fOnAfterNav["def"]) this.fOnAfterNav["def"]( elNC.id, oState.nIdx )  //  all Caro
+            }
         }
-      }
     }  //  TODO datalayer
     return this;
   }
