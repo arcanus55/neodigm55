@@ -256,11 +256,11 @@ neodigm-marquee pre [data-n55-theme='marcom'] { color: var(--neodigm-theme-marco
 neodigm-marquee pre[data-n55-theme='party'],
 neodigm-marquee pre [data-n55-theme='party'] { color: var(--neodigm-theme-party); text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-party-alt), 0.1rem 0.1rem .6rem #fff}
 neodigm-marquee pre[data-n55-theme='white'],
-neodigm-marquee pre [data-n55-theme='white'] { color: #fff; text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-night), 0.1rem 0.1rem .6rem #fff}
+neodigm-marquee pre [data-n55-theme='white'] { color: #fff; text-shadow: none; }
 [data-n55-ampm-theme="light"] neodigm-marquee pre[data-n55-theme='ghost'],
-[data-n55-ampm-theme="light"] neodigm-marquee pre [data-n55-theme='ghost'] { color: var(--neodigm-theme-night); text-shadow: -0.2rem -0.2rem 1rem #fff, 0.1rem 0.1rem .6rem var(--neodigm-theme-night)}
+[data-n55-ampm-theme="light"] neodigm-marquee pre [data-n55-theme='ghost'] { color: var(--neodigm-theme-night); text-shadow: none; }
 [data-n55-ampm-theme="dark"]  neodigm-marquee pre[data-n55-theme='ghost'],
-[data-n55-ampm-theme="dark"]  neodigm-marquee pre [data-n55-theme='ghost'] { color: #fff; text-shadow: -0.2rem -0.2rem 1rem var(--neodigm-theme-night), 0.1rem 0.1rem .6rem #fff}
+[data-n55-ampm-theme="dark"]  neodigm-marquee pre [data-n55-theme='ghost'] { color: #fff; text-shadow: none; }
 
 
 neodigm-marquee[data-n55-marquee-size='xsmall'] { height: 24px; }
@@ -598,26 +598,22 @@ neodigm-tulip{
 }
 neodigm-tulip[data-n55-position='top']::after {
     content: " "; position: absolute;
-    top: 100%; left: 50%;
-    margin-left: -8px;
+    top: 100%; left: 50%; margin-left: -8px;
     border: solid 8px; border-color: var( --neodigm-theme-tulip ) transparent transparent transparent;
 }
 neodigm-tulip[data-n55-position='bottom']::after {
     content: " "; position: absolute;
-    bottom: 100%; left: 50%;
-    margin-left: -8px;
+    bottom: 100%; left: 50%; margin-left: -8px;
     border: solid 8px; border-color: transparent transparent var( --neodigm-theme-tulip ) transparent;
 }
 neodigm-tulip[data-n55-position='right']::after {
     content: " "; position: absolute;
-    top: 32%; right: 100%;
-    margin-left: -8px;
+    top: 32%; right: 100%; margin-left: -8px;
     border: solid 8px; border-color: transparent var( --neodigm-theme-tulip ) transparent transparent;
 }
 neodigm-tulip[data-n55-position='left']::after {
     content: " "; position: absolute;
-    top: 32%; left: 104%;
-    margin-left: -8px;
+    top: 32%; left: 104%; margin-left: -8px;
     border: solid 8px; border-color: transparent transparent transparent var( --neodigm-theme-tulip );
 }
 
