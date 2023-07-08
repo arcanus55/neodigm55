@@ -1169,10 +1169,9 @@ class NeodigmCarousel {
         }
       })
       if( !this.bIsInit ) this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  once event body
-        let bCarsl = ("n55CarouselNav" in ev?.target?.dataset) || ("n55CarouselNav" in ev?.srcElement?.parentNode?.dataset)
-        if( bCarsl ){
-          let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
-          let oNav = JSON.parse( ev.target?.dataset?.n55CarouselNav || ev?.srcElement?.parentNode?.dataset?.n55CarouselNav )
+        if( ("n55CarouselNav" in ev.target?.dataset) || ("n55CarouselNav" in ev.srcElement?.parentNode?.dataset) ){
+          let sId = ev.target?.id || ev.srcElement?.parentNode?.id || "add_id"
+          let oNav = JSON.parse( ev.target?.dataset?.n55CarouselNav || ev.srcElement?.parentNode?.dataset?.n55CarouselNav )
           neodigmCarousel.nav( {id: oNav.id, nav: oNav.nav} )
           if( neodigmOpt.N55_GTM_DL_CARSL ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CARSL, sId )
         }
