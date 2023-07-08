@@ -1204,10 +1204,13 @@ class NeodigmCarousel {
             case "loop":
                 if( oState.nIdx < oState.aTabCntr.length ) { oState.nIdx++ }else{ oState.nIdx = 1 }
             break;
+            case "random":
+                oState.nIdx = neodigmUtils.f02x( oState.aTabCntr.length ) + 1
+            break;
             case "getPage":
                 return oState.nIdx;
             break;
-            default:
+            default:  //  num pg value
                 if( ( oNav.nav >= 1 ) && ( oNav.nav < (oState.aTabCntr.length + 1) ) ) oState.nIdx = elNC.n55State.nIdx = oNav.nav
             }
             let nSP = ( oState.nIdx - 1 ) * oState.width  //  Scroll Position
