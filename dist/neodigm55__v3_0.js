@@ -1180,7 +1180,7 @@ class NeodigmCarousel {
     elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll("section") ]  //  Tab Containers
     elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
     elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
-    neodigmCarousel.nav( {id: elNC.id, nav: elNC.n55State.nIdx }, false )  //  No CB
+//neodigmCarousel.nav( {id: elNC.id, nav: elNC.n55State.nIdx }, false )  //  No CB
     return elNC
   }
   nav ( oNav, bFireCB = true ){
@@ -1210,7 +1210,7 @@ class NeodigmCarousel {
             case "getPage":
                 return oState.nIdx;
             break;
-            default:  //  num pg value
+            default:  //  literal num pg value
                 if( ( oNav.nav >= 1 ) && ( oNav.nav < (oState.aTabCntr.length + 1) ) ) oState.nIdx = elNC.n55State.nIdx = oNav.nav
             }
             let nSP = ( oState.nIdx - 1 ) * oState.width  //  Scroll Position
