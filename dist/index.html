@@ -190,8 +190,36 @@ abbv card caro solution
 </nav>
 <hr data-n55-theme="danger" data-n55-size="medium">
 
-<hr data-n55-theme="info" data-n55-size="medium">
+<hr data-n55-theme="warning" data-n55-size="large">
+
+<neodigm-carousel id="js-caro-test">
+    <section>
+        <section>
+            <h6>Page Tab Region 1</h6>
+            <a data-n55-carousel-nav='{"id": "js-caro-test", "nav": "next"}'>next</a>
+            <a data-n55-carousel-nav='{"id": "js-caro-test", "nav": 3}'>2.4</a>
+            <a data-n55-carousel-nav='{"id": "js-caro-test", "nav": "prev"}'>prev</a>
+        </section>
+        <section>
+            <h6>Page Tab Region 2</h6>
+            <a data-n55-carousel-nav='{"id": "js-caro-test", "nav": "next"}'>next</a>
+            <a data-n55-carousel-nav='{"id": "js-caro-test", "nav": "prev"}'>prev</a>
+        </section>  
+    </section>
+ </neodigm-carousel>
+
+<hr data-n55-theme="warning" data-n55-size="large">
+
+
     <nav class="h-center">
+        <neodigm-acticon  data-n55-theme="ghost" data-n55-size="xsmall"
+        QQQonclick= 'neodigmCarousel.nav( {"id": "js-caro-test", "nav": "loop"} ); neodigmWired4Sound.sound( 10 );'
+        data-n55-carousel-nav='{"id": "js-caro-test", "nav": "loop"}'
+        data-n55-tulip='{"msg":"Play Next","mrq":false,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icon":""}'>
+        <neodigm-icon class="material-symbols-outlined">play_arrow</neodigm-icon>
+       </neodigm-acticon>
+       <br>
+
         <neodigm-acticon  data-n55-theme="info" data-n55-size="xsmall"  data-n55-tulip='{"msg":" WHITE theme, border and color stay white, even when AMPM changes. ","mrq":true,"tmpt":"","theme":"white","size":"xsmall","position":"top","icon":""}'><neodigm-icon class="material-symbols-outlined">search</neodigm-icon></neodigm-acticon>
         <neodigm-acticon  data-n55-theme="brand" data-n55-size="small"  data-n55-tulip='{"msg":" GHOST theme, recognizes AMPM becomiing nagative. ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"top","icon":""}'><neodigm-icon class="material-symbols-outlined">search</neodigm-icon></neodigm-acticon>
         <neodigm-acticon  data-n55-theme="brand" data-n55-size="medium" data-n55-tulip='{"msg":"medium|ghost","mrq":false,"tmpt":"","theme":"ghost","size":"medium","position":"right","icon":""}'><neodigm-icon class="material-symbols-outlined">search</neodigm-icon></neodigm-acticon>
