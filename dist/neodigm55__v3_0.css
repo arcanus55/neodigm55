@@ -302,7 +302,7 @@ background-color: rgba( 96, 88, 44, 0);
 [data-n55-enchanted-cta]{
     background: linear-gradient(var(--neodigm-theme-brand), var(--neodigm-theme-brand-alt));
     border-radius: 6px 22px; border: 0px;
-    border: solid 1px rgba( 8, 8, 8, 0);
+    border: none;
     color: #fff; cursor: pointer; 
     display: inline-block;
     font-family: 'Roboto',sans-serif; font-weight: 400;
@@ -411,8 +411,12 @@ background-color: rgba( 96, 88, 44, 0);
 [data-n55-enchanted-cta][data-n55-theme='night']     { background: linear-gradient(var(--neodigm-theme-night), var(--neodigm-theme-night-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='marcom']    { background: linear-gradient(var(--neodigm-theme-marcom), var(--neodigm-theme-marcom-alt)); }
 [data-n55-enchanted-cta][data-n55-theme='party']     { background: linear-gradient(var(--neodigm-theme-party), var(--neodigm-theme-party-alt)); }
-[data-n55-ampm-theme="light"] [data-n55-enchanted-cta][data-n55-theme='ghost'] { background: rgba( 8, 8, 8, 0); color: var( --neodigm-theme-night-alt ); border-color: var( --neodigm-theme-night-alt ); }
-[data-n55-ampm-theme="dark"]  [data-n55-enchanted-cta][data-n55-theme='ghost'] { background: rgba( 8, 8, 8, 0); color: #fff; border-color: #fff; }
+[data-n55-ampm-theme="light"] [data-n55-enchanted-cta][data-n55-theme='ghost'] { background: rgba(0,0,0,0); color: var( --neodigm-theme-night-alt );
+    border: solid 1px var( --neodigm-theme-night-alt ); 
+}
+[data-n55-ampm-theme="dark"]  [data-n55-enchanted-cta][data-n55-theme='ghost'] { background: rgba(0,0,0,0); color: #fff;
+    border: solid 1px #fff; 
+}
 
 @keyframes touch_emit{
 	0%{ box-shadow: 0 0 0 0 rgba(255,255,56, .25);}
@@ -719,8 +723,8 @@ neodigm-acticon[data-n55-theme='night']    { background-color: var( --neodigm-th
 neodigm-acticon[data-n55-theme='marcom']   { background-color: var( --neodigm-theme-marcom ); border-color: var( --neodigm-theme-marcom ) ;}
 neodigm-acticon[data-n55-theme='party']    { background-color: var( --neodigm-theme-party ); border-color: var( --neodigm-theme-party ) ;}
 neodigm-acticon[data-n55-theme='disabled'] { background-color: var( --neodigm-theme-disabled ); border-color: var( --neodigm-theme-disabled ) ;}
-[data-n55-ampm-theme="light"] neodigm-acticon[data-n55-theme='ghost'] { background: rgba( 8, 8, 8, 0); color: var( --neodigm-theme-night-alt ); border-color: var( --neodigm-theme-disabled ); }
-[data-n55-ampm-theme="dark"]  neodigm-acticon[data-n55-theme='ghost'] { background: rgba( 8, 8, 8, 0); color: #fff; border-color: var( --neodigm-theme-disabled ); }
+[data-n55-ampm-theme="light"] neodigm-acticon[data-n55-theme='ghost'] { background: rgba( 254, 254, 254, 0); color: var( --neodigm-theme-night-alt ); border-color: var( --neodigm-theme-disabled ); }
+[data-n55-ampm-theme="dark"]  neodigm-acticon[data-n55-theme='ghost'] { background: rgba( 254, 254, 254, 0); color: #fff; border-color: var( --neodigm-theme-disabled ); }
 /*  Neodigm Acticon End  */ 
 
 /*  Neodigm HR Begin  */ 
