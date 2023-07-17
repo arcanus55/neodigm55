@@ -16,7 +16,7 @@ let neodigmOpt = {
     N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
     N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
   neodigmWired4Sound: true,
-    W4S_VOLUME: .024,
+    W4S_VOLUME: .030,
     EVENT_SOUNDS: true,
   neodigmParallax: true,
     PRLX_MOBILE: false,  //  Show Parallax on Mobile
@@ -36,7 +36,7 @@ neodigmWWInterval: false,
   N55_DEBUG_lOG: false,
   N55_AMPM_THEME: "light",
   N55_EVENT_HAPTIC: true,
-  N55_GENRE_MOTIF: "neodigm",  //  rainforest seasonal steampunk cyberpunk artdeco noir anime casino expressionist
+  N55_GENRE_MOTIF: "neodigm",  //  anime artdeco casino cyberpunk expressionist graffiti noir rainforest seasonal steampunk
   N55_THEME_DEFAULT: "brand",
   N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"], "white":["FFFFFF","FDFDFD"], "ghost":["ffffff","000000"],
    "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"], "party":["FF6F61","C93F60"]},
@@ -224,29 +224,36 @@ class NeodigmSodaPop {
         this.bIsOpen = this.bIsModal = this.bIsInit = false
     }
     init() {
-        this.eScrim = this._d.querySelector(this._aQ[0])
-        this.eClose = this._d.querySelector(this._aQ[0] + "-close")
-        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  TODO Keyboard trap
-          let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId 
-          let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
-          if( evAtr && (evTheme != "disabled") ) {
-              ev.preventDefault()
-              neodigmSodaPop.open( evAtr )
-          }
-          if("NEODIGM-SODAPOP-SCRIM" == ev.target.tagName) {
-              if(this.bIsModal) { this.shake() } else { this.close() }
-          }
-          if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) this.close()
-          if( ev.srcElement?.dataset?.sodapopScrimSvg ) this.close()
-          if("SUMMARY" == ev.target.tagName) {
-            if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( ev.target.parentElement.hasAttribute( "open" ) ? 9 : 7 )
-          }
-        }, false)
-        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mouseleave", (ev) => {
-          if( this.fOnBeforeUserExit && !sessionStorage.getItem( "n55_userExit" ) ) this.fOnBeforeUserExit()
-          sessionStorage.setItem( "n55_userExit", Date.now() )
-        })
-        this.bIsInit = true
+        if( !this.bIsInit ){
+            this.eScrim = this._d.querySelector(this._aQ[0])
+            this.eClose = this._d.querySelector(this._aQ[0] + "-close")
+            this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  TODO Keyboard trap
+                let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId 
+                let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
+                if( evAtr && (evTheme != "disabled") ) {
+                    ev.preventDefault()
+                    neodigmSodaPop.open( evAtr )
+                }
+                if("NEODIGM-SODAPOP-SCRIM" == ev.target.tagName) {
+                    if( this.bIsModal ) { this.shake() } else { this.close() }
+                }
+                if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) this.close()
+                if( ev.srcElement?.dataset?.sodapopScrimSvg ) this.close()
+                if("SUMMARY" == ev.target.tagName) {
+                if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( ev.target.parentElement.hasAttribute( "open" ) ? 9 : 7 )
+                }
+            }, false)
+            this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("keydown", ( ev ) => {  //  Close on Esc Key
+                if ( ev.key == "Escape" ){
+                    if( this.bIsModal ) { this.shake() } else { if( this.bIsOpen ) this.close() }
+                }
+            }, true)
+            this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mouseleave", (ev) => {  //  User focus exit
+                if( this.fOnBeforeUserExit && !sessionStorage.getItem( "n55_userExit" ) ) this.fOnBeforeUserExit()
+                sessionStorage.setItem( "n55_userExit", Date.now() )
+            })
+            this.bIsInit = true
+        }
         return this
     }
     open( _sId ) {
@@ -348,9 +355,9 @@ class NeodigmSodaPop {
 let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-n55-sodapop-modal"] )
 
 //  Neodigm 55 Tulip Begin  //
-class NeodigmTulip {
+class NeodigmTulip {  //  Tooltip
   constructor(_d, _aQ) {
-      this._d = _d; this._aQ = _aQ; this.sId = "";
+      this._d = _d; this._aQ = _aQ; this.sId = ""
       this.eTulip = this.eTulipTxt = this.eTulMrq = null
       this.bIsOpen = this.bIsInit = this.bIsPause = this.bIsAuto = false
       this.oCnfDef = {"msg":"tulip","mrq":false,"tmpt":"","theme": neodigmOpt.N55_THEME_DEFAULT,"size":"small","position":"top","icon":""}
@@ -466,12 +473,45 @@ let neodigmTulip = new NeodigmTulip( document, ["neodigm-tulip", "[data-n55-tuli
 class NeodigmPopTart {
   constructor(_d, _aQ) {  //  Orthogonal Diagonalizer
       this._d = _d; this._aQ = _aQ; this.sId = ""
-      this.eSoda = this.eScrim = this.eClose = null
+      this.ePopTrt = null
       this.fOnBeforeOpen = {}; this.fOnAfterOpen = {}; this.fOnClose = {}
-      this.bIsOpen = this.bIsModal = this.bIsInit = false
+      this.bIsOpen = this.bIsInit = false
   }
-  init() {}
-  open() {}
+  init() {
+    this.ePopTrt = this._d.querySelector( this._aQ[0] )
+    if( this.ePopTrt && !this.bIsInit ){
+        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mouseenter", ( ev ) => {  //  TODO Keyboard trap?
+            const sAtrMe = ev?.target?.dataset?.n55PoptartMouseenter || ev?.srcElement?.parentNode?.dataset?.n55PoptartMouseenter 
+            const evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
+            if( sAtrMe && (evTheme != "disabled") ) {
+                ev.preventDefault()
+                neodigmPopTart.open( sAtrMe, ev.target.getBoundingClientRect() )  //  Assumes host elmnt is child
+            }
+        }, false)
+        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  TODO Keyboard trap?
+            const sAtrCl = ev?.target?.dataset?.n55PoptartClick || ev?.srcElement?.parentNode?.dataset?.n55PoptartClick  //  TODO util grandparent crawl
+            const evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme  //  TODO util grandparent crawl
+            if( sAtrCl && (evTheme != "disabled") ) {
+                ev.preventDefault()
+                neodigmPopTart.open( sAtrCl, ev.target.getBoundingClientRect() )  //  Assumes host elmnt is child
+            }
+        }, false)
+        this.bIsInit = true
+    }
+    return this;
+  }
+  open( _sId, oRct ) {
+    this.sId = _sId
+    //if( this.bIsOpen ) this.close(true)
+    this.eTmpl = this._d.getElementById( _sId )
+    if( this.bIsInit && this.eTmpl && this.ePopTrt ) {
+
+        this.bIsOpen = true
+        if(this.fOnBeforeOpen[ _sId]) this.fOnBeforeOpen[ _sId]()
+        if(this.fOnBeforeOpen["def"]) this.fOnBeforeOpen["def"]()
+    }
+    return this;
+  }
   close() {}
   shake() {}
   isOpen(){ return this.bIsOpen }
@@ -823,7 +863,7 @@ class NeodigmClaire {
 /*
 Create hidden canvas the size of
       All target DOM child elements, given the two farthest x/y coordinance
-Paint a generative / procedural dwitter on the hidden canvas
+Paint a generative / procedural anime on the hidden canvas
 Directionally paint each DOM el in turn, with it's slice of the hidden canvas.
 Fire completed callback  //  Cut Out Layer
 */

@@ -206,6 +206,7 @@ neodigm-parallax[data-n55-parallax-size='xsmall'] aside { padding: 100px 0; }
 neodigm-parallax[data-n55-parallax-size='small']  aside { padding: 200px 0; }
 neodigm-parallax[data-n55-parallax-size='medium'] aside { padding: 400px 0; }
 neodigm-parallax[data-n55-parallax-size='large']  aside { padding: 600px 0; }
+neodigm-parallax[data-n55-parallax-size='xlarge'] aside { padding: 1000px 0; }
 /*  Neodigm Parallax End  */
 
 /*  Neodigm Marquee Begin  */ 
