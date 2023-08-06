@@ -32,7 +32,7 @@ let neodigmOpt = {
 neodigmTulip: true,
 neodigmPopTart: true,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
 neodigmWWInterval: false,
-  N55_ZIND: {"PopTart": 224},
+  N55_ZIND: {"PopTart": 62},
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
   N55_AMPM_THEME: "light",
@@ -414,7 +414,7 @@ class NeodigmTulip {  //  Tooltip
   }
   autoOpen( sQry ) {  //  DOM query
     let elTrg = this._d.querySelector( sQry )
-    if( elTrg && elTrg.dataset[ "n55Tulip" ] ){
+    if( elTrg && elTrg?.dataset[ "n55Tulip" ] ){
       neodigmTulip.prepOpen( elTrg.dataset[ "n55Tulip" ], elTrg.getBoundingClientRect() )
     }
     this.bIsAuto = true
@@ -525,7 +525,7 @@ class NeodigmPopTart {
     return this;
   }
   open( elPop, oPos ) {
-    if( this.bIsInit && !elPop.dataset?.n55PoptartOpen ) {  //  TODO not paused
+    if( this.bIsInit && !this.bIsPause && !elPop.dataset?.n55PoptartOpen ) {
         let nOffSetT, nOffSetL, nOffSetH, nOffSetW;
         nOffSetT = nOffSetL = nOffSetH = nOffSetW = 0;
 
@@ -557,7 +557,6 @@ class NeodigmPopTart {
                 oPos.x = ( oPos.x - oRctBound.width )
             break
         }
-
         elPop.style.left = oPos.x + "px"; elPop.style.top = oPos.y + "px"; elPop.style.width = oPos.w + "px"
         elPop.style.height = ( oPos.h == "auto" ) ? "auto" : oPos.h + "px";
         elPop.style.zIndex = oPos.z;
@@ -571,6 +570,16 @@ class NeodigmPopTart {
   }
   close() {
     for( let e in this.oPopTmpls ){ delete this.oPopTmpls[ e ].dataset.n55PoptartOpen; this.bIsOpen = false }
+  }
+  pause ( nT ){
+    if( this.bIsInit ){
+      if( nT ) setTimeout( () =>{neodigmPopTart.play()}, nT )
+      this.bIsPause = true;  return this;
+    }
+  }
+  play (){
+    this.bIsPause = false;
+    return this;
   }
   shake() {}
   isOpen(){ return this.bIsOpen }
