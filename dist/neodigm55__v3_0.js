@@ -188,9 +188,9 @@ let neodigmToast = (function(_d, eID, _q) {
               }
           }
           _d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev )=>{
-            let evToast = ev?.target?.dataset.n55Toast || ev?.srcElement?.parentNode?.dataset.n55Toast
+            let evToast = ev?.target?.dataset.n55Toast || ev?.target?.parentNode?.dataset.n55Toast
             if( evToast ){
-              let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme || neodigmOpt.N55_THEME_DEFAULT
+              let evTheme = ev?.target?.dataset.n55Theme || ev?.target?.parentNode?.dataset.n55Theme || neodigmOpt.N55_THEME_DEFAULT
               if( evTheme && evTheme != "disabled" ) neodigmToast.q( evToast, evTheme )              
             }
           }, true)
@@ -230,8 +230,8 @@ class NeodigmSodaPop {
             this.eScrim = this._d.querySelector(this._aQ[0])
             this.eClose = this._d.querySelector(this._aQ[0] + "-close")
             this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  TODO Keyboard trap
-                let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.srcElement?.parentNode?.dataset?.n55SodapopId 
-                let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
+                let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.target?.parentNode?.dataset?.n55SodapopId 
+                let evTheme = ev?.target?.dataset.n55Theme || ev?.target?.parentNode?.dataset.n55Theme
                 if( evAtr && (evTheme != "disabled") ) {
                     ev.preventDefault()
                     neodigmSodaPop.open( evAtr )
@@ -240,7 +240,7 @@ class NeodigmSodaPop {
                     if( this.bIsModal ) { this.shake() } else { this.close() }
                 }
                 if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) this.close()
-                if( ev.srcElement?.dataset?.sodapopScrimSvg ) this.close()
+                if( ev?.target?.dataset?.sodapopScrimSvg ) this.close()
                 if("SUMMARY" == ev.target.tagName) {
                 if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( ev.target.parentElement.hasAttribute( "open" ) ? 9 : 7 )
                 }
@@ -619,8 +619,8 @@ class NeodigmWired4Sound {
     ["click", "mouseover"].forEach(( evName ) => {
       this._d.querySelector( this._aQ[0] ).addEventListener(evName, ( ev )=>{
         let sAtr = "n55Wired4sound" + neodigmUtils.capFirst( evName )  //  TODO hover
-        let evAtr = ev?.target?.dataset[ sAtr ] || ev?.srcElement?.parentNode?.dataset[ sAtr ]
-        let evTheme = ev?.target?.dataset.n55Theme || ev?.srcElement?.parentNode?.dataset.n55Theme
+        let evAtr = ev?.target?.dataset[ sAtr ] || ev?.target?.parentNode?.dataset[ sAtr ]
+        let evTheme = ev?.target?.dataset.n55Theme || ev?.target?.parentNode?.dataset.n55Theme
         if( evAtr && (evTheme != "disabled") ) neodigmWired4Sound.sound( evAtr )
       }, false);
     })
@@ -1100,19 +1100,19 @@ class NeodigmEnchantedCTA {
       this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
       if( !this.bIsInit ){  //  once events app_state.context
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {
-          let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
-          let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
+          let sId = ev?.target?.id || ev?.target?.parentNode?.id || "add_id"
+          let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.target?.parentNode?.dataset)
           if( bCta && neodigmOpt.N55_GTM_DL_CTA ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CTA, sId )
-          let sTheme = ev?.target?.dataset?.n55Theme || ev?.srcElement?.parentNode?.dataset?.n55Theme
+          let sTheme = ev?.target?.dataset?.n55Theme || ev?.target?.parentNode?.dataset?.n55Theme
           if( sTheme != "disabled" ){
-            let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.srcElement?.parentNode?.dataset?.n55FlashTheme
+            let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.target?.parentNode?.dataset?.n55FlashTheme
             if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
           }
         }, false)
         if( neodigmOpt.N55_CTA_LONG_TAP ){
           this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mousedown", ( ev ) => {
-            let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
-            let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.srcElement?.parentNode?.dataset)
+            let sId = ev?.target?.id || ev?.target?.parentNode?.id || "add_id"
+            let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.target?.parentNode?.dataset)
             if( bCta ){
               neodigmEnchantedCTA.bLongTap = true
               setTimeout( function(){
@@ -1225,8 +1225,8 @@ class NeodigmKPI {
   init (){
     this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
     if( !this.bIsInit ) this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  once event body
-      let sId = ev?.target?.id || ev?.srcElement?.parentNode?.id || "add_id"
-      let bKPI = ("n55Kpi" in ev?.target?.dataset) || ("n55Kpi" in ev?.srcElement?.parentNode?.dataset)
+      let sId = ev?.target?.id || ev?.target?.parentNode?.id || "add_id"
+      let bKPI = ("n55Kpi" in ev?.target?.dataset) || ("n55Kpi" in ev?.target?.parentNode?.dataset)
       if( bKPI && neodigmOpt.N55_GTM_DL_KPI ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_KPI, sId )
     }, false)
     if( neodigmOpt.N55_CTA_RND_TOUCH ){
@@ -1270,9 +1270,9 @@ class NeodigmCarousel {
         if( elNC.id ) neodigmCarousel.formatNewCaro( elNC )
       })
       if( !this.bIsInit ) this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  once event body
-        if( ("n55CarouselNav" in ev.target?.dataset) || ("n55CarouselNav" in ev.srcElement?.parentNode?.dataset) ){
-          let sId = ev.target?.id || ev.srcElement?.parentNode?.id || "add_id"
-          let oNav = JSON.parse( ev.target?.dataset?.n55CarouselNav || ev.srcElement?.parentNode?.dataset?.n55CarouselNav )
+        if( ("n55CarouselNav" in ev.target?.dataset) || ("n55CarouselNav" in ev?.target?.parentNode?.dataset) ){
+          let sId = ev.target?.id || ev?.target?.parentNode?.id || "add_id"
+          let oNav = JSON.parse( ev.target?.dataset?.n55CarouselNav || ev?.target?.parentNode?.dataset?.n55CarouselNav )
           neodigmCarousel.nav( {id: oNav.id, nav: oNav.nav} )
           if( neodigmOpt.N55_GTM_DL_CARSL ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CARSL, sId )
         }
