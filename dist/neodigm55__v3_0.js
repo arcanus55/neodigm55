@@ -529,20 +529,19 @@ class NeodigmPopTart {
   }
   open( elPop, oPos ) {
     if( this.bIsInit && !this.bIsPause && !elPop.dataset?.n55PoptartOpen ) {
-        let nOffSetT, nOffSetL, nOffSetH, nOffSetW;
+        let nOffSetT, nOffSetL, nOffSetH, nOffSetW;  //  TODO oPos offsets
         nOffSetT = nOffSetL = nOffSetH = nOffSetW = 0;
-
-        elPop.dataset.n55PoptartOpen = Date.now()
-
         let oRctBound = this.elBound.getBoundingClientRect()
         let oRctPopCt = elPop.getBoundingClientRect()
         let pxLft  = window.pageXOffset || this._d.documentElement.scrollLeft
         let pxTop = window.pageYOffset || this._d.documentElement.scrollTop
+        let oOrig = JSON.parse( JSON.stringify( oPos ) )
+        elPop.dataset.n55PoptartOpen = Date.now()
 
         oPos.x = ( ( oPos.x ) ? oPos.x : ( oRctBound.left + pxLft + nOffSetL ) )  //  X
         oPos.y = ( ( oPos.y ) ? oPos.y : ( oRctBound.top  + pxTop - nOffSetT ) )  //  Y
         oPos.z = ( ( oPos.z ) ? oPos.z : neodigmOpt.N55_ZIND.PopTart )  //  Z
-        oPos.h = ( ( oPos.h ) ? oPos.h : "auto" )  //  H
+        oPos.h = ( ( oPos.h ) ? (oPos.h + nOffSetH) : "auto" )  //  H
         oPos.w = ( ( oPos.w ) ? oPos.w : ( oRctBound.width + nOffSetW ) )  //  W
         oPos.position = ( ( oPos.position ) ? oPos.position : "bottom" )  //  P
 
@@ -554,6 +553,7 @@ class NeodigmPopTart {
                 oPos.x = ( oPos.x + oRctBound.width )
             break
             case "bottom":
+                if( oOrig.w ) oPos.x = oPos.x - ( oOrig.w / 2 )  //  TODO calc x center of bound elm
                 oPos.y = ( oPos.y + oRctBound.height )
             break
             case "left":
