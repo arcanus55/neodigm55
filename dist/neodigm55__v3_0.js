@@ -520,6 +520,9 @@ class NeodigmPopTart {
                 if( !bInside ){ neodigmPopTart.close() }
             }
         }, true)
+        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("keydown", ( ev ) => {  //  Close on Esc Key
+            if ( ev.key == "Escape" ){ if( this.bIsOpen ) this.close() }
+        }, true)
         this.bIsInit = true
     }
     return this;
