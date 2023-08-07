@@ -203,7 +203,7 @@ section.pfmf-grid {
     margin: 0 auto; padding: 8px;
     align-content: center;  
     box-sizing: border-box;
-    width: 86%; max-width: 1400px;
+    width: 92%; max-width: 1400px;
 }
 section.pfmf-grid__25_25_25_25  { grid-template-columns: 100%; }
 section.pfmf-grid__25_25_25_25 > div:nth-child(1) { order: 1; }

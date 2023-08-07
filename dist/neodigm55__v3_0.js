@@ -553,7 +553,7 @@ class NeodigmPopTart {
                 oPos.x = ( oPos.x + oRctBound.width )
             break
             case "bottom":
-                if( oOrig.w ) oPos.x = oPos.x - ( oOrig.w / 2 )  //  TODO calc x center of bound elm
+                if( oOrig.w ) oPos.x = oPos.x - ( oOrig.w / 2 )  //  TODO calc and align x center of bound elm
                 oPos.y = ( oPos.y + oRctBound.height )
             break
             case "left":
