@@ -528,15 +528,19 @@ class NeodigmPopTart {
     return this;
   }
   open( elPop, oPos ) {
-    if( this.bIsInit && !this.bIsPause && !elPop.dataset?.n55PoptartOpen ) {
+    if( this.bIsInit && !this.bIsPause && elPop.id && !elPop.dataset?.n55PoptartOpen ) {
         let nOffSetT, nOffSetL, nOffSetH, nOffSetW;  //  TODO oPos offsets conf
         nOffSetT = nOffSetL = nOffSetH = nOffSetW = 0;
         let oRctBound = this.elBound.getBoundingClientRect()
-        let oRctPopCt = elPop.getBoundingClientRect()
         let pxLft  = window.pageXOffset || this._d.documentElement.scrollLeft
         let pxTop = window.pageYOffset || this._d.documentElement.scrollTop
         let oOrig = JSON.parse( JSON.stringify( oPos ) )
+          //  Allow pre CB to cancel open
+        if( this.fOnBeforeOpen[ elPop.id ] ){ if( !this.fOnBeforeOpen[ elPop.id ]() ) return false; }
+        if( this.fOnBeforeOpen[ "def" ] ){ if( !this.fOnBeforeOpen[ "def" ]() ) return false; }
+
         elPop.dataset.n55PoptartOpen = Date.now()
+        let oRctPopCt = elPop.getBoundingClientRect()
         oPos.w = ( ( oPos.w ) ? oPos.w : ( oRctBound.width + nOffSetW ) )  //  W
         oPos.x = ( ( oPos.x ) ? oPos.x : ( ( oRctBound.left + (oRctBound.width / 2) ) - ( oPos.w / 2) + pxLft + nOffSetL ) )  //  X  //  TODO calc and align x center of bound elm
         oPos.y = ( ( oPos.y ) ? oPos.y : ( oRctBound.top  + pxTop - nOffSetT ) )  //  Y
@@ -564,13 +568,19 @@ class NeodigmPopTart {
         if( !elPop.dataset?.n55Theme ) elPop.dataset.n55Theme = this.sBoundTheme  //  Inherit Theme from Bound El, may be flash theme
         if( neodigmOpt.N55_GTM_DL_POPTRT ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_POPTRT, elPop.id )
         this.bIsOpen = true
-        if(this.fOnBeforeOpen[ elPop.id ]) this.fOnBeforeOpen[ elPop.id ]()
-        if(this.fOnBeforeOpen["def"]) this.fOnBeforeOpen["def"]()
+        if( this.fOnAfterOpen[ elPop.id ] ) this.fOnAfterOpen[ elPop.id ]()
+        if( this.fOnAfterOpen["def"] ) this.fOnAfterOpen["def"]()
     }
     return this;
   }
   close() {
-    for( let e in this.oPopTmpls ){ delete this.oPopTmpls[ e ].dataset.n55PoptartOpen; this.bIsOpen = false }
+    for( let e in this.oPopTmpls ){
+        if( this.oPopTmpls[ e ]?.dataset?.n55PoptartOpen ){
+            if( this.fOnClose[ this.oPopTmpls[ e ].id ] ) this.fOnClose[ this.oPopTmpls[ e ].id ]()
+            if( this.fOnClose["def"] ) this.fOnClose["def"]()
+        }
+        delete this.oPopTmpls[ e ].dataset.n55PoptartOpen; this.bIsOpen = false
+    }
   }
   pause ( nT ){
     if( this.bIsInit ){
