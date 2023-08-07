@@ -29,7 +29,7 @@ a { -webkit-tap-highlight-color: rgba(0,0,0,0); outline: none; user-select: none
 .h-ds-b__desktop--only {display: none;}
 .h-ds-b__mobile--only  {display: block;}
 .h-ds-i__desktop--only {display: none;}
-.h-ds-i__mobile--only  {display: inline;}
+.h-ds-i__mobile--only  {display: inline-block;}
 .h-ds-g__desktop--only {display: none;}
 .h-ds-g__mobile--only  {display: grid;}
 .h-fade { opacity: 0.4; filter: blur(8px); transition: .88s filter linear;}
