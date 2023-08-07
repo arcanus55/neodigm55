@@ -204,6 +204,7 @@ neodigm-parallax[data-n55-parallax] aside {
     background-position: middle center;
     width: 100%;
 }
+neodigm-parallax[data-n55-parallax-size='micro']  aside { padding: 50px 0; }
 neodigm-parallax[data-n55-parallax-size='xsmall'] aside { padding: 100px 0; }
 neodigm-parallax[data-n55-parallax-size='small']  aside { padding: 200px 0; }
 neodigm-parallax[data-n55-parallax-size='medium'] aside { padding: 400px 0; }
