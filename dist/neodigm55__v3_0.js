@@ -576,6 +576,7 @@ class NeodigmPopTart {
   close( sId ) {
     for( let e in this.oPopTmpls ){
         if( this.oPopTmpls[ e ]?.dataset?.n55PoptartOpen ){
+console.log( " ~~~ this.oPopTmpls[ e ].id | " + this.oPopTmpls[ e ].id )
             if( !sId || sId == this.oPopTmpls[ e ].id ){
                 let bOkClose = true
                 if( this.fOnClose[ this.oPopTmpls[ e ].id ] ) bOkClose = this.fOnClose[ this.oPopTmpls[ e ].id ]()
