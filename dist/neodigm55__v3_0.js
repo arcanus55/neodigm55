@@ -573,13 +573,19 @@ class NeodigmPopTart {
     }
     return this;
   }
-  close() {
+  close( sId ) {
     for( let e in this.oPopTmpls ){
         if( this.oPopTmpls[ e ]?.dataset?.n55PoptartOpen ){
-            if( this.fOnClose[ this.oPopTmpls[ e ].id ] ) this.fOnClose[ this.oPopTmpls[ e ].id ]()
-            if( this.fOnClose["def"] ) this.fOnClose["def"]()
+            if( !sId || sId == this.oPopTmpls[ e ].id ){
+                let bOkClose = true
+                if( this.fOnClose[ this.oPopTmpls[ e ].id ] ) bOkClose = this.fOnClose[ this.oPopTmpls[ e ].id ]()
+                if( this.fOnClose["def"] ) bOkClose = this.fOnClose["def"]()
+                if( bOkClose ){
+                    delete this.oPopTmpls[ e ].dataset.n55PoptartOpen;
+                    this.bIsOpen = false
+                }
+            }
         }
-        delete this.oPopTmpls[ e ].dataset.n55PoptartOpen; this.bIsOpen = false
     }
   }
   pause ( nT ){
