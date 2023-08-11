@@ -534,7 +534,7 @@ class NeodigmPopTart {
         let oRctBound = this.elBound.getBoundingClientRect()
         let pxLft  = window.pageXOffset || this._d.documentElement.scrollLeft
         let pxTop = window.pageYOffset || this._d.documentElement.scrollTop
-        let oOrig = JSON.parse( JSON.stringify( oPos ) )
+        const NOFFSET = 6
           //  Allow pre CB to cancel open
         if( this.fOnBeforeOpen[ elPop.id ] ){ if( !this.fOnBeforeOpen[ elPop.id ]() ) return false; }
         if( this.fOnBeforeOpen[ "def" ] ){ if( !this.fOnBeforeOpen[ "def" ]() ) return false; }
@@ -550,13 +550,13 @@ class NeodigmPopTart {
 
         switch( oPos.position ){
             case "top":
-                oPos.y = ( oPos.y - ( oRctBound.height + oRctPopCt.height ) )
+                oPos.y = ( oPos.y - ( oRctBound.height + oRctPopCt.height ) + NOFFSET )
             break
             case "right":
                 oPos.x = ( oPos.x + oRctBound.width )
             break
             case "bottom":
-                oPos.y = ( oPos.y + oRctBound.height )
+                oPos.y = ( oPos.y + oRctBound.height ) + NOFFSET
             break
             case "left":
                 oPos.x = ( oPos.x - oRctBound.width )
