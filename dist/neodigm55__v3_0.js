@@ -534,7 +534,7 @@ class NeodigmPopTart {
         let oRctBound = this.elBound.getBoundingClientRect()
         let pxLft  = window.pageXOffset || this._d.documentElement.scrollLeft
         let pxTop = window.pageYOffset || this._d.documentElement.scrollTop
-        const NOFFSET = 6
+        const NOFFSET = 8
           //  Allow pre CB to cancel open
         if( this.fOnBeforeOpen[ elPop.id ] ){ if( !this.fOnBeforeOpen[ elPop.id ]() ) return false; }
         if( this.fOnBeforeOpen[ "def" ] ){ if( !this.fOnBeforeOpen[ "def" ]() ) return false; }
