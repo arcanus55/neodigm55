@@ -115,7 +115,7 @@ const neodigmUtils = ( ( _d ) =>{
       if( sFirstAMPM ) neodigmOpt.N55_AMPM_THEME = neodigmOpt.N55_APP_STATE.AMPM = sFirstAMPM
     },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
-    genHash: sVal => sVal.split("").reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0),
+    genHash: (sV) => {sV = String(sV); return sV.split("").reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)},
     robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
       if( !neodigmMetronome.isPaused() ){ // TODO test OS/UA motion mq
         let aE = [ ... document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelectorAll("[data-n55-theme") ]; const NDELAY = 32;
