@@ -48,14 +48,15 @@ data-n55-wired4sound-click="7"
 </a>
 
 <hr data-n55-theme="danger" data-n55-size="medium">
-// A2YW WDGT REQUIREMENTS - Long Tap msg on CTA | Pup is Modal | No SFDC W2L - Use WWT API? | Forever free | Email me a free Monthly Engagement Analytics report
+<p class="hd4 readable__doc">A2YW WDGT REQUIREMENTS - Long Tap msg on CTA | Pup is Modal | 
+    upsell cta Reach out to us if you need a custom tool. | No SFDC W2L - Use WWT API? | Forever free | Email me a free Monthly Engagement Analytics report | neodigmWidget.getJWT()</p>
 
 <p class="h-center hd2 readable__caption">A2YW</p>
 
 <section> <aside class="h-center">
 
     <a id="js-wtt-cta-a2yw--md"
-    data-n55-sodapop-id="js-wtt-pup-a2yw" data-n55-enchanted-cta
+    data-n55-sodapop-id="js-wtt-a2yw-pup" data-n55-enchanted-cta
     data-n55-enchanted-cta-hover-an="true"
     data-n55-enchanted-cta-ambient="emit"
     data-n55-enchanted-cta-dont-touch="true"
@@ -67,7 +68,7 @@ data-n55-wired4sound-click="7"
     ><span data-n55-wired4sound-mouseover="3">Add this Widget to Your Website</span>
     <span>
         <neodigm-marquee data-n55-marquee-text="  This amazing tool can be easily added to your own website. Really! Just send a few lines of code to your web dev and you are in business. Easy!  "
-        data-n55-sodapop-id="js-wtt-pup-a2yw"
+        data-n55-sodapop-id="js-wtt-a2yw-pup"
         data-n55-wired4sound-click="5"
         data-n55-marquee-size="xsmall" data-n55-marquee-direction="false"><pre data-n55-theme="ghost"
         ></pre></neodigm-marquee>
@@ -76,8 +77,41 @@ data-n55-wired4sound-click="7"
 
 </aside> </section>
 
-<neodigm-template id="js-wtt-pup-a2yw" data-n55-sodapop-modal="false" 
+<neodigm-template id="js-wtt-a2yw-pup" data-n55-sodapop-modal="true" 
 data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
+
+<nav class="h-right">
+    <neodigm-acticon  data-n55-theme="ghost" data-n55-size="micro" data-n55-tulip="Close / Exit"
+    data-n55-wired4sound-click='9'
+    onclick="neodigmSodaPop.close()"><neodigm-icon class="material-symbols-outlined">close</neodigm-icon></neodigm-acticon>
+</nav>
+<neodigm-carousel id="js-wtt-a2yw-caro__id">
+
+    <section>
+        <section>
+            <aside class="h-center"><p class="readable__caption hd5">Page Tab 1</p></aside>
+        </section>
+        <section>
+            <aside class="h-center"><p class="readable__caption hd5">Page Tab 2</p></aside>
+        </section>
+    </section>
+
+ </neodigm-carousel>
+
+ <neodigm-acticon  data-n55-theme="ghost" data-n55-size="xsmall"
+ QQQonclick= 'neodigmCarousel.nav( {"id": "js-wtt-a2yw-caro__id", "nav": "loop"} ); neodigmWired4Sound.sound( 10 );'
+ data-n55-carousel-nav='{"id": "jjs-wtt-a2yw-caro__id", "nav": "loop"}'
+ data-n55-tulip='{"msg":"Play Next","mrq":false,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icon":""}'>
+ <neodigm-icon class="material-symbols-outlined">delete</neodigm-icon>
+</neodigm-acticon>
+<br>
+
+ <a data-n55-carousel-nav='{"id": "js-wtt-a2yw-caro__id", "nav": "next"}'>next</a>
+
+ <a data-n55-carousel-nav='{"id": "js-wtt-a2yw-caro__id", "nav": "prev"}'>prev</a>
+
+ <a data-n55-carousel-nav='{"id": "js-wtt-a2yw-caro__id", "nav": "loop"}'>loop</a>
+
 
     <neodigm-marquee data-n55-marquee-size="xsmall"
     data-n55-marquee-text="  Seamlessly integrated into your website’s look and feel. Click the Copy button then paste into an email to your friendly neighborhood web developer. ">
@@ -106,7 +140,9 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
 </neodigm-template>
 
 <script>
-function doCopyA2YW(){  //  Add 2 Your Website
+function doCopyA2YW( o ){  //  Add 2 Your Website
+console.log(" ~~~ | " + o )
+    if( neodigmCarousel ) neodigmCarousel.init()
     let elPre = document.getElementById("js-copy__a2yw")
     let elWdg = document.querySelector("[data-wtt-wdgt-token], [data-n55-widget-id]")
     if( elPre && elWdg ){
@@ -116,7 +152,9 @@ function doCopyA2YW(){  //  Add 2 Your Website
 window.addEventListener('DOMContentLoaded', (ev) => {
     setTimeout(function(){
         if( neodigmSodaPop && neodigmMarquee && neodigmEnchantedCTA ){
-            neodigmSodaPop.setOnAfterOpen( function(){ doCopyA2YW() }, "js-wtt-pup-a2yw");
+console.log(" ~~~ setOnBeforeOpen | " + 999 )
+
+            neodigmSodaPop.setOnBeforeOpen( function(){ doCopyA2YW() }, "js-wtt-a2yw-pup");
         }
     }, 2e3)
 } )
@@ -271,6 +309,19 @@ NeodigmClaire.showCanv('neodigm-sodapop').setTheme( ['brand','danger','info','ma
     body[data-n55-ampm-theme="light"] {background-color: #fff;}
     body[data-n55-ampm-theme="dark"]  {background-color: #000;}
 </style>
+<p>List of known alpha sites/apps</p>
+
+<p class="">TSK</p>
+<p class="">Index.html (self)</p>
+<p class="">M5M</p>
+<p class="">SEMb</p>
+<p class="">CHIPS CORP ID (por tempo | retired)</p>
+<p class="">SYPR</p>
+<p class="">INTERSTELLAR</p>
+<p class="">KRA KINETICS</p>
+<p class="">WebToolToys</p>
+<p class=""><a href="https://neodigm.github.io/roi_calc/">ROI Calc gh-pages</a></p>
+
 
 </body>
 </html>

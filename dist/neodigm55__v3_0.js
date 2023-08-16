@@ -259,74 +259,75 @@ class NeodigmSodaPop {
         return this
     }
     open( _sId ) {
-      this.sId = _sId
-      if(this.bIsOpen) this.close(true)
-      this.eTmpl = this._d.getElementById(_sId)
-      if(this.bIsInit && this.eTmpl && this.eScrim) {
-          if(this.fOnBeforeOpen[ _sId]) this.fOnBeforeOpen[ _sId]()
-          if(this.fOnBeforeOpen["def"]) this.fOnBeforeOpen["def"]()
-          this.bIsModal = (this.eTmpl.dataset.n55SodapopModal == "true")
-          if(this.bIsModal) {
+        let bOkOpen = true
+        this.sId = _sId
+        if(this.bIsOpen) this.close(true)
+        this.eTmpl = this._d.getElementById( _sId )
+        if(this.fOnBeforeOpen[ _sId] ) bOkOpen = this.fOnBeforeOpen[ _sId]( this.sId )  //  The specific can cancel the generic
+        if( bOkOpen && this.fOnBeforeOpen["def"]) bOkOpen = this.fOnBeforeOpen["def"]( this.sId )
+        if( bOkOpen && this.bIsInit && this.eTmpl && this.eScrim ) {
+            this.bIsModal = (this.eTmpl.dataset.n55SodapopModal == "true")
+            if(this.bIsModal) {
             this.eClose.classList.add("ndsp__modal")
-          }else{
+            }else{
             this.eClose.classList.remove("ndsp__modal")
-          }
-          this.eScrim.dataset.n55SodapopScrim = this.eClose.dataset.n55SodapopScrim = "opened"
-          this.eSoda = this._d.createElement(this._aQ[1])
-          setTimeout(function() {
-              neodigmSodaPop.eScrim.classList.add("ndsp__blur");
-          }, 96)
-          if(this.bIsModal) this.eSoda.classList.add("ndsp__modal")
-          this.eSoda.classList.add("ndsp__size--" + this.eTmpl.dataset.n55SodapopSize ) 
-          setTimeout(function() {
-              neodigmSodaPop.eSoda.classList.add("ndsp__opened");
-          }, 276)
-          this.eSoda.innerHTML = this.eTmpl.innerHTML
-          this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].appendChild(this.eSoda)
-          if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([16, 8])
-          //if( this.eTmpl.dataset.n55ClaireWaxon ){
-            // if( this.eTmpl.dataset.n55ClaireTheme ) NeodigmClaire.setTheme( this.eTmpl.dataset.n55ClaireTheme )
-            // NeodigmClaire.showCanv( this._aQ[1] ).initCanv( this._aQ[1] ).waxOn( this._aQ[1], neodigmOpt.N55_GENRE_MOTIF )
-          //}
-          if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7 )
-          this.bIsFS = ( this.eTmpl.dataset.n55SodapopFullscreen == "true" && neodigmOpt.N55_APP_STATE.FIRST_TAP )
-          if( this.bIsFS ){
+            }
+            this.eScrim.dataset.n55SodapopScrim = this.eClose.dataset.n55SodapopScrim = "opened"
+            this.eSoda = this._d.createElement(this._aQ[1])
+            setTimeout(function() {
+                neodigmSodaPop.eScrim.classList.add("ndsp__blur");
+            }, 96)
+            if(this.bIsModal) this.eSoda.classList.add("ndsp__modal")
+            this.eSoda.classList.add("ndsp__size--" + this.eTmpl.dataset.n55SodapopSize ) 
+            setTimeout(function() {
+                neodigmSodaPop.eSoda.classList.add("ndsp__opened");
+            }, 276)
+            this.eSoda.innerHTML = this.eTmpl.innerHTML
+            this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].appendChild(this.eSoda)
+
+            if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([16, 8])
+            if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7 )
+            this.bIsFS = ( this.eTmpl.dataset.n55SodapopFullscreen == "true" && neodigmOpt.N55_APP_STATE.FIRST_TAP )
+            if( this.bIsFS ){
             this._d.body.requestFullscreen().catch(( e )=>{
-              console.log( "no fullscreen", e )
-              this.bIsFS = false 
+                console.log( "no fullscreen", e )
+                this.bIsFS = false 
             })
             neodigmSodaPop.eSoda.classList.add("n55SodapopFullscreen")
-          }
-          this.bIsOpen = true;
-          if(this.fOnAfterOpen[_sId]) this.fOnAfterOpen[_sId]()
-          if(this.fOnAfterOpen["def"]) this.fOnAfterOpen["def"]()
-          if( neodigmOpt.N55_GTM_DL_POP_OPEN ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_POP_OPEN, _sId )
-      }
-      return neodigmSodaPop
+            }
+            this.bIsOpen = true;
+            if(this.fOnAfterOpen[_sId]) this.fOnAfterOpen[_sId]( this.sId )
+            if(this.fOnAfterOpen["def"]) this.fOnAfterOpen["def"]( this.sId )
+            if( neodigmOpt.N55_GTM_DL_POP_OPEN ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_POP_OPEN, _sId )
+        }
+        return neodigmSodaPop
     }
     close( _bFast ) {
         if(this.bIsInit && this.bIsOpen) {
-            if(this.fOnClose[this.sId]) this.fOnClose[this.sId]()
-            if(this.fOnClose["def"]) this.fOnClose["def"]()
-            this.eClose.dataset.n55SodapopScrim = "closed"
-            if(_bFast) {
-                this.eSoda.remove()
-                this.eScrim.dataset.n55SodapopScrim = "closed"
-                this.eScrim.classList.remove("ndsp__blur", "ndsp__modal")
-            } else {
-                setTimeout(function() {
-                    neodigmSodaPop.eSoda.remove()
+            let bOkClose = true  //  CBs must return true to close
+            if( this.fOnClose[ this.sId ] ) bOkClose = this.fOnClose[ this.sId ]( this.sId )  //  The specific can cancel the generic
+            if( bOkClose && this.fOnClose[ "def" ] ) bOkClose = this.fOnClose[ "def" ]( this.sId )
+            if( bOkClose ){
+                this.eClose.dataset.n55SodapopScrim = "closed"
+                if(_bFast) {
+                    this.eSoda.remove()
+                    this.eScrim.dataset.n55SodapopScrim = "closed"
+                    this.eScrim.classList.remove("ndsp__blur", "ndsp__modal")
+                } else {
                     setTimeout(function() {
-                        neodigmSodaPop.eScrim.dataset.n55SodapopScrim = "closed"
-                        neodigmSodaPop.eScrim.classList.remove("ndsp__blur", "ndsp__modal")
-                    }, 332)
-                }, 186)
+                        neodigmSodaPop.eSoda.remove()
+                        setTimeout(function() {
+                            neodigmSodaPop.eScrim.dataset.n55SodapopScrim = "closed"
+                            neodigmSodaPop.eScrim.classList.remove("ndsp__blur", "ndsp__modal")
+                        }, 332)
+                    }, 186)
+                }
+                if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([8, 16])
+                if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(3)
+                this.bIsOpen = false
+                if( this.bIsFS ) this._d.exitFullscreen();
+                if( neodigmOpt.N55_GTM_DL_POP_CLOSE ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_POP_CLOSE, "close" )
             }
-            if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([8, 16])
-            if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(3)
-            this.bIsOpen = false
-            if( this.bIsFS ) this._d.exitFullscreen();
-            if( neodigmOpt.N55_GTM_DL_POP_CLOSE ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_POP_CLOSE, "close" )
         }
         return this
     }
@@ -578,8 +579,8 @@ class NeodigmPopTart {
         if( this.oPopTmpls[ e ]?.dataset?.n55PoptartOpen ){
             if( !sId || sId == this.oPopTmpls[ e ].id ){
                 let bOkClose = true  //  CBs must return true to close
-                if( this.fOnClose[ this.oPopTmpls[ e ].id ] ) bOkClose = this.fOnClose[ this.oPopTmpls[ e ].id ]()
-                if( this.fOnClose["def"] ) bOkClose = this.fOnClose["def"]()
+                if( this.fOnClose[ sId ] ) bOkClose = this.fOnClose[ sId ]( sId )  //  The specific can cancel the generic
+                if( bOkClose && this.fOnClose["def"] ) bOkClose = this.fOnClose["def"]( sId )
                 if( bOkClose ){
                     delete this.oPopTmpls[ e ].dataset.n55PoptartOpen;
                     this.bIsOpen = false

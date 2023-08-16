@@ -61,7 +61,10 @@ class NeodigmWidget {
       neodigmEnchantedCTA.setOnLongTap( function(){ neodigmToast.q( "Powered by Neodigm ✨ 55", "night" ); neodigmUtils.robinTheme('marcom'); neodigmWired4Sound.sound("6"); }, "js-touch-point__share")
     } 
   }
-  async stuff() {}
+  getCronSync() {
+    let tN = new Date()
+    return tN.getTime() * tN.getHours()
+  }
 }
 let neodigmWidget = new NeodigmWidget( document, ["neodigm-widget"] )
 addEventListener('DOMContentLoaded', ( ev ) => {neodigmWidget.init()});

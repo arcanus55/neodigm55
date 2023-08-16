@@ -732,6 +732,7 @@ NeodigmClaire.showCanv('neodigm-sodapop').setTheme( ['brand','danger','info','ma
         if( neodigmSodaPop && NeodigmClaire ){
             neodigmSodaPop.setOnClose( function(){
                 console.log(" ~~~ setOnClose | " + this)
+                return true;
 
                 //NeodigmClaire.doWaxOff("neodigm-sodapop", ['brand','danger','info','marcom'], "circle", .6)
             });
