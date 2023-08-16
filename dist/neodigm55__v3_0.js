@@ -304,9 +304,9 @@ class NeodigmSodaPop {
     }
     close( _bFast ) {
         if(this.bIsInit && this.bIsOpen) {
-            let bOkClose = true  //  CBs must return true to close
-            if( this.fOnClose[ this.sId ] ) bOkClose = this.fOnClose[ this.sId ]( this.sId )  //  The specific can cancel the generic
-            if( bOkClose && this.fOnClose[ "def" ] ) bOkClose = this.fOnClose[ "def" ]( this.sId )
+            let bOkClose = true  //  CBs must explicitly return false to prevent closing
+            if( this.fOnClose[ this.sId ] ) bOkClose = !(this.fOnClose[ this.sId ]( this.sId ) === false)  //  The specific can cancel the generic
+            if( bOkClose && this.fOnClose[ "def" ] ) bOkClose = !(this.fOnClose[ "def" ]( this.sId ) === false)
             if( bOkClose ){
                 this.eClose.dataset.n55SodapopScrim = "closed"
                 if(_bFast) {
@@ -578,9 +578,9 @@ class NeodigmPopTart {
     for( let e in this.oPopTmpls ){
         if( this.oPopTmpls[ e ]?.dataset?.n55PoptartOpen ){
             if( !sId || sId == this.oPopTmpls[ e ].id ){
-                let bOkClose = true  //  CBs must return true to close
-                if( this.fOnClose[ sId ] ) bOkClose = this.fOnClose[ sId ]( sId )  //  The specific can cancel the generic
-                if( bOkClose && this.fOnClose["def"] ) bOkClose = this.fOnClose["def"]( sId )
+                let bOkClose = true  //  CBs must explicitly return false to prevent closing
+                if( this.fOnClose[ sId ] ) bOkClose = !(this.fOnClose[ sId ]( sId ) === false)  //  The specific can cancel the generic
+                if( bOkClose && this.fOnClose["def"] ) bOkClose = !(this.fOnClose["def"]( sId ) === false)
                 if( bOkClose ){
                     delete this.oPopTmpls[ e ].dataset.n55PoptartOpen;
                     this.bIsOpen = false
