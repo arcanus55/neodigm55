@@ -80,7 +80,7 @@ const neodigmUtils = ( ( _d ) =>{
       return aDret.join("");
     },
     doDataLayer: function( event, msg ){
-      if( neodigmOpt.N55_DEBUG_lOG ) console.log( "ga | " + event + " | " + msg )
+      if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~ga | " + event + " | " + msg )
       if( window.dataLayer ) window.dataLayer.push( { "event": event, "msg": msg } )
     },
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
@@ -579,7 +579,7 @@ class NeodigmPopTart {
         if( this.oPopTmpls[ e ]?.dataset?.n55PoptartOpen ){
             let sId = this.oPopTmpls[ e ]?.id
             let bOkClose = true  //  CBs must explicitly return false to prevent closing
-            if( neodigmOpt.N55_DEBUG_lOG ) console.log( " Poptart Close sId | " + sId, this.fOnClose[ sId ], this.oPopTmpls[ e ])
+            if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~Poptart Close | " + sId, this.fOnClose[ sId ] )
             if( this.fOnClose[ sId ] ) bOkClose = !(this.fOnClose[ sId ]( sId ) === false)  //  The specific can cancel the generic
             if( bOkClose && this.fOnClose["def"] ) bOkClose = !(this.fOnClose["def"]( sId ) === false)
             if( bOkClose ){
@@ -746,7 +746,7 @@ const neodigmMetronome = ( () =>{
           function generateId(){ return n55Timr.currentId++ }
           function overloadSetInterval(callback, delay){
               let intervalId = generateId();
-              if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55Timr setIntr | " + delay )
+              if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~n55Timr setIntr | " + delay )
               n55Timr.idToCallback[ intervalId ] = callback;
               n55Timr.worker.postMessage({ type: 'setInterval', delay: delay, id: intervalId });
               return intervalId;
@@ -756,7 +756,7 @@ const neodigmMetronome = ( () =>{
               delete n55Timr.idToCallback[ intervalId ];
           }
           function overloadSetTimeout(callback, delay){
-              if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55Timr setTime | " + delay )
+              if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~n55Timr setTime | " + delay )
               let intervalId = generateId();
               n55Timr.idToCallback[ intervalId ] = function(){
                   callback();
@@ -1300,13 +1300,12 @@ class NeodigmCarousel {
     }
     return this
   }
-  formatNewCaro ( elNC ){  //  TODO set elNC.name from data
+  formatNewCaro ( elNC ){
     elNC.n55State = {nIdx: ( elNC.n55State?.nIdx ) ? elNC.n55State.nIdx : 1, width: elNC.offsetWidth}
     let elNCCntr = elNC.firstElementChild
     elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll("section") ]  //  Tab Containers
     elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
     elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
-//neodigmCarousel.nav( {id: elNC.id, nav: elNC.n55State.nIdx }, false )  //  No CB
     return elNC
   }
   nav ( oNav, bFireCB = true ){
@@ -1315,7 +1314,7 @@ class NeodigmCarousel {
         if( !elNC ) {  // This caro did not exist durring init, so lets created it
             let elNewNC = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "#" + oNav.id )
             if( elNewNC ) this.aelNC.push(elNC = neodigmCarousel.formatNewCaro( elNewNC ))
-            if( neodigmOpt.N55_DEBUG_lOG ) console.log( "caro dyn create | " + oNav.id )
+            if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~caro dyn create | " + oNav.id )
         }
         if( elNC ){
             let elNCCntr = elNC.firstElementChild
@@ -1336,7 +1335,14 @@ class NeodigmCarousel {
             case "getPage":
                 return oState.nIdx;
             break;
-            default:  //  literal num pg value
+            default:  //  literal num pg value or string name
+                if( typeof oNav.nav === "string" ){  //  Find Page by Name
+                    let nPgFromName = 0
+                    oState.aTabCntr.forEach( ( oP, nDx )=>{
+                        if( oP.dataset?.n55CarouselPageName == oNav.nav ) nPgFromName = ++nDx 
+                    } )
+                    if( nPgFromName ) oNav.nav = nPgFromName
+                }
                 if( ( oNav.nav >= 1 ) && ( oNav.nav < (oState.aTabCntr.length + 1) ) ) oState.nIdx = elNC.n55State.nIdx = oNav.nav
             }
             let nSP = ( oState.nIdx - 1 ) * oState.width  //  Scroll Position
@@ -1359,7 +1365,7 @@ class NeodigmCarousel {
     }
   }
   play (){ this.bIsPause = false; return this; }
-  setOnAfterNav( _f, id="def", pg=""){ this.fOnAfterNav[ ( pg )?(id + "_" + pg):id ] = _f; return this; }
+  setOnAfterNav ( _f, id="def", pg=""){ this.fOnAfterNav[ ( pg )?(id + "_" + pg):id ] = _f; return this; }
   setTheme ( sTheme, sId ){
     if( this.bIsInit && !this.bIsPause ){
       this.aE.forEach( (eC) => {  //  orig once n55Theme Property
@@ -1396,7 +1402,7 @@ class NeodigmPWA {
             if( neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 8 )
             neodigmUtils.doDataLayer( "event", "appinstalled" )
         }, 1200)
-        if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55 pwa | appinstalled" )
+        if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~n55 pwa | appinstalled" )
       });
       this.bIsInit = true      
     }
@@ -1405,7 +1411,7 @@ class NeodigmPWA {
   beforeinstallprompt ( ev ){  //  TODO update global body data attr INSTALLABLE
     neodigmUtils.doDataLayer( "event", "beforeInstallPrompt" )
     this._beforeinstallprompt = ev
-    if( neodigmOpt.N55_DEBUG_lOG ) console.log( "n55 pwa | beforeinstallprompt" )
+    if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~n55 pwa | beforeinstallprompt" )
   }
   autoOpen ( pause = 0 ){ 
     if( this.bIsInit ){

@@ -90,7 +90,7 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
 <neodigm-carousel id="js-wtt-a2yw-caro__id">
 
     <section>
-        <section>
+        <section data-n55-carousel-page-name="email">
             <aside class="h-center"><p class="readable__caption hd5">Add Widget to Your Website</p></aside>
             <p class="readable__doc hd6">Seamlessly integrated into your website’s look and feel. Click the Copy button then paste into an email to your friendly neighborhood web developer.</p>
             <p class="readable__doc hd6">This amazing tool can be easily added to your own website. Really! Just send a few lines of code to your web dev and you are in business. Easy!</p>
@@ -98,7 +98,7 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
 
             <input id="tsk_contact_us_email" name="email" class="n55-lc__input" type="email" placeholder="Email Address">
         </section>
-        <section>
+        <section data-n55-carousel-page-name="domain">
             <aside class="h-center"><p class="readable__caption hd5">Add Widget to Your Website</p></aside>
         </section>
     </section>
@@ -157,7 +157,12 @@ console.log( " ~~~ nPg 1 | " + nPg )
     switch( nPg ){
         case 1:
 console.log( " ~~~ nPg 2| " + nPg )
+            neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"domain"})
+            neodigmToast.q("Please Enter a Valid|Email Address", "danger")
             neodigmSodaPop.shake()
+        break;
+        case 2:
+            neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"email"})
         break;
     }
 }
