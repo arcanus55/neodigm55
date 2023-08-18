@@ -636,7 +636,7 @@ class NeodigmWired4Sound {
   init () {
     ["click", "mouseover"].forEach(( evName ) => {
       this._d.querySelector( this._aQ[0] ).addEventListener(evName, ( ev )=>{
-        let sAtr = "n55Wired4sound" + neodigmUtils.capFirst( evName ).replace("Mouseover","Hover")  //  TODO hover
+        let sAtr = "n55Wired4sound" + neodigmUtils.capFirst( evName ).replace("Mouseover","Hover")  //  hover convention
         let evAtr = ev?.target?.dataset[ sAtr ] || ev?.target?.parentNode?.dataset[ sAtr ]
         let evTheme = ev?.target?.dataset.n55Theme || ev?.target?.parentNode?.dataset.n55Theme
         if( evAtr && (evTheme != "disabled") ) neodigmWired4Sound.sound( evAtr )
@@ -1288,7 +1288,6 @@ class NeodigmCarousel {
         if( elNC.id ) neodigmCarousel.formatNewCaro( elNC )
       })
       if( !this.bIsInit ) this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  once event body
-console.log( " ~~~ caro 1 | " + ev.target?.dataset?.n55CarouselNav )
         if( ("n55CarouselNav" in ev.target?.dataset) || ("n55CarouselNav" in ev?.target?.parentNode?.dataset) ){
           let sId = ev.target?.id || ev?.target?.parentNode?.id || "add_id"
           let oNav = JSON.parse( ev.target?.dataset?.n55CarouselNav || ev?.target?.parentNode?.dataset?.n55CarouselNav )

@@ -81,6 +81,7 @@ data-n55-wired4sound-click="7"
 data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
 
 <nav class="h-right">
+    <neodigm-juicebar role="progressbar" data-n55-theme="primary" data-n55-size="small"><div></div></neodigm-juicebar>
     <neodigm-acticon  data-n55-theme="ghost" data-n55-size="micro"
     data-n55-tulip= '{"msg":"Close / Exit","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"top","icn":""}'
     data-n55-wired4sound-click="9"  data-n55-wired4sound-hover="3"
@@ -91,27 +92,28 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
     <section>
         <section>
             <aside class="h-center"><p class="readable__caption hd5">Add Widget to Your Website</p></aside>
-            <input id="tsk_contact_us_email" name="email" class="m5m-input" type="email" placeholder="Email Address">
+            <p class="readable__doc hd6">Seamlessly integrated into your website’s look and feel. Click the Copy button then paste into an email to your friendly neighborhood web developer.</p>
+            <p class="readable__doc hd6">This amazing tool can be easily added to your own website. Really! Just send a few lines of code to your web dev and you are in business. Easy!</p>
+
+
+            <input id="tsk_contact_us_email" name="email" class="n55-lc__input" type="email" placeholder="Email Address">
         </section>
         <section>
-            <aside class="h-center"><p class="readable__caption hd5">Page Tab 2</p></aside>
+            <aside class="h-center"><p class="readable__caption hd5">Add Widget to Your Website</p></aside>
         </section>
     </section>
 
  </neodigm-carousel>
  <nav class="h-center">
-    <a id="cta-copy-3" data-n55-enchanted-cta="" data-do-copy="" onclick="doCopyClass('#js-copy__enchantedCTA')" data-n55-wired4sound-click="10" data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost" data-n55-enchanted-cta-ambient="">
+    <a id="cta-copy-3" data-n55-enchanted-cta="" data-n55-wired4sound-click="10" data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost" data-n55-enchanted-cta-ambient=""
+    QQQQdata-n55-carousel-nav='{"id": "js-wtt-a2yw-caro__id", "nav": "loop"}'
+    onClick="navA2YW()">
+
         <span data-n55-wired4sound-hover="3">Continue <neodigm-icon class="material-symbols-outlined">navigate_next</neodigm-icon></span><span>Step 1 of 3 <neodigm-icon class="material-symbols-outlined">navigate_next</neodigm-icon></span>
     </a>
  </nav>
  <hr>
 
- <neodigm-acticon  data-n55-theme="ghost" data-n55-size="xsmall"
- QQQonclick= 'neodigmCarousel.nav( {"id": "js-wtt-a2yw-caro__id", "nav": "loop"} ); neodigmWired4Sound.sound( 10 );'
- data-n55-carousel-nav='{"id": "jjs-wtt-a2yw-caro__id", "nav": "loop"}'
- data-n55-tulip='{"msg":"Play Next","mrq":false,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icon":""}'>
- <neodigm-icon class="material-symbols-outlined">delete</neodigm-icon>
-</neodigm-acticon>
 <br>
 
  <a data-n55-carousel-nav='{"id": "js-wtt-a2yw-caro__id", "nav": "next"}'>next</a>
@@ -148,6 +150,17 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
 </template>
 
 <script>
+function navA2YW(){
+    let nPg = neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"getPage"})
+console.log( " ~~~ nPg 1 | " + nPg )
+
+    switch( nPg ){
+        case 1:
+console.log( " ~~~ nPg 2| " + nPg )
+            neodigmSodaPop.shake()
+        break;
+    }
+}
 function doCopyA2YW( o ){  //  Add 2 Your Website
 console.log(" ~~~ | " + o )
     if( neodigmCarousel ) neodigmCarousel.init()
