@@ -579,7 +579,7 @@ class NeodigmPopTart {
         if( this.oPopTmpls[ e ]?.dataset?.n55PoptartOpen ){
             if( !sId || sId == this.oPopTmpls[ e ].id ){
                 let bOkClose = true  //  CBs must explicitly return false to prevent closing
-                if( neodigmOpt.N55_DEBUG_lOG ){} console.log( " Poptart Close sId | " + sId, this.fOnClose[ sId ])
+                if( neodigmOpt.N55_DEBUG_lOG ) console.log( " Poptart Close sId | " + sId, this.fOnClose[ sId ], this.oPopTmpls[ e ])
                 if( this.fOnClose[ sId ] ) bOkClose = !(this.fOnClose[ sId ]( sId ) === false)  //  The specific can cancel the generic
                 if( bOkClose && this.fOnClose["def"] ) bOkClose = !(this.fOnClose["def"]( sId ) === false)
                 if( bOkClose ){
