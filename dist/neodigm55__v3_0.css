@@ -184,8 +184,8 @@ neodigm-carousel {
     transition: filter .86s ease-in-out;
 }
 neodigm-carousel.n55-caro__blur {
-    filter: blur(6px);
-    opacity: .6;
+    filter: blur(3px);
+    opacity: .3;
 }
 neodigm-carousel > section {
     position: relative; display: grid; gap: 8px;
