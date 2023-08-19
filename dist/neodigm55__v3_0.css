@@ -183,7 +183,7 @@ neodigm-carousel {
     overflow: hidden;
 }
 neodigm-carousel.n55-caro__blur {
-    animation: carousel_nav .88s ease-in-out;
+    animation: carousel_nav .90s ease-in-out;
 }
 neodigm-carousel > section {
     position: relative; display: grid; gap: 8px;
