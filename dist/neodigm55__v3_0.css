@@ -181,6 +181,11 @@ neodigm-carousel {
     position: relative; display: block;
     height: 100%; width: 100%;
     overflow: hidden;
+    transition: filter .86s ease-in-out;
+}
+neodigm-carousel.n55-caro__blur {
+    filter: blur(6px);
+    opacity: .6;
 }
 neodigm-carousel > section {
     position: relative; display: grid; gap: 8px;

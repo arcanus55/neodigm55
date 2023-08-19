@@ -29,6 +29,7 @@ let neodigmOpt = {
   neodigmKPI: true,  N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
   neodigmPWA: true,  N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
   neodigmCarousel: true,  N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
+    N55_CARO_BLUR: true,  //  Carousel transition blur / opacity effect
 neodigmTulip: true,
 neodigmPopTart: true,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
 neodigmWWInterval: false,
@@ -1346,14 +1347,16 @@ class NeodigmCarousel {
                 if( ( oNav.nav >= 1 ) && ( oNav.nav < (oState.aTabCntr.length + 1) ) ) oState.nIdx = elNC.n55State.nIdx = oNav.nav
             }
             let nSP = ( oState.nIdx - 1 ) * oState.width  //  Scroll Position
+            if( neodigmOpt.N55_CARO_BLUR ) elNCCntr.parentElement.classList.add("n55-caro__blur")
             elNC.parentElement.scrollTop = 0;
             elNCCntr.style.marginLeft = ( nSP ) - ( nSP * 2 ) + "px"
             if( bFireCB ){
-            if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.fOnAfterNav )
-            if(this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]) this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]( elNC.id, oState.nIdx )  //  single pg
-            if(this.fOnAfterNav[ elNC.id ]) this.fOnAfterNav[ elNC.id ]( elNC.id, oState.nIdx )  //  all pages within this Caro
-            if(this.fOnAfterNav["def"]) this.fOnAfterNav["def"]( elNC.id, oState.nIdx )  //  all Caro
+                if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.fOnAfterNav )
+                if(this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]) this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]( elNC.id, oState.nIdx )  //  single pg
+                if(this.fOnAfterNav[ elNC.id ]) this.fOnAfterNav[ elNC.id ]( elNC.id, oState.nIdx )  //  all pages within this Caro
+                if(this.fOnAfterNav["def"]) this.fOnAfterNav["def"]( elNC.id, oState.nIdx )  //  all Caro
             }
+            if( neodigmOpt.N55_CARO_BLUR ) setTimeout( ()=>{ elNCCntr.parentElement.classList.remove("n55-caro__blur"); }, 480 ) 
         }
     }  //  TODO datalayer
     return this;
