@@ -1356,7 +1356,7 @@ class NeodigmCarousel {
                 if(this.fOnAfterNav[ elNC.id ]) this.fOnAfterNav[ elNC.id ]( elNC.id, oState.nIdx )  //  all pages within this Caro
                 if(this.fOnAfterNav["def"]) this.fOnAfterNav["def"]( elNC.id, oState.nIdx )  //  all Caro
             }
-            if( neodigmOpt.N55_CARO_BLUR ) setTimeout( ()=>{ elNCCntr.parentElement.classList.remove("n55-caro__blur"); }, 480 ) 
+            if( neodigmOpt.N55_CARO_BLUR ) setTimeout( ()=>{ elNCCntr.parentElement.classList.remove("n55-caro__blur"); }, 860 ) 
         }
     }  //  TODO datalayer
     return this;
