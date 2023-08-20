@@ -50,6 +50,12 @@ a { -webkit-tap-highlight-color: rgba(0,0,0,0); outline: none; user-select: none
 .h-under {text-decoration: underline;}
 summary.h-marker__danger::marker {color: var( --m5lc-theme-danger ) !important;}
 
+[data-n55-ampm-theme='light'] .h-ds-i__ampm--light {display: inline;}
+[data-n55-ampm-theme='dark']  .h-ds-i__ampm--light {display: none;}
+
+[data-n55-ampm-theme='light'] .h-ds-i__ampm--dark  {display: none;}
+[data-n55-ampm-theme='dark']  .h-ds-i__ampm--dark  {display: inline;}
+
 /*  lgo  */
 .lgo {
 font-family: 'Comfortaa', cursive;
