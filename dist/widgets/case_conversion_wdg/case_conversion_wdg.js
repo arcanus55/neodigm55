@@ -71,6 +71,15 @@ let doAction = function( sAct ){
                 neodigmToast.q("There is no text to convert.", "danger")
             }
         }
+        if( sAct == "caseTinyType" ){
+            if( eTermFrom.value ){
+                eTermTo.value = eTermFrom.value.split("").reverse().join("")
+                neodigmToast.q("Text Convert|Tiny Type " + eTermFrom.value.length + " characters", "primary")
+            }else{
+                neodigmToast.q("There is no text to convert.", "danger")
+            }
+        }
+        
         if( sAct == "share" ){
             try {
                 navigator.clipboard.writeText( document.location.href );
