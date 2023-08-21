@@ -150,7 +150,7 @@ let getTinyType = ( sIn ) =>{
         if( oTiny[ sChr ] ){
             sOut += oTiny[ sChr ]
         }else{
-            sOut += " "
+            sOut += sChr 
         }
     });
     return sOut;
