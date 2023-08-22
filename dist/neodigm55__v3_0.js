@@ -151,6 +151,11 @@ const neodigmUtils = ( ( _d ) =>{
       try { return JSON.parse( sAtr ) } catch(e) {
         return JSON.parse( '{ "' + sPrp + '": "' + sAtr + '" }' )
       }
+    },
+    walkDOM3: function( elEv, sDatAtr ){  //  Walk up two nodes
+        if( elEv?.dataset[ sDatAtr ] ) return elEv.dataset[ sDatAtr ]
+        if( elEv?.parentNode?.dataset[ sDatAtr ] ) return elEv.parentNode.dataset[ sDatAtr ]
+        if( elEv.tagName != "BODY" && elEv?.parentNode?.parentNode?.dataset[ sDatAtr ] ) return elEv.parentNode.parentNode.dataset[ sDatAtr ]
     }
   }
 })( document );
@@ -378,7 +383,8 @@ class NeodigmTulip {  //  Tooltip
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
           if( this.bIsInit && !this.bIsPause ){
             //let sCnf = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.parentNode?.dataset[ "n55Tulip" ]
-            let sCnf = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ];
+            //let sCnf = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ];
+            let sCnf = neodigmUtils.walkDOM3( ev?.target, "n55Tulip" )
             this.sId = ev?.target?.id;  //  Assumes tulip is on child (callback)
             if( sCnf && ev?.target?.dataset?.n55Theme != "disabled" ){
               neodigmTulip.prepOpen( sCnf, ev.target.getBoundingClientRect() )
@@ -638,8 +644,11 @@ class NeodigmWired4Sound {
     ["click", "mouseover"].forEach(( evName ) => {
       this._d.querySelector( this._aQ[0] ).addEventListener(evName, ( ev )=>{
         let sAtr = "n55Wired4sound" + neodigmUtils.capFirst( evName ).replace("Mouseover","Hover")  //  hover convention
-        let evAtr = ev?.target?.dataset[ sAtr ] || ev?.target?.parentNode?.dataset[ sAtr ]
-        let evTheme = ev?.target?.dataset.n55Theme || ev?.target?.parentNode?.dataset.n55Theme
+        //let evAtr = ev?.target?.dataset[ sAtr ] || ev?.target?.parentNode?.dataset[ sAtr ]
+        //let evTheme = ev?.target?.dataset.n55Theme || ev?.target?.parentNode?.dataset.n55Theme
+        let evAtr = neodigmUtils.walkDOM3( ev?.target, sAtr )
+        let evTheme = neodigmUtils.walkDOM3( ev?.target, "n55Theme" )
+        neodigmUtils.walkDOM3( ev?.target, "n55Tulip" )
         if( evAtr && (evTheme != "disabled") ) neodigmWired4Sound.sound( evAtr )
       }, false);
     })
