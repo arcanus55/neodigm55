@@ -152,7 +152,7 @@ const neodigmUtils = ( ( _d ) =>{
         return JSON.parse( '{ "' + sPrp + '": "' + sAtr + '" }' )
       }
     },
-    walkDOM3: function( elEv, sDatAtr ){  //  Walk up two nodes
+    walkDOM3: function( elEv, sDatAtr ){  //  Walk up two nodes, parent, grand parent
         if( elEv?.dataset[ sDatAtr ] ) return elEv.dataset[ sDatAtr ]
         if( elEv?.parentNode?.dataset[ sDatAtr ] ) return elEv.parentNode.dataset[ sDatAtr ]
         if( elEv.tagName != "BODY" && elEv?.parentNode?.parentNode?.dataset[ sDatAtr ] ) return elEv.parentNode.parentNode.dataset[ sDatAtr ]
