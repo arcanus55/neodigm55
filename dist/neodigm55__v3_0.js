@@ -173,7 +173,7 @@ let neodigmToast = (function(_d, eID, _q) {
         _sTheme = ""
       }
       _eSb.classList.remove("snackbar__cont--hide")
-      if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 1 )
+      if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 1, "QUITE" )
     _eSb.classList.add("snackbar__cont--show")
     if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([48, 56])
     setTimeout(_fClose, _nTimeout)
@@ -644,8 +644,6 @@ class NeodigmWired4Sound {
     ["click", "mouseover"].forEach(( evName ) => {
       this._d.querySelector( this._aQ[0] ).addEventListener(evName, ( ev )=>{
         let sAtr = "n55Wired4sound" + neodigmUtils.capFirst( evName ).replace("Mouseover","Hover")  //  hover convention
-        //let evAtr = ev?.target?.dataset[ sAtr ] || ev?.target?.parentNode?.dataset[ sAtr ]
-        //let evTheme = ev?.target?.dataset.n55Theme || ev?.target?.parentNode?.dataset.n55Theme
         let evAtr = neodigmUtils.walkDOM3( ev?.target, sAtr )
         let evTheme = neodigmUtils.walkDOM3( ev?.target, "n55Theme" )
         neodigmUtils.walkDOM3( ev?.target, "n55Tulip" )
@@ -664,14 +662,20 @@ class NeodigmWired4Sound {
     if( sSnd ) this.sound( sSnd )  //  Legacy compat
     this.bIsPause = false; return this;
   } }
-  sound ( nSnd ) {
+  sound ( nSnd, sMod=null ) {
     if( this.bIsInit && !this.bIsPause && neodigmOpt.N55_APP_STATE.FIRST_TAP ){
-      if(typeof nSnd  === "object"){
-        if( zzfx ) zzfx(... nSnd )
-      }else{
-        if(nSnd >= this.aSnd.length) nSnd = 1
-        if( zzfx ) zzfx(... this.aSnd[ nSnd ])
-      }
+        let nVolTmp = zzfxV
+        if( sMod ){
+            if( sMod == "QUITE" ) zzfxV = zzfxV / 2.6
+            if( sMod == "LOUD" )  zzfxV = zzfxV * 2.6
+            setTimeout( ()=> { zzfxV = nVolTmp }, 128 )
+        }
+        if(typeof nSnd  === "object"){
+            if( zzfx ) zzfx(... nSnd )
+        }else{
+            if(nSnd >= this.aSnd.length) nSnd = 1
+            if( zzfx ) zzfx(... this.aSnd[ nSnd ])
+        }
     }
     return this
   }
