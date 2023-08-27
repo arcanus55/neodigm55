@@ -1333,18 +1333,16 @@ class NeodigmCarousel {
         if( elNC ){
             let elNCCntr = elNC.firstElementChild
             let oState = elNC.n55State
+            if( oNav.nav == "loop" ) oNav.nav = "next"  //  Backward Compat
             switch( oNav.nav ){
             case "next":
-                if( oState.nIdx < oState.aTabCntr.length ) oState.nIdx++
+                if( oState.nIdx < oState.aTabCntr.length ) { oState.nIdx++ }else{ oState.nIdx = 1 }
             break;
             case "prev":  //  loops
                 //if( oState.nIdx != 1 ) oState.nIdx--
             console.log( " ~~~ nIdx | " + oState.nIdx + " | " + oState.aTabCntr.length  )
                 if( oState.nIdx > oState.aTabCntr.length ) { oState.nIdx-- }else{ oState.nIdx = oState.aTabCntr.length }
                 break;
-            case "loop":
-                if( oState.nIdx < oState.aTabCntr.length ) { oState.nIdx++ }else{ oState.nIdx = 1 }
-            break;
             case "random":
                 oState.nIdx = neodigmUtils.f02x( oState.aTabCntr.length ) + 1
             break;
