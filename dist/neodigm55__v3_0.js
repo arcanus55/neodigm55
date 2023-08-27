@@ -504,6 +504,17 @@ class NeodigmPopTart {
                 }
             }
         }, false)
+        /* ADVANCED HOVER PATTERNS
+        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mouseout", ( ev ) => {  //  data-n55-poptart-hover
+            console.log( " ~~~ ev.target?.dataset?.n55PoptartHover | " + ev.target?.dataset?.n55PoptartHover )
+            let sPTCont = neodigmUtils.walkDOM3( ev?.target, "n55PoptartHover" )
+            console.log( " ~~~ sPTCont | " + sPTCont )
+
+            if( sPTCont ){
+                this.close()
+            }
+        } )
+        */
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  data-n55-poptart-click
             if( ev.target?.dataset?.n55PoptartClick || ev.target?.parentNode?.dataset?.n55PoptartClick ){
                 const sAttrEv = ev.target?.dataset?.n55PoptartClick || ev.target?.parentNode?.dataset?.n55PoptartClick
@@ -555,7 +566,6 @@ class NeodigmPopTart {
         oPos.z = ( ( oPos.z ) ? oPos.z : neodigmOpt.N55_ZIND.PopTart )  //  Z
         oPos.h = ( ( oPos.h ) ? (oPos.h + nOffSetH) : "auto" )  //  H
         oPos.position = ( ( oPos.position ) ? oPos.position : "bottom" )  //  P
-
         switch( oPos.position ){
             case "top":
                 oPos.y = ( oPos.y - ( oRctBound.height + oRctPopCt.height ) + NOFFSET )
@@ -595,6 +605,7 @@ class NeodigmPopTart {
             }
         }
     }
+    return this;
   }
   pause ( nT ){
     if( this.bIsInit ){
@@ -606,7 +617,22 @@ class NeodigmPopTart {
     this.bIsPause = false;
     return this;
   }
-  shake() {}
+  shake( bSound = true) {  //  Shake All Open
+    if(this.bIsInit && this.bIsOpen) {
+        if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([8, 32, 48])
+        for( let e in this.oPopTmpls ){
+            if( this.oPopTmpls[ e ]?.dataset?.n55PoptartOpen ){
+                this.oPopTmpls[ e ].classList.add("ndsp__opened--shake1");
+                setTimeout(function(){
+                    neodigmPopTart.oPopTmpls[ e ].classList.remove("ndsp__opened--shake1");
+                }, 460)
+            }
+        }
+        if( bSound && neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 13, "QUITE" )
+        if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([48, 32, 8])
+    }
+    return this
+}
   isOpen(){ return this.bIsOpen }
   setOnBeforeOpen( _f, id="def"){ this.fOnBeforeOpen[ id ] = _f }
   setOnAfterOpen( _f, id="def"){ this.fOnAfterOpen[ id ] = _f }
@@ -1335,20 +1361,18 @@ class NeodigmCarousel {
             let oState = elNC.n55State
             if( oNav.nav == "loop" ) oNav.nav = "next"  //  Backward Compat - retire loop
             switch( oNav.nav ){
-            case "next":
-                if( oState.nIdx < oState.aTabCntr.length ) { oState.nIdx++ }else{ oState.nIdx = 1 }
-            break;
-            case "prev":  //  loops
-                //if( oState.nIdx != 1 ) oState.nIdx--
-            console.log( " ~~~ nIdx | " + oState.nIdx + " | " + oState.aTabCntr.length  )
-                if( oState.nIdx != 1 ) { oState.nIdx-- }else{ oState.nIdx = oState.aTabCntr.length }
+            case "next":  //  loops
+                if( oState.nIdx < oState.aTabCntr.length ){ oState.nIdx++ }else{ oState.nIdx = 1 }
+                break;
+            case "prev":
+                if( oState.nIdx != 1 ){ oState.nIdx-- }else{ oState.nIdx = oState.aTabCntr.length }
                 break;
             case "random":
                 oState.nIdx = neodigmUtils.f02x( oState.aTabCntr.length ) + 1
             break;
             case "getPage":
                 return oState.nIdx;
-            break;
+                break;
             default:  //  literal num pg value or string name
                 if( typeof oNav.nav === "string" ){  //  Find Page by Name
                     let nPgFromName = 0

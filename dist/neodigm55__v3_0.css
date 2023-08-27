@@ -696,6 +696,11 @@ neodigm-tulip.tulip__cont--show { display: block; }
 }
 [data-n55-ampm-theme="dark"]  [data-n55-poptart-open] { border-color: #fff; background-color: var( --neodigm-theme-night-alt ); }
 [data-n55-ampm-theme="light"] [data-n55-poptart-open] { border-color: var( --neodigm-theme-night-alt );background-color: #fff; }
+[data-n55-poptart-open].ndsp__opened--shake1 {
+    animation-duration: 0.2s;
+    animation-iteration-count: 4;
+    animation-name: touch_shake;
+}
 
 [data-n55-poptart-open][data-n55-theme='brand']    { border-color: var( --neodigm-theme-brand ) ;}
 [data-n55-poptart-open][data-n55-theme='primary']  { border-color: var( --neodigm-theme-primary ) ;}
