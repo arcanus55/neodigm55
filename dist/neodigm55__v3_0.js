@@ -1341,7 +1341,7 @@ class NeodigmCarousel {
             case "prev":  //  loops
                 //if( oState.nIdx != 1 ) oState.nIdx--
             console.log( " ~~~ nIdx | " + oState.nIdx + " | " + oState.aTabCntr.length  )
-                if( oState.nIdx > oState.aTabCntr.length ) { oState.nIdx-- }else{ oState.nIdx = oState.aTabCntr.length }
+                if( oState.nIdx != 1 ) { oState.nIdx-- }else{ oState.nIdx = oState.aTabCntr.length }
                 break;
             case "random":
                 oState.nIdx = neodigmUtils.f02x( oState.aTabCntr.length ) + 1
