@@ -247,8 +247,8 @@ class NeodigmSodaPop {
                 }
                 if("NEODIGM-SODAPOP-SCRIM-CLOSE" == ev.target.tagName) this.close()
                 if( ev?.target?.dataset?.sodapopScrimSvg ) this.close()
-                if("SUMMARY" == ev.target.tagName) {
-                if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( ev.target.parentElement.hasAttribute( "open" ) ? 9 : 7 )
+                if("SUMMARY" == ev.target.tagName) {  //  Details / Summary
+                    if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( ev.target.parentElement.hasAttribute( "open" ) ? 9 : 7, "QUITE" )
                 }
             }, false)
             this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("keydown", ( ev ) => {  //  Close on Esc Key
@@ -344,7 +344,7 @@ class NeodigmSodaPop {
             setTimeout(function(){
                 neodigmSodaPop.eSoda.classList.remove("ndsp__opened--shake1");
             }, 460)
-            if( bSound && neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 13 )
+            if( bSound && neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 13, "QUITE" )
             if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([48, 32, 8])
         }
         return this
@@ -1338,8 +1338,10 @@ class NeodigmCarousel {
                 if( oState.nIdx < oState.aTabCntr.length ) oState.nIdx++
             break;
             case "prev":
-                if( oState.nIdx != 1 ) oState.nIdx--
-            break;
+                //if( oState.nIdx != 1 ) oState.nIdx--
+            console.log( " ~~~ nIdx | " + oState.nIdx + " | " + oState.aTabCntr.length  )
+                if( oState.nIdx > oState.aTabCntr.length ) { oState.nIdx-- }else{ oState.nIdx = 1 }
+                break;
             case "loop":
                 if( oState.nIdx < oState.aTabCntr.length ) { oState.nIdx++ }else{ oState.nIdx = 1 }
             break;
