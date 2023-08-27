@@ -1333,7 +1333,7 @@ class NeodigmCarousel {
         if( elNC ){
             let elNCCntr = elNC.firstElementChild
             let oState = elNC.n55State
-            if( oNav.nav == "loop" ) oNav.nav = "next"  //  Backward Compat
+            if( oNav.nav == "loop" ) oNav.nav = "next"  //  Backward Compat - retire loop
             switch( oNav.nav ){
             case "next":
                 if( oState.nIdx < oState.aTabCntr.length ) { oState.nIdx++ }else{ oState.nIdx = 1 }
