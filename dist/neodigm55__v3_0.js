@@ -292,7 +292,7 @@ class NeodigmSodaPop {
             this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].appendChild(this.eSoda)
 
             if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([16, 8])
-            if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7 )
+            if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7, "QUITE" )
             this.bIsFS = ( this.eTmpl.dataset.n55SodapopFullscreen == "true" && neodigmOpt.N55_APP_STATE.FIRST_TAP )
             if( this.bIsFS ){
             this._d.body.requestFullscreen().catch(( e )=>{
@@ -329,7 +329,7 @@ class NeodigmSodaPop {
                     }, 186)
                 }
                 if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([8, 16])
-                if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound(3)
+                if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 3, "QUITE" )
                 this.bIsOpen = false
                 if( this.bIsFS ) this._d.exitFullscreen();
                 if( neodigmOpt.N55_GTM_DL_POP_CLOSE ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_POP_CLOSE, "close" )
@@ -1337,10 +1337,10 @@ class NeodigmCarousel {
             case "next":
                 if( oState.nIdx < oState.aTabCntr.length ) oState.nIdx++
             break;
-            case "prev":
+            case "prev":  //  loops
                 //if( oState.nIdx != 1 ) oState.nIdx--
             console.log( " ~~~ nIdx | " + oState.nIdx + " | " + oState.aTabCntr.length  )
-                if( oState.nIdx > oState.aTabCntr.length ) { oState.nIdx-- }else{ oState.nIdx = 1 }
+                if( oState.nIdx > oState.aTabCntr.length ) { oState.nIdx-- }else{ oState.nIdx = oState.aTabCntr.length }
                 break;
             case "loop":
                 if( oState.nIdx < oState.aTabCntr.length ) { oState.nIdx++ }else{ oState.nIdx = 1 }
