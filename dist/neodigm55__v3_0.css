@@ -312,9 +312,9 @@ background-color: rgba( 96, 88, 44, 0);
 [data-n55-claire="false"] > * > canvas { display: none }
 /*  Neodigm Claire End  */
 
-/*  Neodigm Enchanted CTA Begin  */
+/*  Neodigm Enchanted CTA Begin   */
 [data-n55-enchanted-cta]{ 
-    background: linear-gradient(var(--neodigm-theme-night), var(--neodigm-theme-night-alt));
+    QQQQbackground: linear-gradient(var(--neodigm-theme-night), var(--neodigm-theme-night-alt));
     border-radius: 6px 22px; border: 0px;
     border: none;
     color: #fff; cursor: pointer; 
