@@ -314,7 +314,6 @@ background-color: rgba( 96, 88, 44, 0);
 
 /*  Neodigm Enchanted CTA Begin   */
 [data-n55-enchanted-cta]{ 
-    QQQQbackground: linear-gradient(var(--neodigm-theme-night), var(--neodigm-theme-night-alt));
     border-radius: 6px 22px; border: 0px;
     border: none;
     color: #fff; cursor: pointer; 

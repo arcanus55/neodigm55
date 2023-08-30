@@ -690,11 +690,10 @@ class NeodigmWired4Sound {
   } }
   sound ( nSnd, sMod=null ) {
     if( this.bIsInit && !this.bIsPause && neodigmOpt.N55_APP_STATE.FIRST_TAP ){
-        let nVolTmp = zzfxV
         if( sMod ){
             if( sMod == "QUITE" ) zzfxV = zzfxV / 2.6
             if( sMod == "LOUD" )  zzfxV = zzfxV * 2.6
-            setTimeout( ()=> { zzfxV = nVolTmp }, 128 )
+            setTimeout( ()=> { zzfxV = neodigmOpt.W4S_VOLUME }, 128 )
         }
         if(typeof nSnd  === "object"){
             if( zzfx ) zzfx(... nSnd )
