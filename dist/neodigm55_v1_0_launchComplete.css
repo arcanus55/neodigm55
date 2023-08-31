@@ -62,7 +62,6 @@ summary.h-marker__danger::marker {color: var( --m5lc-theme-danger ) !important;}
 [data-n55-ampm-theme='light'] .h-bg__ampm {background-color: #FFF;}
 [data-n55-ampm-theme='dark']  .h-bg__ampm {background-color: var( --m5lc-theme-night-alt );}
 
-
 /*  lgo  */
 .lgo {
 font-family: 'Comfortaa', cursive;
@@ -77,9 +76,15 @@ margin-top: 32px;
   font-family: 'Roboto Condensed', 'Roboto', sans-serif; font-weight: 100;
   margin: 6px 0; padding: 1px;
 }
+.readampm__caption {
+  color: var(  --m5lc-theme-brand );
+  font-family: 'Roboto Slab', 'Roboto', sans-serif; font-weight: 300;
+  margin: 4px 0; padding: 1px; 
+}
 .readampm {font-size: 1.32em;}
 .readampm__title {font-size: 1.34em;}
 .readampm__legal {font-size: 1em;}
+.readampm__caption {font-size: 1.8em;}
 
 [data-n55-ampm-theme='light'] .readampm,
 [data-n55-ampm-theme='light'] .readampm__title,

@@ -160,7 +160,7 @@ const neodigmUtils = ( ( _d ) =>{
     doSetT: function( fCb, nT ){  //  Fire overloaded or native setT based on opt ff
         if( neodigmOpt.neodigmWWInterval ) return window.setTimeoutN55( fCb, nT )
         return setTimeout( fCb, nT )
-    }
+    }  //  TODO create doClearT, doSetI, and doClearI
   }
 })( document );
 
@@ -180,8 +180,7 @@ let neodigmToast = (function(_d, eID, _q) {
       if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 1, "QUITE" )
     _eSb.classList.add("snackbar__cont--show")
     if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([48, 56])
-    //setTimeout(_fClose, _nTimeout)
-    neodigmUtils.doSetT( _fClose, _nTimeout )
+    neodigmUtils.doSetT( _fClose, _nTimeout )  //  Call overloaded setT if FF is true
   };
   return {
       init: function(){
@@ -193,8 +192,7 @@ let neodigmToast = (function(_d, eID, _q) {
                   _eSb.classList.remove("snackbar__cont--show")
                   _eSb.classList.add("snackbar__cont--hide")
                   if(_aQ.length != 0) {
-                    //setTimeout(_fOpen, 1200)
-                    neodigmUtils.doSetT( _fOpen, 1200 )
+                    neodigmUtils.doSetT( _fOpen, 1200 )  //  Call overloaded setT if FF is true
                   }
                   _eSb.classList.remove("snackbar__cont--alt")
               }

@@ -67,4 +67,12 @@ class NeodigmWidget {
   }
 }
 let neodigmWidget = new NeodigmWidget( document, ["neodigm-widget"] )
-addEventListener('DOMContentLoaded', ( ev ) => {neodigmWidget.init()});
+addEventListener('DOMContentLoaded', ( ev ) => {
+  /*  INJECT FONT
+  let elLk = document.createElement("link");
+  elLk.setAttribute("rel", "stylesheet"); elLk.setAttribute("type", "text/css");
+  elLk.setAttribute("href", "https://fonts.googleapis.com/css?family=Roboto+Condensed:wght@100;300;400|Roboto+Slab:wght@300|Roboto+Mono:wght@300|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0");
+  document.head.appendChild( elLk );
+  */
+  neodigmWidget.init()
+});
