@@ -145,6 +145,8 @@ neodigm-sodapop {
 neodigm-sodapop.n55SodapopFullscreen.ndsp__opened { height: calc(100vh - 56px); max-height: calc(100vh - 56px); }
 neodigm-sodapop.n55SodapopFullscreen.ndsp__opened { top: 16px; }
 
+[data-n55-ampm-theme="dark"]  neodigm-sodapop { background-color: var(--neodigm-theme-night-alt); }
+
 neodigm-sodapop.ndsp__opened {
     border-radius: 8px;
 	transform: rotate(0deg);

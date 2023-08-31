@@ -59,6 +59,10 @@ summary.h-marker__danger::marker {color: var( --m5lc-theme-danger ) !important;}
 [data-n55-ampm-theme='light'] .h-ds-i__ampm--dark  {display: none;}
 [data-n55-ampm-theme='dark']  .h-ds-i__ampm--dark  {display: inline;}
 
+[data-n55-ampm-theme='light'] .h-bg__ampm {background-color: #FFF;}
+[data-n55-ampm-theme='dark']  .h-bg__ampm {background-color: var( --m5lc-theme-night-alt );}
+
+
 /*  lgo  */
 .lgo {
 font-family: 'Comfortaa', cursive;
@@ -68,7 +72,7 @@ margin-top: 32px;
 .lgo > span:nth-of-type(1) { font-weight: 500;}
 .lgo > span:nth-of-type(2) { font-weight: 300;}
 
-/*  type  */
+/*  Typeology Begin  */
 .hd0, .hd1, .hd2, .hd3, .hd4, .hd5, .hd6, .prg, .sum, .readampm, .readampm__title, .readampm__legal {
   font-family: 'Roboto Condensed', 'Roboto', sans-serif; font-weight: 100;
   margin: 6px 0; padding: 1px;
@@ -130,6 +134,7 @@ font-weight: 200;
 }
 .txt-read__16 { font-size: 16px !important; }
 .txt-white { color: #fff;}
+/*  Typeology End  */
 
 /*  a11y skip  */
 a.skip__main:active, a.skip__main:focus {
