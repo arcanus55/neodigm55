@@ -32,7 +32,7 @@ let neodigmOpt = {
     N55_CARO_BLUR: true,  //  Carousel transition blur / opacity effect
 neodigmTulip: true,
 neodigmPopTart: true,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
-neodigmWWInterval: false,
+neodigmWWInterval: true,
   N55_ZIND: {"PopTart": 62},
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
@@ -156,6 +156,10 @@ const neodigmUtils = ( ( _d ) =>{
         if( elEv?.dataset[ sDatAtr ] ) return elEv.dataset[ sDatAtr ]
         if( elEv?.parentNode?.dataset[ sDatAtr ] ) return elEv.parentNode.dataset[ sDatAtr ]
         if( elEv.tagName != "BODY" && elEv?.parentNode?.parentNode?.dataset[ sDatAtr ] ) return elEv.parentNode.parentNode.dataset[ sDatAtr ]
+    },
+    doSetT: function( fCb, nT ){  //  Fire overloaded or native setT based on opt ff
+        if( neodigmOpt.neodigmWWInterval ) return window.setTimeoutN55( fCb, nT )
+        return setTimeout( fCb, nT )
     }
   }
 })( document );
@@ -176,7 +180,8 @@ let neodigmToast = (function(_d, eID, _q) {
       if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 1, "QUITE" )
     _eSb.classList.add("snackbar__cont--show")
     if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([48, 56])
-    setTimeout(_fClose, _nTimeout)
+    //setTimeout(_fClose, _nTimeout)
+    neodigmUtils.doSetT( _fClose, _nTimeout )
   };
   return {
       init: function(){
@@ -188,7 +193,8 @@ let neodigmToast = (function(_d, eID, _q) {
                   _eSb.classList.remove("snackbar__cont--show")
                   _eSb.classList.add("snackbar__cont--hide")
                   if(_aQ.length != 0) {
-                      setTimeout(_fOpen, 1200)
+                    //setTimeout(_fOpen, 1200)
+                    neodigmUtils.doSetT( _fOpen, 1200 )
                   }
                   _eSb.classList.remove("snackbar__cont--alt")
               }
@@ -750,7 +756,7 @@ const neodigmMetronome = ( () =>{
       oEmit = {}
       aIntv.forEach( ( i )=>{ clearInterval( i[0] ) } )
       bIsInit = true
-      if( neodigmOpt.neodigmWWInterval ){
+      if( neodigmOpt.neodigmWWInterval ){ 
         (function(){
           let n55Timr;
           function createWorker(){
@@ -785,7 +791,7 @@ const neodigmMetronome = ( () =>{
           function generateId(){ return n55Timr.currentId++ }
           function overloadSetInterval(callback, delay){
               let intervalId = generateId();
-              if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~n55Timr setIntr | " + delay )
+              if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~MetroN55 setI | " + delay, callback )
               n55Timr.idToCallback[ intervalId ] = callback;
               n55Timr.worker.postMessage({ type: 'setInterval', delay: delay, id: intervalId });
               return intervalId;
@@ -795,11 +801,11 @@ const neodigmMetronome = ( () =>{
               delete n55Timr.idToCallback[ intervalId ];
           }
           function overloadSetTimeout(callback, delay){
-              if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~n55Timr setTime | " + delay )
+              if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~MetroN55 setT | " + delay, callback )
               let intervalId = generateId();
               n55Timr.idToCallback[ intervalId ] = function(){
-                  callback();
-                  delete n55Timr.idToCallback[ intervalId ];
+                callback();
+                delete n55Timr.idToCallback[ intervalId ];
               };
               n55Timr.worker.postMessage({ type: 'setTimeout', delay: delay, id: intervalId });
               return intervalId;
@@ -814,8 +820,8 @@ const neodigmMetronome = ( () =>{
               }
           };
           window.n55Timr = n55Timr;
-          window.setTimeout = overloadSetTimeout; window.clearTimeout = overloadClearTimeout;
-          window.setInterval = overloadSetInterval; window.clearInterval = overloadClearInterval;
+          window.setTimeoutN55 = overloadSetTimeout; window.clearTimeoutN55 = overloadClearTimeout;
+          window.setIntervalN55 = overloadSetInterval; window.clearIntervalN55 = overloadClearInterval;
         })();
       }
       return neodigmMetronome;
