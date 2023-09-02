@@ -45,7 +45,7 @@ neodigmWWInterval: true,
    "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"], "party":["FF6F61","C93F60"]},
   N55_APP_STATE: {"CONTEXT": "body", "FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXTMNU": false, "FOCUS": true, "AMPM": "light", "REDUCE_MOTION": true},
   ROOT: document.querySelector(':root'),
-  N55_FONT: "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto+Slab&display=swap"
+  N55_TYPE: "https://fonts.googleapis.com/css?family=Roboto+Condensed:wght@100;300;400|Roboto+Slab:wght@300|Roboto+Mono:wght@300|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0"
 }
 
 if( typeof neodigmOptCustom != 'undefined' ){
@@ -1521,12 +1521,12 @@ function doDOMContentLoaded(){
   eMU.innerHTML = neodigmMU;
   document[ neodigmOpt.N55_APP_STATE.CONTEXT ].appendChild(eMU);
   setTimeout( ()=>{
-    if( neodigmOpt.N55_FONT ){
+    if( neodigmOpt.N55_TYPE ){
         let elLk = document.createElement("link")
         elLk.setAttribute("rel", "stylesheet"); elLk.setAttribute("type", "text/css");
 
 elLk.setAttribute("requestor", "Neodigm 55");
-        elLk.setAttribute("href", neodigmOpt.N55_FONT )
+        elLk.setAttribute("href", neodigmOpt.N55_TYPE )
         document.head.appendChild( elLk )
     }
     neodigmUtils.appStateListen()  //  Bind to Host
