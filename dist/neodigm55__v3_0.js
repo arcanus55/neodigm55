@@ -1,6 +1,6 @@
 /*
 Neodigm 55 UX v3.0.0
-Copyright (c) 2021-2025, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
+Copyright (c) 2021-2025, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause and team
 
 Neodigm 55 is an eclectic JavaScript UX micro-library.
 The lightweight components come together in a unique way that will make your website playful and fun.
@@ -13,6 +13,7 @@ let neodigmOpt = {
   neodigmToast: true,
     N55_GTM_DL_TOAST: "n55_gtm_dl_toast",
   neodigmSodaPop: true,
+    N55_SP_DISABLE_SCROLL: true,
     N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
     N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
   neodigmWired4Sound: true,
@@ -269,41 +270,37 @@ class NeodigmSodaPop {
         return this
     }
     open( _sId ) {
-        let bOkOpen = true
+        let bOkOpen = true  //  The specific CB can cancel the generic DEF
         this.sId = _sId
         if(this.bIsOpen) this.close(true)
         this.eTmpl = this._d.getElementById( _sId )
-        if(this.fOnBeforeOpen[ _sId] ) bOkOpen = this.fOnBeforeOpen[ _sId]( this.sId )  //  The specific can cancel the generic
+        if( this.fOnBeforeOpen[ _sId] ) bOkOpen = this.fOnBeforeOpen[ _sId]( this.sId )
         if( bOkOpen && this.fOnBeforeOpen["def"]) bOkOpen = this.fOnBeforeOpen["def"]( this.sId )
         if( bOkOpen && this.bIsInit && this.eTmpl && this.eScrim ) {
             this.bIsModal = (this.eTmpl.dataset.n55SodapopModal == "true")
-            if(this.bIsModal) {
-            this.eClose.classList.add("ndsp__modal")
-            }else{
-            this.eClose.classList.remove("ndsp__modal")
+            if(this.bIsModal) { this.eClose.classList.add("ndsp__modal") }else{
+                this.eClose.classList.remove("ndsp__modal")
             }
             this.eScrim.dataset.n55SodapopScrim = this.eClose.dataset.n55SodapopScrim = "opened"
             this.eSoda = this._d.createElement(this._aQ[1])
-            setTimeout(function() {
-                neodigmSodaPop.eScrim.classList.add("ndsp__blur");
-            }, 96)
-            if(this.bIsModal) this.eSoda.classList.add("ndsp__modal")
+            setTimeout(function() { neodigmSodaPop.eScrim.classList.add("ndsp__blur"); }, 96)
+            if( this.bIsModal ) this.eSoda.classList.add( "ndsp__modal" )
+            this.eSoda.dataset.n55AmpmTheme = ( this.eTmpl.dataset?.n55AmpmTheme ) ? this.eTmpl.dataset.n55AmpmTheme : ""  //  Isolate Pup AMPM theme
             this.eSoda.classList.add("ndsp__size--" + this.eTmpl.dataset.n55SodapopSize ) 
-            setTimeout(function() {
-                neodigmSodaPop.eSoda.classList.add("ndsp__opened");
-            }, 276)
+            if( neodigmOpt.N55_SP_DISABLE_SCROLL ) neodigmSodaPop.eSoda.classList.add( "ndsp__bodyscroll" )
+            setTimeout(function() { neodigmSodaPop.eSoda.classList.add("ndsp__opened"); }, 276)
             this.eSoda.innerHTML = this.eTmpl.innerHTML
-            this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].appendChild(this.eSoda)
+            this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].appendChild( this.eSoda )
 
             if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([16, 8])
             if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7, "QUITE" )
             this.bIsFS = ( this.eTmpl.dataset.n55SodapopFullscreen == "true" && neodigmOpt.N55_APP_STATE.FIRST_TAP )
             if( this.bIsFS ){
-            this._d.body.requestFullscreen().catch(( e )=>{
-                console.log( "no fullscreen", e )
-                this.bIsFS = false 
-            })
-            neodigmSodaPop.eSoda.classList.add("n55SodapopFullscreen")
+                this._d.body.requestFullscreen().catch(( e )=>{
+                    if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~No Fullscreen | ", e )
+                    this.bIsFS = false 
+                })
+                neodigmSodaPop.eSoda.classList.add("n55SodapopFullscreen")
             }
             this.bIsOpen = true;
             if(this.fOnAfterOpen[_sId]) this.fOnAfterOpen[_sId]( this.sId )
@@ -586,6 +583,7 @@ class NeodigmPopTart {
         }
         elPop.style.left = oPos.x + "px"; elPop.style.top = oPos.y + "px"; elPop.style.width = oPos.w + "px"
         elPop.style.height = ( oPos.h == "auto" ) ? "auto" : oPos.h + "px";
+        //elPop.style.position = "absolute";
         elPop.style.zIndex = oPos.z;
         if( !elPop.dataset?.n55Theme ) elPop.dataset.n55Theme = this.sBoundTheme  //  Inherit Theme from Bound El, may be flash theme
         if( neodigmOpt.N55_GTM_DL_POPTRT ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_POPTRT, elPop.id )
