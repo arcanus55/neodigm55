@@ -12,10 +12,7 @@
 let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:true, N55_CTA_RND_TOUCH: 5000000, neodigmTulip:true, neodigmPopTart:true }
 </script>
 
-<QQQQ href="https://fonts.googleapis.com/css?family=Roboto+Condensed:wght@100;300;400|Roboto+Slab:wght@300|Roboto+Mono:wght@300|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0" rel="stylesheet" type="text/css"></QQQQ>
-<!-- (c) 1994-2025 🗝️ www.theScottKrause.com -->
 <script src="/dist/neodigm55__v3_0.js"></script>
-
 
 </head>
 <body data-n55-ampm-theme="light">
@@ -203,9 +200,9 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
                         tabindex="0" aria-haspopup="true" data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="false"
                         data-n55-enchanted-cta-size="xsmall"
                         data-n55-theme="ghost"
-                        data-n55-tulip='{"msg":" Select a LIGHT or DARK mode that matches your visitors preference.  The DARK mode will display white text on a black background, making it easier to read at night.  🌑🌒🌓🌔🌕🌖🌗🌘🌑  ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"top","icon":""}'
+                        data-n55-tulip='{"msg":" Select a LIGHT ☀️ or DARK 🌙 mode that matches your visitors preference.  The DARK mode will display white text on a black background, making it easier to read at night.  🌑🌒🌓🌔🌕🌖🌗🌘🌑  ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"top","icon":""}'
                         data-n55-wired4sound-click="10"
-                        ><span data-n55-wired4sound-hover="3">Light / Day</span>
+                        ><span data-n55-wired4sound-hover="3"><ampm-mode>Light</ampm-mode> Mode <neodigm-icon class="material-symbols-outlined" style="color: var(  --neodigm-theme-warning )">light_mode</neodigm-icon></span>
                     </a>
                     </nav>
                 </section>
@@ -236,13 +233,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <nav class="h-center">
             <a id="js-cta__a2yw--id" data-n55-enchanted-cta data-n55-wired4sound-click="10" data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost" data-n55-enchanted-cta-ambient=""
             onClick="navA2YW()">
-                <span data-n55-wired4sound-hover="3">Continue <neodigm-icon class="material-symbols-outlined">navigate_next</neodigm-icon></span><span>Step 1 of 4 <neodigm-icon class="material-symbols-outlined">navigate_next</neodigm-icon></span>
+                <span data-n55-wired4sound-hover="3">Continue <neodigm-icon class="material-symbols-outlined">navigate_next</neodigm-icon></span><span>Next Step <neodigm-icon class="material-symbols-outlined" style="color: var( --neodigm-theme-brand );">navigate_next</neodigm-icon></span>
             </a>
         </nav>
+        <br class="h-br-half">
     </div>
 </template>
 
-<neodigm-template id="js-wtt-a2yw-poptrt__theme--id" data-n55-poptart='{"xQQQQ": 176, "yQQQQ": 176, "z": 1076, "h": 256, "w": 176, "position":"bottom", "fixed": true, "offset":{"x":0,"y":0,"w":0}}'>
+<neodigm-template id="js-wtt-a2yw-poptrt__theme--id" data-n55-poptart='{"xQQQQ": 176, "yQQQQ": 176, "z": 1076, "h": 256, "w": 156, "position":"bottom", "fixed": true, "offset":{"x":0,"y":0,"w":0}}'>
     <div class="h-center">
         <a id="cta-toast-theme-1" data-n55-enchanted-cta data-n55-wired4sound-click="10" data-n55-enchanted-cta-size="xsmall" onclick="doWTTCompStore('theme','brand');" data-n55-theme="brand" data-n55-toast="Brand|Custom #EDBA08" data-n55-enchanted-cta-ambient="">
             <span data-n55-wired4sound-mouseover="10">Brand</span><span>Custom</span></a>
@@ -275,14 +273,17 @@ let oWTTCompStore = {"theme":"brand", "ampm":"light"}
 function doWTTCompStore( sAtr, sVal ){
     if( sAtr == "ampm" ){ 
         let el = document.querySelector( "#js-wtt-a2yw-cta__ampm" )
-        let elCap = el.querySelector( "span" )
+        let elTxt = el.querySelector( "span > ampm-mode" )
+        let elIco = el.querySelector( "span > neodigm-icon" )
         sVal = ( oWTTCompStore[ sAtr ] == "light" ) ? "dark" : "light"
         if( sVal == "dark"){
             el.dataset.n55Theme = "night"
-            elCap.textContent = "Dark / Night"
+            elIco.textContent = "dark_mode"
+            elTxt.textContent = "Dark"
         }else{
             el.dataset.n55Theme = "ghost"
-            elCap.textContent = "Light / Day"
+            elIco.textContent = "light_mode"
+            elTxt.textContent = "Light"
         }
     }
     if( sAtr == "theme"){
@@ -300,6 +301,7 @@ function navA2YW(){
         case 1:
             if( aElInp[0].value ){
                 if( ( aElInp[0].value.indexOf("@") != -1 ) && ( aElInp[0].value.indexOf(".") != -1 ) ){
+                    doWTTCompStore( "elm", aElInp[0].value )
                     neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"next"})
                 }else{
                     sMsg = "Hmm… That Email|Doesn't Look Valid"
@@ -313,6 +315,7 @@ function navA2YW(){
         case 2:
         if( aElInp[1].value ){
                 if( aElInp[1].value.indexOf(".") != -1 ){
+                    doWTTCompStore("domain", aElInp[1].value )
                     neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"next"})
                 }else{
                     sMsg = "Hmm… That Website Address|Doesn't Look Valid"
@@ -360,9 +363,11 @@ window.addEventListener('DOMContentLoaded', (ev) => {
 
                 aElInp.forEach( ( e )=>{
                     e.addEventListener("keypress", function( ev ) {
-                        if (ev.key === "Enter") {
+                        if (ev.key === "Enter") {  //  only fire on pgs. 1 & 2
                             ev.preventDefault();
-                            document.getElementById("js-cta__a2yw--id").click();
+                            if( neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"getPage"}) <= 2 ){
+                                document.getElementById("js-cta__a2yw--id").click();
+                            }
                         }
                     });
                 })
@@ -376,13 +381,13 @@ window.addEventListener('DOMContentLoaded', (ev) => {
                 switch( nPg ){
                     case 1:
                         setTimeout( ()=>{ document.getElementById("js-wtt-a2yw-inp__elm--id").focus() }, 1e3)
-                        
                     break;
                     case 2:
                         setTimeout( ()=>{ document.getElementById("js-wtt-a2yw-inp__domain--id").focus() }, 1e3)
-                        
                     break;
                     case 3:
+                        oWTTCompStore.theme = "brand"
+                        oWTTCompStore.ampm = "light"
                     break;
                     case 4:
                     break;
@@ -507,7 +512,7 @@ NeodigmClaire.showCanv('neodigm-sodapop').setTheme( ['brand','danger','info','ma
 <style>
     /**/
     body[data-n55-ampm-theme="light"] {background-color: #fff;}
-    body[data-n55-ampm-theme="dark"]  {background-color: #000;}
+    body[data-n55-ampm-theme="dark"]  {background-color: #242424;}
 </style>
 <p>List of known alpha sites/apps</p>
 
