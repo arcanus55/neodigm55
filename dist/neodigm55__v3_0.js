@@ -44,7 +44,8 @@ neodigmWWInterval: true,
   N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"], "white":["FFFFFF","FDFDFD"], "ghost":["ffffff","000000"],
    "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"], "party":["FF6F61","C93F60"]},
   N55_APP_STATE: {"CONTEXT": "body", "FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXTMNU": false, "FOCUS": true, "AMPM": "light", "REDUCE_MOTION": true},
-  ROOT: document.querySelector(':root')
+  ROOT: document.querySelector(':root'),
+  N55_FONT: "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto+Slab&display=swap"
 }
 
 if( typeof neodigmOptCustom != 'undefined' ){
@@ -1516,11 +1517,18 @@ function doDOMContentLoaded(){
 </neodiigm-snack>
 <neodigm-tulip class="tulip__cont--hide" role="tooltip"><p></p> <neodigm-marquee data-n55-marquee-text=" ##msg## " data-n55-marquee-size="xsmall"><pre data-n55-theme="##theme##"></pre></neodigm-marquee> </neodigm-tulip>`;  //  Universal Templs
 
-
   let eMU = document.createElement("output");
   eMU.innerHTML = neodigmMU;
   document[ neodigmOpt.N55_APP_STATE.CONTEXT ].appendChild(eMU);
   setTimeout( ()=>{
+    if( neodigmOpt.N55_FONT ){
+        let elLk = document.createElement("link")
+        elLk.setAttribute("rel", "stylesheet"); elLk.setAttribute("type", "text/css");
+
+elLk.setAttribute("requestor", "Neodigm 55");
+        elLk.setAttribute("href", neodigmOpt.N55_FONT )
+        document.head.appendChild( elLk )
+    }
     neodigmUtils.appStateListen()  //  Bind to Host
     neodigmMetronome.init()  //  Always-on
     NeodigmClaire.init()
