@@ -30,11 +30,11 @@ let neodigmOpt = {
   neodigmKPI: true,  N55_GTM_DL_KPI: "n55_gtm_dl_kpi",
   neodigmPWA: true,  N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
   neodigmCarousel: true,  N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
-    N55_CARO_BLUR: true,  //  Carousel transition blur / opacity effect
+    N55_CARO_BLUR: true,  //  Carousel transition blur / opacity fx
 neodigmTulip: true,
 neodigmPopTart: true,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
 neodigmWWInterval: true,
-  N55_ZIND: {"PopTart": 62},
+  N55_ZIND: {"PopTart": 264},
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
   N55_AMPM_THEME: "light",
@@ -251,8 +251,8 @@ class NeodigmSodaPop {
             this.eScrim = this._d.querySelector(this._aQ[0])
             this.eClose = this._d.querySelector(this._aQ[0] + "-close")
             this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  TODO Keyboard trap
-                let evAtr = ev?.target?.dataset?.n55SodapopId || ev?.target?.parentNode?.dataset?.n55SodapopId 
-                let evTheme = ev?.target?.dataset.n55Theme || ev?.target?.parentNode?.dataset.n55Theme
+                let evAtr = neodigmUtils.walkDOM3( ev?.target, "n55SodapopId" )
+                let evTheme = neodigmUtils.walkDOM3( ev?.target, "n55Theme" )
                 if( evAtr && (evTheme != "disabled") ) {
                     ev.preventDefault()
                     neodigmSodaPop.open( evAtr )
@@ -393,8 +393,6 @@ class NeodigmTulip {  //  Tooltip
         this.eTulipTxt = this.eTulip.querySelector( "p" );
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
           if( this.bIsInit && !this.bIsPause ){
-            //let sCnf = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.parentNode?.dataset[ "n55Tulip" ]
-            //let sCnf = ev?.target?.dataset[ "n55Tulip" ] || ev?.target?.parentNode?.dataset[ "n55Tulip" ];
             let sCnf = neodigmUtils.walkDOM3( ev?.target, "n55Tulip" )
             this.sId = ev?.target?.id;  //  Assumes tulip is on child (callback)
             if( sCnf && ev?.target?.dataset?.n55Theme != "disabled" ){
