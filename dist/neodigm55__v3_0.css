@@ -25,12 +25,6 @@ All rights reserved. Redistributions of source code must retain the above copyri
 
 neodigm-template { display: none; }
 
-.shake__an {
-    animation-duration: 0.2s !important;
-    animation-iteration-count: 4 !important;
-    animation-name: touch_shake !important;
-}
-
 /*  Neodigm Toast Begin  */
 .l-snackbar .snackbar__cont {
 	border-radius: 4px;
@@ -905,3 +899,11 @@ neodigm-juicebar[data-n55-show="false"] { visibility: hidden; }
     100% { transform: translateX(100%) scaleX(0.8); }
 }
 /*  Neodigm JuiceBar End  */ 
+
+/*  Neodigm Utils Begin  */
+.shake__an {
+    animation-duration: 0.2s !important;
+    animation-iteration-count: 4 !important;
+    animation-name: touch_shake !important;
+}
+/*  Neodigm Utils End  */
