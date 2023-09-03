@@ -161,8 +161,17 @@ const neodigmUtils = ( ( _d ) =>{
     },
     doSetT: function( fCb, nT ){  //  Fire overloaded or native setT based on opt ff
         if( neodigmOpt.neodigmWWInterval ) return window.setTimeoutN55( fCb, nT )
-        return setTimeout( fCb, nT )
-    }  //  TODO create doClearT, doSetI, and doClearI
+        return setTimeout( fCb, nT )  //  TODO create doClearT, doSetI, and doClearI
+    },
+    shake: function( el, bSound = true) {
+        if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([8, 32, 48])
+        el.classList.add( "shake__an" );
+        setTimeout(function(){
+            el.classList.remove( "shake__an" );
+        }, 460)
+        if( bSound && neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 13, "QUITE" )
+        if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([48, 32, 8])
+    }
   }
 })( document );
 
@@ -665,7 +674,16 @@ class NeodigmWired4Sound {
       [1.44,,666,.1,.15,.32,,1.15,,,,,.13,,4.3,,.19,.77,.27],
       [1.99,,135,.09,.25,.13,1,.05,-0.3,,46,.05,.12,.3,,,.36,,.01,.62],
       [1.82,,1442,.21,,.23,4,.12,-10,,-846,.01,,.1,,,.17,.12,.12],
-      [2.01,,1583,.01,,.02,4,.02,49,-2,,,.01,.1,,,.04,.59,,.01],
+      [3,,1583,.01,,.02,4,.02,49,-2,,,.01,.1,,,.04,.59,,.01],
+
+      [3,6,239,.01,.29,.5,1,1.11,-8.6,0,-1,.19,.11,.1,50,0,0,.45,.14,.18],
+      [3,6,144,.06,.22,.28,0,1.1,-2.4,-0.1,56,.12,.13,0,31,0,0,.47,.12,.32],
+      [24,0,65.41,0,.04,.24,0,1.48,-0.2,.2,-200,0,.02,0,0,-0.1,.13,.06,.01,.37],
+      [3,.05,153,0,.08,0,4,.1,62,0,0,0,0,0,0,0,0,.58,.02,0],
+      [3,.05,1361,.01,.01,.18,4,.02,0,5.3,0,0,0,0,0,0,.01,.35,.1,0],
+      [3,.05,2,.08,.05,0,2,.12,4,90,572,.02,0,0,0,0,.06,1,0,0],
+      [3,.05,898,.01,.02,.03,2,1.95,-0.2,.2,368,.04,.02,-0.1,0,0,.13,1.4,.02,.02],
+      [10,.05,366,0,.18,.47,1,.65,.4,.2,0,0,.09,.1,3,-0.1,.03,-0.19,.07,.27]
     ]
     this.bIsInit = false
   }
