@@ -157,7 +157,7 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
                 <section data-n55-carousel-page-name="email">
                     <aside class="h-center"><p class="readampm__caption">Add Widget to Your Website</p></aside>
                     <br class="h-br-half">
-                    <p class="readampm hd6">Enter your email to continue. We’ll use your email and website domain <span class="h-under h-pointer" data-n55-tulip='{"msg":" We respect your privacy.  Our Privacy policy protects your information from use other than for accessing our Widgets. No spam, promise. ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"top","icon":""}'>only</span> to grant you access to this widget.</p>
+                    <p class="h-center readampm hd6">Enter your email to continue. We’ll use your email and website domain <span class="h-under h-pointer" data-n55-tulip='{"msg":" We respect your privacy.  Our Privacy policy protects your information from use other than for accessing your Widgets. No spam, promise. ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"top","icon":""}'>only</span> to grant you access to your widget.</p>
 
                     <br class="h-br-half">
                     <input id="js-wtt-a2yw-inp__elm--id" name="elm" class="a2yw-n55__inp n55-lc__input" type="text" placeholder="Address@YourDomain.com">
@@ -173,7 +173,7 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
                 </section>
                 <section data-n55-carousel-page-name="domain">
                     <aside class="h-center"><p class="readampm__caption">Add Widget to Your Website</p></aside>
-                    <p class="readampm hd6">Enter your Website to continue. On which website would you like to display this widget? We use this information to customize your experience.</p>
+                    <p class="h-center readampm hd6">Enter your website to continue. On which website would you like to display this widget? We use this information to customize your experience.</p>
 
                     <br class="h-br-half">
                     <input id="js-wtt-a2yw-inp__domain--id" name="domain" class="a2yw-n55__inp n55-lc__input" type="text" placeholder="https://www.YourWebsite.com">
@@ -182,10 +182,11 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
                 </section>
                 <section data-n55-carousel-page-name="roller">
                     <aside class="h-center"><p class="readampm__caption">Add Widget to Your Website</p></aside>
-                    <p class="readampm hd6">Customize your widget to blend into your website. You can choose a color theme and a dark or light mode.</p>
+                    <p class="h-center readampm hd6">Customize your Widget to blend into your website. You can choose a color theme and a dark or light mode.</p>
                     <br class="h-br-half">
                     <nav class="h-center">
 
+                        <br class="h-br-half">
                         <a id="js-wtt-a2yw-cta__ampm"
                             onClick="doWTTCompStore('ampm')"
                             tabindex="0" aria-haspopup="true" data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="false"
@@ -208,9 +209,21 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
 
                     </nav>
                 </section>
+                <section data-n55-carousel-page-name="loading">
+                    <aside class="h-center"><p class="readampm__caption">Add Widget to Your Website</p></aside>
+                    <br class="h-br-half">
+
+                    <nav class="h-center">
+                        <br class="h-br-half">
+                        <img src="https://www.webtooltoys.com/img/wtt_logo_256.png" alt="WebToolToys Logo"
+                        style="max-width: 176px;">
+                    </nav>
+                    <br class="h-br-half">
+
+                </section>
                 <section data-n55-carousel-page-name="copy">
                     <aside class="h-center"><p class="readampm__caption">Add Widget to Your Website</p></aside>
-                    <p class="readampm hd6">COPY This amazing tool can be easily added to your own website. Really! Just send a few lines of code to your web dev and you are in business. Easy!</p>
+                    <p class="h-center readampm hd6">Simply copy this snippet and have your friendly neighborhood web developer put it in your website HTML.</p>
 
                     <div id="js-copy__a2yw" style="background-color: #686868; color: #FFF; font-size: 14px; padding: 8px; max-width: 88%; overflow: scroll;">
 &lt;!-- Google Tag Manager --&gt;
@@ -271,7 +284,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- The below script contains all custom logic for this component -->
 <script>
-let oWTTCompStore = {"theme":"brand", "ampm":"light"}
+let oWTTCompStore = {"token":"aspect_ratio_calc","theme":"brand", "ampm":"light"}
 function doWTTCompStore( sAtr, sVal ){
     if( sAtr == "ampm" ){ 
         let el = document.querySelector( "#js-wtt-a2yw-cta__ampm" )
@@ -310,7 +323,7 @@ function navA2YW(){
                     neodigmSodaPop.shake()        
                 }
             }else{
-                sMsg = "Please Enter an|Email Address"
+                sMsg = "Please Enter Your|Email Address"
                 neodigmSodaPop.shake()                
             }
         break;
@@ -332,6 +345,9 @@ function navA2YW(){
             neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"next"})
         break;
         case 4:
+            neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"next"})
+        break;
+        case 5:
             neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"next"})
         break;
     }
