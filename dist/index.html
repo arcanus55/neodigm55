@@ -157,7 +157,7 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
                 <section data-n55-carousel-page-name="email">
                     <aside class="h-center"><p class="readampm__caption">Add Widget to Your Website</p></aside>
                     <br class="h-br-half">
-                    <p class="h-center readampm hd6">Enter your email to continue. We’ll use your email and website domain <span class="h-under h-pointer" data-n55-tulip='{"msg":" We respect your privacy.  Our Privacy policy protects your information from use other than for accessing your Widgets. No spam, promise. ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"top","icon":""}'>only</span> to grant you access to your widget.</p>
+                    <p class="h-center readampm">Enter your email to continue. We’ll use your email and website domain <span class="h-ds-i__desktop--only h-under h-pointer" data-n55-tulip='{"msg":" We respect your privacy.  Our Privacy policy protects your information from use other than for accessing your Widgets. No spam, promise 🤞. ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"top","icon":""}'>only</span> to grant you access to your Widget.</p>
 
                     <br class="h-br-half">
                     <input id="js-wtt-a2yw-inp__elm--id" name="elm" class="a2yw-n55__inp n55-lc__input" type="text" placeholder="Address@YourDomain.com">
@@ -166,14 +166,15 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
                     <p class="readampm__legal h-center h-user-sel__none"
                         data-n55-tulip= '{"msg":" The Widget Engagement Report gives you insight into how POPULAR your Widgets really are. Giving you a clear picture of how much more traffic and social sharing your website is attracting. 🧲 It’s easy to understand and forever free. ","mrq":true,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icn":""}'>
                         <input id="js-wtt-a2yw-chk__email--id" type="checkbox" data-n55-checkbox checked
-                        onClick="neodigmWired4Sound.sound( 9, 'QUITE' )">
+                        onClick="neodigmWired4Sound.sound( 24, 'QUITE' )"
+                        onChange="doWTTCompStore( 'optin', 'toggle' )">
                     <label for="js-wtt-a2yw-chk__email--id"></label>Email My Free Monthly Widget Engagement Analytics Report</p>
                     <br class="h-br-half">
 
                 </section>
                 <section data-n55-carousel-page-name="domain">
                     <aside class="h-center"><p class="readampm__caption">Add Widget to Your Website</p></aside>
-                    <p class="h-center readampm hd6">Enter your website to continue. On which website would you like to display this widget? We use this information to customize your experience.</p>
+                    <p class="h-center readampm">Enter your website to continue. On which website would you like to display this widget? We use this information to customize your experience.</p>
 
                     <br class="h-br-half">
                     <input id="js-wtt-a2yw-inp__domain--id" name="domain" class="a2yw-n55__inp n55-lc__input" type="text" placeholder="https://www.YourWebsite.com">
@@ -182,7 +183,7 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
                 </section>
                 <section data-n55-carousel-page-name="roller">
                     <aside class="h-center"><p class="readampm__caption">Add Widget to Your Website</p></aside>
-                    <p class="h-center readampm hd6">Customize your Widget to blend into your website. You can choose a color theme and a dark or light mode.</p>
+                    <p class="h-center readampm">Customize your Widget to blend into your website. You can choose a color theme and a dark or light mode.</p>
                     <br class="h-br-half">
                     <nav class="h-center">
 
@@ -223,32 +224,33 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
                 </section>
                 <section data-n55-carousel-page-name="copy">
                     <aside class="h-center"><p class="readampm__caption">Add Widget to Your Website</p></aside>
-                    <p class="h-center readampm hd6">Simply copy this snippet and have your friendly neighborhood web developer put it in your website HTML.</p>
+                    <p class="h-center readampm">Simply copy this snippet then have your friendly neighborhood web developer put it in your website HTML.</p>
+                    <br class="h-br-half">
 
-                    <div id="js-copy__a2yw" style="background-color: #686868; color: #FFF; font-size: 14px; padding: 8px; max-width: 88%; overflow: scroll;">
-&lt;!-- Google Tag Manager --&gt;
-&lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    <textarea id="js-copy__a2yw"
+                    onClick="neodigmUtils.shake( document.getElementById('js-cta-a2yw__copy--id') )">
+<!-- Paste in Document Head -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NCB4CRQT');&lt;/script&gt;
-&lt;!-- End Google Tag Manager --&gt;
-                    </div>
-                    <hr data-n55-theme="brand">
-                    <nav class="h-center">
-                        <a id="cta-copy" data-n55-enchanted-cta data-do-copy="" onclick="doCopyClass('#js-copy__a2yw');" data-n55-wired4sound-click="10" data-n55-enchanted-cta-size="small" data-n55-theme="night" data-n55-enchanted-cta-ambient="emit">
-                            <span data-n55-wired4sound-mouseover="3">Copy Code!</span><span>Clipboard</span>
-                        </a>
-                    </nav>
+'https://a55-wtt-api-v1.onrender.com/wdgt/wtt.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','XXXXXXXX');</script>
+
+<!-- Paste Where you want your Widget -->
+<neodigm-widget data-n55-widget-config="{conf:'', ampm:'',mobile:''}" data-n55-widget-id="compress_json_wdg"></neodigm-widget></textarea>
                 </section>
             </section>
 
         </neodigm-carousel>
 
         <nav class="h-center">
-            <a id="js-cta__a2yw--id" data-n55-enchanted-cta data-n55-wired4sound-click="10" data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost" data-n55-enchanted-cta-ambient=""
+            <a id="js-cta-a2yw__next--id" data-n55-enchanted-cta data-n55-wired4sound-click="10" data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost" data-n55-enchanted-cta-ambient=""
             onClick="navA2YW()">
                 <span data-n55-wired4sound-hover="3">Continue <neodigm-icon class="material-symbols-outlined">navigate_next</neodigm-icon></span><span>Next Step <neodigm-icon class="material-symbols-outlined" style="color: var( --neodigm-theme-brand );">navigate_next</neodigm-icon></span>
+            </a>
+            <a id="js-cta-a2yw__copy--id" data-n55-enchanted-cta data-n55-wired4sound-click="10" data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost" data-n55-enchanted-cta-ambient=""
+            onclick="doCopyClass('#js-copy__a2yw');">
+                <span data-n55-wired4sound-hover="3">Copy Snippet <neodigm-icon class="material-symbols-outlined" style="color: var( --neodigm-theme-brand );">content_copy</neodigm-icon></span><span>To Clipboard <neodigm-icon class="material-symbols-outlined" style="color: var( --neodigm-theme-brand );">content_copy</neodigm-icon></span>
             </a>
         </nav>
         <br class="h-br-half">
@@ -282,10 +284,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </neodigm-template>
 
+<!-- The below script contains all custom CSS for this component -->
+<style>
+#js-copy__a2yw, #js-copy__a2yw  PRE, #js-copy__a2yw  CODE {
+    display: block;
+    background-color: #686868;
+    border-radius: 4px;
+    color: #FFF;
+    font-family: 'Roboto Mono';
+    font-size: 10px;
+    margin: 4px auto; padding: 8px;
+    max-width: 88%;
+    height: 156px;
+    width: 100%;
+    overflow: visible;
+}
+</style>
+
 <!-- The below script contains all custom logic for this component -->
 <script>
-let oWTTCompStore = {"token":"aspect_ratio_calc","theme":"brand", "ampm":"light"}
+let oWTTCompStore = {"token": "compress_json_wdg","theme": "brand", "ampm": "light", "optin": true, "protomolecule":neodigmWidget.getCronSync()}
 function doWTTCompStore( sAtr, sVal ){
+    if( sAtr == "optin" ){
+        sVal = !oWTTCompStore.optin
+    }
     if( sAtr == "ampm" ){ 
         let el = document.querySelector( "#js-wtt-a2yw-cta__ampm" )
         let elTxt = el.querySelector( "span > ampm-mode" )
@@ -313,7 +335,7 @@ function navA2YW(){
     let aElInp = [ ... document.querySelectorAll( ".a2yw-n55__inp" )]  //  Advance Caro on CR
     let sMsg = ""
     switch( nPg ){
-        case 1:
+        case 1:  //  email
             if( aElInp[0].value ){
                 if( ( aElInp[0].value.indexOf("@") != -1 ) && ( aElInp[0].value.indexOf(".") != -1 ) ){
                     doWTTCompStore( "elm", aElInp[0].value )
@@ -327,7 +349,7 @@ function navA2YW(){
                 neodigmSodaPop.shake()                
             }
         break;
-        case 2:
+        case 2:  //  domain
         if( aElInp[1].value ){
                 if( aElInp[1].value.indexOf(".") != -1 ){
                     doWTTCompStore("domain", aElInp[1].value )
@@ -341,13 +363,26 @@ function navA2YW(){
                 neodigmSodaPop.shake()                
             }
         break;
-        case 3:
+        case 3:  //  cust
+
+            fetch( "https://a55-wtt-api-v1.onrender.com/app/list" ).then( result => result.json() ).then(( res ) => {
+            console.log( " ~~~ res | " , res )
+            } )
+
+            neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"next"})
+            neodigmWired4Sound.sound( 8, "QUITE" )
+        break;
+        case 4:  //  wait
+            neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"next"})
+            neodigmWired4Sound.sound( 5, "QUITE" )
+            document.getElementById("js-cta-a2yw__next--id").classList.add("h-ds__none")
+            document.getElementById("js-cta-a2yw__copy--id").classList.add("h-ds__inlineblock")
+        break;
+        case 5: //  copy
             neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"next"})
         break;
-        case 4:
-            neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"next"})
-        break;
-        case 5:
+        case 6: //  share
+        case 7: //  upsell
             neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"next"})
         break;
     }
@@ -384,7 +419,7 @@ window.addEventListener('DOMContentLoaded', (ev) => {
                         if (ev.key === "Enter") {  //  only fire on pgs. 1 & 2
                             ev.preventDefault();
                             if( neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"getPage"}) <= 2 ){
-                                document.getElementById("js-cta__a2yw--id").click();
+                                document.getElementById("js-cta-a2yw__next--id").click();
                             }
                         }
                     });
@@ -397,21 +432,31 @@ window.addEventListener('DOMContentLoaded', (ev) => {
                 return true;
             }, "js-wtt-a2yw-pup")
             neodigmCarousel.setOnAfterNav( ( sId, nPg )=>{
+                let bHideJuicebar = true
                 
-                setTimeout( ()=>{ document.querySelector( "neodigm-sodapop neodigm-juicebar" ).classList.add( "h-opa__0" ) }, 1e3)
                 switch( nPg ){
-                    case 1:
+                    case 1:  //  email
                         setTimeout( ()=>{ document.getElementById("js-wtt-a2yw-inp__elm--id").focus() }, 1e3)
                     break;
-                    case 2:
+                    case 2:  //  domain
                         setTimeout( ()=>{ document.getElementById("js-wtt-a2yw-inp__domain--id").focus() }, 1e3)
                     break;
-                    case 3:
+                    case 3:  //  cust
                         oWTTCompStore.theme = "brand"
                         oWTTCompStore.ampm = "light"
                     break;
-                    case 4:
+                    case 4:  //  wait
+                        bHideJuicebar = false
                     break;
+                    case 5:  //  copy
+                    break;
+                    case 6:  //  share
+                    break;
+                    case 7:  //  upsell
+                    break;
+                }
+                if( bHideJuicebar ){
+                    setTimeout( ()=>{ document.querySelector( "neodigm-sodapop neodigm-juicebar" ).classList.add( "h-opa__0" ) }, 1e3)
                 }
                 return true;
             },'js-wtt-a2yw-caro__id' )
