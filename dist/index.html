@@ -388,6 +388,7 @@ function navA2YW(){
 
             fetch( "https://a55-wtt-api-v1.onrender.com/app/list" ).then( result => result.json() ).then(( res ) => {
                 setTimeout( ()=>{
+                    neodigmWired4Sound.sound( 15 )
                     document.getElementById("js-cta-a2yw__copy--id").classList.remove("h-ds__none")
                     document.getElementById("js-cta-a2yw__copy--id").classList.add("h-ds__inlineblock")
                     neodigmCarousel.nav({"id":"js-wtt-a2yw-caro__id","nav":"next"})
@@ -471,7 +472,10 @@ window.addEventListener('DOMContentLoaded', (ev) => {
                         }
                     });
                 })
-                setTimeout( ()=>{ document.getElementById("js-wtt-a2yw-inp__elm--id").focus() }, 96)
+                setTimeout( ()=>{
+                    document.getElementById("js-wtt-a2yw-inp__elm--id").focus()
+                    doKeyFocusTrap("[data-n55-carousel-page-name='email']")
+                }, 96)
                 return true;
             }, "js-wtt-a2yw-pup")
             neodigmSodaPop.setOnClose( function(){
@@ -480,28 +484,38 @@ window.addEventListener('DOMContentLoaded', (ev) => {
             }, "js-wtt-a2yw-pup")
             neodigmCarousel.setOnAfterNav( ( sId, nPg )=>{
                 let bHideJuicebar = true
-                
                 switch( nPg ){
                     case 1:  //  email
-                        setTimeout( ()=>{ document.getElementById("js-wtt-a2yw-inp__elm--id").focus() }, 1e3)
+                        setTimeout( ()=>{
+                            document.getElementById("js-wtt-a2yw-inp__elm--id").focus()
+                            doKeyFocusTrap("[data-n55-carousel-page-name='email']")
+                        }, 1e3)
                     break;
                     case 2:  //  domain
-                        setTimeout( ()=>{ document.getElementById("js-wtt-a2yw-inp__domain--id").focus() }, 1e3)
+                        setTimeout( ()=>{
+                            document.getElementById("js-wtt-a2yw-inp__domain--id").focus()
+                            doKeyFocusTrap("[data-n55-carousel-page-name='domain']")
+                        }, 1e3)
                     break;
                     case 3:  //  roller
+                        doKeyFocusTrap("[data-n55-carousel-page-name='roller']")
                         oWTTCompStore.theme = "brand"
                         oWTTCompStore.ampm = "light"
                     break;
                     case 4:  //  anticipation
+                        doKeyFocusTrap("[data-n55-carousel-page-name='anticipation']")
                         bHideJuicebar = false
                     break;
                     case 5:  //  snippet
+                        doKeyFocusTrap("[data-n55-carousel-page-name='snippet']")
                     break;
                     case 6:  //  sticky
+                        doKeyFocusTrap("[data-n55-carousel-page-name='sticky']")
                         document.getElementById("js-cta-a2yw__next--id").classList.remove("h-ds__none")
                         document.getElementById("js-cta-a2yw__copy--id").classList.add("h-ds__none")
                     break;
                     case 7:  //  upsell
+                        doKeyFocusTrap("[data-n55-carousel-page-name='upsell']")
                         document.getElementById("js-cta-a2yw__next--id").classList.add("h-ds__none")
                     break;
                 }
@@ -513,6 +527,32 @@ window.addEventListener('DOMContentLoaded', (ev) => {
         }
     }, 800)
 } )
+
+function doKeyFocusTrap( sQry ) {
+    let elPanel = document.querySelector( sQry )
+    if( elPanel ){
+        if( elPanel.hasN55Trap ) return
+        elPanel.hasN55Trap = true
+        let aFocus =  elPanel.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])')
+        let elFocusFirst = aFocus[0], elFocusLast = aFocus[aFocus.length - 1]
+
+        elPanel.addEventListener('keydown', ( ev )=>{
+            if( ev.key != "Tab" ) return
+
+            if( ev.shiftKey ){
+                if(document.activeElement === elFocusFirst) {
+                    elFocusLast.focus()
+                    ev.preventDefault()
+                }
+            }else{
+                if(document.activeElement === elFocusLast) {
+                    elFocusFirst.focus()
+                    ev.preventDefault()
+                }
+            }
+        } )
+    }
+}
 </script>
 
 
