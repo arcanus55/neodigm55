@@ -247,7 +247,7 @@ neodigm-marquee {
 neodigm-marquee pre {
     color: var(--neodigm-theme-brand);
     font-family: 'Roboto Mono', monospace; 
-    padding: 0; margin: 2px; overflow: hidden;
+    padding: 0; margin: 2px;
     font-weight: 100;
         font-size: 30px; line-height: 1.1;
 
