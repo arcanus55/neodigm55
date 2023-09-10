@@ -1391,6 +1391,9 @@ class NeodigmCarousel {
             case "getPage":
                 return oState.nIdx;
                 break;
+            case "getName":
+              return oState.aTabCntr[ (oState.nIdx - 1) ].dataset?.n55CarouselPageName
+              break;
             default:  //  literal num pg value or string name
                 if( typeof oNav.nav === "string" ){  //  Find Page by Name
                     let nPgFromName = 0
