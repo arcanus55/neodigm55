@@ -22,28 +22,30 @@
 
 -->
 
-<section class="l-hg h-ampm__bg">
-    <aside class="hg__sidenav">
+<section class="l-hg h-ampm__bg data-n55-leftnav-state='0'">
+    <aside class="h-ampm__bg--late hg__sidenav">
         <header class="h-center">
-            <h1 class="hd6 readampm__title">brand</h1>
+            <h1 class="hd6 readampm__title">ipsum</h1>
         </header>
         <nav>NAV</nav>
     </aside>
     <main class="hg__main">
-        <header>
+        <header class="h-ampm__bg--late">
             <nav class="h-left">
-                <neodigm-acticon class="" data-n55-theme="ghost" data-n55-size="micro"><neodigm-icon class="material-symbols-outlined">chevron_left</neodigm-icon></neodigm-acticon>
+                <neodigm-acticon id="" class="" data-n55-theme="ghost" data-n55-size="micro"><neodigm-icon class="material-symbols-outlined">menu</neodigm-icon></neodigm-acticon>
+                <neodigm-acticon id="" class="" data-n55-theme="ghost" data-n55-size="micro"><neodigm-icon class="material-symbols-outlined">chevron_left</neodigm-icon></neodigm-acticon>
+                <neodigm-acticon id="" class="" data-n55-theme="ghost" data-n55-size="micro"><neodigm-icon class="material-symbols-outlined">chevron_right</neodigm-icon></neodigm-acticon>
             </nav>
             <div class="h-center">
-                <h1 class="hd6 readampm__title">senatus populusque romanus</h1>
+                <h1 class="hd6 readampm__title">ipsum lorum</h1>
             </div>
             <nav class="h-right">
-                <neodigm-acticon data-n55-theme="ghost" data-n55-size="micro"><neodigm-icon class="material-symbols-outlined">more_vert</neodigm-icon></neodigm-acticon>
-                <neodigm-acticon class="h-ds-ib__ampm--light" data-n55-theme="ghost" data-n55-size="micro"
+                <neodigm-acticon id="" data-n55-theme="ghost" data-n55-size="micro"><neodigm-icon class="material-symbols-outlined">more_vert</neodigm-icon></neodigm-acticon>
+                <neodigm-acticon id="" class="h-ds-ib__ampm--light" data-n55-theme="ghost" data-n55-size="micro"
                 onClick="fToggleAMPM()"><neodigm-icon class="material-symbols-outlined">light_mode</neodigm-icon></neodigm-acticon>
-                <neodigm-acticon class="h-ds-ib__ampm--dark"  data-n55-theme="ghost" data-n55-size="micro"
+                <neodigm-acticon id="" class="h-ds-ib__ampm--dark"  data-n55-theme="ghost" data-n55-size="micro"
                 onClick="fToggleAMPM()"><neodigm-icon class="material-symbols-outlined">dark_mode</neodigm-icon></neodigm-acticon>
-                <neodigm-acticon data-n55-theme="ghost" data-n55-size="micro"><neodigm-icon class="material-symbols-outlined">person</neodigm-icon></neodigm-acticon>
+                <neodigm-acticon id="" data-n55-theme="ghost" data-n55-size="micro"><neodigm-icon class="material-symbols-outlined">person</neodigm-icon></neodigm-acticon>
             </nav>
         </header>
         <article>
@@ -60,7 +62,6 @@
 }
 .l-hg .hg__sidenav {
     border-right: solid 1px #484848;
-
 }
 .l-hg .hg__sidenav > HEADER,
 .l-hg .hg__main > HEADER {
@@ -74,6 +75,9 @@
 }
 [data-n55-ampm-theme='light'] .h-ampm__bg {background-color: #fff; transition: all .4s;}
 [data-n55-ampm-theme='dark']  .h-ampm__bg {background-color: #323232; transition: all .4s;}
+
+[data-n55-ampm-theme='light'] .h-ampm__bg--late {background-color: #fff; transition: all .6s;}
+[data-n55-ampm-theme='dark']  .h-ampm__bg--late {background-color: #323232; transition: all .6s;}
 
 @media only screen and (min-width:48.1em){/* med *//* lg */
     .l-hg {
@@ -90,3 +94,18 @@
 
     </body>
 </html>
+
+<script>
+    const fPowerSet = ( oTmpl )=>{
+        let aRetVal = []
+        if( !oTmpl ) oTmpl = {"timeperiods": ["1x1", "2x2", "3x3"], "products": ["prod1", "prod2"], "salesforce": ["AI7", "AI8"]}
+        oTmpl.salesforce.forEach( ( sSalesforce )=>{
+            oTmpl.products.forEach( ( sProducts )=>{
+                oTmpl.timeperiods.forEach( ( sTimeperiods )=>{
+                    aRetVal.push( {"timperiods": sTimeperiods, "products": sProducts, "salesforce": sSalesforce } )
+                } )
+            } )
+        } )
+        return aRetVal;
+    } 
+</script>
