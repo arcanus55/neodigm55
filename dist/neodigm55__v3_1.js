@@ -446,19 +446,19 @@ class NeodigmTulip {  //  Tooltip
     let nPrC = oRct.left + Math.round( nPrW / 2 )
     this.eTulip.style.top = oRct.top + "px";
     this.eTulip.style.left = nPrC - Math.round( nTlW / 2 ) + "px";
-    const NOFFSET = 16
+    const NOFFSET = 10
     switch( this.eTulip.dataset.n55Position = this.oCnfCur.position ){
       case "top":
         this.eTulip.style.top = oRct.top - (NOFFSET * NOFFSET) + "px";
       break
       case "right":
-        this.eTulip.style.left = ( oRct.right + NOFFSET ) + "px";
+        this.eTulip.style.left = ( oRct.right + (NOFFSET + 4) ) + "px";
       break
       case "bottom":
         this.eTulip.style.top = oRct.bottom + (NOFFSET + NOFFSET) + "px";
       break
       case "left":
-          this.eTulip.style.left = ( oRct.left - ( nTlW + NOFFSET ) ) + "px";
+          this.eTulip.style.left = ( oRct.left - ( nTlW + (NOFFSET + 4) ) ) + "px";
       break
     }
     this.bIsOpen = true
