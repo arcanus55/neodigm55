@@ -163,14 +163,17 @@ const neodigmUtils = ( ( _d ) =>{
         if( neodigmOpt.neodigmWWInterval ) return window.setTimeoutN55( fCb, nT )
         return setTimeout( fCb, nT )  //  TODO create doClearT, doSetI, and doClearI
     },
-    shake: function( el, bSound = true) {
-        if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([8, 32, 48])
+    shake: function( _q, bSound = true) {
+        if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([8, 32, 48]);
+        [ ... document.querySelectorAll( _q ) ].forEach(function( el, nDx ){
         el.classList.add( "shake__an" );
         setTimeout(function(){
             el.classList.remove( "shake__an" );
         }, 460)
-        if( bSound && neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 13, "QUITE" )
-        if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([48, 32, 8])
+      } )
+      if( bSound && neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 13, "QUITE" )
+      if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([48, 32, 8])
+      return neodigmUtils
     }
   }
 })( document );
