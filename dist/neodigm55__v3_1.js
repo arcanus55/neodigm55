@@ -148,6 +148,24 @@ const neodigmUtils = ( ( _d ) =>{
             }
           }, NTIMES[1] + nDx, NTIMES[0] )
       })
+      return neodigmUtils;
+    },
+    typeOn: function( o ){
+      //  {"query":".readampm__caption", "msg":"Hi|How are you?|Well, I hope.", "random":false,"loop":1200}
+      const NTIMES = [ o.msg.length, 124];
+      [ ... document.querySelectorAll( o?.query ) ].forEach(function( e, nDx ){
+        neodigmMetronome.unsubscribe( NTIMES[1] + nDx ).subscribe( function( mx ){
+          let sChr = o.msg[ mx ]
+          if( mx != 0 ){
+            e.textContent = ( nCur < nVal ) ? nCur + nValC : nCur - nValC
+          }else{
+            e.textContent = nVal
+          }
+          
+        }, NTIMES[1] + nDx, NTIMES[0] )
+        e.textContent = "Q"
+      } )
+      return neodigmUtils;
     },
     getValJSON: function( sAtr, sPrp ){  //  Return json object or construct an object w property | msg
       try { return JSON.parse( sAtr ) } catch(e) {
@@ -164,16 +182,14 @@ const neodigmUtils = ( ( _d ) =>{
         return setTimeout( fCb, nT )  //  TODO create doClearT, doSetI, and doClearI
     },
     shake: function( _q, bSound = true) {
-        if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([8, 32, 48]);
-        [ ... document.querySelectorAll( _q ) ].forEach(function( el, nDx ){
+      if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([8, 32, 48]);
+      [ ... document.querySelectorAll( _q ) ].forEach(function( el, nDx ){
         el.classList.add( "shake__an" );
-        setTimeout(function(){
-            el.classList.remove( "shake__an" );
-        }, 460)
+        setTimeout(function(){ el.classList.remove( "shake__an" ); }, 460)
       } )
       if( bSound && neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 13, "QUITE" )
       if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([48, 32, 8])
-      return neodigmUtils
+      return neodigmUtils;
     }
   }
 })( document );
@@ -725,6 +741,9 @@ class NeodigmWired4Sound {
         }
     }
     return this
+  }
+  vibrate( aVib=[8, 32, 48] ){
+    return this.doHaptic( aVib )
   }
   doHaptic ( aVib ){
     if( neodigmOpt.N55_APP_STATE.FIRST_TAP && neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator){

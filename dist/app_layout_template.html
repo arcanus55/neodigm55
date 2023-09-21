@@ -94,18 +94,3 @@
 
     </body>
 </html>
-
-<script>
-    const fPowerSet = ( oTmpl )=>{
-        let aRetVal = []
-        if( !oTmpl ) oTmpl = {"timeperiods": ["1x1", "2x2", "3x3"], "products": ["prod1", "prod2"], "salesforce": ["AI7", "AI8"]}
-        oTmpl.salesforce.forEach( ( sSalesforce )=>{
-            oTmpl.products.forEach( ( sProducts )=>{
-                oTmpl.timeperiods.forEach( ( sTimeperiods )=>{
-                    aRetVal.push( {"timperiods": sTimeperiods, "products": sProducts, "salesforce": sSalesforce } )
-                } )
-            } )
-        } )
-        return aRetVal;
-    } 
-</script>
