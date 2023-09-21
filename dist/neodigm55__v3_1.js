@@ -150,7 +150,7 @@ const neodigmUtils = ( ( _d ) =>{
       })
       return neodigmUtils;
     },
-    typeOn: function( o ){
+    typeOn: function( o ){  
       //  {"query":".readampm__caption", "msg":"Hi|How are you?|Well, I hope.", "random":false,"loop":1200}
       const NTIMES = [ o.msg.length, 124];
       [ ... document.querySelectorAll( o?.query ) ].forEach(function( e, nDx ){
@@ -166,7 +166,7 @@ const neodigmUtils = ( ( _d ) =>{
         e.textContent = "Q"
       } )
       return neodigmUtils;
-    },
+    },  
     getValJSON: function( sAtr, sPrp ){  //  Return json object or construct an object w property | msg
       try { return JSON.parse( sAtr ) } catch(e) {
         return JSON.parse( '{ "' + sPrp + '": "' + sAtr + '" }' )
@@ -711,7 +711,11 @@ class NeodigmWired4Sound {
         let evAtr = neodigmUtils.walkDOM3( ev?.target, sAtr )
         let evTheme = neodigmUtils.walkDOM3( ev?.target, "n55Theme" )
         neodigmUtils.walkDOM3( ev?.target, "n55Tulip" )
-        if( evAtr && (evTheme != "disabled") ) neodigmWired4Sound.sound( evAtr )
+        if( evAtr && (evTheme != "disabled") ) {
+          if( evAtr == "vibrate" ){
+            neodigmWired4Sound.vibrate()
+          }else{ neodigmWired4Sound.sound( evAtr ) }
+        }
       }, false);
     })
     this.bIsInit = true; return this
@@ -742,9 +746,10 @@ class NeodigmWired4Sound {
     }
     return this
   }
-  vibrate( aVib=[8, 32, 48] ){
+  vibrate( aVib=[8, 32, 48] ){ 
+    console.log(" ~~~ vibrate |")
     return this.doHaptic( aVib )
-  }
+  } 
   doHaptic ( aVib ){
     if( neodigmOpt.N55_APP_STATE.FIRST_TAP && neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator){
       window.navigator.vibrate( aVib )
