@@ -131,7 +131,7 @@ const neodigmUtils = ( ( _d ) =>{
         });
       }
     },
-    countTo: function( _q, nVal, t=124 ){  //  Whole number
+    countTo: async function( _q, nVal, t=124 ){  //  Whole number
       const NTIMES = [16, t];
       [ ... document.querySelectorAll( _q ) ].forEach(function( e, nDx ){
           let nDif = Math.abs( Number( e.textContent ) - nVal )
@@ -150,23 +150,40 @@ const neodigmUtils = ( ( _d ) =>{
       })
       return neodigmUtils;
     },
-    typeOn: function( o ){  
-      //  {"query":".readampm__caption", "msg":"Hi|How are you?|Well, I hope.", "random":false,"loop":1200}
-      const NTIMES = [ o.msg.length, 124];
-      [ ... document.querySelectorAll( o?.query ) ].forEach(function( e, nDx ){
-        neodigmMetronome.unsubscribe( NTIMES[1] + nDx ).subscribe( function( mx ){
-          let sChr = o.msg[ mx ]
-          if( mx != 0 ){
-            e.textContent = ( nCur < nVal ) ? nCur + nValC : nCur - nValC
-          }else{
-            e.textContent = nVal
+    typeOff: async function( o ){
+      let elTrg = document.querySelector( o?.q1st )
+      if( elTrg ){
+        let nInterv = elTrg.textContent.length
+        let oSt = window.getComputedStyle( elTrg )
+        let nPd = Number(oSt.paddingTop.replace("px", "")) + Number(oSt.paddingBottom.replace("px", ""))
+        if( elTrg.offsetHeight ) elTrg.style.height = (elTrg.offsetHeight - nPd ) + "px"
+        while( nInterv ){
+          setTimeout( ()=>{ elTrg.textContent = elTrg.textContent.replace(/.$/,"") }, o.uniqueDelay * nInterv-- )
+        }
+      }
+    },
+    typeOn: async function( o ){ 
+      //  neodigmUtils.typeOn({"q1st":".readampm__caption", "msg":"Hi|How are you?|Well, I hope.", "mode":"random|loop","uniqueDelay": 176}).shake(".readampm__caption")
+      // REQUIREMENTS - Update data attr with current number so that we can change color for each phrase
+      //  initial type off
+      let elTrg = document.querySelector( o?.q1st )
+      if( elTrg ){
+        let aFraz = o.msg.split("|")
+        const NTIMES = [ o.msg.length, o.uniqueDelay ];
+        neodigmUtils.typeOff({"q1st": o.q1st, "uniqueDelay": ( o.uniqueDelay / elTrg.textContent.length ) - 4 })
+
+        neodigmMetronome.unsubscribe( NTIMES[1] ).subscribe( ( mx )=>{
+          let sChr = o.msg[ o.msg.length - (mx + 1) ]
+          if( sChr == "|" ){
+            sChr = ""
+            neodigmUtils.typeOff({"q1st": o.q1st, "uniqueDelay": ( o.uniqueDelay / elTrg.textContent.length ) - 4 })
           }
-          
-        }, NTIMES[1] + nDx, NTIMES[0] )
-        e.textContent = "Q"
-      } )
+          elTrg.textContent += sChr
+        }, NTIMES[1], NTIMES[0] )
+
+      }
       return neodigmUtils;
-    },  
+    },
     getValJSON: function( sAtr, sPrp ){  //  Return json object or construct an object w property | msg
       try { return JSON.parse( sAtr ) } catch(e) {
         return JSON.parse( '{ "' + sPrp + '": "' + sAtr + '" }' )
@@ -746,10 +763,9 @@ class NeodigmWired4Sound {
     }
     return this
   }
-  vibrate( aVib=[8, 32, 48] ){ 
-    console.log(" ~~~ vibrate |")
+  vibrate( aVib=[8, 32, 48] ){  
     return this.doHaptic( aVib )
-  } 
+  }  
   doHaptic ( aVib ){
     if( neodigmOpt.N55_APP_STATE.FIRST_TAP && neodigmOpt.N55_EVENT_HAPTIC && "vibrate" in navigator){
       window.navigator.vibrate( aVib )
@@ -897,9 +913,9 @@ const neodigmMetronome = ( () =>{
     pause: function( nT ){
       bIsPause = true;
       if( nT ) setTimeout( neodigmMetronome.play, nT )
-      return neodigmMarquee; },
+      return neodigmMetronome; },
     isPaused: function(){ return bIsPause },
-    play:  function(){ bIsPause = false; return neodigmMarquee; }
+    play:  function(){ bIsPause = false; return neodigmMetronome; }
   }
 })();
 
