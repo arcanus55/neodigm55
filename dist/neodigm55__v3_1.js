@@ -1025,7 +1025,7 @@ class NeodigmClaireConfetti{
         "speed": (neodigmUtils.f02x( 4 ) + 2 ), "gravity": (neodigmUtils.f02x( 4 ) + 4 ),
         "rotation": 9,
         "complete": false,
-        "theme": neodigmOpt.N55_THEME_COLORS[ ["warning","info","danger","secondary","primary","night"][neodigmUtils.f02x( 5 )] ][ neodigmUtils.f02x( 2 ) ]
+        "theme": neodigmOpt.N55_THEME_COLORS[ ["warning","info","danger","secondary","primary","night","party"][neodigmUtils.f02x( 6 )] ][ neodigmUtils.f02x( 2 ) ]
       })
     }
     this.nMax = Math.max(this.cCtx.height, this.cCtx.width)
