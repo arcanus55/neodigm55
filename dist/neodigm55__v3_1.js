@@ -168,8 +168,9 @@ const neodigmUtils = ( ( _d ) =>{
       //  initial type off
       let elTrg = document.querySelector( o?.q1st )
       if( elTrg ){
+        o.msg = o.msg.replaceAll("|", "   |   ")
         let aFraz = o.msg.split("|")
-        if( (o?.mode == "RANDOM" ) && aFraz.length ){ o.msg = aFraz[ neodigmUtils.f02x( aFraz.length ) ] }
+        if( ( o?.mode == "RANDOM" ) && aFraz.length ){ o.msg = aFraz[ neodigmUtils.f02x( aFraz.length ) ] }
         const NTIMES = [ o.msg.length, o.uniqueDelay ];
         neodigmUtils.typeOff({"q1st": o.q1st, "uniqueDelay": ( o.uniqueDelay / elTrg.textContent.length ) - 4 })
 
