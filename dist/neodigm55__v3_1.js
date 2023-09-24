@@ -89,23 +89,24 @@ const neodigmUtils = ( ( _d ) =>{
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
       document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "click", ( ev ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
-        if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class ?
+        if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class pub/sub emit?
+        if( ev.target.dataset.n55TypeonClick ) neodigmUtils.typeOn( JSON.parse( ev.target.dataset.n55TypeonClick ) )
       })
       document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "touchstart", ( ev ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
-        if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class ?
+        if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class pub/sub emit?
       })
       window.addEventListener( "resize", ( ev ) =>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
-          if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class ?
+          if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class pub/sub emit?
           if( neodigmOpt.neodigmPopTart ) neodigmPopTart.close()
         })
       })
       window.addEventListener( "orientationchange", ( ev ) =>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
-          if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class ?
+          if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class pub/sub emit?
         })
       })
       window.addEventListener( "scroll", ( ev ) =>{
@@ -1224,12 +1225,15 @@ class NeodigmEnchantedCTA {
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {
           let sId = ev?.target?.id || ev?.target?.parentNode?.id || "add_id"
           let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ("n55EnchantedCta" in ev?.target?.parentNode?.dataset)
-          if( bCta && neodigmOpt.N55_GTM_DL_CTA ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CTA, sId )
-          let sTheme = ev?.target?.dataset?.n55Theme || ev?.target?.parentNode?.dataset?.n55Theme
-          if( sTheme != "disabled" ){
-            let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.target?.parentNode?.dataset?.n55FlashTheme
-            if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
+          if( bCta ){  //  Optim
+            if( neodigmOpt.N55_GTM_DL_CTA ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CTA, sId )
+            let sTheme = ev?.target?.dataset?.n55Theme || ev?.target?.parentNode?.dataset?.n55Theme
+            if( sTheme != "disabled" ){
+              let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.target?.parentNode?.dataset?.n55FlashTheme
+              if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
+            }            
           }
+
         }, false)
         if( neodigmOpt.N55_CTA_LONG_TAP ){
           this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mousedown", ( ev ) => {
