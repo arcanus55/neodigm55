@@ -168,9 +168,9 @@ const neodigmUtils = ( ( _d ) =>{
         elTrg.dataset.n55Typeon = 0
         let sMsg = o.msg.replaceAll("|", "   |   ") + "   "  //  Pause between
         let aPhrz = sMsg.split("|")
-        if( ( o?.mode == "RANDOM" ) && aPhrz.length ){
+        if( ( o?.mode == "RANDOM" ) && aPhrz.length ){  //  Token CAPS
           let nRnd = elTrg.dataset.n55Typeon = neodigmUtils.f02x( aPhrz.length )
-          sMsg = aPhrz[ nRnd ]
+          sMsg = aPhrz[ nRnd ]  //  A single Phrase
         }
         const NTIMES = [ sMsg.length, o.uniqueDelay ];
         neodigmUtils.typeOff({"q1st": o.q1st, "uniqueDelay": ( o.uniqueDelay / elTrg.textContent.length ) - 4 })
