@@ -163,15 +163,19 @@ const neodigmUtils = ( ( _d ) =>{
         }
       }
     },
-    typeOn: async function( o ){ 
+    typeOn: async function( o ){  //  Progressive Text
       let elTrg = document.querySelector( o?.q1st )
       if( elTrg ){
         elTrg.dataset.n55Typeon = 0
         let sMsg = o.msg.replaceAll("|", "   |   ") + "   "  //  Pause between
         let aPhrz = sMsg.split("|")
+        if( ( o?.mode == "OFF" ) ){  //  Token CAPS
+          neodigmUtils.typeOff({"q1st": o.q1st, "uniqueDelay": ( o.uniqueDelay / elTrg.textContent.length ) - 4 })
+          return neodigmUtils;
+        }
         if( ( o?.mode == "RANDOM" ) && aPhrz.length ){  //  Token CAPS
-          let nRnd = elTrg.dataset.n55Typeon = neodigmUtils.f02x( aPhrz.length )
-          sMsg = aPhrz[ nRnd ]  //  A single Phrase
+          let nRnd = elTrg.dataset.n55Typeon = neodigmUtils.f02x( aPhrz.length )  //  Update data attr
+          sMsg = aPhrz[ nRnd ]  //  A Single Phrase
         }
         const NTIMES = [ sMsg.length, o.uniqueDelay ];
         neodigmUtils.typeOff({"q1st": o.q1st, "uniqueDelay": ( o.uniqueDelay / elTrg.textContent.length ) - 4 })
@@ -183,7 +187,7 @@ const neodigmUtils = ( ( _d ) =>{
             elTrg.dataset.n55Typeon++
           }
           elTrg.textContent += sChr
-          if( o?.mode == "LOOP" && mx == 0 ) neodigmUtils.typeOn( o )  //  recurse
+          if( o?.mode == "LOOP" && mx == 0 ) neodigmUtils.typeOn( o )  //  Recurse
         }, NTIMES[1], NTIMES[0] )
       }
       return neodigmUtils;
