@@ -163,26 +163,27 @@ const neodigmUtils = ( ( _d ) =>{
       }
     },
     typeOn: async function( o ){ 
-      //  neodigmUtils.typeOn({"q1st":".readampm__caption", "msg":"Hi|How are you?|Well, I hope.", "mode":"random|loop","uniqueDelay": 176}).shake(".readampm__caption")
-      // REQUIREMENTS - Update data attr with current number so that we can change color for each phrase
-      //  initial type off
       let elTrg = document.querySelector( o?.q1st )
       if( elTrg ){
-        o.msg = o.msg.replaceAll("|", "   |   ")
-        let aFraz = o.msg.split("|")
-        if( ( o?.mode == "RANDOM" ) && aFraz.length ){ o.msg = aFraz[ neodigmUtils.f02x( aFraz.length ) ] }
-        const NTIMES = [ o.msg.length, o.uniqueDelay ];
+        elTrg.dataset.n55Typeon = 0
+        let sMsg = o.msg.replaceAll("|", "   |   ") + "   "  //  Pause between
+        let aPhrz = sMsg.split("|")
+        if( ( o?.mode == "RANDOM" ) && aPhrz.length ){
+          let nRnd = elTrg.dataset.n55Typeon = neodigmUtils.f02x( aPhrz.length )
+          sMsg = aPhrz[ nRnd ]
+        }
+        const NTIMES = [ sMsg.length, o.uniqueDelay ];
         neodigmUtils.typeOff({"q1st": o.q1st, "uniqueDelay": ( o.uniqueDelay / elTrg.textContent.length ) - 4 })
-
         neodigmMetronome.unsubscribe( NTIMES[1] ).subscribe( ( mx )=>{
-          let sChr = o.msg[ o.msg.length - (mx + 1) ]
+          let sChr = sMsg[ sMsg.length - (mx + 1) ]
           if( sChr == "|" ){
             sChr = ""
             neodigmUtils.typeOff({"q1st": o.q1st, "uniqueDelay": ( o.uniqueDelay / elTrg.textContent.length ) - 4 })
+            elTrg.dataset.n55Typeon++
           }
           elTrg.textContent += sChr
+          if( o?.mode == "LOOP" && mx == 0 ) neodigmUtils.typeOn( o )  //  recurse
         }, NTIMES[1], NTIMES[0] )
-
       }
       return neodigmUtils;
     },
