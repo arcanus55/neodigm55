@@ -167,19 +167,18 @@ const neodigmUtils = ( ( _d ) =>{
       let elTrg = document.querySelector( o?.q1st )
       if( elTrg ){
         elTrg.dataset.n55Typeon = 0
-        let sMsg = o.msg.replaceAll("|", "   |   ") + "   "  //  Pause between
+        let sMsg = o.msg.replaceAll("|", "   |   ") + "   "  //  Pause Between
         let aPhrz = sMsg.split("|")
         if( ( o?.mode == "OFF" ) ){  //  Token CAPS
           neodigmUtils.typeOff({"q1st": o.q1st, "uniqueDelay": o.uniqueDelay })
           return neodigmUtils;
         }
         if( ( o?.mode == "RANDOM" ) && aPhrz.length ){  //  Token CAPS
-          let nRnd = elTrg.dataset.n55Typeon = neodigmUtils.f02x( aPhrz.length )  //  Update data attr
-          sMsg = aPhrz[ nRnd ]  //  A Single Phrase
+          let nRnd = elTrg.dataset.n55Typeon = neodigmUtils.f02x( aPhrz.length )  //  Update data Attr RND
+          sMsg = aPhrz[ nRnd ]  //  Single Phrase
         }
-        const NTIMES = [ sMsg.length, o.uniqueDelay ];
         neodigmUtils.typeOff({"q1st": o.q1st, "uniqueDelay": ( o.uniqueDelay / elTrg.textContent.length ) - 4 })
-        neodigmMetronome.unsubscribe( NTIMES[1] ).subscribe( ( mx )=>{
+        neodigmMetronome.unsubscribe( o.uniqueDelay ).subscribe( ( mx )=>{
           let sChr = sMsg[ sMsg.length - (mx + 1) ]
           if( sChr == "|" ){
             sChr = ""
@@ -187,8 +186,8 @@ const neodigmUtils = ( ( _d ) =>{
             elTrg.dataset.n55Typeon++
           }
           elTrg.textContent += sChr
-          if( o?.mode == "LOOP" && mx == 0 ) neodigmUtils.typeOn( o )  //  Recurse
-        }, NTIMES[1], NTIMES[0] )
+          if( o?.mode == "LOOP" && mx == 0 ) neodigmUtils.typeOn( o )  //  Token CAPS Recurse
+        }, o.uniqueDelay, sMsg.length )  //  Subscribe params
       }
       return neodigmUtils;
     },
