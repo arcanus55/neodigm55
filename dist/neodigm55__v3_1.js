@@ -170,7 +170,7 @@ const neodigmUtils = ( ( _d ) =>{
         let sMsg = o.msg.replaceAll("|", "   |   ") + "   "  //  Pause between
         let aPhrz = sMsg.split("|")
         if( ( o?.mode == "OFF" ) ){  //  Token CAPS
-          neodigmUtils.typeOff({"q1st": o.q1st, "uniqueDelay": ( o.uniqueDelay / elTrg.textContent.length ) - 4 })
+          neodigmUtils.typeOff({"q1st": o.q1st, "uniqueDelay": o.uniqueDelay })
           return neodigmUtils;
         }
         if( ( o?.mode == "RANDOM" ) && aPhrz.length ){  //  Token CAPS
