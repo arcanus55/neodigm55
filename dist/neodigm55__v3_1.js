@@ -90,7 +90,8 @@ const neodigmUtils = ( ( _d ) =>{
       document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "click", ( ev ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
         if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class pub/sub emit?
-        if( ev.target.dataset.n55TypeonClick ) neodigmUtils.typeOn( JSON.parse( ev.target.dataset.n55TypeonClick ) )
+        let evAtr = neodigmUtils.walkDOM3( ev?.target, "n55TypeonClick" )
+        if( evAtr ) neodigmUtils.typeOn( JSON.parse( evAtr ) )
       })
       document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "touchstart", ( ev ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
