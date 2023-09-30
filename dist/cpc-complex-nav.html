@@ -18,11 +18,12 @@
 
     <section class="l-applet" data-n55-ampm-theme="dark" role="main">
         <header class="l-site-caption"
-        onClick="neodigmUtils.robinTheme('party'); NeodigmClaire.doWaxOn('.l-wax-home', ['brand','warning'], 'circle', .6); neodigmWired4Sound.sound(5); NeodigmClaire.doConfetti('#grd-home'); neodigmUtils.robinTheme('marcom');">
+        onClick="fHomeConfetti();">
             <br>
-            <h2 id="js-caption" class="hd2 h-center readampm__caption">Welcome!</h2>
+            <h2 id="js-caption" class="hd2 h-center readampm__caption"
+            data-n55-carousel-nav='{"id": "js-caro-main", "nav": "home"}'>Welcome!</h2>
             <br>
-            <hr data-n55-theme="brand" data-n55-size="medium">
+            <hr data-n55-theme="brand" data-n55-size="xsmall">
             <br><br>            
         </header>
 
@@ -32,7 +33,7 @@
                 data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true"
                 data-n55-enchanted-cta-size="small"
                 data-n55-theme="brand"
-                data-n55-flash-theme="marcom"
+                data-n55-flash-theme="warning"
                 data-n55-carousel-nav='{"id": "js-caro-main", "nav": "home"}'
                 data-n55-tulip='{"msg":"  Home Page - Shop Your Favorites.  Find Value Priced Pet Supplies and Services.  ","mrq":true,"tmpt":"","theme":"brand","size":"small","position":"top","icon":""}'
                 data-n55-wired4sound-click="10"
@@ -46,13 +47,15 @@
                 data-n55-enchanted-cta-alt="Flash Sale|Pet 🐱 Needs" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true"
                 data-n55-enchanted-cta-size="small"
                 data-n55-theme="brand"
-                data-n55-flash-theme="marcom"
+                data-n55-flash-theme="warning"
+                data-n55-poptart-click="js-poptrt_products"
                 data-n55-carousel-nav='{"id": "js-caro-main", "nav": "products"}'
                 data-n55-tulip='{"msg":"  Dog, Cat, Bird, and Fish Supplies!  ","mrq":true,"tmpt":"","theme":"brand","size":"small","position":"top","icon":""}'
                 data-n55-wired4sound-click="10"
                 data-n55-typeon-click='{"q1st": "#js-caption", "msg":"Dog Treats 🐶 Cat Toys 😻|Beds & Furniture, Outdoor Supplies|Clothing, Toys, and Food|Aquariums 🐠 Rocks!","mode":"RANDOM|LOOP|OFF","uniqueDelay":68}'
                 ><span data-n55-wired4sound-hover="3">Products <neodigm-icon class="material-symbols-outlined">pets</neodigm-icon></span><span
-                data-n55-carousel-nav='{"id": "js-caro-main", "nav": "products"}'>All Pets <neodigm-icon class="material-symbols-outlined">volunteer_activism</neodigm-icon></span>
+                data-n55-carousel-nav='{"id": "js-caro-main", "nav": "products"}'
+                data-n55-poptart-click="js-poptrt_products">All Pets <neodigm-icon class="material-symbols-outlined">volunteer_activism</neodigm-icon></span>
             </a>
 
             <a id="js-main-nav__services--id" tabindex="0" aria-haspopup="true"
@@ -60,7 +63,7 @@
                 data-n55-enchanted-cta-alt="Flash Sale|Pet 🐶 Spa" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true"
                 data-n55-enchanted-cta-size="small"
                 data-n55-theme="brand"
-                data-n55-flash-theme="marcom"
+                data-n55-flash-theme="warning"
                 data-n55-carousel-nav='{"id": "js-caro-main", "nav": "services"}'
                 data-n55-tulip='{"msg":"  Coat and Nail Grooming 🐈 Deluxe Spa Day! Boarding and Daycare 😻 ","mrq":true,"tmpt":"","theme":"brand","size":"small","position":"top","icon":""}'
                 data-n55-wired4sound-click="10"
@@ -74,7 +77,7 @@
                 data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true"
                 data-n55-enchanted-cta-size="small"
                 data-n55-theme="brand"
-                data-n55-flash-theme="marcom"
+                data-n55-flash-theme="warning"
                 data-n55-carousel-nav='{"id": "js-caro-main", "nav": "locations"}'
                 data-n55-tulip='{"msg":"  Locations in Springfield and the Entire Tri-State Area! Mon. thru Fri. 8:00am to 6:00pm. ","mrq":true,"tmpt":"","theme":"brand","size":"small","position":"top","icon":""}'
                 data-n55-wired4sound-click="10"
@@ -88,7 +91,7 @@
                 data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true"
                 data-n55-enchanted-cta-size="small"
                 data-n55-theme="brand"
-                data-n55-flash-theme="marcom"
+                data-n55-flash-theme="warning"
                 data-n55-carousel-nav='{"id": "js-caro-main", "nav": "about"}'
                 data-n55-tulip='{"msg":"  Our humble beginning listening to the Pet Shop Boys, we’ve become pet experts because we like playing Sims Pets.  ","mrq":true,"tmpt":"","theme":"brand","size":"small","position":"top","icon":""}'
                 data-n55-wired4sound-click="10"
@@ -119,8 +122,22 @@
                                 </div>
                                 <div>
                                     <article class="h-center h-bg__stripe l-wax-home">
+                                  
 <aside></aside>
-<aside></aside>
+<aside>
+    <div class="l-aside__cntr">
+        <neodigm-marquee data-n55-marquee-text="  Free Fish Fridays, Buy one Goldfish and get a second one FREE.  Shop our ONLINE-ONLY Flash sale. $.90 Friskeys, Science Diet, and 9 Lives cat food.  Join our loyalty program and earn discounts on Dog Food and Dog Grooming.  Submit a Photo of your Pet and enter to Win weekly prizes.  "
+        data-n55-marquee-size="xsmall">
+            <pre data-n55-theme="brand"></pre>
+        </neodigm-marquee>
+    </div>
+    <div class="h-center">
+        <br>
+        <p id="txt-count__total--title" class="hd3 readampm" style="color: var( --neodigm-theme-brand-alt )"></p>
+        <br class="h-br-half">
+        <p id="txt-count__total" class="hd2 readable__caption" style="color: var( --neodigm-theme-brand-alt )"></p>
+    </div>
+</aside>
 <aside></aside>
                                     </article>
                                 </div>
@@ -167,7 +184,7 @@
                                 data-n55-enchanted-cta-dont-touch="true"
                                 data-n55-enchanted-cta-shape-off="false"
                                 data-n55-enchanted-cta-size="medium"
-                                data-n55-flash-theme="marcom"
+                                data-n55-flash-theme="warning"
                                 data-n55-theme="night"
                                 data-n55-toast="Powered by ✨ Neodigm 55"
                                 data-n55-wired4sound-click="7"
@@ -189,14 +206,62 @@
             <br><br>
         </section>
 
-        <neodigm-template id="js-poptrt__vid" data-n55-poptart='{"w": 256, "position":"top", "arrow": true, "offset":{"x":0,"y":0,"w":0}}'
-        style="background-color: #2f5240; overflow: hidden;height: 104px;">
-            <video preload="auto" autoplay="" loop="" muted="" poster=""
-            style="background-color: transparent; width: 100%;outline: none;"
-            onClick="neodigmUtils.shake( '#js-poptrt__vid' )">
-                <source src="https://www.thescottkrause.com/video/neodigm55_palm.mp4" type="video/mp4">
-            </video>
-        </neodigm-template>
+<neodigm-template id="js-poptrt__vid" data-n55-poptart='{"w": 256, "position":"top", "arrow": true, "offset":{"x":0,"y":0,"w":0}}'
+style="background-color: #2f5240; overflow: hidden;height: 104px;">
+    <video preload="auto" autoplay="" loop="" muted="" poster=""
+    style="background-color: transparent; width: 100%;outline: none;"
+    onClick="neodigmUtils.shake( '#js-poptrt__vid' )">
+        <source src="https://www.thescottkrause.com/video/neodigm55_palm.mp4" type="video/mp4">
+    </video>
+</neodigm-template>
+
+<neodigm-template id="js-poptrt_products" data-n55-poptart='{"Qx": 176, "Qy": 176, "Qz": 176, "h": 256, "w": 352, "position":"bottom", "arrow": false, "offset":{"x":0,"y":0,"w":0}, "dismiss":"hover"}'>
+    <nav class="h-center">
+        <p class="hd6 readampm__legal">Products</p>
+        <hr data-n55-theme="brand">
+    </nav>
+    <aside id="prt-grd-products" class="grid__50_50">
+        <div>
+            <article>
+                <nav class="h-center">
+                    <a id="js-prd__dog" data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="small" data-n55-theme="ghost"
+                    data-n55-flash-theme="warning"
+                    data-n55-wired4sound-click="10"
+                    ><span data-n55-wired4sound-hover="3" >Dog &nbsp; 🐶</span><span>Supplies <neodigm-icon class="material-symbols-outlined text-coy_2014">chevron_right</neodigm-icon></span>
+                    </a>
+                    <a id="js-prd__cat" data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="small" data-n55-theme="ghost"
+                    data-n55-flash-theme="warning"
+                    data-n55-wired4sound-click="10"
+                    ><span data-n55-wired4sound-hover="3" >Cat &nbsp; 🐱</span><span>Supplies <neodigm-icon class="material-symbols-outlined text-coy_2014">chevron_right</neodigm-icon></span>
+                    </a>
+                    <a id="js-prd__cat" data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="small" data-n55-theme="ghost"
+                    data-n55-flash-theme="warning"
+                    data-n55-wired4sound-click="10"
+                    ><span data-n55-wired4sound-hover="3" >Bird &nbsp; 🦜</span><span>Supplies <neodigm-icon class="material-symbols-outlined text-coy_2014">chevron_right</neodigm-icon></span>
+                    </a>
+                    <a id="js-prd__cat" data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="small" data-n55-theme="ghost"
+                    data-n55-flash-theme="warning"
+                    data-n55-wired4sound-click="10"
+                    ><span data-n55-wired4sound-hover="3" >Fish &nbsp; 🐠</span><span>Supplies <neodigm-icon class="material-symbols-outlined text-coy_2014">chevron_right</neodigm-icon></span>
+                    </a>
+                </nav>
+            </article>
+        </div>
+        <div>
+            <article>
+                
+            </article>
+        </div>
+    </aside>
+
+
+</neodigm-template>
+
+<!-- (c) 1992-2032 🗝️ www.theScottKrause.com -->
 
 <!--
         <header>
@@ -279,11 +344,28 @@
 neodigmOpt.N55_CTA_RND_TOUCH = 9600
 neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_CTA_RND_TOUCH )
 neodigmOpt.W4S_VOLUME = zzfxV  = .036;
+window.addEventListener("scroll", (ev)=>{ neodigmPopTart.close() }, true)
 
 neodigmCarousel.setOnAfterNav( ()=>{
-    setTimeout( ()=>{NeodigmClaire.doWaxOn('.l-wax-home', ['brand','warning'], 'circle', .6);}, 720)    
+    setTimeout( ()=>{ NeodigmClaire.doWaxOn('.l-wax-home', ['brand','warning'], 'circle', .6); }, 720)
+    fHomeUpdate()
 },'js-caro-main', 1 )
 
+const fHomeUpdate = ()=>{
+    neodigmUtils.typeOn({"q1st": "#txt-count__total--title", "msg": "Coupons Redeemed|Cat Food Sold|New Customers|Return Customers|Groomings Scheduled|Pet Toys Sold|Loyalty Members|Contest Winners|Dog Food Sold","mode":"RANDOM","uniqueDelay":83})
+    neodigmUtils.countTo("#txt-count__total", neodigmUtils.f02x( 8000 ) + 1, 124)
+}
+const fHomeConfetti = ()=>{
+    setTimeout( ()=>{ 
+    neodigmUtils.robinTheme('party')
+    NeodigmClaire.doWaxOn('.l-wax-home', ['brand','warning'], 'circle', .6)
+    neodigmWired4Sound.sound(5)
+    NeodigmClaire.doConfetti('#grd-home')
+    neodigmUtils.robinTheme('marcom')
+    }, 840 )
+}
+
+setTimeout(()=>{ fHomeUpdate() }, 4e3 )
 
 
 let doZm = (( _d=document, qry=[".l-HeroZoom", ".js-img_HeroZoom", ".js-img_HeroZoom_bg"]) => {
@@ -345,17 +427,22 @@ doZm.init();
 .l-applet[data-n55-ampm-theme="light"] { background: linear-gradient(to right, #fff, #e2e2e2, #fff); }
 .l-applet[data-n55-ampm-theme="dark"]  { background: linear-gradient(to right, #555, #242424, #555); }
 
+[data-n55-typeon="2"]{ color: var( --neodigm-theme-marcom ) !important}
+[data-n55-typeon="6"]{ color: var( --neodigm-theme-warning ) !important}
+
 /* Grid Begin */
 
-aside.grid__70_30  {
+aside.grid__70_30,
+aside.grid__50_50 {
     display: grid;
     grid-template-columns: 100%;
     margin: 4px; padding: 4px;
 }
-aside.grid__70_30 article  {
+aside.grid__70_30 article {
     border-radius: 8px;
     border: solid 1px var(--neodigm-theme-brand-alt );
     margin: 8px; padding: 8px;
+    height: 98%;
 }
 
 aside.grid__70_30 aside {
@@ -365,6 +452,8 @@ aside.grid__70_30 aside {
     margin: 8px; padding: 8px;
     min-height: 156px;
 }
+
+aside.grid__70_30 aside .l-aside__cntr{ max-width: 56cqmax; margin: 0 auto; }
 
 [data-n55-ampm-theme='light'] .l-applet { border: solid 1px #efefef !important; }
 [data-n55-ampm-theme='dark']  .l-applet { border: solid 1px rgba(200,200,200,.1) !important; }
@@ -425,9 +514,11 @@ body[data-n55-ampm-theme='dark'] section.pfmf-grid > div > article {
 }
 /*  Hero Zoom Desktop end */ 
 
-        /*  MQ  */
+/*  MQ  */
 @media only screen and (min-width:48.1em){/* med *//* lg */
     aside.grid__70_30  { grid-template-columns: 70% 30%; }
+    aside.grid__50_50  { grid-template-columns: 50% 50%; }
+    aside.grid__70_30 aside .l-aside__cntr{ max-width: 20cqmax; }
 }
     </style>
 
