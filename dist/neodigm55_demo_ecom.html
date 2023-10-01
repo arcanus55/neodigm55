@@ -366,7 +366,7 @@ style="background-color: #2f5240; overflow: hidden;height: 104px;">
         </div>
         <div>
             <article>
-                <neodigm-carousel id="js-ptrt-caro-products">
+                <neodigm-carousel id="js-ptrt-caro-products" class="h-vis-hide">
                     <section>
                         <section data-n55-carousel-page-name="dogs-1">
                             <nav class="h-center">
@@ -542,7 +542,7 @@ style="background-color: #2f5240; overflow: hidden;height: 104px;">
         </div>
         <div>
             <article>
-                <neodigm-carousel id="js-ptrt-caro-services">
+                <neodigm-carousel id="js-ptrt-caro-services" class="h-vis-hide">
                     <section>
                         <section data-n55-carousel-page-name="dogs-1">
                             <nav class="h-center">
@@ -698,8 +698,29 @@ neodigmCarousel.setOnAfterNav( ()=>{
     fHomeUpdate()
 },'js-caro-main', 5 )
 
-neodigmPopTart.setOnAfterOpen( ()=>{ neodigmCarousel.init(); }, "js-poptrt_products")
-neodigmPopTart.setOnAfterOpen( ()=>{ neodigmCarousel.init(); }, "js-poptrt_services")
+neodigmPopTart.setOnAfterOpen( ()=>{
+    neodigmCarousel.init()
+    setTimeout(()=>{
+        document.getElementById( "js-ptrt-caro-products" ).classList.remove("h-vis-hide")
+    }, 1e3 )
+}, "js-poptrt_products")
+neodigmPopTart.setOnClose( ()=>{
+    setTimeout(()=>{
+        document.getElementById( "js-ptrt-caro-products" ).classList.add("h-vis-hide")
+    }, 0 )
+}, "js-poptrt_products")
+
+neodigmPopTart.setOnAfterOpen( ()=>{
+    neodigmCarousel.init()
+    setTimeout(()=>{
+        document.getElementById( "js-ptrt-caro-services" ).classList.remove("h-vis-hide")
+    }, 1e3 )
+}, "js-poptrt_services")
+neodigmPopTart.setOnClose( ()=>{
+    setTimeout(()=>{
+        document.getElementById( "js-ptrt-caro-services" ).classList.add("h-vis-hide")
+    }, 0 )
+}, "js-poptrt_services")
 
 const fHomeUpdate = ()=>{
     neodigmUtils.typeOn({"q1st": "#txt-count__total--title", "msg": "Coupons Redeemed|Cat Food Sold|New Customers|Return Customers|Grooming / Spa|Pet Toys Sold|Loyalty Members|Contest Winners|Dog Food Sold","mode":"RANDOM","uniqueDelay": 116})
@@ -786,6 +807,7 @@ doZm.init();
     height: 99%; width: 99%;
     overflow-x: auto;
 }
+.h-vis-hide { visibility: hidden; }
 
 .l-applet[data-n55-ampm-theme="light"] { background: linear-gradient(to right, #fff, #e2e2e2, #fff); }
 .l-applet[data-n55-ampm-theme="dark"]  { background: linear-gradient(to right, #555, #242424, #555); }
