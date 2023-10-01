@@ -1415,7 +1415,7 @@ class NeodigmCarousel {
   formatNewCaro ( elNC ){
     elNC.n55State = {nIdx: ( elNC.n55State?.nIdx ) ? elNC.n55State.nIdx : 1, width: elNC.offsetWidth}
     let elNCCntr = elNC.firstElementChild
-    elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll("section") ]  //  Tab Containers
+    elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll(":scope >section") ]  //  Tab Containers
     elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
     elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
     return elNC
