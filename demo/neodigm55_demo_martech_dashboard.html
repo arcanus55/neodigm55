@@ -1,0 +1,2143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Martech Stack v1.0</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=2, minimum-scale=1, width=device-width, height=device-height"/>
+
+        <link rel="preconnect" href="https://arcanus55.github.io">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55__v3_1.css"></link>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.css"></link>
+        <script>
+        let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, N55_THEME_DEFAULT: "night", N55_DEBUG_lOG:false }
+        </script>
+        <script src="https://arcanus55.github.io/neodigm55/dist/neodigm55__v3_1.js"></script>
+        <script src="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+
+    </head>
+    <body data-n55-ampm-theme="light">
+<!-- REQUIREMENTS
+
+
+-->
+
+<section class="l-hg h-ampm__bg" data-n55-leftnav-state='0'>
+    <aside class="h-ampm__bg--late hg__sidenav">
+        <header class="h-center" style="background-color: #EDBA08;">
+            <div class="h-ds-ib__mobile--only">
+                <neodigm-acticon data-n55-wired4sound-click="16" id="" class="h-ds-ib__leftnav-state--1" data-n55-theme="ghost" data-n55-size="micro"
+                onClick="fToggle_n55LeftnavState()"><neodigm-icon class="material-symbols-outlined">menu</neodigm-icon></neodigm-acticon>                
+            </div>
+            <section style="margin-top: 2px;">
+                <div class="gnss-vect__container h-pointer"
+                    data-n55-theme="night"
+                    data-n55-toast="Neodigm 55 Dashboard|Effective Data Storytelling™"
+                    data-n55-tulip='{"msg":" Effective Data Storytelling - Encouraging users to interact with data presented in a clearly-visual manner, a data-intensive story resonates as cognitively tangible.  The real value of information is not found in its lineage or accuracy.  Its true value is in its ability to convey a mental model that facilitates confident decision making.  This of course is hard to measure, but I submit that you will know it when you see it. Pun intended. ","mrq":true,"tmpt":"","theme":"ghost","size":"xsmall","position":"right","icon":""}'
+                    onClick="neodigmUtils.shake( '.brand__primeleads')">
+                   
+                    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" viewBox="0 0 62 24"><text x="22.68" y="63.344" style="font-family:&quot;CinzelDecorative-Regular&quot;,&quot;Cinzel Decorative&quot;;font-size:50px" transform="matrix(.24 0 0 .24 -1.795 -.267)">N</text><text x="64.73" y="63.344" style="font-family:&quot;CinzelDecorative-Regular&quot;,&quot;Cinzel Decorative&quot;;font-size:41.667px" transform="matrix(.24 0 0 .24 -1.795 -.267)">e<tspan x="87.938px 122.438px 155.23px 168.48px" y="63.344px 63.344px 63.344px 63.344px">odig</tspan></text><text x="201.73" y="63.344" style="font-family:&quot;CinzelDecorative-Regular&quot;,&quot;Cinzel Decorative&quot;;font-size:50px" transform="matrix(.24 0 0 .24 -1.795 -.267)">m</text></svg>
+                </div>
+            </section>
+        </header>
+        
+        <section style="overflow-y: auto; overflow-x: hidden; height: calc( 100vh - 58px);">
+            <aside id="js-caro__leftnav--state-0" class="h-ds-b__leftnav-state--ex0">
+                <nav class="h-center">
+                    <div class="l-nav-cat h-center">
+                        <p class="hd6 readampm">Account</p>                            
+                    </div>
+                    <br class="h-br-half">
+                    <a id="js-left-nav--overview" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="medium" data-n55-theme="ghost"
+                    onClick="doNav('')"
+                    ><span>Executive Report</span><span>Executive Report <neodigm-icon class="material-symbols-outlined">chevron_right</neodigm-icon></neodigm-acticon></span>
+                    </a>
+
+                    <br><br class="h-br-half">
+                    <div class="l-nav-cat h-center">
+                        <p class="hd6 readampm">Advertising</p>
+                    </div>
+                    <br class="h-br-half">
+                    <a id="js-left-nav--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="medium" data-n55-theme="ghost"
+                    onClick="doNav('')"
+                    ><span>Overview</span><span>Insights <neodigm-icon class="material-symbols-outlined">chevron_right</neodigm-icon></neodigm-acticon></span>
+                    </a>
+                    <a id="js-left-nav--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="medium" data-n55-theme="ghost"
+                    onClick="doNav('')"
+                    ><span>Campaigns</span><span>Campaigns <neodigm-icon class="material-symbols-outlined">chevron_right</neodigm-icon></neodigm-acticon></span>
+                    </a>
+                    <a id="js-left-nav--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="medium" data-n55-theme="ghost"
+                    onClick="doNav('')"
+                    ><span>Keywords</span><span>Keywords <neodigm-icon class="material-symbols-outlined">chevron_right</neodigm-icon></neodigm-acticon></span>
+                    </a>
+                    <a id="js-left-nav--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="medium" data-n55-theme="ghost"
+                    onClick="doNav('')"
+                    ><span>Ads</span><span>Ads <neodigm-icon class="material-symbols-outlined">chevron_right</neodigm-icon></neodigm-acticon></span>
+                    </a>
+                    <a id="js-left-nav--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="medium" data-n55-theme="ghost"
+                    onClick="doNav('')"
+                    ><span>Search Terms</span><span>Search Terms <neodigm-icon class="material-symbols-outlined">chevron_right</neodigm-icon></neodigm-acticon></span>
+                    </a>
+
+                    <br><br class="h-br-half">
+                    <div class="l-nav-cat h-center">
+                        <p class="hd6 readampm">SEO</p>
+                    </div>
+                    <br class="h-br-half">
+                    <a id="js-left-nav--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="medium" data-n55-theme="ghost"
+                    onClick="doNav('')"
+                    ><span>Overview</span><span>Insights <neodigm-icon class="material-symbols-outlined">chevron_right</neodigm-icon></neodigm-acticon></span>
+                    </a>
+                    <a id="js-left-nav--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="medium" data-n55-theme="ghost"
+                    onClick="doNav('')"
+                    ><span>Actions</span><span>Actions <neodigm-icon class="material-symbols-outlined">chevron_right</neodigm-icon></neodigm-acticon></span>
+                    </a>
+                    <a id="js-left-nav--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="medium" data-n55-theme="ghost"
+                    onClick="doNav('')"
+                    ><span>Keywords</span><span>Keywords <neodigm-icon class="material-symbols-outlined">chevron_right</neodigm-icon></neodigm-acticon></span>
+                    </a>
+                    <a id="js-left-nav--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="medium" data-n55-theme="ghost"
+                    onClick="doNav('')"
+                    ><span>Target Pages</span><span>Target Pages <neodigm-icon class="material-symbols-outlined">chevron_right</neodigm-icon></neodigm-acticon></span>
+                    </a>
+                </nav>
+             </aside>
+
+             <aside id="js-caro__leftnav--state-1" class="h-ds-b__leftnav-state--ex1">
+                <nav class="h-center h-ds-b__desktop--only">
+                    <br class="h-br-half">
+                    <neodigm-acticon data-n55-wired4sound-click="16" data-n55-theme="ghost" data-n55-size="medium"
+                    data-n55-poptart-click="js-leftnav_popt--account">
+                        <neodigm-icon class="material-symbols-outlined"
+                        data-n55-tulip='{"msg":" Account Overview ","mrq":false,"tmpt":"","theme":"ghost","size":"small","position":"right","icon":""}'>visibility</neodigm-icon></neodigm-acticon>
+                    <br>
+                    <neodigm-acticon data-n55-wired4sound-click="16" data-n55-theme="ghost" data-n55-size="medium"
+                    data-n55-poptart-click="js-leftnav_popt--advertising">
+                        <neodigm-icon class="material-symbols-outlined"
+                        data-n55-tulip='{"msg":" Advertising ","mrq":false,"tmpt":"","theme":"ghost","size":"small","position":"right","icon":""}'>ads_click</neodigm-icon></neodigm-acticon>
+                    <br>
+                    <neodigm-acticon data-n55-wired4sound-click="16" data-n55-theme="ghost" data-n55-size="medium"
+                    data-n55-poptart-click="js-leftnav_popt--seo">
+                        <neodigm-icon class="material-symbols-outlined"
+                        data-n55-tulip='{"msg":" SEO ","mrq":false,"tmpt":"","theme":"ghost","size":"small","position":"right","icon":""}'>search</neodigm-icon></neodigm-acticon>
+                </nav>
+             </aside>
+        </section>
+    </aside>
+    <main class="hg__main">
+        <header class="h-ampm__bg--late">
+            <nav class="h-left">
+                <div class="h-ds-ib__mobile--only">
+                    &ensp;
+                    <neodigm-acticon data-n55-wired4sound-click="16" id="" class="h-ds-ib__leftnav-state--0" data-n55-theme="ghost" data-n55-size="micro"
+                    onClick="fToggle_n55LeftnavState()"><neodigm-icon class="material-symbols-outlined">menu</neodigm-icon></neodigm-acticon>
+                </div>
+                <div class="h-ds-ib__desktop--only">
+                    &ensp;
+                    <neodigm-acticon data-n55-wired4sound-click="16" id="" class="h-ds-ib__desktop--only h-ds-ib__leftnav-state--not2" data-n55-theme="ghost" data-n55-size="micro"
+                    onClick="fToggle_n55LeftnavState('prev')"><neodigm-icon class="material-symbols-outlined">chevron_left</neodigm-icon></neodigm-acticon>
+                    <neodigm-acticon data-n55-wired4sound-click="16" id="" class="h-ds-ib__desktop--only h-ds-ib__leftnav-state--not0" data-n55-theme="ghost" data-n55-size="micro"
+                    onClick="fToggle_n55LeftnavState('next')"><neodigm-icon class="material-symbols-outlined">chevron_right</neodigm-icon></neodigm-acticon>
+                </div>
+            </nav>
+            <div class="h-center h-pointer"
+            data-n55-theme="brand"
+            data-n55-toast="© 2023 Arcanus 55"
+            onClick="neodigmUtils.shake( '.brand__primeleads')"
+            data-n55-tulip='{"msg":" The Marketing Tech Stack Dashboard is a sample app designed to demonstrate powerful UX patterns combined with data visualizations and cross API integration.  This design accelerates KPI communication and collaboration. Works great on a phone and can be installed as an offline capable Web App. ","mrq":true,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'>
+                <h1 class="hd6 readampm__title">Marketing Tech Stack</h1>
+            </div>
+            <nav class="h-right">
+                <neodigm-acticon data-n55-wired4sound-click="16" id="" data-n55-theme="ghost" data-n55-size="micro"
+                data-n55-poptart-click="js-leftnav_popt--more"><neodigm-icon class="material-symbols-outlined">settings</neodigm-icon></neodigm-acticon>
+                <neodigm-acticon data-n55-wired4sound-click="16" id="" class="h-ds-ib__ampm--light" data-n55-theme="ghost" data-n55-size="micro"
+                onClick="fToggle_n55AmpmTheme()"><neodigm-icon class="material-symbols-outlined">light_mode</neodigm-icon></neodigm-acticon>
+                <neodigm-acticon data-n55-wired4sound-click="16" id="" class="h-ds-ib__ampm--dark"  data-n55-theme="ghost" data-n55-size="micro"
+                onClick="fToggle_n55AmpmTheme()"><neodigm-icon class="material-symbols-outlined">dark_mode</neodigm-icon></neodigm-acticon>
+                <neodigm-acticon data-n55-wired4sound-click="16" id="" data-n55-theme="ghost" data-n55-size="micro"><neodigm-icon class="material-symbols-outlined">person</neodigm-icon></neodigm-acticon>
+                &ensp;
+            </nav>
+        </header>
+        <article role="main">
+
+            <section class="l-context-bnr">
+                <div class="l-context-bnr__left">
+                    <p class="context-bnr__text--title hd3 readampm h-left">Executive Summary Report</p>
+                    <p class="context-bnr__text--legal readampm__legal h-left h-ital">Client Name</p> 
+                    <p class="context-bnr__text--legal readampm__legal h-left h-ital"><a>www.Domain.com</a></p> 
+                </div>
+                <div class="l-context-bnr__right h-right">
+                    <a id="js-context-bnr__drill--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+                    ><span>By Month</span><span>Dates <neodigm-icon class="material-symbols-outlined">sort</neodigm-icon></span>
+                    </a>
+                </div>
+            </section>
+
+            <br>
+            <section class="pfmf-grid pfmf-grid__100">
+                <div>
+                    <article class="l-crd-cap" >
+                        <section class="l-crd-cap__top">
+                            <div>
+                                <p class="crd-cap__text--title hd3 readampm h-left">Key Performance Indicators</p>
+                                <p class="crd-cap__text--legal readampm__legal h-left h-ital">Key Metrics</p>                            
+                            </div>
+                            <div class="h-right">
+                                <a id="js-crd-cap__drill--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                                data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+                                ><span>View More</span><span>Details <neodigm-icon class="material-symbols-outlined">sort</neodigm-icon></span>
+                                </a>
+                            </div>
+                        </section>
+                        <section class="l-crd-cap__bottom h-bg__stripe">
+
+                            <section class="pfmf-grid pfmf-grid__25_25_25_25">
+                                <div>
+                                    <article class="h-center" style="padding: 16px 16px;">
+                                    <p class="hd4 readampm__title readampm__kpi">$<span id="js-num__media-spend">0</span></p>
+                                    <p class="readampm__legal">Media Spend</p>
+                                    <p class="readampm__legal txt__color--danger-alt"><neodigm-icon class="material-symbols-outlined">arrow_downward_alt</neodigm-icon>22.7%</p>
+                                    </article>
+                                </div>
+                                <div>
+                                    <article class="h-center" style="padding: 16px 16px;">
+                                    <p class="hd4 readampm__title readampm__kpi"><span id="js-num__impressions">0</span></p>
+                                    <p class="readampm__legal">Impressions</p>
+                                    <p class="readampm__legal txt__color--success-alt"><neodigm-icon class="material-symbols-outlined">arrow_upward_alt</neodigm-icon>12.7%</p>
+                                </article>
+                                </div>
+                                <div>
+                                    <article class="h-center" style="padding: 16px 16px;">
+                                    <p class="hd4 readampm__title readampm__kpi"><span id="js-num__clicks">0</span></p>
+                                    <p class="readampm__legal">Clicks</p>
+                                    <p class="readampm__legal txt__color--danger-alt"><neodigm-icon class="material-symbols-outlined">arrow_downward_alt</neodigm-icon>2.3%</p>
+                                </article>
+                                </div>
+                                <div>
+                                    <article class="h-center" style="padding: 16px 16px;">
+                                    <p class="hd4 readampm__title readampm__kpi"><span id="js-num__conversions">0</span></p>
+                                    <p class="readampm__legal">Conversions</p>
+                                    <p class="readampm__legal txt__color--success-alt"><neodigm-icon class="material-symbols-outlined">arrow_upward_alt</neodigm-icon>9.7%</p>
+                                </article>
+                                </div>
+                            </section>
+    
+                            <section class="pfmf-grid pfmf-grid__33_33_33">
+                                <div>
+                                    <article class="h-center" style="padding: 16px 16px;">
+                                    <p class="hd4 readampm__title readampm__kpi"><span id="js-num__convrate">0</span>%</p>
+                                    <p class="readampm__legal">Conversion Rate</p>
+                                    <p class="readampm__legal txt__color--success-alt"><neodigm-icon class="material-symbols-outlined">arrow_upward_alt</neodigm-icon>.6%</p>
+                                </article>
+                                </div>
+                                <div>
+                                    <article class="h-center" style="padding: 16px 16px;">
+                                    <p class="hd4 readampm__title readampm__kpi ">$<span id="js-num__costper">0</span>.00</p>
+                                    <p class="readampm__legal">Cost Per Conversion</p>
+                                    <p class="readampm__legal txt__color--danger-alt"><neodigm-icon class="material-symbols-outlined">arrow_downward_alt</neodigm-icon>4.9%</p>
+                                </article>
+                                </div>
+                                <div>
+                                    <article id="art__prime" class="h-center" style="padding: 16px 16px; ">
+                                        <div>
+                                            <p class="hd4 readampm__title readampm__kpi "><span id="js-num__primeleads">0</span></p>
+                                            <p class="readampm__legal brand__primeleads">Curated Leads</p>
+                                            <p class="readampm__legal txt__color--success-alt"><neodigm-icon class="material-symbols-outlined">arrow_upward_alt</neodigm-icon>5.6%</p>
+                                        </div>
+                                </article>
+                                </div>
+                            </section>
+
+
+                        </section>
+                      </article>
+
+                </div>
+            </section>
+
+            <section class="pfmf-grid pfmf-grid__50_50">
+                <div>
+                  <article class="l-crd-cap" >
+                    <section class="l-crd-cap__top">
+                        <div>
+                            <p class="crd-cap__text--title hd3 readampm h-left">Client Engagement</p>
+                            <p class="crd-cap__text--legal readampm__legal h-left h-ital">Collaborative Partnership Feedback</p>                            
+                        </div>
+                        <div class="h-right">
+                            <a id="js-crd-cap__drill--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                            data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+                            ><span>View More</span><span>Details <neodigm-icon class="material-symbols-outlined">sort</neodigm-icon></span>
+                            </a>
+                        </div>
+                    </section>
+                    <section class="l-crd-cap__bottom">
+                        <div id="datviz1" style="width: 100%; height:253px; margin: 0 auto;"></div>
+                    </section>
+                  </article>
+                </div>
+                <div>
+                    <article class="l-crd-cap" >
+                        <section class="l-crd-cap__top">
+                            <div>
+                                <p class="crd-cap__text--title hd3 readampm h-left">Budget Allocation by Campaign</p>
+                                <p class="crd-cap__text--legal readampm__legal h-left h-ital">Campaign Infographic</p>                            
+                            </div>
+                            <div class="h-right">
+                                <a id="js-crd-cap__drill--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                                data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+                                ><span>View More</span><span>Details <neodigm-icon class="material-symbols-outlined">sort</neodigm-icon></span>
+                                </a>
+                            </div>
+                        </section>
+                        <section class="l-crd-cap__bottom">
+                            <div id="datviz2" style="width: 100%; height:253px; margin: 0 auto;"></div>
+                        </section>
+                      </article>
+              </div>
+            </section>
+
+            <section class="pfmf-grid pfmf-grid__100">
+                <div>
+                  <article class="l-crd-cap" >
+                    <section class="l-crd-cap__top">
+                        <div>
+                            <p class="crd-cap__text--title hd3 readampm h-left">Spend by Day</p>
+                            <p class="crd-cap__text--legal readampm__legal h-left h-ital">Best Performing Campaigns</p>                            
+                        </div>
+                        <div class="h-right">
+                            <a id="js-crd-cap__drill--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                            data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+                            ><span>View More</span><span>Details <neodigm-icon class="material-symbols-outlined">sort</neodigm-icon></span>
+                            </a>
+                        </div>
+                    </section>
+                    <section class="l-crd-cap__bottom">
+                        <div id="datviz3" class="" style="width: 100%; height:421px; margin: 0 auto;"></div>
+                    </section>
+                  </article>
+                </div>
+            </section>
+
+            <section class="pfmf-grid pfmf-grid__33_33_33">
+                <div>
+                    <article class="l-crd-cap" >
+                      <section class="l-crd-cap__top">
+                          <div>
+                              <p class="crd-cap__text--title hd3 readampm h-left">Campaigns</p>
+                              <p class="crd-cap__text--legal readampm__legal h-left h-ital">Advertising Infographic</p>                            
+                          </div>
+                          <div class="h-right">
+                              <a id="js-crd-cap__drill--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                              data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+                              ><span>View More</span><span>Details <neodigm-icon class="material-symbols-outlined">sort</neodigm-icon></span>
+                              </a>
+                          </div>
+                      </section>
+                      <section class="l-crd-cap__bottom">
+                          <div id="datviz4" style="width: 100%; height:253px; margin: 0 auto;"></div>
+                      </section>
+                    </article>
+                </div>
+                <div>
+                  <article class="l-crd-cap" >
+                    <section class="l-crd-cap__top">
+                        <div>
+                            <p class="crd-cap__text--title hd3 readampm h-left">Keywords</p>
+                            <p class="crd-cap__text--legal readampm__legal h-left h-ital">Advertising Infographic</p>                            
+                        </div>
+                        <div class="h-right">
+                            <a id="js-crd-cap__drill--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                            data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+                            ><span>View More</span><span>Details <neodigm-icon class="material-symbols-outlined">sort</neodigm-icon></span>
+                            </a>
+                        </div>
+                    </section>
+                    <section class="l-crd-cap__bottom">
+                        <div id="datviz5" style="width: 100%; height:253px; margin: 0 auto;"></div>
+                    </section>
+                  </article>
+                </div>
+                <div>
+                    <article class="l-crd-cap" >
+                        <section class="l-crd-cap__top">
+                            <div>
+                                <p class="crd-cap__text--title hd3 readampm h-left">Ads</p>
+                                <p class="crd-cap__text--legal readampm__legal h-left h-ital">Advertising Infographic</p>                            
+                            </div>
+                            <div class="h-right">
+                                <a id="js-crd-cap__drill--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                                data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+                                ><span>View More</span><span>Details <neodigm-icon class="material-symbols-outlined">sort</neodigm-icon></span>
+                                </a>
+                            </div>
+                        </section>
+                        <section class="l-crd-cap__bottom">
+                            <div id="datviz6" style="width: 100%; height:253px; margin: 0 auto;"></div>
+                        </section>
+                      </article>
+              </div>
+            </section>
+
+
+            <section class="pfmf-grid pfmf-grid__100">
+                <div>
+                  <article class="h-center">
+                    <br>
+                    <a id="js-powered-by--sm" href="https://www.theScottKrause.com/emerging_tech/neodigm55_ux_library/?poweredby=Neodigm55"
+                    target="_blank" rel="noopener" tabindex="0" aria-haspopup="true" data-n55-enchanted-cta-hover-an="true" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-ambient="emit" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-size="medium" data-n55-flash-theme="marcom" data-n55-theme="night" data-n55-toast="Powered by ✨ Neodigm 55" data-n55-wired4sound-click="7"
+                    ><span data-n55-wired4sound-mouseover="3">Powered by ✨ Neodigm 55</span>
+                    <span>
+                        <neodigm-marquee data-n55-marquee-text=" Neodigm 55 is different.  It's an eclectic UX micro-library.  The lightweight components come together in a unique way that makes your website playful, fun, and bounce-proof.  Because it’s so easy to get started it is the perfect solution for quick landing pages, business accelerators, and event sites.  Enhanced CTA Buttons command attention and have a mind of their own.  They drive conversions with ambient and interactive animation.  Neodigm Toast is a super convenient way to show a quick message without disrupting the user’s flow.  It just pops from the bottom of the screen, displays a message, and then animates off.  Parallax scrolling is a web design technique in which the website background remains fixed while the foreground moves.  This results in a 3D effect as visitors scroll down the site, adding a sense of depth and creating a more immersive browsing experience.  Neodigm 55 is a small, fast, batteries included, HTML first, low code, responsive, analytics friendly, opinionated, accessible, tweaked to oblivion, future-proof, business accelerating, UX solution.  "
+                        data-n55-flash-theme="party"
+                        data-n55-wired4sound-click="5" data-n55-wired4sound-mouseover="3"
+                        data-n55-marquee-size="small" data-n55-marquee-direction="false"><pre data-n55-theme="white"></pre></neodigm-marquee>
+                    </span>
+                    </a>
+                    <br>
+                    <br>
+                  </article>
+                </div>
+            </section>
+
+        </article>
+    </main>
+</section>
+
+<neodigm-template class="h-bg__stripe" id="js-leftnav_popt--account" data-n55-poptart='{"x": 68, "QQQQy": 176, "z": 176, "h": 110, "w": 176, "position":"right", "arrow": false, "offset":{"x":0,"y":0,"w":0}, "dismiss":"hover"}'>
+    <p class="h-center readampm__legal">Account Overview</p>
+    <hr>
+    <nav class="h-center">
+        <a id="js-left-nav-popt--overview" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        ><span>Executive Report</span><span>Overview <neodigm-icon class="material-symbols-outlined">visibility</neodigm-icon></neodigm-acticon></span>
+        </a>
+    </nav>
+</neodigm-template>
+
+<neodigm-template class="h-bg__stripe" id="js-leftnav_popt--advertising" data-n55-poptart='{"x": 68, "QQQQy": 176, "z": 176, "h": 290, "w": 176, "position":"right", "arrow": false, "offset":{"x":0,"y":0,"w":0}, "dismiss":"hover"}'>
+    <p class="h-center readampm__legal">Advertising</p>
+    <hr>
+    <nav class="h-center">
+        <a id="js-left-nav-popt--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        ><span>Overview</span><span>Ad Insights <neodigm-icon class="material-symbols-outlined">ads_click</neodigm-icon></neodigm-acticon></span>
+        </a>
+        <a id="js-left-nav-popt--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        ><span>Campaigns</span><span>Metrics <neodigm-icon class="material-symbols-outlined">campaign</neodigm-icon></neodigm-acticon></span>
+        </a>
+        <a id="js-left-nav-popt--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        ><span>Keywords</span><span>Ad Insights <neodigm-icon class="material-symbols-outlined">ads_click</neodigm-icon></neodigm-acticon></span>
+        </a>
+        <a id="js-left-nav-popt--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        ><span>Ads</span><span>Ad Insights <neodigm-icon class="material-symbols-outlined">ads_click</neodigm-icon></neodigm-acticon></span>
+        </a>
+        <a id="js-left-nav-popt--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        ><span>Search Terms</span><span>Ad Insights <neodigm-icon class="material-symbols-outlined">ads_click</neodigm-icon></neodigm-acticon></span>
+        </a>
+    </nav>
+</neodigm-template>
+
+<neodigm-template class="h-bg__stripe" id="js-leftnav_popt--seo" data-n55-poptart='{"x": 68, "QQQQy": 176, "z": 176, "h": 242, "w": 176, "position":"right", "arrow": false, "offset":{"x":0,"y":0,"w":0}, "dismiss":"hover"}'>
+    <p class="h-center readampm__legal">Search Engine Opt.</p>
+    <hr>
+    <nav class="h-center">
+
+        <a id="js-left-nav-popt--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        ><span>Overview</span><span>Ad Insights <neodigm-icon class="material-symbols-outlined">ads_click</neodigm-icon></neodigm-acticon></span>
+        </a>
+        <a id="js-left-nav-popt--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        ><span>Actions</span><span>Ad Insights <neodigm-icon class="material-symbols-outlined">ads_click</neodigm-icon></neodigm-acticon></span>
+        </a>
+        <a id="js-left-nav-popt--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        ><span>Keywords</span><span>SEO Insights <neodigm-icon class="material-symbols-outlined">ads_click</neodigm-icon></neodigm-acticon></span>
+        </a>
+        <a id="js-left-nav-popt--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        ><span>Target Pages</span><span>Ad Insights <neodigm-icon class="material-symbols-outlined">ads_click</neodigm-icon></neodigm-acticon></span>
+        </a>
+
+    </nav>
+</neodigm-template>
+
+<neodigm-template class="h-bg__stripe" id="js-leftnav_popt--more" data-n55-poptart='{"QQQQx": 68, "QQQQy": 176, "z": 176, "h": 284, "w": 176, "position":"bottom", "arrow": false, "offset":{"x":0,"y":0,"w":0}, "dismiss":"hover"}'>
+    <p class="h-center readampm__legal">Options | Tools</p>
+    <hr>
+    <nav class="h-center">
+
+        <a id="js-left-nav-popt--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        ><span>Customize</span><span>Organize</neodigm-acticon></span>
+        </a>
+        <a id="js-left-nav-popt--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        ><span>Install App</span><span>Web App</neodigm-acticon></span>
+        </a>
+        <a id="js-left-nav-popt--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        data-n55-tulip='{"msg":" Integrate with Martech Stack.  Stream Martech Stack insights directly into your Enterprise Information Systems.  Request API access to seamlessly inform your internal reporting. ","mrq":true,"tmpt":"","theme":"ghost","size":"xsmall","position":"left","icon":""}'
+        ><span>Web Hooks</span><span>API Access</neodigm-acticon></span>
+        </a>
+        <a id="js-left-nav-popt--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        ><span>Tour</span><span>Tutorial</neodigm-acticon></span>
+        </a>
+        <a id="js-left-nav-popt--x" data-n55-enchanted-cta data-n55-wired4sound-click="19" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+        data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost"
+        ><span>About Martech Stack</span><span>Introduction</neodigm-acticon></span>
+        </a>
+
+    </nav>
+</neodigm-template>
+
+<style>
+    /* Layout Begin */
+:root {
+--gnss-theme-brand:  #3aaa35; --gnss-theme-brand-alt:  #1a5e2b;  /* Custom Override */
+
+--neodigm-theme-brand: #AE32DC;   --neodigm-theme-brand-alt: #1126EB;  /* Custom Override */
+--neodigm-theme-secondary: #3aaa35; --neodigm-theme-secondary-alt: #1a5e2b;  /* Sand Dollar */
+}
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-track { background: rgba(222, 222, 222, .2); }
+*::-webkit-scrollbar-thumb { background: #a8a8a8; }
+::selection { color: #fff; background:  var( --gnss-theme-brand ); text-shadow: none; }
+    /* Grid Begin */
+    [data-n55-ampm-theme='light'] section.pfmf-grid > div > article { border: solid 1px #efefef !important; }
+    [data-n55-ampm-theme='dark'] section.pfmf-grid > div > article { border: solid 1px rgba(200,200,200,.1) !important; }
+    .h-bg__stripe {
+    background: repeating-linear-gradient(45deg,#f8f8f8,#f8f8f8 26px,#fefefe 26px,#fefefe 52px);
+    }
+    .h-bg__stripe:hover {
+    background: repeating-linear-gradient(45deg,#f2ede4,#f2ede4 26px,#ffffff 26px,#ffffff 52px);
+    }
+    body[data-n55-ampm-theme='dark'] .h-bg__stripe {
+        background: repeating-linear-gradient(45deg,#252525,#252525 24px,#292929 24px,#292929 48px);
+    }
+    body[data-n55-ampm-theme='dark'] .h-bg__stripe:hover {
+        background: repeating-linear-gradient(45deg,#242424,#242424 24px,#303030 24px,#303030 48px);
+    }
+    /* Grid End */
+
+[data-n55-ampm-theme='light'] .gnss-vect__branded--color { fill: var( --gnss-theme-brand-alt  ); }
+[data-n55-ampm-theme='dark']  .gnss-vect__branded--color { fill: var( --gnss-theme-brand); }
+
+[data-n55-leftnav-state='1'] .gnss-vect__container { width: 126px; margin: 48px auto 0 auto;; }
+[data-n55-leftnav-state='0'] .gnss-vect__container,
+[data-n55-leftnav-state='2'] .gnss-vect__container { width: inherit; margin: 0 4px; }
+
+[data-n55-ampm-theme='light'] [role='main'] {
+    background: linear-gradient(to right, #fff, #e2e2e2, #fff);
+}
+[data-n55-ampm-theme='dark'] [role='main'] {
+    background: linear-gradient(to right, #555, #242424, #555);
+}
+[role='main'] {
+    height: calc( 100vh - 58px );
+    overflow: scroll;
+}
+
+.l-hg {
+    height: 100vh; width: 100vw;
+    display: grid;
+    grid-template-columns: 1px auto; 
+}
+.l-hg .hg__sidenav {
+    border-right: solid 1px #484848;
+    overflow: hidden;
+}
+.l-hg .hg__sidenav > HEADER,
+.l-hg .hg__main > HEADER {
+    display: grid;
+    align-content: center;
+    align-items: center;
+    height: 56px;
+    overflow: hidden;
+    border-bottom: solid 1px #484848;
+}
+.l-hg .hg__sidenav > HEADER {
+    grid-template-columns: 48px auto 48px; 
+}
+.l-hg .hg__main > HEADER {
+    grid-template-columns: 56px auto 156px; 
+}
+[data-n55-ampm-theme='light'] .h-ampm__bg {background-color: #fff; transition: all .4s;}
+[data-n55-ampm-theme='dark']  .h-ampm__bg {background-color: #323232; transition: all .4s;}
+
+[data-n55-ampm-theme='light'] .h-ampm__bg--late {background-color: #fff; transition: all .6s;}
+[data-n55-ampm-theme='dark']  .h-ampm__bg--late {background-color: #323232; transition: all .6s;}
+
+[data-n55-leftnav-state='0'].l-hg {
+    grid-template-columns: 0px auto; 
+}
+
+[data-n55-leftnav-state='0'] .h-ds-ib__leftnav-state--0 { display: inline-block; }
+[data-n55-leftnav-state='1'] .h-ds-ib__leftnav-state--0 { display: none; }
+[data-n55-leftnav-state='0'] .h-ds-ib__leftnav-state--1 { display: none; }
+[data-n55-leftnav-state='1'] .h-ds-ib__leftnav-state--1 { display: inline-block; }
+
+[data-n55-leftnav-state='1'] .h-ds-b__leftnav-state--ex0 { display: block; }
+[data-n55-leftnav-state='2'] .h-ds-b__leftnav-state--ex0 { display: none; }
+
+[data-n55-leftnav-state='1'] .h-ds-b__leftnav-state--ex1 { display: block; }
+[data-n55-leftnav-state='0'] .h-ds-b__leftnav-state--ex1,
+[data-n55-leftnav-state='2'] .h-ds-b__leftnav-state--ex1 { display: none; }
+
+
+[data-n55-leftnav-state='1'].l-hg {
+    grid-template-columns: 256px auto; 
+}
+/* Layout End */
+/* Mason Grid Begin */
+section.pfmf-grid > div > article {
+    margin: 6px 4px;
+    padding: 4px 6px;
+    border: solid 1px #bbb;
+    border-radius: 2px;
+    background-color: #fff;
+}
+section.pfmf-grid > div > article.pfmf-crd--black {
+    background-color: #262626;
+}
+body[data-n55-ampm-theme='dark'] section.pfmf-grid > div > article {
+        border: solid 1px rgba(200,200,200,.1);
+        background-color: #404040;
+    }
+/* Mason Grid End */
+
+/* Type Begin */
+.readampm__kpi { font-size: 30px; }
+[data-n55-ampm-theme='light'] .txt__color--danger-alt { color: var( --neodigm-theme-danger-alt ) !important; }
+[data-n55-ampm-theme='dark']  .txt__color--danger-alt { color: var( --neodigm-theme-danger ) !important; }
+[data-n55-ampm-theme='light'] .txt__color--success-alt { color: var( --neodigm-theme-success-alt ) !important; }
+[data-n55-ampm-theme='dark']  .txt__color--success-alt { color: var( --neodigm-theme-success ) !important; }
+/* Type End */
+
+/* Card Caption Begin */
+.l-crd-cap {
+    padding: 0 !important;
+}
+.l-crd-cap__top {
+    display: grid;
+    grid-template-columns: 60% auto;
+    align-items: center;
+    min-height: 74px;
+    padding: 4px;
+}
+[data-n55-ampm-theme='light'] .l-crd-cap__top { background-color: #eee; }
+[data-n55-ampm-theme='dark']  .l-crd-cap__top { background-color: var( --neodigm-theme-night ); }
+.l-crd-cap__bottom {
+    padding: 16px 16px;
+}
+.l-crd-cap .crd-cap__text--title,
+.l-crd-cap .crd-cap__text--legal {
+    margin: -1px 8px;
+}
+.l-crd-cap .crd-cap__text--legal {
+    font-size: .8em;
+}
+/* Card Caption Begin */
+
+/* Context Banner Begin */
+.l-context-bnr {
+    padding: 4px !important;
+}
+.l-context-bnr {
+    display: grid;
+    grid-template-columns: 60% auto;
+    align-items: center;
+    min-height: 64px;
+    padding: 4px;
+}
+[data-n55-ampm-theme='light'] .l-context-bnr { background-color: #eee; }
+[data-n55-ampm-theme='dark']  .l-context-bnr { background-color: var( --neodigm-theme-night ); }
+.l-context-bnr__bottom {
+    padding: 16px 16px;
+}
+.l-context-bnr .context-bnr__text--title,
+.l-context-bnr .context-bnr__text--legal {
+    margin: -1px 8px;
+}
+.l-context-bnr .context-bnr__text--legal {
+    font-size: .8em;
+}
+/* Context Banner Begin */
+
+/* Overrides */
+section.pfmf-grid section.pfmf-grid {
+    width: 98%;
+}
+
+.l-nav-cat {
+    margin: 0; padding: 14px 0 0 0;
+    height: 46px; width: 100%;
+    user-select: none;
+}
+.l-nav-cat P { margin: 0; font-size: 18px; }
+[data-n55-ampm-theme='light'] .l-nav-cat { background-color: #eee; }
+[data-n55-ampm-theme='dark']  .l-nav-cat { background-color: #383838; }
+
+.l-nav-cat neodigm-icon {
+    font-size: 44px;
+}
+
+
+@media only screen and (min-width:48.1em){/* med *//* lg */
+
+    [data-n55-leftnav-state='0'] .gnss-vect__container { width: 126px; margin: 0 auto; }
+    [data-n55-leftnav-state='1'] .gnss-vect__container,
+    [data-n55-leftnav-state='2'] .gnss-vect__container { width: inherit; margin: 0 4px; }
+
+    [data-n55-leftnav-state='0'] .h-ds-b__leftnav-state--ex0 { display: block; }
+    [data-n55-leftnav-state='1'] .h-ds-b__leftnav-state--ex0,
+    [data-n55-leftnav-state='2'] .h-ds-b__leftnav-state--ex0 { display: none; }
+
+    [data-n55-leftnav-state='1'] .h-ds-b__leftnav-state--ex1 { display: block; }
+    [data-n55-leftnav-state='0'] .h-ds-b__leftnav-state--ex1,
+    [data-n55-leftnav-state='2'] .h-ds-b__leftnav-state--ex1 { display: none; }
+
+    [data-n55-leftnav-state='2'] .h-ds-b__leftnav-state--ex2 { display: block; }
+    [data-n55-leftnav-state='0'] .h-ds-b__leftnav-state--ex2,
+    [data-n55-leftnav-state='1'] .h-ds-b__leftnav-state--ex2 { display: none; }
+
+    .l-hg .hg__sidenav > HEADER {
+        display: block;
+    }
+    .l-hg .hg__main > HEADER {
+        grid-template-columns: 156px auto 156px; 
+    }
+    [data-n55-leftnav-state='0'].l-hg {
+        grid-template-columns: 256px auto; 
+    }
+    [data-n55-leftnav-state='1'].l-hg {
+        grid-template-columns: 96px auto; 
+    }
+    [data-n55-leftnav-state='0'] .h-ds-ib__leftnav-state--not0 { display: none; }
+    [data-n55-leftnav-state='1'] .h-ds-ib__leftnav-state--not0,
+    [data-n55-leftnav-state='2'] .h-ds-ib__leftnav-state--not0 { display: inline-block; }
+
+    [data-n55-leftnav-state='0'] .h-ds-ib__leftnav-state--not2,
+    [data-n55-leftnav-state='1'] .h-ds-ib__leftnav-state--not2 { display: inline-block; }
+    [data-n55-leftnav-state='2'] .h-ds-ib__leftnav-state--not2 { display: none; }
+}
+</style>
+<script>
+let fToggle_n55AmpmTheme = ()=>{
+    document.body.dataset.n55AmpmTheme = ( document.body.dataset.n55AmpmTheme == "light" ) ? "dark" : "light"
+    neodigmOpt.N55_AMPM_THEME = neodigmOpt.N55_APP_STATE.AMPM = document.body.dataset.n55AmpmTheme
+    if( neodigmWired4Sound ) neodigmWired4Sound.vibrate()
+}
+let fToggle_n55LeftnavState = ( sStateNav = "next" )=>{
+    let elCntx = document.querySelector("[data-n55-leftnav-state]")
+    let oAtrb = elCntx.dataset
+    if( neodigmWired4Sound ) neodigmWired4Sound.vibrate()
+    if( neodigmUtils.isMobile() ){
+        oAtrb.n55LeftnavState = ( oAtrb.n55LeftnavState == "0" ) ? "1" : "0"
+    }else{
+        if( sStateNav == "next" && oAtrb.n55LeftnavState == 1 ) oAtrb.n55LeftnavState = 0
+        if( sStateNav == "next" && oAtrb.n55LeftnavState == 2 ) oAtrb.n55LeftnavState = 1
+        if( sStateNav == "prev" && oAtrb.n55LeftnavState == 1 ) oAtrb.n55LeftnavState = 2
+        if( sStateNav == "prev" && oAtrb.n55LeftnavState == 0 ) oAtrb.n55LeftnavState = 1
+    }
+}
+function doNav( sCmd ){
+    console.log( " ~~~ doNav | " + sCmd )
+    if( neodigmUtils.isMobile() ) document.querySelector("[data-n55-leftnav-state]").dataset.n55LeftnavState= "0"  //  Close on Mobile
+}
+document.addEventListener("DOMContentLoaded", function(){
+    setTimeout(()=>{ if( neodigmUtils ) neodigmUtils.countTo("#js-num__media-spend", 4609 + neodigmUtils.f02x(90), 96) }, 800 )
+    setTimeout(()=>{ if( neodigmUtils ) neodigmUtils.countTo("#js-num__impressions", 12576 + neodigmUtils.f02x(90), 104) }, 1200 )
+    setTimeout(()=>{ if( neodigmUtils ) neodigmUtils.countTo("#js-num__clicks", 1238 + neodigmUtils.f02x(90), 116) }, 1300 )
+    setTimeout(()=>{ if( neodigmUtils ) neodigmUtils.countTo("#js-num__conversions", 190 + neodigmUtils.f02x(20), 132) }, 1400 )
+    setTimeout(()=>{ if( neodigmUtils ) neodigmUtils.countTo("#js-num__costper", 84 + neodigmUtils.f02x(9), 164) }, 1600 )
+    setTimeout(()=>{ if( neodigmUtils ) neodigmUtils.countTo("#js-num__primeleads", 129 + neodigmUtils.f02x(90), 186) }, 1700 )
+    setTimeout(()=>{ if( neodigmUtils ) neodigmUtils.countTo("#js-num__convrate", 16, 190) }, 1780 )
+    setTimeout(()=>{ if( NeodigmClaire ) NeodigmClaire.doConfetti('#art__prime') }, 4400)
+} )
+window.addEventListener( "resize", ( ev ) =>{
+    window.requestAnimationFrame(() => {
+        if( elDatviz1 ) elDatviz1.resize()
+        if( elDatviz2 ) elDatviz2.resize()
+        if( elDatviz3 ) elDatviz3.resize()
+        if( elDatviz4 ) elDatviz4.resize()
+        if( elDatviz5 ) elDatviz5.resize()
+        if( elDatviz6 ) elDatviz6.resize()
+        console.log( "----- resize | ")
+    })
+});
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+option4 = {
+  xAxis: {
+    data: ['2023-9-24', '2023-9-25', '2023-9-26', '2023-9-27']
+  },
+  yAxis: {},
+  series: [
+    {
+      type: 'candlestick',
+      data: [
+        [20, 34, 10, 38],
+        [40, 35, 30, 50],
+        [31, 38, 33, 44],
+        [38, 15, 5, 42]
+      ]
+    }
+  ]
+};
+
+option5 = {
+  legend: {},
+  tooltip: {},
+  dataset: {
+    source: [
+      ['', 'Informational', 'Navigational', 'Commercial', 'Transactional'],
+      ['', 41.1, 30.4, 65.1, 53.4],
+      ['', 86.5, 92.1, 85.7, 83.2],
+      ['', 24.1, 67.2, 79.5, 86.4]
+    ]
+  },
+  xAxis: [
+    { type: 'category', gridIndex: 0 },
+    { type: 'category', gridIndex: 1 }
+  ],
+  yAxis: [{ gridIndex: 0 }, { gridIndex: 1 }],
+  grid: [{ bottom: '55%' }, { top: '55%' }],
+  series: [
+    // These series are in the first grid.
+    { type: 'bar', seriesLayoutBy: 'row' },
+    { type: 'bar', seriesLayoutBy: 'row' },
+    { type: 'bar', seriesLayoutBy: 'row' },
+    // These series are in the second grid.
+    { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
+    { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
+    { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
+    { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 }
+  ]
+};
+
+QQQQoption5 = {
+  title: {
+    text: ''
+  },
+  legend: {
+    data: ['Allocated', 'Actual']
+  },
+  radar: {
+    // shape: 'circle',
+    indicator: [
+      { name: 'Informational', max: 6500 },
+      { name: 'Navigational', max: 16000 },
+      { name: 'Commercial', max: 30000 }
+    ]
+  },
+  series: [
+    {
+      name: 'Budget vs spending',
+      type: 'radar',
+      data: [
+        {
+          value: [4200, 3000, 20000  ],
+          name: 'Allocated Budget'
+        },
+        {
+          value: [5000, 14000, 28000 ],
+          name: 'Actual Spending'
+        }
+      ]
+    }
+  ]
+};
+
+option6 = {
+  xAxis: {},
+  yAxis: {},
+  series: [
+    {
+      symbolSize: 20,
+      data: [
+        [10.0, 8.04],
+        [8.07, 6.95],
+        [13.0, 7.58],
+        [9.05, 8.81],
+        [11.0, 8.33],
+        [14.0, 7.66],
+        [13.4, 6.81],
+        [10.0, 6.33],
+        [14.0, 8.96],
+        [12.5, 6.82],
+        [9.15, 7.2],
+        [11.5, 7.2],
+        [3.03, 4.23],
+        [12.2, 7.83],
+        [2.02, 4.47],
+        [1.05, 3.33],
+        [4.05, 4.96],
+        [6.03, 7.24],
+        [12.0, 6.26],
+        [12.0, 8.84],
+        [7.08, 5.82],
+        [5.02, 5.68]
+      ],
+      type: 'scatter'
+    }
+  ]
+};
+
+option = {
+  tooltip: {
+    formatter: '{a} <br/>{b} : {c}%'
+  },
+  series: [
+    {
+      name: 'Pressure',
+      type: 'gauge',
+      detail: {
+        formatter: '{value}'
+      },
+      data: [
+        {
+          value: 40,
+          name: 'SCORE'
+        }
+      ]
+    }
+  ]
+};
+optionHalf = {
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    top: '5%',
+    left: 'center',
+    // doesn't perfectly work with our tricks, disable it
+    selectedMode: false
+  },
+  series: [
+    {
+      name: 'Access From',
+      type: 'pie',
+      radius: ['40%', '70%'],
+      center: ['50%', '70%'],
+      // adjust the start angle
+      startAngle: 180,
+      label: {
+        show: true,
+        formatter(param) {
+          // correct the percentage
+          return param.name + ' (' + param.percent * 2 + '%)';
+        }
+      },
+      data: [
+        { value: 1048, name: 'Search Engine' },
+        { value: 735, name: 'Direct' },
+        { value: 580, name: 'Email' },
+        { value: 484, name: 'Union Ads' },
+        { value: 300, name: 'Video Ads' },
+        {
+          // make an record to fill the bottom 50%
+          value: 1048 + 735 + 580 + 484 + 300,
+          itemStyle: {
+            // stop the chart from rendering this piece
+            color: 'none',
+            decal: {
+              symbol: 'none'
+            }
+          },
+          label: {
+            show: false
+          }
+        }
+      ]
+    }
+  ]
+};
+
+
+
+
+
+
+
+    let jsTheme__dark = {
+        "color": [
+            "#dd6b66",
+            "#759aa0",
+            "#e69d87",
+            "#8dc1a9",
+            "#ea7e53",
+            "#eedd78",
+            "#73a373",
+            "#73b9bc",
+            "#7289ab",
+            "#91ca8c",
+            "#f49f42"
+        ],
+        "backgroundColor": "rgba(51,51,51,1)",
+        "textStyle": {},
+        "title": {
+            "textStyle": {
+                "color": "#eeeeee"
+            },
+            "subtextStyle": {
+                "color": "#aaaaaa"
+            }
+        },
+        "line": {
+            "itemStyle": {
+                "borderWidth": 1
+            },
+            "lineStyle": {
+                "width": 2
+            },
+            "symbolSize": 4,
+            "symbol": "circle",
+            "smooth": false
+        },
+        "radar": {
+            "itemStyle": {
+                "borderWidth": 1
+            },
+            "lineStyle": {
+                "width": 2
+            },
+            "symbolSize": 4,
+            "symbol": "circle",
+            "smooth": false
+        },
+        "bar": {
+            "itemStyle": {
+                "barBorderWidth": 0,
+                "barBorderColor": "#ccc"
+            }
+        },
+        "pie": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            }
+        },
+        "scatter": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            }
+        },
+        "boxplot": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            }
+        },
+        "parallel": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            }
+        },
+        "sankey": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            }
+        },
+        "funnel": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            }
+        },
+        "gauge": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            }
+        },
+        "candlestick": {
+            "itemStyle": {
+                "color": "#fd1050",
+                "color0": "#0cf49b",
+                "borderColor": "#fd1050",
+                "borderColor0": "#0cf49b",
+                "borderWidth": 1
+            }
+        },
+        "graph": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            },
+            "lineStyle": {
+                "width": 1,
+                "color": "#aaaaaa"
+            },
+            "symbolSize": 4,
+            "symbol": "circle",
+            "smooth": false,
+            "color": [
+                "#dd6b66",
+                "#759aa0",
+                "#e69d87",
+                "#8dc1a9",
+                "#ea7e53",
+                "#eedd78",
+                "#73a373",
+                "#73b9bc",
+                "#7289ab",
+                "#91ca8c",
+                "#f49f42"
+            ],
+            "label": {
+                "color": "#eeeeee"
+            }
+        },
+        "map": {
+            "itemStyle": {
+                "areaColor": "#eee",
+                "borderColor": "#444",
+                "borderWidth": 0.5
+            },
+            "label": {
+                "color": "#000"
+            },
+            "emphasis": {
+                "itemStyle": {
+                    "areaColor": "rgba(255,215,0,0.8)",
+                    "borderColor": "#444",
+                    "borderWidth": 1
+                },
+                "label": {
+                    "color": "rgb(100,0,0)"
+                }
+            }
+        },
+        "geo": {
+            "itemStyle": {
+                "areaColor": "#eee",
+                "borderColor": "#444",
+                "borderWidth": 0.5
+            },
+            "label": {
+                "color": "#000"
+            },
+            "emphasis": {
+                "itemStyle": {
+                    "areaColor": "rgba(255,215,0,0.8)",
+                    "borderColor": "#444",
+                    "borderWidth": 1
+                },
+                "label": {
+                    "color": "rgb(100,0,0)"
+                }
+            }
+        },
+        "categoryAxis": {
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#eeeeee"
+                }
+            },
+            "axisTick": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#eeeeee"
+                }
+            },
+            "axisLabel": {
+                "show": true,
+                "color": "#eeeeee"
+            },
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": [
+                        "#aaaaaa"
+                    ]
+                }
+            },
+            "splitArea": {
+                "show": false,
+                "areaStyle": {
+                    "color": [
+                        "#eeeeee"
+                    ]
+                }
+            }
+        },
+        "valueAxis": {
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#eeeeee"
+                }
+            },
+            "axisTick": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#eeeeee"
+                }
+            },
+            "axisLabel": {
+                "show": true,
+                "color": "#eeeeee"
+            },
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": [
+                        "#aaaaaa"
+                    ]
+                }
+            },
+            "splitArea": {
+                "show": false,
+                "areaStyle": {
+                    "color": [
+                        "#eeeeee"
+                    ]
+                }
+            }
+        },
+        "logAxis": {
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#eeeeee"
+                }
+            },
+            "axisTick": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#eeeeee"
+                }
+            },
+            "axisLabel": {
+                "show": true,
+                "color": "#eeeeee"
+            },
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": [
+                        "#aaaaaa"
+                    ]
+                }
+            },
+            "splitArea": {
+                "show": false,
+                "areaStyle": {
+                    "color": [
+                        "#eeeeee"
+                    ]
+                }
+            }
+        },
+        "timeAxis": {
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#eeeeee"
+                }
+            },
+            "axisTick": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#eeeeee"
+                }
+            },
+            "axisLabel": {
+                "show": true,
+                "color": "#eeeeee"
+            },
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": [
+                        "#aaaaaa"
+                    ]
+                }
+            },
+            "splitArea": {
+                "show": false,
+                "areaStyle": {
+                    "color": [
+                        "#eeeeee"
+                    ]
+                }
+            }
+        },
+        "toolbox": {
+            "iconStyle": {
+                "borderColor": "#999999"
+            },
+            "emphasis": {
+                "iconStyle": {
+                    "borderColor": "#666666"
+                }
+            }
+        },
+        "legend": {
+            "textStyle": {
+                "color": "#eeeeee"
+            }
+        },
+        "tooltip": {
+            "axisPointer": {
+                "lineStyle": {
+                    "color": "#eeeeee",
+                    "width": "1"
+                },
+                "crossStyle": {
+                    "color": "#eeeeee",
+                    "width": "1"
+                }
+            }
+        },
+        "timeline": {
+            "lineStyle": {
+                "color": "#eeeeee",
+                "width": 1
+            },
+            "itemStyle": {
+                "color": "#dd6b66",
+                "borderWidth": 1
+            },
+            "controlStyle": {
+                "color": "#eeeeee",
+                "borderColor": "#eeeeee",
+                "borderWidth": 0.5
+            },
+            "checkpointStyle": {
+                "color": "#e43c59",
+                "borderColor": "#c23531"
+            },
+            "label": {
+                "color": "#eeeeee"
+            },
+            "emphasis": {
+                "itemStyle": {
+                    "color": "#a9334c"
+                },
+                "controlStyle": {
+                    "color": "#eeeeee",
+                    "borderColor": "#eeeeee",
+                    "borderWidth": 0.5
+                },
+                "label": {
+                    "color": "#eeeeee"
+                }
+            }
+        },
+        "visualMap": {
+            "color": [
+                "#bf444c",
+                "#d88273",
+                "#f6efa6"
+            ]
+        },
+        "dataZoom": {
+            "backgroundColor": "rgba(47,69,84,0)",
+            "dataBackgroundColor": "rgba(255,255,255,0.3)",
+            "fillerColor": "rgba(167,183,204,0.4)",
+            "handleColor": "#a7b7cc",
+            "handleSize": "100%",
+            "textStyle": {
+                "color": "#eeeeee"
+            }
+        },
+        "markPoint": {
+            "label": {
+                "color": "#eeeeee"
+            },
+            "emphasis": {
+                "label": {
+                    "color": "#eeeeee"
+                }
+            }
+        }
+    };
+    
+    let jsTheme__walden = 
+    {
+        "color": [
+            "#3fb1e3",
+            "#6be6c1",
+            "#626c91",
+            "#a0a7e6",
+            "#c4ebad",
+            "#96dee8"
+        ],
+        "backgroundColor": "rgba(252,252,252,0)",
+        "textStyle": {},
+        "title": {
+            "textStyle": {
+                "color": "#666666"
+            },
+            "subtextStyle": {
+                "color": "#999999"
+            }
+        },
+        "line": {
+            "itemStyle": {
+                "borderWidth": "2"
+            },
+            "lineStyle": {
+                "width": "3"
+            },
+            "symbolSize": "8",
+            "symbol": "emptyCircle",
+            "smooth": false
+        },
+        "radar": {
+            "itemStyle": {
+                "borderWidth": "2"
+            },
+            "lineStyle": {
+                "width": "3"
+            },
+            "symbolSize": "8",
+            "symbol": "emptyCircle",
+            "smooth": false
+        },
+        "bar": {
+            "itemStyle": {
+                "barBorderWidth": 0,
+                "barBorderColor": "#ccc"
+            }
+        },
+        "pie": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            }
+        },
+        "scatter": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            }
+        },
+        "boxplot": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            }
+        },
+        "parallel": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            }
+        },
+        "sankey": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            }
+        },
+        "funnel": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            }
+        },
+        "gauge": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            }
+        },
+        "candlestick": {
+            "itemStyle": {
+                "color": "#e6a0d2",
+                "color0": "transparent",
+                "borderColor": "#e6a0d2",
+                "borderColor0": "#3fb1e3",
+                "borderWidth": "2"
+            }
+        },
+        "graph": {
+            "itemStyle": {
+                "borderWidth": 0,
+                "borderColor": "#ccc"
+            },
+            "lineStyle": {
+                "width": "1",
+                "color": "#cccccc"
+            },
+            "symbolSize": "8",
+            "symbol": "emptyCircle",
+            "smooth": false,
+            "color": [
+                "#3fb1e3",
+                "#6be6c1",
+                "#626c91",
+                "#a0a7e6",
+                "#c4ebad",
+                "#96dee8"
+            ],
+            "label": {
+                "color": "#ffffff"
+            }
+        },
+        "map": {
+            "itemStyle": {
+                "areaColor": "#eeeeee",
+                "borderColor": "#aaaaaa",
+                "borderWidth": 0.5
+            },
+            "label": {
+                "color": "#ffffff"
+            },
+            "emphasis": {
+                "itemStyle": {
+                    "areaColor": "rgba(63,177,227,0.25)",
+                    "borderColor": "#3fb1e3",
+                    "borderWidth": 1
+                },
+                "label": {
+                    "color": "#3fb1e3"
+                }
+            }
+        },
+        "geo": {
+            "itemStyle": {
+                "areaColor": "#eeeeee",
+                "borderColor": "#aaaaaa",
+                "borderWidth": 0.5
+            },
+            "label": {
+                "color": "#ffffff"
+            },
+            "emphasis": {
+                "itemStyle": {
+                    "areaColor": "rgba(63,177,227,0.25)",
+                    "borderColor": "#3fb1e3",
+                    "borderWidth": 1
+                },
+                "label": {
+                    "color": "#3fb1e3"
+                }
+            }
+        },
+        "categoryAxis": {
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#cccccc"
+                }
+            },
+            "axisTick": {
+                "show": false,
+                "lineStyle": {
+                    "color": "#333"
+                }
+            },
+            "axisLabel": {
+                "show": true,
+                "color": "#999999"
+            },
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": [
+                        "#eeeeee"
+                    ]
+                }
+            },
+            "splitArea": {
+                "show": false,
+                "areaStyle": {
+                    "color": [
+                        "rgba(250,250,250,0.05)",
+                        "rgba(200,200,200,0.02)"
+                    ]
+                }
+            }
+        },
+        "valueAxis": {
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#cccccc"
+                }
+            },
+            "axisTick": {
+                "show": false,
+                "lineStyle": {
+                    "color": "#333"
+                }
+            },
+            "axisLabel": {
+                "show": true,
+                "color": "#999999"
+            },
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": [
+                        "#eeeeee"
+                    ]
+                }
+            },
+            "splitArea": {
+                "show": false,
+                "areaStyle": {
+                    "color": [
+                        "rgba(250,250,250,0.05)",
+                        "rgba(200,200,200,0.02)"
+                    ]
+                }
+            }
+        },
+        "logAxis": {
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#cccccc"
+                }
+            },
+            "axisTick": {
+                "show": false,
+                "lineStyle": {
+                    "color": "#333"
+                }
+            },
+            "axisLabel": {
+                "show": true,
+                "color": "#999999"
+            },
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": [
+                        "#eeeeee"
+                    ]
+                }
+            },
+            "splitArea": {
+                "show": false,
+                "areaStyle": {
+                    "color": [
+                        "rgba(250,250,250,0.05)",
+                        "rgba(200,200,200,0.02)"
+                    ]
+                }
+            }
+        },
+        "timeAxis": {
+            "axisLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": "#cccccc"
+                }
+            },
+            "axisTick": {
+                "show": false,
+                "lineStyle": {
+                    "color": "#333"
+                }
+            },
+            "axisLabel": {
+                "show": true,
+                "color": "#999999"
+            },
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "color": [
+                        "#eeeeee"
+                    ]
+                }
+            },
+            "splitArea": {
+                "show": false,
+                "areaStyle": {
+                    "color": [
+                        "rgba(250,250,250,0.05)",
+                        "rgba(200,200,200,0.02)"
+                    ]
+                }
+            }
+        },
+        "toolbox": {
+            "iconStyle": {
+                "borderColor": "#999999"
+            },
+            "emphasis": {
+                "iconStyle": {
+                    "borderColor": "#666666"
+                }
+            }
+        },
+        "legend": {
+            "textStyle": {
+                "color": "#999999"
+            }
+        },
+        "tooltip": {
+            "axisPointer": {
+                "lineStyle": {
+                    "color": "#cccccc",
+                    "width": 1
+                },
+                "crossStyle": {
+                    "color": "#cccccc",
+                    "width": 1
+                }
+            }
+        },
+        "timeline": {
+            "lineStyle": {
+                "color": "#626c91",
+                "width": 1
+            },
+            "itemStyle": {
+                "color": "#626c91",
+                "borderWidth": 1
+            },
+            "controlStyle": {
+                "color": "#626c91",
+                "borderColor": "#626c91",
+                "borderWidth": 0.5
+            },
+            "checkpointStyle": {
+                "color": "#3fb1e3",
+                "borderColor": "#3fb1e3"
+            },
+            "label": {
+                "color": "#626c91"
+            },
+            "emphasis": {
+                "itemStyle": {
+                    "color": "#626c91"
+                },
+                "controlStyle": {
+                    "color": "#626c91",
+                    "borderColor": "#626c91",
+                    "borderWidth": 0.5
+                },
+                "label": {
+                    "color": "#626c91"
+                }
+            }
+        },
+        "visualMap": {
+            "color": [
+                "#2a99c9",
+                "#afe8ff"
+            ]
+        },
+        "dataZoom": {
+            "backgroundColor": "rgba(255,255,255,0)",
+            "dataBackgroundColor": "rgba(222,222,222,1)",
+            "fillerColor": "rgba(114,230,212,0.25)",
+            "handleColor": "#cccccc",
+            "handleSize": "100%",
+            "textStyle": {
+                "color": "#999999"
+            }
+        },
+        "markPoint": {
+            "label": {
+                "color": "#ffffff"
+            },
+            "emphasis": {
+                "label": {
+                    "color": "#ffffff"
+                }
+            }
+        }
+    };
+    
+    echarts.registerTheme('dark', jsTheme__walden)
+    echarts.registerTheme('walden', jsTheme__walden)
+    
+    </script>          
+    
+    
+    <script>
+    let elDatviz1 = {}
+    let elDatviz2 = {}
+    let elDatviz3 = {}
+
+    let elDatviz4 = {}
+    let elDatviz5 = {}
+    let elDatviz6 = {}
+    document.addEventListener("DOMContentLoaded", function(){
+    
+    elDatviz1 = echarts.init(document.getElementById('datviz1'), 'dark')
+    elDatviz2 = echarts.init(document.getElementById('datviz2'), 'walden')
+    elDatviz3 = echarts.init(document.getElementById('datviz3'), 'dark')
+    elDatviz4 = echarts.init(document.getElementById('datviz4'), 'dark')
+    elDatviz5 = echarts.init(document.getElementById('datviz5'), 'dark')
+    elDatviz6 = echarts.init(document.getElementById('datviz6'), 'dark')
+    let option1 = {
+        darkMode: true,
+        title: {
+        text: 'Digital Pikachu Marketing'
+        },
+        tooltip: {},
+        legend: {
+        data: ['sales']
+        },
+        xAxis: {
+        data: ['Shirts', 'Cardigans', 'Chiffons', 'Pants', 'Heels', 'Socks']
+        },
+        yAxis: {},
+        series: [
+        {
+            name: 'sales',
+            type: 'bar',
+            data: [5, 20, 36, 10, 12, 9]
+        }
+        ]
+    };
+    let option2 = {
+    series: [
+    {
+    type: 'pie',
+    data: [
+        {
+        value: 335,
+        name: 'Direct Visit'
+        },
+        {
+        value: 234,
+        name: 'Union Ad'
+        },
+        {
+        value: 1548,
+        name: 'Search Engine'
+        }
+    ]
+    }
+    ]
+    };
+
+let option3 = {
+  color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
+  title: {
+    text: ''
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#6a7985'
+      }
+    }
+  },
+  legend: {
+    data: ['Line 1', 'Line 2', 'Line 3', 'Line 4', 'Line 5']
+  },
+  toolbox: {
+    feature: {
+      saveAsImage: {}
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      boundaryGap: false,
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  series: [
+    {
+      name: 'Line 1',
+      type: 'line',
+      stack: 'Total',
+      smooth: true,
+      lineStyle: {
+        width: 0
+      },
+      showSymbol: false,
+      areaStyle: {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgb(128, 255, 165)'
+          },
+          {
+            offset: 1,
+            color: 'rgb(1, 191, 236)'
+          }
+        ])
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [140, 232, 101, 264, 90, 340, 250]
+    },
+    {
+      name: 'Line 2',
+      type: 'line',
+      stack: 'Total',
+      smooth: true,
+      lineStyle: {
+        width: 0
+      },
+      showSymbol: false,
+      areaStyle: {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgb(0, 221, 255)'
+          },
+          {
+            offset: 1,
+            color: 'rgb(77, 119, 255)'
+          }
+        ])
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [120, 282, 111, 234, 220, 340, 310]
+    },
+    {
+      name: 'Line 3',
+      type: 'line',
+      stack: 'Total',
+      smooth: true,
+      lineStyle: {
+        width: 0
+      },
+      showSymbol: false,
+      areaStyle: {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgb(55, 162, 255)'
+          },
+          {
+            offset: 1,
+            color: 'rgb(116, 21, 219)'
+          }
+        ])
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [320, 132, 201, 334, 190, 130, 220]
+    },
+    {
+      name: 'Line 4',
+      type: 'line',
+      stack: 'Total',
+      smooth: true,
+      lineStyle: {
+        width: 0
+      },
+      showSymbol: false,
+      areaStyle: {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgb(255, 0, 135)'
+          },
+          {
+            offset: 1,
+            color: 'rgb(135, 0, 157)'
+          }
+        ])
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [220, 402, 231, 134, 190, 230, 120]
+    },
+    {
+      name: 'Line 5',
+      type: 'line',
+      stack: 'Total',
+      smooth: true,
+      lineStyle: {
+        width: 0
+      },
+      showSymbol: false,
+      label: {
+        show: true,
+        position: 'top'
+      },
+      areaStyle: {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgb(255, 191, 0)'
+          },
+          {
+            offset: 1,
+            color: 'rgb(224, 62, 76)'
+          }
+        ])
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [220, 302, 181, 234, 210, 290, 150]
+    }
+  ]
+};
+
+oOptStacked = {
+  title: {
+    text: ''
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#6a7985'
+      }
+    }
+  },
+  legend: {
+    data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+  },
+  toolbox: {
+    feature: {
+      saveAsImage: {}
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      boundaryGap: false,
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  series: [
+    {
+      name: 'Email',
+      type: 'line',
+      stack: 'Total',
+      areaStyle: {},
+      emphasis: {
+        focus: 'series'
+      },
+      data: [120, 132, 101, 134, 90, 230, 210]
+    },
+    {
+      name: 'Union Ads',
+      type: 'line',
+      stack: 'Total',
+      areaStyle: {},
+      emphasis: {
+        focus: 'series'
+      },
+      data: [220, 182, 191, 234, 290, 330, 310]
+    },
+    {
+      name: 'Video Ads',
+      type: 'line',
+      stack: 'Total',
+      areaStyle: {},
+      emphasis: {
+        focus: 'series'
+      },
+      data: [150, 232, 201, 154, 190, 330, 410]
+    },
+    {
+      name: 'Direct',
+      type: 'line',
+      stack: 'Total',
+      areaStyle: {},
+      emphasis: {
+        focus: 'series'
+      },
+      data: [320, 332, 301, 334, 390, 330, 320]
+    },
+    {
+      name: 'Search Engine',
+      type: 'line',
+      stack: 'Total',
+      label: {
+        show: true,
+        position: 'top'
+      },
+      areaStyle: {},
+      emphasis: {
+        focus: 'series'
+      },
+      data: [820, 932, 901, 934, 1290, 1330, 1320]
+    }
+  ]
+};
+
+    elDatviz1.setOption( option );
+    elDatviz2.setOption( optionHalf );
+    elDatviz3.setOption( oOptStacked );
+
+    elDatviz4.setOption( option4 );
+    elDatviz5.setOption( option5 );
+    elDatviz6.setOption( option6 );
+
+    } )
+    </script>
+
+
+    </body>
+</html>
