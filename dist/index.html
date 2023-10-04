@@ -6,10 +6,10 @@
 
 <link rel="stylesheet" href="/dist/neodigm55__v3_1.css">
 <link rel="stylesheet" href="/dist/neodigm55_v1_0_launchComplete.css">
-<script src="/dist/neodigm55_v1_0_launchComplete.js"></script>
+<TEMPLATE src="/dist/neodigm55_v1_0_launchComplete.js"></TEMPLATE>
 
 <script>
-let neodigmOptCustom = { neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:true, N55_CTA_RND_TOUCH: 5000000, neodigmTulip:true, neodigmPopTart:true }
+let neodigmOptCustom = { neodigmAgent:true, neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:true, N55_CTA_RND_TOUCH: 5000000, neodigmTulip:true, neodigmPopTart:true }
 </script>
 
 <script src="/dist/neodigm55__v3_1.js"></script>
@@ -318,7 +318,7 @@ onClick='neodigmUtils.typeOn({"q1st":"#js-target-typeon__h2-1st--id", "msg":"PPP
 
 <!-- A2YW WDGT REQUIREMENTS
 Long Tap msg on CTA | Pup is Modal | 
-upsell_custom cta Reach out to us if you need a custom tool (pwa windows store / ggl play, extension ). | No SFDC W2L - Use WWT API? | Forever free | Email me a free Monthly Engagement Analytics report | neodigmWidget.getJWT()
+upsell_custom cta Reach out to us if you need a custom tool (pwa windows store / ggl play, extension ). | No SFDC W2L - Use WWT API? | Forever free | Email me a free Monthly Engagement Analytics report | neodigmAgent.getJWT()
 - Confetti 
 - Terms and Privacy
 - Roller {conf: ampm: }
@@ -525,7 +525,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- The below script contains all custom logic for this component -->
 <script>
-let oWTTCompStore = {"token": "compress_json_wdg","theme": "brand", "ampm": "light", "optin": true, "copied": false, "protomolecule":neodigmWidget.getCronSync()}
+let oWTTCompStore = {"token": "compress_json_wdg","theme": "brand", "ampm": "light", "optin": true, "copied": false, "protomolecule":neodigmAgent.getCronSync()}
 
 function doWTTCompStore( sAtr, sVal ){
     if( sAtr == "optin" ) sVal = !oWTTCompStore.optin
