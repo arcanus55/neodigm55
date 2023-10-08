@@ -1577,7 +1577,7 @@ class NeodigmAgent {
       neodigmEnchantedCTA.setOnLongTap( function(){ neodigmToast.q( "Powered by Neodigm ✨ 55", "night" ); neodigmUtils.robinTheme('marcom'); neodigmWired4Sound.sound("6"); }, "js-touch-point__share")
     } 
   }
-  getCronSync() {  //  Protomolecule
+  genCronSync() {  //  Protomolecule
     let tN = new Date()
     return tN.getTime() * tN.getHours()
   }

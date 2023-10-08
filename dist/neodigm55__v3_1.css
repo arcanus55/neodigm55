@@ -183,7 +183,7 @@ neodigm-sodapop:not(.ndsp__modal)::after {
 /*  Neodigm Carousel Begin  */
 neodigm-carousel {
     position: relative; display: block;
-    height: 100%; width: 100%;
+    height: 100cqmax; width: 100%;
     overflow: hidden;
 }
 neodigm-carousel.n55-caro__blur {
