@@ -1464,10 +1464,11 @@ class NeodigmCarousel {
             elNC.parentElement.scrollTop = 0;
             elNCCntr.style.marginLeft = ( nSP ) - ( nSP * 2 ) + "px"
             if( bFireCB ){
-                if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.fOnAfterNav )
-                if(this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]) this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]( elNC.id, oState.nIdx )  //  single pg
-                if(this.fOnAfterNav[ elNC.id ]) this.fOnAfterNav[ elNC.id ]( elNC.id, oState.nIdx )  //  all pages within this Caro
-                if(this.fOnAfterNav["def"]) this.fOnAfterNav["def"]( elNC.id, oState.nIdx )  //  all Caro
+              let sPg = oState.aTabCntr[ (oState.nIdx - 1) ].dataset?.n55CarouselPageName
+              if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.fOnAfterNav )
+              if(this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]) this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]( elNC.id, oState.nIdx, sPg )  //  single pg
+              if(this.fOnAfterNav[ elNC.id ]) this.fOnAfterNav[ elNC.id ]( elNC.id, oState.nIdx, sPg )  //  all pages within this Caro
+              if(this.fOnAfterNav["def"]) this.fOnAfterNav["def"]( elNC.id, oState.nIdx, sPg )  //  all Caro
             }
             if( neodigmOpt.N55_CARO_BLUR ) setTimeout( ()=>{ elNCCntr.parentElement.classList.remove("n55-caro__blur"); }, 860 ) 
         }
