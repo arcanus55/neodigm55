@@ -968,7 +968,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
         return neodigmMarquee; },
       play:  function(){ bIsPause = false; return neodigmMarquee; }
     }
-})( document, ["neodigm-marquee", "n55MarqueeText"], 120 );
+})( document, ["neodigm-marquee", "n55MarqueeText"], 112 );
 
 //  Neodigm 55 Claire Begin  //
 class NeodigmClaireAtomOn{
