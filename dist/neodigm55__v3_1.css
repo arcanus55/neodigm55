@@ -959,7 +959,6 @@ neodigm-picnic[data-n55-theme='party'] DIV{ border-color: var( --neodigm-theme-p
 
 [data-n55-ampm-theme="dark"]  neodigm-picnic > header > div { background-color: var( --neodigm-theme-night-alt )}
 [data-n55-ampm-theme="dark"]  neodigm-picnic > div { background-color: var( --neodigm-theme-night )}
-
 [data-n55-ampm-theme="light"] neodigm-picnic > header > div { background-color: #eee }
 [data-n55-ampm-theme="light"] neodigm-picnic > div { background-color: #fff }
 
