@@ -1601,6 +1601,7 @@ class NeodigmPicnic {
       let elPicn = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( this._aQ[0] + "#" + sId)
       if( elPicn && elPicn?.dataset?.n55PicnicConfig ){
         let oCnf = JSON.parse( elPicn.dataset.n55PicnicConfig )
+        let nRowCalc = ( oCnf.rowcount ) ? ( this.nRowHeight * oCnf.rowcount ) : ( this.nRowHeight * 12 )
         let sMU = `<header>`
         oCnf.cols.forEach( ( oCol )=>{ sMU += `<div>` + oCol.name + `</div>`})
         sMU += `</header>`
@@ -1614,10 +1615,8 @@ class NeodigmPicnic {
           sMU += `</article></output>`
         }
         elPicn.innerHTML = sMU
+        if( neodigmOpt.ROOT ) neodigmOpt.ROOT.style.setProperty( "--neodigm-height-picnic", nRowCalc + "px")
       }
-      // set hight --var   --neodigm-height-picnic 
-      if( neodigmOpt.ROOT ) neodigmOpt.ROOT.style.setProperty( "--neodigm-height-picnic", ( this.nRowHeight * ( 12 ) ) + "px")
-
     }
     return this;
   }
