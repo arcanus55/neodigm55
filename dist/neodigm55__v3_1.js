@@ -1590,6 +1590,7 @@ class NeodigmPicnic {
   constructor(_d, _aQ) {
       this._d = _d; this._aQ = _aQ;
       this.bIsInit = false
+      this.nRowHeight = 34
   }
   init() {  //  rinit
     this.bIsInit = true
@@ -1614,7 +1615,9 @@ class NeodigmPicnic {
         }
         elPicn.innerHTML = sMU
       }
-      // set hight --var
+      // set hight --var   --neodigm-height-picnic 
+      if( neodigmOpt.ROOT ) neodigmOpt.ROOT.style.setProperty( "--neodigm-height-picnic", ( this.nRowHeight * (oRows.rows.length + 1) ) + "px")
+
     }
     return this;
   }
