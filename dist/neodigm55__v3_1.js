@@ -1609,7 +1609,11 @@ class NeodigmPicnic {
           sMU += `<output><article>`
           oRows.rows.forEach( ( aRow )=>{
           sMU += `<section>`
-          aRow.forEach( ( sCell )=>{ sMU += `<div>` + sCell + `</div>` } )
+          aRow.forEach( ( sCell, nDx )=>{
+            if( nDx <= (oCnf.cols.length - 1)){
+              sMU += `<div>` + sCell + `</div>`
+            }else{ sMU += `<aside>` + sCell + `</aside>` }
+          } )
           sMU += `</section>`
         } )
           sMU += `</article></output>`

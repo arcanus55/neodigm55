@@ -945,6 +945,7 @@ neodigm-picnic > output > article > section {
     position: relative; display: grid;
     grid-template-columns: repeat( auto-fit, minmax( 96px, 1fr ) );
 }
+neodigm-picnic > output > article > section > aside { display: none; }
 neodigm-picnic[data-n55-theme='brand'] DIV{ border-color: var( --neodigm-theme-brand-alt )}
 neodigm-picnic[data-n55-theme='primary'] DIV{ border-color: var( --neodigm-theme-primary-alt )}
 neodigm-picnic[data-n55-theme='secondary'] DIV{ border-color: var( --neodigm-theme-secondary-alt )}
