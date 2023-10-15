@@ -21,6 +21,8 @@ All rights reserved. Redistributions of source code must retain the above copyri
     --neodigm-theme-night: #6a6a6a;     --neodigm-theme-night-alt: #242424;  /* Charcoal */
     --neodigm-theme-marcom: #B163A3;    --neodigm-theme-marcom-alt: #5F4B8B;  /* Radiant Orchid | Ultra Violet */
     --neodigm-theme-party: #FF6F61;     --neodigm-theme-party-alt: #C93F60;  /* Living Coral | Honeysuckle */
+
+    --neodigm-height-picnic: calc( 44px * 3 )
 }
 
 neodigm-template { display: none; }
@@ -907,3 +909,51 @@ neodigm-juicebar[data-n55-show="false"] { visibility: hidden; }
     animation-name: touch_shake !important;
 }
 /*  Neodigm Utils End  */
+
+/*  Neodigm Picnic Begin  */
+neodigm-picnic {
+    position: relative; display: block;
+    border: solid 1px #ccc;
+    margin: 2px; padding: 2px;
+    height: var( --neodigm-height-picnic );
+}
+neodigm-picnic > header {
+    position: relative; display: grid;
+    grid-template-columns: repeat( auto-fit, minmax( 96px, 1fr ) ) 9px ;
+}
+neodigm-picnic div {
+    border: solid 1px #ccc;
+    font-size: .8em;
+    margin: 2px; padding: 4px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+}
+neodigm-picnic > header > div {
+    cursor: pointer; user-select: none;
+}
+neodigm-picnic > output {
+    position: relative; display: block;
+    height: calc( var( --neodigm-height-picnic ) - 38px);
+    overflow-y: scroll;
+}
+neodigm-picnic > output > article {
+    height: 50cqh;
+}
+neodigm-picnic > output > article > section {
+    position: relative; display: grid;
+    grid-template-columns: repeat( auto-fit, minmax( 96px, 1fr ) );
+}
+neodigm-picnic[data-n55-theme='brand'] DIV{ border-color: var( --neodigm-theme-brand-alt )}
+neodigm-picnic[data-n55-theme='primary'] DIV{ border-color: var( --neodigm-theme-primary-alt )}
+neodigm-picnic[data-n55-theme='secondary'] DIV{ border-color: var( --neodigm-theme-secondary-alt )}
+neodigm-picnic[data-n55-theme='success'] DIV{ border-color: var( --neodigm-theme-success-alt )}
+neodigm-picnic[data-n55-theme='danger'] DIV{ border-color: var( --neodigm-theme-danger-alt )}
+neodigm-picnic[data-n55-theme='warning'] DIV{ border-color: var( --neodigm-theme-warning-alt )}
+neodigm-picnic[data-n55-theme='info'] DIV{ border-color: var( --neodigm-theme-info-alt )}
+neodigm-picnic[data-n55-theme='disabled'] DIV{ border-color: var( --neodigm-theme-disabled-alt )}
+neodigm-picnic[data-n55-theme='night'] DIV{ border-color: var( --neodigm-theme-night-alt )}
+neodigm-picnic[data-n55-theme='marcom'] DIV{ border-color: var( --neodigm-theme-marcom-alt )}
+neodigm-picnic[data-n55-theme='party'] DIV{ border-color: var( --neodigm-theme-party-alt )}
+/*  Neodigm Picnic End  */
