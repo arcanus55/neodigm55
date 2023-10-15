@@ -34,6 +34,7 @@ let neodigmOpt = {
 neodigmTulip: true,
 neodigmPopTart: true,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
 neodigmAgent: false,
+neodigmPicnic: true,  N55_GTM_DL_PICNIC: "n55_gtm_dl_picnic",
 neodigmWWInterval: true,
   N55_ZIND: {"PopTart": 264},
   CONSOLE_LOG_VER: true,
@@ -1214,7 +1215,6 @@ data-n55-claire-click - confetti
       this._theme = sTheme;
       return this; }
     }
-//  let neodigmClaire = new NeodigmClaire( document, ["neodigm-claire"] )
 
 //  Neodigm 55 Enchanted CTA Begin
 class NeodigmEnchantedCTA {
@@ -1547,7 +1547,7 @@ class NeodigmPWA {
 }
 let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 
-
+//  Neodigm 55 Agent  Begin //
 class NeodigmAgent {
   constructor(_d, _aQ) {  //  plugin extension manifest
       this._d = _d; this._aQ = _aQ;
@@ -1584,6 +1584,43 @@ class NeodigmAgent {
   }
 }
 let neodigmAgent = new NeodigmAgent( document, ["neodigm-widget"] )
+
+//  Neodigm 55 Picnic  Begin //
+class NeodigmPicnic {
+  constructor(_d, _aQ) {
+      this._d = _d; this._aQ = _aQ;
+      this.bIsInit = false
+  }
+  init() {  //  rinit
+    this.bIsInit = true
+    return this;
+  }
+  render( sId, oRows ){
+    if( this.bIsInit && sId ){
+      let elPicn = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( this._aQ[0] + "#" + sId)
+      if( elPicn && elPicn?.dataset?.n55PicnicConfig ){
+        let oCnf = JSON.parse( elPicn.dataset.n55PicnicConfig )
+        let sMU = `<header>`
+        oCnf.cols.forEach( ( oCol )=>{ sMU += `<div>` + oCol.name + `</div>`})
+        sMU += `</header>`
+        if( oRows.rows.length ){
+          sMU += `<output><article>`
+          oRows.rows.forEach( ( aRow )=>{
+          sMU += `<section>`
+          aRow.forEach( ( sCell )=>{ sMU += `<div>` + sCell + `</div>` } )
+          sMU += `</section>`
+        } )
+          sMU += `</article></output>`
+        }
+        elPicn.innerHTML = sMU
+      }
+      // set hight --var
+    }
+    return this;
+  }
+
+}
+let neodigmPicnic = new NeodigmPicnic( document, ["neodigm-picnic"] )
 
 // v2.5.0 - Refactor Toast and Metronome STATIC
 //  -Neodigm 55 SodaPop Simple Tab (Carosel) //
@@ -1658,6 +1695,7 @@ elLk.setAttribute("requestor", "Neodigm 55");
     if( neodigmOpt.neodigmTulip ) neodigmTulip.init()
     if( neodigmOpt.neodigmPopTart ) neodigmPopTart.init()
     if( neodigmOpt.neodigmAgent ) neodigmAgent.init()
+    if( neodigmOpt.neodigmPicnic ) neodigmPicnic.init()
   }, 56)
 }
 
