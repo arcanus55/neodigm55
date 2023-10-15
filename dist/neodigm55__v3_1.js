@@ -1616,7 +1616,7 @@ class NeodigmPicnic {
         elPicn.innerHTML = sMU
       }
       // set hight --var   --neodigm-height-picnic 
-      if( neodigmOpt.ROOT ) neodigmOpt.ROOT.style.setProperty( "--neodigm-height-picnic", ( this.nRowHeight * (oRows.rows.length + 1) ) + "px")
+      if( neodigmOpt.ROOT ) neodigmOpt.ROOT.style.setProperty( "--neodigm-height-picnic", ( this.nRowHeight * ( 12 ) ) + "px")
 
     }
     return this;
