@@ -1641,8 +1641,8 @@ class NeodigmPicnic {
       elRowContr = elRowContr.querySelector( "[data-n55-picnic-select='true']" )
       if( elRowContr ) elRowContr.dataset.n55PicnicSelect = "false"
     }
-    if(this.fOnRowClick[_sId]) this.fOnRowClick[_sId]( this.sId )
-    if(this.fOnRowClick["def"]) this.fOnRowClick["def"]( this.sId )
+    if(this.fOnRowClick[_sId]) this.fOnRowClick[_sId]( elRowContr )
+    if(this.fOnRowClick["def"]) this.fOnRowClick["def"]( elRowContr )
     if( neodigmOpt.N55_GTM_DL_PICNIC ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_PICNIC, _sId )
     elRow.dataset.n55PicnicSelect = "true"
   }
