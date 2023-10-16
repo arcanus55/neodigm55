@@ -1635,7 +1635,13 @@ class NeodigmPicnic {
     }
     return this;
   }
-  select( elRow ){
+  select( elRow ){  //  TODO fire callback
+    let elRowContr = elRow.parentElement
+    if( elRowContr ){  //  TODO multiselect
+      elRowContr = elRowContr.querySelector( "[data-n55-picnic-select='true']" )
+      if( elRowContr ) elRowContr.dataset.n55PicnicSelect = "false"
+    }
+
     elRow.dataset.n55PicnicSelect = "true"
 console.log( " ~~~ elRow | " , elRow)
   }
