@@ -121,7 +121,9 @@ const neodigmUtils = ( ( _d ) =>{
       let sFirstAMPM = document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "[data-n55-Ampm-theme]" )?.dataset.n55AmpmTheme
       if( sFirstAMPM ) neodigmOpt.N55_AMPM_THEME = neodigmOpt.N55_APP_STATE.AMPM = sFirstAMPM
     },
-    prettyTime: ( d ) => {}, 
+    prettyTime: ( sDt ) => {
+      return new Date( sDt ).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" } )
+    }, 
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
     genHash: ( sV ) => {sV = String(sV); return sV.split("").reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)},
     robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
