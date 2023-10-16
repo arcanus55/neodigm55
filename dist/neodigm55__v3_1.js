@@ -199,10 +199,12 @@ const neodigmUtils = ( ( _d ) =>{
         return JSON.parse( '{ "' + sPrp + '": "' + sAtr + '" }' )
       }
     },
-    walkDOM3: function( elEv, sDatAtr ){  //  Walk up two nodes, parent, grand parent
-        if( elEv?.dataset[ sDatAtr ] ) return elEv.dataset[ sDatAtr ]
-        if( elEv?.parentNode?.dataset[ sDatAtr ] ) return elEv.parentNode.dataset[ sDatAtr ]
-        if( elEv.tagName != "BODY" && elEv?.parentNode?.parentNode?.dataset[ sDatAtr ] ) return elEv.parentNode.parentNode.dataset[ sDatAtr ]
+    walkDOM3: function( elEv, sDatAtr, bReturnEl=false ){  //  Walk up 2 nodes, parent, grand parent - Opt ret elm
+        let elRet = null
+        if( !elRet && elEv?.dataset[ sDatAtr ] ) elRet = elEv
+        if( !elRet && elEv?.parentNode?.dataset[ sDatAtr ] ) elRet = elEv.parentNode
+        if( !elRet && elEv.tagName != "BODY" && elEv?.parentNode?.parentNode?.dataset[ sDatAtr ] ) elRet = elEv.parentNode.parentNode
+        if( elRet ) return ( bReturnEl ) ? elRet : elRet.dataset[ sDatAtr ]
     },
     doSetT: function( fCb, nT ){  //  Fire overloaded or native setT based on opt ff
         if( neodigmOpt.neodigmWWInterval ) return window.setTimeoutN55( fCb, nT )
@@ -1590,9 +1592,18 @@ class NeodigmPicnic {
   constructor(_d, _aQ) {
       this._d = _d; this._aQ = _aQ;
       this.bIsInit = false
-      this.nRowHeight = 34
+      this.nRowHeight = 34  //  px
+      this.fOnRowClick = []
   }
   init() {  //  rinit
+    if( !this.bIsInit ){  //  once
+      this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {
+        let evAtr = neodigmUtils.walkDOM3( ev?.target, "n55PicnicRow", "returnEl" )  //  Return Element
+        if( evAtr ){
+          this.select( evAtr )
+        }
+      }, false)
+    }
     this.bIsInit = true
     return this;
   }
@@ -1607,8 +1618,8 @@ class NeodigmPicnic {
         sMU += `</header>`
         if( oRows.rows.length ){
           sMU += `<output><article>`
-          oRows.rows.forEach( ( aRow )=>{
-          sMU += `<section>`
+          oRows.rows.forEach( ( aRow, nDx )=>{
+          sMU += `<section data-n55-picnic-row="` + nDx + `">`
           aRow.forEach( ( sCell, nDx )=>{
             if( nDx <= (oCnf.cols.length - 1)){
               sMU += `<div>` + sCell + `</div>`
@@ -1624,7 +1635,11 @@ class NeodigmPicnic {
     }
     return this;
   }
-
+  select( elRow ){
+    elRow.dataset.n55PicnicSelect = "true"
+console.log( " ~~~ elRow | " , elRow)
+  }
+  setOnRowClick ( _f, id="def" ){ this.fOnRowClick[ id ] = _f; return this; }
 }
 let neodigmPicnic = new NeodigmPicnic( document, ["neodigm-picnic"] )
 

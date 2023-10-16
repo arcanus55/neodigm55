@@ -958,9 +958,12 @@ neodigm-picnic[data-n55-theme='night'] DIV{ border-color: var( --neodigm-theme-n
 neodigm-picnic[data-n55-theme='marcom'] DIV{ border-color: var( --neodigm-theme-marcom-alt )}
 neodigm-picnic[data-n55-theme='party'] DIV{ border-color: var( --neodigm-theme-party-alt )}
 
-[data-n55-ampm-theme="dark"]  neodigm-picnic > header > div { background-color: var( --neodigm-theme-night-alt )}
-[data-n55-ampm-theme="dark"]  neodigm-picnic div { background-color: var( --neodigm-theme-night )}
 [data-n55-ampm-theme="light"] neodigm-picnic > header > div { background-color: #eee }
 [data-n55-ampm-theme="light"] neodigm-picnic div { background-color: #fff }
+[data-n55-ampm-theme="dark"]  neodigm-picnic > header > div { background-color: var( --neodigm-theme-night-alt )}
+[data-n55-ampm-theme="dark"]  neodigm-picnic div { background-color: var( --neodigm-theme-night )}
+
+[data-n55-ampm-theme="light"] neodigm-picnic [data-n55-picnic-select='true'] { background-color: var( --neodigm-theme-info-alt ) }
+[data-n55-ampm-theme="dark"]  neodigm-picnic [data-n55-picnic-select='true'] { background-color: var( --neodigm-theme-secondary-alt ) }
 
 /*  Neodigm Picnic End  */
