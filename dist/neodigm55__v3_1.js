@@ -1637,15 +1637,16 @@ class NeodigmPicnic {
   }
   select( elRow ){  //  TODO fire callback
     let elRowContr = elRow.parentElement
-    if( elRowContr ){  //  TODO multiselect
+    if( elRowContr ){  //  Unselect all  - TODO multiselect
       elRowContr = elRowContr.querySelector( "[data-n55-picnic-select='true']" )
       if( elRowContr ) elRowContr.dataset.n55PicnicSelect = "false"
     }
-
+    if(this.fOnRowClick[_sId]) this.fOnRowClick[_sId]( this.sId )
+    if(this.fOnRowClick["def"]) this.fOnRowClick["def"]( this.sId )
+    if( neodigmOpt.N55_GTM_DL_PICNIC ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_PICNIC, _sId )
     elRow.dataset.n55PicnicSelect = "true"
-console.log( " ~~~ elRow | " , elRow)
   }
-  setOnRowClick ( _f, id="def" ){ this.fOnRowClick[ id ] = _f; return this; }
+  setOnRowClick( _f, id="def" ){ this.fOnRowClick[ id ] = _f; return this; }
 }
 let neodigmPicnic = new NeodigmPicnic( document, ["neodigm-picnic"] )
 
