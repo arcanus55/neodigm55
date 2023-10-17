@@ -1622,14 +1622,18 @@ class NeodigmPicnic {
         if( oRows.rows.length ){
           sMU += `<output><article>`
           oRows.rows.forEach( ( aRow, nDx )=>{
-          sMU += `<section data-n55-picnic-row="` + nDx + `">`
-          aRow.forEach( ( sCell, nDx )=>{
-            if( nDx <= (oCnf.cols.length - 1)){
-              sMU += `<div>` + sCell + `</div>`
-            }else{ sMU += `<aside>` + sCell + `</aside>` }
+            sMU += `<section data-n55-picnic-row="` + nDx + `">`
+            aRow.forEach( ( sCell, nDx )=>{
+              if( nDx <= (oCnf.cols.length - 1) ){
+                sMU += `<div>` + sCell + `</div>`  //  Has Header
+              }else{
+                if( typeof sCell == "object" ){
+                  sMU += `<aside data-n55-picnic-caption="` + sCell[0] + `">` + sCell[1] + `</aside>`
+                }else{ sMU += `<aside>` + sCell + `</aside>` }
+              }
+            } )
+            sMU += `</section>`
           } )
-          sMU += `</section>`
-        } )
           sMU += `</article></output>`
         }
         elPicn.innerHTML = sMU
