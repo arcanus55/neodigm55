@@ -1642,15 +1642,15 @@ class NeodigmPicnic {
     }
     return this;
   }
-  select( elRow ){  //  TODO fire callback
+  select( elRow ){
     let elRowContr = elRow.parentElement
     if( elRowContr ){  //  Unselect prev  - TODO multiselect
       elRowContr = elRowContr.querySelector( "[data-n55-picnic-select='true']" )
       if( elRowContr ) elRowContr.dataset.n55PicnicSelect = "false"
       let elPicnic = neodigmUtils.walkDOM3( elRow.parentElement, "n55PicnicConfig", "returnRoot" )  //  Return Element
       let _sId = elPicnic.id
-      if(this.fOnRowClick[_sId]) this.fOnRowClick[_sId]( elRowContr )
-      if(this.fOnRowClick["def"]) this.fOnRowClick["def"]( elRowContr )
+      if(this.fOnRowClick[_sId]) this.fOnRowClick[_sId]( elRow )
+      if(this.fOnRowClick["def"]) this.fOnRowClick["def"]( elRow )
       if( neodigmOpt.N55_GTM_DL_PICNIC ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_PICNIC, _sId )
     }
     elRow.dataset.n55PicnicSelect = "true"
