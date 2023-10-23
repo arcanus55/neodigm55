@@ -122,7 +122,7 @@ const neodigmUtils = ( ( _d ) =>{
       if( sFirstAMPM ) neodigmOpt.N55_AMPM_THEME = neodigmOpt.N55_APP_STATE.AMPM = sFirstAMPM
     },
     prettyTime: ( sDt ) => {
-      return new Date( sDt ).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" } )
+      return new Date( sDt ).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" } )
     }, 
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
     genHash: ( sV ) => {sV = String(sV); return sV.split("").reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)},
