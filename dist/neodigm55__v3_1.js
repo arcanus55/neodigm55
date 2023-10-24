@@ -1665,22 +1665,18 @@ class NeodigmPicnic {
             elPicRows.forEach( ( elRow )=>{
               if( elRow.innerHTML.indexOf( sSearch ) == -1 ) {
                 elRow.classList.add( "h-filter-not-found" )
-              }else{
-                elRow.classList.remove( "h-filter-not-found" )
-              }
+              }else{ elRow.classList.remove( "h-filter-not-found" ) }
             } )
-          }else{
-            elPicRows.forEach( ( elRow )=>{ elRow.classList.remove( "h-filter-not-found" ) } )
-          }              
+          }else{ elPicRows.forEach( ( elRow )=>{ elRow.classList.remove( "h-filter-not-found" ) } ) }
         }
       }
-   
     }
     return this;
   }
   setOnRowClick( _f, id="def" ){ this.fOnRowClick[ id ] = _f; return this; }
 }
 let neodigmPicnic = new NeodigmPicnic( document, ["neodigm-picnic"] )
+
 
 // v2.5.0 - Refactor Toast and Metronome STATIC
 //  -Neodigm 55 SodaPop Simple Tab (Carosel) //
