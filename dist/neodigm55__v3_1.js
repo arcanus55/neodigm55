@@ -1655,6 +1655,29 @@ class NeodigmPicnic {
     }
     elRow.dataset.n55PicnicSelect = "true"
   }
+  filter( sId, sSearch ){
+    if( sId ){
+      let elPicn = document.getElementById( sId )
+      if( elPicn ){
+        let elPicRows = document.querySelectorAll( "output > article > section" )
+        if( elPicRows ){
+          if( sSearch ){
+            elPicRows.forEach( ( elRow )=>{
+              if( elRow.innerHTML.indexOf( sSearch ) == -1 ) {
+                elRow.classList.add( "h-filter-not-found" )
+              }else{
+                elRow.classList.remove( "h-filter-not-found" )
+              }
+            } )
+          }else{
+            elPicRows.forEach( ( elRow )=>{ elRow.classList.remove( "h-filter-not-found" ) } )
+          }              
+        }
+      }
+   
+    }
+    return this;
+  }
   setOnRowClick( _f, id="def" ){ this.fOnRowClick[ id ] = _f; return this; }
 }
 let neodigmPicnic = new NeodigmPicnic( document, ["neodigm-picnic"] )

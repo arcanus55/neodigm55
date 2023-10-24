@@ -930,6 +930,7 @@ neodigm-picnic div {
     text-align: center;
     white-space: nowrap;
 }
+neodigm-picnic output > article > section.h-filter-not-found { display: none; }
 neodigm-picnic > header > div {
     cursor: pointer; user-select: none;
 }
