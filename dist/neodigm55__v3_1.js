@@ -1643,7 +1643,7 @@ class NeodigmPicnic {
         if( neodigmOpt.ROOT ) neodigmOpt.ROOT.style.setProperty( "--neodigm-height-picnic", nRowCalc + "px")
       }
     }
-    return this;
+    return this.nTotal;
   }
   select( elRow ){
     let elRowContr = elRow.parentElement
@@ -1665,16 +1665,18 @@ class NeodigmPicnic {
         let elPicRows = this._d.querySelectorAll( "output > article > section" )
         if( elPicRows ){
           if( sSearch ){
+            this.nTotal = 0
             elPicRows.forEach( ( elRow )=>{
               if( elRow.innerHTML.indexOf( sSearch ) == -1 ) {
                 elRow.classList.add( "h-filter-not-found" )
+                this.nTotal++
               }else{ elRow.classList.remove( "h-filter-not-found" ) }
             } )
           }else{ elPicRows.forEach( ( elRow )=>{ elRow.classList.remove( "h-filter-not-found" ) } ) }
         }
       }
     }
-    return this;
+    return this.nTotal;
   }
   setOnRowClick( _f, id="def" ){ this.fOnRowClick[ id ] = _f; return this; }
 }
