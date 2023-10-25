@@ -1594,6 +1594,7 @@ let neodigmAgent = new NeodigmAgent( document, ["neodigm-widget"] )
 class NeodigmPicnic {
   constructor(_d, _aQ) {
       this._d = _d; this._aQ = _aQ;
+      this.nTotal = 0
       this.bIsInit = false
       this.nRowHeight = 34  //  px
       this.fOnRowClick = []
@@ -1614,6 +1615,7 @@ class NeodigmPicnic {
     if( this.bIsInit && sId ){
       let elPicn = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( this._aQ[0] + "#" + sId)
       if( elPicn && elPicn?.dataset?.n55PicnicConfig ){
+        this.nTotal = 0
         let oCnf = JSON.parse( elPicn.dataset.n55PicnicConfig )
         let nRowCalc = ( oCnf.rowcount ) ? ( this.nRowHeight * oCnf.rowcount ) : ( this.nRowHeight * 12 )
         let sMU = `<header>`
@@ -1633,6 +1635,7 @@ class NeodigmPicnic {
               }
             } )
             sMU += `</section>`
+            this.nTotal++
           } )
           sMU += `</article></output>`
         }
@@ -1657,9 +1660,9 @@ class NeodigmPicnic {
   }
   filter( sId, sSearch ){
     if( sId ){
-      let elPicn = document.getElementById( sId )
+      let elPicn = this._d.getElementById( sId )
       if( elPicn ){
-        let elPicRows = document.querySelectorAll( "output > article > section" )
+        let elPicRows = this._d.querySelectorAll( "output > article > section" )
         if( elPicRows ){
           if( sSearch ){
             elPicRows.forEach( ( elRow )=>{
@@ -1729,8 +1732,7 @@ function doDOMContentLoaded(){
     if( neodigmOpt.N55_TYPE ){
         let elLk = document.createElement("link")
         elLk.setAttribute("rel", "stylesheet"); elLk.setAttribute("type", "text/css");
-
-elLk.setAttribute("requestor", "Neodigm 55");
+        elLk.setAttribute("requestor", "Neodigm 55");
         elLk.setAttribute("href", neodigmOpt.N55_TYPE )
         document.head.appendChild( elLk )
     }
