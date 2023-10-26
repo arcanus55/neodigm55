@@ -1664,8 +1664,8 @@ class NeodigmPicnic {
       if( elPicn ){
         let elPicRows = this._d.querySelectorAll( "output > article > section" )
         if( elPicRows ){
-          if( sSearch ){
             this.nTotal = 0
+            if( sSearch ){
             elPicRows.forEach( ( elRow )=>{
               if( elRow.innerHTML.indexOf( sSearch ) == -1 ) {
                 elRow.classList.add( "h-filter-not-found" )
@@ -1674,7 +1674,7 @@ class NeodigmPicnic {
                 this.nTotal++
               }
             } )
-          }else{ elPicRows.forEach( ( elRow )=>{ elRow.classList.remove( "h-filter-not-found" ) } ) }
+          }else{ elPicRows.forEach( ( elRow )=>{ elRow.classList.remove( "h-filter-not-found" ); this.nTotal++ } ) }
         }
       }
     }
