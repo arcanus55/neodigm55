@@ -1662,7 +1662,7 @@ class NeodigmPicnic {
     if( sId ){
       let elPicn = this._d.getElementById( sId )
       if( elPicn ){
-        let elPicRows = this._d.querySelectorAll( "output > article > section" )
+        let elPicRows = elPicn.querySelectorAll( "output > article > section" )
         if( elPicRows ){
             this.nTotal = 0
             if( sSearch ){
