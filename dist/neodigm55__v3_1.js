@@ -1669,8 +1669,10 @@ class NeodigmPicnic {
             elPicRows.forEach( ( elRow )=>{
               if( elRow.innerHTML.indexOf( sSearch ) == -1 ) {
                 elRow.classList.add( "h-filter-not-found" )
+              }else{
+                elRow.classList.remove( "h-filter-not-found" )
                 this.nTotal++
-              }else{ elRow.classList.remove( "h-filter-not-found" ) }
+              }
             } )
           }else{ elPicRows.forEach( ( elRow )=>{ elRow.classList.remove( "h-filter-not-found" ) } ) }
         }
