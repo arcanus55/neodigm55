@@ -51,7 +51,7 @@ class NeodigmWidget {
                 if( rs[0]?.js ){  //  Inject script elms from manifest
                   rs[0].js.forEach( ( js )=>{ neodigmUtils.fAsyncJS( document, js ) } )
                 }
-                neodigmUtils.fAsyncJS( this._d, sURI + ".js" )
+                neodigmUtils.fAsyncJS( this._d, sURI + ".js" )  //  Naming conv
               }
             }
           } )

@@ -1573,7 +1573,7 @@ class NeodigmAgent {
                 if( rs[0]?.js ){  //  Inject script elms from manifest
                   rs[0].js.forEach( ( js )=>{ neodigmUtils.fAsyncJS( document, js ) } )
                 }
-                neodigmUtils.fAsyncJS( this._d, sURI + ".js" )
+                neodigmUtils.fAsyncJS( this._d, sURI + ".js" )  //  Naming Conv
               }
             }
           } )
@@ -1603,9 +1603,7 @@ class NeodigmPicnic {
     if( !this.bIsInit ){  //  once
       this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {
         let evAtr = neodigmUtils.walkDOM3( ev?.target, "n55PicnicRow", "returnEl" )  //  Return Element
-        if( evAtr ){
-          this.select( evAtr )
-        }
+        if( evAtr ) this.select( evAtr )
       }, false)
     }
     this.bIsInit = true
@@ -1641,11 +1639,13 @@ class NeodigmPicnic {
         }
         elPicn.innerHTML = sMU
         if( neodigmOpt.ROOT ) neodigmOpt.ROOT.style.setProperty( "--neodigm-height-picnic", nRowCalc + "px")
+        let elClickFirstRow = elPicn.querySelector("[data-n55-picnic-row]")
+        NeodigmPicnic.select( elClickFirstRow )
       }
     }
     return this.nTotal;
   }
-  select( elRow ){
+  static select( elRow ){
     let elRowContr = elRow.parentElement
     if( elRowContr ){  //  Unselect prev  - TODO multiselect
       elRowContr = elRowContr.querySelector( "[data-n55-picnic-select='true']" )
