@@ -327,8 +327,10 @@ input.n55-lc__input--inv, textarea.n55-lc__input--inv {
     font-family: monospace; font-size: 14px;
     color: #fff; background-color: #383838;
 }
-[data-n55-ampm-theme="light"] input.n55-lc__input {color: #383838; background-color: #fff;}
-[data-n55-ampm-theme="dark"]  input.n55-lc__input {color: #fff; background-color: #383838;}
+[data-n55-ampm-theme="light"] input.n55-lc__input,
+[data-n55-ampm-theme="light"] textarea.n55-lc__input {color: #383838; background-color: #fff;}
+[data-n55-ampm-theme="dark"]  input.n55-lc__input,
+[data-n55-ampm-theme="dark"]  textarea.n55-lc__input {color: #fff; background-color: #383838;}
 
 /*  Bullets  */
 .l-bullets {
