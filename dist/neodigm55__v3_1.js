@@ -1640,12 +1640,12 @@ class NeodigmPicnic {
         elPicn.innerHTML = sMU
         if( neodigmOpt.ROOT ) neodigmOpt.ROOT.style.setProperty( "--neodigm-height-picnic", nRowCalc + "px")
         let elClickFirstRow = elPicn.querySelector("[data-n55-picnic-row]")
-        NeodigmPicnic.select( elClickFirstRow )
+        if( elClickFirstRow ) this.select( elClickFirstRow )
       }
     }
     return this.nTotal;
   }
-  static select( elRow ){
+  select( elRow ){
     let elRowContr = elRow.parentElement
     if( elRowContr ){  //  Unselect prev  - TODO multiselect
       elRowContr = elRowContr.querySelector( "[data-n55-picnic-select='true']" )
