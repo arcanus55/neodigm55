@@ -1585,7 +1585,7 @@ class NeodigmAgent {
   }
   genChronSync() {  //  Protomolecule 
     let tN = new Date()
-    return tN.getTime() * tN.getHours()
+    return tN.getTime() * 9;  // tN.getHours()
   }
 }
 let neodigmAgent = new NeodigmAgent( document, ["neodigm-widget"] )
