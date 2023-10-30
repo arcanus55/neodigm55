@@ -579,7 +579,6 @@ class NeodigmPopTart {
             if( ev.target?.dataset?.n55PoptartClick || ev.target?.parentNode?.dataset?.n55PoptartClick ){
                 const sAttrEv = ev.target?.dataset?.n55PoptartClick || ev.target?.parentNode?.dataset?.n55PoptartClick
                 this.sBoundTheme = ev.target.n55Theme || ev.target?.dataset.n55Theme || ev.target?.parentNode?.dataset.n55Theme || neodigmOpt.N55_THEME_DEFAULT
-    console.log( " ~~~~ popt clk | " , sAttrEv)
                     if( this.sBoundTheme != "disabled" ) {
                     let elPopTmpl = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "#" + sAttrEv )
                     if( elPopTmpl?.dataset?.n55Poptart ){
