@@ -33,7 +33,7 @@ let neodigmOpt = {
     N55_CARO_BLUR: true,  //  Carousel transition blur / opacity fx
 neodigmTulip: true,
 neodigmPopTart: true,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
-neodigmAgent: false,
+neodigmAgent: true,
     API_baseURI:"https://a55-wtt-api-v1.onrender.com/", API_ver: "v1",
 neodigmPicnic: true,  N55_GTM_DL_PICNIC: "n55_gtm_dl_picnic",
 neodigmWWInterval: true,
