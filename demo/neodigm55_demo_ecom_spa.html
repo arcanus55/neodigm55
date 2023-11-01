@@ -161,9 +161,9 @@
                                             </div>
                                             <div class="h-center h-ds-b__desktop--only">
                                                 <br>
-                                                <p id="txt-count__total--title" class="hd3 readampm" style="color: var( --neodigm-theme-brand-alt )"></p>
-                                                <br class="h-br-half">
-                                                <p id="txt-count__total" class="hd2 readable__caption" style="color: var( --neodigm-theme-brand-alt )"></p>
+                                                <neodigm-kpi id="kpi-count_appstate" data-n55-kpi="" data-n55-kpi-percent="false" data-n55-kpi-size="small" data-n55-flash-theme="marcom" data-n55-theme="brand" data-n55-wired4sound-click="5"><h5 id="txt-count__total">129876</h5><h6 id="txt-count__total--title">Visitors</h6>
+                                                </neodigm-kpi>
+                                                <br class="h-br-half"> 
                                             </div>
                                         </aside>
 
@@ -632,8 +632,10 @@ neodigmPopTart.setOnClose( ()=>{
 }, "js-poptrt_services")
 
 const fHomeUpdate = ()=>{
-    neodigmUtils.typeOn({"q1st": "#txt-count__total--title", "msg": "Coupons Redeemed|Cat Food Sold|New Customers|Return Customers|Grooming / Spa|Pet Toys Sold|Loyalty Members|Contest Winners|Dog Food Sold","mode":"RANDOM","uniqueDelay": 116})
-    neodigmUtils.countTo("#txt-count__total", neodigmUtils.f02x( 8000 ) + 1, 124)
+    setInterval( ()=>{
+        neodigmUtils.typeOn({"q1st": "#txt-count__total--title", "msg": "Coupons Redeemed|Cat Food Sold|New Customers|Return Customers|Grooming / Spa|Pet Toys Sold|Loyalty Members|Contest Winners|Dog Food Sold","mode":"RANDOM","uniqueDelay": 116})
+        neodigmUtils.countTo("#txt-count__total", neodigmUtils.f02x( 8000 ) + 1, 124)        
+    } ,8e3 )
     neodigmUtils.typeOn({"q1st": "#js-txt-word-over__contest", "msg": "September|Photo|Contest|Winners!","mode":"LOOP","uniqueDelay": 149})
     
 }

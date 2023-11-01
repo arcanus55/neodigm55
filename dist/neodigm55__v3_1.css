@@ -321,8 +321,6 @@ background-color: rgba( 96, 88, 44, 0);
 /*  Neodigm Enchanted CTA Begin   */
 [data-n55-enchanted-cta]{ 
     border-radius: 6px 22px; border: 0px;
-    Qborder: none;
-    QQQborder: solid 1px rgba( 254, 254, 254, 0);
     color: #fff; cursor: pointer; 
     display: inline-block;
     font-family: 'Roboto',sans-serif; font-weight: 400;

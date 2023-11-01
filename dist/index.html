@@ -6,10 +6,11 @@
 
 <link rel="stylesheet" href="/dist/neodigm55__v3_1.css">
 <link rel="stylesheet" href="/dist/neodigm55_v1_0_launchComplete.css">
-<TEMPLATE src="/dist/neodigm55_v1_0_launchComplete.js"></TEMPLATE>
+<TEMPLATE src="/dist/neodigm55_v1_0_launchComplete.js"
+note="this logic is being retired"></TEMPLATE>
 
 <script>
-let neodigmOptCustom = { neodigmAgent:true, neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:true, N55_CTA_RND_TOUCH: 5000000, neodigmTulip:true, neodigmPopTart:true }
+let neodigmOptCustom = { neodigmAgent:true, neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:true, N55_CTA_RND_TOUCH: 5000000 }
 </script>
 
 <script src="/dist/neodigm55__v3_1.js"></script>
@@ -47,7 +48,7 @@ data-n55-wired4sound-click="7"
 
 
 
-
+<neodigm-widget data-n55-widget-config="{conf:'', ampm:'',mobile:''}" data-n55-widget-id="case_conversion_wdg"></neodigm-widget>
 
 
 
@@ -601,7 +602,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- The below script contains all custom logic for this component -->
 <script>
-let oWTTCompStore = {"token": "compress_json_wdg","theme": "brand", "ampm": "light", "optin": true, "copied": false, "protomolecule":neodigmAgent.genCronSync()}
+let oWTTCompStore = {"token": "compress_json_wdg","theme": "brand", "ampm": "light", "optin": true, "copied": false, "protomolecule":999}
 
 function doWTTCompStore( sAtr, sVal ){
     if( sAtr == "optin" ) sVal = !oWTTCompStore.optin
@@ -910,7 +911,7 @@ data-n55-parallax-size="xsmall" data-n55-claire="true"><section><aside></aside><
 </neodigm-parallax>
 
 
-<neodigm-widget data-n55-widget-config="{conf:'', ampm:'',mobile:''}" data-n55-widget-id="compress_json_wdg"></neodigm-widget>
+<neodigm-widget data-n55-widget-config="{conf:'', ampm:'',mobile:''}" data-n55-widget-id="compress_json"></neodigm-widget>
 
 
 
