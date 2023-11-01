@@ -1573,8 +1573,11 @@ class NeodigmAgent {
             if(  rs?.compressed && LZString ){
               oeWdg.innerHTML = LZString.decompressFromEncodedURIComponent( rs.compressed )
               if( neodigmUtils ){
-                if( rs?.js ){  //  Inject script elms from manifest
-                  //rs.js.forEach( ( js )=>{ neodigmUtils.fAsyncJS( document, js ) } )
+                if( rs?.assets ){  //  Inject script elms from manifest
+                  rs.assets.forEach( ( aAst )=>{
+                    if( aAst[0].toLowerCase() == "js" ) neodigmUtils.fAsyncJS( document, aAst[1] )
+                    console.log("neodigmUtils.fAsyncJS( document, aAst ) " + aAst[0] )
+                  } )
                 }
                 neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + sId + ".js" )
               }
