@@ -1565,7 +1565,7 @@ class NeodigmAgent {
     this.aeWdgs.forEach( ( oeWdg ) => { 
         if( oeWdg.dataset?.n55WidgetId ){
           const sId = oeWdg.dataset.n55WidgetId
-          const oFetchConf = { headers: { "protomolecule": neodigmAgent.genChronSync(), "Content-Type": "application/json", "loc": document.location.href } }
+          const oFetchConf = { headers: { "protomolecule": neodigmAgent.genChronSync(), "Content-Type": "application/json", "Loc": document.location.href } }
           const sURI = neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/" + sId + "/content/"
           fetch( sURI, oFetchConf  )
           .then( rs => rs.json() )
