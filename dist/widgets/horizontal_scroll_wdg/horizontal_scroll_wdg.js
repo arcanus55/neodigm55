@@ -1,4 +1,4 @@
-window.addEventListener("load", function () {
+//window.addEventListener("load", function () {
     let elRegCont = document.querySelector("n55-wdg-horz-scrl #region-container")
     function fHorzScrlInit(){
         if( elRegCont ){
@@ -33,4 +33,4 @@ window.addEventListener("load", function () {
             setTimeout( fHorzScrlInit, 2800 )
         }
     }, 600 )
-} )
+//} )
