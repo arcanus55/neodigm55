@@ -91,7 +91,7 @@ neodigm-template { display: none; }
 }
 .l-snackbar .snackbar__msg {
 	color: #fff;
-	font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+	font-family: 'Helvetica', 'Helvetica Neue', sans-serif;
 	font-size: 18px;
 	margin: 18px;
 	text-align: center;
@@ -323,7 +323,7 @@ background-color: rgba( 96, 88, 44, 0);
     border-radius: 6px 22px; border: 0px;
     color: #fff; cursor: pointer; 
     display: inline-block;
-    font-family: 'Helvetica Neue', 'Helvetica', 'Roboto',sans-serif; font-weight: 400;
+    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto',sans-serif; font-weight: 400;
     overflow: hidden;
     position: relative;
     text-decoration: none;
@@ -516,7 +516,7 @@ neodigm-kpi {
     background-color: var( --neodigm-theme-brand-alt );
     border-radius: 50%;
     cursor: pointer; 
-    font-family: 'Helvetica Neue', 'Helvetica', 'Roboto',sans-serif; font-weight: 100;
+    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto',sans-serif; font-weight: 100;
     text-decoration: none;
     transition: all .6s ease;
     user-select: none;
@@ -528,7 +528,7 @@ neodigm-kpi > h6 {
     position: relative; overflow: hidden;
     text-align: center;
     color: #fff;
-    font-family: 'Helvetica Neue', 'Helvetica', 'Roboto Condensed',sans-serif; font-weight: 300;
+    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto Condensed',sans-serif; font-weight: 300;
     margin: 4px; padding: 4px;
     text-decoration: none;
     transition: all .6s ease;
@@ -660,7 +660,7 @@ neodigm-tulip[data-n55-lines='2'][data-n55-size='xlarge'] > p{ margin: 1% 2px; f
 
 neodigm-tulip > p{
     color: #fff;
-	font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+	font-family: 'Helvetica', 'Helvetica Neue', sans-serif;
 	margin: 4% 2px; padding: 2px;
 	text-align: center;
 	white-space: nowrap

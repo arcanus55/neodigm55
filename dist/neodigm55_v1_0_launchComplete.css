@@ -84,7 +84,7 @@ margin-top: 32px;
 
 /*  Typeology Begin  */
 .hd0, .hd1, .hd2, .hd3, .hd4, .hd5, .hd6, .prg, .sum, .readampm, .readampm__title, .readampm__legal {
-  font-family: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Roboto Condensed', sans-serif; font-weight: 100;
+  font-family: 'Helvetica', 'Helvetica Neue', 'Roboto', 'Roboto Condensed', sans-serif; font-weight: 100;
   margin: 6px 0; padding: 1px;
 }
 .readampm__caption {
@@ -136,7 +136,7 @@ margin-top: 32px;
 [data-pref-scheme="dark"] .prg {color: #fff} 
 
 .txt-readable {
-font-family: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Roboto Condensed', sans-serif;
+font-family: 'Helvetica', 'Helvetica Neue', 'Roboto', 'Roboto Condensed', sans-serif;
 font-size: 17px; color: #323232;
 font-weight: 200;
 }
@@ -188,7 +188,7 @@ section.sec-inverse__darkgray { background-color: var( --m5lc-theme-night-mid );
     margin: 8px; padding: 12px;
 }
 .l-saas-crd .banner-cap {
-    font-family: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Roboto Condensed', sans-serif;
+    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto', 'Roboto Condensed', sans-serif;
      font-size: 26px;
      font-weight: 300;
      color: #fff;
@@ -317,7 +317,7 @@ body[data-pref-scheme='light'] neodigm-sodapop, body[data-pref-scheme='light'] n
 input.n55-lc__input, textarea.n55-lc__input {
 display: block;
 color: #383838;
-font-family: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Roboto Condensed', sans-serif; font-size: 18px;
+font-family: 'Helvetica', 'Helvetica Neue', 'Roboto', 'Roboto Condensed', sans-serif; font-size: 18px;
 line-height: 1.1;
 border: solid 1px #848484; border-radius: 8px;
 width: 76%;
@@ -349,7 +349,7 @@ fill: var(  --m5lc-theme-info-alt );
 .l-faq {
   margin: 4px;
   border: solid 1px #6a6a6a;
-  font-family: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Roboto Condensed', sans-serif; font-weight: 100; font-size: 1.2rem;
+  font-family: 'Helvetica', 'Helvetica Neue', 'Roboto', 'Roboto Condensed', sans-serif; font-weight: 100; font-size: 1.2rem;
 }
 .l-faq > details { padding: 0; margin: 4px; border: solid 1px #6a6a6a; border-radius: 0; }
 .l-faq > details > summary { text-align: center; list-style: none; cursor: pointer; color: #fff; background-color: #242424; padding: 16px 4px; margin: 0; border: solid 1px #8a8a8a;}
