@@ -1590,7 +1590,7 @@ class NeodigmAgent {
   }
   async sandboxShare( sToken = null, oPack = null, fCB ) {  //  Session
     if( sToken && oPack ){
-      const oFetchConf = { method: "POST", body: LZString.compressToEncodedURIComponent( JSON.stringify( oPack ) ), headers: { "protomolecule": neodigmAgent.genChronSync(), "apploc": LZString.compressToEncodedURIComponent( document.location.href ), "Content-Type": "application/json" } }
+      const oFetchConf = { method: "POST", body: LZString.compressToEncodedURIComponent( oPack ), headers: { "protomolecule": neodigmAgent.genChronSync(), "apploc": LZString.compressToEncodedURIComponent( document.location.href ), "Content-Type": "application/json" } }
       const oResp = await fetch( neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/sndbx/create/", oFetchConf )
       const jsResp = await oResp.json();
       if( jsResp && fCB ) fCB( jsResp )
