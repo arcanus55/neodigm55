@@ -791,6 +791,10 @@ window.addEventListener( "resize", ( ev ) =>{
         console.log( "----- resize | ")
     })
 });
+document.addEventListener( "contextmenu", function(e) {  //  On right-click
+    if( neodigmUtils ) neodigmUtils.robinTheme("warning")
+    if( neodigmWired4Sound ) neodigmWired4Sound.sound( 7 )
+});
 </script>
 
 

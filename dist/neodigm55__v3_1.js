@@ -1564,24 +1564,22 @@ class NeodigmAgent {
     this.aeWdgs = [ ... this._d.querySelectorAll( this._aQ[0] )]
     this.aeWdgs.forEach( ( oeWdg ) => { 
         if( oeWdg.dataset?.n55WidgetId ){
-          const sId = oeWdg.dataset.n55WidgetId
+          const sTkn = oeWdg.dataset.n55WidgetId
           const oFetchConf = { headers: { "protomolecule": neodigmAgent.genChronSync(), "apploc": LZString.compressToEncodedURIComponent( document.location.href ), "Content-Type": "application/json" } }
     console.log( " ~~~~ oFetchConf | " , oFetchConf )
-          const sURI = neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/" + sId + "/content/"
+          const sURI = neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/" + sTkn + "/content/"
           fetch( sURI, oFetchConf  )
           .then( rs => rs.json() )
           .then( rs => {
-            if(  rs?.compressed && LZString ){
+            if( rs?.compressed && LZString && neodigmUtils ){
               oeWdg.innerHTML = LZString.decompressFromEncodedURIComponent( rs.compressed )
-              if( neodigmUtils ){
-                if( rs?.assets ){  //  Inject script elms from manifest
-                  rs.assets.forEach( ( aAst )=>{
-                    if( aAst[0].toLowerCase() == "js" ) neodigmUtils.fAsyncJS( document, aAst[1] )
-                    console.log("neodigmUtils.fAsyncJS( document, aAst ) " + aAst[0] )
-                  } )
-                }
-                neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + sId + ".js" )
+              if( rs?.assets ){  //  Inject script elms from manifest
+                rs.assets.forEach( ( aAst )=>{
+                  if( aAst[0].toLowerCase() == "js" ) neodigmUtils.fAsyncJS( document, aAst[1] )
+                  console.log("neodigmUtils.fAsyncJS( document, aAst ) " + aAst[0] )
+                } )
               }
+              neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + sTkn + ".js" )
             }
           } )
         }
@@ -1589,6 +1587,14 @@ class NeodigmAgent {
     if( neodigmEnchantedCTA ){
       neodigmEnchantedCTA.setOnLongTap( function(){ neodigmToast.q( "Powered by ✨ Neodigm 55", "night" ); neodigmUtils.robinTheme('marcom'); neodigmWired4Sound.sound("6"); }, "js-touch-point__share")
     } 
+  }
+  async sandboxShare( sToken = null, oPack = null, fCB ) {  //  Session
+    if( sToken && oPack ){
+      const oFetchConf = { method: "POST", body: LZString.compressToEncodedURIComponent( JSON.stringify( oPack ) ), headers: { "protomolecule": neodigmAgent.genChronSync(), "apploc": LZString.compressToEncodedURIComponent( document.location.href ), "Content-Type": "application/json" } }
+      const oResp = await fetch( neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/sndbx/create", oFetchConf )
+      const jsResp = await oResp.json();
+      if( jsResp && fCB ) fCB( jsResp )
+    }
   }
   genChronSync() {  //  Protomolecule 
     let tN = new Date()
