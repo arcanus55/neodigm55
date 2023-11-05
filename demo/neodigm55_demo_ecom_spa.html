@@ -595,6 +595,12 @@ neodigmOpt.N55_CTA_RND_TOUCH = 9600
 neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_CTA_RND_TOUCH )
 neodigmOpt.W4S_VOLUME = zzfxV  = .036;
 window.addEventListener("scroll", (ev)=>{ neodigmPopTart.close() }, true)
+
+document.addEventListener( "contextmenu", function(e) {  //  On right-click
+    if( neodigmUtils ) neodigmUtils.robinTheme("warning")
+    if( neodigmWired4Sound ) neodigmWired4Sound.sound( 7 )
+});
+
 //  Neodigm 55 Life Cycle Hooks
 neodigmCarousel.setOnAfterNav( ()=>{
     setTimeout( ()=>{ NeodigmClaire.doWaxOn('.l-wax-home', ['brand','warning','marcom'], 'circle', .6); }, 720)
