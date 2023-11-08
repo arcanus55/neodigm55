@@ -102,6 +102,7 @@ margin-top: 32px;
 [data-n55-ampm-theme='light'] .readampm__title,
 [data-n55-ampm-theme='light'] .readampm__legal { color: var( --m5lc-theme-night-alt ); }
 
+.readampm__white,
 [data-n55-ampm-theme='dark'] .readampm,
 [data-n55-ampm-theme='dark'] .readampm__title,
 [data-n55-ampm-theme='dark'] .readampm__legal { color: #fff; }
