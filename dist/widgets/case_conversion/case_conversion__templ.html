@@ -1,20 +1,13 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0" />
-
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55__v3_0.min.css"></link>
-        <script src="https://cdn.jsdelivr.net/gh/arcanus55/neodigm55@gh-pages/dist/neodigm55__v3_0.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:wght@100;300;400|Roboto+Slab:wght@100;300;400" rel="stylesheet" type="text/css"></link>
-        
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55__v3_1.css"></link>
+        <script src="https://arcanus55.github.io/neodigm55/dist/neodigm55__v3_1.js"></script>
         <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.css"></link>
-        <script src="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.js"></script>
-        <!-- (c) 2023 🗝️ www.theScottKrause.com -->
     </head>
     <body>
 
 
 <!--  ||  TEMPLATE MU & CSS WDG BEGIN -->
-<!--  ||  Visit JSON / String Compress > Paste the below into the FROM box > Click Compress (Base64 - URI safe) > Copy contents of the TO box > Paste into _wdg.json of the same name. -->
 <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
     <div>
         <article class="h-center">
@@ -114,9 +107,10 @@ data-n55-tulip= '{"msg":" Copy this URL and send to a friend. ","mrq":true,"tmpt
 
 <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
     <div>
-        <article class="pfmf-crd--black h-center"><p class="readable__doc readable__doc--white">Type or Paste Your Text Below</p></article>
+        <article class="pfmf-crd--black h-center"><p class="hd5 readampm__white">Type or Paste Your Text Below</p></article>
         <article style="padding: 1px 1px;">
-            <textarea id="l-term-from" class="l-term" rows="8"></textarea>
+            <textarea id="l-term-from" class="l-term" rows="8"
+            style="margin: 2px auto"></textarea>
         </article>
     </div>
 </section>
@@ -125,19 +119,19 @@ data-n55-tulip= '{"msg":" Copy this URL and send to a friend. ","mrq":true,"tmpt
     <div>
         <article style="padding: 1px 1px;">
             <nav class="h-center" style="margin-top: -8px;">
-                <neodigm-acticon  id="js-term-from-copy" data-n55-theme="ghost" data-n55-size="medium" 
+                <neodigm-acticon  id="js-term-from-copy" data-n55-theme="ghost" data-n55-size="small" 
                 data-n55-tulip='{"msg":" Copy the Above Text","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
                 onclick="doAction('fromCopy')"
                 ><neodigm-icon class="material-symbols-outlined">content_copy</neodigm-icon></neodigm-acticon>
 
-                <neodigm-acticon  id="js-term-from-paste" data-n55-theme="ghost" data-n55-size="medium" 
+                <neodigm-acticon  id="js-term-from-paste" data-n55-theme="ghost" data-n55-size="small" 
                 data-n55-tulip='{"msg":" Paste Clipboard Above","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
                 onclick="doAction('fromPaste')"
                 ><neodigm-icon class="material-symbols-outlined">content_paste</neodigm-icon></neodigm-acticon>
 
-                <neodigm-acticon  id="js-term-from-clear" data-n55-theme="danger" data-n55-size="medium" 
+                <neodigm-acticon  id="js-term-from-clear" data-n55-theme="ghost" data-n55-size="small" 
                 data-n55-wired4sound-click="11"
-                data-n55-tulip='{"msg":" Clear Text Above","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
+                data-n55-tulip='{"msg":" Clear Text Above","mrq":false,"tmpt":"","theme":"danger","size":"xsmall","position":"bottom","icon":""}'
                 onclick="doAction('fromClear')"
                 ><neodigm-icon class="material-symbols-outlined">delete</neodigm-icon></neodigm-acticon>
             </nav>
@@ -148,7 +142,8 @@ data-n55-tulip= '{"msg":" Copy this URL and send to a friend. ","mrq":true,"tmpt
 <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
     <div>
         <article style="padding: 1px 1px;">
-            <textarea id="l-term-to" class="l-term" rows="8"></textarea>
+            <textarea id="l-term-to" class="l-term" rows="8"
+            style="margin: 2px auto"></textarea>
         </article>
     </div>
 </section>
@@ -158,19 +153,19 @@ data-n55-tulip= '{"msg":" Copy this URL and send to a friend. ","mrq":true,"tmpt
         <article style="padding: 1px 1px;">
             <nav class="h-center" style="margin-top: -8px;">
 
-                <neodigm-acticon  id="js-term-to-copy" data-n55-theme="ghost" data-n55-size="medium" 
+                <neodigm-acticon  id="js-term-to-copy" data-n55-theme="ghost" data-n55-size="small" 
                 data-n55-tulip='{"msg":" Copy the Above Text","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
                 onclick="doAction('toCopy')"
                 ><neodigm-icon class="material-symbols-outlined">content_copy</neodigm-icon></neodigm-acticon>
 
-                <neodigm-acticon  id="js-term-to-paste" data-n55-theme="ghost" data-n55-size="medium" 
+                <neodigm-acticon  id="js-term-to-paste" data-n55-theme="ghost" data-n55-size="small" 
                 data-n55-tulip='{"msg":" Paste Clipboard Above","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
                 onclick="doAction('toPaste')"
                 ><neodigm-icon class="material-symbols-outlined">content_paste</neodigm-icon></neodigm-acticon>
 
-                <neodigm-acticon  id="js-term-to-clear" data-n55-theme="danger" data-n55-size="medium" 
+                <neodigm-acticon  id="js-term-to-clear" data-n55-theme="ghost" data-n55-size="small" 
                 data-n55-wired4sound-click="11"
-                data-n55-tulip='{"msg":" Clear Text Above","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
+                data-n55-tulip='{"msg":" Clear Text Above","mrq":false,"tmpt":"","theme":"danger","size":"xsmall","position":"bottom","icon":""}'
                 onclick="doAction('toClear')"
                 ><neodigm-icon class="material-symbols-outlined">delete</neodigm-icon></neodigm-acticon>
 
@@ -180,8 +175,15 @@ data-n55-tulip= '{"msg":" Copy this URL and send to a friend. ","mrq":true,"tmpt
 </section>
 
 <style>
-.l-term {background-color: #6a6a6a; color: #fff;width: 99%;border-radius: 12px; font-size: 14px;
-padding: 4px;}
+.l-term {
+    background-color: #5A5852;
+    border-radius: 12px;
+    color: #fff;
+    display: block;    
+    font-size: 14px;
+    padding: 4px; margin: 2px auto;
+    width: 99%;
+}
 </style>
 <!--  ||  TEMPLATE MU & CSS WDG END -->
 
@@ -223,6 +225,7 @@ let doAction = function( sAct ){
                 neodigmToast.q("Case Convert|Title " + eTermFrom.value.length + " characters", "primary")
             }else{
                 neodigmToast.q("There is no text to convert.", "danger")
+                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
             }
         }
         if( sAct == "caseSentence" ){ //  TODO
@@ -238,6 +241,7 @@ let doAction = function( sAct ){
                 neodigmToast.q("Case Convert|Sentence " + eTermFrom.value.length + " characters", "primary")
             }else{
                 neodigmToast.q("There is no text to convert.", "danger")
+                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
             }
         }
         if( sAct == "caseLower" ){
@@ -252,6 +256,7 @@ let doAction = function( sAct ){
                 neodigmToast.q("Case Convert|Lowercase " + eTermFrom.value.length + " characters", "primary")
             }else{
                 neodigmToast.q("There is no text to convert.", "danger")
+                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
             }
         }
         if( sAct == "caseUpper" ){
@@ -266,6 +271,7 @@ let doAction = function( sAct ){
                 neodigmToast.q("Case Convert|Uppercase " + eTermFrom.value.length + " characters", "primary")
             }else{
                 neodigmToast.q("There is no text to convert.", "danger")
+                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
             }
         }
         if( sAct == "caseReverse" ){
@@ -274,6 +280,7 @@ let doAction = function( sAct ){
                 neodigmToast.q("Text Convert|Reverse " + eTermFrom.value.length + " characters", "primary")
             }else{
                 neodigmToast.q("There is no text to convert.", "danger")
+                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
             }
         }
         if( sAct == "caseTinyType" ){
@@ -282,6 +289,7 @@ let doAction = function( sAct ){
                 neodigmToast.q("Text Convert|Tiny Type " + eTermFrom.value.length + " characters", "primary")
             }else{
                 neodigmToast.q("There is no text to convert.", "danger")
+                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
             }
         }
         
@@ -303,7 +311,7 @@ let doAction = function( sAct ){
                 }
             }else{
                 neodigmToast.q("There is no text to copy.", "danger")
-                neodigmUtils.robinTheme("danger");
+                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
             }
         }
         if( sAct == "fromPaste" ){
@@ -328,7 +336,7 @@ let doAction = function( sAct ){
                 }
             }else{
                 neodigmToast.q("There is no text to copy.", "danger")
-                neodigmUtils.robinTheme("danger");
+                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-to" )
             }
         }
         if( sAct == "toPaste" ){
