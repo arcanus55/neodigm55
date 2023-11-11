@@ -271,7 +271,7 @@ section.pfmf-grid__100    { grid-template-columns: 100%; }
 section.pfmf-grid__33_33_33 { grid-template-columns: 100%; }
 
 section.pfmf-grid > div > article {
-margin: 8px; padding: 8px;
+margin: 8px; padding: 8px; border-radius: 6px;
 }
 section.pfmf-grid > div > article.pfmf-crd--black {
 background-color: #262626;
