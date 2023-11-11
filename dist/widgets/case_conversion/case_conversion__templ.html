@@ -175,9 +175,9 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
                 <div class="h-center">
                     <input id="js-wtt-sndbx-share-inp__uri--id" name="elm" class="a2yw-n55__inp n55-lc__input" type="text" placeholder="Address@YourDomain.com">
 
-                    <a id="cta-sodapop-shake-1" data-n55-enchanted-cta data-n55-enchanted-cta-size="small" data-n55-enchanted-cta-ambient="emit"
-                    onclick="neodigmUtils.robinTheme('warning'); neodigmMarquee.pause(800); neodigmSodaPop.shake(0); NeodigmClaire.init().doConfetti( 'main' )" data-n55-theme="brand">
-                        <span data-n55-wired4sound-hover="3">Shake <neodigm-icon class="material-symbols-outlined">vibration</neodigm-icon></span><span>Vibrate <neodigm-icon class="material-symbols-outlined">edgesensor_high</neodigm-icon></span>
+                    <a id="js-wtt-sndbx-share-pup-cta__copy--id" class="" data-n55-enchanted-cta data-n55-wired4sound-click="10" data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost" data-n55-enchanted-cta-ambient="" data-n55-enchanted-cta-dont-touch="true"
+                    onclick="doCopySnippetTODO('js-wtt-sndbx-share-inp__uri--id'); NeodigmClaire.init().doConfetti( 'neodigm-widget' )"">
+                        <span data-n55-wired4sound-hover="3">Copy Link <neodigm-icon class="material-symbols-outlined" style="color: var( --neodigm-theme-brand );">content_copy</neodigm-icon></span><span>To Clipboard <neodigm-icon class="material-symbols-outlined" style="color: var( --neodigm-theme-brand );">content_copy</neodigm-icon></span>
                     </a>
                 </div>
             </article>    
@@ -185,34 +185,6 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
     </article>
 
 </template>
-<script>  //  Soda Pop Tmpl logic
-    window.addEventListener('DOMContentLoaded', (ev) => {
-        setTimeout(function(){
-            if( neodigmSodaPop && neodigmMarquee && neodigmEnchantedCTA ){
-                neodigmSodaPop.setOnAfterOpen( function(){
-NeodigmClaire.showCanv('neodigm-sodapop', .6).setTheme( ['brand','warning'] ).initCanvOn('neodigm-sodapop').waxOn('neodigm-sodapop')
-                    neodigmMetronome.init().pause( 800 )
-                        neodigmMarquee.init().pause( 1200 )
-                            neodigmEnchantedCTA.init()
-                            neodigmCarousel.init()
-                });
-                neodigmSodaPop.setOnBeforeUserExit( function(){
-                    neodigmToast.q("Got Questions?|Start a Conversation!", "brand")
-                    if( neodigmSodaPop && (  neodigmSodaPop.isOpen() )) olark('api.box.expand')
-                    if( neodigmSodaPop && ( !neodigmSodaPop.isOpen() )) neodigmSodaPop.autoOpen('js-contactPop__id')
-                } )
-            }
-        }, 3e3)
-        setTimeout(function(){
-            if( neodigmSodaPop && NeodigmClaire ){
-                neodigmSodaPop.setOnClose( function(){
-NeodigmClaire.showCanv('neodigm-sodapop').initCanvOff('neodigm-sodapop').waxOff('neodigm-sodapop');
-                    return true;
-                });
-            }
-        }, 4e3)
-    });
-</script>
 
 <style>
 .l-term {
@@ -243,7 +215,35 @@ NeodigmClaire.showCanv('neodigm-sodapop').initCanvOff('neodigm-sodapop').waxOff(
 <!--  ||  JAVASCRIPT WDG BEGIN -->
 <!--  ||  Paste the blow (without the script tags) into the same named _wdg.js file -->
 
-<!--  ||  Dont copy script tags --><script>
+<!--  ||  Dont copy script tags -->
+<script> 
+//  Soda Pop Tmpl logic
+    window.addEventListener('DOMContentLoaded', (ev) => {
+        setTimeout(function(){
+            if( neodigmSodaPop && neodigmMarquee && neodigmEnchantedCTA ){
+                neodigmSodaPop.setOnAfterOpen( function(){
+NeodigmClaire.showCanv('neodigm-sodapop', .6).setTheme( ['brand','warning'] ).initCanvOn('neodigm-sodapop').waxOn('neodigm-sodapop')
+                    neodigmMetronome.init().pause( 800 )
+                        neodigmMarquee.init().pause( 1200 )
+                            neodigmEnchantedCTA.init()
+                            neodigmCarousel.init()
+                });
+                neodigmSodaPop.setOnBeforeUserExit( function(){
+                    neodigmToast.q("Got Questions?|Start a Conversation!", "brand")
+                    if( neodigmSodaPop && (  neodigmSodaPop.isOpen() )) olark('api.box.expand')
+                    if( neodigmSodaPop && ( !neodigmSodaPop.isOpen() )) neodigmSodaPop.autoOpen('js-contactPop__id')
+                } )
+            }
+        }, 3e3)
+        setTimeout(function(){
+            if( neodigmSodaPop && NeodigmClaire ){
+                neodigmSodaPop.setOnClose( function(){
+NeodigmClaire.showCanv('neodigm-sodapop').initCanvOff('neodigm-sodapop').waxOff('neodigm-sodapop');
+                    return true;
+                });
+            }
+        }, 4e3)
+    });
 
 let doAction = function( sAct ){
     let eTermFrom = document.querySelector( "#l-term-from" )
