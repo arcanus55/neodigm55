@@ -646,8 +646,7 @@ const fHomeUpdate = ()=>{
         neodigmUtils.typeOn({"q1st": "#txt-count__total--title", "msg": "Coupons Redeemed|Cat Food Sold|New Customers|Return Customers|Grooming / Spa|Pet Toys Sold|Loyalty Members|Contest Winners|Dog Food Sold","mode":"RANDOM","uniqueDelay": 116})
         neodigmUtils.countTo("#txt-count__total", neodigmUtils.f02x( 8000 ) + 1, 124)        
     } ,8e3 )
-    neodigmUtils.typeOn({"q1st": "#js-txt-word-over__contest", "msg": "September|Photo|Contest|Winners!","mode":"LOOP","uniqueDelay": 149})
-    
+    neodigmUtils.typeOn({"q1st": "#js-txt-word-over__contest", "msg": new Date().toLocaleString('default', { month: 'long' }) + "|Photo|Contest|Winners!","mode":"LOOP","uniqueDelay": 149})
 }
 const fHomeConfetti = ()=>{
     setTimeout( ()=>{ 
