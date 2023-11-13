@@ -563,19 +563,19 @@ neodigm-kpi > h6 { top: 20%; }
 
 neodigm-kpi > h5, neodigm-kpi > h6 { margin: 0;}
 neodigm-kpi[data-n55-kpi-size='xsmall'] { height: 96px; width: 96px; }
-neodigm-kpi[data-n55-kpi-size='xsmall'] > h5 { font-size: 2rem;} /*  3/5  */
+neodigm-kpi[data-n55-kpi-size='xsmall'] > h5 { font-size: 24px;} /*  3/5  */
 neodigm-kpi[data-n55-kpi-size='xsmall'] > h6 { font-size: 10px;}
 neodigm-kpi[data-n55-kpi-size='small'] { height: 124px; width: 124px; }
-neodigm-kpi[data-n55-kpi-size='small'] > h5 { font-size: 2.2rem;}
+neodigm-kpi[data-n55-kpi-size='small'] > h5 { font-size: 27px;}
 neodigm-kpi[data-n55-kpi-size='small'] > h6 { font-size: 13px;}
 neodigm-kpi[data-n55-kpi-size='medium'] { height: 206px; width: 206px; }
-neodigm-kpi[data-n55-kpi-size='medium'] > h5 { font-size: 6rem;}
+neodigm-kpi[data-n55-kpi-size='medium'] > h5 { font-size: 72px;}
 neodigm-kpi[data-n55-kpi-size='medium'] > h6 { font-size: 16px;}
 neodigm-kpi[data-n55-kpi-size='large'] { height: 236px; width: 236px; }
-neodigm-kpi[data-n55-kpi-size='large'] > h5 { font-size: 7rem;}
+neodigm-kpi[data-n55-kpi-size='large'] > h5 { font-size: 84;}
 neodigm-kpi[data-n55-kpi-size='large'] > h6 { font-size: 18px;}
 neodigm-kpi[data-n55-kpi-size='xlarge'] { height: 266px; width: 266px;}
-neodigm-kpi[data-n55-kpi-size='xlarge'] > h5 { font-size: 8rem;}
+neodigm-kpi[data-n55-kpi-size='xlarge'] > h5 { font-size: 96px;}
 neodigm-kpi[data-n55-kpi-size='xlarge'] > h6 { font-size: 20px;}
 /*  Neodigm KPI End  */
 
