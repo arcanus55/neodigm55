@@ -218,38 +218,42 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
 <!--  ||  Dont copy script tags -->
 <script> 
 //  Soda Pop Tmpl logic
-    window.addEventListener('DOMContentLoaded', (ev) => {
-        setTimeout(function(){
-            if( neodigmSodaPop && neodigmMarquee && neodigmEnchantedCTA ){
-                neodigmSodaPop.setOnAfterOpen( function(){
-NeodigmClaire.showCanv('neodigm-sodapop', .6).setTheme( ['brand','warning'] ).initCanvOn('neodigm-sodapop').waxOn('neodigm-sodapop')
-                    neodigmMetronome.init().pause( 800 )
-                        neodigmMarquee.init().pause( 1200 )
-                            neodigmEnchantedCTA.init()
-                            neodigmCarousel.init()
-                });
-                neodigmSodaPop.setOnBeforeUserExit( function(){
-                    neodigmToast.q("Got Questions?|Start a Conversation!", "brand")
-                    if( neodigmSodaPop && (  neodigmSodaPop.isOpen() )) olark('api.box.expand')
-                    if( neodigmSodaPop && ( !neodigmSodaPop.isOpen() )) neodigmSodaPop.autoOpen('js-contactPop__id')
-                } )
-            }
-        }, 3e3)
-        setTimeout(function(){
-            if( neodigmSodaPop && NeodigmClaire ){
-                neodigmSodaPop.setOnClose( function(){
-NeodigmClaire.showCanv('neodigm-sodapop').initCanvOff('neodigm-sodapop').waxOff('neodigm-sodapop');
-                    return true;
-                });
-            }
-        }, 4e3)
-
-        if( neodigmSodaPop ){
-            neodigmSodaPop.setOnAfterOpen( ()=>{
-
-            }, "js-wtt-sndbx-share-pup" )
+    setTimeout(function(){
+        if( neodigmSodaPop && neodigmMarquee && neodigmEnchantedCTA ){
+            neodigmSodaPop.setOnAfterOpen( function(){
+    NeodigmClaire.showCanv('neodigm-sodapop', .6).setTheme( ['brand','warning'] ).initCanvOn('neodigm-sodapop').waxOn('neodigm-sodapop')
+                neodigmMetronome.init().pause( 800 )
+                    neodigmMarquee.init().pause( 1200 )
+                        neodigmEnchantedCTA.init()
+                        neodigmCarousel.init()
+            });
+            neodigmSodaPop.setOnBeforeUserExit( function(){
+                neodigmToast.q("Got Questions?|Start a Conversation!", "brand")
+                if( neodigmSodaPop && (  neodigmSodaPop.isOpen() )) olark('api.box.expand')
+                if( neodigmSodaPop && ( !neodigmSodaPop.isOpen() )) neodigmSodaPop.autoOpen('js-contactPop__id')
+            } )
         }
-    });
+    }, 3e3)
+    setTimeout(function(){
+        if( neodigmSodaPop && NeodigmClaire ){
+            neodigmSodaPop.setOnClose( function(){
+    NeodigmClaire.showCanv('neodigm-sodapop').initCanvOff('neodigm-sodapop').waxOff('neodigm-sodapop');
+                return true;
+            });
+        }
+    }, 4e3)
+
+    if( neodigmSodaPop ){
+        neodigmSodaPop.setOnAfterOpen( ()=>{
+            if( neodigmAgent.bIsInit ){
+                let eTermFrom = document.querySelector( "#l-term-from" )
+                let eTermTo = document.querySelector( "#l-term-to" )
+                neodigmAgent.sandboxShare( "case_conversion", {"l-term-from": "eTermFrom.value", "l-term-to": "eTermTo.value" }, ( jsResp )=>{
+                    console.log("DO COPY TO CLIPB | ", jsResp)
+                })
+            }
+        }, "js-wtt-sndbx-share-pup" )
+    }
 
 class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
     constructor(_d, _sQ) {
