@@ -8,183 +8,188 @@
 
 
 <!--  ||  TEMPLATE MU & CSS WDG BEGIN -->
-<section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
-    <div>
-        <article class="h-center">
-            <a id="js-case-title"
-            onclick="case_conversion.doAction('caseTitle')" data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
-            data-n55-enchanted-cta-size="xsmall"
-            data-n55-flash-theme="warning"
-            data-n55-theme="ghost"
-            data-n55-wired4sound-click="16"
-            data-n55-tulip= '{"msg":"Capitalize Each Significant Word","mrq":false,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
-            ><span data-n55-wired4sound-hover="3">Title Case</span><span>Cap Significant</span>
-            </a>
-            <!--<a id="js-case-sentence"
-            onclick="case_conversion.doAction('caseSentence')"
-            data-n55-enchanted-cta
-            data-n55-enchanted-cta-dont-touch="true"
-            data-n55-enchanted-cta-shape-off="true"
-            data-n55-enchanted-cta-hover-an="true"
-            data-n55-enchanted-cta-size="xsmall"
-            data-n55-flash-theme="warning"
-            data-n55-theme="ghost"
-            data-n55-wired4sound-click="7"
-            ><span>Sentence Case</span><span>Cap First Word</span>
-            </a>-->
-            <a id="js-case-lower"
-            onclick="case_conversion.doAction('caseLower')"
-            data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
-            data-n55-enchanted-cta-size="xsmall"
-            data-n55-flash-theme="warning"
-            data-n55-theme="ghost"
-            data-n55-wired4sound-click="16"
-            data-n55-tulip= '{"msg":"Lowercase all words","mrq":false,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
-            ><span data-n55-wired4sound-hover="3">lowercase</span><span>all small</span>
-            </a>
-            <a id="js-case-upper"
-            onclick="case_conversion.doAction('caseUpper')"
-            data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
-            data-n55-enchanted-cta-size="xsmall"
-            data-n55-flash-theme="warning"
-            data-n55-theme="ghost"
-            data-n55-wired4sound-click="16"
-            data-n55-tulip= '{"msg":"UPPERCASE ALL WORDS","mrq":false,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
-            ><span data-n55-wired4sound-hover="3">UPPERCASE</span><span>SHOUT CAPS</span>
-            </a>
-            <a id="js-case-reverse"
-            onclick="case_conversion.doAction('caseReverse')"
-            data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
-            data-n55-enchanted-cta-size="xsmall"
-            data-n55-flash-theme="warning"
-            data-n55-theme="ghost"
-            data-n55-wired4sound-click="16"
-            data-n55-tulip= '{"msg":"Reverse entire phrase","mrq":false,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
-            ><span data-n55-wired4sound-hover="3">Reverse</span><span>Mirror</span>
-            </a>
-            <a id="js-case-tinytype"
-            onclick="case_conversion.doAction('caseTinyType')"
-            data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
-            data-n55-enchanted-cta-size="xsmall"
-            data-n55-flash-theme="warning"
-            data-n55-theme="ghost"
-            data-n55-wired4sound-click="16"
-            data-n55-tulip= '{"msg":"Replace with smaller characters","mrq":false,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
-            ><span data-n55-wired4sound-hover="3">Tiny Type</span><span>Characters</span>
-            </a>
-
-            <a id="js-touch-point__share" data-n55-enchanted-cta="" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
-            data-n55-sodapop-id="js-wtt-sndbx-share-pup"
-            data-n55-enchanted-cta-size="xsmall"
-            data-n55-theme="brand"
-            data-n55-flash-theme="warning"
-            data-n55-wired4sound-click="16"
-            data-n55-tulip= '{"msg":" Copy this Web Address and send to a friend. ","mrq":true,"tmpt":"","theme":"brand","size":"small","position":"bottom","icn":""}'
-            ><span data-n55-wired4sound-hover="3"><neodigm-icon class="material-symbols-outlined">share</neodigm-icon> Share</span><span><neodigm-icon class="material-symbols-outlined">share</neodigm-icon>  Copy URL</span>
-            </a>
-        </article>
-    </div>
-</section>
-
-<section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
-    <div>
-        <article class="pfmf-crd--black h-center"><p class="hd5 readampm__white">Type or Paste Your Text Below</p></article>
-        <article style="padding: 1px 1px;">
-            <textarea id="l-term-from" class="l-term" rows="8"
-            style="margin: 2px auto"></textarea>
-        </article>
-    </div>
-</section>
-
-<section class="Qpfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
-    <div>
-        <article style="padding: 1px 1px;">
-            <nav class="h-center" style="margin-top: -8px;">
-                <neodigm-acticon id="js-term-from-copy" data-n55-theme="ghost" data-n55-size="small"
+<neodigm-comp data-n55-token="case_convert">
+    <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
+        <div>
+            <article class="h-center">
+                <a id="js-case-title"
+                onclick="case_conversion.doAction('caseTitle')" data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                data-n55-enchanted-cta-size="xsmall"
+                data-n55-flash-theme="warning"
+                data-n55-theme="ghost"
                 data-n55-wired4sound-click="16"
-                data-n55-tulip='{"msg":" Copy the Above Text","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
-                onclick="case_conversion.doAction('fromCopy')"
-                ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">content_copy</neodigm-icon></neodigm-acticon>
-
-                <neodigm-acticon id="js-term-from-paste" data-n55-theme="ghost" data-n55-size="small"
+                data-n55-tulip= '{"msg":" Capitalize Each Significant Word ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
+                ><span data-n55-wired4sound-hover="3">Title Case</span><span>Cap Significant</span>
+                </a>
+                <!--<a id="js-case-sentence"
+                onclick="case_conversion.doAction('caseSentence')"
+                data-n55-enchanted-cta
+                data-n55-enchanted-cta-dont-touch="true"
+                data-n55-enchanted-cta-shape-off="true"
+                data-n55-enchanted-cta-hover-an="true"
+                data-n55-enchanted-cta-size="xsmall"
+                data-n55-flash-theme="warning"
+                data-n55-theme="ghost"
+                data-n55-wired4sound-click="7"
+                ><span>Sentence Case</span><span>Cap First Word</span>
+                </a>-->
+                <a id="js-case-lower"
+                onclick="case_conversion.doAction('caseLower')"
+                data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                data-n55-enchanted-cta-size="xsmall"
+                data-n55-flash-theme="warning"
+                data-n55-theme="ghost"
                 data-n55-wired4sound-click="16"
-                data-n55-tulip='{"msg":" Paste Clipboard Above","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
-                onclick="case_conversion.doAction('fromPaste')"
-                ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">content_paste</neodigm-icon></neodigm-acticon>
-
-                <neodigm-acticon id="js-term-from-clear" data-n55-theme="ghost" data-n55-size="small" 
-                data-n55-wired4sound-click="11"
-                data-n55-tulip='{"msg":" Clear Text Above","mrq":false,"tmpt":"","theme":"danger","size":"xsmall","position":"bottom","icon":""}'
-                onclick="case_conversion.doAction('fromClear')"
-                ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">delete</neodigm-icon></neodigm-acticon>
-            </nav>
-        </article>
-    </div>
-</section>
-
-<section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
-    <div>
-        <article style="padding: 1px 1px;">
-            <textarea id="l-term-to" class="l-term" rows="8"
-            style="margin: 2px auto"></textarea>
-        </article>
-    </div>
-</section>
-
-<section class="Qpfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
-    <div>
-        <article style="padding: 1px 1px;">
-            <nav class="h-center" style="margin-top: -8px;">
-
-                <neodigm-acticon id="js-term-to-copy" data-n55-theme="ghost" data-n55-size="small"
+                data-n55-tulip= '{"msg":" Lowercase all words ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
+                ><span data-n55-wired4sound-hover="3">lowercase</span><span>all small</span>
+                </a>
+                <a id="js-case-upper"
+                onclick="case_conversion.doAction('caseUpper')"
+                data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                data-n55-enchanted-cta-size="xsmall"
+                data-n55-flash-theme="warning"
+                data-n55-theme="ghost"
                 data-n55-wired4sound-click="16"
-                data-n55-tulip='{"msg":" Copy the Above Text","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
-                onclick="case_conversion.doAction('toCopy')"
-                ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">content_copy</neodigm-icon></neodigm-acticon>
-
-                <neodigm-acticon id="js-term-to-paste" data-n55-theme="ghost" data-n55-size="small"
+                data-n55-tulip= '{"msg":" UPPERCASE ALL WORDS ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
+                ><span data-n55-wired4sound-hover="3">UPPERCASE</span><span>SHOUT CAPS</span>
+                </a>
+                <a id="js-case-reverse"
+                onclick="case_conversion.doAction('caseReverse')"
+                data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                data-n55-enchanted-cta-size="xsmall"
+                data-n55-flash-theme="warning"
+                data-n55-theme="ghost"
                 data-n55-wired4sound-click="16"
-                data-n55-tulip='{"msg":" Paste Clipboard Above","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
-                onclick="case_conversion.doAction('toPaste')"
-                ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">content_paste</neodigm-icon></neodigm-acticon>
+                data-n55-tulip= '{"msg":" Reverse entire phrase ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
+                ><span data-n55-wired4sound-hover="3">Reverse</span><span>Mirror</span>
+                </a>
+                <a id="js-case-tinytype"
+                onclick="case_conversion.doAction('caseTinyType')"
+                data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                data-n55-enchanted-cta-size="xsmall"
+                data-n55-flash-theme="warning"
+                data-n55-theme="ghost"
+                data-n55-wired4sound-click="16"
+                data-n55-tulip= '{"msg":" Replace with smaller characters ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
+                ><span data-n55-wired4sound-hover="3">Tiny Type</span><span>Characters</span>
+                </a>
 
-                <neodigm-acticon id="js-term-to-clear" data-n55-theme="ghost" data-n55-size="small" 
-                data-n55-wired4sound-click="11"
-                data-n55-tulip='{"msg":" Clear Text Above","mrq":false,"tmpt":"","theme":"danger","size":"xsmall","position":"bottom","icon":""}'
-                onclick="case_conversion.doAction('toClear')"
-                ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">delete</neodigm-icon></neodigm-acticon>
+                <a id="js-touch-point__share" data-n55-enchanted-cta="" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                data-n55-sodapop-id="js-wtt-sndbx-share-pup"
+                data-n55-enchanted-cta-size="xsmall"
+                data-n55-theme="brand"
+                data-n55-flash-theme="warning"
+                data-n55-wired4sound-click="16"
+                data-n55-tulip= '{"msg":" Copy this Web Address and send to a friend. ","mrq":true,"tmpt":"","theme":"brand","size":"small","position":"bottom","icn":""}'
+                ><span data-n55-wired4sound-hover="3"><neodigm-icon class="material-symbols-outlined">share</neodigm-icon> Share</span><span><neodigm-icon class="material-symbols-outlined">share</neodigm-icon>  Copy URL</span>
+                </a>
+            </article>
+        </div>
+    </section>
 
-            </nav>
+    <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
+        <div>
+            <article class="pfmf-crd--black h-center"><p id="js-fb__top" class="hd5 readampm__white">Type or Paste Your Text Below</p></article>
+            <div id="l-cntr-term-from">
+                <article style="padding: 1px 1px;">
+                    <textarea id="l-term-from" class="l-term" rows="8"
+                    style="margin: 2px auto"></textarea>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="Qpfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
+        <div>
+            <article style="padding: 1px 1px;">
+                <nav class="h-center" style="margin-top: -8px;">
+                    <neodigm-acticon id="js-term-from-copy" data-n55-theme="ghost" data-n55-size="small"
+                    data-n55-wired4sound-click="16"
+                    data-n55-tulip='{"msg":" Copy the Above Text","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
+                    onclick="case_conversion.doAction('fromCopy')"
+                    ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">content_copy</neodigm-icon></neodigm-acticon>
+
+                    <neodigm-acticon id="js-term-from-paste" data-n55-theme="ghost" data-n55-size="small"
+                    data-n55-wired4sound-click="16"
+                    data-n55-tulip='{"msg":" Paste Clipboard Above","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
+                    onclick="case_conversion.doAction('fromPaste')"
+                    ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">content_paste</neodigm-icon></neodigm-acticon>
+
+                    <neodigm-acticon id="js-term-from-clear" data-n55-theme="ghost" data-n55-size="small" 
+                    data-n55-wired4sound-click="11"
+                    data-n55-tulip='{"msg":" Clear Text Above","mrq":false,"tmpt":"","theme":"danger","size":"xsmall","position":"bottom","icon":""}'
+                    onclick="case_conversion.doAction('fromClear')"
+                    ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">delete</neodigm-icon></neodigm-acticon>
+                </nav>
+            </article>
+        </div>
+    </section>
+
+    <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
+        <div id="l-cntr-term-to">
+            <article style="padding: 1px 1px;">
+                <textarea id="l-term-to" class="l-term" rows="8"
+                style="margin: 2px auto"></textarea>
+            </article>
+        </div>
+    </section>
+
+    <section class="Qpfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
+        <div>
+            <article style="padding: 1px 1px;">
+                <nav class="h-center" style="margin-top: -8px;">
+
+                    <neodigm-acticon id="js-term-to-copy" data-n55-theme="ghost" data-n55-size="small"
+                    data-n55-wired4sound-click="16"
+                    data-n55-tulip='{"msg":" Copy the Above Text","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
+                    onclick="case_conversion.doAction('toCopy')"
+                    ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">content_copy</neodigm-icon></neodigm-acticon>
+
+                    <neodigm-acticon id="js-term-to-paste" data-n55-theme="ghost" data-n55-size="small"
+                    data-n55-wired4sound-click="16"
+                    data-n55-tulip='{"msg":" Paste Clipboard Above","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
+                    onclick="case_conversion.doAction('toPaste')"
+                    ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">content_paste</neodigm-icon></neodigm-acticon>
+
+                    <neodigm-acticon id="js-term-to-clear" data-n55-theme="ghost" data-n55-size="small" 
+                    data-n55-wired4sound-click="11"
+                    data-n55-tulip='{"msg":" Clear Text Above","mrq":false,"tmpt":"","theme":"danger","size":"xsmall","position":"bottom","icon":""}'
+                    onclick="case_conversion.doAction('toClear')"
+                    ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">delete</neodigm-icon></neodigm-acticon>
+
+                </nav>
+            </article>
+        </div>
+    </section>
+
+    <template id="js-wtt-sndbx-share-pup" data-n55-sodapop-modal="false" data-n55-ampm-theme="dark"
+    data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
+
+        <article>
+            <neodigm-marquee data-n55-marquee-size="xsmall"
+            data-n55-marquee-text=" Popups that Pop! Easy to Use HTML First, Batteries Included UX Library. Remember when the Web was Fun? Star on Github! ">
+                <pre data-n55-theme="brand"></pre> 
+            </neodigm-marquee>
+            <h4 class="h-center readampm__caption">Share It!</h4>
+            <section class="readampm">
+                <article style="padding: 16px 16px;">
+                    <p>Copy this link to share with your friends. Paste it into an email, slack, or post it online. Thanks for Sharing!</p>
+
+                    <div class="h-center">
+                        <input id="js-wtt-sndbx-share-inp__uri--id" name="elm" class="a2yw-n55__inp n55-lc__input" type="text" placeholder="Shareable Link Address">
+
+                        <a id="js-wtt-sndbx-share-pup-cta__copy--id" class="" data-n55-enchanted-cta data-n55-wired4sound-click="10" data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost" data-n55-enchanted-cta-ambient="" data-n55-enchanted-cta-dont-touch="true"
+                        onclick="doCopySnippetTODO('js-wtt-sndbx-share-inp__uri--id'); NeodigmClaire.init().doConfetti( 'neodigm-widget' )">
+                            <span data-n55-wired4sound-hover="3">Copy Link <neodigm-icon class="material-symbols-outlined" style="color: var( --neodigm-theme-brand );">content_copy</neodigm-icon></span><span>To Clipboard <neodigm-icon class="material-symbols-outlined" style="color: var( --neodigm-theme-brand );">content_copy</neodigm-icon></span>
+                        </a>
+                    </div>
+                </article>    
+            </section>
         </article>
-    </div>
-</section>
 
-<template id="js-wtt-sndbx-share-pup" data-n55-sodapop-modal="false" data-n55-ampm-theme="dark"
-data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
+    </template>
 
-    <article>
-        <neodigm-marquee data-n55-marquee-size="xsmall"
-        data-n55-marquee-text=" Popups that Pop! Easy to Use HTML First, Batteries Included UX Library. Remember when the Web was Fun? Star on Github! ">
-            <pre data-n55-theme="brand"></pre> 
-        </neodigm-marquee>
-        <h4 class="h-center readampm__caption">Share It!</h4>
-        <section class="readampm">
-            <article style="padding: 16px 16px;">
-                <p>Copy this link to share with your friends. Paste it into an email, slack, or post it online. Thanks for Sharing!</p>
-
-                <div class="h-center">
-                    <input id="js-wtt-sndbx-share-inp__uri--id" name="elm" class="a2yw-n55__inp n55-lc__input" type="text" placeholder="Shareable Link Address">
-
-                    <a id="js-wtt-sndbx-share-pup-cta__copy--id" class="" data-n55-enchanted-cta data-n55-wired4sound-click="10" data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost" data-n55-enchanted-cta-ambient="" data-n55-enchanted-cta-dont-touch="true"
-                    onclick="doCopySnippetTODO('js-wtt-sndbx-share-inp__uri--id'); NeodigmClaire.init().doConfetti( 'neodigm-widget' )">
-                        <span data-n55-wired4sound-hover="3">Copy Link <neodigm-icon class="material-symbols-outlined" style="color: var( --neodigm-theme-brand );">content_copy</neodigm-icon></span><span>To Clipboard <neodigm-icon class="material-symbols-outlined" style="color: var( --neodigm-theme-brand );">content_copy</neodigm-icon></span>
-                    </a>
-                </div>
-            </article>    
-        </section>
-    </article>
-
-</template>
+</neodigm-comp>
 
 <style>
 .l-term {
@@ -248,7 +253,7 @@ data-n55-sodapop-size="small" data-n55-sodapop-fullscreen="false">
             if( neodigmAgent.bIsInit ){
                 let eTermFrom = document.querySelector( "#l-term-from" )
                 let eTermTo = document.querySelector( "#l-term-to" )
-                neodigmAgent.sandboxShare( "case_conversion", {"l-term-from": "eTermFrom.value", "l-term-to": "eTermTo.value" }, ( jsResp )=>{
+                neodigmAgent.sandboxShare( "case_conversion", {"l-term-from": eTermFrom.value, "l-term-to": eTermTo.value }, ( jsResp )=>{
                     console.log("DO COPY TO CLIPB | ", jsResp)
                 })
             }
@@ -262,6 +267,10 @@ class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
     }
     init() {  //  TODO Register
         return this;
+    }
+    showResults(){
+        neodigmUtils.typeOn({"q1st": "#js-fb__top", "msg": "See Your Results in the Bottom Panel|Type or Paste Your Text Below","mode":"NONE","uniqueDelay": 76})
+        NeodigmClaire.showCanv('#l-cntr-term-to', .6).setTheme( ['brand'] ).initCanvOn('#l-cntr-term-to').waxOn('#l-cntr-term-to')
     }
     doAction( sAct ){  //
         if( sAct ){
@@ -281,7 +290,8 @@ class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
                             });
                         }
                         eTermTo.value = aTxt.join(" ")
-                        neodigmToast.q("Case Convert|Title " + eTermFrom.value.length + " characters", "primary")
+                        neodigmToast.q("Case Convert|Title " + eTermFrom.value.length + " characters", "brand")
+this.showResults()
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
@@ -297,7 +307,8 @@ class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
                             });
                         }
                         eTermTo.value = aTxt.join(" ")
-                        neodigmToast.q("Case Convert|Sentence " + eTermFrom.value.length + " characters", "primary")
+                        neodigmToast.q("Case Convert|Sentence " + eTermFrom.value.length + " characters", "brand")
+this.showResults()
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
@@ -312,7 +323,8 @@ class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
                             });
                         }
                         eTermTo.value = aTxt.join(" ")
-                        neodigmToast.q("Case Convert|Lowercase " + eTermFrom.value.length + " characters", "primary")
+                        neodigmToast.q("Case Convert|Lowercase " + eTermFrom.value.length + " characters", "brand")
+this.showResults()
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
@@ -327,7 +339,8 @@ class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
                             });
                         }
                         eTermTo.value = aTxt.join(" ")
-                        neodigmToast.q("Case Convert|Uppercase " + eTermFrom.value.length + " characters", "primary")
+                        neodigmToast.q("Case Convert|Uppercase " + eTermFrom.value.length + " characters", "brand")
+this.showResults()
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
@@ -336,7 +349,8 @@ class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
                 if( sAct == "caseReverse" ){
                     if( eTermFrom.value ){
                         eTermTo.value = eTermFrom.value.split("").reverse().join("")
-                        neodigmToast.q("Text Convert|Reverse " + eTermFrom.value.length + " characters", "primary")
+                        neodigmToast.q("Text Convert|Reverse " + eTermFrom.value.length + " characters", "brand")
+this.showResults()
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
@@ -345,7 +359,8 @@ class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
                 if( sAct == "caseTinyType" ){
                     if( eTermFrom.value ){
                         eTermTo.value = case_conversion.getTinyType( eTermFrom.value )
-                        neodigmToast.q("Text Convert|Tiny Type " + eTermFrom.value.length + " characters", "primary")
+                        neodigmToast.q("Text Convert|Tiny Type " + eTermFrom.value.length + " characters", "brand")
+this.showResults()
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
@@ -372,6 +387,7 @@ class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
                     }else{
                         neodigmToast.q("There is no text to copy.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
+                        NeodigmClaire.showCanv('#l-cntr-term-from', .6).setTheme( ['danger'] ).initCanvOn('#l-cntr-term-from').waxOn('#l-cntr-term-from')
                     }
                 }
                 if( sAct == "fromPaste" ){
@@ -384,8 +400,10 @@ class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
                         neodigmToast.q("Unexpected Error|" + er , "danger")
                     }
                 }
-                if( sAct == "fromClear" ){ eTermFrom.value = ""; neodigmUtils.robinTheme("danger"); }
-
+                if( sAct == "fromClear" ){
+                    eTermFrom.value = ""; neodigmUtils.robinTheme("danger");
+                    NeodigmClaire.showCanv('#l-cntr-term-from', .6).setTheme( ['danger'] ).initCanvOn('#l-cntr-term-from').waxOn('#l-cntr-term-from')
+                }
                 if( sAct == "toCopy" ){
                     if( eTermTo.value ){
                         try{
@@ -397,6 +415,7 @@ class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
                     }else{
                         neodigmToast.q("There is no text to copy.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-to" )
+                        NeodigmClaire.showCanv('#l-cntr-term-to', .6).setTheme( ['danger'] ).initCanvOn('#l-cntr-term-to').waxOn('#l-cntr-term-to')
                     }
                 }
                 if( sAct == "toPaste" ){
@@ -409,7 +428,10 @@ class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
                         neodigmToast.q("Unexpected Error|" + er , "danger")
                     }
                 }
-                if( sAct == "toClear" ){ eTermTo.value = ""; neodigmUtils.robinTheme("danger"); }
+                if( sAct == "toClear" ){
+                    eTermTo.value = ""; neodigmUtils.robinTheme("danger");
+                    NeodigmClaire.showCanv('#l-cntr-term-to', .6).setTheme( ['danger'] ).initCanvOn('#l-cntr-term-to').waxOn('#l-cntr-term-to')
+                }
             }
         }
         return false;
