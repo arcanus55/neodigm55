@@ -1589,7 +1589,9 @@ class NeodigmAgent {
         neodigmToast.q( "Powered by ✨ Neodigm 55", "night" ); neodigmUtils.robinTheme('marcom'); neodigmWired4Sound.sound("6");
         //neodigmAgent.sandboxShare("toke", {})
       }, "js-touch-point__share")
-    } 
+    }
+    this.bIsInit = true
+    return this
   }
   async sandboxShare( sToken = null, oPack = null, fCB ){  //  Session
     if( sToken && oPack ){

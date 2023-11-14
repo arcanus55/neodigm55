@@ -12,7 +12,7 @@
     <div>
         <article class="h-center">
             <a id="js-case-title"
-            onclick="doAction('caseTitle')" data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+            onclick="case_conversion.doAction('caseTitle')" data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
             data-n55-enchanted-cta-size="xsmall"
             data-n55-flash-theme="warning"
             data-n55-theme="ghost"
@@ -21,7 +21,7 @@
             ><span data-n55-wired4sound-hover="3">Title Case</span><span>Cap Significant</span>
             </a>
             <!--<a id="js-case-sentence"
-            onclick="doAction('caseSentence')"
+            onclick="case_conversion.doAction('caseSentence')"
             data-n55-enchanted-cta
             data-n55-enchanted-cta-dont-touch="true"
             data-n55-enchanted-cta-shape-off="true"
@@ -33,7 +33,7 @@
             ><span>Sentence Case</span><span>Cap First Word</span>
             </a>-->
             <a id="js-case-lower"
-            onclick="doAction('caseLower')"
+            onclick="case_conversion.doAction('caseLower')"
             data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
             data-n55-enchanted-cta-size="xsmall"
             data-n55-flash-theme="warning"
@@ -43,7 +43,7 @@
             ><span data-n55-wired4sound-hover="3">lowercase</span><span>all small</span>
             </a>
             <a id="js-case-upper"
-            onclick="doAction('caseUpper')"
+            onclick="case_conversion.doAction('caseUpper')"
             data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
             data-n55-enchanted-cta-size="xsmall"
             data-n55-flash-theme="warning"
@@ -53,7 +53,7 @@
             ><span data-n55-wired4sound-hover="3">UPPERCASE</span><span>SHOUT CAPS</span>
             </a>
             <a id="js-case-reverse"
-            onclick="doAction('caseReverse')"
+            onclick="case_conversion.doAction('caseReverse')"
             data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
             data-n55-enchanted-cta-size="xsmall"
             data-n55-flash-theme="warning"
@@ -63,7 +63,7 @@
             ><span data-n55-wired4sound-hover="3">Reverse</span><span>Mirror</span>
             </a>
             <a id="js-case-tinytype"
-            onclick="doAction('caseTinyType')"
+            onclick="case_conversion.doAction('caseTinyType')"
             data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
             data-n55-enchanted-cta-size="xsmall"
             data-n55-flash-theme="warning"
@@ -103,19 +103,19 @@
                 <neodigm-acticon id="js-term-from-copy" data-n55-theme="ghost" data-n55-size="small"
                 data-n55-wired4sound-click="16"
                 data-n55-tulip='{"msg":" Copy the Above Text","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
-                onclick="doAction('fromCopy')"
+                onclick="case_conversion.doAction('fromCopy')"
                 ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">content_copy</neodigm-icon></neodigm-acticon>
 
                 <neodigm-acticon id="js-term-from-paste" data-n55-theme="ghost" data-n55-size="small"
                 data-n55-wired4sound-click="16"
                 data-n55-tulip='{"msg":" Paste Clipboard Above","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
-                onclick="doAction('fromPaste')"
+                onclick="case_conversion.doAction('fromPaste')"
                 ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">content_paste</neodigm-icon></neodigm-acticon>
 
                 <neodigm-acticon id="js-term-from-clear" data-n55-theme="ghost" data-n55-size="small" 
                 data-n55-wired4sound-click="11"
                 data-n55-tulip='{"msg":" Clear Text Above","mrq":false,"tmpt":"","theme":"danger","size":"xsmall","position":"bottom","icon":""}'
-                onclick="doAction('fromClear')"
+                onclick="case_conversion.doAction('fromClear')"
                 ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">delete</neodigm-icon></neodigm-acticon>
             </nav>
         </article>
@@ -139,19 +139,19 @@
                 <neodigm-acticon id="js-term-to-copy" data-n55-theme="ghost" data-n55-size="small"
                 data-n55-wired4sound-click="16"
                 data-n55-tulip='{"msg":" Copy the Above Text","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
-                onclick="doAction('toCopy')"
+                onclick="case_conversion.doAction('toCopy')"
                 ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">content_copy</neodigm-icon></neodigm-acticon>
 
                 <neodigm-acticon id="js-term-to-paste" data-n55-theme="ghost" data-n55-size="small"
                 data-n55-wired4sound-click="16"
                 data-n55-tulip='{"msg":" Paste Clipboard Above","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
-                onclick="doAction('toPaste')"
+                onclick="case_conversion.doAction('toPaste')"
                 ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">content_paste</neodigm-icon></neodigm-acticon>
 
                 <neodigm-acticon id="js-term-to-clear" data-n55-theme="ghost" data-n55-size="small" 
                 data-n55-wired4sound-click="11"
                 data-n55-tulip='{"msg":" Clear Text Above","mrq":false,"tmpt":"","theme":"danger","size":"xsmall","position":"bottom","icon":""}'
-                onclick="doAction('toClear')"
+                onclick="case_conversion.doAction('toClear')"
                 ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">delete</neodigm-icon></neodigm-acticon>
 
             </nav>
@@ -243,172 +243,191 @@ NeodigmClaire.showCanv('neodigm-sodapop').initCanvOff('neodigm-sodapop').waxOff(
                 });
             }
         }, 4e3)
+
+        if( neodigmSodaPop ){
+            neodigmSodaPop.setOnAfterOpen( ()=>{
+
+            }, "js-wtt-sndbx-share-pup" )
+        }
     });
 
-let doAction = function( sAct ){
-    let eTermFrom = document.querySelector( "#l-term-from" )
-    let eTermTo = document.querySelector( "#l-term-to" )
-    let capFirst = (s) => (s && s[0].toUpperCase() + s.slice(1))
-    if( eTermFrom && eTermTo ){
-        if( sAct == "caseTitle" ){
-            if( eTermFrom.value ){
-                let aTxt = eTermFrom.value.split(" ")
-                if( aTxt.length ){
-                    aTxt = aTxt.map( sW => {
-                        const sDoNotCap = ["a", "an", "and", "as", "at", "but", "by", "for", "if", "in", "nor", "of", "off", "on", "or", "per", "so", "the", "to", "up", "via", "with", "yet"]
-                        let sRet = sW
-                        if( sDoNotCap.indexOf(  sW.toLowerCase() ) == -1 ) sRet = capFirst( sW )
-                        return sRet
-                    });
-                }
-                eTermTo.value = aTxt.join(" ")
-                neodigmToast.q("Case Convert|Title " + eTermFrom.value.length + " characters", "primary")
-            }else{
-                neodigmToast.q("There is no text to convert.", "danger")
-                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
-            }
-        }
-        if( sAct == "caseSentence" ){ //  TODO
-            if( eTermFrom.value ){
-                let aTxt = eTermFrom.value.split(" ")
-                if( aTxt.length ){
-                    aTxt = aTxt.map( sW => {
-                        let sRet = sW
-                        return sRet
-                    });
-                }
-                eTermTo.value = aTxt.join(" ")
-                neodigmToast.q("Case Convert|Sentence " + eTermFrom.value.length + " characters", "primary")
-            }else{
-                neodigmToast.q("There is no text to convert.", "danger")
-                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
-            }
-        }
-        if( sAct == "caseLower" ){
-            if( eTermFrom.value ){
-                let aTxt = eTermFrom.value.split(" ")
-                if( aTxt.length ){
-                    aTxt = aTxt.map( sW => {
-                        return sW.toLowerCase()
-                    });
-                }
-                eTermTo.value = aTxt.join(" ")
-                neodigmToast.q("Case Convert|Lowercase " + eTermFrom.value.length + " characters", "primary")
-            }else{
-                neodigmToast.q("There is no text to convert.", "danger")
-                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
-            }
-        }
-        if( sAct == "caseUpper" ){
-            if( eTermFrom.value ){
-                let aTxt = eTermFrom.value.split(" ")
-                if( aTxt.length ){
-                    aTxt = aTxt.map( sW => {
-                        return sW.toUpperCase()
-                    });
-                }
-                eTermTo.value = aTxt.join(" ")
-                neodigmToast.q("Case Convert|Uppercase " + eTermFrom.value.length + " characters", "primary")
-            }else{
-                neodigmToast.q("There is no text to convert.", "danger")
-                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
-            }
-        }
-        if( sAct == "caseReverse" ){
-            if( eTermFrom.value ){
-                eTermTo.value = eTermFrom.value.split("").reverse().join("")
-                neodigmToast.q("Text Convert|Reverse " + eTermFrom.value.length + " characters", "primary")
-            }else{
-                neodigmToast.q("There is no text to convert.", "danger")
-                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
-            }
-        }
-        if( sAct == "caseTinyType" ){
-            if( eTermFrom.value ){
-                eTermTo.value = getTinyType( eTermFrom.value )
-                neodigmToast.q("Text Convert|Tiny Type " + eTermFrom.value.length + " characters", "primary")
-            }else{
-                neodigmToast.q("There is no text to convert.", "danger")
-                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
-            }
-        }
-        /*
-        if( sAct == "share" ){  //  Fire sandboxShare, get turnaround key
-            try {
-                navigator.clipboard.writeText( document.location.href );
-                neodigmToast.q("Page Address (URL)|Copied to Clipboard", "brand" )
-            } catch (err) {
-                console.warn('Failed to copy', err)
-            }
-        }
-        */
-        if( sAct == "fromCopy" ){
-            if( eTermFrom.value ){
-                try{
-                    navigator.clipboard.writeText( eTermFrom.value )
-                    neodigmToast.q("Copied to|Clipboard", "primary")
-                }catch( er ){
-                    neodigmToast.q("Unexpected Error| " + er , "danger")
-                }
-            }else{
-                neodigmToast.q("There is no text to copy.", "danger")
-                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
-            }
-        }
-        if( sAct == "fromPaste" ){
-            try{
-                navigator.clipboard
-                .readText()
-                .then((clipText) => ( eTermFrom.value = clipText ));
-                neodigmToast.q("Pasted from Clipboard", "primary")
-            }catch( er ){
-                neodigmToast.q("Unexpected Error|" + er , "danger")
-            }
-        }
-        if( sAct == "fromClear" ){ eTermFrom.value = ""; neodigmUtils.robinTheme("danger"); }
-
-        if( sAct == "toCopy" ){
-            if( eTermTo.value ){
-                try{
-                    navigator.clipboard.writeText( eTermTo.value )
-                    neodigmToast.q("Copied to|Clipboard", "primary")
-                }catch( er ){
-                    neodigmToast.q("Unexpected Error| " + er , "danger")
-                }
-            }else{
-                neodigmToast.q("There is no text to copy.", "danger")
-                neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-to" )
-            }
-        }
-        if( sAct == "toPaste" ){
-            try{
-                navigator.clipboard
-                .readText()
-                .then((clipText) => ( eTermTo.value = clipText ));
-                neodigmToast.q("Pasted from Clipboard", "primary")
-            }catch( er ){
-                neodigmToast.q("Unexpected Error|" + er , "danger")
-            }
-        }
-        if( sAct == "toClear" ){ eTermTo.value = ""; neodigmUtils.robinTheme("danger"); }
+class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
+    constructor(_d, _sQ) {
+        this._d = _d; this._sQ = _sQ;
+        this.aF = []; this.aObs = [];
     }
-    return false;
-}
-neodigmMarquee.init();
-neodigmEnchantedCTA.init();
+    init() {  //  TODO Register
+        return this;
+    }
+    doAction( sAct ){  //
+        if( sAct ){
+            let eTermFrom = document.querySelector( "#l-term-from" )
+            let eTermTo = document.querySelector( "#l-term-to" )
+            let capFirst = (s) => (s && s[0].toUpperCase() + s.slice(1))
+            if( eTermFrom && eTermTo ){
+                if( sAct == "caseTitle" ){
+                    if( eTermFrom.value ){
+                        let aTxt = eTermFrom.value.split(" ")
+                        if( aTxt.length ){
+                            aTxt = aTxt.map( sW => {
+                                const sDoNotCap = ["a", "an", "and", "as", "at", "but", "by", "for", "if", "in", "nor", "of", "off", "on", "or", "per", "so", "the", "to", "up", "via", "with", "yet"]
+                                let sRet = sW
+                                if( sDoNotCap.indexOf(  sW.toLowerCase() ) == -1 ) sRet = capFirst( sW )
+                                return sRet
+                            });
+                        }
+                        eTermTo.value = aTxt.join(" ")
+                        neodigmToast.q("Case Convert|Title " + eTermFrom.value.length + " characters", "primary")
+                    }else{
+                        neodigmToast.q("There is no text to convert.", "danger")
+                        neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
+                    }
+                }
+                if( sAct == "caseSentence" ){ //  TODO
+                    if( eTermFrom.value ){
+                        let aTxt = eTermFrom.value.split(" ")
+                        if( aTxt.length ){
+                            aTxt = aTxt.map( sW => {
+                                let sRet = sW
+                                return sRet
+                            });
+                        }
+                        eTermTo.value = aTxt.join(" ")
+                        neodigmToast.q("Case Convert|Sentence " + eTermFrom.value.length + " characters", "primary")
+                    }else{
+                        neodigmToast.q("There is no text to convert.", "danger")
+                        neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
+                    }
+                }
+                if( sAct == "caseLower" ){
+                    if( eTermFrom.value ){
+                        let aTxt = eTermFrom.value.split(" ")
+                        if( aTxt.length ){
+                            aTxt = aTxt.map( sW => {
+                                return sW.toLowerCase()
+                            });
+                        }
+                        eTermTo.value = aTxt.join(" ")
+                        neodigmToast.q("Case Convert|Lowercase " + eTermFrom.value.length + " characters", "primary")
+                    }else{
+                        neodigmToast.q("There is no text to convert.", "danger")
+                        neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
+                    }
+                }
+                if( sAct == "caseUpper" ){
+                    if( eTermFrom.value ){
+                        let aTxt = eTermFrom.value.split(" ")
+                        if( aTxt.length ){
+                            aTxt = aTxt.map( sW => {
+                                return sW.toUpperCase()
+                            });
+                        }
+                        eTermTo.value = aTxt.join(" ")
+                        neodigmToast.q("Case Convert|Uppercase " + eTermFrom.value.length + " characters", "primary")
+                    }else{
+                        neodigmToast.q("There is no text to convert.", "danger")
+                        neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
+                    }
+                }
+                if( sAct == "caseReverse" ){
+                    if( eTermFrom.value ){
+                        eTermTo.value = eTermFrom.value.split("").reverse().join("")
+                        neodigmToast.q("Text Convert|Reverse " + eTermFrom.value.length + " characters", "primary")
+                    }else{
+                        neodigmToast.q("There is no text to convert.", "danger")
+                        neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
+                    }
+                }
+                if( sAct == "caseTinyType" ){
+                    if( eTermFrom.value ){
+                        eTermTo.value = case_conversion.getTinyType( eTermFrom.value )
+                        neodigmToast.q("Text Convert|Tiny Type " + eTermFrom.value.length + " characters", "primary")
+                    }else{
+                        neodigmToast.q("There is no text to convert.", "danger")
+                        neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
+                    }
+                }
+                /*
+                if( sAct == "share" ){  //  Fire sandboxShare, get turnaround key
+                    try {
+                        navigator.clipboard.writeText( document.location.href );
+                        neodigmToast.q("Page Address (URL)|Copied to Clipboard", "brand" )
+                    } catch (err) {
+                        console.warn('Failed to copy', err)
+                    }
+                }
+                */
+                if( sAct == "fromCopy" ){
+                    if( eTermFrom.value ){
+                        try{
+                            navigator.clipboard.writeText( eTermFrom.value )
+                            neodigmToast.q("Copied to|Clipboard", "primary")
+                        }catch( er ){
+                            neodigmToast.q("Unexpected Error| " + er , "danger")
+                        }
+                    }else{
+                        neodigmToast.q("There is no text to copy.", "danger")
+                        neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
+                    }
+                }
+                if( sAct == "fromPaste" ){
+                    try{
+                        navigator.clipboard
+                        .readText()
+                        .then((clipText) => ( eTermFrom.value = clipText ));
+                        neodigmToast.q("Pasted from Clipboard", "primary")
+                    }catch( er ){
+                        neodigmToast.q("Unexpected Error|" + er , "danger")
+                    }
+                }
+                if( sAct == "fromClear" ){ eTermFrom.value = ""; neodigmUtils.robinTheme("danger"); }
 
-let getTinyType = ( sIn ) =>{
-    let oTiny = {"a":"ᵃ","b":"ᵇ","c":"ᶜ","d":"ᵈ","e":"ᵉ","f":"ᶠ","g":"ᵍ","h":"ʰ","i":"ᶦ","j":"ʲ","k":"ᵏ","l":"ᶫ","m":"ᵐ","n":"ᶰ","o":"ᵒ","p":"ᵖ","q":"ᑫ","r":"ʳ","s":"ˢ","t":"ᵗ","u":"ᵘ","v":"ᵛ","w":"ʷ","x":"ˣ","y":"ʸ","z":"ᶻ","A":"ᴬ","B":"ᴮ","C":"ᶜ","D":"ᴰ","E":"ᴱ","F":"ᶠ","G":"ᴳ","H":"ᴴ","I":"ᴵ","J":"ᴶ","K":"ᴷ","L":"ᴸ","M":"ᴹ","N":"ᴺ","O":"ᴼ","P":"ᴾ","Q":"ᑫ","R":"ᴿ","S":"ˢ","T":"ᵀ","U":"ᵁ","V":"ⱽ","W":"ᵂ","X":"ˣ","Y":"ʸ","Z":"ᶻ","`":"`","~":"~","!":"﹗","@":"@","#":"#","$":"﹩","%":"﹪","^":"^","&":"﹠","*":"﹡","(":"⁽",")":"⁾","_":"⁻","-":"⁻","=":"⁼","+":"+","{":"{","[":"[","}":"}","]":"]",":":"﹕",";":"﹔","?":"﹖"};
-    let sOut = "";
-    Array.from( sIn ).filter(( sChr )=>{
+                if( sAct == "toCopy" ){
+                    if( eTermTo.value ){
+                        try{
+                            navigator.clipboard.writeText( eTermTo.value )
+                            neodigmToast.q("Copied to|Clipboard", "primary")
+                        }catch( er ){
+                            neodigmToast.q("Unexpected Error| " + er , "danger")
+                        }
+                    }else{
+                        neodigmToast.q("There is no text to copy.", "danger")
+                        neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-to" )
+                    }
+                }
+                if( sAct == "toPaste" ){
+                    try{
+                        navigator.clipboard
+                        .readText()
+                        .then((clipText) => ( eTermTo.value = clipText ));
+                        neodigmToast.q("Pasted from Clipboard", "primary")
+                    }catch( er ){
+                        neodigmToast.q("Unexpected Error|" + er , "danger")
+                    }
+                }
+                if( sAct == "toClear" ){ eTermTo.value = ""; neodigmUtils.robinTheme("danger"); }
+            }
+        }
+        return false;
+    }
+    getTinyType( sIn ) {  //  TODO Register
+        let oTiny = {"a":"ᵃ","b":"ᵇ","c":"ᶜ","d":"ᵈ","e":"ᵉ","f":"ᶠ","g":"ᵍ","h":"ʰ","i":"ᶦ","j":"ʲ","k":"ᵏ","l":"ᶫ","m":"ᵐ","n":"ᶰ","o":"ᵒ","p":"ᵖ","q":"ᑫ","r":"ʳ","s":"ˢ","t":"ᵗ","u":"ᵘ","v":"ᵛ","w":"ʷ","x":"ˣ","y":"ʸ","z":"ᶻ","A":"ᴬ","B":"ᴮ","C":"ᶜ","D":"ᴰ","E":"ᴱ","F":"ᶠ","G":"ᴳ","H":"ᴴ","I":"ᴵ","J":"ᴶ","K":"ᴷ","L":"ᴸ","M":"ᴹ","N":"ᴺ","O":"ᴼ","P":"ᴾ","Q":"ᑫ","R":"ᴿ","S":"ˢ","T":"ᵀ","U":"ᵁ","V":"ⱽ","W":"ᵂ","X":"ˣ","Y":"ʸ","Z":"ᶻ","`":"`","~":"~","!":"﹗","@":"@","#":"#","$":"﹩","%":"﹪","^":"^","&":"﹠","*":"﹡","(":"⁽",")":"⁾","_":"⁻","-":"⁻","=":"⁼","+":"+","{":"{","[":"[","}":"}","]":"]",":":"﹕",";":"﹔","?":"﹖"};
+        let sOut = "";
+        Array.from( sIn ).filter(( sChr )=>{
         if( oTiny[ sChr ] ){
             sOut += oTiny[ sChr ]
         }else{
             sOut += sChr 
         }
-    });
-    return sOut;
+        });
+        return sOut;
+    }
 }
+let case_conversion = new Case_conversion( document, "case_conversion" )
+case_conversion.init()
+
+neodigmMarquee.init();
+neodigmEnchantedCTA.init();
 
 </script><!--  ||  Dont copy script tags -->
 <!--  ||  JAVASCRIPT WDG BEGIN -->
