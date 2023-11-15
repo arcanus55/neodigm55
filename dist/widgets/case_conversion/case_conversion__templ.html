@@ -280,7 +280,8 @@ class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
             if( eTermFrom && eTermTo ){
                 if( sAct == "caseTitle" ){
                     if( eTermFrom.value ){
-                        let aTxt = eTermFrom.value.split(" ")
+                        let sTxt = eTermFrom.value.toLowerCase()
+                        let aTxt = sTxt.split(" ")
                         if( aTxt.length ){
                             aTxt = aTxt.map( sW => {
                                 const sDoNotCap = ["a", "an", "and", "as", "at", "but", "by", "for", "if", "in", "nor", "of", "off", "on", "or", "per", "so", "the", "to", "up", "via", "with", "yet"]
@@ -291,7 +292,7 @@ class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
                         }
                         eTermTo.value = aTxt.join(" ")
                         neodigmToast.q("Case Convert|Title " + eTermFrom.value.length + " characters", "brand")
-this.showResults()
+                        this.showResults()
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
@@ -308,7 +309,7 @@ this.showResults()
                         }
                         eTermTo.value = aTxt.join(" ")
                         neodigmToast.q("Case Convert|Sentence " + eTermFrom.value.length + " characters", "brand")
-this.showResults()
+                        this.showResults()
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
@@ -324,7 +325,7 @@ this.showResults()
                         }
                         eTermTo.value = aTxt.join(" ")
                         neodigmToast.q("Case Convert|Lowercase " + eTermFrom.value.length + " characters", "brand")
-this.showResults()
+                        this.showResults()
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
@@ -340,7 +341,7 @@ this.showResults()
                         }
                         eTermTo.value = aTxt.join(" ")
                         neodigmToast.q("Case Convert|Uppercase " + eTermFrom.value.length + " characters", "brand")
-this.showResults()
+                        this.showResults()
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
@@ -350,7 +351,7 @@ this.showResults()
                     if( eTermFrom.value ){
                         eTermTo.value = eTermFrom.value.split("").reverse().join("")
                         neodigmToast.q("Text Convert|Reverse " + eTermFrom.value.length + " characters", "brand")
-this.showResults()
+                        this.showResults()
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
@@ -360,7 +361,7 @@ this.showResults()
                     if( eTermFrom.value ){
                         eTermTo.value = case_conversion.getTinyType( eTermFrom.value )
                         neodigmToast.q("Text Convert|Tiny Type " + eTermFrom.value.length + " characters", "brand")
-this.showResults()
+                        this.showResults()
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
