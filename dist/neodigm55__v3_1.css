@@ -935,10 +935,11 @@ neodigm-picnic > header > div {
 neodigm-picnic > output {
     position: relative; display: block;
     height: calc( var( --neodigm-height-picnic ) - 38px);
-    overflow-y: scroll;
+    QQQQoverflow-y: scroll;
 }
 neodigm-picnic > output > article {
-    height: 50cqh;
+    height: 100%;
+    overflow-y: scroll;
 }
 neodigm-picnic > output > article > section {
     position: relative; display: grid;
