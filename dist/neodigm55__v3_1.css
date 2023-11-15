@@ -938,7 +938,7 @@ neodigm-picnic > output {
     QQQQoverflow-y: scroll;
 }
 neodigm-picnic > output > article {
-    height: 100%;
+    height: 100cqh;
     overflow-y: scroll;
 }
 neodigm-picnic > output > article > section {
