@@ -284,7 +284,7 @@ class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
                         let aTxt = sTxt.split(" ")
                         if( aTxt.length ){
                             aTxt = aTxt.map( sW => {
-                                const sDoNotCap = ["a", "an", "and", "as", "at", "but", "by", "for", "if", "in", "nor", "of", "off", "on", "or", "per", "so", "the", "to", "up", "via", "with", "yet"]
+                                const sDoNotCap = ["a", "an", "and", "as", "at", "but", "by", "for", "if", "in", "is", "nor", "of", "off", "on", "or", "per", "so", "the", "to", "up", "via", "with", "yet"]
                                 let sRet = sW
                                 if( sDoNotCap.indexOf(  sW.toLowerCase() ) == -1 ) sRet = capFirst( sW )
                                 return sRet
