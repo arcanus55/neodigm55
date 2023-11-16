@@ -254,13 +254,17 @@
                 let eTermFrom = document.querySelector( "#l-term-from" )
                 let eTermTo = document.querySelector( "#l-term-to" )
                 neodigmAgent.sandboxShare( "case_conversion", {"l-term-from": eTermFrom.value, "l-term-to": eTermTo.value }, ( jsResp )=>{
-                    console.log("DO COPY TO CLIPB | ", jsResp)
+                    elInp = document.getElementById("js-wtt-sndbx-share-inp__uri--id")
+console.log("DO COPY TO CLIPB | ", elInp , jsResp , jsResp.data)
+                    if( elInp && jsResp && jsResp?.data ){
+                        elInp.value = jsResp.data
+                    }
                 })
             }
         }, "js-wtt-sndbx-share-pup" )
     }
 
-class Case_conversion {  //  Flick Carousel ARIA-HIDDEN observer
+class Case_conversion {
     constructor(_d, _sQ) {
         this._d = _d; this._sQ = _sQ;
         this.aF = []; this.aObs = [];

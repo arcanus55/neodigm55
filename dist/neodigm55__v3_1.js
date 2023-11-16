@@ -1597,7 +1597,7 @@ class NeodigmAgent {
     if( sToken && oPack ){
       const oPackCmp = {"token": sToken, "compressed": LZString.compressToEncodedURIComponent( JSON.stringify( oPack ) ) }
       const oFetchConf = { method: "POST", body: JSON.stringify( oPackCmp ), headers: { "protomolecule": neodigmAgent.genChronSync(), "apploc": LZString.compressToEncodedURIComponent( document.location.href ), "Content-Type": "application/json" } }
-  console.log( " ~~~ oPackCmp , oFetchConf | " , oPackCmp , oFetchConf )
+  console.log( " ~~~ ~~~ oPackCmp , oFetchConf | " , oPackCmp , oFetchConf )
       const oResp = await fetch( neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/sndbx/create/", oFetchConf )
       const jsResp = await oResp.json();
       if( jsResp && fCB ) fCB( jsResp )
