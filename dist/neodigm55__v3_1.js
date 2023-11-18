@@ -1600,10 +1600,10 @@ class NeodigmAgent {
   console.log( " ~~~ ~~~ oPackCmp , oFetchConf | " , oPackCmp , oFetchConf )
       const oResp = await fetch( neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/sndbx/create/", oFetchConf )
       const jsResp = await oResp.json();
-      if( jsResp && jsResp?.guid ){
-        jsResp.guid = neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/qr/" + jsResp.guid
+      if( jsResp && jsResp?.qr_uri ){
+        jsResp.qr_uri = neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/qr/" + jsResp.qr_uri
       }
-  console.log( " ~~~ ~~~ jsResp.guid | " , jsResp.guid )
+  console.log( " ~~~ ~~~ jsResp.qr_uri | " , jsResp.qr_uri )
       if( jsResp && fCB ) fCB( jsResp )
     }
   }
