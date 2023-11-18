@@ -126,7 +126,7 @@ const neodigmUtils = ( ( _d ) =>{
       return new Date( sDt ).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" } )
     }, 
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
-    genHash: ( sV ) => {sV = String(sV); return sV.split("").reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)},
+    genHash: ( sV ) => {sV = String(sV); return Math.abs(sV.split("").reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)) },  //  ABS
     robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
       if( !neodigmMetronome.isPaused() ){ // TODO test OS/UA motion mq
         let aE = [ ... document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelectorAll("[data-n55-theme") ]; const NDELAY = 40;
@@ -1600,6 +1600,10 @@ class NeodigmAgent {
   console.log( " ~~~ ~~~ oPackCmp , oFetchConf | " , oPackCmp , oFetchConf )
       const oResp = await fetch( neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/sndbx/create/", oFetchConf )
       const jsResp = await oResp.json();
+      if( jsResp && jsResp?.guid ){
+        jsResp.guid = neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/gr/" + jsResp.guid
+      }
+  console.log( " ~~~ ~~~ jsResp.guid | " , jsResp.guid )
       if( jsResp && fCB ) fCB( jsResp )
     }
   }
