@@ -335,11 +335,12 @@ if( neodigmSodaPop && neodigmCarousel ){
         if( neodigmAgent.bIsInit ){
             let eTermFrom = document.querySelector( "#l-term-from" )
             let eTermTo = document.querySelector( "#l-term-to" )
-            if( eTermFrom && eTermTo ){
+            let elImgQr = document.querySelector("#js-img__qr--uri")
+            if( eTermFrom && eTermTo && elImgQr ){
                 neodigmAgent.sandboxShare( "case_conversion", {"l-term-from": eTermFrom.value, "l-term-to": eTermTo.value }, ( jsResp )=>{
                     elInp = document.getElementById("wtt-sndbxshare-txtar__uri--id")
-    console.log( " ~~~~~ ~~~~~~ jsResp | " , jsResp )
                     if( elInp && jsResp && jsResp?.data ){
+                        elImgQr.src = jsResp.qr_uri
                         elInp.value = jsResp.data
                         neodigmUtils.typeOn({"q1st": "#wtt-sndbxshare-fb__facet1", "msg": "Many Thanks for Sharing|You Share the Best Stuff!","uniqueDelay": 59})
                         setTimeout( ()=>{
