@@ -1604,7 +1604,7 @@ class NeodigmAgent {
         jsResp.guid = neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/qr/" + encodeURIComponent( document.location.href + "?" + jsResp.guid )
       }
   console.log( " ~~~ ~~~ jsResp.guid | " , jsResp.guid )
-  console.log( " ~~~ ~~~ jsResp encode URI | " , encodeURIComponent( document.location.href + "?" + jsResp.guid )
+  console.log( " ~~~ ~~~ jsResp encode URI | " , encodeURIComponent( document.location.href + "?" + jsResp.guid ) )
       if( jsResp && fCB ) fCB( jsResp )
     }
   }
