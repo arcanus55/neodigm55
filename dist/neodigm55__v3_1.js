@@ -1601,9 +1601,10 @@ class NeodigmAgent {
       const oResp = await fetch( neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/sndbx/create/", oFetchConf )
       const jsResp = await oResp.json();
       if( jsResp && jsResp?.guid ){
-        jsResp.guid = neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/gr/" + jsResp.guid
+        jsResp.guid = neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/qr/" + encodeURIComponent( document.location.href + "?" + jsResp.guid )
       }
   console.log( " ~~~ ~~~ jsResp.guid | " , jsResp.guid )
+  console.log( " ~~~ ~~~ jsResp encode URI | " , encodeURIComponent( document.location.href + "?" + jsResp.guid )
       if( jsResp && fCB ) fCB( jsResp )
     }
   }
