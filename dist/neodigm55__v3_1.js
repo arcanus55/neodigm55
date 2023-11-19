@@ -1557,7 +1557,7 @@ let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 class NeodigmAgent {
   constructor(_d, _aQ) {  //  plugin extension manifest
       this._d = _d; this._aQ = _aQ;
-      this.aeWdgs = [];
+      this.aeWdgs = []; this.sandbox = null;
       this.bIsInit = false
   }
   async init() {  //  rinit
@@ -1573,6 +1573,9 @@ class NeodigmAgent {
           .then( rs => {
             if( rs?.compressed && LZString && neodigmUtils ){
               oeWdg.innerHTML = LZString.decompressFromEncodedURIComponent( rs.compressed )
+              if( rs?.sandbox ){
+                this.sandbox = LZString.decompressFromEncodedURIComponent( rs.sandbox )
+              }
               if( rs?.assets ){  //  Inject script elms from manifest
                 rs.assets.forEach( ( aAst )=>{
                   if( aAst[0].toLowerCase() == "js" ) neodigmUtils.fAsyncJS( document, aAst[1] )
