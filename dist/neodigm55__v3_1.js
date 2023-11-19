@@ -1608,6 +1608,15 @@ class NeodigmAgent {
       if( jsResp && fCB ) fCB( jsResp )
     }
   }
+  async sandboxFill(){
+    let oSndbx = SJON.parse( this.sandbox )
+    for (const sId in oSndbx) {
+  console.log( " ~~~ | ", oSndbx[ sId ])
+      let elVal = document.getElementById( sId )
+      if( elVal ) elVal.value = oSndbx[ sId ]
+    }
+    return this.sandbox
+  }
   async doA2YW( oWTTCompStore ){  //  
     return "snippet code"
   }
