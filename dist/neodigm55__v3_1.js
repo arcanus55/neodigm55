@@ -128,12 +128,15 @@ const neodigmUtils = ( ( _d ) =>{
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
     genHash: ( sV ) => {sV = String(sV); return Math.abs(sV.split("").reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)) },  //  ABS
     robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
+      let sTtl = document.title
+      document.title = "🟥" + document.title
       if( !neodigmMetronome.isPaused() ){ // TODO test OS/UA motion mq - Cylce Fav icon
         let aE = [ ... document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelectorAll("[data-n55-theme") ]; const NDELAY = 40;
+        setTimeout( function(){ document.title = sTtl }, ( 6 * NDELAY ) )
         aE.forEach( ( eC, nDx ) => {
           if( eC.dataset.n55Theme != "disabled" ){
             if( !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
-            setTimeout( function(){ eC.dataset.n55Theme = sTheme }, ( nDx * NDELAY ) )              
+            setTimeout( function(){ eC.dataset.n55Theme = sTheme }, ( nDx * NDELAY ) )
             setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + NDELAY) ) )            
           }
         });
