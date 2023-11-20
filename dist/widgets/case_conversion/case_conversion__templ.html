@@ -18,7 +18,7 @@
                 data-n55-flash-theme="warning"
                 data-n55-theme="ghost"
                 data-n55-wired4sound-click="16"
-                data-n55-tulip= '{"msg":" Capitalize Each Significant Word ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
+                data-n55-tulip= '{"msg":" Capitalize Each Significant Word.  The capitalized case converter will automatically convert the starting letter of every word into an upper case and will leave the remaining letters as lower case. ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
                 ><span data-n55-wired4sound-hover="3">Title Case</span><span>Cap Significant</span>
                 </a>
                 <!--<a id="js-case-sentence"
@@ -40,7 +40,7 @@
                 data-n55-flash-theme="warning"
                 data-n55-theme="ghost"
                 data-n55-wired4sound-click="16"
-                data-n55-tulip= '{"msg":" Lowercase all words ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
+                data-n55-tulip= '{"msg":" Lowercase all words.  Change every character to its lowercase equivalent. ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
                 ><span data-n55-wired4sound-hover="3">lowercase</span><span>all small</span>
                 </a>
                 <a id="js-case-upper"
@@ -50,7 +50,7 @@
                 data-n55-flash-theme="warning"
                 data-n55-theme="ghost"
                 data-n55-wired4sound-click="16"
-                data-n55-tulip= '{"msg":" UPPERCASE ALL WORDS ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
+                data-n55-tulip= '{"msg":" UPPERCASE ALL WORDS.  Change every character to its uppercase equivalent ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
                 ><span data-n55-wired4sound-hover="3">UPPERCASE</span><span>SHOUT CAPS</span>
                 </a>
                 <a id="js-case-reverse"
@@ -60,7 +60,7 @@
                 data-n55-flash-theme="warning"
                 data-n55-theme="ghost"
                 data-n55-wired4sound-click="16"
-                data-n55-tulip= '{"msg":" Reverse entire phrase ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
+                data-n55-tulip= '{"msg":" Reverse entire phrase.  Make the text backwards. ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
                 ><span data-n55-wired4sound-hover="3">Reverse</span><span>Mirror</span>
                 </a>
                 <a id="js-case-tinytype"
@@ -70,7 +70,7 @@
                 data-n55-flash-theme="warning"
                 data-n55-theme="ghost"
                 data-n55-wired4sound-click="16"
-                data-n55-tulip= '{"msg":" Replace with smaller characters ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
+                data-n55-tulip= '{"msg":" Replace with smaller characters.  Replace text with an alternate character set making it appear smaller.  Because the text uses alternate characters it becomes unsearchable, meaning that it cannot be found on Google. So its like a secret message. ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
                 ><span data-n55-wired4sound-hover="3">Tiny Type</span><span>Characters</span>
                 </a>
 
@@ -129,6 +129,7 @@
         <div id="l-cntr-term-to">
             <article style="padding: 1px 1px;">
                 <textarea id="l-term-to" class="l-term" rows="8"
+                onkeyup="case_conversion.doAction('countLetters')"
                 style="margin: 2px auto"></textarea>
             </article>
         </div>
@@ -158,6 +159,58 @@
                     ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">delete</neodigm-icon></neodigm-acticon>
 
                 </nav>
+            </article>
+        </div>
+    </section>
+
+    <section class="pfmf-grid pfmf-grid__33_33_33 readable__doc" style="padding: 1px;">
+        <div>
+            <article style="padding: 1px 1px;">
+                <nav class="h-center" style="margin-top: -8px;">
+                    <neodigm-kpi id="kpi-count__cc"
+                    data-n55-kpi
+                    data-n55-tulip='{"msg":"Charcter Count", "size":"small", "theme":"ghost"}'
+                    data-n55-kpi-percent="false" data-n55-kpi-dont-touch="false" data-n55-kpi-shape-off="false"
+                    data-n55-kpi-size="small" data-n55-flash-theme="warning" data-n55-theme="brand"
+                    data-n55-wired4sound-click="5"
+                    ><h5 id="js-kpi-fb__cc">0<span></span></h5><h6>Characters</h6>
+                    </neodigm-kpi>
+                </nav>
+            </article>
+        </div>
+        <div>
+            <article style="padding: 1px 1px;">
+                <nav class="h-center" style="margin-top: -8px;">
+                    <neodigm-kpi id="kpi-count__words"
+                    data-n55-kpi
+                    data-n55-tulip='{"msg":"Word Count", "size":"small", "theme":"ghost"}'
+                    data-n55-kpi-percent="false" data-n55-kpi-dont-touch="false" data-n55-kpi-shape-off="false"
+                    data-n55-kpi-size="small" data-n55-flash-theme="warning" data-n55-theme="brand"
+                    data-n55-wired4sound-click="5"
+                    ><h5 id="js-kpi-fb__words">0<span></span></h5><h6>Words</h6>
+                    </neodigm-kpi>
+                </nav>
+            </article>
+        </div>
+        <div>
+            <article style="padding: 1px 1px;">
+                <nav class="h-center" style="margin-top: -8px;">
+                    <neodigm-kpi id="kpi-count__sentences"
+                    data-n55-kpi
+                    data-n55-tulip='{"msg":"Sentence Count", "size":"small", "theme":"ghost"}'
+                    data-n55-kpi-percent="false" data-n55-kpi-dont-touch="false" data-n55-kpi-shape-off="false"
+                    data-n55-kpi-size="small" data-n55-flash-theme="warning" data-n55-theme="brand"
+                    data-n55-wired4sound-click="5"
+                    ><h5 id="js-kpi-fb__sentences">0<span></span></h5><h6>Sentences</h6>
+                    </neodigm-kpi>
+                </nav>
+            </article>
+        </div>
+    </section>
+    <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
+        <div>
+            <article style="padding: 1px 1px;">
+                <hr data-n55-theme="brand" data-n55-size="xsmall">
             </article>
         </div>
     </section>
@@ -357,8 +410,6 @@ if( neodigmSodaPop && neodigmCarousel ){
     neodigmCarousel.setOnAfterNav( ( sId, nPg )=>{
         document.querySelector( "neodigm-sodapop neodigm-juicebar" ).classList.remove( "h-opa__0" )
         switch( nPg ){
-            case 1:  //  intro_caro_share
-            break;
             case 2:  //  paste_caro_share
                 document.querySelector( "neodigm-sodapop neodigm-juicebar" ).classList.add( "h-opa__0" )
                 doCopyTurnaroundLink()
@@ -377,6 +428,7 @@ if( neodigmSodaPop && neodigmCarousel ){
         }
     }, "js-wtt-sndbxshare-caro__pup" )
     
+    if( neodigmAgent && neodigmAgent?.sandbox ){ neodigmAgent.sandboxFill() }  //  Turnaround hydrate
 }
 //  sndbx share js end
 
@@ -414,23 +466,37 @@ class Case_conversion {
     constructor(_d, _sQ) {
         this._d = _d; this._sQ = _sQ;
         this.aF = []; this.aObs = [];
+        this.eTermFrom = document.querySelector( "#l-term-from" )
+        this.eTermTo = document.querySelector( "#l-term-to" )
+        this.elKP_fb_cc = document.querySelector( "#js-kpi-fb__cc" )
+        this.elKP_fb_words = document.querySelector( "#js-kpi-fb__words" )
+        this.elKP_fb_sentences = document.querySelector( "#js-kpi-fb__sentences" )
     }
     init() {  //  TODO Register
         return this;
     }
-    showResults(){
-        neodigmUtils.typeOn({"q1st": "#js-fb__top", "msg": "See Your Results in the Bottom Panel|Type or Paste Your Text Below","mode":"NONE","uniqueDelay": 76})
-        NeodigmClaire.showCanv('#l-cntr-term-to', .6).setTheme( ['brand'] ).initCanvOn('#l-cntr-term-to').waxOn('#l-cntr-term-to')
+    showResults( sMsg="", sPanel="#l-cntr-term-to" ){  //  FB
+        if( sMsg ) sMsg += "|"
+        neodigmUtils.typeOn({"q1st": "#js-fb__top", "msg": sMsg + "Type or Paste Your Text Below","mode":"NONE","uniqueDelay": 76})
+        NeodigmClaire.showCanv( sPanel, .6).setTheme( ['brand'] ).initCanvOn( sPanel ).waxOn( sPanel )
     }
     doAction( sAct ){  //
         if( sAct ){
-            let eTermFrom = document.querySelector( "#l-term-from" )
-            let eTermTo = document.querySelector( "#l-term-to" )
+            if( neodigmWired4Sound ) neodigmWired4Sound.vibrate()
+            setTimeout( ()=>{ case_conversion.doAction('countLetters') }, 96 )
             let capFirst = (s) => (s && s[0].toUpperCase() + s.slice(1))
-            if( eTermFrom && eTermTo ){
+            if( this.eTermFrom && this.eTermTo ){
+                if( sAct == "countLetters" ){
+                    this.elKP_fb_cc.innerHTML = this.eTermTo.value.length
+                    this.elKP_fb_words.innerHTML = this.eTermTo.value.split(" ").filter( ( cc )=>{ return (cc) } ).length
+                    this.elKP_fb_sentences.innerHTML = ( this.eTermTo.value.indexOf(".") == -1 ) ? 0 : this.eTermTo.value.split(". ").length
+                    //neodigmUtils.countTo("#js-kpi-fb__cc", this.eTermTo.value.length, 233 )
+                    //neodigmUtils.countTo("#js-kpi-fb__words", this.eTermTo.value.split(" ").filter( ( cc )=>{ return (cc) } ).length, 333 )
+                    //neodigmUtils.countTo("#js-kpi-fb__sentences", ( this.eTermTo.value.indexOf(".") == -1 ) ? 0 : this.eTermTo.value.split(". ").length, 433 )
+                }
                 if( sAct == "caseTitle" ){
-                    if( eTermFrom.value ){
-                        let sTxt = eTermFrom.value.toLowerCase()
+                    if( this.eTermFrom.value ){
+                        let sTxt = this.eTermFrom.value.toLowerCase()
                         let aTxt = sTxt.split(" ")
                         if( aTxt.length ){
                             aTxt = aTxt.map( sW => {
@@ -440,78 +506,72 @@ class Case_conversion {
                                 return sRet
                             });
                         }
-                        eTermTo.value = aTxt.join(" ")
-                        neodigmToast.q("Case Convert|Title " + eTermFrom.value.length + " characters", "brand")
-                        this.showResults()
+                        this.eTermTo.value = capFirst( aTxt.join(" ") )
+                        this.showResults("Case Convert Title " + this.eTermFrom.value.length + " characters|See Your Results in the Bottom Panel")
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
                     }
                 }
                 if( sAct == "caseSentence" ){ //  TODO
-                    if( eTermFrom.value ){
-                        let aTxt = eTermFrom.value.split(" ")
+                    if( this.eTermFrom.value ){
+                        let aTxt = this.eTermFrom.value.split(" ")
                         if( aTxt.length ){
                             aTxt = aTxt.map( sW => {
                                 let sRet = sW
                                 return sRet
                             });
                         }
-                        eTermTo.value = aTxt.join(" ")
-                        neodigmToast.q("Case Convert|Sentence " + eTermFrom.value.length + " characters", "brand")
-                        this.showResults()
+                        this.eTermTo.value = aTxt.join(" ")
+                        this.showResults("Case Convert Sentence " + this.eTermFrom.value.length + " characters|See Your Results in the Bottom Panel")
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
                     }
                 }
                 if( sAct == "caseLower" ){
-                    if( eTermFrom.value ){
-                        let aTxt = eTermFrom.value.split(" ")
+                    if( this.eTermFrom.value ){
+                        let aTxt = this.eTermFrom.value.split(" ")
                         if( aTxt.length ){
                             aTxt = aTxt.map( sW => {
                                 return sW.toLowerCase()
                             });
                         }
-                        eTermTo.value = aTxt.join(" ")
-                        neodigmToast.q("Case Convert|Lowercase " + eTermFrom.value.length + " characters", "brand")
-                        this.showResults()
+                        this.eTermTo.value = aTxt.join(" ")
+                        this.showResults("Case Convert Lowercase " + this.eTermFrom.value.length + " characters|See Your Results in the Bottom Panel")
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
                     }
                 }
                 if( sAct == "caseUpper" ){
-                    if( eTermFrom.value ){
-                        let aTxt = eTermFrom.value.split(" ")
+                    if( this.eTermFrom.value ){
+                        let aTxt = this.eTermFrom.value.split(" ")
                         if( aTxt.length ){
                             aTxt = aTxt.map( sW => {
                                 return sW.toUpperCase()
                             });
                         }
-                        eTermTo.value = aTxt.join(" ")
-                        neodigmToast.q("Case Convert|Uppercase " + eTermFrom.value.length + " characters", "brand")
-                        this.showResults()
+                        this.eTermTo.value = aTxt.join(" ")
+                        this.showResults("Case Convert Uppercase " + this.eTermFrom.value.length + " characters|See Your Results in the Bottom Panel")
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
                     }
                 }
                 if( sAct == "caseReverse" ){
-                    if( eTermFrom.value ){
-                        eTermTo.value = eTermFrom.value.split("").reverse().join("")
-                        neodigmToast.q("Text Convert|Reverse " + eTermFrom.value.length + " characters", "brand")
-                        this.showResults()
+                    if( this.eTermFrom.value ){
+                        this.eTermTo.value = this.eTermFrom.value.split("").reverse().join("")
+                        this.showResults("Text Convert Reverse " + this.eTermFrom.value.length + " characters|See Your Results in the Bottom Panel")
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
                     }
                 }
                 if( sAct == "caseTinyType" ){
-                    if( eTermFrom.value ){
-                        eTermTo.value = case_conversion.getTinyType( eTermFrom.value )
-                        neodigmToast.q("Text Convert|Tiny Type " + eTermFrom.value.length + " characters", "brand")
-                        this.showResults()
+                    if( this.eTermFrom.value ){
+                        this.eTermTo.value = case_conversion.getTinyType( this.eTermFrom.value )
+                        this.showResults("Text Convert Tiny Type " + this.eTermFrom.value.length + " characters|See Your Results in the Bottom Panel")
                     }else{
                         neodigmToast.q("There is no text to convert.", "danger")
                         neodigmUtils.robinTheme("danger"); neodigmUtils.shake( "#l-term-from" )
@@ -528,10 +588,10 @@ class Case_conversion {
                 }
                 */
                 if( sAct == "fromCopy" ){
-                    if( eTermFrom.value ){
+                    if( this.eTermFrom.value ){
                         try{
-                            navigator.clipboard.writeText( eTermFrom.value )
-                            neodigmToast.q("Copied to|Clipboard", "primary")
+                            navigator.clipboard.writeText( this.eTermFrom.value )
+                            this.showResults("Copied to Clipboard", "#l-cntr-term-from")
                         }catch( er ){
                             neodigmToast.q("Unexpected Error| " + er , "danger")
                         }
@@ -545,21 +605,21 @@ class Case_conversion {
                     try{
                         navigator.clipboard
                         .readText()
-                        .then((clipText) => ( eTermFrom.value = clipText ));
-                        neodigmToast.q("Pasted from Clipboard", "primary")
+                        .then((clipText) => ( this.eTermFrom.value = clipText ));
+                        this.showResults("Pasted from Clipboard", "#l-cntr-term-from")
                     }catch( er ){
                         neodigmToast.q("Unexpected Error|" + er , "danger")
                     }
                 }
                 if( sAct == "fromClear" ){
-                    eTermFrom.value = ""; neodigmUtils.robinTheme("danger");
+                    this.eTermFrom.value = ""; neodigmUtils.robinTheme("danger");
                     NeodigmClaire.showCanv('#l-cntr-term-from', .6).setTheme( ['danger'] ).initCanvOn('#l-cntr-term-from').waxOn('#l-cntr-term-from')
                 }
                 if( sAct == "toCopy" ){
-                    if( eTermTo.value ){
+                    if( this.eTermTo.value ){
                         try{
-                            navigator.clipboard.writeText( eTermTo.value )
-                            neodigmToast.q("Copied to|Clipboard", "primary")
+                            navigator.clipboard.writeText( this.eTermTo.value )
+                            this.showResults("Copied to Clipboard", "#l-cntr-term-to")
                         }catch( er ){
                             neodigmToast.q("Unexpected Error| " + er , "danger")
                         }
@@ -573,14 +633,14 @@ class Case_conversion {
                     try{
                         navigator.clipboard
                         .readText()
-                        .then((clipText) => ( eTermTo.value = clipText ));
-                        neodigmToast.q("Pasted from Clipboard", "primary")
+                        .then((clipText) => ( this.eTermTo.value = clipText ));
+                        this.showResults("Pasted from Clipboard", "#l-cntr-term-to")
                     }catch( er ){
                         neodigmToast.q("Unexpected Error|" + er , "danger")
                     }
                 }
                 if( sAct == "toClear" ){
-                    eTermTo.value = ""; neodigmUtils.robinTheme("danger");
+                    this.eTermTo.value = ""; neodigmUtils.robinTheme("danger");
                     NeodigmClaire.showCanv('#l-cntr-term-to', .6).setTheme( ['danger'] ).initCanvOn('#l-cntr-term-to').waxOn('#l-cntr-term-to')
                 }
             }

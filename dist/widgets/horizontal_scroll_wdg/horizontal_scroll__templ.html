@@ -42,7 +42,41 @@ n55-wdg-horz-scrl #region-container .panel {
 
 
 
-
+<n55-wdg-horz-scrl id="region">
+    <div id="region-container" style="width: 400%;">
+        
+        <article class="panel" style="background-image: linear-gradient(-60deg, #f4d03f  0%, #16a085 100%);" data-pref-scheme="dark" data-n55-wdg-leaves="true">
+        <div class="h-left" style="padding: 32px; margin: 32px;">
+            <div><br><p class="hd0">phenomenal storytelling</p>
+            <p class="hd0">that resonates</p></div>
+        </div>
+        </article>
+        <article class="panel" style="background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);" data-pref-scheme="light" data-n55-wdg-leaves="true">
+        <div class="h-left" style="padding: 32px; margin: 32px;">
+            <div><br><p class="hd0">interactivity is the</p>
+            <p class="hd0">active ingredient</p></div>
+        </div>
+        </article>
+        <article class="panel" style="background-image: linear-gradient(-20deg, #616161 0%, #9bc5c3 100%);" data-pref-scheme="dark" data-n55-wdg-leaves="true">
+        <div class="h-left" style="padding: 32px; margin: 32px;">
+            <div><br><p class="hd0">hyper-persuasive</p>
+            <p class="hd0">infographics</p></div>
+        </div>
+        </article>
+        <article class="panel" style="background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);" data-pref-scheme="light" data-n55-wdg-leaves="true">
+        <div class="h-left" style="padding: 32px; margin: 32px;">
+            <div><br><p class="hd0">succinct data</p>
+            <p class="hd0">visualizations</p></div>
+        </div>
+        </article>
+        <article class="panel" style="background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);" data-pref-scheme="dark" data-n55-wdg-leaves="true">
+        <div class="h-left" style="padding: 32px; margin: 32px;">
+            <div><br><p class="hd0" style="color: #fff;">enchanted ux</p>
+        </div>
+        </article>
+  
+    </div>
+  </n55-wdg-horz-scrl>
 
 
 
@@ -73,11 +107,11 @@ n55-wdg-horz-scrl #region-container .panel {
                     pin: true,
                     //markers: true,
                     start: "top top",
-                    scrub: .6,
+                    scrub: .2,
                     snap: {
                         snapTo: 1 / (region.length - 1),
-                        inertia: false,
-                        duration: { min: 0.8, max: 1.8 }
+                        inertia: true,
+                        duration: { min: 1, max: 2 }
                     },
                     end: () => "+=" + (elRegCont.offsetWidth - innerWidth)
                 }
