@@ -92,7 +92,7 @@
             <article class="pfmf-crd--black h-center"><p id="js-fb__top" class="hd5 readampm__white">Type or Paste Your Text Below</p></article>
             <div id="l-cntr-term-from">
                 <article style="padding: 1px 1px;">
-                    <textarea id="l-term-from" class="l-term" rows="8"
+                    <textarea id="l-term-from" class="l-term" rows="6"
                     style="margin: 2px auto"></textarea>
                 </article>
             </div>
@@ -128,7 +128,7 @@
     <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
         <div id="l-cntr-term-to">
             <article style="padding: 1px 1px;">
-                <textarea id="l-term-to" class="l-term" rows="8"
+                <textarea id="l-term-to" class="l-term" rows="6"
                 onkeyup="case_conversion.doAction('countLetters')"
                 style="margin: 2px auto"></textarea>
             </article>
@@ -162,7 +162,7 @@
             </article>
         </div>
     </section>
-
+    <br>
     <section class="pfmf-grid pfmf-grid__33_33_33 readable__doc" style="padding: 1px;">
         <div>
             <article style="padding: 1px 1px;">
@@ -171,7 +171,7 @@
                     data-n55-kpi
                     data-n55-tulip='{"msg":"Charcter Count", "size":"small", "theme":"ghost"}'
                     data-n55-kpi-percent="false" data-n55-kpi-dont-touch="false" data-n55-kpi-shape-off="false"
-                    data-n55-kpi-size="small" data-n55-flash-theme="warning" data-n55-theme="brand"
+                    data-n55-kpi-size="xsmall" data-n55-flash-theme="warning" data-n55-theme="brand"
                     data-n55-wired4sound-click="5"
                     ><h5 id="js-kpi-fb__cc">0<span></span></h5><h6>Characters</h6>
                     </neodigm-kpi>
@@ -185,7 +185,7 @@
                     data-n55-kpi
                     data-n55-tulip='{"msg":"Word Count", "size":"small", "theme":"ghost"}'
                     data-n55-kpi-percent="false" data-n55-kpi-dont-touch="false" data-n55-kpi-shape-off="false"
-                    data-n55-kpi-size="small" data-n55-flash-theme="warning" data-n55-theme="brand"
+                    data-n55-kpi-size="xsmall" data-n55-flash-theme="warning" data-n55-theme="brand"
                     data-n55-wired4sound-click="5"
                     ><h5 id="js-kpi-fb__words">0<span></span></h5><h6>Words</h6>
                     </neodigm-kpi>
@@ -199,18 +199,11 @@
                     data-n55-kpi
                     data-n55-tulip='{"msg":"Sentence Count", "size":"small", "theme":"ghost"}'
                     data-n55-kpi-percent="false" data-n55-kpi-dont-touch="false" data-n55-kpi-shape-off="false"
-                    data-n55-kpi-size="small" data-n55-flash-theme="warning" data-n55-theme="brand"
+                    data-n55-kpi-size="xsmall" data-n55-flash-theme="warning" data-n55-theme="brand"
                     data-n55-wired4sound-click="5"
                     ><h5 id="js-kpi-fb__sentences">0<span></span></h5><h6>Sentences</h6>
                     </neodigm-kpi>
                 </nav>
-            </article>
-        </div>
-    </section>
-    <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
-        <div>
-            <article style="padding: 1px 1px;">
-                <hr data-n55-theme="brand" data-n55-size="xsmall">
             </article>
         </div>
     </section>
@@ -482,7 +475,6 @@ class Case_conversion {
     }
     doAction( sAct ){  //
         if( sAct ){
-            if( neodigmWired4Sound ) neodigmWired4Sound.vibrate()
             setTimeout( ()=>{ case_conversion.doAction('countLetters') }, 96 )
             let capFirst = (s) => (s && s[0].toUpperCase() + s.slice(1))
             if( this.eTermFrom && this.eTermTo ){
@@ -588,6 +580,7 @@ class Case_conversion {
                 }
                 */
                 if( sAct == "fromCopy" ){
+                    if( neodigmWired4Sound ) neodigmWired4Sound.vibrate()
                     if( this.eTermFrom.value ){
                         try{
                             navigator.clipboard.writeText( this.eTermFrom.value )
@@ -602,6 +595,7 @@ class Case_conversion {
                     }
                 }
                 if( sAct == "fromPaste" ){
+                    if( neodigmWired4Sound ) neodigmWired4Sound.vibrate()
                     try{
                         navigator.clipboard
                         .readText()
@@ -612,10 +606,12 @@ class Case_conversion {
                     }
                 }
                 if( sAct == "fromClear" ){
+                    if( neodigmWired4Sound ) neodigmWired4Sound.vibrate()
                     this.eTermFrom.value = ""; neodigmUtils.robinTheme("danger");
                     NeodigmClaire.showCanv('#l-cntr-term-from', .6).setTheme( ['danger'] ).initCanvOn('#l-cntr-term-from').waxOn('#l-cntr-term-from')
                 }
                 if( sAct == "toCopy" ){
+                    if( neodigmWired4Sound ) neodigmWired4Sound.vibrate()
                     if( this.eTermTo.value ){
                         try{
                             navigator.clipboard.writeText( this.eTermTo.value )
@@ -630,6 +626,7 @@ class Case_conversion {
                     }
                 }
                 if( sAct == "toPaste" ){
+                    if( neodigmWired4Sound ) neodigmWired4Sound.vibrate()
                     try{
                         navigator.clipboard
                         .readText()
@@ -640,6 +637,7 @@ class Case_conversion {
                     }
                 }
                 if( sAct == "toClear" ){
+                    if( neodigmWired4Sound ) neodigmWired4Sound.vibrate()
                     this.eTermTo.value = ""; neodigmUtils.robinTheme("danger");
                     NeodigmClaire.showCanv('#l-cntr-term-to', .6).setTheme( ['danger'] ).initCanvOn('#l-cntr-term-to').waxOn('#l-cntr-term-to')
                 }
