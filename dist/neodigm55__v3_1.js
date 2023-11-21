@@ -132,7 +132,6 @@ const neodigmUtils = ( ( _d ) =>{
       if( neodigmOpt.N55_FLASH_TITLE ){
         if( !document?.n55Title ) document.n55Title = document.title
         document.title = neodigmOpt.N55_THEME_COLORS[ sTheme ][2] + document.n55Title
-        //setTimeout( function(){ document.title = document.n55Title }, nT ) //  TODO use alt thread
         neodigmUtils.doSetT( function(){ document.title = document.n55Title }, nT )  //  Call overloaded setT if FF is true (alt thread)
       }
     },
