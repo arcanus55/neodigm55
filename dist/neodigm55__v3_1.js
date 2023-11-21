@@ -42,10 +42,11 @@ neodigmWWInterval: true,
   N55_DEBUG_lOG: false,
   N55_AMPM_THEME: "light",
   N55_EVENT_HAPTIC: true,
+  N55_EVENT_FLASH_TITLE: true,
   N55_GENRE_MOTIF: "neodigm",  //  anime artdeco casino cyberpunk expressionist graffiti noir rainforest seasonal steampunk
   N55_THEME_DEFAULT: "brand",
-  N55_THEME_COLORS: {"brand":["EDBA08","915E00"], "primary":["92a8d1","364C75"], "secondary":["EDCED0","978284"], "success":["009473","003817"], "white":["FFFFFF","FDFDFD"], "ghost":["ffffff","000000"],
-   "danger":["DD4124","810000"], "warning":["F5DF4D","988200"], "info":["7BC4C4","1F6868"], "disabled":["868686","767676"], "night":["6a6a6a","242424"], "marcom":["B163A3","5F4B8B"], "party":["FF6F61","C93F60"]},
+  N55_THEME_COLORS: {"brand":["EDBA08","915E00","🟧"], "primary":["92a8d1","364C75","🟦"], "secondary":["EDCED0","978284","🟫"], "success":["009473","003817","🟩"], "white":["FFFFFF","FDFDFD","⬜"], "ghost":["ffffff","000000","⬜"],
+   "danger":["DD4124","810000","🟥"], "warning":["F5DF4D","988200","🟨"], "info":["7BC4C4","1F6868","🟦"], "disabled":["868686","767676","⬜"], "night":["6a6a6a","242424","⬛"], "marcom":["B163A3","5F4B8B","🟪"], "party":["FF6F61","C93F60","🩷"]},
   N55_APP_STATE: {"CONTEXT": "body", "FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXTMNU": false, "FOCUS": true, "AMPM": "light", "REDUCE_MOTION": true},
   ROOT: document.querySelector(':root'),
   N55_TYPE: "https://fonts.googleapis.com/css?family=Roboto+Condensed:wght@100;300;400|Roboto+Slab:wght@300|Roboto+Mono:wght@300|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0"
@@ -127,19 +128,24 @@ const neodigmUtils = ( ( _d ) =>{
     }, 
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
     genHash: ( sV ) => {sV = String(sV); return Math.abs(sV.split("").reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)) },  //  ABS
+    flashTitle: ( sTheme=neodigmOpt.N55_THEME_DEFAULT, nT=4e3 )=>{  //  Tab Emoji
+      if( neodigmOpt.N55_EVENT_FLASH_TITLE ){
+        if( !document?.n55Title ) document.n55Title = document.title
+        document.title = neodigmOpt.N55_THEME_COLORS[ sTheme ][2] + document.n55Title
+        setTimeout( function(){ document.title = document.n55Title }, nT ) //  TODO use alt thread
+      }
+    },
     robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
-      let sTtl = document.title
-      document.title = "🟥" + document.title
-      if( !neodigmMetronome.isPaused() ){ // TODO test OS/UA motion mq - Cylce Fav icon
+      if( !neodigmMetronome.isPaused() ){ // TODO test OS/UA motion mq
         let aE = [ ... document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelectorAll("[data-n55-theme") ]; const NDELAY = 40;
-        setTimeout( function(){ document.title = sTtl }, ( 6 * NDELAY ) )
         aE.forEach( ( eC, nDx ) => {
           if( eC.dataset.n55Theme != "disabled" ){
             if( !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
             setTimeout( function(){ eC.dataset.n55Theme = sTheme }, ( nDx * NDELAY ) )
             setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + NDELAY) ) )            
           }
-        });
+        } )
+        neodigmUtils.flashTitle( sTheme, 2e3 )
       }
     },
     countTo: async function( _q, nVal, t=124 ){  //  Whole number
@@ -237,7 +243,7 @@ let neodigmToast = (function(_d, eID, _q) {
   let _fOpen = function() {
       _eSbText.innerHTML = _aQ[0].sMsg.replace("|", "<br>").replace("##", "")
       _eSb.style.left = ((_d.body.clientWidth / 2) - (_eSb.clientWidth / 2)) + "px"
-      if( _aQ[0].sTheme ) _eSb.dataset.n55Theme = _aQ[0].sTheme
+      if( _aQ[0].sTheme ) neodigmUtils.flashTitle( _eSb.dataset.n55Theme = _aQ[0].sTheme, _nTimeout )
       if( _sTheme ) {
         _eSb.dataset.n55Theme = _sTheme
         _sTheme = ""
