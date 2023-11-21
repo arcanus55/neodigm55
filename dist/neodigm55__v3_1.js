@@ -133,7 +133,7 @@ const neodigmUtils = ( ( _d ) =>{
         if( !document?.n55Title ) document.n55Title = document.title
         document.title = neodigmOpt.N55_THEME_COLORS[ sTheme ][2] + document.n55Title
         //setTimeout( function(){ document.title = document.n55Title }, nT ) //  TODO use alt thread
-        neodigmUtils.doSetT( document.title = document.n55Title, nT )  //  Call overloaded setT if FF is true (alt thread)
+        neodigmUtils.doSetT( function(){ document.title = document.n55Title }, nT )  //  Call overloaded setT if FF is true (alt thread)
       }
     },
     robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
