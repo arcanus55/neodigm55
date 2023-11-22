@@ -142,7 +142,7 @@
                     data-n55-wired4sound-click="16"
                     data-n55-tulip='{"msg":" Download and Save the Above words as a TXT file. ","mrq":true,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
                     onclick="case_conversion.doAction('toSave')"
-                    ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">save</neodigm-icon></neodigm-acticon>
+                    ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">download</neodigm-icon></neodigm-acticon>
 
                     <neodigm-acticon id="js-term-to-copy" data-n55-theme="ghost" data-n55-size="small"
                     data-n55-wired4sound-click="16"
@@ -282,9 +282,26 @@
                             <br>
                             <p class="readampm">You’ve copied the link, now follow through. Paste it into an email, Slack, or scan the QR code. Share it!</p>
                             <br>
+                            <section style="display: grid; grid-template-columns: 48px calc( 100% - 96px );">
+                                <nav>
+                                    <br><br>
+                                    <neodigm-acticon id="js-term-to-save" data-n55-theme="ghost" data-n55-size="xsmall"
+                                    data-n55-wired4sound-click="16"
+                                    data-n55-tulip='{"msg":" Download and Save the Website Address as a TXT file. ","mrq":true,"tmpt":"","theme":"ghost","size":"xsmall","position":"top","icon":""}'
+                                    onclick="case_conversion.doAction('toSave')"
+                                    ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">download</neodigm-icon></neodigm-acticon>
+
+                                    <br>
+                                    <neodigm-acticon id="js-term-to-save" data-n55-theme="ghost" data-n55-size="xsmall"
+                                    data-n55-wired4sound-click="16"
+                                    data-n55-tulip='{"msg":" Create a New Email Message with a Link to this Online Tool. ","mrq":true,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
+                                    onclick="case_conversion.doAction('toSave')"
+                                    ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">email</neodigm-icon></neodigm-acticon>
+                                </nav>
                                 <div class="l-qr-cntr h-center">
                                     <img id="js-img__qr--uri" alt="QR Code">
-                                </div>
+                                </div>                                
+                            </section>
                             <br>
                             <a id="js-wtt-sndbxshare-pup-cta__Done--id" class="" data-n55-enchanted-cta data-n55-wired4sound-click="10" data-n55-enchanted-cta-size="xsmall" data-n55-theme="ghost" data-n55-enchanted-cta-ambient="" data-n55-enchanted-cta-dont-touch="true"
                             onClick="neodigmSodaPop.close(); neodigmWired4Sound.sound( 4 );">
@@ -425,7 +442,7 @@ if( neodigmSodaPop && neodigmCarousel ){
         }
     }, "js-wtt-sndbxshare-caro__pup" )
     
-    if( neodigmAgent && neodigmAgent?.sandbox ){ neodigmAgent.sandboxFill() }  //  Turnaround hydrate
+    if( neodigmAgent && neodigmAgent?.sandbox ){ neodigmAgent.sandboxFill() }  //  Generice Turnaround hydrate
 }
 //  sndbx share js end
 
@@ -675,8 +692,14 @@ class Case_conversion {
 }
 let case_conversion = new Case_conversion( document, "case_conversion" )
 case_conversion.init()
-neodigmMarquee.init();
-neodigmEnchantedCTA.init();
+neodigmMarquee.init()
+neodigmEnchantedCTA.init()
+
+case_conversion.doAction('countLetters')  //  Wdgt Specific Turnaround hydrate
+
+
+
+
 
 </script><!--  ||  Dont copy script tags -->
 <!--  ||  JAVASCRIPT WDG BEGIN -->
