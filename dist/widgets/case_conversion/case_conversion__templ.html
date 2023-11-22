@@ -71,7 +71,8 @@
                 ><span data-n55-wired4sound-hover="3">Tiny Type</span><span>Characters</span>
                 </a>
 
-                <a id="js-touch-point__share" data-n55-enchanted-cta="" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                <a id="js-touch-point__share" data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                data-wtt-share-uri="https://www.WebToolToys.com/"
                 data-n55-sodapop-id="js-wtt-sndbxshare-pup"
                 data-n55-enchanted-cta-size="xsmall"
                 data-n55-theme="brand"
@@ -285,17 +286,17 @@
                             <section style="display: grid; grid-template-columns: 48px calc( 100% - 96px );">
                                 <nav>
                                     <br><br>
-                                    <neodigm-acticon id="js-term-to-save" data-n55-theme="ghost" data-n55-size="xsmall"
+                                    <neodigm-acticon id="js-cta__share--download" data-n55-theme="ghost" data-n55-size="xsmall"
                                     data-n55-wired4sound-click="16"
                                     data-n55-tulip='{"msg":" Download and Save the Website Address as a TXT file. ","mrq":true,"tmpt":"","theme":"ghost","size":"xsmall","position":"top","icon":""}'
-                                    onclick="case_conversion.doAction('toSave')"
+                                    onclick="doSndbxShareAct('download')"
                                     ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">download</neodigm-icon></neodigm-acticon>
 
                                     <br>
-                                    <neodigm-acticon id="js-term-to-save" data-n55-theme="ghost" data-n55-size="xsmall"
+                                    <neodigm-acticon id="js-cta__share--email" data-n55-theme="ghost" data-n55-size="xsmall"
                                     data-n55-wired4sound-click="16"
                                     data-n55-tulip='{"msg":" Create a New Email Message with a Link to this Online Tool. ","mrq":true,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
-                                    onclick="case_conversion.doAction('toSave')"
+                                    onclick="doSndbxShareAct('email')"
                                     ><neodigm-icon data-n55-wired4sound-hover="3" class="material-symbols-outlined">email</neodigm-icon></neodigm-acticon>
                                 </nav>
                                 <div class="l-qr-cntr h-center">
@@ -315,30 +316,29 @@
         </neodigm-carousel>
 
     </template>
+    <style> /* sndbx share css beging */
+        #wtt-sndbxshare-txtar__uri--id {
+            background-color: #5A5852;
+            border-radius: 4px;
+            color: #FFF;
+            display: block;
+            font-family: 'Roboto Mono'; font-size: 10px;
+            height: 56px;
+            margin: 4px auto; padding: 8px;
+            max-width: 88%;
+            overflow: visible;
+            width: 100%;
+        }
+        #wtt-sndbxshare-fb__facet1[data-n55-typeon="1"] { font-style: italic; }
+        .l-qr-cntr {
+            width: 176px; height: 176px; border-radius: 100%; border: solid 1px #edba08; background-color: #fff;margin: 2px auto;
+        }
+        .l-qr-cntr > img { width: 66%; margin: 14% auto; }
+         /* sndbx share css end */
+    </style>
     <!--  sndbx share markup ui end  -->
 
 </wtt-widget>
-
-<style> /* sndbx share css beging */
-    #wtt-sndbxshare-txtar__uri--id {
-        background-color: #5A5852;
-        border-radius: 4px;
-        color: #FFF;
-        display: block;
-        font-family: 'Roboto Mono'; font-size: 10px;
-        height: 56px;
-        margin: 4px auto; padding: 8px;
-        max-width: 88%;
-        overflow: visible;
-        width: 100%;
-    }
-    #wtt-sndbxshare-fb__facet1[data-n55-typeon="1"] { font-style: italic; }
-    .l-qr-cntr {
-        width: 176px; height: 176px; border-radius: 100%; border: solid 1px #edba08; background-color: #fff;margin: 2px auto;
-    }
-    .l-qr-cntr > img { width: 66%; margin: 14% auto; }
-     /* sndbx share css end */
-</style>
 
 <style>
 .l-term {
@@ -397,26 +397,63 @@ async function doCopyClipboard( sTxt ){
         }
     }
 }
+function doSndbxShareAct( sAct ){
+    if( neodigmWired4Sound ) neodigmWired4Sound.vibrate()
+    if( neodigmUtils ) neodigmUtils.robinTheme( "marcom" )
+    let elTouch = document.querySelector( "[data-wtt-share-uri]" )
+    if( sAct && elTouch && elTouch.dataset?.wttShareUri ){
+        let sShareUri = elTouch.dataset.wttShareUri 
+        switch( sAct ){
+            case "download":
+                let sFile = "share_link_" + new Date().getTime() + ".txt"
+                let sOut = sShareUri + "\n\nDownloaded from WebToolToys.com."
+                let blOut = new Blob([ sOut ], { type: "text/csv;charset=utf-8;" });
+                let elDLoad = document.createElement( "a" );
+                elDLoad.setAttribute("href", URL.createObjectURL( blOut ));
+                elDLoad.setAttribute("download", sFile );
+                elDLoad.style.visibility = 'hidden';
+                document.body.appendChild( elDLoad );
+                elDLoad.click();
+                document.body.removeChild( elDLoad );
+                neodigmToast.q("File Downloaded:|" + sFile, "brand")
+            break;
+            case "email":
+                let sHref="mailto:YourFriends@EmailAddress.com?subject=" + document.title + "&body=" + sShareUri
+                let elShareEmail = document.createElement( "a" );
+                elShareEmail.setAttribute("href", sHref );
+                elShareEmail.style.visibility = 'hidden';
+                document.body.appendChild( elShareEmail );
+                elShareEmail.click();
+                document.body.removeChild( elShareEmail );
+            break;
+        }
+    }
+}
 if( neodigmSodaPop && neodigmCarousel ){
     neodigmSodaPop.setOnAfterOpen( ()=>{
         if( neodigmAgent.bIsInit ){
-            let eTermFrom = document.querySelector( "#l-term-from" )
-            let eTermTo = document.querySelector( "#l-term-to" )
-            let elImgQr = document.querySelector("#js-img__qr--uri")
-            if( eTermFrom && eTermTo && elImgQr ){
-                neodigmAgent.sandboxShare( "case_conversion", {"l-term-from": eTermFrom.value, "l-term-to": eTermTo.value }, ( jsResp )=>{
-                    elInp = document.getElementById("wtt-sndbxshare-txtar__uri--id")
-                    if( elInp && jsResp && jsResp?.data ){
-                        elImgQr.src = jsResp.qr_uri
-                        elInp.value = jsResp.data
-                        neodigmUtils.typeOn({"q1st": "#wtt-sndbxshare-fb__facet1", "msg": "Many Thanks for Sharing|You Share the Best Stuff!","uniqueDelay": 59})
-                        setTimeout( ()=>{
-                            if( neodigmCarousel.nav({"id":"js-wtt-sndbxshare-caro__pup","nav":"getName"}) == "intro_caro_share" ){
-                                neodigmCarousel.nav({"id": "js-wtt-sndbxshare-caro__pup", "nav": "paste_caro_share"})
-                            }
-                        }, 6e3 )
-                    }
-                })                
+            let aInpTA = [ ... document.querySelectorAll( "wtt-widget input, wtt-widget textarea" ) ]
+            aInpTA = aInpTA.filter( ( elI )=>{ return ( elI?.id && elI?.value ) })
+            if( aInpTA.length ){
+                let oInpDTO = {}
+                aInpTA.forEach( ( elI )=>{ if( elI.id ) oInpDTO[ elI.id ] = elI.value })
+                let elImgQr = document.querySelector("#js-img__qr--uri")
+                if( elImgQr ){
+                    neodigmAgent.sandboxShare( "case_conversion", oInpDTO, ( jsResp )=>{
+                        elInp = document.getElementById("wtt-sndbxshare-txtar__uri--id")
+                        if( elInp && jsResp && jsResp?.data ){
+                            elImgQr.src = jsResp.qr_uri
+                            elInp.value = jsResp.data
+                            document.querySelector( "[data-wtt-share-uri]" ).dataset.wttShareUri = jsResp.data
+                            neodigmUtils.typeOn({"q1st": "#wtt-sndbxshare-fb__facet1", "msg": "Many Thanks for Sharing|You Share the Best Stuff!","uniqueDelay": 59})
+                            setTimeout( ()=>{
+                                if( neodigmCarousel.nav({"id":"js-wtt-sndbxshare-caro__pup","nav":"getName"}) == "intro_caro_share" ){
+                                    neodigmCarousel.nav({"id": "js-wtt-sndbxshare-caro__pup", "nav": "paste_caro_share"})
+                                }
+                            }, 6e3 )
+                        }
+                    })                
+                }
             }
         }
     }, "js-wtt-sndbxshare-pup" )
@@ -503,9 +540,6 @@ class Case_conversion {
                     this.elKP_fb_cc.innerHTML = this.eTermTo.value.length
                     this.elKP_fb_words.innerHTML = this.eTermTo.value.split(" ").filter( ( cc )=>{ return (cc) } ).length
                     this.elKP_fb_sentences.innerHTML = ( this.eTermTo.value.indexOf(".") == -1 ) ? 0 : this.eTermTo.value.split(". ").length
-                    //neodigmUtils.countTo("#js-kpi-fb__cc", this.eTermTo.value.length, 233 )
-                    //neodigmUtils.countTo("#js-kpi-fb__words", this.eTermTo.value.split(" ").filter( ( cc )=>{ return (cc) } ).length, 333 )
-                    //neodigmUtils.countTo("#js-kpi-fb__sentences", ( this.eTermTo.value.indexOf(".") == -1 ) ? 0 : this.eTermTo.value.split(". ").length, 433 )
                 }
                 if( sAct == "caseTitle" ){
                     if( this.eTermFrom.value ){
@@ -628,7 +662,7 @@ class Case_conversion {
                         let sFile = "case_convert_" + new Date().getTime() + ".txt"
                         let sOut = this.eTermTo.value + "\n\nDownloaded from WebToolToys.com."
                         let blOut = new Blob([ sOut ], { type: "text/csv;charset=utf-8;" });
-                        let elDLoad = document.createElement("a");
+                        let elDLoad = document.createElement( "a" );
                         elDLoad.setAttribute("href", URL.createObjectURL( blOut ));
                         elDLoad.setAttribute("download", sFile );
                         elDLoad.style.visibility = 'hidden';
