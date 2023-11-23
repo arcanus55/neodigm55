@@ -1250,6 +1250,7 @@ class NeodigmEnchantedCTA {
             let sTheme = ev?.target?.dataset?.n55Theme || ev?.target?.parentNode?.dataset?.n55Theme
             if( sTheme != "disabled" ){
               let sFlashTh = ev?.target?.dataset?.n55FlashTheme || ev?.target?.parentNode?.dataset?.n55FlashTheme
+              neodigmUtils.flashTitle( sFlashTh )
               if( sFlashTh ) neodigmEnchantedCTA.flashTheme( sFlashTh )
             }            
           }
@@ -1293,7 +1294,7 @@ class NeodigmEnchantedCTA {
           }else{
             eC.dataset.n55Theme = sTheme
           }
-        });
+        } )
       }
     return this;
     }
