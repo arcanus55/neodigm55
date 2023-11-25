@@ -1587,16 +1587,16 @@ class NeodigmAgent {
                 this.sandbox = LZString.decompressFromEncodedURIComponent( rs.sandbox )
               }
               if( rs?.partials ){  //  Inject script elms from manifest
-  console.log( " ~~~ ~~~ ~~~ partials | " + rs.partials )
-                rs.assets.forEach( ( aPrt )=>{
+console.log( " ~~~ ~~~ ~~~ partials | " + rs.partials )
+                rs.partials.forEach( ( aPrt )=>{
                   neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + aPrt + ".js" )
                   console.log("neodigmUtils.fAsyncJS( document, aPrt ) " + aPrt )
                 } )
               }
               if( rs?.assets ){  //  Inject script elms from manifest
-                rs.assets.forEach( ( aAst )=>{
+                rs.assets.forEach( ( aAst )=>{  //  TODO css
                   if( aAst[0].toLowerCase() == "js" ) neodigmUtils.fAsyncJS( document, aAst[1] )
-                  console.log("neodigmUtils.fAsyncJS( document, aAst ) " + aAst[0] )
+                  //console.log("neodigmUtils.fAsyncJS( document, aAst ) " + aAst[0] )
                 } )
               }
               neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + sTkn + ".js" )
