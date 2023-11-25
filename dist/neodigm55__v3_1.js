@@ -1586,6 +1586,9 @@ class NeodigmAgent {
               if( rs?.sandbox ){
                 this.sandbox = LZString.decompressFromEncodedURIComponent( rs.sandbox )
               }
+              if( rs?.partials ){  //  Inject script elms from manifest
+  console.log( " ~~~ ~~~ ~~~ partials | " + rs.partials )
+              }
               if( rs?.assets ){  //  Inject script elms from manifest
                 rs.assets.forEach( ( aAst )=>{
                   if( aAst[0].toLowerCase() == "js" ) neodigmUtils.fAsyncJS( document, aAst[1] )
