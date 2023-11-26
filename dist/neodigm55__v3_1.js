@@ -1612,6 +1612,7 @@ class NeodigmAgent {
     return this
   }
   async sandboxShare( sToken = null, oPack = null, fCB ){  //  Session
+    
     if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~sndbx shr pckg | ", oPack )
     if( sToken && oPack ){
       const oPackCmp = {"token": sToken, "compressed": LZString.compressToEncodedURIComponent( JSON.stringify( oPack ) ) }
