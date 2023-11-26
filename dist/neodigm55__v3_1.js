@@ -1588,8 +1588,7 @@ class NeodigmAgent {
               }
               if( rs?.partials ){  //  Inject script elms from manifest
                 rs.partials.forEach( ( aPrt )=>{
-                  neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + aPrt + ".js" )
-                  console.log("neodigmUtils.fAsyncJS( document, aPrt ) " + aPrt )
+                  if( aPrt ) neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + aPrt + ".js" )
                 } )
               }
               if( rs?.assets ){  //  Inject script elms from manifest
