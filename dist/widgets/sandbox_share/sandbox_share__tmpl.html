@@ -206,7 +206,7 @@ if( neodigmSodaPop && neodigmCarousel ){
         if( neodigmAgent.bIsInit ){
             let aInpTA = [ ... document.querySelectorAll( "wtt-widget input, wtt-widget textarea" ) ]
             aInpTA = aInpTA.filter( ( elI )=>{ return ( elI?.id && elI?.value ) })
-            if( aInpTA.length ){
+            //if( aInpTA.length ){
                 let oInpDTO = {}
                 aInpTA.forEach( ( elI )=>{ if( elI.id ) oInpDTO[ elI.id ] = elI.value })
                 let elImgQr = document.querySelector("#js-img__qr--uri")
@@ -226,7 +226,7 @@ if( neodigmSodaPop && neodigmCarousel ){
                         }
                     })                
                 }
-            }
+            //}
         }
     }, "js-wtt-sndbxshare-pup" )
 
