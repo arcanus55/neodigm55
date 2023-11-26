@@ -1,0 +1,407 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55__v3_1.css"></link>
+        <script src="https://arcanus55.github.io/neodigm55/dist/neodigm55__v3_1.js"></script>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.css"></link>
+    </head>
+    <body  data-n55-ampm-theme="light">
+
+
+<!--  ||  TEMPLATE MU & CSS WDG BEGIN -->
+<wtt-widget data-n55-token="web_cryptography_api">
+    <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
+        <div>
+            <article class="pfmf-crd--black h-center"><p class="readable__doc readable__doc--white">Type or Paste Your Key Below</p></article>
+            <article style="padding: 1px 1px;">
+                <input id="l-term-key" class="l-term" type="password"></input>
+            </article>
+        </div>
+    </section>
+    
+    <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
+        <div>
+            <article class="pfmf-crd--black h-center"><p class="readable__doc readable__doc--white">Type or Paste Your Text Below</p></article>
+            <article style="padding: 1px 1px;">
+                <textarea id="l-term-from" class="l-term" rows="8"></textarea>
+            </article>
+        </div>
+    </section>
+    
+    <section class="Qpfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
+        <div>
+            <article style="padding: 1px 1px;">
+                <nav class="h-center" style="margin-top: -8px;">
+                    <a id="js-term-from-copy"
+                    onclick="doAction('fromCopy')"
+                    data-n55-enchanted-cta
+                    data-n55-enchanted-cta-dont-touch="true"
+                    data-n55-enchanted-cta-shape-off="true"
+                    data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="xsmall"
+                    data-n55-flash-theme="night"
+                    data-n55-theme="night"
+                    data-n55-wired4sound-click="11"
+                    ><span data-n55-wired4sound-mouseover="3">Copy</span><span>Clipboard</span>
+                    </a>
+                    <a id="js-term-from-paste"
+                    onclick="doAction('fromPaste')"
+                    data-n55-enchanted-cta
+                    data-n55-enchanted-cta-dont-touch="true"
+                    data-n55-enchanted-cta-shape-off="true"
+                    data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="xsmall"
+                    data-n55-flash-theme="night"
+                    data-n55-theme="night"
+                    data-n55-wired4sound-click="11"
+                    ><span data-n55-wired4sound-mouseover="3">Paste</span><span>Clipboard</span>
+                    </a>
+                    <a id="js-term-from-clear"
+                    onclick="doAction('fromClear')"
+                    data-n55-enchanted-cta
+                    data-n55-enchanted-cta-dont-touch="true"
+                    data-n55-enchanted-cta-shape-off="true"
+                    data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="xsmall"
+                    data-n55-flash-theme="danger"
+                    data-n55-theme="night"
+                    data-n55-wired4sound-click="11"
+                    ><span data-n55-wired4sound-mouseover="3">Clear</span><span>Blank</span>
+                    </a>
+                </nav>
+            </article>
+        </div>
+    </section>
+    
+    <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
+        <div>
+            <article class="h-center">
+                <a id="js-crypt-encrypt"
+                onclick="doAction('crypt-encrypt')"
+                data-n55-enchanted-cta
+                data-n55-enchanted-cta-dont-touch="true"
+                data-n55-enchanted-cta-shape-off="true"
+                data-n55-enchanted-cta-hover-an="true"
+                data-n55-enchanted-cta-size="xsmall"
+                data-n55-flash-theme="marcom"
+                data-n55-theme="primary"
+                data-n55-wired4sound-click="7"
+                ><span data-n55-wired4sound-mouseover="3">Encrypt</span><span>Make Hidden</span>
+                </a>
+                <a id="js-crypt-decrypt"
+                onclick="doAction('crypt-decrypt')"
+                data-n55-enchanted-cta
+                data-n55-enchanted-cta-dont-touch="true"
+                data-n55-enchanted-cta-shape-off="true"
+                data-n55-enchanted-cta-hover-an="true"
+                data-n55-enchanted-cta-size="xsmall"
+                data-n55-flash-theme="marcom"
+                data-n55-theme="primary"
+                data-n55-wired4sound-click="5"
+                ><span data-n55-wired4sound-mouseover="3">Decrypt</span><span>Make Readable</span>
+                </a>
+                <a id="js-touch-point__share" data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+                data-wtt-share-uri="https://www.WebToolToys.com/"
+                data-n55-sodapop-id="js-wtt-sndbxshare-pup"
+                data-n55-enchanted-cta-size="xsmall"
+                data-n55-theme="brand"
+                data-n55-flash-theme="warning"
+                data-n55-wired4sound-click="16"
+                data-n55-tulip= '{"msg":" Copy this Web Address and send to a friend. ","mrq":true,"tmpt":"","theme":"brand","size":"small","position":"bottom","icn":""}'
+                ><span data-n55-wired4sound-hover="3"><neodigm-icon class="material-symbols-outlined">share</neodigm-icon> Share</span><span><neodigm-icon class="material-symbols-outlined">share</neodigm-icon>  Copy URL</span>
+                </a>
+<!--    
+                <a id="js-touch-point__share" onclick="doAction('share');"
+                data-n55-enchanted-cta=""
+                data-n55-enchanted-cta-dont-touch="false"
+                data-n55-enchanted-cta-shape-off="true"
+                data-n55-enchanted-cta-hover-an="true"
+                data-n55-enchanted-cta-size="medium"
+                data-n55-theme="brand"
+                data-n55-flash-theme="marcom"
+                data-n55-wired4sound-click="7"
+                ><span data-n55-wired4sound-mouseover="3"><neodigm-icon class="material-symbols-outlined">share</neodigm-icon> Share</span><span><neodigm-icon class="material-symbols-outlined">share</neodigm-icon>  Copy URL</span>
+                </a>
+-->                
+            </article>
+        </div>
+    </section>
+    
+    <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
+        <div>
+            <article style="padding: 1px 1px;">
+                <textarea id="l-term-to" class="l-term" rows="8"></textarea>
+            </article>
+        </div>
+    </section>
+    
+    <section class="Qpfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
+        <div>
+            <article style="padding: 1px 1px;">
+                <nav class="h-center" style="margin-top: -8px;">
+                    <a id="js-term-to-copy"
+                    onclick="doAction('toCopy')"
+                    data-n55-enchanted-cta
+                    data-n55-enchanted-cta-dont-touch="true"
+                    data-n55-enchanted-cta-shape-off="true"
+                    data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="xsmall"
+                    data-n55-flash-theme="night"
+                    data-n55-theme="night"
+                    data-n55-wired4sound-click="11"
+                    ><span data-n55-wired4sound-mouseover="3">Copy</span><span>Clipboard</span>
+                    </a>
+                    <a id="js-term-to-paste"
+                    onclick="doAction('toPaste')"
+                    data-n55-enchanted-cta
+                    data-n55-enchanted-cta-dont-touch="true"
+                    data-n55-enchanted-cta-shape-off="true"
+                    data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="xsmall"
+                    data-n55-flash-theme="night"
+                    data-n55-theme="night"
+                    data-n55-wired4sound-click="11"
+                    ><span data-n55-wired4sound-mouseover="3">Paste</span><span>Clipboard</span>
+                    </a>
+                    <a id="js-term-to-clear"
+                    onclick="doAction('toClear')"
+                    data-n55-enchanted-cta
+                    data-n55-enchanted-cta-dont-touch="true"
+                    data-n55-enchanted-cta-shape-off="true"
+                    data-n55-enchanted-cta-hover-an="true"
+                    data-n55-enchanted-cta-size="xsmall"
+                    data-n55-flash-theme="danger"
+                    data-n55-theme="night"
+                    data-n55-wired4sound-click="11"
+                    ><span data-n55-wired4sound-mouseover="3">Clear</span><span>Blank</span>
+                    </a>
+                </nav>
+            </article>
+        </div>
+    </section>
+</wtt-widget>
+
+<style>
+    .l-term {background-color: #6a6a6a; color: #fff;width: 99%;border-radius: 12px; font-size: 14px;
+    padding: 4px;}
+</style>
+<!--  ||  TEMPLATE MU & CSS WDG END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  ||  JAVASCRIPT WDG BEGIN -->
+
+<!--  ||  Dont copy script tags -->
+<script> 
+//  Soda Pop Tmpl logic
+setTimeout(function(){
+    if( neodigmSodaPop && neodigmMarquee && neodigmEnchantedCTA ){
+        neodigmSodaPop.setOnAfterOpen( function(){
+NeodigmClaire.showCanv('neodigm-sodapop', .6).setTheme( ['brand','warning'] ).initCanvOn('neodigm-sodapop').waxOn('neodigm-sodapop')
+            neodigmMetronome.init().pause( 800 )
+                neodigmMarquee.init().pause( 1200 )
+                    neodigmEnchantedCTA.init()
+                    neodigmCarousel.init()
+        });
+        neodigmSodaPop.setOnBeforeUserExit( function(){
+            neodigmToast.q("Got Questions?|Start a Conversation!", "brand")
+            if( neodigmSodaPop && (  neodigmSodaPop.isOpen() )) olark('api.box.expand')
+            if( neodigmSodaPop && ( !neodigmSodaPop.isOpen() )) neodigmSodaPop.autoOpen('js-contactPop__id')
+        } )
+    }
+}, 3e3)
+setTimeout(function(){
+    if( neodigmSodaPop && NeodigmClaire ){
+        neodigmSodaPop.setOnClose( function(){
+NeodigmClaire.showCanv('neodigm-sodapop').initCanvOff('neodigm-sodapop').waxOff('neodigm-sodapop');
+            return true;
+        });
+    }
+}, 4e3)
+const buff_to_base64 = (buff) => btoa(
+    new Uint8Array(buff).reduce(
+      (data, byte) => data + String.fromCharCode(byte), ''
+    )
+  );
+  
+  const base64_to_buf = (b64) =>
+    Uint8Array.from(atob(b64), (c) => c.charCodeAt(null));
+  
+  const enc = new TextEncoder();
+  const dec = new TextDecoder();
+  
+  const getPasswordKey = (password) =>
+    window.crypto.subtle.importKey("raw", enc.encode(password), "PBKDF2", false, [
+      "deriveKey",
+    ]);
+  
+  const deriveKey = (passwordKey, salt, keyUsage) =>
+    window.crypto.subtle.deriveKey(
+      {
+        name: "PBKDF2",
+        salt: salt,
+        iterations: 250000,
+        hash: "SHA-256",
+      },
+      passwordKey,
+      { name: "AES-GCM", length: 256 },
+      false,
+      keyUsage
+    );
+  
+  async function encryptData(secretData, password) {
+    try {
+      const salt = window.crypto.getRandomValues(new Uint8Array(16));
+      const iv = window.crypto.getRandomValues(new Uint8Array(12));
+      const passwordKey = await getPasswordKey(password);
+      const aesKey = await deriveKey(passwordKey, salt, ["encrypt"]);
+      const encryptedContent = await window.crypto.subtle.encrypt(
+        {
+          name: "AES-GCM",
+          iv: iv,
+        },
+        aesKey,
+        enc.encode(secretData)
+      );
+  
+      const encryptedContentArr = new Uint8Array(encryptedContent);
+      let buff = new Uint8Array(
+        salt.byteLength + iv.byteLength + encryptedContentArr.byteLength
+      );
+      buff.set(salt, 0);
+      buff.set(iv, salt.byteLength);
+      buff.set(encryptedContentArr, salt.byteLength + iv.byteLength);
+      const base64Buff = buff_to_base64(buff);
+      return base64Buff;
+    } catch (e) {
+      console.log(`Error - ${e}`);
+      return "";
+    }
+  }
+  
+  async function decryptData(encryptedData, password) {
+    try {
+      const encryptedDataBuff = base64_to_buf(encryptedData);
+      const salt = encryptedDataBuff.slice(0, 16);
+      const iv = encryptedDataBuff.slice(16, 16 + 12);
+      const data = encryptedDataBuff.slice(16 + 12);
+      const passwordKey = await getPasswordKey(password);
+      const aesKey = await deriveKey(passwordKey, salt, ["decrypt"]);
+      const decryptedContent = await window.crypto.subtle.decrypt(
+        {
+          name: "AES-GCM",
+          iv: iv,
+        },
+        aesKey,
+        data
+      );
+      return dec.decode(decryptedContent);
+    } catch (e) {
+      console.log(`Error - ${e}`);
+      return "";
+    }
+  }
+  
+  let doAction = async function( sAct ){
+      let eTermKey = document.querySelector( "#l-term-key" )
+      let eTermFrom = document.querySelector( "#l-term-from" )
+      let eTermTo = document.querySelector( "#l-term-to" )
+      let capFirst = (s) => (s && s[0].toUpperCase() + s.slice(1))
+      if( eTermKey && eTermFrom && eTermTo ){
+          if( sAct == "crypt-encrypt" ){
+              if( eTermKey.value && eTermFrom.value ){
+                  eTermTo.value = await encryptData( eTermFrom.value, eTermKey.value );
+                  neodigmToast.q("Encrypted " + eTermFrom.value.length + " characters", "primary")
+              }else{
+                  neodigmToast.q("There is no key / text|to encrypt.", "danger")
+              }
+          }
+  
+          if( sAct == "crypt-decrypt" ){
+              if( eTermKey.value && eTermFrom.value ){
+                  const decryptedData = await decryptData( eTermFrom.value, eTermKey.value );
+                  eTermTo.value = decryptedData || "decryption failed!";
+                  neodigmToast.q("Decrypted " + eTermFrom.value.length + " characters", "primary")
+              }else{
+                  neodigmToast.q("There is no key / text|to encrypt.", "danger")
+              }
+          }
+  
+          if( sAct == "share" ){
+              try {
+                  navigator.clipboard.writeText( document.location.href );
+                  neodigmToast.q("Page Address (URL)|Copied to Clipboard", "brand" )
+              } catch (err) {
+                  console.warn('Failed to copy', err)
+              }
+          }
+          if( sAct == "fromCopy" ){
+              if( eTermFrom.value ){
+                  try{
+                      navigator.clipboard.writeText( eTermFrom.value )
+                      neodigmToast.q("Copied to|Clipboard", "primary")
+                  }catch( er ){
+                      neodigmToast.q("Unexpected Error| " + er , "danger")
+                  }
+              }else{
+                  neodigmToast.q("There is no text to copy.", "danger")
+                  neodigmUtils.robinTheme("danger");
+              }
+          }
+          if( sAct == "fromPaste" ){
+              try{
+                  navigator.clipboard
+                  .readText()
+                  .then((clipText) => ( eTermFrom.value = clipText ));
+                  neodigmToast.q("Pasted from Clipboard", "primary")
+              }catch( er ){
+                  neodigmToast.q("Unexpected Error|" + er , "danger")
+              }
+          }
+          if( sAct == "fromClear" ){ eTermFrom.value = ""; neodigmUtils.robinTheme("danger"); }
+  
+          if( sAct == "toCopy" ){
+              if( eTermTo.value ){
+                  try{
+                      navigator.clipboard.writeText( eTermTo.value )
+                      neodigmToast.q("Copied to|Clipboard", "primary")
+                  }catch( er ){
+                      neodigmToast.q("Unexpected Error| " + er , "danger")
+                  }
+              }else{
+                  neodigmToast.q("There is no text to copy.", "danger")
+                  neodigmUtils.robinTheme("danger");
+              }
+          }
+          if( sAct == "toPaste" ){
+              try{
+                  navigator.clipboard
+                  .readText()
+                  .then((clipText) => ( eTermTo.value = clipText ));
+                  neodigmToast.q("Pasted from Clipboard", "primary")
+              }catch( er ){
+                  neodigmToast.q("Unexpected Error|" + er , "danger")
+              }
+          }
+          if( sAct == "toClear" ){ eTermTo.value = ""; neodigmUtils.robinTheme("danger"); }
+      }
+      return false;
+  }
+  neodigmMarquee.init();
+  neodigmEnchantedCTA.init();
+
+</script><!--  ||  Dont copy script tags -->
+<!--  ||  JAVASCRIPT WDG BEGIN -->
+
+    </body>
+</html>

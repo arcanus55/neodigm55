@@ -28,7 +28,7 @@
                 data-n55-theme="ghost"
                 data-n55-wired4sound-click="16"
                 data-n55-tulip= '{"msg":" Capitalize the first word in a group of words ending in a period.  All other words will be made lowercase. ","mrq":true,"tmpt":"","theme":"ghost","size":"small","position":"bottom","icn":""}'
-                ><span data-n55-wired4sound-hover="3">Sentence Case</span><span>Cap First Word</span>
+                ><span data-n55-wired4sound-hover="3">Sentence</span><span>Cap First Word</span>
                 </a>
                 <a id="js-case-lower"
                 onclick="case_conversion.doAction('caseLower')"
@@ -174,10 +174,11 @@
                 <nav class="h-center" style="margin-top: -8px;">
                     <neodigm-kpi id="kpi-count__cc"
                     data-n55-kpi
+                    onClick="neodigmUtils.robinTheme('marcom')"
                     data-n55-tulip='{"msg":"Charcter Count", "size":"small", "theme":"ghost"}'
                     data-n55-kpi-percent="false" data-n55-kpi-dont-touch="false" data-n55-kpi-shape-off="false"
                     data-n55-kpi-size="xsmall" data-n55-flash-theme="warning" data-n55-theme="brand"
-                    data-n55-wired4sound-click="5"
+                    data-n55-wired4sound-click="vibrate"
                     ><h5 id="js-kpi-fb__cc">0<span></span></h5><h6>Characters</h6>
                     </neodigm-kpi>
                 </nav>
@@ -188,10 +189,11 @@
                 <nav class="h-center" style="margin-top: -8px;">
                     <neodigm-kpi id="kpi-count__words"
                     data-n55-kpi
+                    onClick="neodigmUtils.robinTheme('marcom')"
                     data-n55-tulip='{"msg":"Word Count", "size":"small", "theme":"ghost"}'
                     data-n55-kpi-percent="false" data-n55-kpi-dont-touch="false" data-n55-kpi-shape-off="false"
                     data-n55-kpi-size="xsmall" data-n55-flash-theme="warning" data-n55-theme="brand"
-                    data-n55-wired4sound-click="5"
+                    data-n55-wired4sound-click="vibrate"
                     ><h5 id="js-kpi-fb__words">0<span></span></h5><h6>Words</h6>
                     </neodigm-kpi>
                 </nav>
@@ -202,10 +204,11 @@
                 <nav class="h-center" style="margin-top: -8px;">
                     <neodigm-kpi id="kpi-count__sentences"
                     data-n55-kpi
+                    onClick="neodigmUtils.robinTheme('marcom')"
                     data-n55-tulip='{"msg":"Sentence Count", "size":"small", "theme":"ghost"}'
                     data-n55-kpi-percent="false" data-n55-kpi-dont-touch="false" data-n55-kpi-shape-off="false"
                     data-n55-kpi-size="xsmall" data-n55-flash-theme="warning" data-n55-theme="brand"
-                    data-n55-wired4sound-click="5"
+                    data-n55-wired4sound-click="vibrate"
                     ><h5 id="js-kpi-fb__sentences">0<span></span></h5><h6>Sentences</h6>
                     </neodigm-kpi>
                 </nav>
@@ -242,7 +245,6 @@
 
 
 <!--  ||  JAVASCRIPT WDG BEGIN -->
-<!--  ||  Paste the below (without the script tags) into the same named _wdg.js file -->
 
 <!--  ||  Dont copy script tags -->
 <script> 

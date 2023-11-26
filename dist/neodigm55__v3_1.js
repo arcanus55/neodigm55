@@ -1587,7 +1587,6 @@ class NeodigmAgent {
                 this.sandbox = LZString.decompressFromEncodedURIComponent( rs.sandbox )
               }
               if( rs?.partials ){  //  Inject script elms from manifest
-console.log( " ~~~ ~~~ ~~~ partials | " + rs.partials )
                 rs.partials.forEach( ( aPrt )=>{
                   neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + aPrt + ".js" )
                   console.log("neodigmUtils.fAsyncJS( document, aPrt ) " + aPrt )
@@ -1596,7 +1595,6 @@ console.log( " ~~~ ~~~ ~~~ partials | " + rs.partials )
               if( rs?.assets ){  //  Inject script elms from manifest
                 rs.assets.forEach( ( aAst )=>{  //  TODO css
                   if( aAst[0].toLowerCase() == "js" ) neodigmUtils.fAsyncJS( document, aAst[1] )
-                  //console.log("neodigmUtils.fAsyncJS( document, aAst ) " + aAst[0] )
                 } )
               }
               neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + sTkn + ".js" )
@@ -1614,6 +1612,7 @@ console.log( " ~~~ ~~~ ~~~ partials | " + rs.partials )
     return this
   }
   async sandboxShare( sToken = null, oPack = null, fCB ){  //  Session
+    if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~sndbx shr pckg | ", oPack )
     if( sToken && oPack ){
       const oPackCmp = {"token": sToken, "compressed": LZString.compressToEncodedURIComponent( JSON.stringify( oPack ) ) }
       const oFetchConf = { method: "POST", body: JSON.stringify( oPackCmp ), headers: { "protomolecule": neodigmAgent.genChronSync(), "apploc": LZString.compressToEncodedURIComponent( document.location.href ), "Content-Type": "application/json" } }
