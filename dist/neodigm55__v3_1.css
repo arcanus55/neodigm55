@@ -163,6 +163,7 @@ neodigm-sodapop.ndsp__opened--shake1 {
     animation-name: touch_shake;
 }
 
+neodigm-sodapop.ndsp__size--xsmall { width: 66%; }
 neodigm-sodapop.ndsp__size--small  { width: 76%; }
 neodigm-sodapop.ndsp__size--medium { width: 86%; }
 neodigm-sodapop.ndsp__size--large  { width: 96%; }
@@ -175,6 +176,7 @@ neodigm-sodapop:not(.ndsp__modal)::after {
     user-select: none;
 }
 @media only screen and (min-width:62em){/* sm med */
+    neodigm-sodapop.ndsp__size--xsmall { width: 32%; }
     neodigm-sodapop.ndsp__size--small  { width: 44%; }
     neodigm-sodapop.ndsp__size--medium { width: 66%; }
     neodigm-sodapop.ndsp__size--large  { width: 88%; }
