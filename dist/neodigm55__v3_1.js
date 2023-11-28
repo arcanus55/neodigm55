@@ -618,8 +618,14 @@ class NeodigmPopTart {
   }
   open( elPop, oPos ) {
     if( this.bIsInit && !this.bIsPause && elPop.id && !elPop.dataset?.n55PoptartOpen ) {
-        let nOffSetT, nOffSetL, nOffSetH, nOffSetW;  //  TODO oPos offsets conf
+        let nOffSetT, nOffSetL, nOffSetH, nOffSetW;  //  oPos offset conf
         nOffSetT = nOffSetL = nOffSetH = nOffSetW = 0;
+        if( oPos?.offset ){
+          nOffSetH = oPos?.offset?.h || 0
+          nOffSetL = oPos?.offset?.l || 0
+          nOffSetT = oPos?.offset?.t || 0
+          nOffSetW = oPos?.offset?.w || 0
+        }
         let oRctBound = this.elBound.getBoundingClientRect()
         let pxLft  = window.pageXOffset || this._d.documentElement.scrollLeft
         let pxTop = window.pageYOffset || this._d.documentElement.scrollTop
