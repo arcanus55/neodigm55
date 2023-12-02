@@ -203,6 +203,7 @@ function doSndbxShareAct( sAct ){
 }
 if( neodigmSodaPop && neodigmCarousel ){
     neodigmSodaPop.setOnAfterOpen( ()=>{
+        neodigmCarousel.init()
         if( neodigmAgent.bIsInit ){
             let aInpTA = [ ... document.querySelectorAll( "wtt-widget input, wtt-widget textarea" ) ]
             aInpTA = aInpTA.filter( ( elI )=>{ return ( elI?.id && elI?.value ) })
