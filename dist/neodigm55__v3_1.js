@@ -124,6 +124,7 @@ const neodigmUtils = ( ( _d ) =>{
       if( sFirstAMPM ) neodigmOpt.N55_AMPM_THEME = neodigmOpt.N55_APP_STATE.AMPM = sFirstAMPM
     },
     prettyTime: ( sDt ) => {
+      if( !sDt ) return ""
       return new Date( sDt ).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" } )
     }, 
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
@@ -803,7 +804,7 @@ class NeodigmWired4Sound {
     }
     return this
   }
-  setVolume ( nVol ) { if( zzfxV ) zzfxV = nVol; return this }
+  setVolume( nVol ) { if( zzfxV ) zzfxV = nVol; return this }
 }
 let neodigmWired4Sound = new NeodigmWired4Sound( document, [ neodigmOpt.N55_APP_STATE.CONTEXT ])
 
