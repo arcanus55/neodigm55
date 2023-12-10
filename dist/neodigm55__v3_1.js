@@ -124,8 +124,9 @@ const neodigmUtils = ( ( _d ) =>{
       if( sFirstAMPM ) neodigmOpt.N55_AMPM_THEME = neodigmOpt.N55_APP_STATE.AMPM = sFirstAMPM
     },
     prettyTime: ( sDt ) => {
-      if( !sDt ) return ""
-      return new Date( sDt ).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" } )
+      let sOut = new Date( sDt ).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" } )
+      if( sDt == "Dec 31, 1969" ) sOut = ""
+      return sOut
     }, 
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
     genHash: ( sV ) => {sV = String(sV); return Math.abs(sV.split("").reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)) },  //  ABS
