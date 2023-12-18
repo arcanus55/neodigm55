@@ -355,7 +355,7 @@ fill: var(  --m5lc-theme-info-alt );
 }
 .l-faq > details { padding: 0; margin: 4px; border: solid 1px #6a6a6a; border-radius: 0; }
 .l-faq > details > summary { text-align: center; list-style: none; cursor: pointer; color: #fff; background-color: #242424; padding: 16px 4px; margin: 0; border: solid 1px #8a8a8a;}
-.l-faq > details:hover > summary { border: solid 1px #edba08;}
+.l-faq > details:hover > summary { border: solid 1px var( --m5lc-theme-brand );}
 .l-faq > details > p { text-align: left; padding: 10px; }
 [data-n55-ampm-theme="light"] .l-faq > details { background-color: #fff; }
 [data-n55-ampm-theme="dark"]  .l-faq > details { background-color: var( --m5lc-theme-night-mid ); }
