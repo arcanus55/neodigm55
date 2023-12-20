@@ -1727,8 +1727,7 @@ class NeodigmPicnic {  //  TODO sort
             this.nTotal = 0
             if( sSearch ){
             elPicRows.forEach( ( elRow )=>{
-              let sUC = elRow.innerHTML.toUpperCase()
-              if( sUC.indexOf( sSearch.toUpperCase() ) == -1 ) {
+              if( elRow.innerHTML.toUpperCase().indexOf( sSearch.toUpperCase() ) == -1 ) {
                 elRow.classList.add( "h-filter-not-found" )
               }else{
                 elRow.classList.remove( "h-filter-not-found" )
