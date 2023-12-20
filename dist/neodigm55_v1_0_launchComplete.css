@@ -419,7 +419,7 @@ fill: var(  --m5lc-theme-info-alt );
  .text-coy_2021b {color: #F5DF4D;}  /* Illuminating */
  .text-coy_2022  {color: #6667AB;}  /* Very Peri */
  .text-coy_2023  {color: #BE3455;}  /* Viva Magenta */
- .text-coy_2023  {color: #FFBE98;}  /* Peach Fuzz */
+ .text-coy_2024  {color: #FFBE98;}  /* Peach Fuzz */
 
 /*  MQ  */
 @media only screen and (min-width:48.1em){/* med *//* lg */
