@@ -47,7 +47,7 @@ neodigmWWInterval: true,
   N55_THEME_DEFAULT: "brand",
   N55_THEME_COLORS: {"brand":["EDBA08","915E00","🟧"], "primary":["92a8d1","364C75","🟦"], "secondary":["EDCED0","978284","🟫"], "success":["009473","003817","🟩"], "white":["FFFFFF","FDFDFD","⬜"], "ghost":["ffffff","000000","⬜"],
    "danger":["DD4124","810000","🟥"], "warning":["F5DF4D","988200","🟨"], "info":["7BC4C4","1F6868","🟦"], "disabled":["868686","767676","⬜"], "night":["6a6a6a","242424","⬛"], "marcom":["B163A3","5F4B8B","🟪"], "party":["FF6F61","C93F60","🟪"]},
-  N55_APP_STATE: {"CONTEXT": "body", "FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXTMNU": false, "FOCUS": true, "AMPM": "light", "REDUCE_MOTION": true},
+  N55_APP_STATE: {"CONTEXT": "body", "FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXTMNU": false, "FOCUS": true, "AMPM": "light", "REDUCE_MOTION": false},
   ROOT: document.querySelector(':root'),
   N55_TYPE: "https://fonts.googleapis.com/css?family=Roboto+Condensed:wght@100;300;400|Roboto+Slab:wght@300|Roboto+Mono:wght@300|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0"
 }
@@ -80,9 +80,7 @@ const neodigmUtils = ( ( _d ) =>{
       aDset.forEach( (sVal ) => {
           if( sVal == "-" ){
               bUpper = true;
-          }else{
-              aDret.push( ( bUpper ) ? sVal.toUpperCase() : sVal ); bUpper = false;
-          }
+          }else{ aDret.push( ( bUpper ) ? sVal.toUpperCase() : sVal ); bUpper = false; }
       });
       return aDret.join("");
     },
@@ -93,25 +91,25 @@ const neodigmUtils = ( ( _d ) =>{
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
       document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "click", ( ev ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
-        if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class pub/sub emit?
+        if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
         let evAtr = neodigmUtils.walkDOM3( ev?.target, "n55TypeonClick" )
         if( evAtr ) neodigmUtils.typeOn( JSON.parse( evAtr ) )
       })
       document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "touchstart", ( ev ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
-        if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class pub/sub emit?
+        if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
       })
       window.addEventListener( "resize", ( ev ) =>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
-          if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class pub/sub emit?
+          if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
           if( neodigmOpt.neodigmPopTart ) neodigmPopTart.close()
         })
       })
       window.addEventListener( "orientationchange", ( ev ) =>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
-          if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODOD refact into class pub/sub emit?
+          if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
         })
       })
       window.addEventListener( "scroll", ( ev ) =>{
@@ -150,8 +148,8 @@ const neodigmUtils = ( ( _d ) =>{
         neodigmUtils.flashTitle( sTheme, 2e3 )
       }
     },
-    countTo: async function( _q, nVal, t=124 ){  //  Whole number
-      const NTIMES = [16, t];
+    countTo: async function( _q, nVal, t=132 ){  //  Whole number
+      const NTIMES = [16, t];  //  sixteen steps
       [ ... document.querySelectorAll( _q ) ].forEach(function( e, nDx ){
           let nDif = Math.abs( Number( e.textContent ) - nVal )
           neodigmMetronome.unsubscribe( NTIMES[1] + nDx ).subscribe( function( mx ){
@@ -161,9 +159,7 @@ const neodigmUtils = ( ( _d ) =>{
               nValC = Math.round( nValC )
               if( mx != 0 ){
                 e.textContent = ( nCur < nVal ) ? nCur + nValC : nCur - nValC
-              }else{
-                e.textContent = nVal
-              }
+              }else{ e.textContent = nVal }
             }
           }, NTIMES[1] + nDx, NTIMES[0] )
       })
@@ -351,9 +347,7 @@ class NeodigmSodaPop {
         if( bOkOpen && this.fOnBeforeOpen["def"]) bOkOpen = this.fOnBeforeOpen["def"]( this.sId )
         if( bOkOpen && this.bIsInit && this.eTmpl && this.eScrim ) {
             this.bIsModal = (this.eTmpl.dataset.n55SodapopModal == "true")
-            if(this.bIsModal) { this.eClose.classList.add("ndsp__modal") }else{
-                this.eClose.classList.remove("ndsp__modal")
-            }
+            if(this.bIsModal) { this.eClose.classList.add("ndsp__modal") }else{ this.eClose.classList.remove("ndsp__modal") }
             this.eScrim.dataset.n55SodapopScrim = this.eClose.dataset.n55SodapopScrim = "opened"
             this.eSoda = this._d.createElement(this._aQ[1])
             setTimeout(function() { neodigmSodaPop.eScrim.classList.add("ndsp__blur"); }, 96)
@@ -925,7 +919,7 @@ const neodigmMetronome = ( () =>{
     },
     subscribe: function( f, t, mx ){  //  Usage: .subscribe(f, 1000, 5)
       let _t = t
-      if( bIsInit ){
+      if( bIsInit && !oEmit[ _t ] ){ // prevent overwright
         if( !oEmit[ _t ] ){
           oEmit[ _t ] = []
           aIntv.push( [setInterval( ()=>{ neodigmMetronome.tick( _t ) }, _t ), t] )
@@ -978,9 +972,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
                 let aMt = [ ... eMc.dataset[ _aQ[1] ]]
                 if( bLTR ){
                     aMt.unshift( aMt.pop() )
-                }else{
-                    aMt.push( aMt.shift() )
-                }
+                }else{ aMt.push( aMt.shift() ) }
                 eMc.eMp.textContent = eMc.dataset[ _aQ[1] ] = aMt.join("")
             })
         }
@@ -992,7 +984,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
         return neodigmMarquee; },
       play:  function(){ bIsPause = false; return neodigmMarquee; }
     }
-})( document, ["neodigm-marquee", "n55MarqueeText"], 112 );
+})( document, ["neodigm-marquee", "n55MarqueeText"], 148 );
 
 //  Neodigm 55 Claire Begin  //
 class NeodigmClaireAtomOn{
@@ -1299,9 +1291,7 @@ class NeodigmEnchantedCTA {
           if( eC.dataset.n55Theme && !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
           if( sId ){
             if( eC?.id == sId ) eC.dataset.n55Theme = sTheme
-          }else{
-            eC.dataset.n55Theme = sTheme
-          }
+          }else{ eC.dataset.n55Theme = sTheme }
         } )
       }
     return this;
@@ -1384,9 +1374,6 @@ class NeodigmKPI {
       let bKPI = ("n55Kpi" in ev?.target?.dataset) || ("n55Kpi" in ev?.target?.parentNode?.dataset)
       if( bKPI && neodigmOpt.N55_GTM_DL_KPI ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_KPI, sId )
     }, false)
-    if( neodigmOpt.N55_CTA_RND_TOUCH ){
-      neodigmMetronome.subscribe( function(){ neodigmKPI.touch() }, neodigmOpt.N55_CTA_RND_TOUCH )
-    }
     if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.aE )
     this.bIsInit = true
     return this
@@ -1399,14 +1386,11 @@ class NeodigmKPI {
         if( eC.dataset.n55Theme && !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
         if( sId ){
           if( eC?.id == sId ) eC.dataset.n55Theme = sTheme
-        }else{
-          eC.dataset.n55Theme = sTheme
-        }
+        }else{ eC.dataset.n55Theme = sTheme }
       });
     }
   return this;
   }
-  touch (){ return this; }
 }
 let neodigmKPI = new NeodigmKPI( document, ["[data-n55-kpi]"] )
 
@@ -1513,9 +1497,7 @@ class NeodigmCarousel {
         if( eC.dataset.n55Theme && !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
         if( sId ){
           if( eC?.id == sId ) eC.dataset.n55Theme = sTheme
-        }else{
-          eC.dataset.n55Theme = sTheme
-        }
+        }else{ eC.dataset.n55Theme = sTheme }
       });
     }
   return this;
@@ -1584,7 +1566,6 @@ class NeodigmAgent {
         if( oeWdg.dataset?.n55WidgetId ){
           const sTkn = oeWdg.dataset.n55WidgetId
           const oFetchConf = { headers: { "protomolecule": neodigmAgent.genChronSync(), "apploc": LZString.compressToEncodedURIComponent( document.location.href ), "Content-Type": "application/json" } }
-    console.log( " ~~~~ oFetchConf | " , oFetchConf )
           const sURI = neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/" + sTkn + "/content/"
           fetch( sURI, oFetchConf  )
           .then( rs => rs.json() )
@@ -1745,18 +1726,15 @@ class NeodigmPicnic {  //  TODO sort
 let neodigmPicnic = new NeodigmPicnic( document, ["neodigm-picnic"] )
 
 
-// v2.5.0 - Refactor Toast and Metronome STATIC
-//  -Neodigm 55 SodaPop Simple Tab (Carosel) //
+// v4.0.0 - Refactor Toast and Metronome STATIC
 //  Neodigm 55 Popover Begin  //
-//  -Neodigm 55 Enchanted CTA FlashTheme Round-robin //
 //  Neodigm 55 Claire Declaire-itive //
 //  -Neodigm 55 Confetti Begin (Claire) //
 //  Neodigm 55 Cypher Type FX Begin  //
 //  Neodigm 55 Post-It Begin (wdg) //
 
-// v2.x.0
+// v4.x.0
 //  Neodigm 55 FAB Begin //
-//  -Neodigm 55 KPI Card Begin //
 //  Neodigm 55 Tradecraft Redact Begin  //
 //  Neodigm 55 VT100 Begin //
 //  Neodigm 55 Hot Keys Hover and Tripple Click Begin //
@@ -1773,7 +1751,6 @@ let neodigmPicnic = new NeodigmPicnic( document, ["neodigm-picnic"] )
 //  Neodigm 55 A11Y skip Begin  //
 //  Neodigm 55 Debugger - Capture all life cycle  //
 //  Neodigm 55 Dice Begin  //
-//  -Neodigm 55 ToolTip Marquee Begin  //
 //  Neodigm 55 Vivid Type Begin  //
 
 function doDOMContentLoaded(){
