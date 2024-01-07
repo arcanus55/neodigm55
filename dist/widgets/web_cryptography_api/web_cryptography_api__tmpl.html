@@ -319,7 +319,6 @@ NeodigmClaire.showCanv('neodigm-sodapop').initCanvOff('neodigm-sodapop').waxOff(
               if( eTermFrom.value ){
                   try{
                         navigator.clipboard.writeText( eTermFrom.value )
-                        neodigmToast.q("Copied to|Clipboard", "primary")
                         neodigmUtils.typeOn({"q1st": "#js-fb__top", "msg": "Copied to Clipboard|Type or Paste Your Key Below","mode":"NONE","uniqueDelay": 117})
                   }catch( er ){
                       neodigmToast.q("Unexpected Error| " + er , "danger")
