@@ -199,7 +199,7 @@ const neodigmUtils = ( ( _d ) =>{
             neodigmUtils.typeOff({"q1st": o.q1st, "uniqueDelay": ( o.uniqueDelay / elTrg.textContent.length ) - 4 })
             elTrg.dataset.n55Typeon++
           }
-          elTrg.textContent += sChr
+          elTrg.textContent += sChr  //  TODO if INPUT target placehold else textContent
           if( o?.mode == "LOOP" && mx == 0 ) neodigmUtils.typeOn( o )  //  Token CAPS Recurse
         }, o.uniqueDelay, sMsg.length )  //  Subscribe params
       }

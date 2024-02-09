@@ -68,8 +68,8 @@ neodigm-template { display: none; }
 	transition: bottom .6s ease-in-out
 }
 .l-snackbar .snackbar__cont--show {
-	bottom: 4px;
-	transition: bottom .6s ease-in-out
+    animation: toast_bottom .4s ease-in-out;
+	bottom: 4px; 
 }
 .l-snackbar .snackbar__cont--alt {
 	background: linear-gradient(45deg, #685b2d 0%, #d8ad12 100%) !important; 
@@ -96,6 +96,11 @@ neodigm-template { display: none; }
 	margin: 18px;
 	text-align: center;
 	white-space: nowrap
+}
+@keyframes toast_bottom {
+    0% { bottom: -112px; }
+    80% { bottom: 8px; }
+    100% { bottom: 4px; }
 }
 @media print {
     .l-snackbar { display: none;}
