@@ -28,6 +28,7 @@ a { -webkit-tap-highlight-color: rgba(0,0,0,0); outline: none; user-select: none
 .h-ds__block {display: block;}
 .h-ds__inline {display: inline;}
 .h-ds__inlineblock {display:inline-block }
+.h-vis__hidden {visibility: hidden;}
 .h-ds__none {display: none;}
 .h-ds-b__desktop--only {display: none;}
 .h-ds-b__mobile--only  {display: block;}
