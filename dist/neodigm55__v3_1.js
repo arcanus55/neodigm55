@@ -121,11 +121,14 @@ const neodigmUtils = ( ( _d ) =>{
       let sFirstAMPM = document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "[data-n55-Ampm-theme]" )?.dataset.n55AmpmTheme
       if( sFirstAMPM ) neodigmOpt.N55_AMPM_THEME = neodigmOpt.N55_APP_STATE.AMPM = sFirstAMPM
     },
-    prettyTime: ( sDt ) => {
+    prettyTimeRETIRE: ( sDt ) => {  //  RETIRE - breaking change
       let sOut = new Date( sDt ).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" } )
       if( sDt == "Dec 31, 1969" ) sOut = ""
       return sOut
     }, 
+    prettyTime: ( sDt ) => {  //  TODO move to utils
+      return new Date( sDt ).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute:"2-digit", second:"2-digit"  } );
+    },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
     genHash: ( sV ) => {sV = String(sV); return Math.abs(sV.split("").reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)) },  //  ABS
     flashTitle: ( sTheme=neodigmOpt.N55_THEME_DEFAULT, nT=4e3 )=>{  //  Tab Emoji
