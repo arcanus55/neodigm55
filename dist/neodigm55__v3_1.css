@@ -781,8 +781,8 @@ neodigm-acticon[data-n55-theme='night']    { background-color: var( --neodigm-th
 neodigm-acticon[data-n55-theme='marcom']   { background-color: var( --neodigm-theme-marcom ); border-color: var( --neodigm-theme-marcom ) ;}
 neodigm-acticon[data-n55-theme='party']    { background-color: var( --neodigm-theme-party ); border-color: var( --neodigm-theme-party ) ;}
 neodigm-acticon[data-n55-theme='disabled'] { background-color: var( --neodigm-theme-disabled ); border-color: var( --neodigm-theme-disabled ) ;}
-[data-n55-ampm-theme="light"] neodigm-acticon[data-n55-theme='ghost'] { background: rgba( 254, 254, 254, 0); color: var( --neodigm-theme-night-alt ); border-color: var( --neodigm-theme-disabled ); }
-[data-n55-ampm-theme="dark"]  neodigm-acticon[data-n55-theme='ghost'] { background: rgba( 254, 254, 254, 0); color: #fff; border-color: var( --neodigm-theme-disabled ); }
+[data-n55-ampm-theme="light"]  neodigm-acticon[data-n55-theme='ghost'] { background: rgba( 254, 254, 254, 0); color: var( --neodigm-theme-night-alt ); border-color: var( --neodigm-theme-disabled ); }
+[data-n55-ampm-theme="dark"] > neodigm-acticon[data-n55-theme='ghost'] { background: rgba( 254, 254, 254, 0); color: #fff; border-color: var( --neodigm-theme-disabled ); }
 /*  Neodigm Acticon End  */  
 
 /*  Neodigm HR Begin  */ 
