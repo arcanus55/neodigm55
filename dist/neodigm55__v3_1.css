@@ -174,11 +174,10 @@ neodigm-sodapop.ndsp__size--medium { width: 86%; }
 neodigm-sodapop.ndsp__size--large  { width: 96%; }
 
 neodigm-sodapop:not(.ndsp__modal)::after {
-    cursor: pointer;
     display: block;
     position: absolute; top: -14px; right: -26px;
     content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23EDBA08'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M14.59 8L12 10.59 9.41 8 8 9.41 10.59 12 8 14.59 9.41 16 12 13.41 14.59 16 16 14.59 13.41 12 16 9.41 14.59 8zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
-    user-select: none;
+    cursor: pointer; user-select: none;
 }
 @media only screen and (min-width:62em){/* sm med */
     neodigm-sodapop.ndsp__size--xsmall { width: 32%; }
@@ -750,7 +749,7 @@ neodigm-acticon:not([data-n55-theme="disabled"]):not([data-n55-theme="ghost"]):h
 [data-n55-ampm-theme="dark"]  neodigm-acticon[data-n55-theme="ghost"]:hover{  background-color: rgba(255,255,255, .2); }
 
 [data-n55-ampm-theme="light"]  neodigm-acticon:not([data-n55-theme="disabled"]) { color: var( --neodigm-theme-night-alt ); }
-[data-n55-ampm-theme="dark"] > neodigm-acticon:not([data-n55-theme="disabled"]) { color: #fff; }
+[data-n55-ampm-theme="dark"]   neodigm-acticon:not([data-n55-theme="disabled"]) { color: #fff; }
 
 neodigm-acticon[data-n55-size='pico']  { width: 14px; height: 14px; }
 neodigm-acticon[data-n55-size='micro'] { width: 18px; height: 18px; }
@@ -782,7 +781,7 @@ neodigm-acticon[data-n55-theme='marcom']   { background-color: var( --neodigm-th
 neodigm-acticon[data-n55-theme='party']    { background-color: var( --neodigm-theme-party ); border-color: var( --neodigm-theme-party ) ;}
 neodigm-acticon[data-n55-theme='disabled'] { background-color: var( --neodigm-theme-disabled ); border-color: var( --neodigm-theme-disabled ) ;}
 [data-n55-ampm-theme="light"]  neodigm-acticon[data-n55-theme='ghost'] { background: rgba( 254, 254, 254, 0); color: var( --neodigm-theme-night-alt ); border-color: var( --neodigm-theme-disabled ); }
-[data-n55-ampm-theme="dark"] > neodigm-acticon[data-n55-theme='ghost'] { background: rgba( 254, 254, 254, 0); color: #fff; border-color: var( --neodigm-theme-disabled ); }
+[data-n55-ampm-theme="dark"]   neodigm-acticon[data-n55-theme='ghost'] { background: rgba( 254, 254, 254, 0); color: #fff; border-color: var( --neodigm-theme-disabled ); }
 /*  Neodigm Acticon End  */  
 
 /*  Neodigm HR Begin  */ 
