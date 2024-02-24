@@ -749,8 +749,8 @@ neodigm-acticon:not([data-n55-theme="disabled"]):not([data-n55-theme="ghost"]):h
 [data-n55-ampm-theme="light"] neodigm-acticon[data-n55-theme="ghost"]:hover{  border-color: var( --neodigm-theme-night-alt ); }
 [data-n55-ampm-theme="dark"]  neodigm-acticon[data-n55-theme="ghost"]:hover{  background-color: rgba(255,255,255, .2); }
 
-[data-n55-ampm-theme="light"] neodigm-acticon:not([data-n55-theme="disabled"]) { color: var( --neodigm-theme-night-alt ); }
-[data-n55-ampm-theme="dark"]  neodigm-acticon { color: #fff !important; }
+[data-n55-ampm-theme="light"]  neodigm-acticon:not([data-n55-theme="disabled"]) { color: var( --neodigm-theme-night-alt ); }
+[data-n55-ampm-theme="dark"] > neodigm-acticon { color: #fff; }
 
 neodigm-acticon[data-n55-size='pico']  { width: 14px; height: 14px; }
 neodigm-acticon[data-n55-size='micro'] { width: 18px; height: 18px; }
