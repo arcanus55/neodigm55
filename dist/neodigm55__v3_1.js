@@ -126,7 +126,7 @@ const neodigmUtils = ( ( _d ) =>{
       if( sDt == "Dec 31, 1969" ) sOut = ""
       return sOut
     }, 
-    prettyTime: ( sDt ) => {  //  TODO move to utils
+    prettyTime: ( sDt ) => {  //  TODO create dateOnly = false param option
       return new Date( sDt ).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute:"2-digit", second:"2-digit"  } );
     },
     capFirst: s => (s && s[0].toUpperCase() + s.slice(1)) || "",
