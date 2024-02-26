@@ -1460,6 +1460,8 @@ class NeodigmCarousel {
             case "getName":
               return oState.aTabCntr[ (oState.nIdx - 1) ].dataset?.n55CarouselPageName;
               break;
+            case "resize":
+              oNav.nav = oState.nIdx;
             default:  //  literal num pg value or string name
                 if( typeof oNav.nav === "string" ){  //  Find Page by Name
                     let nPgFromName = 0

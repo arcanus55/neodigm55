@@ -774,7 +774,7 @@ neodigm-tulip.tulip__cont--show { display: block; }
 @media print { [data-n55-poptart-open] { display: none;} }
 /*  Neodigm PopTart End  */
 
-/*  Neodigm Acticon Begin  */  
+/*  Neodigm Acticon Begin  */   
 neodigm-acticon{
     position: relative; display: inline-block;
     border: solid 1px; border-radius: 100%;
