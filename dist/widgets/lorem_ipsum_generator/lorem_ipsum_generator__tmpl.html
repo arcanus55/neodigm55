@@ -8,7 +8,7 @@
 
 
 <!--  ||  TEMPLATE MU & CSS WDG BEGIN -->
-<wtt-widget data-n55-token="case_convert">
+<wtt-widget data-n55-token="lorem_ipsum_generator">
 
     <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
         <div>
@@ -262,7 +262,7 @@ class Lorem_ipsum_generator {
                 if( sAct == "toSave" ){  //  Gen and download as Blob
                     if( neodigmWired4Sound ) neodigmWired4Sound.vibrate()
                     if( this.eTermTo.value ){
-                        let sFile = "case_convert_" + new Date().getTime() + ".txt"
+                        let sFile = "lorem_ipsum_generator_" + new Date().getTime() + ".txt"
                         let sOut = this.eTermTo.value + "\n\nDownloaded from WebToolToys.com."
                         let blOut = new Blob([ sOut ], { type: "text/csv;charset=utf-8;" });
                         let elDLoad = document.createElement( "a" );
