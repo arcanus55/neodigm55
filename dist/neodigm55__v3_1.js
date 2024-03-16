@@ -1325,9 +1325,10 @@ class NeodigmEnchantedCTA {
         let eCt = this.aE[ neodigmUtils.f02x( this.aE.length ) ]
         if( eCt.dataset.n55Theme != "disabled" ){
           if( eCt.dataset?.n55EnchantedCtaDontTouch != "true" ){
+console.log("-- -- -- -- -- -- -- ", this.aE)
             this.aE.forEach( (e)=>{
               if( e.dataset?.n55EnchantedCtaAmbientOrig ){
-                e.dataset.n55EnchantedCtaAmbient = e.dataset.n55EnchantedCtaAmbientOrig
+                e.dataset.n55EnchantedCtaAmbient = "" //e.dataset.n55EnchantedCtaAmbientOrig
                 delete e.dataset.n55EnchantedCtaAmbientOrig;
               }
             } )
