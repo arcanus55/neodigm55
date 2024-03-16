@@ -1328,7 +1328,8 @@ class NeodigmEnchantedCTA {
 console.log("-- -- -- -- -- -- -- ", this.aE)
             this.aE.forEach( (e)=>{
               if( e.dataset?.n55EnchantedCtaAmbientOrig ){
-                e.dataset.n55EnchantedCtaAmbient = "" //e.dataset.n55EnchantedCtaAmbientOrig
+console.log("-- -- -- -- -- -- -- e.dataset?.n55EnchantedCtaAmbientOrig | ", e.dataset?.n55EnchantedCtaAmbientOrig )
+e.dataset.n55EnchantedCtaAmbient = "" //e.dataset.n55EnchantedCtaAmbientOrig
                 delete e.dataset.n55EnchantedCtaAmbientOrig;
               }
             } )
