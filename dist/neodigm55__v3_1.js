@@ -1279,8 +1279,8 @@ class NeodigmEnchantedCTA {
           }, false)          
         }
       }
-      if( neodigmOpt.N55_CTA_RND_TOUCH ){
-        neodigmMetronome.unsubscribe( neodigmOpt.N55_CTA_RND_TOUCH ).neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_CTA_RND_TOUCH ) 
+      if( neodigmOpt.N55_CTA_RND_TOUCH ){ 
+        neodigmMetronome.unsubscribe( neodigmOpt.N55_CTA_RND_TOUCH ).subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOpt.N55_CTA_RND_TOUCH ) 
       }
       if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.aE )
       this.bIsInit = true
