@@ -1326,7 +1326,7 @@ class NeodigmEnchantedCTA {
         if( eCt.dataset.n55Theme != "disabled" ){
           if( eCt.dataset?.n55EnchantedCtaDontTouch != "true" ){
             let sRndFX = neodigmOpt.N55_CTA_FX[ neodigmUtils.f02x( 7 ) ]  //  TODO Soft code magic - len
-            if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.n55EnchantedCtaAmbient ) eCt.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbient
+            if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.dataset.n55EnchantedCtaAmbientOrig ) eCt.dataset.n55EnchantedCtaAmbientOrig = eCt.dataset.n55EnchantedCtaAmbient
             eCt.dataset.n55EnchantedCtaAmbient = sRndFX
             switch( sRndFX ){
               case "alternate":
@@ -1340,7 +1340,7 @@ class NeodigmEnchantedCTA {
               break;
             }
             if( neodigmOpt.N55_DEBUG_lOG ) console.table( ["touch + " + eCt.id, eCt.innerHTML, eCt.dataset.n55EnchantedCtaAmbient] )
-            setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCt ) }, 3000)
+            setTimeout(function(){ neodigmEnchantedCTA.revertTouch( eCt ) }, 8000) 
           }
         }
       }
@@ -1349,7 +1349,7 @@ class NeodigmEnchantedCTA {
     revertTouch ( eCt ){
       if( this.bIsInit && !this.bIsPause ){
         eCt.dataset.n55EnchantedCtaAmbient = ""
-        if( eCt.n55EnchantedCtaAmbient ) eCt.dataset.n55EnchantedCtaAmbient = eCt.n55EnchantedCtaAmbient
+        if( eCt.dataset.n55EnchantedCtaAmbientOrig ) eCt.dataset.n55EnchantedCtaAmbient = eCt.dataset.n55EnchantedCtaAmbientOrig
         if( eCt.n55EnchantedCtaAlt ) eCt.innerHTML = eCt.n55EnchantedCtaAlt
       }
     }
