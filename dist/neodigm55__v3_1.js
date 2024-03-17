@@ -1325,7 +1325,7 @@ class NeodigmEnchantedCTA {
         let eCt = this.aE[ neodigmUtils.f02x( this.aE.length ) ]
         if( eCt.dataset.n55Theme != "disabled" ){
           if( eCt.dataset?.n55EnchantedCtaDontTouch != "true" ){
-            this.aE.forEach( (e)=>{
+            this.aE.forEach( (e)=>{ 
               if( e.dataset?.n55EnchantedCtaAmbientOrig ){ e.dataset.n55EnchantedCtaAmbient = e.dataset.n55EnchantedCtaAmbientOrig = ""  }
             } )
             let sRndFX = neodigmOpt.N55_CTA_FX[ neodigmUtils.f02x( eodigmOpt.N55_CTA_FX.length ) ]
@@ -1482,7 +1482,8 @@ class NeodigmCarousel {
             if( bFireCB ){
               let sPg = oState.aTabCntr[ (oState.nIdx - 1) ].dataset?.n55CarouselPageName
               if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.fOnAfterNav )
-              if(this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]) this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]( elNC.id, oState.nIdx, sPg )  //  single pg
+              if(this.fOnAfterNav[ elNC.id + "_" + sPg ]) this.fOnAfterNav[ elNC.id + "_" + sPg ]( elNC.id, oState.nIdx, sPg )  //  single pg name
+              if(this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]) this.fOnAfterNav[ elNC.id + "_" + oState.nIdx ]( elNC.id, oState.nIdx, sPg )  //  single pg num
               if(this.fOnAfterNav[ elNC.id ]) this.fOnAfterNav[ elNC.id ]( elNC.id, oState.nIdx, sPg )  //  all pages within this Caro
               if(this.fOnAfterNav["def"]) this.fOnAfterNav["def"]( elNC.id, oState.nIdx, sPg )  //  all Caro
             }
@@ -1498,7 +1499,7 @@ class NeodigmCarousel {
     }
   }
   play (){ this.bIsPause = false; return this; }
-  setOnAfterNav ( _f, id="def", pg=""){ this.fOnAfterNav[ ( pg )?(id + "_" + pg):id ] = _f; return this; }
+  setOnAfterNav ( _f, id="def", pg="" ){ this.fOnAfterNav[ ( pg )?(id + "_" + pg):id ] = _f; return this; } 
   setTheme ( sTheme, sId ){
     if( this.bIsInit && !this.bIsPause ){
       this.aE.forEach( (eC) => {  //  orig once n55Theme Property

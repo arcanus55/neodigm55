@@ -46,6 +46,31 @@ data-n55-wired4sound-click="7"
 </span>
 </a>
 
+<hr data-n55-theme="night" data-n55-size="xlarge">
+
+<neodigm-carousel id="my-carousel">
+    <section>
+        <section data-n55-carousel-page-name="PageOne">
+            <h6>Page Tab Region 1</h6>
+        </section>
+        <section data-n55-carousel-page-name="PageTwo">
+            <h6>Page Tab Region 2</h6>
+        </section>
+    </section>
+</neodigm-carousel>
+<a data-n55-carousel-nav='{"id": "my-carousel", "nav": "next"}'>Next</a>
+<a data-n55-carousel-nav='{"id": "my-carousel", "nav": "prev"}'>Prev</a>
+<a data-n55-carousel-nav='{"id": "my-carousel", "nav": "random"}'>Random</a>
+<a data-n55-carousel-nav='{"id": "my-carousel", "nav": "1"}'>Page One</a>
+<a data-n55-carousel-nav='{"id": "my-carousel", "nav": "PageTwo"}'>Page Two</a>
+<a data-n55-carousel-nav='{"id": "my-carousel", "nav": "resize"}'>Resize</a>
+
+<script>
+neodigmCarousel.setOnAfterNav( function(){neodigmToast.q('Page 2', 'warning');}, 'my-carousel', 'PageTwo' )
+</script>
+
+<hr data-n55-theme="night" data-n55-size="xlarge">
+
 <section style="background-color: #fff;">
     <hr data-n55-theme="success" data-n55-size="xlarge">
         <a data-n55-enchanted-cta
