@@ -1331,7 +1331,7 @@ class NeodigmEnchantedCTA {
             this.aE.forEach( (e)=>{ 
               if( e.dataset?.n55EnchantedCtaAmbientOrig ){ e.dataset.n55EnchantedCtaAmbient = e.dataset.n55EnchantedCtaAmbientOrig = ""  }
             } )
-            let sRndFX = neodigmOpt.N55_CTA_FX[ neodigmUtils.f02x( eodigmOpt.N55_CTA_FX.length ) ]
+            let sRndFX = neodigmOpt.N55_CTA_FX[ neodigmUtils.f02x( neodigmOpt.N55_CTA_FX.length ) ]
             if( eCt.dataset.n55EnchantedCtaAmbient && !eCt.dataset.n55EnchantedCtaAmbientOrig ) eCt.dataset.n55EnchantedCtaAmbientOrig = eCt.dataset.n55EnchantedCtaAmbient
             eCt.dataset.n55EnchantedCtaAmbient = sRndFX
             switch( sRndFX ){
