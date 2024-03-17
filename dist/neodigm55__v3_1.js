@@ -89,6 +89,9 @@ const neodigmUtils = ( ( _d ) =>{
       if( window.dataLayer ) window.dataLayer.push( { "event": event, "msg": msg } )
     },
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
+      document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
+        if( ev?.target?.dataset?.n55TypeonHover ) neodigmUtils.typeOn( JSON.parse( ev.target.dataset.n55TypeonHover ) )
+      })
       document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "click", ( ev ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
         if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
