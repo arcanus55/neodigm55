@@ -625,11 +625,11 @@ neodigm-kpi[data-n55-kpi-size='pico'] > h6 { display: none; }
 neodigm-kpi[data-n55-kpi-size='micro'] { height: 48px; width: 48px; overflow: hidden;}
 neodigm-kpi[data-n55-kpi-size='micro'] > h5 { font-size: 17px; margin: 0; padding: 0; line-height: 1.3; margin-left: -4px;}
 neodigm-kpi[data-n55-kpi-size='micro'] > h6 { display: none; }
-neodigm-kpi[data-n55-kpi-size='milli'] { height: 96px; width: 96px; overflow: hidden;}
+neodigm-kpi[data-n55-kpi-size='milli'] { height: 92px; width: 92px; overflow: hidden;}
 neodigm-kpi[data-n55-kpi-size='milli'] > h5 { font-size: 24px;} /*  3/5  */
 neodigm-kpi[data-n55-kpi-size='milli'] > h6 { font-size: 10px;}
 
-neodigm-kpi[data-n55-kpi-size='xsmall'] { height: 96px; width: 96px; }
+neodigm-kpi[data-n55-kpi-size='xsmall'] { height: 92px; width: 92px; }
 neodigm-kpi[data-n55-kpi-size='xsmall'] > h5 { font-size: 24px;} /*  3/5  */
 neodigm-kpi[data-n55-kpi-size='xsmall'] > h6 { font-size: 10px;}
 neodigm-kpi[data-n55-kpi-size='small'] { height: 124px; width: 124px; }
