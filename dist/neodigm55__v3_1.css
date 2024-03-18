@@ -239,6 +239,7 @@ neodigm-parallax[data-n55-parallax-size='xlarge'] aside { padding: 1000px 0; }
 /*  Neodigm Marquee Begin  */ 
 neodigm-marquee {
     display: inline-block;
+    width: 100%;
     user-select: none;
     overflow: hidden;
     background-color: #282828;
