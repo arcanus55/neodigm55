@@ -240,7 +240,6 @@ neodigm-parallax[data-n55-parallax-size='xlarge'] aside { padding: 1000px 0; }
 neodigm-marquee {
     display: inline-block;
     user-select: none;
-    width: 100%;
     overflow: hidden;
     background-color: #282828;
         height: 38px;
@@ -619,6 +618,16 @@ neodigm-kpi > h6 { top: 20%; }
 [data-n55-ampm-theme="dark"] neodigm-kpi[data-n55-theme='party']     { background-color: var( --neodigm-theme-party ); }
 
 neodigm-kpi > h5, neodigm-kpi > h6 { margin: 0;}
+neodigm-kpi[data-n55-kpi-size='pico'] { height: 38px; width: 38px; }
+neodigm-kpi[data-n55-kpi-size='pico'] > h5 { font-size: 18px;}
+neodigm-kpi[data-n55-kpi-size='pico'] > h6 { font-size: 7px;}
+neodigm-kpi[data-n55-kpi-size='micro'] { height: 48px; width: 48px; }
+neodigm-kpi[data-n55-kpi-size='micro'] > h5 { font-size: 20px;}
+neodigm-kpi[data-n55-kpi-size='micro'] > h6 { font-size: 8px;}
+neodigm-kpi[data-n55-kpi-size='milli'] { height: 96px; width: 96px; }
+neodigm-kpi[data-n55-kpi-size='milli'] > h5 { font-size: 24px;} /*  3/5  */
+neodigm-kpi[data-n55-kpi-size='milli'] > h6 { font-size: 10px;}
+
 neodigm-kpi[data-n55-kpi-size='xsmall'] { height: 96px; width: 96px; }
 neodigm-kpi[data-n55-kpi-size='xsmall'] > h5 { font-size: 24px;} /*  3/5  */
 neodigm-kpi[data-n55-kpi-size='xsmall'] > h6 { font-size: 10px;}
@@ -642,6 +651,10 @@ neodigm-kpi[data-n55-kpi-size='xlarge'] > h6 { font-size: 20px;}
     color: #edba08;
     text-align-last: center;
 }
+[data-n55-select][data-n55-size='pico']  { font-size: 8px;  line-height: .8;  padding:  4px  6px; min-width: 24px; }
+[data-n55-select][data-n55-size='micro'] { font-size: 11px; line-height: .9;  padding:  8px 10px; min-width: 64px; }
+[data-n55-select][data-n55-size='milli'] { font-size: 14px; line-height: 1;   padding: 10px 12px; min-width: 84px; }
+
 [data-n55-select][data-n55-size='xsmall']{ font-size: 14px; line-height: 1;   padding: 10px 12px; min-width: 84px; }
 [data-n55-select][data-n55-size='small'] { font-size: 18px; line-height: 1;   padding: 12px 20px; min-width: 104px; }
 [data-n55-select][data-n55-size='medium']{ font-size: 20px; line-height: 1.1; padding: 16px 44px; min-width: 186px; }
