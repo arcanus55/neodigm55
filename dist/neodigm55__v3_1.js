@@ -43,7 +43,7 @@ neodigmWWInterval: true,
   N55_AMPM_THEME: "light",
   N55_EVENT_HAPTIC: true,
   N55_FLASH_TITLE: true,
-  N55_GENRE_MOTIF: "neodigm",  //  anime artdeco casino cyberpunk expressionist graffiti noir rainforest seasonal steampunk
+  N55_GENRE_MOTIF: "neodigm",  //  anime artdeco casino cyberpunk expressionist graffiti mixtape noir rainforest seasonal steampunk
   N55_THEME_DEFAULT: "brand",
   N55_THEME_COLORS: {"brand":["EDBA08","915E00","🟧"], "primary":["92a8d1","364C75","🟦"], "secondary":["EDCED0","978284","🟫"], "success":["009473","003817","🟩"], "white":["FFFFFF","FDFDFD","⬜"], "ghost":["ffffff","000000","⬜"],
    "danger":["DD4124","810000","🟥"], "warning":["F5DF4D","988200","🟨"], "info":["7BC4C4","1F6868","🟦"], "disabled":["868686","767676","⬜"], "night":["6a6a6a","242424","⬛"], "marcom":["B163A3","5F4B8B","🟪"], "party":["FF6F61","C93F60","🟪"]},
