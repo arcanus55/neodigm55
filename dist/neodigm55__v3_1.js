@@ -587,20 +587,13 @@ class NeodigmPopTart {
             }
         } )
         */
-        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  data-n55-poptart-click
-            if( ev.target?.dataset?.n55PoptartClick || ev.target?.parentNode?.dataset?.n55PoptartClick ){
-                const sAttrEv = ev.target?.dataset?.n55PoptartClick || ev.target?.parentNode?.dataset?.n55PoptartClick
-                this.sBoundTheme = ev.target.n55Theme || ev.target?.dataset.n55Theme || ev.target?.parentNode?.dataset.n55Theme || neodigmOpt.N55_THEME_DEFAULT
-                    if( this.sBoundTheme != "disabled" ) {
-                    let elPopTmpl = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "#" + sAttrEv )
-                    if( elPopTmpl?.dataset?.n55Poptart ){
-                        this.elBound = ev.target
-                        ev.preventDefault()
-                        neodigmPopTart.open( this.oPopTmpls[ sAttrEv ] = elPopTmpl, JSON.parse( elPopTmpl.dataset.n55Poptart ) )
-                    }
-                }
+          this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("contextmenu", ( ev ) => {  //  data-n55-poptart-rightclick
+            if( ev.target?.dataset?.n55PoptartRightclick || ev.target?.parentNode?.dataset?.n55PoptartRightclick ){
+              const sAttrEv = ev.target?.dataset?.n55PoptartRightclick || ev.target?.parentNode?.dataset?.n55PoptartRightclick
+              neodigmPopTart.click_and_right_click( ev, sAttrEv )
             }
-        }, false)
+          }, false)
+
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  👁️ Outside Click
             if( this.bIsOpen ){
                 let eTarget = ev.target, bInside = false;
@@ -609,6 +602,11 @@ class NeodigmPopTart {
                     eTarget = eTarget.parentNode;
                 }
                 if( !bInside ){ neodigmPopTart.close() }
+            }else{  //  data-n55-poptart-click
+              if( ev.target?.dataset?.n55PoptartClick || ev.target?.parentNode?.dataset?.n55PoptartClick ){
+                const sAttrEv = ev.target?.dataset?.n55PoptartClick || ev.target?.parentNode?.dataset?.n55PoptartClick
+                neodigmPopTart.click_and_right_click( ev, sAttrEv )
+              }
             }
         }, true)
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("keydown", ( ev ) => {  //  Close on Esc Key
@@ -617,6 +615,17 @@ class NeodigmPopTart {
         this.bIsInit = true
     }
     return this;
+  }
+  click_and_right_click( ev, sAttrEv, bPrevDef=true ){
+      this.sBoundTheme = ev.target.n55Theme || ev.target?.dataset.n55Theme || ev.target?.parentNode?.dataset.n55Theme || neodigmOpt.N55_THEME_DEFAULT
+      if( this.sBoundTheme != "disabled" ) {
+      let elPopTmpl = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "#" + sAttrEv )
+      if( elPopTmpl?.dataset?.n55Poptart ){
+        this.elBound = ev.target
+        if( bPrevDef ) ev.preventDefault()
+        neodigmPopTart.open( this.oPopTmpls[ sAttrEv ] = elPopTmpl, JSON.parse( elPopTmpl.dataset.n55Poptart ) )
+      }
+    }
   }
   open( elPop, oPos ) {
     if( this.bIsInit && !this.bIsPause && elPop.id && !elPop.dataset?.n55PoptartOpen ) {
