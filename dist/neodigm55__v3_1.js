@@ -1259,7 +1259,7 @@ class NeodigmEnchantedCTA {
       if( !this.bIsInit ){  //  once events app_state.context
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {
           let sId = ev?.target?.id || ev?.target?.parentNode?.id || "add_id"
-          let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ( !ev?.target?.parentNode?.dataset ) ? null : ("n55EnchantedCta" in ev?.target?.parentNode?.dataset)
+          let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ( !ev?.target?.parentNode?.dataset ) ? null : ("n55EnchantedCta" in ev?.target?.parentNode?.dataset) // no parent
           if( bCta ){  //  Optim
             if( neodigmOpt.N55_GTM_DL_CTA ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_CTA, sId )
             let sTheme = ev?.target?.dataset?.n55Theme || ev?.target?.parentNode?.dataset?.n55Theme
@@ -1274,7 +1274,7 @@ class NeodigmEnchantedCTA {
         if( neodigmOpt.N55_CTA_LONG_TAP ){
           this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mousedown", ( ev ) => {
             let sId = ev?.target?.id || ev?.target?.parentNode?.id || "add_id"
-            let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ( !ev?.target?.parentNode?.dataset ) ? null : ("n55EnchantedCta" in ev?.target?.parentNode?.dataset)
+            let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ( !ev?.target?.parentNode?.dataset ) ? null : ("n55EnchantedCta" in ev?.target?.parentNode?.dataset) // no parent
             if( bCta ){
               neodigmEnchantedCTA.bLongTap = true
               setTimeout( function(){
