@@ -20,20 +20,45 @@
                 data-n55-tulip='{"msg":" ADD a Sentence ","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'><neodigm-icon class="material-symbols-outlined">add</neodigm-icon></neodigm-acticon>
 
                 <a id="js-cta__create-lorem" data-n55-enchanted-cta data-n55-enchanted-cta-ambient="emit" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true"
-                    QQQQdata-n55-enchanted-cta-alt="LOREM|IPSUM"
                     data-n55-enchanted-cta-size="small"
                     data-n55-theme="brand"
                     data-n55-tulip='{"msg":" Create Placeholder Text ","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
                     data-n55-wired4sound-click="7"
-                    TODOdata-n55-wired4sound-click="vibrate"
+                    data-n55-wired4sound-click="vibrate"
                     onclick="lorem_ipsum_generator.doAction('gen')"
-                    ><span id="" data-n55-wired4sound-hover="3">Create 4 Sentences</span><span>Generate Text Now</span>
+                    ><span data-n55-wired4sound-hover="3">Create 5 Sentences</span><span>Generate Text Now</span>
                 </a>
 
                 <neodigm-acticon data-n55-theme="ghost" data-n55-size="large"
                 onclick="lorem_ipsum_generator.doAction('remove')"
                 data-n55-wired4sound-click="16"
                 data-n55-tulip='{"msg":" REMOVE a Sentence ","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'><neodigm-icon class="material-symbols-outlined">remove</neodigm-icon></neodigm-acticon>
+            </nav>
+<style>
+[data-n55-enchanted-cta-navbar] {
+    border-radius: 0 !important;
+    margin: 16px -1px !important;
+}
+</style>
+            <nav class="h-center">
+                <a id="js-lang-tog__latin" data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="false"
+                    data-n55-enchanted-cta-size="pico" data-n55-enchanted-cta-navbar="true"
+                    data-n55-theme="ghost"
+                    data-n55-tulip='{"msg":" Generate Latin text ","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
+                    data-n55-wired4sound-click="7"
+                    data-n55-wired4sound-click="vibrate"
+                    onclick="lorem_ipsum_generator.doAction('latin')"
+                    ><span data-n55-wired4sound-hover="3">Latin <neodigm-icon class="material-symbols-outlined">check</neodigm-icon></span><span></span>
+                </a>
+                <a id="js-lang-tog__english" data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="false"
+                    data-n55-enchanted-cta-size="pico" data-n55-enchanted-cta-navbar="true"
+                    data-n55-theme="ghost"
+                    data-n55-tulip='{"msg":" Generate English text ","mrq":false,"tmpt":"","theme":"ghost","size":"xsmall","position":"bottom","icon":""}'
+                    data-n55-wired4sound-click="7"
+                    data-n55-wired4sound-click="vibrate"
+                    onclick="lorem_ipsum_generator.doAction('english')"
+                    ><span data-n55-wired4sound-hover="3">English <neodigm-icon class="material-symbols-outlined"></neodigm-icon></span><span></span>
+                </a>
             </nav>
         </div>
     </section>
@@ -200,14 +225,16 @@ NeodigmClaire.showCanv('neodigm-sodapop').initCanvOff('neodigm-sodapop').waxOff(
 
 class Lorem_ipsum_generator {
     constructor(_d, _sQ) {
-        this.NumOfSentences = 4
+        this.NumOfSentences = 5
         this._d = _d; this._sQ = _sQ;
-        this.aF = []; this.aObs = [];
+        this.aF = []; this.aObs = []; this.lang = "latin";
         this.elCTA_createLorem__fb = document.querySelector( "#js-cta__create-lorem > SPAN" )
         this.eTermTo = document.querySelector( "#l-term-to" )
         this.elKP_fb_cc = document.querySelector( "#js-kpi-fb__cc" )
         this.elKP_fb_words = document.querySelector( "#js-kpi-fb__words" )
         this.elKP_fb_sentences = document.querySelector( "#js-kpi-fb__sentences" )
+        this.elLang_latin = document.querySelector( "#js-lang-tog__latin neodigm-icon" )
+        this.elLang_english = document.querySelector( "#js-lang-tog__english neodigm-icon" )
     }
     init() {  //  TODO Register
         return this;
@@ -222,13 +249,29 @@ class Lorem_ipsum_generator {
             setTimeout( ()=>{ lorem_ipsum_generator.doAction('countLetters') }, 96 )
             let capFirst = (s) => (s && s[0].toUpperCase() + s.slice(1))
             if( this.eTermTo ){
+                if( sAct == "latin" ){
+                    this.lang = "latin"
+                    this.elLang_latin.textContent="check"
+                    this.elLang_english.textContent=""
+                    this.doAction("gen");
+                }
+                if( sAct == "english" ){
+                    this.lang = "english"
+                    this.elLang_latin.textContent=""
+                    this.elLang_english.textContent="check"
+                    this.doAction("gen");
+                }
                 if( sAct == "gen" ){
                     const genLorumIpsum = ( Sentences=1 )=>{  //  Generate Lorum Ipsum | Orig Latin De finibus
                         if( Sentences == -1 ) Sentences = Math.floor(Math.random() * 5) + 1  //  If -1 gen rnd num sentences 1-5
-                        const aLI = "lorem ipsum a ab accusamus accusantium ad adipiscing alias aliquam aliquid amet animi aperiam architecto asperiores aspernatur assumenda at atque aut autem beatae blanditiis commodi consectetur consequatur consequuntur corporis corrupti culpa cum cumque cupiditate debitis delectus deleniti deserunt dicta dignissimos distinctio do dolor dolore dolorem doloremque dolores doloribus dolorum dquis ducimus ea eaque earum eius eligendi enim eos error ert esse est et eum eveniet ex excepturi exercitationem expedita explicabo facere facilis fuga fugiat fugit harum hic id illo illum impedit in incididunt inventore ipsa ipsam irure iste itaque iusto labore laboriosam laborum laudantium libero magnam magni maiores maxime minima minus modi molestiae molestias mollitia nam natus necessitatibus nemo neque nesciunt nihil nisi nobis non nostrumd nulla numquam obcaecati odio odit officia officiis omnis optio pariatur perferendis perspiciatis placeat porro possimus praesentium provident quae quaerat quam quas quasi qui quia quibusdam quidem quis quisquam quo quod quos ratione recusandae reiciendis rem repellat repellendaus reprehenderit repudiandae rerudum rerum saepe sapiente sed sequi similique sint sit soluta sunt suscipit tempora tempore temporibus tenetur totam ullam unde ut vel velit veniam veritatis vero vitae voluptas voluptate voluptatem voluptates voluptatibus voluptatum".split(" ")
+                        let aLI = "lorem ipsum a ab accusamus accusantium ad adipiscing alias aliquam aliquid amet animi aperiam architecto asperiores aspernatur assumenda at atque aut autem beatae blanditiis commodi consectetur consequatur consequuntur corporis corrupti culpa cum cumque cupiditate debitis delectus deleniti deserunt dicta dignissimos distinctio do dolor dolore dolorem doloremque dolores doloribus dolorum dquis ducimus ea eaque earum eius eligendi enim eos error ert esse est et eum eveniet ex excepturi exercitationem expedita explicabo facere facilis fuga fugiat fugit harum hic id illo illum impedit in incididunt inventore ipsa ipsam irure iste itaque iusto labore laboriosam laborum laudantium libero magnam magni maiores maxime minima minus modi molestiae molestias mollitia nam natus necessitatibus nemo neque nesciunt nihil nisi nobis non nostrumd nulla numquam obcaecati odio odit officia officiis omnis optio pariatur perferendis perspiciatis placeat porro possimus praesentium provident quae quaerat quam quas quasi qui quia quibusdam quidem quis quisquam quo quod quos ratione recusandae reiciendis rem repellat repellendaus reprehenderit repudiandae rerudum rerum saepe sapiente sed sequi similique sint sit soluta sunt suscipit tempora tempore temporibus tenetur totam ullam unde ut vel velit veniam veritatis vero vitae voluptas voluptate voluptatem voluptates voluptatibus voluptatum".split(" ")
+                        if( this.lang == "english" ) aLI = "a about absolutely accident action actionology admirable advocacy alchemy all an and angel animals anime answer anywhere application apprehension are arrester artisanal as asked atoms avant-garde awareness back bamboozle bananas barefoot based beauty best beyond blink bold book boost boy boys brand brandformance brands breakfast build but butterscotch buyer buyers by cadence can candy cash cellaphane centricity chain chaos claironic clarity clever clevor clevorvoyant clock clockwork coming common compass compel consensus contagious content context convergence conversational conviction convinced countenance counter crackerjack craftwork create creating crucial culture customer cut cutting damn data day decisis delirious delta depth design destroyed digital directed discerning discoverability distinctly doctor dog’s don't done doppelganger double dubious dust easy eat efficiency elastic electrokinetic emerging enablement enemy engage enigmatic enliven enterprise entice etch even every evocative evoked experience express extremely eyes faculties fad fall fast feasible ferver fishstick flow fluent fluid fly food for foray form freak fresh fringe from fruition fulcrum fundamental fusion future-proof game garish generation give glide glory gobsmackingly god golden gotta grokked grow guile hand happenstance he's heart help here high hold honey how however hyper-persuasive I iconic ideas ideation if imagine impossibilities in indigo infinite insipid into intuitive ion irrepressibly is isn’t it it's journeys joy keystone knot know latticework laureate leading-edge leapyear lengths let life like linchpin longing luxe madness majestic man many marketing me meaningful microsecond minds monkeys moonlight motion move movie moving my needle nevermore new noble noise nonsense not numbers observable of on once orgin other our outcome-based own page paragon pay pepper peppercoin physically piece pimento poet portal posh post potential probability product productivity propulsion purple quantum questions quinque quintessence rancid reason reasonable refreshingly reliable replicating required resonance results revenue reversed ridiculous right rise rocket salesforce saw say scalable score sculptor secure see seize sell seller sense shakespeare shoes single small smart socks sorrow stainless stars steadfast story straight strawberry striking studio sub-committee sunset surgery syncopated syncopation syndication take tech technology tell that the thee their theory there they this those through time to trebuchet trillions typing uncommon unexpected unfathomably universe unreasonable urgency use vantagepoint veins versus vessel video visualization visualizer visuals want was watch way were what wherewithal wind wine wise with within won't words work world yet you you'd your zenith".toLocaleLowerCase().split(" ").sort( (a,b) => {
+                            if( (Math.floor(Math.random() * 10) + 1) >= (Math.floor(Math.random() * 10) + 1) ) return -1
+                            return 1
+                        })
                         let sOut = ""
                         for( let nS = 1; nS <= Sentences; nS++){
-                            let nWc = Math.floor(Math.random() * 6) + 3  //  Word count per sentence rnd 3-8
+                            let nWc = Math.floor(Math.random() * 10) + 4  //  Word count per sentence rnd 4-10
                             for( let nW = 0; nW <= nWc; nW++){
                             let sWrd = aLI[ Math.floor(Math.random() * aLI.length) ]
                             if( !nW ) sWrd = sWrd[0].toUpperCase() + sWrd.slice(1)  //  Cap first
