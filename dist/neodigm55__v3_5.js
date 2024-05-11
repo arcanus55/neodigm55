@@ -1608,7 +1608,7 @@ class NeodigmAgent {
               }
               neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + sTkn + ".js" )
               if( rs?.unistore_token ){  //  var shared store - compressed
-                this.unistore = rs?.unistore_token
+                this.unistore = rs?.unistore
               }
             }
           } )
