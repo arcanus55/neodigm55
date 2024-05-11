@@ -1578,7 +1578,7 @@ let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 class NeodigmAgent {
   constructor(_d, _aQ) {  //  plugin extension manifest
       this._d = _d; this._aQ = _aQ;
-      this.aeWdgs = []; this.sandbox = null;
+      this.aeWdgs = []; this.sandbox = null; this.unistore = null;
       this.bIsInit = false
   }
   async init() {  //  rinit
@@ -1596,17 +1596,20 @@ class NeodigmAgent {
               if( rs?.sandbox ){
                 this.sandbox = LZString.decompressFromEncodedURIComponent( rs.sandbox )
               }
-              if( rs?.partials ){  //  Inject script elms from manifest
+              if( rs?.partials ){  //  Inject script elaments from manifest
                 rs.partials.forEach( ( aPrt )=>{
                   if( aPrt ) neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + aPrt + ".js" )
                 } )
               }
-              if( rs?.assets ){  //  Inject script elms from manifest
-                rs.assets.forEach( ( aAst )=>{  //  TODO css
+              if( rs?.assets ){  //  Inject asset elaments from manifest
+                rs.assets.forEach( ( aAst )=>{
                   if( aAst[0].toLowerCase() == "js" ) neodigmUtils.fAsyncJS( document, aAst[1] )
                 } )
               }
               neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + sTkn + ".js" )
+              if( rs?.unistore_token ){  //  var shared store - compressed
+                this.unistore = rs?.unistore_token
+              }
             }
           } )
         }
@@ -1636,13 +1639,12 @@ class NeodigmAgent {
   async sandboxFill(){
     let oSndbx = JSON.parse( this.sandbox )
     for (const sId in oSndbx) {
-  console.log( " ~~~ | ", oSndbx[ sId ])
       let elVal = document.getElementById( sId )
       if( elVal ) elVal.value = oSndbx[ sId ]
     }
     return oSndbx
   }
-  async doA2YW( oWTTCompStore ){  //  
+  async doA2YW( oWTTCompStore ){  //  Add to your website
     return "snippet code"
   }
   genChronSync() {  //  Protomolecule 
