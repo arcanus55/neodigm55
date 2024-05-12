@@ -1623,6 +1623,15 @@ class NeodigmAgent {
     this.bIsInit = true
     return this
   }
+  async getWdgtUniStore( sToken = null, fCB ){  //  Retrieve 1 uni no auth
+    if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~uni get | ", sToken )
+    if( sToken ){
+      const oFetchConf = { method: "GET", headers: { "protomolecule": neodigmAgent.genChronSync(), "apploc": LZString.compressToEncodedURIComponent( document.location.href ), "Content-Type": "application/json" } }
+      const oResp = await fetch( neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/unistore/" + sToken, oFetchConf )
+      const jsResp = await oResp.json();
+      if( jsResp && fCB ) fCB( jsResp )
+    }
+  }
   async sandboxShare( sToken = null, oPack = null, fCB ){  //  Session
     if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~sndbx shr pckg | ", oPack )
     if( sToken && oPack ){
