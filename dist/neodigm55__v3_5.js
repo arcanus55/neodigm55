@@ -1578,7 +1578,7 @@ let neodigmPWA = new NeodigmPWA( document, [ neodigmOpt.N55_PWA_TEMPLATE_ID ] )
 class NeodigmAgent {
   constructor(_d, _aQ) {  //  plugin extension manifest
       this._d = _d; this._aQ = _aQ;
-      this.aeWdgs = []; this.sandbox = null; this.unistore = null;
+      this.aeWdgs = []; this.sandbox = null; this.unistore_token = null; this.unistore = null;
       this.bIsInit = false
   }
   async init() {  //  rinit
@@ -1608,6 +1608,7 @@ class NeodigmAgent {
               }
               neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + sTkn + ".js" )
               if( rs?.unistore_token ){  //  var shared store - compressed
+                this.unistore_token = rs?.unistore_token
                 this.unistore = rs?.unistore
               }
             }
@@ -1630,6 +1631,17 @@ class NeodigmAgent {
       const oResp = await fetch( neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/unistore/" + sToken, oFetchConf )
       if( oResp && fCB ) fCB( oResp )
     }
+    return this
+  }
+  async patchWdgtUniStore( sUniUnCompr = null, fCB ){  //  update 1 uni no auth
+    if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~uni patch | ", sUniUnCompr.length )
+    if( sUniUnCompr ){
+      const oPackCmp = {"unistore_token": neodigmAgent.unistore_token, "unistore": LZString.compressToEncodedURIComponent( sUniUnCompr ) }
+      const oFetchConf = { method: "PATCH", body: JSON.stringify( oPackCmp ), headers: { "protomolecule": neodigmAgent.genChronSync(), "apploc": LZString.compressToEncodedURIComponent( document.location.href ), "Content-Type": "application/json" } }
+      const oResp = await fetch( neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/unistore/" + neodigmAgent.unistore_token, oFetchConf )
+      if( oResp && fCB ) fCB( oResp )
+    }
+    return this
   }
   async sandboxShare( sToken = null, oPack = null, fCB ){  //  Session
     if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~sndbx shr pckg | ", oPack )
