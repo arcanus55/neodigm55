@@ -11,7 +11,7 @@ note="this logic is being retired"></TEMPLATE>
 
 
 <script>
-let neodigmOptCustom = { neodigmAgent:true, neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:true, N55_CTA_RND_TOUCH: 5000000 }
+let neodigmOptCustom = { neodigmAgent:true, neodigmWired4Sound_EVENTS:true, N55_DEBUG_lOG:false, N55_CTA_RND_TOUCH: 5000000 }
 </script>
 
 <script src="/dist/neodigm55__v3_5.js"></script>
@@ -63,13 +63,18 @@ style="width: 88%;"></textarea>
 <script>
     const elTABefore = document.querySelector("#js-ta__unis--before")
     const elTAAfter = document.querySelector("#js-ta__unis--after")
-    const doBefore = ()=>{
-console.log( "~~~ ||| " + neodigmAgent.unistore )
-        elTABefore.textContent = elTAAfter.textContent = LZString.decompressFromEncodedURIComponent( neodigmAgent.unistore )
+    const  doBefore = async ()=>{
+        //elTABefore.textContent = elTAAfter.textContent = LZString.decompressFromEncodedURIComponent( neodigmAgent.unistore )
+        await neodigmAgent.getWdgtUniStore( neodigmAgent.unistore_token, ( us )=>{
+console.log( "~~~ ||| " , us )
+
+            elTABefore.textContent = elTAAfter.textContent = LZString.decompressFromEncodedURIComponent( us )
+        } )
     }
     const doAfter = ()=>{
-        neodigmAgent.getWdgtUniStore( elTAAfter.textContent, ()=>{
-
+        //neodigmAgent.getWdgtUniStore( elTAAfter.textContent, ()=>{ // Still need to test this func!
+        neodigmAgent.patchWdgtUniStore( elTAAfter.value, (r)=>{
+console.log(" --- --- i think weve updated")
         } )
 
     }

@@ -1588,7 +1588,7 @@ class NeodigmAgent {
           const sTkn = oeWdg.dataset.n55WidgetId
           const oFetchConf = { headers: { "protomolecule": neodigmAgent.genChronSync(), "apploc": LZString.compressToEncodedURIComponent( document.location.href ), "Content-Type": "application/json" } }
           const sURI = neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/" + sTkn + "/content/"
-          fetch( sURI, oFetchConf  )
+          fetch( sURI, oFetchConf )
           .then( rs => rs.json() )
           .then( rs => {
             if( rs?.compressed && LZString && neodigmUtils ){
@@ -1624,12 +1624,12 @@ class NeodigmAgent {
     this.bIsInit = true
     return this
   }
-  async getWdgtUniStore( sToken = null, fCB ){  //  Retrieve 1 uni no auth
+  async getWdgtUniStore( sToken = null, fCB ){  //  Retrieve 1 uni no auth 
     if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~uni get | ", sToken )
     if( sToken ){
       const oFetchConf = { method: "GET", headers: { "protomolecule": neodigmAgent.genChronSync(), "apploc": LZString.compressToEncodedURIComponent( document.location.href ), "Content-Type": "application/json" } }
-      const oResp = await fetch( neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/unistore/" + sToken, oFetchConf )
-      if( oResp && fCB ) fCB( oResp )
+      const sURI = neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/unistore/" + sToken
+      fetch( sURI, oFetchConf ).then( rs => rs.json() ).then( rs => { if( rs && fCB ) fCB( rs ) } )
     }
     return this
   }
