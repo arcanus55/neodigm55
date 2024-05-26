@@ -1116,7 +1116,7 @@ data-n55-claire-click - confetti
     }
     static showCanv ( sQ, nOpc=1 ){
       if( this.bIsInit && !this.bIsPause ){
-        let canvCntr = ( typeof sQ == "string") ? this._d.querySelector( sQ ) : sQ  //  One Single OR element
+        let canvCntr = this._d.querySelector( sQ )  //  One Single
         let aElCanv = [ ... canvCntr.querySelectorAll( ":scope > *" )]  //  1st decendants
         if( canvCntr && aElCanv ){
           canvCntr.dataset.n55Claire = "true"
