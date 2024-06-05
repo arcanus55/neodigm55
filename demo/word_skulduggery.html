@@ -23,8 +23,11 @@
         +Show "Time XX:XX" on timeout and success pages
         +swap tiger image with "single version of truth - 35" in brand repo - update TSK carousel
 
-        fix race condition related to sDict variable
-        Add Powered by Neodigm 55 to  -success
+        +fix race condition related to sDict variable
+        +Add Powered by Neodigm 55 to  -success
+
+        tiger splash
+        fix caro FOUC
 
         Show existing purple hints inside the popup, so no need to close and reopen
         Retire the wrd skul repo after moving the roller to a wdgt
@@ -74,7 +77,7 @@
         background-position: 0 0, 10px 10px;
         background-size: 20px 20px;
     }
-    neodigm-carousel > section [data-n55-carousel-page-name="caro-conduit-6"] {
+    neodigm-carousel > section [data-n55-carousel-page-name="caro-conduit-3"] {
         background-color: var( --wrdskul-theme-conduit-4 );
         opacity: 0.8;
         background-image:  linear-gradient(30deg, #B5CAA0 12%, transparent 12.5%, transparent 87%, #B5CAA0 87.5%, #B5CAA0), linear-gradient(150deg, #B5CAA0 12%, transparent 12.5%, transparent 87%, #B5CAA0 87.5%, #B5CAA0), linear-gradient(30deg, #B5CAA0 12%, transparent 12.5%, transparent 87%, #B5CAA0 87.5%, #B5CAA0), linear-gradient(150deg, #B5CAA0 12%, transparent 12.5%, transparent 87%, #B5CAA0 87.5%, #B5CAA0), linear-gradient(60deg, #B5CAA077 25%, transparent 25.5%, transparent 75%, #B5CAA077 75%, #B5CAA077), linear-gradient(60deg, #B5CAA077 25%, transparent 25.5%, transparent 75%, #B5CAA077 75%, #B5CAA077);
@@ -210,6 +213,11 @@
         </neodigm-carousel>
         <neodigm-carousel id="caro-main" class="caro-main">
             <section>
+                <section data-n55-carousel-page-name="caro-main-tiger">
+                    <br><br>
+                    <img src="https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/35.webp"
+                    style="display: block;width: 88%; height: auto;margin: auto;border-radius: 12px;z-index: 256;">
+                </section>
                 <section data-n55-carousel-page-name="caro-main-splash">
                     <section>
                         <br>
@@ -242,16 +250,16 @@
                         </nav>
                     </section>
                 </section>
-                <section data-n55-carousel-page-name="caro-main-help"></section>
+
                 <section data-n55-carousel-page-name="caro-main-memory">
                     <section
                         style="height: calc( 100vh - 1px ); width: calc(100vw - 36px); margin: 0;">
                         
                         <!--
-                        <neodigm-memory data-colorscheme=""pattern="https://mansworldmag.online/wp-content/uploads/2023/03/magazines-i##cnt##.webp" complete="" ></neodigm-memory>
+                        <neodigm-memory data-colorscheme=""pattern="https://mansworldmag.online/wp-content/uploads/2023/03/magazines-i##cnt##.webp" complete=""></neodigm-memory>
                        -->
                         
-                        <neodigm-memory data-colorscheme="" offset="33" pattern="https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/##cnt##.jpg" complete="" ></neodigm-memory>
+                        <neodigm-memory data-colorscheme="" offset="33" pattern="https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/##cnt##.jpg" complete=""></neodigm-memory>
                          
                     </section>
                 </section>
@@ -259,7 +267,7 @@
                     <br>
                     <section
                         style="width: 386px; height: 386px; margin: auto;">
-                        <neodigm-terminal typeon="this is text" prompt="" data-colorscheme=""></neodigm-terminal>
+                        <!--<neodigm-terminal typeon="this is text" prompt="" data-colorscheme=""></neodigm-terminal>-->
                     </section>
                 </section>
                 <section data-n55-carousel-page-name="caro-main-guess"></section>
@@ -267,8 +275,7 @@
                     <br>
                     <p id="caro-main-timeout__text" class="h-center rammetto-brush-regular hd2 text-coy_2007"
                     style="">Word Skulduggery</p>
-                    <br>
-                    <br>
+                    <br><br>
                     <hr data-n55-theme="info">
                     <br>
                     <p id="caro-main-timeout__text--results" class="h-center rammetto-brush-regular hd4 text-coy_2007"
@@ -281,6 +288,7 @@
                     <br>
                     <p id="caro-main-success__text" class="h-center rammetto-brush-regular hd2 text-coy_2007"
                     style="">Word Skulduggery</p>
+                    <br>
                     <br>
                     <hr data-n55-theme="info">
                     <br>
@@ -767,7 +775,7 @@ class GameState {
         this.gametime = "00:00"
         this.gametime_timeout = "16:1"  //  16:1
         this.gametime_start = new Date()
-        this.nextPageName = "caro-main-play"
+        //this.nextPageName = "caro-main-play"
         this.hints = {"includes": "", "excludes": "", "position": "      ", "guesses": []}
         this.state = ["splash", "play", "help", "memory", "terminal", "guess", "timeout", "success"]  //  not used
         this.unistore_token = ""; this.unistore = ""  //  not used
@@ -808,13 +816,15 @@ class GameState {
                 }, neodigmUtils.f02x( 1e3 ) + 76 )
                 switch( page_name ){
                     case "caro-main-splash":
+                        //GameState.elMemory.style.visibility="hidden"
                         document.querySelector("#caro-main-splash__text").textContent = ""
                         neodigmUtils.typeOn( {"q1st": "#caro-main-splash__text", "msg": GameState.taglines, "mode":"RANDOM", "uniqueDelay": 76 } )
                         setTimeout(()=>{
-                            neodigmCarousel.nav({"id": "caro-main", "nav": GameState.nextPageName })
-                        },  ( DebTog ) ? 100 : 4e3 )
+                            neodigmCarousel.nav({"id": "caro-main", "nav": "caro-main-play" })
+                        }, 4e3 )  //  ( DebTog ) ? 4e3 : 4e3
                     break;
                     case "caro-main-memory":
+                        //GameState.elMemory.style.visibility="inherit"
                         GameState.elMemory.isInit = false
                         GameState.elMemory.correct = GameState.elMemory.incorrect = 0
                         GameState.elMemory.doInit()                        
@@ -958,7 +968,19 @@ class GameState {
         }
     }
     static doTick(){
-        if( !this.word ) this.reset()
+        if( !this.word ){
+            this.word = sDict.split("\n")[ neodigmUtils.f02x( sDict.length / GameState.WRDLEN ) ]
+            setTimeout( ()=>{ GameState.doTick() }, 2e3)
+console.log("------- NO WORD | ")
+            return
+            //this.reset()
+        }
+
+
+
+
+
+
 
         const nP = neodigmCarousel.nav({ "id": "caro-main", "nav": "getPage" })
         setTimeout( ()=>{ GameState.doTick() }, 1e3)
@@ -1031,12 +1053,13 @@ if( neodigmCarousel && !neodigmCarousel.bIsInit ){
 }
 setTimeout(()=>{
     GameState.init()
-    neodigmUtils.typeOn( {"q1st": "#caro-main-splash__text", "msg": GameState.taglines, "mode":"RANDOM", "uniqueDelay": 96 } )
+    //neodigmUtils.typeOn( {"q1st": "#caro-main-splash__text", "msg": GameState.taglines, "mode":"RANDOM", "uniqueDelay": 97 } )
+    neodigmCarousel.nav({"id": "caro-main", "nav": "caro-main-splash" })
     setTimeout(()=>{
-        neodigmCarousel.nav({"id": "caro-main", "nav": "caro-main-play" })
+        //neodigmCarousel.nav({"id": "caro-main", "nav": "caro-main-play" })
         GameState.gametime_start = new Date()
         GameState.doTick()
-    },  6e3 )
+    },  9e3 )
     neodigmSodaPop.setOnAfterOpen( ()=>{
         NeodigmClaire.showCanv('neodigm-sodapop', .6).setTheme( ['brand','marcom','warning','party','danger','info'] ).initCanvOn('neodigm-sodapop').waxOn('neodigm-sodapop')
     } )
