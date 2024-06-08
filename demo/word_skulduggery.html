@@ -29,7 +29,7 @@
         +tiger splash
         fix caro FOUC
 
-        Show existing purple hints inside the popup, so no need to close and reopen
+        +Show existing purple hints inside the popup, so no need to close and reopen
         Retire the wrd skul repo after moving the roller to a wdgt
 
         vHint random logic, inside While loop so that it keeps going until it finds an empty slot
@@ -115,6 +115,7 @@
         font-weight: 400;
         font-style: normal;
     }
+    neodigm-kpi {margin: 1px !important;}
     .kpi-wrd,
     .kpi-gametime__tick,
     .kpi-ges { pointer-events: none; }
@@ -233,12 +234,6 @@
                         <br>
                         <p class="hd2">You will play mini-challenges of skill and chance to win clues or you can just guess.</p>
                         <br>
-                        <p class="hd3">You can guess six times. There is a 16 minute time limit. </p>
-                        <br>
-                        <p class="hd3">You can play again right away. You do not have to wait until tomorrow.</p>
-                        <br>
-                        <p class="hd3">A letter will not appear in the word more than once. Meaning that each letter is unique.</p>
-                        <br><br><br>
                         <nav class="h-center">
                             <a tabindex="-1" data-n55-enchanted-cta data-n55-enchanted-cta-ambient="emit" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true" data-n55-enchanted-cta-size="medium" data-n55-flash-theme="marcom" data-n55-theme="danger"
                             data-n55-enchanted-cta-alt="Big|Fun"
@@ -248,6 +243,12 @@
                             ><span data-n55-wired4sound-hover="3">Play</span><span>Now!</span>
                             </a>                            
                         </nav>
+                        <br><br><br>
+                        <p class="hd3">You can guess six times. There is a 16 minute time limit. </p>
+                        <br>
+                        <p class="hd3">You can play again right away. You do not have to wait until tomorrow.</p>
+                        <br>
+                        <p class="hd3">A letter will not appear in the word more than once. Meaning that each letter is unique.</p>
                     </section>
                 </section>
 
@@ -481,7 +482,7 @@ data-n55-sodapop-size="medium" data-n55-sodapop-fullscreen="false">
 
 <script>
 const neodigmOptCustom = {  neodigmWWInterval:true }
-const DebTog = false
+let DebTog = false
 </script>
 <script>
 let elTmpl_memory = document.createElement("template")
@@ -906,19 +907,31 @@ class GameState {
         }, 6e3 )
     }
     static updateGesRows(){  //  Called when sodepop opens & on new guess
+        let aGesH5 = []
         this.hints.guesses.forEach( ( sGuess, i )=>{
-            const aGuess = Array.from( sGuess.toLowerCase() )
-            const aGesH5 = Array.from( document.querySelectorAll("nav.kpi-ges__" + (i + 1) + " h5") )
+            const aGuess = Array.from( sGuess.toLowerCase() )  //  case
+            aGesH5 = Array.from( document.querySelectorAll("nav.kpi-ges__" + (i + 1) + " h5") )
             if( aGesH5 ){  //  populate kpi h5
-                aGesH5.forEach( ( elH5, i )=>{
-                    elH5.textContent = aGuess[ i ]
-                    const nPos = this.word.toLowerCase().indexOf( aGuess[ i ].toLowerCase() )
+                aGesH5.forEach( ( elH5, iH5 )=>{
+                    elH5.textContent = aGuess[ iH5 ]
+                    const nPos = this.word.toLowerCase().indexOf( aGuess[ iH5 ].toLowerCase() )  //  case
                     if( nPos != -1 ){
-                        elH5.parentNode.dataset.n55Theme = (nPos == i) ? "marcom" : "brand"
+                        elH5.parentNode.dataset.n55Theme = ( nPos == iH5 ) ? "marcom" : "brand"
                     }
                 })
             }
         })
+        setTimeout( ()=>{  //  Show existing purple hints inside the popup, so no need to close and reopen
+            aGesH5 = Array.from( document.querySelectorAll("nav.kpi-ges__" + (this.hints.guesses.length + 1)  + " h5") )
+            Array.from( this.hints.position ).forEach( (c, i)=>{  //  Targets last row of cyan cicles
+                if( c != " " ){
+                    aGesH5[i].textContent = c
+                    aGesH5[i].parentNode.dataset.n55Theme = "marcom"
+                }
+            } )            
+        }, 3e3)
+
+
         GameState.hints.guesses.forEach( (g, i)=>{  //  Progr show rows of guesses
             const elRow = document.querySelector("nav.kpi-ges__" + (i + 2) )
             if( elRow ) elRow.classList.remove("h-ds__none")
@@ -971,7 +984,7 @@ class GameState {
         if( !this.word ){
             this.word = sDict.split("\n")[ neodigmUtils.f02x( sDict.length / GameState.WRDLEN ) ]
             setTimeout( ()=>{ GameState.doTick() }, 2e3)
-console.log("------- NO WORD | ")
+console.log("~~~ ---- NO WORD | ")
             return
             //this.reset()
         }
