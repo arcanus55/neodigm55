@@ -22,17 +22,17 @@
         +Memory WC - leave visible for a few seconds longer at the beginning of EACH challenge
         +Show "Time XX:XX" on timeout and success pages
         +swap tiger image with "single version of truth - 35" in brand repo - update TSK carousel
-
         +fix race condition related to sDict variable
         +Add Powered by Neodigm 55 to  -success
-
         +tiger splash
-        fix caro FOUC
-
         +Show existing purple hints inside the popup, so no need to close and reopen
+
+        !make wdgt on TSH
+
         Retire the wrd skul repo after moving the roller to a wdgt
 
         vHint random logic, inside While loop so that it keeps going until it finds an empty slot
+        vfix caro FOUC
 
 -->
 <!-- temp code -->
@@ -924,7 +924,7 @@ class GameState {
         setTimeout( ()=>{  //  Show existing purple hints inside the popup, so no need to close and reopen
             aGesH5 = Array.from( document.querySelectorAll("nav.kpi-ges__" + (this.hints.guesses.length + 1)  + " h5") )
             Array.from( this.hints.position ).forEach( (c, i)=>{  //  Targets last row of cyan cicles
-                if( c != " " ){
+                if( c != " " && aGesH5[i] ){
                     aGesH5[i].textContent = c
                     aGesH5[i].parentNode.dataset.n55Theme = "marcom"
                 }
@@ -957,11 +957,13 @@ class GameState {
                 neodigmWired4Sound.sound( 6, "LOUD")
                 neodigmSodaPop.close()
                 neodigmCarousel.nav({ "id": "caro-main", "nav": "caro-main-success" })
+            }else{
+                if( GameState.WRDLEN == (GameState.hints.guesses.length + 0) ){
+                    neodigmSodaPop.close()
+                    neodigmCarousel.nav({ "id": "caro-main", "nav": "caro-main-timeout" })
+                }                
             }
-            if( GameState.WRDLEN == (GameState.hints.guesses.length + 0) ){
-                neodigmSodaPop.close()
-                neodigmCarousel.nav({ "id": "caro-main", "nav": "caro-main-timeout" })
-            }
+
             const aWrd = Array.from( this.word )
             const aPos = Array.from( this.hints.position )
             const elUp = document.querySelector('#word_up')
@@ -986,14 +988,7 @@ class GameState {
             setTimeout( ()=>{ GameState.doTick() }, 2e3)
 console.log("~~~ ---- NO WORD | ")
             return
-            //this.reset()
         }
-
-
-
-
-
-
 
         const nP = neodigmCarousel.nav({ "id": "caro-main", "nav": "getPage" })
         setTimeout( ()=>{ GameState.doTick() }, 1e3)
@@ -1060,9 +1055,9 @@ document.addEventListener("contextmenu", ( ev ) => {
         GameState.doErrorExperience()
     }
 }, false )
-if( neodigmCarousel && !neodigmCarousel.bIsInit ){
-    //neodigmCarousel.init()
-    //neodigmCarousel.nav({"id": "caro-main", "nav": "caro-main-splash" })
+if( neodigmCarousel && !neodigmCarousel.bIsInit ){  //  As wdgt
+    neodigmCarousel.init()
+    neodigmCarousel.nav({"id": "caro-main", "nav": "caro-main-tiger" })
 }
 setTimeout(()=>{
     GameState.init()
