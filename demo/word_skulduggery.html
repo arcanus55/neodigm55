@@ -19,8 +19,8 @@
 <body style="background-color: #484848;">
 <!-- ROADMAP
 
-    NOTE: The true orgin of this app is in the neodigm55 repo | served as wdgt
-    
+    NOTE: The true orgin of this app is in the neodigm55 repo (demo) | served as wdgt
+
     Playability:
         +Memory WC - leave visible for a few seconds longer at the beginning of EACH challenge
         +Show "Time XX:XX" on timeout and success pages
@@ -258,13 +258,16 @@
                 <section data-n55-carousel-page-name="caro-main-memory">
                     <section
                         style="height: calc( 100vh - 1px ); width: calc(100vw - 36px); margin: 0;">
-                        
                         <!--
-                        <neodigm-memory data-colorscheme=""pattern="https://mansworldmag.online/wp-content/uploads/2023/03/magazines-i##cnt##.webp" complete=""></neodigm-memory>
-                       -->
+                            Note: Perhaps scan unistore for pattern (wdgt client specific)
+                        -->
                         
+                        
+                        <neodigm-memory data-colorscheme="" pattern="https://mansworldmag.online/wp-content/uploads/2023/03/magazines-i##cnt##.webp" complete=""></neodigm-memory>
+                       
+                        <!--
                         <neodigm-memory data-colorscheme="" offset="33" pattern="https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/##cnt##.jpg" complete=""></neodigm-memory>
-                         
+                        --> 
                     </section>
                 </section>
                 <section data-n55-carousel-page-name="caro-main-terminal">
@@ -624,6 +627,7 @@ class NeodigmMemory extends HTMLElement {
                             setTimeout( ()=>{ neodigmUtils.shake("#caro-conduit-top > section > section:nth-child(4) > nav", false) }, 4e3 )
                             setTimeout( ()=>{ neodigmUtils.shake(".cta-bottom__guess", false ) }, 9e3 )
                             setTimeout( ()=>{ neodigmUtils.shake(".cta-bottom__guess") }, 19000 )
+                            setTimeout( ()=>{ neodigmTulip.autoOpen(".cta-bottom__guess") }, 22000 )
                         }
                     }else{
                         if( this.incorrect ){
