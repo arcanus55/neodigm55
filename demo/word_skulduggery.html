@@ -312,7 +312,7 @@
                         data-n55-enchanted-cta-hover-an="true"
                         data-n55-enchanted-cta
                         data-n55-enchanted-cta-ambient="emit"
-                        data-n55-enchanted-cta-dont-touch="true"
+                        data-n55-enchanted-cta-dont-touch="false"
                         data-n55-enchanted-cta-shape-off="false"
                         data-n55-enchanted-cta-size="medium"
                         data-n55-flash-theme="marcom"
@@ -852,6 +852,7 @@ class GameState {
                         const sResults_timeout = "The secret word was " + GameState.word + "."
                         neodigmUtils.typeOn( {"q1st": "#caro-main-timeout__text", "msg": GameState.sorry, "mode":"RANDOM", "uniqueDelay": 75 } )
                         neodigmUtils.typeOn( {"q1st": "#caro-main-timeout__text--results", "msg": sResults_timeout, "mode":"none", "uniqueDelay": 85 } )
+                        setTimeout(()=>{ neodigmToast.q("Yes, that is a real word.", "info") }, 4e3 )
                     break;
                     
                 }
