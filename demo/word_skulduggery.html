@@ -29,9 +29,7 @@
         +Add Powered by Neodigm 55 to  -success
         +tiger splash
         +Show existing purple hints inside the popup, so no need to close and reopen
-
         +make wdgt on TSH
-
         Retire the wrd skul repo after moving the roller to a wdgt
 
         vHint random logic, inside While loop so that it keeps going until it finds an empty slot
@@ -627,7 +625,7 @@ class NeodigmMemory extends HTMLElement {
                             setTimeout( ()=>{ neodigmUtils.shake("#caro-conduit-top > section > section:nth-child(4) > nav", false) }, 4e3 )
                             setTimeout( ()=>{ neodigmUtils.shake(".cta-bottom__guess", false ) }, 9e3 )
                             setTimeout( ()=>{ neodigmUtils.shake(".cta-bottom__guess") }, 19000 )
-                            setTimeout( ()=>{ neodigmTulip.autoOpen(".cta-bottom__guess") }, 22000 )
+                            if( !neodigmSodaPop.isOpen() ) setTimeout( ()=>{ neodigmTulip.autoOpen(".cta-bottom__guess") }, 22000 ) 
                         }
                     }else{
                         if( this.incorrect ){
@@ -925,6 +923,8 @@ class GameState {
                     const nPos = this.word.toLowerCase().indexOf( aGuess[ iH5 ].toLowerCase() )  //  case
                     if( nPos != -1 ){
                         elH5.parentNode.dataset.n55Theme = ( nPos == iH5 ) ? "marcom" : "brand"
+                    }else{
+                        elH5.parentNode.dataset.n55Theme = "info"
                     }
                 })
             }
@@ -938,8 +938,6 @@ class GameState {
                 }
             } )            
         }, 3e3)
-
-
         GameState.hints.guesses.forEach( (g, i)=>{  //  Progr show rows of guesses
             const elRow = document.querySelector("nav.kpi-ges__" + (i + 2) )
             if( elRow ) elRow.classList.remove("h-ds__none")
