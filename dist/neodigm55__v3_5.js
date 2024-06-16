@@ -2,7 +2,7 @@
 Neodigm 55 UX v3.5.0
 Copyright (c) 2021-2025, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause and team
 
-Neodigm 55 is an eclectic JavaScript UX micro-library.
+Neodigm 55 the eclectic low-code UX micro-library ✨
 The lightweight components come together in a unique way that will make your website playful and fun.
 
 All rights reserved. Redistributions of source code must retain the above copyright and notice.

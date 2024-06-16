@@ -2,7 +2,7 @@
 Neodigm 55 UX v3.5.0
 Copyright (c) 2021-2025, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause
 
-Neodigm 55 is an eclectic JavaScript UX micro-library.
+Neodigm 55 the eclectic low-code UX micro-library ✨
 The lightweight components come together in a unique way that will make your website playful and fun.
 
 All rights reserved. Redistributions of source code must retain the above copyright and notice.
@@ -228,8 +228,8 @@ neodigm-parallax[data-n55-parallax] aside {
 }
 neodigm-parallax[data-n55-parallax-size='pico']   aside { padding: 32px 0; }
 neodigm-parallax[data-n55-parallax-size='micro']  aside { padding: 50px 0; }
-neodigm-parallax[data-n55-parallax-size='milli']  aside { padding: 100px 0; }  /*  Milli and XSmall same  */
-neodigm-parallax[data-n55-parallax-size='xsmall'] aside { padding: 100px 0; }
+neodigm-parallax[data-n55-parallax-size='milli'],
+neodigm-parallax[data-n55-parallax-size='xsmall'] aside { padding: 100px 0; }  /*  Milli and XSmall same  */
 neodigm-parallax[data-n55-parallax-size='small']  aside { padding: 200px 0; }
 neodigm-parallax[data-n55-parallax-size='medium'] aside { padding: 400px 0; }
 neodigm-parallax[data-n55-parallax-size='large']  aside { padding: 600px 0; }
@@ -819,8 +819,8 @@ neodigm-acticon:not([data-n55-theme="disabled"]):not([data-n55-theme="ghost"]):h
 
 neodigm-acticon[data-n55-size='pico']  { width: 14px; height: 14px; }
 neodigm-acticon[data-n55-size='micro'] { width: 18px; height: 18px; }
-neodigm-acticon[data-n55-size='milli'] { width: 24px; height: 24px; }  /*  Milli and XSmall same  */
-neodigm-acticon[data-n55-size='xsmall']{ width: 24px; height: 24px; }
+neodigm-acticon[data-n55-size='milli'],
+neodigm-acticon[data-n55-size='xsmall']{ width: 24px; height: 24px; }  /*  Milli and XSmall same  */
 neodigm-acticon[data-n55-size='small'] { width: 29px; height: 29px; }
 neodigm-acticon[data-n55-size='medium']{ width: 35px; height: 35px; }
 neodigm-acticon[data-n55-size='large'] { width: 42px; height: 42px; }
@@ -828,8 +828,8 @@ neodigm-acticon[data-n55-size='xlarge']{ width: 50px; height: 50px; }
 
 neodigm-acticon[data-n55-size='pico']  .material-symbols-outlined  { font-size: 13px; }
 neodigm-acticon[data-n55-size='micro'] .material-symbols-outlined  { font-size: 17px; }
-neodigm-acticon[data-n55-size='milli'] .material-symbols-outlined  { font-size: 23px; }  /*  Milli and XSmall same  */
-neodigm-acticon[data-n55-size='xsmall'] .material-symbols-outlined { font-size: 23px; }
+neodigm-acticon[data-n55-size='milli'] .material-symbols-outlined,
+neodigm-acticon[data-n55-size='xsmall'] .material-symbols-outlined { font-size: 23px; }  /*  Milli and XSmall same  */
 neodigm-acticon[data-n55-size='small'] .material-symbols-outlined  { font-size: 28px; }
 neodigm-acticon[data-n55-size='medium'] .material-symbols-outlined { font-size: 34px; }
 neodigm-acticon[data-n55-size='large'] .material-symbols-outlined  { font-size: 41px; }
@@ -938,8 +938,8 @@ neodigm-juicebar{
 }
 neodigm-juicebar[data-n55-size='pico']  { height: 1px; }
 neodigm-juicebar[data-n55-size='micro'] { height: 2px; }
-neodigm-juicebar[data-n55-size='milli'] { height: 3px; }  /*  Milli and XSmall same  */
-neodigm-juicebar[data-n55-size='xsmall']{ height: 3px; }
+neodigm-juicebar[data-n55-size='milli'],
+neodigm-juicebar[data-n55-size='xsmall']{ height: 3px; }  /*  Milli and XSmall same  */
 neodigm-juicebar[data-n55-size='small'] { height: 4px; }
 neodigm-juicebar[data-n55-size='medium']{ height: 8px; }
 neodigm-juicebar[data-n55-size='large'] { height: 12px; }
