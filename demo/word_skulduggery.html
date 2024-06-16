@@ -218,7 +218,7 @@
                 <section data-n55-carousel-page-name="caro-main-tiger">
                     <br><br>
                     <img src="https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/35.webp"
-                    style="display: block;max-width: 1000px; width: 88%; height: auto;margin: auto;border-radius: 12px;z-index: 256;">
+                    style="display: block;max-width: 1000px; width: 88%; height: auto;margin: auto;border-radius: 32px;z-index: 256;">
                 </section>
                 <section data-n55-carousel-page-name="caro-main-splash">
                     <section>
@@ -805,7 +805,8 @@ class GameState {
         if( DebTog ) console.log( "~~~ " + this.word )
         return this
     }
-    static reset( sPage = "caro-main-splash"){
+    //static reset( sPage = "caro-main-splash"){
+    static reset( sPage = "caro-main-tiger"){
         window.location.reload()
         GameState.init()
         neodigmCarousel.nav({ "id": "caro-main", "nav": sPage })
@@ -850,6 +851,7 @@ class GameState {
                         },  3e3 )
                     break;
                     case "caro-main-success":
+                    neodigmMarquee.init()
                         const sResults = "You solved the puzzle in " + ( GameState.hints.guesses.length + 0 ) + " guesses."
                         neodigmUtils.typeOn( {"q1st": "#caro-main-success__text", "msg": GameState.congrats, "mode":"RANDOM", "uniqueDelay": 79 } )
                         neodigmUtils.typeOn( {"q1st": "#caro-main-success__text--results", "msg": sResults, "mode":"none", "uniqueDelay": 86 } )
