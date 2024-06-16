@@ -88,6 +88,11 @@ const neodigmUtils = ( ( _d ) =>{
       if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~ga | " + event + " | " + msg )
       if( window.dataLayer ) window.dataLayer.push( { "event": event, "msg": msg } )
     },
+    isJSON: function( sIn ){
+      let isVal = false
+      try { isVal = typeof (JSON.parse( sIn )) } catch ( er ) { }
+      return ( isVal == "object" )
+    },
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
       document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
         if( ev?.target?.dataset?.n55TypeonHover ) neodigmUtils.typeOn( JSON.parse( ev.target.dataset.n55TypeonHover ) )

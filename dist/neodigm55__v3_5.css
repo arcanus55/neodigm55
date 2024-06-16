@@ -711,12 +711,18 @@ neodigm-tulip[data-n55-mrq='true'] neodigm-marquee { margin: 8px 6px; display: i
 neodigm-tulip[data-n55-mrq='true'] > P { display: none; }
 neodigm-tulip neodigm-marquee { display: none; }
 
-neodigm-tulip[data-n55-size='xsmall']{ font-size: 10px; line-height: 2.6; min-width: 84px; }
+neodigm-tulip[data-n55-size='pico']  { font-size: 8px; line-height: 2.8; min-width: 44px; }
+neodigm-tulip[data-n55-size='micro'] { font-size: 9px; line-height: 2.7; min-width: 64px; }
+neodigm-tulip[data-n55-size='milli'],
+neodigm-tulip[data-n55-size='xsmall']{ font-size: 10px; line-height: 2.6; min-width: 84px; }  /*  Milli and XSmall same  */
 neodigm-tulip[data-n55-size='small'] { font-size: 14px; line-height: 1.8; min-width: 104px; }
 neodigm-tulip[data-n55-size='medium']{ font-size: 18px; line-height: 1;   min-width: 186px; }
 neodigm-tulip[data-n55-size='large']{  font-size: 22px; line-height: .8;  min-width: 216px; }
 neodigm-tulip[data-n55-size='xlarge']{ font-size: 26px; line-height: .5;  min-width: 248px; }
 
+neodigm-tulip[data-n55-lines='2'][data-n55-size='pico']{ line-height: 1.8;}
+neodigm-tulip[data-n55-lines='2'][data-n55-size='micro']{ line-height: 1.6;}
+neodigm-tulip[data-n55-lines='2'][data-n55-size='milli'],
 neodigm-tulip[data-n55-lines='2'][data-n55-size='xsmall']{ line-height: 1.4;}
 neodigm-tulip[data-n55-lines='2'][data-n55-size='small'] { line-height: 1;}
 neodigm-tulip[data-n55-lines='2'][data-n55-size='medium']{ line-height: .9;}
