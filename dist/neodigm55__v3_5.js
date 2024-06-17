@@ -158,7 +158,7 @@ const neodigmUtils = ( ( _d ) =>{
         neodigmUtils.flashTitle( sTheme, 2e3 )
       }
     },
-    countTo: async function( _q, nVal, t=132 ){  //  Whole number
+    countTo: async function( _q, nVal, t=116 ){  //  Whole number
       const NTIMES = [16, t];  //  sixteen steps
       [ ... document.querySelectorAll( _q ) ].forEach(function( e, nDx ){
           let nDif = Math.abs( Number( e.textContent ) - nVal )
@@ -1003,7 +1003,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
         return neodigmMarquee; },
       play:  function(){ bIsPause = false; return neodigmMarquee; }
     }
-})( document, ["neodigm-marquee", "n55MarqueeText"], 148 );
+})( document, ["neodigm-marquee", "n55MarqueeText"], 132 );
 
 //  Neodigm 55 Claire Begin  //
 class NeodigmClaireAtomOn{
