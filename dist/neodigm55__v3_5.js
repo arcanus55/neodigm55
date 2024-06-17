@@ -36,6 +36,7 @@ neodigmAgent: true,
     API_baseURI:"https://a55-wtt-api-v1.onrender.com/", API_ver: "v1",
 neodigmPicnic: true,  N55_GTM_DL_PICNIC: "n55_gtm_dl_picnic",
 neodigmWWInterval: true,
+neodigmMetronome: {"countTo": 116, "neodigmMarquee": 132},  //  soft code unq num metronome subcr
   N55_ZIND: {"PopTart": 264},
   CONSOLE_LOG_VER: true,
   N55_DEBUG_lOG: false,
@@ -158,7 +159,7 @@ const neodigmUtils = ( ( _d ) =>{
         neodigmUtils.flashTitle( sTheme, 2e3 )
       }
     },
-    countTo: async function( _q, nVal, t=116 ){  //  Whole number
+    countTo: async function( _q, nVal, t = neodigmOpt.neodigmMetronome.countTo ){  //  Whole number | soft code unq num 116
       const NTIMES = [16, t];  //  sixteen steps
       [ ... document.querySelectorAll( _q ) ].forEach(function( e, nDx ){
           let nDif = Math.abs( Number( e.textContent ) - nVal )
@@ -1003,7 +1004,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
         return neodigmMarquee; },
       play:  function(){ bIsPause = false; return neodigmMarquee; }
     }
-})( document, ["neodigm-marquee", "n55MarqueeText"], 132 );
+})( document, ["neodigm-marquee", "n55MarqueeText"], neodigmOpt.neodigmMetronome.neodigmMarquee );  //  132
 
 //  Neodigm 55 Claire Begin  //
 class NeodigmClaireAtomOn{
