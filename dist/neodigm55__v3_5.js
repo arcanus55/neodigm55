@@ -1450,6 +1450,9 @@ class NeodigmCarousel {
     elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll(":scope >section") ]  //  Tab Containers
     elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
     elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
+    Array.from( elNCCntr.querySelectorAll("[data-n55-cloak='true']") ).forEach( ( elCloak )=>{
+      elCloak.dataset.n55Cloak = "false"
+    } )
     return elNC
   }
   nav ( oNav, bFireCB = true ){
