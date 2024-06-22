@@ -1604,12 +1604,12 @@ class NeodigmAgent {
               if( rs?.sandbox ){
                 this.sandbox = LZString.decompressFromEncodedURIComponent( rs.sandbox )
               }
-              if( rs?.partials ){  //  Inject script elaments from manifest
+              if( rs?.partials ){  //  Inject script elements from manifest
                 rs.partials.forEach( ( aPrt )=>{
                   if( aPrt ) neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + aPrt + ".js" )
                 } )
               }
-              if( rs?.assets ){  //  Inject asset elaments from manifest
+              if( rs?.assets ){  //  Inject asset elements from manifest
                 rs.assets.forEach( ( aAst )=>{
                   if( aAst[0].toLowerCase() == "js" ) neodigmUtils.fAsyncJS( document, aAst[1] )
                 } )

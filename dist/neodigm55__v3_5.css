@@ -25,7 +25,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 }
 
 neodigm-template { display: none; }
-[data-n55-cloak='true'] {display: none !important;} /* FOUC */
+[data-n55-cloak='true'] { display: none !important; } /* FOUC */
 
 /*  Neodigm Toast Begin  */
 .l-snackbar .snackbar__cont {

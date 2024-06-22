@@ -15,6 +15,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
+
 </head>
 <body style="background-color: #484848;">
 <!-- ROADMAP
@@ -215,19 +218,19 @@
         </neodigm-carousel>
         <neodigm-carousel id="caro-main" class="caro-main">
             <section>
-                <section data-n55-carousel-page-name="caro-main-tiger">
-                    <br><br>
+                <section data-n55-carousel-page-name="caro-main-tiger" data-n55-cloak="true"
+                data-n55-token='effect_3d_spheres__embedded'>
                     <img src="https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/35.webp"
-                    style="display: block;max-width: 1000px; width: 88%; height: auto;margin: auto;border-radius: 32px;z-index: 256;">
+                    style="position: absolute; display: block; top: 76px; margin: 8px; left: 10vw;max-width: 600px; width: 76vw; height: auto;margin: auto;border-radius: 32px;z-index: 256;">
                 </section>
-                <section data-n55-carousel-page-name="caro-main-splash">
+                <section data-n55-carousel-page-name="caro-main-splash" data-n55-cloak="true">
                     <section>
                         <br>
                         <p id="caro-main-splash__text" class="h-center rammetto-brush-regular hd1 text-coy_2007"
                         style="word-spacing: 9999999px;">Word Skulduggery</p>
                     </section>
                 </section>
-                <section data-n55-carousel-page-name="caro-main-play">
+                <section data-n55-carousel-page-name="caro-main-play" data-n55-cloak="true">
                     <section class="h-center readampm__title hd2"
                         style="padding: 8px;">
                         <br>
@@ -253,7 +256,7 @@
                     </section>
                 </section>
 
-                <section data-n55-carousel-page-name="caro-main-memory">
+                <section data-n55-carousel-page-name="caro-main-memory" data-n55-cloak="true">
                     <section
                         style="height: calc( 100vh - 1px ); width: calc(100vw - 36px); margin: 0;">
                         <!--
@@ -268,15 +271,15 @@
                         
                     </section>
                 </section>
-                <section data-n55-carousel-page-name="caro-main-terminal">
+                <section data-n55-carousel-page-name="caro-main-terminal" data-n55-cloak="true">
                     <br>
                     <section
                         style="width: 386px; height: 386px; margin: auto;">
                         <!--<neodigm-terminal typeon="this is text" prompt="" data-colorscheme=""></neodigm-terminal>-->
                     </section>
                 </section>
-                <section data-n55-carousel-page-name="caro-main-guess"></section>
-                <section data-n55-carousel-page-name="caro-main-timeout">
+                <section data-n55-carousel-page-name="caro-main-guess"></section data-n55-cloak="true">
+                <section data-n55-carousel-page-name="caro-main-timeout" data-n55-cloak="true">
                     <br>
                     <p id="caro-main-timeout__text" class="h-center rammetto-brush-regular hd2 text-coy_2007"
                     style="">Word Skulduggery</p>
@@ -289,7 +292,7 @@
                     <p id="caro-main-timeout__text--gametime" class="h-center rammetto-brush-regular hd4 text-coy_2007"
                     style="">Time: <span class="gametime__tick"></span></p>
                 </section>
-                <section data-n55-carousel-page-name="caro-main-success">
+                <section data-n55-carousel-page-name="caro-main-success" data-n55-cloak="true">
                     <br>
                     <p id="caro-main-success__text" class="h-center rammetto-brush-regular hd2 text-coy_2007"
                     style="">Word Skulduggery</p>
@@ -790,13 +793,12 @@ class GameState {
         this.gametime = "00:00"
         this.gametime_timeout = "16:1"  //  16:1
         this.gametime_start = new Date()
-        //this.nextPageName = "caro-main-play"
         this.hints = {"includes": "", "excludes": "", "position": "      ", "guesses": []}
         this.state = ["splash", "play", "help", "memory", "terminal", "guess", "timeout", "success"]  //  not used
         this.unistore_token = ""; this.unistore = ""  //  not used
-        this.taglines = "It Ain't Rocket Surgery|Stainless and Steadfast|Think Thrice. Every. Single. Time.|Clairvoyant Graphiti|The Writing on the Wall|Pan Fried Monkey Fisticufs|Is Anybody Out There?|Impossible and Feasible|Dogs Breakfast of Nonsense|Bare-knuckle Mischief|Clockwork Clever|Sharp like Parmesan|Whimsical Folly and Madness|Vocab Tomfoolery|Seize the Microsecond|Honey Pepper Pimento|Absolutely Gobsmack Bananas|Make Time Change Your Mind|Butterscotch Candy in My Veins|Circadian Rhythms of Arousal and Rest".replaceAll(" ", " \n")
+        this.taglines = "Cadillac of Turkey Pot Pie|It Ain't Rocket Surgery|Stainless and Steadfast|Think Thrice. Every. Single. Time.|Clairvoyant Graphiti|The Writing on the Wall|Pan Fried Monkey Fisticufs|Is Anybody Out There?|Impossible and Feasible|Dogs Breakfast of Nonsense|Bare-knuckle Mischief|Clockwork Clever|Sharp like Parmesan|Whimsical Folly and Madness|Vocab Tomfoolery|Seize the Microsecond|Honey Pepper Pimento|Absolutely Gobsmack Bananas|Make Time Change Your Mind|Butterscotch Candy in My Veins|Circadian Rhythms of Arousal and Rest".replaceAll(" ", " \n")
         this.congrats = "Wowzers You Win!|Winner Winner Chicken Brunch!|Well Done!"
-        this.sorry = "Out of Time and out of Guesses.|Sorry, try again.|Nope, try again."
+        this.sorry = "Out of Time and out of Guesses.|Sorry, try again.|Nope, try again.|No Luck, try again."
         this.alpha ="~ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         if( neodigmAgent?.unistore_token ) this.unistore_token = neodigmAgent.unistore_token
         if( neodigmAgent?.unistore ) this.unistore = neodigmAgent.unistore
@@ -808,13 +810,13 @@ class GameState {
     //static reset( sPage = "caro-main-splash"){
     static reset( sPage = "caro-main-tiger"){
         window.location.reload()
-        GameState.init()
+        /*GameState.init()
         neodigmCarousel.nav({ "id": "caro-main", "nav": sPage })
         this.hints = {"includes": "", "excludes": "", "position": "      ", "guesses": []}
         this.doUpdateWordKPIs( "      " )
         this.elMemory.isInit = false
         this.elMemory.correct = this.elMemory.incorrect = 0
-        this.elMemory.doInit()
+        this.elMemory.doInit()*/
     }
     static onPage( caro_id, page_no, page_name ){
         switch( caro_id ){
@@ -837,7 +839,7 @@ class GameState {
                         neodigmUtils.typeOn( {"q1st": "#caro-main-splash__text", "msg": GameState.taglines, "mode":"RANDOM", "uniqueDelay": 76 } )
                         setTimeout(()=>{
                             neodigmCarousel.nav({"id": "caro-main", "nav": "caro-main-play" })
-                        }, 4e3 )  //  ( DebTog ) ? 4e3 : 4e3
+                        }, 5e3 )  //  ( DebTog ) ? 4e3 : 4e3
                     break;
                     case "caro-main-memory":
                         //GameState.elMemory.style.visibility="inherit"
@@ -851,7 +853,7 @@ class GameState {
                         },  3e3 )
                     break;
                     case "caro-main-success":
-                    neodigmMarquee.init()
+                        neodigmMarquee.init()
                         const sResults = "You solved the puzzle in " + ( GameState.hints.guesses.length + 0 ) + " guesses."
                         neodigmUtils.typeOn( {"q1st": "#caro-main-success__text", "msg": GameState.congrats, "mode":"RANDOM", "uniqueDelay": 79 } )
                         neodigmUtils.typeOn( {"q1st": "#caro-main-success__text--results", "msg": sResults, "mode":"none", "uniqueDelay": 86 } )
@@ -911,9 +913,6 @@ class GameState {
             Array.from( document.querySelectorAll(".kpi-wrd__" + (i + 1) + " > h5") ).forEach( (e)=>{
                     e.textContent = c
             } )
-            //Array.from( document.querySelectorAll(".kpi-ges__1 .kpi-ges__1--" + (i + 1) + " > h5") ).forEach( (e)=>{
-            //        e.textContent = c
-            //} )
         } )
         setTimeout( ()=>{
             Array.from( document.querySelectorAll("neodigm-kpi.kpi-wrd > h5") ).forEach( (e)=>{
@@ -1074,7 +1073,7 @@ document.addEventListener("contextmenu", ( ev ) => {
 }, false )
 if( neodigmCarousel && !neodigmCarousel.bIsInit ){  //  As wdgt
     neodigmCarousel.init()
-    neodigmCarousel.nav({"id": "caro-main", "nav": "caro-main-tiger" })
+    //neodigmCarousel.nav({"id": "caro-main", "nav": "caro-main-tiger" })
 }
 setTimeout(()=>{
     GameState.init()
@@ -1116,7 +1115,7 @@ setTimeout(()=>{
         }
         return true
     }, "soda_guess" )
-}, 4e3)
+}, 8e3)
 
 neodigmCarousel.setOnAfterNav( GameState.onPage )
 </script>
@@ -10540,6 +10539,73 @@ zythum`
 </script>
 
 <script>  /*  init when WTT?  */
+
+</script>
+
+
+<script> <!--  effect_3d_spheres hard coded / embedded into this wdgt -->
+const elWdgt = document.querySelector("[data-n55-token='effect_3d_spheres__embedded']")
+elCntr = document.createElement('section')
+elWdgt.appendChild(elCntr)
+
+const width = window.innerWidth
+const height = window.innerWidth
+
+const renderer = new THREE.WebGLRenderer()
+renderer.setPixelRatio(window.devicePixelRatio)
+renderer.setSize(width, height)
+elCntr.appendChild(renderer.domElement)
+
+const scene = new THREE.Scene()
+
+const camera = new THREE.PerspectiveCamera(45, width / height)
+camera.position.set(0, 0, +1000)
+
+const pointLight = new THREE.PointLight(0x1F6868, 4, 1000)
+scene.add(pointLight)
+
+const geometry = new THREE.SphereGeometry(30, 32, 16)
+const material = new THREE.MeshToonMaterial({color: 0x009473, alphaHash: false, transparent: true, opacity: .6, side: THREE.DoubleSide,})
+
+const group = new THREE.Group()
+for (let i = 0; i < 1000; i++) {
+    let mesh = new THREE.Mesh(geometry, material)
+    mesh.position.x = Math.random() * 2000 - 1000
+    mesh.position.y = Math.random() * 2000 - 1000
+    mesh.position.z = Math.random() * 2000 - 1000
+    mesh.rotation.x = Math.random() * 2 * Math.PI
+    mesh.rotation.y = Math.random() * 2 * Math.PI
+    const scale = Math.random() * 2
+    mesh.scale.x = scale
+    mesh.scale.y = scale
+    mesh.scale.z = scale
+    mesh.matrixAutoUpdate = false
+    mesh.updateMatrix()
+    group.add(mesh)
+}
+scene.add(group)
+
+scene.fog = new THREE.FogExp2(0x000000, 0.0002)
+animate()
+
+function animate () {
+    requestAnimationFrame(animate)
+    render()
+}
+function render () {
+    group.rotation.x += 0.0004
+    group.rotation.y += 0.002
+    renderer.render(scene, camera)
+}
+
+window.addEventListener('resize', onWdgtWindowResize, false)
+onWdgtWindowResize()
+
+function onWdgtWindowResize () {
+    camera.aspect = window.innerWidth / window.innerHeight
+    camera.updateProjectionMatrix()
+    renderer.setSize(window.innerWidth, window.innerHeight)
+}
 
 </script>
 

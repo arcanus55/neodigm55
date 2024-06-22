@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55__v3_5.css"></link>
+        <script src="https://arcanus55.github.io/neodigm55/dist/neodigm55__v3_5.js"></script>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.css"></link>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+        <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
+    </head>
+    <body  data-n55-ampm-theme="light">
+
+
+<!--  ||  TEMPLATE MU & CSS WDG BEGIN -->
+<wtt-widget data-n55-token="effect_3d_spheres"
+style="overflow: hidden;">
+</wtt-widget>
+
+<style>
+
+</style>
+<!--  ||  TEMPLATE MU & CSS WDG END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  ||  JAVASCRIPT WDG BEGIN -->
+
+<!--  ||  Dont copy script tags -->
+<script> 
+const elWdgt = document.querySelector("[data-n55-token='effect_3d_spheres']")
+elCntr = document.createElement('section')
+elWdgt.appendChild(elCntr)
+
+
+const width = window.innerWidth
+const height = window.innerWidth
+
+const renderer = new THREE.WebGLRenderer()
+renderer.setPixelRatio(window.devicePixelRatio)
+renderer.setSize(width, height)
+elCntr.appendChild(renderer.domElement)
+
+const scene = new THREE.Scene()
+
+const camera = new THREE.PerspectiveCamera(45, width / height)
+camera.position.set(0, 0, +1000)
+
+const pointLight = new THREE.PointLight(0xEDBA08, 2.5, 1000)
+scene.add(pointLight)
+
+const geometry = new THREE.SphereGeometry(30, 32, 16)
+const material = new THREE.MeshToonMaterial({color: 0xedba08, alphaHash: false, transparent: true, opacity: .1, side: THREE.DoubleSide,})
+
+const group = new THREE.Group()
+for (let i = 0; i < 1000; i++) {
+  let mesh = new THREE.Mesh(geometry, material)
+  mesh.position.x = Math.random() * 2000 - 1000
+  mesh.position.y = Math.random() * 2000 - 1000
+  mesh.position.z = Math.random() * 2000 - 1000
+  mesh.rotation.x = Math.random() * 2 * Math.PI
+  mesh.rotation.y = Math.random() * 2 * Math.PI
+  const scale = Math.random() * 2
+  mesh.scale.x = scale
+  mesh.scale.y = scale
+  mesh.scale.z = scale
+  mesh.matrixAutoUpdate = false
+  mesh.updateMatrix()
+  group.add(mesh)
+}
+scene.add(group)
+
+scene.fog = new THREE.FogExp2(0x000000, 0.0002)
+animate()
+
+function animate () {
+  requestAnimationFrame(animate)
+  render()
+}
+function render () {
+  group.rotation.x += 0.0005
+  group.rotation.y += 0.002
+  renderer.render(scene, camera)
+}
+
+window.addEventListener('resize', onWdgtWindowResize, false)
+onWdgtWindowResize()
+
+function onWdgtWindowResize () {
+  camera.aspect = window.innerWidth / window.innerHeight
+  camera.updateProjectionMatrix()
+  renderer.setSize(window.innerWidth, window.innerHeight)
+}
+
+
+</script><!--  ||  Dont copy script tags -->
+<!--  ||  JAVASCRIPT WDG END -->
+
+    </body>
+</html>
