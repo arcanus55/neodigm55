@@ -36,11 +36,11 @@ style="overflow: hidden;">
 <!--  ||  JAVASCRIPT WDG BEGIN -->
 
 <!--  ||  Dont copy script tags -->
-<script> 
-const elWdgt = document.querySelector("[data-n55-token='effect_3d_spheres']")
+<script>
+const effect_3d_spheresConfig = {"context": "[data-n55-token='effect_3d_spheres']", "color": 0xEDBA08, "speed_x": 0.0004, "speed_y": 0.002, "camera_z": "+1500"}
+const elWdgt = document.querySelector( effect_3d_spheresConfig.context )
 elCntr = document.createElement('section')
 elWdgt.appendChild(elCntr)
-
 
 const width = window.innerWidth
 const height = window.innerWidth
@@ -53,26 +53,24 @@ elCntr.appendChild(renderer.domElement)
 const scene = new THREE.Scene()
 
 const camera = new THREE.PerspectiveCamera(45, width / height)
-camera.position.set(0, 0, +1000)
+camera.position.set(0, 0, effect_3d_spheresConfig.camera_z )
 
-const pointLight = new THREE.PointLight(0xEDBA08, 2.5, 1000)
+const pointLight = new THREE.PointLight(effect_3d_spheresConfig.color, 2.2, 1300)
 scene.add(pointLight)
 
 const geometry = new THREE.SphereGeometry(30, 32, 16)
-const material = new THREE.MeshToonMaterial({color: 0xedba08, alphaHash: false, transparent: true, opacity: .1, side: THREE.DoubleSide,})
+const material = new THREE.MeshToonMaterial({color: effect_3d_spheresConfig.color, alphaHash: false, transparent: true, opacity: .108, side: THREE.DoubleSide,})
 
 const group = new THREE.Group()
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 976; i++) {
   let mesh = new THREE.Mesh(geometry, material)
   mesh.position.x = Math.random() * 2000 - 1000
   mesh.position.y = Math.random() * 2000 - 1000
   mesh.position.z = Math.random() * 2000 - 1000
-  mesh.rotation.x = Math.random() * 2 * Math.PI
-  mesh.rotation.y = Math.random() * 2 * Math.PI
+  //mesh.rotation.x = Math.random() * 2 * Math.PI
+  //mesh.rotation.y = Math.random() * 2 * Math.PI
   const scale = Math.random() * 2
-  mesh.scale.x = scale
-  mesh.scale.y = scale
-  mesh.scale.z = scale
+  mesh.scale.x = mesh.scale.y = mesh.scale.z = scale
   mesh.matrixAutoUpdate = false
   mesh.updateMatrix()
   group.add(mesh)
@@ -87,8 +85,8 @@ function animate () {
   render()
 }
 function render () {
-  group.rotation.x += 0.0005
-  group.rotation.y += 0.002
+  group.rotation.x += effect_3d_spheresConfig.speed_x
+  group.rotation.y += effect_3d_spheresConfig.speed_y
   renderer.render(scene, camera)
 }
 

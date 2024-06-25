@@ -24,19 +24,7 @@
 
     NOTE: The true orgin of this app is in the neodigm55 repo (demo) | served as wdgt
 
-    Playability:
-        +Memory WC - leave visible for a few seconds longer at the beginning of EACH challenge
-        +Show "Time XX:XX" on timeout and success pages
-        +swap tiger image with "single version of truth - 35" in brand repo - update TSK carousel
-        +fix race condition related to sDict variable
-        +Add Powered by Neodigm 55 to  -success
-        +tiger splash
-        +Show existing purple hints inside the popup, so no need to close and reopen
-        +make wdgt on TSH
-        Retire the wrd skul repo after moving the roller to a wdgt
-
-        vHint random logic, inside While loop so that it keeps going until it finds an empty slot
-        vfix caro FOUC
+    Future Black Cat Components: Terminal, Slot Maching, Dice
 
 -->
 <!-- temp code -->
@@ -44,7 +32,7 @@
 <!-- temp code -->
 <style>
 :root {  /*  … And after a while, you can work on points for style  */
-    --wrdskul-theme-bg: #dbcc7f;
+    --wrdskul-theme-bg: #FFB11B;
     --wrdskul-theme-conduit-1: #B5CAA0;
     --wrdskul-theme-conduit-2: #BEC23F;
     --wrdskul-theme-conduit-3: #FBE251;
@@ -54,6 +42,10 @@
     --wrdskul-theme-conduit-7: #66BAB7;
     --wrdskul-theme-conduit-8: #A8D8B9;
 }
+[data-n55-typeon="2"]{ color: var( --neodigm-theme-info-alt ) !important}
+[data-n55-typeon="4"]{ color: var( --neodigm-theme-success-alt ) !important}
+[data-n55-typeon="6"]{ color: var( --neodigm-theme-party-alt ) !important}
+[data-n55-typeon="8"]{ color: var( --neodigm-theme-marcom-alt ) !important}
     #word_skul {
         position: absolute;
         left: 0px; right: 0px;
@@ -99,7 +91,6 @@
         background: radial-gradient(circle at bottom ,#A28C37, #A28C37 10%,transparent 10%, transparent 20%, #A28C37 20%, #A28C37 30%, transparent 30%, transparent 40%, #A28C37 40%, #A28C37 50%, transparent 50%, transparent 60%, #A28C37 60%, #A28C37 70%, transparent 70%, transparent 80%, #A28C37 80%, #A28C37 90%, transparent 90%);
         background-size: 2em 2em;
         opacity: 0.8
-
     }
     neodigm-carousel > section [data-n55-carousel-page-name="caro-conduit-7"] {
         background-color: var( --wrdskul-theme-conduit-7 );
@@ -218,10 +209,12 @@
         </neodigm-carousel>
         <neodigm-carousel id="caro-main" class="caro-main">
             <section>
-                <section data-n55-carousel-page-name="caro-main-tiger" data-n55-cloak="true"
-                data-n55-token='effect_3d_spheres__embedded'>
+                <section data-n55-carousel-page-name="caro-main-tiger" data-n55-cloak="true">
+                <div data-n55-token='effect_3d_spheres__embedded'
+                style="max-width: 98vw; overflow: hidden;">
                     <img src="https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/35.webp"
-                    style="position: absolute; display: block; top: 76px; margin: 8px; left: 10vw;max-width: 600px; width: 76vw; height: auto;margin: auto;border-radius: 32px;z-index: 256;">
+                    style="position: absolute; display: block; top: 76px; margin: 8px; left: 10vw;max-width: 600px; width: 76vw; height: auto;margin: auto;border-radius: 32px;z-index: 256;">                    
+                </div>
                 </section>
                 <section data-n55-carousel-page-name="caro-main-splash" data-n55-cloak="true">
                     <section>
@@ -231,28 +224,26 @@
                     </section>
                 </section>
                 <section data-n55-carousel-page-name="caro-main-play" data-n55-cloak="true">
-                    <section class="h-center readampm__title hd2"
-                        style="padding: 8px;">
-                        <br>
-                        <p class="hd2">The objective is to discover the secret six letter word in the least amount of time.</p>
-                        <br>
-                        <p class="hd2">You will play mini-challenges of skill and chance to win clues or you can just guess.</p>
-                        <br>
-                        <nav class="h-center">
-                            <a tabindex="-1" data-n55-enchanted-cta data-n55-enchanted-cta-ambient="emit" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true" data-n55-enchanted-cta-size="medium" data-n55-flash-theme="marcom" data-n55-theme="danger"
-                            data-n55-enchanted-cta-alt="Big|Fun"
-                            onClick="neodigmCarousel.nav({'id': 'caro-main', 'nav': 'caro-main-memory' })"
-                            data-n55-tulip='{"msg":" It’s all you.  You can do this.  The first puzzle is a simple memory puzzle.  How hard can that be?  Do it! ","mrq":true,"tmpt":"","theme":"warning","size":"xsmall","position":"top","icon":""}'
-                            data-n55-wired4sound-click="vibrate"
-                            ><span data-n55-wired4sound-hover="3">Play</span><span>Now!</span>
-                            </a>                            
-                        </nav>
-                        <br><br><br>
-                        <p class="hd3">You can guess six times. There is a 16 minute time limit. </p>
-                        <br>
-                        <p class="hd3">You can play again right away. You do not have to wait until tomorrow.</p>
-                        <br>
-                        <p class="hd3">A letter will not appear in the word more than once. Meaning that each letter is unique.</p>
+                    <section class="h-center readampm__title hd2">
+                        <div style="padding: 4px; max-width: fit-content; width: 66%; margin: 0px auto;">
+                            <br>
+                            <p class="hd2">The objective is to discover the secret six letter word in the least amount of time.</p>
+                            <p class="hd2">You will play mini-challenges of skill and chance to win clues or you can just guess.</p>
+                            <br>
+                            <nav class="h-center">
+                                <a tabindex="-1" data-n55-enchanted-cta data-n55-enchanted-cta-ambient="emit" data-n55-enchanted-cta-dont-touch="false" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="true" data-n55-enchanted-cta-size="medium" data-n55-flash-theme="marcom" data-n55-theme="danger"
+                                data-n55-enchanted-cta-alt="Big|Fun"
+                                onClick="neodigmCarousel.nav({'id': 'caro-main', 'nav': 'caro-main-memory' })"
+                                data-n55-tulip='{"msg":" It’s all you.  You can do this.  The first puzzle is a simple memory puzzle.  How hard can that be?  Do it! ","mrq":true,"tmpt":"","theme":"warning","size":"xsmall","position":"top","icon":""}'
+                                data-n55-wired4sound-click="vibrate"
+                                ><span data-n55-wired4sound-hover="3">Play</span><span>Now!</span>
+                                </a>                            
+                            </nav>
+                            <br>
+                            <p class="hd3">You can guess six times. There is a 16 minute time limit. </p>
+                            <p class="hd3">You can play again right away. You do not have to wait until tomorrow.</p>
+                            <p class="hd3">A letter will not appear in the word more than once. Meaning that each letter is unique.</p>
+                        </div>
                     </section>
                 </section>
 
@@ -343,7 +334,9 @@ style="background-color: #2f5240; overflow: hidden;height: 104px;">
         </neodigm-carousel>
         <neodigm-carousel id="caro-conduit-bottom" class="caro-conduit">
             <section>
-                <section data-n55-carousel-page-name="caro-conduit-1"></section> <section data-n55-carousel-page-name="caro-conduit-2"></section> <section data-n55-carousel-page-name="caro-conduit-3"></section>
+                <section data-n55-carousel-page-name="caro-conduit-1">
+                    <neodigm-juicebar role="progressbar" data-n55-theme="info" data-n55-size="medium" style="background-color: #00000000;margin: 0;padding:0;"><div></div></neodigm-juicebar>
+                </section> <section data-n55-carousel-page-name="caro-conduit-2"></section> <section data-n55-carousel-page-name="caro-conduit-3"></section>
                 <section data-n55-carousel-page-name="caro-conduit-4">
                     <nav class="h-center"
                     style="padding: 8px 0 0 0;">
@@ -1083,7 +1076,7 @@ setTimeout(()=>{
         //neodigmCarousel.nav({"id": "caro-main", "nav": "caro-main-play" })
         GameState.gametime_start = new Date()
         GameState.doTick()
-    },  9e3 )
+    }, 9e3 )
     neodigmSodaPop.setOnAfterOpen( ()=>{
         NeodigmClaire.showCanv('neodigm-sodapop', .6).setTheme( ['brand','marcom','warning','party','danger','info'] ).initCanvOn('neodigm-sodapop').waxOn('neodigm-sodapop')
     } )
@@ -1115,7 +1108,7 @@ setTimeout(()=>{
         }
         return true
     }, "soda_guess" )
-}, 8e3)
+}, 8e3 )
 
 neodigmCarousel.setOnAfterNav( GameState.onPage )
 </script>
@@ -10542,71 +10535,70 @@ zythum`
 
 </script>
 
-
-<script> <!--  effect_3d_spheres hard coded / embedded into this wdgt -->
-const elWdgt = document.querySelector("[data-n55-token='effect_3d_spheres__embedded']")
-elCntr = document.createElement('section')
-elWdgt.appendChild(elCntr)
-
-const width = window.innerWidth
-const height = window.innerWidth
-
-const renderer = new THREE.WebGLRenderer()
-renderer.setPixelRatio(window.devicePixelRatio)
-renderer.setSize(width, height)
-elCntr.appendChild(renderer.domElement)
-
-const scene = new THREE.Scene()
-
-const camera = new THREE.PerspectiveCamera(45, width / height)
-camera.position.set(0, 0, +1000)
-
-const pointLight = new THREE.PointLight(0x1F6868, 4, 1000)
-scene.add(pointLight)
-
-const geometry = new THREE.SphereGeometry(30, 32, 16)
-const material = new THREE.MeshToonMaterial({color: 0x009473, alphaHash: false, transparent: true, opacity: .6, side: THREE.DoubleSide,})
-
-const group = new THREE.Group()
-for (let i = 0; i < 1000; i++) {
-    let mesh = new THREE.Mesh(geometry, material)
-    mesh.position.x = Math.random() * 2000 - 1000
-    mesh.position.y = Math.random() * 2000 - 1000
-    mesh.position.z = Math.random() * 2000 - 1000
-    mesh.rotation.x = Math.random() * 2 * Math.PI
-    mesh.rotation.y = Math.random() * 2 * Math.PI
-    const scale = Math.random() * 2
-    mesh.scale.x = scale
-    mesh.scale.y = scale
-    mesh.scale.z = scale
-    mesh.matrixAutoUpdate = false
-    mesh.updateMatrix()
-    group.add(mesh)
-}
-scene.add(group)
-
-scene.fog = new THREE.FogExp2(0x000000, 0.0002)
-animate()
-
-function animate () {
-    requestAnimationFrame(animate)
-    render()
-}
-function render () {
-    group.rotation.x += 0.0004
-    group.rotation.y += 0.002
-    renderer.render(scene, camera)
-}
-
-window.addEventListener('resize', onWdgtWindowResize, false)
-onWdgtWindowResize()
-
-function onWdgtWindowResize () {
-    camera.aspect = window.innerWidth / window.innerHeight
-    camera.updateProjectionMatrix()
-    renderer.setSize(window.innerWidth, window.innerHeight)
-}
-
+<script>  <!--  effect_3d_spheres hard coded / embedded into this wdgt -->
+    const effect_3d_spheresConfig = {"context": "[data-n55-token='effect_3d_spheres__embedded']", "color": 0xF5DF4D, "speed_x": 0.0004, "speed_y": 0.002, "camera_z": "+1500"}
+    const elWdgt = document.querySelector( effect_3d_spheresConfig.context )
+    elCntr = document.createElement('section')
+    elWdgt.appendChild(elCntr)
+    
+    const width = window.innerWidth
+    const height = window.innerWidth
+    
+    const renderer = new THREE.WebGLRenderer()
+    renderer.setPixelRatio(window.devicePixelRatio)
+    renderer.setSize(width, height)
+    elCntr.appendChild(renderer.domElement)
+    
+    const scene = new THREE.Scene()
+    
+    const camera = new THREE.PerspectiveCamera(45, width / height)
+    camera.position.set(0, 0, effect_3d_spheresConfig.camera_z )
+    
+    const pointLight = new THREE.PointLight( effect_3d_spheresConfig.color, 2.2, 1300)
+    scene.add(pointLight)
+    
+    const geometry = new THREE.SphereGeometry(30, 32, 16)
+    const material = new THREE.MeshToonMaterial({color: effect_3d_spheresConfig.color, alphaHash: false, transparent: true, opacity: .108, side: THREE.DoubleSide,})
+    
+    const group = new THREE.Group()
+    for (let i = 0; i < 976; i++) {
+      let mesh = new THREE.Mesh(geometry, material)
+      mesh.position.x = Math.random() * 2000 - 1000
+      mesh.position.y = Math.random() * 2000 - 1000
+      mesh.position.z = Math.random() * 2000 - 1000
+      //mesh.rotation.x = Math.random() * 2 * Math.PI
+      //mesh.rotation.y = Math.random() * 2 * Math.PI
+      const scale = Math.random() * 2
+      mesh.scale.x = mesh.scale.y = mesh.scale.z = scale
+      mesh.matrixAutoUpdate = false
+      mesh.updateMatrix()
+      group.add(mesh)
+    }
+    scene.add(group)
+    
+    scene.fog = new THREE.FogExp2(0x000000, 0.0002)
+    animate()
+    
+    function animate () {
+      requestAnimationFrame(animate)
+      render()
+    }
+    function render () {
+      group.rotation.x += effect_3d_spheresConfig.speed_x
+      group.rotation.y += effect_3d_spheresConfig.speed_y
+      renderer.render(scene, camera)
+    }
+    
+    window.addEventListener('resize', onWdgtWindowResize, false)
+    onWdgtWindowResize()
+    
+    function onWdgtWindowResize () {
+      camera.aspect = window.innerWidth / window.innerHeight
+      camera.updateProjectionMatrix()
+      renderer.setSize(window.innerWidth, window.innerHeight)
+    }
+    
+    
 </script>
 
 
