@@ -110,11 +110,11 @@ margin-top: 32px;
 
 .hd0 {font-size: 124px;}
 .hd1 {font-size: 48px;}
-.hd2 {font-size: 24px;}
-.hd3 {font-size: 18px;}
-.hd4 {font-size: 16px;}
-.hd5 {font-size: 14px;}
-.hd6 {font-size: 13px;}
+.hd2 {font-size: 36px;}
+.hd3 {font-size: 26px;}
+.hd4 {font-size: 20px;}
+.hd5 {font-size: 18px;}
+.hd6 {font-size: 17px;}
 .prg  { margin: 8px 0; padding: 1px; }
 
 [data-pref-scheme="light"] .hd0 {color: #810000;}
