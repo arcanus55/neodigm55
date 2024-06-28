@@ -254,13 +254,13 @@ section.pfmf-grid__25_25_25_25  { grid-template-columns: 100%; }
 section.pfmf-grid__25_25_25_25 > div:nth-child(1) { order: 1; }
 
 section.pfmf-grid__40_60  { grid-template-columns: 100%; }
-section.pfmf-grid__40_60 > div:nth-child(1) { order: 0; }
+section.pfmf-grid__40_60 > div:nth-child(1) { order: 1; }
 
 section.pfmf-grid__50_50  { grid-template-columns: 100%; }
 section.pfmf-grid__50_50 > div:nth-child(1) { order: 1; }
 
 section.pfmf-grid__60_40  { grid-template-columns: 100%; }
-section.pfmf-grid__60_40 > div:nth-child(1) { order: 1; }
+section.pfmf-grid__60_40 > div:nth-child(1) { order: 0; }
 section.pfmf-grid__70_30  { grid-template-columns: 100%; }
 section.pfmf-grid__70_30 > div:nth-child(1) { order: 1; }
 section.pfmf-grid__80_20  { grid-template-columns: 100%; }
