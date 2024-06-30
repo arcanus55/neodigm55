@@ -343,7 +343,7 @@ class NeodigmSodaPop {
             }, true)
             this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mouseleave", (ev) => {  //  User focus exit
                 if( this.fOnBeforeUserExit && !sessionStorage.getItem( "n55_userExit" ) ) this.fOnBeforeUserExit()
-                sessionStorage.setItem( "n55_userExit", Date.now() )
+                sessionStorage.setItem( "n55_userExit", Date.now() )  //  Prevents firing more than once per session - close tab
             })
             this.bIsInit = true
         }
