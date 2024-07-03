@@ -85,6 +85,7 @@ class Contact_form_iframe_sfdc {
     constructor(_d, _sQ) {
         this._d = _d; this._sQ = _sQ;
         this.isInit = false;
+        this.contact_frame_id = "contact_frame_id"
         this.elCTA_btn = this.elCTA_elm = this.elCTA_message = null;
     }
     init() {
@@ -122,7 +123,40 @@ class Contact_form_iframe_sfdc {
     doSend(){
         if( this.isValid() ){
             neodigmToast.q( "Thank You!|Information Received", contact_form_iframe_sfdcOpt.contact_cta_theme[0] )
-            neodigmSodaPop.close()  //  TODO Caro next
+            let elIF = document.createElement( "i" + "frame" )
+            if( !document.querySelector( "#" + this.contact_frame_id ) ){
+                elIF.id = elIF.name = this.contact_frame_id
+                elIF.src = "about:" + "blank"
+                elIF.style.display="none"
+                document.body.appendChild( elIF )
+            }
+
+            let elIF_form = document.createElement( "form" )
+            elIF_form.method = "POST"
+            elIF_form.action = Array.from( "8-FTU=gnidocne?daeLoTbeW.telvres/telvres/moc.ecrofselas.otbew//:sptth" ).reverse().join('')
+            elIF_form.setAttribute("target", this.contact_frame_id);
+
+            const oW2L = {"oid": contact_form_iframe_sfdcOpt.contact_cta_oid[0], "retURL": contact_form_iframe_sfdcOpt.contact_cta_retURL[0]}
+            if( contact_form_iframe_sfdcOpt.contact_cta_unique_email[0] ){  //  TODO unique email
+                let ts = new Date()
+                ts = String( ts.getTime() )
+                oW2L.email = ts + "_" + this.elCTA_elm.value
+            }else{
+                oW2L.email = this.elCTA_elm.value
+            }
+            
+            oW2L.description = this.elCTA_message.value + " | " + document.location.href
+            for(let fieldName in oW2L) {
+                var theInput = document.createElement("input")
+                theInput.name = fieldName
+                theInput.value = oW2L[ fieldName ]
+                theInput.setAttribute("type", "hidden")
+                elIF_form.appendChild(theInput)
+            }
+            document.body.appendChild( elIF_form )  //  Form exists on host not ifrm
+            elIF_form.submit()
+
+            neodigmSodaPop.close()  //  TODO Caro next and datalayer
         }else{
             neodigmToast.q( "Please Enter an Email Address| and Message", "danger")
             neodigmUtils.shake("neodigm-sodapop")

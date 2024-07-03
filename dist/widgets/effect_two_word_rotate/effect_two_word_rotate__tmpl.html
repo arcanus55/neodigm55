@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55__v3_5.css"></link>
+        <script src="https://arcanus55.github.io/neodigm55/dist/neodigm55__v3_5.js"></script>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.css"></link>
+
+        <link href="https://fonts.googleapis.com/css?family=Advent+Pro|Audiowide|Comfortaa|Exo+2|Fredericka+the+Great|La+Belle+Aurore|Londrina+Sketch|Meddon|Special+Elite|Srisakdi|Tulpen+One&display=swap" rel="stylesheet">
+
+    </head>
+    <body  data-n55-ampm-theme="light">
+
+<!--  ||  TEMPLATE MU & CSS WDG BEGIN -->
+  <section class="main-lgo">
+    <p class="lgo-para h-center" title="">
+        <span class="js-lgo-para__left font_fam##"
+        data-font-hold="font_fam1">Tool</span>
+        <span class="js-lgo-para__right font_fam||">Toys</span>
+    </p>    
+  </section>
+
+<style>
+.lgo-para {
+max-height: 96px;
+}
+.js-lgo-para__left{ color: #fff; }
+.js-lgo-para__right{ color: #D83E22; }
+.main-lgo {
+font-size: 56px;
+text-align: center;
+user-select: none;
+line-height: 2;
+}
+.font_fam3  {font-family: 'Exo 2', sans-serif;}
+.font_fam4  {font-family: 'Comfortaa', cursive;}
+.font_fam6  {font-family: 'Special Elite', cursive;}
+.font_fam7  {font-family: 'Advent Pro', sans-serif;}
+.font_fam8  {font-family: 'Audiowide', cursive;}
+.font_fam9  {font-family: 'Fredericka the Great', cursive;}
+.font_fam13 {font-family: 'La Belle Aurore', cursive;}
+.font_fam15 {font-family: 'Meddon', cursive;}
+.font_fam19 {font-family: 'Tulpen One', cursive;}
+.font_fam20 {font-family: 'Srisakdi', cursive;}
+.font_fam21 {font-family: 'Londrina Sketch', cursive;}
+</style>
+<!--  ||  TEMPLATE MU & CSS WDG END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  ||  JAVASCRIPT WDG BEGIN -->
+
+ 
+<script>
+const effect_two_word_rotateOpt = {
+        "word_one": ["Mach", "The first word of a two word phrase."],
+        "word_two": ["Five", "The second word of a two word phrase."]
+    }
+if( typeof effect_two_word_rotateCustom != 'undefined' ){  //  wdgt host script obj
+    for( cnfgProp in effect_two_word_rotateCustom ){  //  Import Custom Objects props if exists
+        effect_two_word_rotateOpt[ cnfgProp ] = effect_two_word_rotateCustom[ cnfgProp ]
+    }
+}
+
+class Effect_two_word_rotate {
+    constructor(_d, _sQ) {
+        this._d = _d; this._sQ = _sQ;
+        this.isInit = false;
+    }
+    init() {
+        if( !this.isInit ){
+            let aMVLgo = [[4,8], [7,9], [13,19], [15,6], [21,20]];
+            let _d = document;
+            let eL = _d.querySelector(".js-lgo-para__left");
+            let eR = _d.querySelector(".js-lgo-para__right");
+            eL.textContent = effect_two_word_rotateOpt.word_one[0]
+            eR.textContent = effect_two_word_rotateOpt.word_two[0]
+            setInterval(function(){
+                let nL = Math.floor(Math.random() * 4);
+                nL = aMVLgo[ nL ][0];
+                let sPrv = eL.dataset.fontHold;
+                eL.classList.remove( sPrv );
+                eL.classList.add( "font_fam" + nL );
+                eL.dataset.fontHold = "font_fam" + nL;
+            }, 2200);
+            setInterval(function(){
+                let nR = Math.floor(Math.random() * 4);
+                nR = aMVLgo[ nR ][1];        
+                let sPrv = eR.dataset.fontHold;
+                eR.classList.remove( sPrv );
+                eR.classList.add( "font_fam" + nR );
+                eR.dataset.fontHold = "font_fam" + nR;
+            }, 1000);
+        }
+        this.isInit = true;
+        return this;
+    }
+}
+let effect_two_word_rotate = new Effect_two_word_rotate( document, "effect_two_word_rotate" )
+setTimeout( ()=>{ effect_two_word_rotate.init() }, 2e3 )
+
+
+</script> 
+<!--  ||  JAVASCRIPT WDG BEGIN -->
+
+    </body>
+</html>
