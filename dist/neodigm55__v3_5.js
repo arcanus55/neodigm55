@@ -67,12 +67,18 @@ const neodigmUtils = ( ( _d ) =>{
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
     f02x: function(x){ return (Math.floor(Math.random() * x)); },  //  0 to x
     fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback
-      var _js = _d.createElement( "script" )
+      let _js = _d.createElement( "script" )
       _js.type = "text/javascript"
       _js.async = true
       if( _cb ) _js.onload = function(){ _cb(); }
       _js.src = _uri
       _d.getElementsByTagName( "head" )[0].appendChild( _js )
+    },
+    fAsyncCSS: function( _d, _uri ){  //  Load CSS / Font Async
+      let _css = _d.createElement( "link" )
+      _css.rel = "stylesheet"
+      _css.href = _uri
+      _d.getElementsByTagName( "head" )[0].appendChild( _css )
     },
     data2prop: function( sDset ){  //  Convert HTML data attrib name to JS dataset name
       sDset = sDset.replace("data-", "").toLowerCase();
@@ -1609,9 +1615,10 @@ class NeodigmAgent {
                   if( aPrt ) neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + aPrt + ".js" )
                 } )
               }
-              if( rs?.assets ){  //  Inject asset elements from manifest
+              if( rs?.assets ){  //  Inject asset elements from manifest +CSS Font
                 rs.assets.forEach( ( aAst )=>{
                   if( aAst[0].toLowerCase() == "js" ) neodigmUtils.fAsyncJS( document, aAst[1] )
+                  if( aAst[0].toLowerCase() == "css" ) neodigmUtils.fAsyncCSS( document, aAst[1] )
                 } )
               }
               neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + sTkn + ".js" )
