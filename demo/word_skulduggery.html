@@ -582,13 +582,16 @@ class NeodigmMemory extends HTMLElement {
     set complete( _complete="light" ){ this.setAttribute( "complete", _complete )}
 
     get offset(){ return this.getAttribute( "offset" ) }
-    set offset( _offset="light" ){ this.setAttribute( "offset", _offset )}
+    set offset( _offset ){ this.setAttribute( "offset", _offset )}
 
     attributeChangedCallback( _attrName, _orig, _new ){
       this.doInit()
       switch( _attrName.toLowerCase() ){
           case "colorscheme":
               this.elPartToplevel.dataset.colorscheme = _new;
+          break;
+          case "offset":
+            this.offset = Number( _new ) - neodigmUtils.f02x( 9 ) // Magic num dependent on whats available in repo
           break;
           case "pattern":
             this.aCells.forEach( ( oC, cnt )=>{

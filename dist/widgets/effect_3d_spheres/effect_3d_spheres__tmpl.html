@@ -37,8 +37,13 @@ style="overflow: hidden;">
 
  
 <script>
-const effect_3d_spheresConfig = {"context": "[data-n55-token='effect_3d_spheres']", "color": 0xEDBA08, "speed_x": 0.0004, "speed_y": 0.002, "camera_z": "+1500"}
-const elWdgt = document.querySelector( effect_3d_spheresConfig.context )
+const effect_3d_spheresOpt = {"context": "[data-n55-token='effect_3d_spheres']", "color": 0xEDBA08, "speed_x": 0.0004, "speed_y": 0.002, "camera_z": "+1500"}
+if( typeof effect_3d_spheresCustom != 'undefined' ){  //  wdgt host script obj
+    for( cnfgProp in effect_3d_spheresCustom ){  //  Import Custom Objects props if exists
+        effect_3d_spheresOpt[ cnfgProp ] = effect_3d_spheresCustom[ cnfgProp ]
+    }
+}
+const elWdgt = document.querySelector( effect_3d_spheresOpt.context )
 elCntr = document.createElement('section')
 elWdgt.appendChild(elCntr)
 
@@ -53,13 +58,13 @@ elCntr.appendChild(renderer.domElement)
 const scene = new THREE.Scene()
 
 const camera = new THREE.PerspectiveCamera(45, width / height)
-camera.position.set(0, 0, effect_3d_spheresConfig.camera_z )
+camera.position.set(0, 0, effect_3d_spheresOpt.camera_z )
 
-const pointLight = new THREE.PointLight(effect_3d_spheresConfig.color, 2.2, 1300)
+const pointLight = new THREE.PointLight(effect_3d_spheresOpt.color, 2.2, 1300)
 scene.add(pointLight)
 
 const geometry = new THREE.SphereGeometry(30, 32, 16)
-const material = new THREE.MeshToonMaterial({color: effect_3d_spheresConfig.color, alphaHash: false, transparent: true, opacity: .108, side: THREE.DoubleSide,})
+const material = new THREE.MeshToonMaterial({color: effect_3d_spheresOpt.color, alphaHash: false, transparent: true, opacity: .108, side: THREE.DoubleSide,})
 
 const group = new THREE.Group()
 for (let i = 0; i < 976; i++) {
@@ -85,8 +90,8 @@ function animate () {
   render()
 }
 function render () {
-  group.rotation.x += effect_3d_spheresConfig.speed_x
-  group.rotation.y += effect_3d_spheresConfig.speed_y
+  group.rotation.x += effect_3d_spheresOpt.speed_x
+  group.rotation.y += effect_3d_spheresOpt.speed_y
   renderer.render(scene, camera)
 }
 

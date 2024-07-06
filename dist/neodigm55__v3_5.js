@@ -124,6 +124,7 @@ const neodigmUtils = ( ( _d ) =>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
           if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
+          if( neodigmOpt.neodigmPopTart ) neodigmPopTart.close()
         })
       })
       window.addEventListener( "scroll", ( ev ) =>{
