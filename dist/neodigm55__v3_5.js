@@ -857,6 +857,20 @@ class NeodigmParallax {
 }
 let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "n55Parallax"] )
 
+//  Neodigm 55 Keylime Begin  //
+class NeodigmKeylime {
+  constructor( _d, _aQ ) {
+      this._d = _d; this._aQ = _aQ
+      this.bIsInit = false
+  }
+  init () {
+    console.log(" ~~ keylime active")
+    this.bIsInit = true
+    return this
+  }
+}
+let neodigmKeylime = new NeodigmKeylime( document, ["", ""] )
+
 //  Neodigm 55 Metronome Begin  //
 const neodigmMetronome = ( () =>{
   let oEmit = {}, aIntv = []
@@ -1543,7 +1557,7 @@ let neodigmCarousel = new NeodigmCarousel( document, ["neodigm-carousel"] )
 
 //  Neodigm 55 PWA Begin //
 class NeodigmPWA {
-  /*
+  /*  TODO Refactor as Wdgt
   open soda after about 5 min (host logic) - IF compliant, no open sodas, and not in (standalone?)
   Fire install (and toast) if CTA clicked. Add event to datalayer.
   */
@@ -1838,6 +1852,7 @@ function doDOMContentLoaded(){
     }
     neodigmUtils.appStateListen()  //  Bind to Host
     neodigmMetronome.init()  //  Always-on
+    neodigmKeylime.init()  //  Always-on
     NeodigmClaire.init()
     if( neodigmOpt.N55_AMPM_THEME && !document[ neodigmOpt.N55_APP_STATE.CONTEXT ].dataset.n55AmpmTheme ) document[ neodigmOpt.N55_APP_STATE.CONTEXT ].dataset.n55AmpmTheme = neodigmOpt.N55_AMPM_THEME
     if( neodigmOpt.CONSOLE_LOG_VER ) console.log("%c Neodigm 55 the eclectic low-code UX micro-library ✨ v" + neodigmUtils.ver, "background: #000; color: #F5DF4D; font-size: 20px");
