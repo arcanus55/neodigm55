@@ -862,19 +862,21 @@ let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "n55Pa
 
 */
 class NeodigmKeylime {  //  Universal Click / long tap / body exit / network state / Hover / resize / shake / reorient / scroll listener emitter = neodigmKeylime addEventListener( eventtoken, fExpression, fCallback )
-  static init() {
+  static init() {  
     this._d = document;
     this.bIsInit = false; this.bIsPause = false;
     this.subscribersKL = []  //  {"subscriberID": symbol, "eventID": "click", "conditionF": null, "callbackF": null }
     this.listenersKL = []  //  {"listenerID": symbol, "eventID": "click", "ts": null, "event": null }
 
-    console.log(" ~~ keylime active")
+    console.log(" ~~ keylime listening")
     this.bIsInit = true
     return this
   }
   static subscribe( eventID, conditionF, callbackF ){  //  key symbol 
     if( this.bIsInit && !this.bIsPause ){
-
+      //  if listenersKL does not already exit
+      //  create dom listener - get returned dom key
+      //  push new listenesKL
     }
     return this;
   }
@@ -1871,7 +1873,7 @@ function doDOMContentLoaded(){
     }
     neodigmUtils.appStateListen()  //  Bind to Host
     neodigmMetronome.init()  //  Always-on
-    NeodigmKeylime.init()  //  Always-on
+    NeodigmKeylime.init()  //  Static Always-on  
     NeodigmClaire.init()
     if( neodigmOpt.N55_AMPM_THEME && !document[ neodigmOpt.N55_APP_STATE.CONTEXT ].dataset.n55AmpmTheme ) document[ neodigmOpt.N55_APP_STATE.CONTEXT ].dataset.n55AmpmTheme = neodigmOpt.N55_AMPM_THEME
     if( neodigmOpt.CONSOLE_LOG_VER ) console.log("%c Neodigm 55 the eclectic low-code UX micro-library ✨ v" + neodigmUtils.ver, "background: #000; color: #F5DF4D; font-size: 20px");
