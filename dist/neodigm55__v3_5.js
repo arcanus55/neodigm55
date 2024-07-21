@@ -861,23 +861,24 @@ let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "n55Pa
 /*
 
 */
-class NeodigmKeylime {  //  Universal Click / long tap / body exit / network state / Hover / resize / shake / reorient / scroll listener emitter = neodigmKeylime addEventListener( eventtoken, fExpression, fCallback )
+class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit / network state / Hover / resize / shake / reorient / scroll listener emitter = neodigmKeylime addEventListener( eventtoken, fExpression, fCallback )
   static init() {  //  TODO if called more than once no zombie events (unlisten)
     this._d = document;
-    this.bIsInit = false; this.bIsPause = false;
+    this.bIsInit = true; this.bIsPause = false;
     this.subscribersKL = {}  //  {"subscriberID": symbol, "eventID": "click", "callbackF": null }
     this.listenersKL = {}  //  {"listenerID": symbol, "eventID": "click", "ts": null, "event": null }
-    this.bIsInit = true
-    console.log(" ~~ FEATURE ON keylime listening again")
+    this.isLikelyHuman = false  //  TODO
+    console.log(" ~~ FEATURE ON keylime listening behold fast SPECT")
     return this
   }
-  static subscribe( eventID, callbackF ){  //  USAGE: NeodigmKeylime.subscribe("click", (ev)=>{console.log("dux")})
+  static subscribe( eventID, callbackF, useCapture = true ){  //  USAGE: NeodigmKeylime.subscribe("click", (ev)=>{console.log("dux")})
     if( this.bIsInit && !this.bIsPause && eventID && callbackF ){
       const subscriberID = neodigmUtils.genHash( eventID + callbackF )
       if( !this.subscribersKL[ subscriberID ] ){
         this.subscribersKL[ subscriberID ] = { "eventID": eventID, "callbackF": callbackF }
         if( !this.listenersKL[ eventID ] ){
-          this.listenersKL[ eventID ] = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( eventID, (ev)=>{ NeodigmKeylime.fire(ev) } )
+          this.listenersKL[ eventID ] = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ]
+                                        .addEventListener( eventID, (ev)=>{ NeodigmKeylime.fire(ev) }, useCapture )
         }
       }
   console.log( "~~~ kl this.subscribersKL, this.listenersKL | " , this.subscribersKL, this.listenersKL)  //  TODO Make this system deb tog
