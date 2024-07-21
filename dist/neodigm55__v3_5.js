@@ -862,23 +862,46 @@ let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "n55Pa
 
 */
 class NeodigmKeylime {  //  Universal Click / long tap / body exit / network state / Hover / resize / shake / reorient / scroll listener emitter = neodigmKeylime addEventListener( eventtoken, fExpression, fCallback )
-  static init() {  
+  static init() {  //  TODO if called more than once no zombie events (unlisten)
     this._d = document;
     this.bIsInit = false; this.bIsPause = false;
-    this.subscribersKL = []  //  {"subscriberID": symbol, "eventID": "click", "conditionF": null, "callbackF": null }
-    this.listenersKL = []  //  {"listenerID": symbol, "eventID": "click", "ts": null, "event": null }
-
-    console.log(" ~~ keylime listening")
+    this.subscribersKL = {}  //  {"subscriberID": symbol, "eventID": "click", "callbackF": null }
+    this.listenersKL = {}  //  {"listenerID": symbol, "eventID": "click", "ts": null, "event": null }
     this.bIsInit = true
+    console.log(" ~~ FEATURE ON keylime listening again")
     return this
   }
-  static subscribe( eventID, conditionF, callbackF ){  //  key symbol 
+  static subscribe( eventID, callbackF ){  //  USAGE: NeodigmKeylime.subscribe("click", (ev)=>{console.log("dux")})
+    if( this.bIsInit && !this.bIsPause && eventID && callbackF ){
+      const subscriberID = neodigmUtils.genHash( eventID + callbackF )
+      if( !this.subscribersKL[ subscriberID ] ){
+        this.subscribersKL[ subscriberID ] = { "eventID": eventID, "callbackF": callbackF }
+        if( !this.listenersKL[ eventID ] ){
+          this.listenersKL[ eventID ] = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( eventID, (ev)=>{ NeodigmKeylime.fire(ev) } )
+        }
+      }
+  console.log( "~~~ kl this.subscribersKL, this.listenersKL | " , this.subscribersKL, this.listenersKL)  //  TODO Make this system deb tog
+      return subscriberID;
+  }
+    return false;
+  }
+  static unsubscribe( subscriberID ){  // no need to unlisten at dom level
     if( this.bIsInit && !this.bIsPause ){
-      //  if listenersKL does not already exit
-      //  create dom listener - get returned dom key
-      //  push new listenesKL
+      if( subscriberID && this.subscribersKL[ subscriberID ] ){
+        delete this.subscribersKL[ subscriberID ]
+        return true;
+      }
     }
-    return this;
+    return false;
+  }
+  static fire( ev ){
+    if( this.bIsInit && !this.bIsPause ){
+  console.log( "~~~ fire | " , ev )
+      //  push event onto macro stack, if in recording state
+      //  iterate object firing callback if eventID matches
+      return true;
+    }
+    return false;
   }
 
   static pause ( nT ){
@@ -1873,7 +1896,7 @@ function doDOMContentLoaded(){
     }
     neodigmUtils.appStateListen()  //  Bind to Host
     neodigmMetronome.init()  //  Always-on
-    NeodigmKeylime.init()  //  Static Always-on  
+    NeodigmKeylime.init()  //  Static Always-on 
     NeodigmClaire.init()
     if( neodigmOpt.N55_AMPM_THEME && !document[ neodigmOpt.N55_APP_STATE.CONTEXT ].dataset.n55AmpmTheme ) document[ neodigmOpt.N55_APP_STATE.CONTEXT ].dataset.n55AmpmTheme = neodigmOpt.N55_AMPM_THEME
     if( neodigmOpt.CONSOLE_LOG_VER ) console.log("%c Neodigm 55 the eclectic low-code UX micro-library ✨ v" + neodigmUtils.ver, "background: #000; color: #F5DF4D; font-size: 20px");
