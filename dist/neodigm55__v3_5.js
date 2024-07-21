@@ -858,18 +858,37 @@ class NeodigmParallax {
 let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "n55Parallax"] )
 
 //  Neodigm 55 Keylime Begin  //
-class NeodigmKeylime {
-  constructor( _d, _aQ ) {
-      this._d = _d; this._aQ = _aQ
-      this.bIsInit = false
-  }
-  init () {
+/*
+
+*/
+class NeodigmKeylime {  //  Universal Click / long tap / body exit / network state / Hover / resize / shake / reorient / scroll listener emitter = neodigmKeylime addEventListener( eventtoken, fExpression, fCallback )
+  static init() {
+    this._d = document;
+    this.bIsInit = false; this.bIsPause = false;
+    this.subscribersKL = []  //  {"subscriberID": symbol, "eventID": "click", "conditionF": null, "callbackF": null }
+    this.listenersKL = []  //  {"listenerID": symbol, "eventID": "click", "ts": null, "event": null }
+
     console.log(" ~~ keylime active")
     this.bIsInit = true
     return this
   }
+  static subscribe( eventID, conditionF, callbackF ){  //  key symbol 
+    if( this.bIsInit && !this.bIsPause ){
+
+    }
+    return this;
+  }
+
+  static pause ( nT ){
+    if( this.bIsInit ){
+      if( nT ) setTimeout( () =>{ NeodigmKeylime.play() }, nT )
+      this.bIsPause = true
+    }
+    return this;
+  }
+
+  static play(){ this.bIsPause = false; return this; }
 }
-let neodigmKeylime = new NeodigmKeylime( document, ["", ""] )
 
 //  Neodigm 55 Metronome Begin  //
 const neodigmMetronome = ( () =>{
@@ -1852,7 +1871,7 @@ function doDOMContentLoaded(){
     }
     neodigmUtils.appStateListen()  //  Bind to Host
     neodigmMetronome.init()  //  Always-on
-    neodigmKeylime.init()  //  Always-on
+    NeodigmKeylime.init()  //  Always-on
     NeodigmClaire.init()
     if( neodigmOpt.N55_AMPM_THEME && !document[ neodigmOpt.N55_APP_STATE.CONTEXT ].dataset.n55AmpmTheme ) document[ neodigmOpt.N55_APP_STATE.CONTEXT ].dataset.n55AmpmTheme = neodigmOpt.N55_AMPM_THEME
     if( neodigmOpt.CONSOLE_LOG_VER ) console.log("%c Neodigm 55 the eclectic low-code UX micro-library ✨ v" + neodigmUtils.ver, "background: #000; color: #F5DF4D; font-size: 20px");
