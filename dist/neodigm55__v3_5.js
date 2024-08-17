@@ -868,18 +868,18 @@ class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit 
     this.subscribersKL = {}  //  {"subscriberID": symbol, "eventID": "click", "callbackF": null }
     this.listenersKL = {}  //  {"listenerID": symbol, "eventID": "click", "ts": null, "event": null }
     this.isLikelyHuman = false  //  TODO
-    console.log(" ~~ FEATURE ON keylime listening behold fast SPECT")
     return this
   }
   static subscribe( eventID, callbackF, useCapture = true ){  //  USAGE: NeodigmKeylime.subscribe("click", (ev)=>{console.log("dux")})
-    if( this.bIsInit && !this.bIsPause && eventID && callbackF ){
+    if( this.bIsInit && !this.bIsPause && eventID && ( typeof callbackF == "function" ) ){
       const subscriberID = neodigmUtils.genHash( eventID + callbackF )
       if( !this.subscribersKL[ subscriberID ] ){  //  once | a subscriber is unique by event type e.g., click
         this.subscribersKL[ subscriberID ] = { "eventID": eventID, "callbackF": callbackF }
-        if( !this.listenersKL[ eventID ] ){  //  once
-          this.listenersKL[ eventID ] = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ]
-                                        .addEventListener( eventID, (ev)=>{ NeodigmKeylime.fire(ev) }, useCapture )
-          if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~KeyLimeN55 subscrb | ", this.subscribersKL, this.listenersKL)                                        
+        if( !this.listenersKL[ eventID ] ){  //  once | Only need one DOM click event
+          this.listenersKL[ eventID ] = Date.now()  //  TODO fire cb in deterministic FIFO order
+          this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ]
+            .addEventListener( eventID, (ev)=>{ NeodigmKeylime.fire(ev) }, useCapture )
+          if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~KeyLimeN55 listen | ", this.subscribersKL, this.listenersKL )                                        
         }
       }
       return subscriberID;
@@ -896,13 +896,15 @@ class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit 
     return false;
   }
   static fire( ev ){
-    if( this.bIsInit && !this.bIsPause ){
-  console.log( "~~~ fire | " , ev )
+    if( this.bIsInit && !this.bIsPause ){  //  iterate firing callback if eventID matches
+      if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~KeyLimeN55 fire | ", ev )
+        for( const subscr in this.subscribersKL ){
+          if( this.subscribersKL[ subscr ]?.eventID == ev.type ){
+              this.subscribersKL[ subscr ].callbackF()
+          }
+        }
       //  TODO push event onto macro stack, if in recording state
-      //  TODO iterate object firing callback if eventID matches
-      return true;
     }
-    return false;
   }
 
   static pause ( nT ){
