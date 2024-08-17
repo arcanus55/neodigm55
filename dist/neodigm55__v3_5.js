@@ -863,7 +863,7 @@ let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "n55Pa
 */
 class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit / network state / Hover / resize / shake / reorient / scroll listener emitter = neodigmKeylime addEventListener( eventtoken, fExpression, fCallback )
   static init(){
-    if( !this.bIsInit ){  //  once no zombie events
+    if( !this.bIsInit ){  //  once | no zombie events
       this._d = document;
       this.bIsInit = true; this.bIsPause = false;
       this.subscribersKL = {}  //  {"subscriberID": symbol, "eventID": "click", "callbackF": null }
@@ -888,7 +888,7 @@ class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit 
     }
     return false;
   }
-  static unsubscribe( subscriberID ){  // No need to unlisten at DOM level because there is a 1:M (subcrb:dom event)
+  static unsubscribe( subscriberID ){  // No need to UNlisten at DOM level because there is a 1:M (subcrb:dom event)
     if( this.bIsInit && !this.bIsPause ){
       if( subscriberID && this.subscribersKL[ subscriberID ] ){
         delete this.subscribersKL[ subscriberID ]
@@ -897,16 +897,16 @@ class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit 
     }
     return false;
   }
-  static fire( ev ){
-    if( this.bIsInit && !this.bIsPause ){  //  iterate firing callback if eventID matches
-      if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~KeyLimeN55 fire | ", ev )
-        for( const subscr in this.subscribersKL ){
-          if( this.subscribersKL[ subscr ]?.eventID == ev.type ){
-              this.subscribersKL[ subscr ].callbackF()
-          }
+  static fire( ev ){  //  iterate firing callback if eventID matches
+    if( this.bIsInit && !this.bIsPause ){
+      for( const subscr in this.subscribersKL ){
+        if( this.subscribersKL[ subscr ]?.eventID == ev.type ){
+            this.subscribersKL[ subscr ].callbackF()
         }
+      }
       //  TODO push event onto macro stack, if in recording state
-    }
+      if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~KeyLimeN55 fire | ", ev )
+      }
   }
 
   static pause ( nT ){
