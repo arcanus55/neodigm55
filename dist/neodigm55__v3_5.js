@@ -874,19 +874,19 @@ class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit 
   static subscribe( eventID, callbackF, useCapture = true ){  //  USAGE: NeodigmKeylime.subscribe("click", (ev)=>{console.log("dux")})
     if( this.bIsInit && !this.bIsPause && eventID && callbackF ){
       const subscriberID = neodigmUtils.genHash( eventID + callbackF )
-      if( !this.subscribersKL[ subscriberID ] ){
+      if( !this.subscribersKL[ subscriberID ] ){  //  once | a subscriber is unique by event type e.g., click
         this.subscribersKL[ subscriberID ] = { "eventID": eventID, "callbackF": callbackF }
-        if( !this.listenersKL[ eventID ] ){
+        if( !this.listenersKL[ eventID ] ){  //  once
           this.listenersKL[ eventID ] = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ]
                                         .addEventListener( eventID, (ev)=>{ NeodigmKeylime.fire(ev) }, useCapture )
+          if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~KeyLimeN55 subscrb | ", this.subscribersKL, this.listenersKL)                                        
         }
       }
-  console.log( "~~~ kl this.subscribersKL, this.listenersKL | " , this.subscribersKL, this.listenersKL)  //  TODO Make this system deb tog
       return subscriberID;
-  }
+    }
     return false;
   }
-  static unsubscribe( subscriberID ){  // no need to unlisten at dom level
+  static unsubscribe( subscriberID ){  // no need to unlisten at DOM level because there is a 1:M (subcrb:dom event)
     if( this.bIsInit && !this.bIsPause ){
       if( subscriberID && this.subscribersKL[ subscriberID ] ){
         delete this.subscribersKL[ subscriberID ]
@@ -898,8 +898,8 @@ class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit 
   static fire( ev ){
     if( this.bIsInit && !this.bIsPause ){
   console.log( "~~~ fire | " , ev )
-      //  push event onto macro stack, if in recording state
-      //  iterate object firing callback if eventID matches
+      //  TODO push event onto macro stack, if in recording state
+      //  TODO iterate object firing callback if eventID matches
       return true;
     }
     return false;
