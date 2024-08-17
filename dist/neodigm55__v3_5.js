@@ -862,12 +862,14 @@ let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "n55Pa
 
 */
 class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit / network state / Hover / resize / shake / reorient / scroll listener emitter = neodigmKeylime addEventListener( eventtoken, fExpression, fCallback )
-  static init() {  //  TODO if called more than once no zombie events (unlisten)
-    this._d = document;
-    this.bIsInit = true; this.bIsPause = false;
-    this.subscribersKL = {}  //  {"subscriberID": symbol, "eventID": "click", "callbackF": null }
-    this.listenersKL = {}  //  {"listenerID": symbol, "eventID": "click", "ts": null, "event": null }
-    this.isLikelyHuman = false  //  TODO
+  static init(){
+    if( !this.bIsInit ){  //  once no zombie events
+      this._d = document;
+      this.bIsInit = true; this.bIsPause = false;
+      this.subscribersKL = {}  //  {"subscriberID": symbol, "eventID": "click", "callbackF": null }
+      this.listenersKL = {}  //  {"listenerID": symbol, "eventID": "click", "ts": null, "event": null }
+      this.isLikelyHuman = false  //  TODO
+    }
     return this
   }
   static subscribe( eventID, callbackF, useCapture = true ){  //  USAGE: NeodigmKeylime.subscribe("click", (ev)=>{console.log("dux")})
@@ -886,7 +888,7 @@ class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit 
     }
     return false;
   }
-  static unsubscribe( subscriberID ){  // no need to unlisten at DOM level because there is a 1:M (subcrb:dom event)
+  static unsubscribe( subscriberID ){  // No need to unlisten at DOM level because there is a 1:M (subcrb:dom event)
     if( this.bIsInit && !this.bIsPause ){
       if( subscriberID && this.subscribersKL[ subscriberID ] ){
         delete this.subscribersKL[ subscriberID ]
