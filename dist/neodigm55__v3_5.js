@@ -466,7 +466,6 @@ class NeodigmTulip {  //  Tooltip
       this.eTulPre = this.eTulMrq.querySelector("pre")
       if( this.eTulip ){
         this.eTulipTxt = this.eTulip.querySelector( "p" );
-        //this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
         NeodigmKeylime.subscribe( "mouseover", ( ev )=>{
           if( this.bIsInit && !this.bIsPause ){
             let sCnf = neodigmUtils.walkDOM3( ev?.target, "n55Tulip" )
@@ -476,7 +475,6 @@ class NeodigmTulip {  //  Tooltip
             }
           }
         }, false )
-        //this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseout", ( ev ) =>{
         NeodigmKeylime.subscribe( "mouseout", ( ev )=>{
           if( !this.bIsPause ) neodigmTulip.close()
         }, false )
@@ -575,7 +573,8 @@ class NeodigmPopTart {
   }
   init() {
     if( !this.bIsInit ){  //  once
-        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mouseover", ( ev ) => {  //  data-n55-poptart-hover
+        //this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mouseover", ( ev ) => {  //  data-n55-poptart-hover
+        NeodigmKeylime.subscribe( "mouseover", ( ev )=>{  //  data-n55-poptart-hover
             if( ev.target?.dataset?.n55PoptartHover ){
                 const sAttrEv = ev.target?.dataset?.n55PoptartHover // || ev?.srcElement?.parentNode?.dataset?.n55PoptartHover
                 this.sBoundTheme = ev.target.n55Theme || ev.target?.dataset?.n55Theme || ev.target?.parentNode?.dataset?.n55Theme || neodigmOpt.N55_THEME_DEFAULT
@@ -589,7 +588,7 @@ class NeodigmPopTart {
                     }
                 }
             }
-        }, false)
+        }, false )
         /* ADVANCED HOVER PATTERNS
         this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mouseout", ( ev ) => {  //  data-n55-poptart-hover
             console.log( " ~~~ ev.target?.dataset?.n55PoptartHover | " + ev.target?.dataset?.n55PoptartHover )
@@ -601,14 +600,16 @@ class NeodigmPopTart {
             }
         } )
         */
-          this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("contextmenu", ( ev ) => {  //  data-n55-poptart-rightclick
+          //this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("contextmenu", ( ev ) => {  //  data-n55-poptart-rightclick
+          NeodigmKeylime.subscribe( "contextmenu", ( ev )=>{  //  data-n55-poptart-rightclick
             if( ev.target?.dataset?.n55PoptartRightclick || ev.target?.parentNode?.dataset?.n55PoptartRightclick ){
               const sAttrEv = ev.target?.dataset?.n55PoptartRightclick || ev.target?.parentNode?.dataset?.n55PoptartRightclick
               neodigmPopTart.click_and_right_click( ev, sAttrEv )
             }
-          }, false)
+          }, false )
 
-        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  👁️ Outside Click
+        //this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  👁️ Outside Click
+          NeodigmKeylime.subscribe( "click", ( ev )=>{  //  👁️ Outside Click
             if( this.bIsOpen ){
                 let eTarget = ev.target, bInside = false;
                 while( eTarget.tagName !== "HTML" ){
@@ -622,10 +623,11 @@ class NeodigmPopTart {
                 neodigmPopTart.click_and_right_click( ev, sAttrEv )
               }
             }
-        }, true)
-        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("keydown", ( ev ) => {  //  Close on Esc Key
+        }, true )
+        //this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("keydown", ( ev ) => {  //  Close on Esc Key
+        NeodigmKeylime.subscribe( "keydown", ( ev )=>{  //  Close on Esc Key
             if ( ev.key == "Escape" ){ if( this.bIsOpen ) this.close() }
-        }, true)
+        }, true )
         this.bIsInit = true
     }
     return this;
