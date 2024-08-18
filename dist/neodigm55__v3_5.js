@@ -106,6 +106,7 @@ const neodigmUtils = ( ( _d ) =>{
       }, true )
       //document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "", ( ev ) =>{
       NeodigmKeylime.subscribe( "click", ( ev )=>{
+  console.log("~~~~~~~ click appState | " , ev )
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
         if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
         let evAtr = neodigmUtils.walkDOM3( ev?.target, "n55TypeonClick" )
