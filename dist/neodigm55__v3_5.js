@@ -285,13 +285,13 @@ let neodigmToast = (function(_d, eID, _q) {
                   _eSb.classList.remove("snackbar__cont--alt")
               }
           }
-          _d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev )=>{
+          NeodigmKeylime.subscribe( "click", ( ev )=>{
             let evToast = ev?.target?.dataset.n55Toast || ev?.target?.parentNode?.dataset.n55Toast
             if( evToast ){
               let evTheme = ev?.target?.dataset.n55Theme || ev?.target?.parentNode?.dataset.n55Theme || neodigmOpt.N55_THEME_DEFAULT
               if( evTheme && evTheme != "disabled" ) neodigmToast.q( evToast, evTheme )              
             }
-          }, true)
+          }, true )
           bIsInit = true
       },
       q: function( sMsg, sTheme ) {
@@ -327,7 +327,7 @@ class NeodigmSodaPop {
         if( !this.bIsInit ){
             this.eScrim = this._d.querySelector(this._aQ[0])
             this.eClose = this._d.querySelector(this._aQ[0] + "-close")
-            this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {  //  TODO Keyboard trap
+            NeodigmKeylime.subscribe( "click", ( ev )=>{  //  TODO Keyboard trap
                 let evAtr = neodigmUtils.walkDOM3( ev?.target, "n55SodapopId" )
                 let evTheme = neodigmUtils.walkDOM3( ev?.target, "n55Theme" )
                 if( evAtr && (evTheme != "disabled") ) {
@@ -342,16 +342,16 @@ class NeodigmSodaPop {
                 if("SUMMARY" == ev.target.tagName) {  //  Details / Summary
                     if( neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( ev.target.parentElement.hasAttribute( "open" ) ? 9 : 7, "QUITE" )
                 }
-            }, false)
-            this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("keydown", ( ev ) => {  //  Close on Esc Key
+            }, false )
+            NeodigmKeylime.subscribe( "keydown", ( ev )=>{  //  Close on Esc Key
                 if ( ev.key == "Escape" ){
                     if( this.bIsModal ) { this.shake() } else { if( this.bIsOpen ) this.close() }
                 }
-            }, true)
-            this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mouseleave", (ev) => {  //  User focus exit
-                if( this.fOnBeforeUserExit && !sessionStorage.getItem( "n55_userExit" ) ) this.fOnBeforeUserExit()
+            }, true )
+            NeodigmKeylime.subscribe( "mouseleave", ( ev )=>{  //  User focus exit
+              if( this.fOnBeforeUserExit && !sessionStorage.getItem( "n55_userExit" ) ) this.fOnBeforeUserExit()
                 sessionStorage.setItem( "n55_userExit", Date.now() )  //  Prevents firing more than once per session - close tab
-            })
+            } )
             this.bIsInit = true
         }
         return this
@@ -901,7 +901,7 @@ class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit 
     if( this.bIsInit && !this.bIsPause ){
       for( const subscr in this.subscribersKL ){
         if( this.subscribersKL[ subscr ]?.eventID == ev.type ){
-            this.subscribersKL[ subscr ].callbackF()
+            this.subscribersKL[ subscr ].callbackF( ev )
         }
       }
       //  TODO push event onto macro stack, if in recording state
@@ -1849,11 +1849,11 @@ let neodigmPicnic = new NeodigmPicnic( document, ["neodigm-picnic"] )
 
 
 // v4.0.0 - Refactor Toast and Metronome STATIC
-//  Neodigm 55 Popover Begin  //
+//  +Neodigm 55 Popover Begin  //
 //  Neodigm 55 Claire Declaire-itive //
 //  -Neodigm 55 Confetti Begin (Claire) //
 //  Neodigm 55 Cypher Type FX Begin  //
-//  Neodigm 55 Post-It Begin (wdg) //
+//  Neodigm 55 Post-It Begin (wdgt) //
 
 // v4.x.0
 //  Neodigm 55 FAB Begin //
