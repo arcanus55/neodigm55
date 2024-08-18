@@ -100,38 +100,44 @@ const neodigmUtils = ( ( _d ) =>{
       return ( isVal == "object" )
     },
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
-      document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
+      //document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "", ( ev ) =>{
+      NeodigmKeylime.subscribe( "mouseover", ( ev )=>{
         if( ev?.target?.dataset?.n55TypeonHover ) neodigmUtils.typeOn( JSON.parse( ev.target.dataset.n55TypeonHover ) )
-      })
-      document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "click", ( ev ) =>{
+      }, true )
+      //document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "", ( ev ) =>{
+      NeodigmKeylime.subscribe( "click", ( ev )=>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
         if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
         let evAtr = neodigmUtils.walkDOM3( ev?.target, "n55TypeonClick" )
         if( evAtr ) neodigmUtils.typeOn( JSON.parse( evAtr ) )
-      })
-      document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "touchstart", ( ev ) =>{
+      }, true )
+      //document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "", ( ev ) =>{
+      NeodigmKeylime.subscribe( "touchstart", ( ev )=>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
         if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
-      })
-      window.addEventListener( "resize", ( ev ) =>{
-        window.requestAnimationFrame(() => {
+      }, true )
+      window.addEventListener( "", ( ev ) =>{
+      //NeodigmKeylime.subscribe( "resize", ( ev )=>{
+        window.requestAnimationFrame(() => { // TODO refact into class pub/sub emit?
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
-          if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
+          if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
           if( neodigmOpt.neodigmPopTart ) neodigmPopTart.close()
         })
-      })
-      window.addEventListener( "orientationchange", ( ev ) =>{
+      }, true )
+      window.addEventListener( "", ( ev ) =>{ // TODO refact into class pub/sub emit?
+      //NeodigmKeylime.subscribe( "orientationchange", ( ev )=>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
-          if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
+          if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
           if( neodigmOpt.neodigmPopTart ) neodigmPopTart.close()
         })
-      })
-      window.addEventListener( "scroll", ( ev ) =>{
+      }, true )
+      window.addEventListener( "", ( ev ) =>{ // TODO refact into class pub/sub emit?
+      //NeodigmKeylime.subscribe( "scroll", ( ev )=>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
         })
-      })
+      }, true )
       neodigmOpt.N55_APP_STATE.REDUCE_MOTION = !window.matchMedia( '(prefers-reduced-motion: no-preference)' ).matches
       let sFirstAMPM = document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "[data-n55-Ampm-theme]" )?.dataset.n55AmpmTheme
       if( sFirstAMPM ) neodigmOpt.N55_AMPM_THEME = neodigmOpt.N55_APP_STATE.AMPM = sFirstAMPM
@@ -872,15 +878,15 @@ class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit 
     }
     return this
   }
-  static subscribe( eventID, callbackF, useCapture = true ){  //  USAGE: NeodigmKeylime.subscribe("click", (ev)=>{console.log("dux")})
+  static subscribe( eventID, callbackF, useCapture = true, scope = null ){  //  USAGE: NeodigmKeylime.subscribe("click", (ev)=>{console.log("dux")})
     if( this.bIsInit && !this.bIsPause && eventID && ( typeof callbackF == "function" ) ){
       const subscriberID = neodigmUtils.genHash( eventID + callbackF )
       if( !this.subscribersKL[ subscriberID ] ){  //  once | a subscriber is unique by event type e.g., click
         this.subscribersKL[ subscriberID ] = { "eventID": eventID, "callbackF": callbackF }
         if( !this.listenersKL[ eventID ] ){  //  once | Only need one DOM click event
           this.listenersKL[ eventID ] = Date.now()  //  TODO fire cb in deterministic FIFO order
-          this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ]
-            .addEventListener( eventID, (ev)=>{ NeodigmKeylime.fire(ev) }, useCapture )
+          const DOMContext = scope || this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ]
+          DOMContext.addEventListener( eventID, (ev)=>{ NeodigmKeylime.fire(ev) }, useCapture )
           if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~KeyLimeN55 listen | ", this.subscribersKL, this.listenersKL )                                        
         }
       }
