@@ -106,16 +106,15 @@ const neodigmUtils = ( ( _d ) =>{
       }, true )
       //document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "click", ( ev ) =>{
       NeodigmKeylime.subscribe( "click", ( ev )=>{
-  console.log("~~~~~~~ click appState | " , ev )
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
-        if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
+        if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
         let evAtr = neodigmUtils.walkDOM3( ev?.target, "n55TypeonClick" )
         if( evAtr ) neodigmUtils.typeOn( JSON.parse( evAtr ) )
       }, true )
       //document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "touchstart", ( ev ) =>{
       NeodigmKeylime.subscribe( "touchstart", ( ev )=>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
-        if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
+        if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
       }, true )
       window.addEventListener( "resize", ( ev ) =>{
       //NeodigmKeylime.subscribe( "resize", ( ev )=>{
