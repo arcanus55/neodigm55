@@ -100,20 +100,20 @@ const neodigmUtils = ( ( _d ) =>{
       return ( isVal == "object" )
     },
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
-      //document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "", ( ev ) =>{
-      NeodigmKeylime.subscribe( "mouseover", ( ev )=>{
+      document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
+      //NeodigmKeylime.subscribe( "mouseover", ( ev )=>{
         if( ev?.target?.dataset?.n55TypeonHover ) neodigmUtils.typeOn( JSON.parse( ev.target.dataset.n55TypeonHover ) )
       }, true )
-      //document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "", ( ev ) =>{
-      NeodigmKeylime.subscribe( "click", ( ev )=>{
+      document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "click", ( ev ) =>{
+      //NeodigmKeylime.subscribe( "click", ( ev )=>{
   console.log("~~~~~~~ click appState | " , ev )
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
         if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
         let evAtr = neodigmUtils.walkDOM3( ev?.target, "n55TypeonClick" )
         if( evAtr ) neodigmUtils.typeOn( JSON.parse( evAtr ) )
       }, true )
-      //document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "", ( ev ) =>{
-      NeodigmKeylime.subscribe( "touchstart", ( ev )=>{
+      document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "touchstart", ( ev ) =>{
+      //NeodigmKeylime.subscribe( "touchstart", ( ev )=>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
         if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
       }, true )
