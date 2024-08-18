@@ -349,10 +349,8 @@ class NeodigmSodaPop {
                 }
             }, true )
             NeodigmKeylime.subscribe( "mouseleave", ( ev )=>{  //  User focus exit
-console.log("~~~ mouseleave kyl | " , ev)              
               if( this.fOnBeforeUserExit && !sessionStorage.getItem( "n55_userExit" ) ) this.fOnBeforeUserExit()
-console.log("~~~ mouseleave kyl | " , this.fOnBeforeUserExit)                
-                sessionStorage.setItem( "n55_userExit", Date.now() )  //  Prevents firing more than once per session - close tab
+              sessionStorage.setItem( "n55_userExit", Date.now() )  //  Prevents firing more than once per session - close tab
             } )
             this.bIsInit = true
         }
@@ -468,7 +466,8 @@ class NeodigmTulip {  //  Tooltip
       this.eTulPre = this.eTulMrq.querySelector("pre")
       if( this.eTulip ){
         this.eTulipTxt = this.eTulip.querySelector( "p" );
-        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
+        //this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
+        NeodigmKeylime.subscribe( "mouseover", ( ev )=>{
           if( this.bIsInit && !this.bIsPause ){
             let sCnf = neodigmUtils.walkDOM3( ev?.target, "n55Tulip" )
             this.sId = ev?.target?.id;  //  Assumes tulip is on child (callback)
@@ -476,10 +475,11 @@ class NeodigmTulip {  //  Tooltip
               neodigmTulip.prepOpen( sCnf, ev.target.getBoundingClientRect() )
             }
           }
-        }, false)
-        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseout", ( ev ) =>{
+        }, false )
+        //this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseout", ( ev ) =>{
+        NeodigmKeylime.subscribe( "mouseout", ( ev )=>{
           if( !this.bIsPause ) neodigmTulip.close()
-        }, false)
+        }, false )
         this.bIsInit = true
         return this      
       }
