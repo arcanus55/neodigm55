@@ -349,7 +349,9 @@ class NeodigmSodaPop {
                 }
             }, true )
             NeodigmKeylime.subscribe( "mouseleave", ( ev )=>{  //  User focus exit
+console.log("~~~ mouseleave kyl | " , ev)              
               if( this.fOnBeforeUserExit && !sessionStorage.getItem( "n55_userExit" ) ) this.fOnBeforeUserExit()
+console.log("~~~ mouseleave kyl | " , this.fOnBeforeUserExit)                
                 sessionStorage.setItem( "n55_userExit", Date.now() )  //  Prevents firing more than once per session - close tab
             } )
             this.bIsInit = true
