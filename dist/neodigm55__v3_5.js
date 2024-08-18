@@ -116,7 +116,7 @@ const neodigmUtils = ( ( _d ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
         if( neodigmOpt.neodigmTulip ) neodigmTulip.close() // TODO refact into class pub/sub emit?
       }, true )
-      window.addEventListener( "", ( ev ) =>{
+      window.addEventListener( "resize", ( ev ) =>{
       //NeodigmKeylime.subscribe( "resize", ( ev )=>{
         window.requestAnimationFrame(() => { // TODO refact into class pub/sub emit?
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
@@ -124,7 +124,7 @@ const neodigmUtils = ( ( _d ) =>{
           if( neodigmOpt.neodigmPopTart ) neodigmPopTart.close()
         })
       }, true )
-      window.addEventListener( "", ( ev ) =>{ // TODO refact into class pub/sub emit?
+      window.addEventListener( "orientationchange", ( ev ) =>{ // TODO refact into class pub/sub emit?
       //NeodigmKeylime.subscribe( "orientationchange", ( ev )=>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
@@ -132,7 +132,7 @@ const neodigmUtils = ( ( _d ) =>{
           if( neodigmOpt.neodigmPopTart ) neodigmPopTart.close()
         })
       }, true )
-      window.addEventListener( "", ( ev ) =>{ // TODO refact into class pub/sub emit?
+      window.addEventListener( "scroll", ( ev ) =>{ // TODO refact into class pub/sub emit?
       //NeodigmKeylime.subscribe( "scroll", ( ev )=>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
