@@ -100,31 +100,26 @@ const neodigmUtils = ( ( _d ) =>{
       return ( isVal == "object" )
     },
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
-      //document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "mouseover", ( ev ) =>{
       NeodigmKeylime.subscribe( "mouseover", ( ev )=>{
         if( ev?.target?.dataset?.n55TypeonHover ) neodigmUtils.typeOn( JSON.parse( ev.target.dataset.n55TypeonHover ) )
       }, true )
-      //document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "click", ( ev ) =>{
       NeodigmKeylime.subscribe( "click", ( ev )=>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
         if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
         let evAtr = neodigmUtils.walkDOM3( ev?.target, "n55TypeonClick" )
         if( evAtr ) neodigmUtils.typeOn( JSON.parse( evAtr ) )
       }, true )
-      //document[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener( "touchstart", ( ev ) =>{
       NeodigmKeylime.subscribe( "touchstart", ( ev )=>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
         if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
       }, true )
-      //window.addEventListener( "resize", ( ev ) =>{
       NeodigmKeylime.subscribe( "resize", ( ev )=>{
-        window.requestAnimationFrame(() => { // TODO refact into class pub/sub emit?
+        window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
           if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
           if( neodigmOpt.neodigmPopTart ) neodigmPopTart.close()
         })
       }, true, window )
-      //window.addEventListener( "orientationchange", ( ev ) =>{ // TODO refact into class pub/sub emit?
       NeodigmKeylime.subscribe( "orientationchange", ( ev )=>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
@@ -132,7 +127,6 @@ const neodigmUtils = ( ( _d ) =>{
           if( neodigmOpt.neodigmPopTart ) neodigmPopTart.close()
         })
       }, true, window )
-      //window.addEventListener( "scroll", ( ev ) =>{ // TODO refact into class pub/sub emit?
       NeodigmKeylime.subscribe( "scroll", ( ev )=>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
@@ -874,7 +868,7 @@ class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit 
       this.bIsInit = true; this.bIsPause = false;
       this.subscribersKL = {}  //  {"subscriberID": symbol, "eventID": "click", "callbackF": null }
       this.listenersKL = {}  //  {"listenerID": symbol, "eventID": "click", "ts": null, "event": null }
-      this.isLikelyHuman = false  //  TODO
+      this.isLikelyHuman = false  //  TODO yes, this should default to False
     }
     return this
   }
