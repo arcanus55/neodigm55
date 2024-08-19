@@ -116,28 +116,28 @@ const neodigmUtils = ( ( _d ) =>{
         if( !neodigmOpt.N55_APP_STATE.FIRST_TAP ){ neodigmOpt.N55_APP_STATE.FIRST_TAP = true }
         if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
       }, true )
-      window.addEventListener( "resize", ( ev ) =>{
-      //NeodigmKeylime.subscribe( "resize", ( ev )=>{
+      //window.addEventListener( "resize", ( ev ) =>{
+      NeodigmKeylime.subscribe( "resize", ( ev )=>{
         window.requestAnimationFrame(() => { // TODO refact into class pub/sub emit?
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
           if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
           if( neodigmOpt.neodigmPopTart ) neodigmPopTart.close()
         })
-      } )
-      window.addEventListener( "orientationchange", ( ev ) =>{ // TODO refact into class pub/sub emit?
-      //NeodigmKeylime.subscribe( "orientationchange", ( ev )=>{
+      }, true, window )
+      //window.addEventListener( "orientationchange", ( ev ) =>{ // TODO refact into class pub/sub emit?
+      NeodigmKeylime.subscribe( "orientationchange", ( ev )=>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmCarousel ) neodigmCarousel.init()
           if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
           if( neodigmOpt.neodigmPopTart ) neodigmPopTart.close()
         })
-      } )
-      window.addEventListener( "scroll", ( ev ) =>{ // TODO refact into class pub/sub emit?
-      //NeodigmKeylime.subscribe( "scroll", ( ev )=>{
+      }, true, window )
+      //window.addEventListener( "scroll", ( ev ) =>{ // TODO refact into class pub/sub emit?
+      NeodigmKeylime.subscribe( "scroll", ( ev )=>{
         window.requestAnimationFrame(() => {
           if( neodigmOpt.neodigmTulip ) neodigmTulip.close()
         })
-      } )
+      }, true, window )
       neodigmOpt.N55_APP_STATE.REDUCE_MOTION = !window.matchMedia( '(prefers-reduced-motion: no-preference)' ).matches
       let sFirstAMPM = document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "[data-n55-Ampm-theme]" )?.dataset.n55AmpmTheme
       if( sFirstAMPM ) neodigmOpt.N55_AMPM_THEME = neodigmOpt.N55_APP_STATE.AMPM = sFirstAMPM
