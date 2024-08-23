@@ -777,7 +777,6 @@ class NeodigmWired4Sound {
   }
   init () {
     ["click", "mouseover"].forEach(( evName ) => {
-      //this._d.querySelector( this._aQ[0] ).addEventListener(evName, ( ev )=>{
       NeodigmKeylime.subscribe( evName, ( ev )=>{ 
         let sAtr = "n55Wired4sound" + neodigmUtils.capFirst( evName ).replace("Mouseover","Hover")  //  hover convention
         let evAtr = neodigmUtils.walkDOM3( ev?.target, sAtr )
@@ -862,7 +861,7 @@ let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "n55Pa
 /*
 
 */
-class NeodigmKeylime {  //  Universal Click / left click / pwa install / long tap / body exit / network state / Hover / resize / shake / reorient / scroll listener emitter = neodigmKeylime addEventListener( eventtoken, fExpression, fCallback )
+class NeodigmKeylime {  //  Universal Click / left click / pwa install / long tap / body exit / network state / Hover / resize / shake / reorient / scroll listener emitter
   static init(){
     if( !this.bIsInit ){  //  once | no zombie events
       this._d = document;
@@ -872,7 +871,7 @@ class NeodigmKeylime {  //  Universal Click / left click / pwa install / long ta
       //this.isLikelyHuman = false  //  Move to wdgt
     }
     return this
-  }
+  }  //  TODO Fix scope - nonscope mix up
   static subscribe( eventID, callbackF, useCapture = true, scope = null ){  //  USAGE: NeodigmKeylime.subscribe("click||*", (ev)=>{console.log("dux")}, window)
     if( this.bIsInit && !this.bIsPause && eventID && ( typeof callbackF == "function" ) ){
       const subscriberID = neodigmUtils.genHash( eventID + callbackF )
@@ -880,8 +879,8 @@ class NeodigmKeylime {  //  Universal Click / left click / pwa install / long ta
         this.subscribersKL[ subscriberID ] = { "eventID": eventID, "callbackF": callbackF }
         //  TODO if * (all events)
         if( !this.listenersKL[ eventID ] ){  //  once | Only need one DOM click event for example
-          this.listenersKL[ eventID ] = Date.now()  //  TODO fire cb in deterministic FIFO order
           const DOMContext = scope || this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ]
+          this.listenersKL[ eventID ] = {"ts": Date.now(), "scope":DOMContext }  //  TODO fire cb in deterministic FIFO order
           DOMContext.addEventListener( eventID, (ev)=>{ NeodigmKeylime.fire(ev) }, useCapture )
           if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~KeyLimeN55 listen | ", this.subscribersKL, this.listenersKL )                                        
         }
@@ -910,7 +909,7 @@ class NeodigmKeylime {  //  Universal Click / left click / pwa install / long ta
     }
   }
 
-  static pause ( nT ){
+  static pause( nT ){
     if( this.bIsInit ){
       if( nT ) setTimeout( () =>{ NeodigmKeylime.play() }, nT )
       this.bIsPause = true
@@ -1047,14 +1046,10 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
         aMarqs.forEach( ( eMc )=>{
             eMc.eMp = eMc.querySelector("pre")
             if( eMc.dataset.n55MarqueeDirection !== "false"){
-              //eMc.addEventListener("mouseover", neodigmMarquee.toggleDir )
               NeodigmKeylime.subscribe( "mouseover", ( ev )=>{ neodigmMarquee.toggleDir() }, true, eMc )
-              //eMc.addEventListener("mouseout", neodigmMarquee.toggleDir )              
               NeodigmKeylime.subscribe( "mouseout", ( ev )=>{ neodigmMarquee.toggleDir() }, true, eMc )
             }
-            //eMc.addEventListener("mousedown", neodigmMarquee.pause )
             NeodigmKeylime.subscribe( "mousedown", ( ev )=>{ neodigmMarquee.pause() }, true, eMc )
-            //eMc.addEventListener("mouseup", neodigmMarquee.play )
             NeodigmKeylime.subscribe( "mouseup", ( ev )=>{ neodigmMarquee.play() }, true, eMc )
         })
         neodigmMetronome.subscribe( ()=>{ requestAnimationFrame( neodigmMarquee.tick ) }, _t )
