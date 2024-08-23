@@ -357,7 +357,7 @@ class NeodigmSodaPop {
         return this
     }
     open( _sId ) {
-        let bOkOpen = true  //  The specific CB can cancel the generic DEF
+        let bOkOpen = true  //  The Specific CB can cancel the Generic DEF
         this.sId = _sId
         if(this.bIsOpen) this.close(true)
         this.eTmpl = this._d.getElementById( _sId )
@@ -861,23 +861,24 @@ let neodigmParallax = new NeodigmParallax( document, ["neodigm-parallax", "n55Pa
 /*
 
 */
-class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit / network state / Hover / resize / shake / reorient / scroll listener emitter = neodigmKeylime addEventListener( eventtoken, fExpression, fCallback )
+class NeodigmKeylime {  //  Universal Click / left click / pwa install / long tap / body exit / network state / Hover / resize / shake / reorient / scroll listener emitter = neodigmKeylime addEventListener( eventtoken, fExpression, fCallback )
   static init(){
     if( !this.bIsInit ){  //  once | no zombie events
       this._d = document;
       this.bIsInit = true; this.bIsPause = false;
       this.subscribersKL = {}  //  {"subscriberID": symbol, "eventID": "click", "callbackF": null }
       this.listenersKL = {}  //  {"listenerID": symbol, "eventID": "click", "ts": null, "event": null }
-      this.isLikelyHuman = false  //  TODO yes, this should default to False
+      //this.isLikelyHuman = false  //  Move to wdgt
     }
     return this
   }
-  static subscribe( eventID, callbackF, useCapture = true, scope = null ){  //  USAGE: NeodigmKeylime.subscribe("click", (ev)=>{console.log("dux")})
+  static subscribe( eventID, callbackF, useCapture = true, scope = null ){  //  USAGE: NeodigmKeylime.subscribe("click||*", (ev)=>{console.log("dux")}, window)
     if( this.bIsInit && !this.bIsPause && eventID && ( typeof callbackF == "function" ) ){
       const subscriberID = neodigmUtils.genHash( eventID + callbackF )
-      if( !this.subscribersKL[ subscriberID ] ){  //  once | a subscriber is unique by event type e.g., click
+      if( !this.subscribersKL[ subscriberID ] ){  //  once | A subscriber is unique by event type e.g., click
         this.subscribersKL[ subscriberID ] = { "eventID": eventID, "callbackF": callbackF }
-        if( !this.listenersKL[ eventID ] ){  //  once | Only need one DOM click event
+        //  TODO if * (all events)
+        if( !this.listenersKL[ eventID ] ){  //  once | Only need one DOM click event for example
           this.listenersKL[ eventID ] = Date.now()  //  TODO fire cb in deterministic FIFO order
           const DOMContext = scope || this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ]
           DOMContext.addEventListener( eventID, (ev)=>{ NeodigmKeylime.fire(ev) }, useCapture )
@@ -904,9 +905,8 @@ class NeodigmKeylime {  //  Universal Click / left click / long tap / body exit 
             this.subscribersKL[ subscr ].callbackF( ev )
         }
       }
-      //  TODO push event onto macro stack, if in recording state
       if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~KeyLimeN55 fire | ", ev )
-      }
+    }
   }
 
   static pause ( nT ){
