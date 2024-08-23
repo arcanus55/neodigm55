@@ -778,7 +778,7 @@ class NeodigmWired4Sound {
   init () {
     ["click", "mouseover"].forEach(( evName ) => {
       //this._d.querySelector( this._aQ[0] ).addEventListener(evName, ( ev )=>{
-      NeodigmKeylime.subscribe( evName, ( ev )=>{
+      NeodigmKeylime.subscribe( evName, ( ev )=>{ 
         let sAtr = "n55Wired4sound" + neodigmUtils.capFirst( evName ).replace("Mouseover","Hover")  //  hover convention
         let evAtr = neodigmUtils.walkDOM3( ev?.target, sAtr )
         let evTheme = neodigmUtils.walkDOM3( ev?.target, "n55Theme" )
@@ -900,7 +900,7 @@ class NeodigmKeylime {  //  Universal Click / left click / pwa install / long ta
     return false;
   }
   static fire( ev ){  //  iterate firing callback if eventID matches
-    if( this.bIsInit && !this.bIsPause ){
+    if( this.bIsInit && !this.bIsPause ){  //  TODO walkDOM3
       for( const subscr in this.subscribersKL ){
         if( this.subscribersKL[ subscr ]?.eventID == ev.type ){
             this.subscribersKL[ subscr ].callbackF( ev )
@@ -1047,11 +1047,15 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
         aMarqs.forEach( ( eMc )=>{
             eMc.eMp = eMc.querySelector("pre")
             if( eMc.dataset.n55MarqueeDirection !== "false"){
-              eMc.addEventListener("mouseover", neodigmMarquee.toggleDir )
-              eMc.addEventListener("mouseout", neodigmMarquee.toggleDir )              
+              //eMc.addEventListener("mouseover", neodigmMarquee.toggleDir )
+              NeodigmKeylime.subscribe( "mouseover", ( ev )=>{ neodigmMarquee.toggleDir }, true, eMc )
+              //eMc.addEventListener("mouseout", neodigmMarquee.toggleDir )              
+              NeodigmKeylime.subscribe( "mouseout", ( ev )=>{ neodigmMarquee.toggleDir }, true, eMc )
             }
-            eMc.addEventListener("mousedown", neodigmMarquee.pause )
-            eMc.addEventListener("mouseup", neodigmMarquee.play )
+            //eMc.addEventListener("mousedown", neodigmMarquee.pause )
+            NeodigmKeylime.subscribe( "mousedown", ( ev )=>{ neodigmMarquee.pause }, true, eMc )
+            //eMc.addEventListener("mouseup", neodigmMarquee.play )
+            NeodigmKeylime.subscribe( "mouseup", ( ev )=>{ neodigmMarquee.play }, true, eMc )
         })
         neodigmMetronome.subscribe( ()=>{ requestAnimationFrame( neodigmMarquee.tick ) }, _t )
         bIsInit = true
