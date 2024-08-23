@@ -1048,14 +1048,14 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
             eMc.eMp = eMc.querySelector("pre")
             if( eMc.dataset.n55MarqueeDirection !== "false"){
               //eMc.addEventListener("mouseover", neodigmMarquee.toggleDir )
-              NeodigmKeylime.subscribe( "mouseover", ( ev )=>{ neodigmMarquee.toggleDir }, true, eMc )
+              NeodigmKeylime.subscribe( "mouseover", ( ev )=>{ neodigmMarquee.toggleDir() }, true, eMc )
               //eMc.addEventListener("mouseout", neodigmMarquee.toggleDir )              
-              NeodigmKeylime.subscribe( "mouseout", ( ev )=>{ neodigmMarquee.toggleDir }, true, eMc )
+              NeodigmKeylime.subscribe( "mouseout", ( ev )=>{ neodigmMarquee.toggleDir() }, true, eMc )
             }
             //eMc.addEventListener("mousedown", neodigmMarquee.pause )
-            NeodigmKeylime.subscribe( "mousedown", ( ev )=>{ neodigmMarquee.pause }, true, eMc )
+            NeodigmKeylime.subscribe( "mousedown", ( ev )=>{ neodigmMarquee.pause() }, true, eMc )
             //eMc.addEventListener("mouseup", neodigmMarquee.play )
-            NeodigmKeylime.subscribe( "mouseup", ( ev )=>{ neodigmMarquee.play }, true, eMc )
+            NeodigmKeylime.subscribe( "mouseup", ( ev )=>{ neodigmMarquee.play() }, true, eMc )
         })
         neodigmMetronome.subscribe( ()=>{ requestAnimationFrame( neodigmMarquee.tick ) }, _t )
         bIsInit = true
