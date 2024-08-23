@@ -777,7 +777,8 @@ class NeodigmWired4Sound {
   }
   init () {
     ["click", "mouseover"].forEach(( evName ) => {
-      this._d.querySelector( this._aQ[0] ).addEventListener(evName, ( ev )=>{
+      //this._d.querySelector( this._aQ[0] ).addEventListener(evName, ( ev )=>{
+      NeodigmKeylime.subscribe( evName, ( ev )=>{
         let sAtr = "n55Wired4sound" + neodigmUtils.capFirst( evName ).replace("Mouseover","Hover")  //  hover convention
         let evAtr = neodigmUtils.walkDOM3( ev?.target, sAtr )
         let evTheme = neodigmUtils.walkDOM3( ev?.target, "n55Theme" )
@@ -787,7 +788,7 @@ class NeodigmWired4Sound {
             neodigmWired4Sound.vibrate()
           }else{ neodigmWired4Sound.sound( evAtr ) }
         }
-      }, false);
+      }, false, this._d.querySelector( this._aQ[0] ));
     })
     this.bIsInit = true; return this
   }
