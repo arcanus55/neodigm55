@@ -899,8 +899,8 @@ class NeodigmKeylime {  //  Universal Click / left click / pwa install / long ta
     if( this.bIsInit && !this.bIsPause ){  //  TODO 🌶️ walkDOM3
       for( const subscr in this.subscribersKL ){
         if( this.subscribersKL[ subscr ]?.eventID == ev.type ){
-    console.log("--- -- -- | ", this.subscribersKL[ subscr ].scope )
-    console.log("--- -- -- | ", ev.target )
+    //console.log("--- -- -- | ", this.subscribersKL[ subscr ].scope )
+    //console.log("--- -- -- | ", ev.target )
             this.subscribersKL[ subscr ].callbackF( ev )
         }
       }
