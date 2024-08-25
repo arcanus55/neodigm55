@@ -868,19 +868,19 @@ class NeodigmKeylime {  //  Universal Click / left click / pwa install / long ta
       this.bIsInit = true; this.bIsPause = false;
       this.subscribersKL = {}  //  {"subscriberID": symbol, "eventID": "click", "callbackF": null }
       this.listenersKL = {}  //  {"listenerID": symbol, "eventID": "click", "ts": null, "event": null }
-      //this.isLikelyHuman = false  //  Move to wdgt
+      //this.isLikelyHuman = false  //  Not doing this, Move to wdgt
     }
     return this
-  }  //  TODO Fix scope - nonscope mix up
+  }  //  TODO Fix scope - nonscope mix up!
   static subscribe( eventID, callbackF, useCapture = true, scope = null ){  //  USAGE: NeodigmKeylime.subscribe("click||*", (ev)=>{console.log("dux")}, window)
     if( this.bIsInit && !this.bIsPause && eventID && ( typeof callbackF == "function" ) ){
       const subscriberID = neodigmUtils.genHash( eventID + callbackF )
       if( !this.subscribersKL[ subscriberID ] ){  //  once | A subscriber is unique by event type e.g., click
         this.subscribersKL[ subscriberID ] = { "eventID": eventID, "callbackF": callbackF }
-        //  TODO if * (all events)
+        //  TODO 🌶️ if * (all events)
         if( !this.listenersKL[ eventID ] ){  //  once | Only need one DOM click event for example
           const DOMContext = scope || this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ]
-          this.listenersKL[ eventID ] = {"ts": Date.now(), "scope":DOMContext }  //  TODO fire cb in deterministic FIFO order
+          this.listenersKL[ eventID ] = {"ts": Date.now(), "scope":DOMContext }  //  TODO 🌶️ fire cb in deterministic FIFO order
           DOMContext.addEventListener( eventID, (ev)=>{ NeodigmKeylime.fire(ev) }, useCapture )
           if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~KeyLimeN55 listen | ", this.subscribersKL, this.listenersKL )                                        
         }
@@ -899,7 +899,7 @@ class NeodigmKeylime {  //  Universal Click / left click / pwa install / long ta
     return false;
   }
   static fire( ev ){  //  iterate firing callback if eventID matches
-    if( this.bIsInit && !this.bIsPause ){  //  TODO walkDOM3
+    if( this.bIsInit && !this.bIsPause ){  //  TODO 🌶️ walkDOM3
       for( const subscr in this.subscribersKL ){
         if( this.subscribersKL[ subscr ]?.eventID == ev.type ){
             this.subscribersKL[ subscr ].callbackF( ev )
@@ -1332,7 +1332,8 @@ class NeodigmEnchantedCTA {
     init (){
       this.aE = [ ... this._d.querySelectorAll( this._aQ[0] )]
       if( !this.bIsInit ){  //  once events app_state.context
-        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {
+        //this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => { 
+        NeodigmKeylime.subscribe( "click", ( ev )=>{
           let sId = ev?.target?.id || ev?.target?.parentNode?.id || "add_id"
           let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ( !ev?.target?.parentNode?.dataset ) ? null : ("n55EnchantedCta" in ev?.target?.parentNode?.dataset) // no parent 
           if( bCta ){  //  Optim
@@ -1345,9 +1346,10 @@ class NeodigmEnchantedCTA {
             }            
           }
 
-        }, false)
+        }, false )
         if( neodigmOpt.N55_CTA_LONG_TAP ){
-          this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mousedown", ( ev ) => {
+          //this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mousedown", ( ev ) => { 
+          NeodigmKeylime.subscribe( "mousedown", ( ev )=>{
             let sId = ev?.target?.id || ev?.target?.parentNode?.id || "add_id"
             let bCta = ("n55EnchantedCta" in ev?.target?.dataset) || ( !ev?.target?.parentNode?.dataset ) ? null : ("n55EnchantedCta" in ev?.target?.parentNode?.dataset) // no parent 
             if( bCta ){
@@ -1360,10 +1362,11 @@ class NeodigmEnchantedCTA {
                 }
               }, neodigmOpt.N55_CTA_LONG_TAP )            
             }
-          }, false)
-          this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mouseup", ( ev ) => {
+          }, false )
+          //this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mouseup", ( ev ) => { 
+          NeodigmKeylime.subscribe( "mouseup", ( ev )=>{
             neodigmEnchantedCTA.bLongTap = false
-          }, false)          
+          }, false )          
         }
       }
       if( neodigmOpt.N55_CTA_RND_TOUCH ){ 
