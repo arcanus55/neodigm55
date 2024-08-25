@@ -589,14 +589,11 @@ class NeodigmPopTart {
             }
         }, false )
         /* ADVANCED HOVER PATTERNS
-        this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("mouseout", ( ev ) => {  //  data-n55-poptart-hover
+        NeodigmKeylime.subscribe( "mouseout", ( ev )=>{  //  data-n55-poptart-hover
             console.log( " ~~~ ev.target?.dataset?.n55PoptartHover | " + ev.target?.dataset?.n55PoptartHover )
             let sPTCont = neodigmUtils.walkDOM3( ev?.target, "n55PoptartHover" )
             console.log( " ~~~ sPTCont | " + sPTCont )
-
-            if( sPTCont ){
-                this.close()
-            }
+            if( sPTCont ){ this.close() }
         } )
         */
           NeodigmKeylime.subscribe( "contextmenu", ( ev )=>{  //  data-n55-poptart-rightclick
@@ -1618,14 +1615,14 @@ class NeodigmPWA {
   init (){
     this.aE = [ ... this._d.querySelectorAll( "#" + this._aQ[0] )]
     if( this.aE ){
-      window.addEventListener("appinstalled", () => {
+      NeodigmKeylime.subscribe( "appinstalled", ( ev )=>{
         setTimeout(function(){
             neodigmToast.q("Application Installed ✨", neodigmOpt.N55_THEME_DEFAULT)
             if( neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 8 )
             neodigmUtils.doDataLayer( "event", "appinstalled" )
         }, 1200)
         if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~n55 pwa | appinstalled" )
-      });
+      }, true, window );
       this.bIsInit = true      
     }
     return this
@@ -1764,10 +1761,10 @@ class NeodigmPicnic {  //  TODO sort
   }
   init() {  //  rinit
     if( !this.bIsInit ){  //  once
-      this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].addEventListener("click", ( ev ) => {
+      NeodigmKeylime.subscribe( "click", ( ev )=>{
         let evAtr = neodigmUtils.walkDOM3( ev?.target, "n55PicnicRow", "returnEl" )  //  Return Element
         if( evAtr ) this.select( evAtr )
-      }, false)
+      }, false )
     }
     this.bIsInit = true
     return this;
@@ -1921,7 +1918,7 @@ function doDOMContentLoaded(){
   }, 56)
 }
 
-document.addEventListener("DOMContentLoaded", function() { doDOMContentLoaded() });
+document.addEventListener("DOMContentLoaded", function() { doDOMContentLoaded() })  //  Not doing Keylime here
 
 // ZzFX - Zuper Zmall Zound Zynth - Micro Edition
 // MIT License - Copyright 2019 Frank Force
