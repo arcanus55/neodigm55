@@ -8,7 +8,7 @@ The lightweight components come together in a unique way that will make your web
 All rights reserved. Redistributions of source code must retain the above copyright and notice.
 */
 
-//  Neodigm 55 Options Custom Config Begin  //
+//  Launch Complete Options Custom Config Begin  //
 let neodigmOpt_launchComplete = {
   ver: "1.0.0",
   N55_LC_DOMAIN: ["MachFiveMarketing.com", 256],
@@ -24,6 +24,18 @@ if( typeof neodigmOpt_launchCompleteCustom != 'undefined' ){
       neodigmOpt_launchComplete[ cnfgProp ] = neodigmOpt_launchCompleteCustom[ cnfgProp ]
     }
 }
+//  Launch Complete Utils Begin  //
+const launchCompleteUtils = ( ( _d ) =>{
+  return {
+    hardReload(){
+      const urlSrch = new URLSearchParams(window.location.search);
+      urlSrch.set("reload", new Date().getTime())
+      const urlQry = urlSrch.toString()
+      window.location.search = urlQry
+    }
+  }
+})( document );
+
 //  N55 PWA Console Brand begin  //
 if( neodigmOpt_launchComplete.CONSOLE_LOG_VER ) console.log("%c " + neodigmOpt_launchComplete.N55_LC_TAG1[0], "background: #000; color: #" + neodigmOpt_launchComplete.N55_LC_COLOR_BRAND[0] + "; font-size: 38px");
 
