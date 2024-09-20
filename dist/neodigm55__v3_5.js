@@ -874,8 +874,8 @@ class NeodigmKeylime {  //  Universal Click / left click / pwa install / long ta
       const subscriberID = neodigmUtils.genHash( eventID + callbackF + scope )
       if( !this.subscribersKL[ subscriberID ] ){  //  once | A subscriber is unique by event type e.g., click
         this.subscribersKL[ subscriberID ] = { "eventID": eventID, "callbackF": callbackF, "scope": scope }
-        //  TODO 🌶️ if * (all events)
-        if( !this.listenersKL[ eventID ] ){  //  once | Only need one DOM click event for example
+        //  TODO 🌶️ if eventID == * (all events)
+        if( !this.listenersKL[ eventID ] && eventID != "*"){  //  once | Only need one DOM click event for example
           const DOMContext = scope || this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ]
           this.listenersKL[ eventID ] = {"ts": Date.now(), "first_scope": DOMContext }  //  TODO 🌶️ fire cb in deterministic FIFO order
           DOMContext.addEventListener( eventID, (ev)=>{ NeodigmKeylime.fire(ev) }, useCapture )
@@ -896,13 +896,10 @@ class NeodigmKeylime {  //  Universal Click / left click / pwa install / long ta
     return false;
   }
   static fire( ev ){  //  iterate firing callback if eventID matches
-    if( this.bIsInit && !this.bIsPause ){  //  TODO 🌶️ walkDOM3
+    if( this.bIsInit && !this.bIsPause ){  //  TODO 🌶️ walkDOM3?
       for( const subscr in this.subscribersKL ){
-        if( this.subscribersKL[ subscr ]?.eventID == ev.type ){
-    //console.log("--- -- -- | ", this.subscribersKL[ subscr ].scope )
-    //console.log("--- -- -- | ", ev.target )
-            this.subscribersKL[ subscr ].callbackF( ev )
-        }
+        let subsKL = this.subscribersKL[ subscr ]
+        if( subsKL?.eventID == ev.type || subsKL?.eventID == "*" ){ subsKL.callbackF( ev ) }
       }
       if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~KeyLimeN55 fire | ", ev )
     }
