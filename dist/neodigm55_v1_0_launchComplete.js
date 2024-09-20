@@ -24,7 +24,7 @@ if( typeof neodigmOpt_launchCompleteCustom != 'undefined' ){
       neodigmOpt_launchComplete[ cnfgProp ] = neodigmOpt_launchCompleteCustom[ cnfgProp ]
     }
 }
-//  Launch Complete Utils Begin  //
+//  Launch Complete Utils | Extension of the core lib utils  //
 const launchCompleteUtils = ( ( _d ) =>{
   return {
     hardReload(){

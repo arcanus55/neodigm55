@@ -1045,11 +1045,11 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
         aMarqs.forEach( ( eMc )=>{
             eMc.eMp = eMc.querySelector("pre")
             if( eMc.dataset.n55MarqueeDirection !== "false"){
-              NeodigmKeylime.subscribe( "mouseover", ( ev )=>{ neodigmMarquee.toggleDir() }, true, eMc )
-              NeodigmKeylime.subscribe( "mouseout", ( ev )=>{ neodigmMarquee.toggleDir() }, true, eMc )
+              eMc.addEventListener("mouseover", neodigmMarquee.toggleDir )
+              eMc.addEventListener("mouseout", neodigmMarquee.toggleDir )              
             }
-            NeodigmKeylime.subscribe( "mousedown", ( ev )=>{ neodigmMarquee.pause() }, true, eMc )
-            NeodigmKeylime.subscribe( "mouseup", ( ev )=>{ neodigmMarquee.play() }, true, eMc )
+            eMc.addEventListener("mousedown", neodigmMarquee.pause )
+            eMc.addEventListener("mouseup", neodigmMarquee.play )
         })
         neodigmMetronome.subscribe( ()=>{ requestAnimationFrame( neodigmMarquee.tick ) }, _t )
         bIsInit = true
