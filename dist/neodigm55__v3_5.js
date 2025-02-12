@@ -66,7 +66,17 @@ const neodigmUtils = ( ( _d ) =>{
     isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
     f02x: function(x){ return (Math.floor(Math.random() * x)); },  //  0 to x
-    fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback
+    fPromiseJS: async function( _d, _uri ){  //  Load JS Async then Promise 
+      return new Promise((resolve, reject) => {
+        const _js = document.createElement( "script" );
+        _js.type = "text/javascript"
+        _js.async = true
+        _js.src = _uri
+        js.onload = resolve; js.onerror = reject;
+        _d.getElementsByTagName( "head" )[0].appendChild( _js )
+      })
+    },
+    fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback 
       let _js = _d.createElement( "script" )
       _js.type = "text/javascript"
       _js.async = true
@@ -1676,7 +1686,7 @@ class NeodigmAgent {
                 } )
               }
               if( rs?.assets ){  //  Inject asset elements from manifest +CSS Font
-                rs.assets.forEach( ( aAst )=>{
+                rs.assets.forEach( ( aAst )=>{  //  N55 Promise All
                   if( aAst[0].toLowerCase() == "js" ) neodigmUtils.fAsyncJS( document, aAst[1] )
                   if( aAst[0].toLowerCase() == "css" ) neodigmUtils.fAsyncCSS( document, aAst[1] )
                 } )
