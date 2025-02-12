@@ -72,7 +72,7 @@ const neodigmUtils = ( ( _d ) =>{
         _js.type = "text/javascript"
         _js.async = true
         _js.src = _uri
-        js.onload = resolve; js.onerror = reject;
+        _js.onload = resolve; _js.onerror = reject;
         _d.getElementsByTagName( "head" )[0].appendChild( _js )
       })
     },
