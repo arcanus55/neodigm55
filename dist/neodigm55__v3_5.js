@@ -68,10 +68,7 @@ const neodigmUtils = ( ( _d ) =>{
     f02x: function(x){ return (Math.floor(Math.random() * x)); },  //  0 to x
     fPromiseJS: async function( _d, _uri ){  //  Load JS Async then Promise 
       return new Promise((resolve, reject) => {
-        const _js = document.createElement( "script" );
-        _js.type = "text/javascript"
-        _js.async = true
-        _js.src = _uri
+        const _js = Object.assign( _d.createElement( "script" ) , {"type": "text/javascript", "src": _uri }) 
         _js.onload = resolve; _js.onerror = reject;
         _d.getElementsByTagName( "head" )[0].appendChild( _js )
       })
