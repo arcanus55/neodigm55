@@ -1671,7 +1671,7 @@ class NeodigmAgent {
           const sURI = neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/" + sTkn + "/content/"
           fetch( sURI, oFetchConf )
           .then( rs => rs.json() )
-          .then( rs => {
+          .then( async rs => {
             if( rs?.compressed && LZString && neodigmUtils ){
               oeWdg.innerHTML = LZString.decompressFromEncodedURIComponent( rs.compressed )
               if( rs?.sandbox ){
@@ -1696,8 +1696,8 @@ class NeodigmAgent {
                 this.unistore = rs?.unistore
               }
             }
-          } )
-        }
+          } 
+        
     } )
     if( neodigmEnchantedCTA ){
       neodigmEnchantedCTA.setOnLongTap( function(){
