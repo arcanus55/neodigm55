@@ -1684,12 +1684,16 @@ class NeodigmAgent {
               }
               if( rs?.assets ){  //  Inject asset elements from manifest +CSS Font
                 rs.assets.forEach( ( aAst )=>{
+if( aAst[0].toLowerCase() == "js" ) neodigmUtils.fAsyncJS( document, aAst[1] )
+
                   if( aAst[0].toLowerCase() == "css" ) neodigmUtils.fAsyncCSS( document, aAst[1] )
                 } )
+              /*
                 const prmAst = rs.assets.map( ( aAst )=>{
                   if( aAst[0].toLowerCase() == "js" ) return neodigmUtils.fPromiseJS( document, aAst[1] )
                 } )
                 await Promise.all( prmAst )
+                */
               }
               neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + sTkn + ".js" )
               if( rs?.unistore_token ){  //  var shared store - compressed
