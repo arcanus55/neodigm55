@@ -66,7 +66,7 @@ const neodigmUtils = ( ( _d ) =>{
     isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
     f02x: function(x){ return (Math.floor(Math.random() * x)); },  //  0 to x
-    fPromiseJS: async function( _d, _uri ){  //  Load JS Async then Promise 
+    fPromiseJS: async function( _d, _uri ){  //  Load JS Async then Resolve 
       return new Promise((resolve, reject) => {
         const _js = Object.assign( _d.createElement( "script" ) , {"type": "text/javascript", "src": _uri }) 
         _js.onload = resolve; _js.onerror = reject;
@@ -1683,11 +1683,13 @@ class NeodigmAgent {
                 } )
               }
               if( rs?.assets ){  //  Inject asset elements from manifest +CSS Font
-                rs.assets.forEach( ( aAst )=>{  //  N55 Promise All
-                  if( aAst[0].toLowerCase() == "js" ) neodigmUtils.fAsyncJS( document, aAst[1] )
+                rs.assets.forEach( ( aAst )=>{
                   if( aAst[0].toLowerCase() == "css" ) neodigmUtils.fAsyncCSS( document, aAst[1] )
                 } )
-              }
+                const prmAst = rs.assets.map( ( aAst )=>{
+                  if( aAst[0].toLowerCase() == "js" ) return neodigmUtils.fPromiseJS( document, aAst[1] )
+                } )
+              await Promise.all( prmAst )
               neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + sTkn + ".js" )
               if( rs?.unistore_token ){  //  var shared store - compressed
                 this.unistore_token = rs?.unistore_token
