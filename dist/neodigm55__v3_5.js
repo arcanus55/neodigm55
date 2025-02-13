@@ -1671,7 +1671,7 @@ class NeodigmAgent {
           const sURI = neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/" + sTkn + "/content/"
           fetch( sURI, oFetchConf )
           .then( rs => rs.json() )
-          .then( async rs => {
+          .then( async ( rs ) => {
             if( rs?.compressed && LZString && neodigmUtils ){
               oeWdg.innerHTML = LZString.decompressFromEncodedURIComponent( rs.compressed )
               if( rs?.sandbox ){
@@ -1689,15 +1689,16 @@ class NeodigmAgent {
                 const prmAst = rs.assets.map( ( aAst )=>{
                   if( aAst[0].toLowerCase() == "js" ) return neodigmUtils.fPromiseJS( document, aAst[1] )
                 } )
-              await Promise.all( prmAst )
+                await Promise.all( prmAst )
+              }
               neodigmUtils.fAsyncJS( this._d, neodigmOpt.API_baseURI + neodigmOpt.API_ver + "/wdgt/logic/" + sTkn + ".js" )
               if( rs?.unistore_token ){  //  var shared store - compressed
                 this.unistore_token = rs?.unistore_token
                 this.unistore = rs?.unistore
               }
             }
-          } 
-        
+          } )
+        }
     } )
     if( neodigmEnchantedCTA ){
       neodigmEnchantedCTA.setOnLongTap( function(){
