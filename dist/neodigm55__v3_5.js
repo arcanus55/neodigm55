@@ -69,7 +69,7 @@ const neodigmUtils = ( ( _d ) =>{
     fPromiseJS: async function( _d, _uri ){  //  Load JS Async then Resolve 
       return new Promise((resolve, reject) => {
         const _js = Object.assign( _d.createElement( "script" ) , {"type": "text/javascript", "src": _uri }) 
-        _js.onload = resolve; _js.onerror = reject;
+        _js.onload = resolve; // _js.onerror = reject;
         _d.getElementsByTagName( "head" )[0].appendChild( _js )
       })
     },
