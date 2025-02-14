@@ -66,7 +66,7 @@ const neodigmUtils = ( ( _d ) =>{
     isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
     f02x: function(x){ return (Math.floor(Math.random() * x)); },  //  0 to x
-    fPromiseJS: async function( _d, _uri ){  //  Load JS Async then Resolve 
+    fPromiseJS: async function( _d, _uri ){  //  Load JS Async then Resolve Promise All
       return new Promise((resolve, reject) => {
         const _js = Object.assign( _d.createElement( "script" ) , { "type": "text/javascript", "src": _uri }) 
         _js.onload = resolve; _js.onerror = reject;
@@ -660,6 +660,7 @@ class NeodigmPopTart {
 
         elPop.dataset.n55PoptartOpen = Date.now()
         let oRctPopCt = elPop.getBoundingClientRect()
+        if( !oRctPopCt.width ) oRctPopCt = elPop.parentElement.getBoundingClientRect()  //  Safari WC container workaround
         oPos.w = ( ( oPos.w ) ? oPos.w : ( oRctBound.width + nOffSetW ) )  //  W
         oPos.x = ( ( oPos.x ) ? oPos.x : ( ( oRctBound.left + (oRctBound.width / 2) ) - ( oPos.w / 2) + pxLft + nOffSetL ) )  //  X  //  TODO calc and align x center of bound elm
         oPos.y = ( ( oPos.y ) ? oPos.y : ( oRctBound.top  + pxTop - nOffSetT ) )  //  Y
