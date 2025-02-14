@@ -68,17 +68,14 @@ const neodigmUtils = ( ( _d ) =>{
     f02x: function(x){ return (Math.floor(Math.random() * x)); },  //  0 to x
     fPromiseJS: async function( _d, _uri ){  //  Load JS Async then Resolve 
       return new Promise((resolve, reject) => {
-        const _js = Object.assign( _d.createElement( "script" ) , {"type": "text/javascript", "src": _uri }) 
-        _js.onload = resolve; // _js.onerror = reject;
+        const _js = Object.assign( _d.createElement( "script" ) , { "type": "text/javascript", "src": _uri }) 
+        _js.onload = resolve; _js.onerror = reject;
         _d.getElementsByTagName( "head" )[0].appendChild( _js )
       })
     },
-    fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then callback 
-      let _js = _d.createElement( "script" )
-      _js.type = "text/javascript"
-      _js.async = true
+    fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then Callback 
+      const _js = Object.assign( _d.createElement( "script" ) , { "type": "text/javascript", "src": _uri }) 
       if( _cb ) _js.onload = function(){ _cb(); }
-      _js.src = _uri
       _d.getElementsByTagName( "head" )[0].appendChild( _js )
     },
     fAsyncCSS: function( _d, _uri ){  //  Load CSS / Font Async
