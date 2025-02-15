@@ -651,7 +651,7 @@ class NeodigmPopTart {
           nOffSetW = oPos?.offset?.w || 0
         }
         let oRctBound = this.elBound.getBoundingClientRect()
-        if( !oRctBound.width ) oRctBound = this.elBound.parentElement.getBoundingClientRect()  //  Safari WC container workaround
+        if( !oRctBound.width ) oRctBound = this.elBound.parentElement.getBoundingClientRect()  //  Safari WC Container Workaround
         let pxLft  = window.scrollX || this._d.documentElement.scrollLeft
         let pxTop = window.scrollY || this._d.documentElement.scrollTop
         const NOFFSET = 10
@@ -662,7 +662,7 @@ class NeodigmPopTart {
         elPop.dataset.n55PoptartOpen = Date.now()
         let oRctPopCt = elPop.getBoundingClientRect()
         oPos.w = ( ( oPos.w ) ? oPos.w : ( oRctBound.width + nOffSetW ) )  //  W
-        oPos.x = ( ( oPos.x ) ? oPos.x : ( ( oRctBound.left + (oRctBound.width / 2) ) - ( oPos.w / 2) + pxLft + nOffSetL ) )  //  X  //  TODO calc and align x center of bound elm
+        oPos.x = ( ( oPos.x ) ? oPos.x : ( ( oRctBound.left + (oRctBound.width / 2) ) - ( oPos.w / 2) + pxLft + nOffSetL ) )  //  X 
         oPos.y = ( ( oPos.y ) ? oPos.y : ( oRctBound.top  + pxTop - nOffSetT ) )  //  Y
         oPos.z = ( ( oPos.z ) ? oPos.z : neodigmOpt.N55_ZIND.PopTart )  //  Z
         oPos.h = ( ( oPos.h ) ? (oPos.h + nOffSetH) : "auto" )  //  H
