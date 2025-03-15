@@ -1,5 +1,5 @@
 /*
-Neodigm 55 v3.5.0 the eclectic low-code UX micro-library ✨
+Neodigm 55 v4.0.0 the eclectic low-code UX micro-library ✨
 Copyright (c) 2021-2032, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause and talented team
 
 The lightweight web components come together in a unique way that makes your website playful, fun, and bounce resistant.
@@ -61,7 +61,7 @@ if( typeof neodigmOptCustom != 'undefined' ){
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
-    ver: "3.5.0",  //  Neodigm 55 version
+    ver: "4.0.0",  //  Neodigm 55 version
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
@@ -298,7 +298,7 @@ let neodigmToast = (function(_d, eID, _q) {
           }, true )
           bIsInit = true
       },
-      q: function( sMsg, sTheme, sessionDuration = _nTimeout ) {
+      q: function( sMsg, sTheme = neodigmOpt.N55_THEME_DEFAULT, sessionDuration = _nTimeout ) {
         if( bIsInit && !bIsPause ){
           _nTimeout = sessionDuration  //  Session level duration override | No Progress Bar Impact
           if( sMsg && sMsg != _aQ[0]?.sMsg ){
