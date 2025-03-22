@@ -37,7 +37,7 @@ style="overflow: hidden;">
 
  
 <script>
-const effect_3d_spheresOpt = {"context": "[data-n55-token='effect_3d_spheres']", "color": 0xEDBA08, "speed_x": 0.0004, "speed_y": 0.002, "camera_z": "+1500"}
+const effect_3d_spheresOpt = {"context": "[data-n55-token='effect_3d_spheres']", "color": 0xEDBA08, "colorOne": 0xDD4124, "speed_x": 0.0004, "speed_y": 0.002, "camera_z": "+1500"}
 if( typeof effect_3d_spheresCustom != 'undefined' ){  //  wdgt host script obj
     for( cnfgProp in effect_3d_spheresCustom ){  //  Import Custom Objects props if exists
         effect_3d_spheresOpt[ cnfgProp ] = effect_3d_spheresCustom[ cnfgProp ]
@@ -65,10 +65,18 @@ scene.add(pointLight)
 
 const geometry = new THREE.SphereGeometry(30, 32, 16)
 const material = new THREE.MeshToonMaterial({color: effect_3d_spheresOpt.color, alphaHash: false, transparent: true, opacity: .108, side: THREE.DoubleSide,})
+const materialOne = new THREE.MeshToonMaterial({color: effect_3d_spheresOpt.colorOne, alphaHash: false, transparent: true, opacity: .108, side: THREE.DoubleSide,})
 
 const group = new THREE.Group()
+let rndOne = Math.floor(Math.random() * 976) + 1;
+
 for (let i = 0; i < 976; i++) {
-  let mesh = new THREE.Mesh(geometry, material)
+  let mesh = {}
+  if( i == rndOne ){
+    mesh = new THREE.Mesh(geometry, materialOne)
+  }else{
+    mesh = new THREE.Mesh(geometry, material)
+  }
   mesh.position.x = Math.random() * 2000 - 1000
   mesh.position.y = Math.random() * 2000 - 1000
   mesh.position.z = Math.random() * 2000 - 1000
