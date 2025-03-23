@@ -65,24 +65,26 @@ scene.add(pointLight)
 
 const geometry = new THREE.SphereGeometry(30, 32, 16)
 const material = new THREE.MeshToonMaterial({color: effect_3d_spheresOpt.color, alphaHash: false, transparent: true, opacity: .108, side: THREE.DoubleSide,})
-const materialOne = new THREE.MeshToonMaterial({color: effect_3d_spheresOpt.colorOne, alphaHash: false, transparent: true, opacity: .108, side: THREE.DoubleSide,})
+const materialOne = new THREE.MeshToonMaterial({color: effect_3d_spheresOpt.colorOne, alphaHash: false, transparent: true, opacity: .2, side: THREE.DoubleSide,})
 
 const group = new THREE.Group()
 let rndOne = Math.floor(Math.random() * 976) + 1;
 
 for (let i = 0; i < 976; i++) {
   let mesh = {}
+  let scale = 0
   if( i == rndOne ){
     mesh = new THREE.Mesh(geometry, materialOne)
+    scale = Math.random() * 4.2
   }else{
     mesh = new THREE.Mesh(geometry, material)
+    scale = Math.random() * 2.2
   }
   mesh.position.x = Math.random() * 2000 - 1000
   mesh.position.y = Math.random() * 2000 - 1000
   mesh.position.z = Math.random() * 2000 - 1000
   //mesh.rotation.x = Math.random() * 2 * Math.PI
   //mesh.rotation.y = Math.random() * 2 * Math.PI
-  const scale = Math.random() * 2
   mesh.scale.x = mesh.scale.y = mesh.scale.z = scale
   mesh.matrixAutoUpdate = false
   mesh.updateMatrix()
