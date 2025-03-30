@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55__v4_0.css"></link>
+        <script src="https://arcanus55.github.io/neodigm55/dist/neodigm55__v4_0.js"></script>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.css"></link>
+    </head>
+    <body  data-n55-ampm-theme="light">
+
+<!--  ||  TEMPLATE MU & CSS WDG BEGIN -->
+<div class="blob__wdgt--cont">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+    <div class="blob blob4"></div>
+</div>
+
+<style>
+.QQQQQQhero__cont {
+    width: 400px; height: 400px;
+    position: absolute; display: block;
+    top: calc( 50vh - 200px);
+    left: calc( 50vw - 200px);
+    margin: 8px;
+    user-select: none;
+}
+.blob__wdgt--cont {
+    position: absolute;
+    transform: rotate(40deg);
+    width: 100%; height: 100%;
+    top: 1px;
+    transition: all 2.8s;
+}
+.blob__wdgt--cont > .blob {
+    padding: 0;
+    position: absolute;
+    border-radius: 100%;
+    width: 256px; height: 256px;
+    opacity: .32;
+    filter: blur( 12px );
+    top: 44px; right: 44px;
+    transition: all 2s;
+}
+.blob__wdgt--cont > .blob.blob1 {
+    background-color: #233a5f;
+    z-index: 248;
+}
+.blob__wdgt--cont > .blob.blob2 {
+    background-color: #DD4124;
+    z-index: 246;
+}
+.blob__wdgt--cont > .blob.blob3 {
+    background-color: #334a6f;
+    z-index: 249;
+}
+.blob__wdgt--cont > .blob.blob4 {
+    background-color: #DD4124;
+    z-index: 245;
+}
+</style>
+<!--  ||  TEMPLATE MU & CSS WDG END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  ||  JAVASCRIPT WDG BEGIN -->
+
+ 
+<script>
+const effect_background_spotlight_danceOpt = {
+    "Change Interval": [ 3000, "The time between changes in microseconds (3000)"],
+    "Blobs Size": [ 256, "The size (width and height) of all the blobs in pixels (256)"],
+    "Blobs Opacity": [ .32, "The opacity (0 to 1) of all the blobs (.32)"],
+    "Blobs Blur": [ 12, "The blur of all the blobs in pixels (12)"],
+    "Blobs": [
+        { "backgroundColor": "#810000", "zIndex": 247 },
+        { "backgroundColor": "#DD4124", "zIndex": 248 },
+        { "backgroundColor": "#EDBA08", "zIndex": 249 },
+        { "backgroundColor": "#F5DF4D", "zIndex": 250 },
+    ]
+}
+if( typeof effect_background_spotlight_danceCustom != 'undefined' ){  //  wdgt host script obj
+    for( cnfgProp in effect_background_spotlight_danceCustom ){  //  Import Custom Objects props if exists
+        effect_background_spotlight_danceOpt[ cnfgProp ] = effect_background_spotlight_danceCustom[ cnfgProp ]
+    }
+}
+
+class Effect_background_spotlight_dance {
+    constructor(_d, _sQ) {
+        this._d = _d; this._sQ = _sQ;
+        this.isInit = false;
+    }
+    init() {
+        if( !this.isInit ){
+            setInterval( ()=>{
+                let elPar = null
+                Array.from( document.querySelectorAll(".blob")).forEach( (el)=>{
+                    if( neodigmUtils.f1210() >= 3 ){
+                        elPar = el.parentNode
+                        el.style.top = neodigmUtils.f02x(250) - 44 + "px"
+                        el.style.right = neodigmUtils.f02x(250) - 44 + "px"
+                    }
+                })
+                if( elPar ) elPar.style.transform = `rotate(${ neodigmUtils.f02x(360) }deg)`
+            }, effect_background_spotlight_danceOpt["Change Interval"][0])
+        }
+        this.isInit = true;
+        return this;
+    }
+}
+let effect_background_spotlight_dance = new Effect_background_spotlight_dance( document, "effect_background_spotlight_dance" )
+setTimeout( ()=>{ effect_background_spotlight_dance.init() }, 2e3 )
+
+
+</script> 
+<!--  ||  JAVASCRIPT WDG BEGIN -->
+
+    </body>
+</html>
