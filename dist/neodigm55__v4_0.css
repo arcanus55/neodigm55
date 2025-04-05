@@ -45,8 +45,8 @@ All rights reserved. Redistributions of source code must retain the above copyri
 @property --neodigm-theme-prop-night-alt        { syntax: "<color>"; inherits: false; initial-value: hsl(); }
 @property --neodigm-theme-prop-marcom           { syntax: "<color>"; inherits: false; initial-value: hsl(310.77, 33.33%, 54.12%); }
 @property --neodigm-theme-prop-marcom-alt       { syntax: "<color>"; inherits: false; initial-value: hsl(258.75, 29.91%, 41.96%); }
-@property --neodigm-theme-prop-party            { syntax: "<color>"; inherits: false; initial-value: hsl(); }
-@property --neodigm-theme-prop-party-alt        { syntax: "<color>"; inherits: false; initial-value: hsl(); }
+@property --neodigm-theme-prop-party            { syntax: "<color>"; inherits: false; initial-value: hsl(5, 100%, 69%); }
+@property --neodigm-theme-prop-party-alt        { syntax: "<color>"; inherits: false; initial-value: hsl(346, 56%, 52%); }
 
 .txt-pulse {
     -webkit-background-clip: text;
@@ -56,17 +56,17 @@ All rights reserved. Redistributions of source code must retain the above copyri
 }
 .txt-pulse__brand-warning--2s {
     animation: txt-pulse__brand-warning 2s linear infinite alternate;
-    background: linear-gradient( to right in oklch, 
-        var( --neodigm-theme-prop-brand ), 
-        var( --neodigm-theme-prop-brand-alt )
-    );
+    background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-brand ), var( --neodigm-theme-prop-brand-alt ));
 }
-
+.txt-pulse__marcom-party--2s {
+    animation: txt-pulse__marcom-party 2s linear infinite alternate;
+    background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-marcom ), var( --neodigm-theme-prop-marcom-alt ));
+}
 @keyframes txt-pulse__brand-warning {
-    to {
-        --neodigm-theme-prop-brand: hsl(51, 100%, 30%);
-        --neodigm-theme-prop-brand-alt:hsl(52, 89%, 63%);
-    }
+    to { --neodigm-theme-prop-brand: hsl(51, 100%, 30%); --neodigm-theme-prop-brand-alt:hsl(52, 89%, 63%); }
+}
+@keyframes txt-pulse__marcom-party {
+    to { --neodigm-theme-prop-marcom: hsl(346, 56%, 52%); --neodigm-theme-prop-marcom-alt:hsl(5, 100%, 69%); }
 }
 
 neodigm-template { display: none; }
