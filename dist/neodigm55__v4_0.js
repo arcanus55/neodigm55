@@ -1662,7 +1662,7 @@ class NeodigmAgent {
       this.bIsInit = false
   }
   async init() {  //  rinit
-    this.aeWdgs = [ ... this._d.querySelectorAll( this._aQ[0] )]
+    this.aeWdgs = [ ... this._d.querySelectorAll( this._aQ[0] )]  //  TODO Exclude by Form Factor see the attrib
     this.aeWdgs.forEach( ( oeWdg ) => { 
         if( oeWdg.dataset?.n55WidgetId ){
           const sTkn = oeWdg.dataset.n55WidgetId

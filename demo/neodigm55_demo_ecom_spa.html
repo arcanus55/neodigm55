@@ -8,8 +8,8 @@
     <meta name="keywords" content="Data Visualization, Neodigm 55, UX">
     <meta name="author" content="Archanus 55">
 
-    <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55__v3_1.css"></link>
-    <script src="https://arcanus55.github.io/neodigm55/dist/neodigm55__v3_1.js"></script>
+    <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55__v4_0.css"></link>
+    <script src="https://arcanus55.github.io/neodigm55/dist/neodigm55__v4_0.js"></script>
 
     <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.css"></link>
 
@@ -182,13 +182,39 @@
                                 </div>
                             </aside>
                         </section>
-                        <section data-n55-carousel-page-name="products">
+                        <section data-n55-carousel-page-name="products" data-n55-cloak='true' >
                             <h6 id="js-txt-sub-cap__products" class="h-center readampm__caption">Products</h6><br class="h-br-half">
                             <hr data-n55-theme="brand" data-n55-size="xsmall">
+                            <aside id="grd-home" class="grid__70_30">
+                                <div>
+                                    <article class="h-center h-bg__stripe h-user-sel__none">
+                                        <div class="hero__cont">
+                                            <neodigm-widget data-n55-widget-config="{conf:'', ampm:'',mobile:''}" data-n55-widget-id="effect_background_spotlight_dance"></neodigm-widget>        
+                                        </div>
+                                    </article>
+                                </div>
+                                <div>
+                                    <article class="h-center h-bg__stripe l-wax-home h-ds-b__desktop--only">
+                                    </article>
+                                </div>
+                            </aside>
                         </section>
                         <section data-n55-carousel-page-name="services">
                             <h6 id="js-txt-sub-cap__services" class="h-center readampm__caption">Services</h6><br class="h-br-half">
                             <hr data-n55-theme="brand" data-n55-size="xsmall">
+                            <aside id="grd-home" class="grid__70_30">
+                                <div>
+                                    <article class="h-center h-bg__stripe h-user-sel__none">
+                                        <div class="hero__cont">
+                                            <neodigm-widget data-n55-widget-config="{conf:'', ampm:'',mobile:''}" data-n55-widget-id="effect_background_spotlight_dance"></neodigm-widget>        
+                                        </div>
+                                    </article>
+                                </div>
+                                <div>
+                                    <article class="h-center h-bg__stripe l-wax-home h-ds-b__desktop--only">
+                                    </article>
+                                </div>
+                            </aside>
                         </section>
                         <section data-n55-carousel-page-name="locations">
                             <h6 id="js-txt-sub-cap__location" class="h-center readampm__caption">Locations</h6><br class="h-br-half">
@@ -596,6 +622,16 @@ neodigmMetronome.subscribe( function(){ neodigmEnchantedCTA.touch() }, neodigmOp
 neodigmOpt.W4S_VOLUME = zzfxV  = .036;
 window.addEventListener("scroll", (ev)=>{ neodigmPopTart.close() }, true)
 
+
+const effect_background_spotlight_danceCustom = {
+    "Blobs": [
+    { "backgroundColor": "#988200", "zIndex": 247 },
+    { "backgroundColor": "#F5DF4D", "zIndex": 248 },
+    { "backgroundColor": "#915E00", "zIndex": 249 },
+    { "backgroundColor": "#edba08", "zIndex": 250 },
+    ]
+}
+
 document.addEventListener( "contextmenu", function(e) {  //  On right-click
     if( neodigmUtils ) neodigmUtils.robinTheme("warning")
     if( neodigmWired4Sound ) neodigmWired4Sound.sound( 7 )
@@ -715,7 +751,14 @@ oHro.e = _d.querySelector( qry[1] ); oHro.eBg = _d.querySelector( qry[2] );
 doZm.init();
 
     </script>
-
+<style>
+    .hero__cont {
+        width: 400px; height: 400px;
+        position: relative; display: block;
+        margin: auto;
+        user-select: none;
+    }
+</style>
     <style>
 /**/
 .l-site-caption {
