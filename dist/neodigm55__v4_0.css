@@ -48,22 +48,25 @@ All rights reserved. Redistributions of source code must retain the above copyri
 @property --neodigm-theme-prop-party            { syntax: "<color>"; inherits: false; initial-value: hsl(5, 100%, 69%); }
 @property --neodigm-theme-prop-party-alt        { syntax: "<color>"; inherits: false; initial-value: hsl(346, 56%, 52%); }
 
-.txt-pulse {
+/*8
+data-n55-theme-pulse="warning"
+*/
+[data-n55-theme-pulse] {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text !important;
     color: transparent;        
 }
-.txt-pulse__brand-warning--2s {
-    animation: txt-pulse__brand-warning 2s linear infinite alternate;
-    background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-brand ), var( --neodigm-theme-prop-brand-alt ));
+[data-n55-theme-pulse='warning'] {
+    animation: txt-pulse__warning 2.2s linear infinite alternate;
+    background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-warning ), var( --neodigm-theme-prop-warning-alt ));
 }
 .txt-pulse__marcom-party--2s {
-    animation: txt-pulse__marcom-party 2s linear infinite alternate;
+    animation: txt-pulse__marcom-party 2.2s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-marcom ), var( --neodigm-theme-prop-marcom-alt ));
 }
-@keyframes txt-pulse__brand-warning {
-    to { --neodigm-theme-prop-brand: hsl(51, 100%, 30%); --neodigm-theme-prop-brand-alt:hsl(52, 89%, 63%); }
+@keyframes txt-pulse__warning {
+    to { --neodigm-theme-prop-warning: hsl(346, 56%, 52%); --neodigm-theme-prop-warning-alt:hsl(52, 89%, 63%); }
 }
 @keyframes txt-pulse__marcom-party {
     to { --neodigm-theme-prop-marcom: hsl(346, 56%, 52%); --neodigm-theme-prop-marcom-alt:hsl(5, 100%, 69%); }
