@@ -61,15 +61,15 @@ data-n55-theme-pulse="warning"
     animation: txt-pulse__warning 2.2s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-warning ), var( --neodigm-theme-prop-warning-alt ));
 }
-.txt-pulse__marcom-party--2s {
-    animation: txt-pulse__marcom-party 2.2s linear infinite alternate;
-    background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-marcom ), var( --neodigm-theme-prop-marcom-alt ));
+[data-n55-theme-pulse='party'] {
+    animation: txt-pulse__party 2.2s linear infinite alternate;
+    background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-party ), var( --neodigm-theme-prop-party-alt ));
 }
 @keyframes txt-pulse__warning {
-    to { --neodigm-theme-prop-warning: hsl(346, 56%, 52%); --neodigm-theme-prop-warning-alt:hsl(52, 89%, 63%); }
+    to { --neodigm-theme-prop-warning: hsl(51, 100%, 30%); --neodigm-theme-prop-warning-alt:hsl(52, 89%, 63%); }
 }
-@keyframes txt-pulse__marcom-party {
-    to { --neodigm-theme-prop-marcom: hsl(346, 56%, 52%); --neodigm-theme-prop-marcom-alt:hsl(5, 100%, 69%); }
+@keyframes txt-pulse__party {
+    to { --neodigm-theme-prop-party: hsl(346, 56%, 52%); --neodigm-theme-prop-party-alt:hsl(5, 100%, 69%); }
 }
 
 neodigm-template { display: none; }

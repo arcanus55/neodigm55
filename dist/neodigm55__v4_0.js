@@ -167,6 +167,12 @@ const neodigmUtils = ( ( _d ) =>{
             setTimeout( function(){ eC.dataset.n55Theme = eC.n55Theme }, ( nDx * (NDELAY + NDELAY) ) )            
           }
         } )
+        aE = [ ... document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelectorAll("[data-n55-theme-pulse") ];; const NDELAYPULSE = 3000;
+        aE.forEach( ( eC, nDx ) => {
+          if( !eC.n55ThemePulse ) eC.n55ThemePulse = eC.dataset.n55ThemePulse
+          setTimeout( function(){ eC.dataset.n55ThemePulse = sTheme }, ( nDx * NDELAY ) )
+          setTimeout( function(){ eC.dataset.n55ThemePulse = eC.n55ThemePulse }, ( nDx * (NDELAY + NDELAY) ) )            
+        } )
         neodigmUtils.flashTitle( sTheme, 2e3 )
       }
     },
