@@ -57,6 +57,10 @@ data-n55-theme-pulse="warning"
     background-clip: text !important;
     color: transparent;        
 }
+[data-n55-theme-pulse='brand'] {
+    animation: txt-pulse__brand 2.2s linear infinite alternate;
+    background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-brand ), var( --neodigm-theme-prop-brand-alt ));
+}
 [data-n55-theme-pulse='warning'] {
     animation: txt-pulse__warning 2.2s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-warning ), var( --neodigm-theme-prop-warning-alt ));
@@ -64,6 +68,9 @@ data-n55-theme-pulse="warning"
 [data-n55-theme-pulse='party'] {
     animation: txt-pulse__party 2.2s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-party ), var( --neodigm-theme-prop-party-alt ));
+}
+@keyframes txt-pulse__brand {
+    to { --neodigm-theme-prop-brand: hsl(39, 100%, 28%); --neodigm-theme-prop-brand-alt:hsl(47, 93%, 48%); }
 }
 @keyframes txt-pulse__warning {
     to { --neodigm-theme-prop-warning: hsl(51, 100%, 30%); --neodigm-theme-prop-warning-alt:hsl(52, 89%, 63%); }
