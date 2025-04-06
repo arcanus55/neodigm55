@@ -58,38 +58,38 @@ data-n55-theme-pulse="warning"
     color: transparent;        
 }
 [data-n55-theme-pulse='brand'] {
-    animation: txt-pulse__brand 1.8s linear infinite alternate;
+    animation: txt-pulse__brand 2.4s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-brand ), var( --neodigm-theme-prop-brand-alt ));
 }
 [data-n55-theme-pulse='primary'] {
-    animation: txt-pulse__primary 1.8s linear infinite alternate;
+    animation: txt-pulse__primary 2.4s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-primary ), var( --neodigm-theme-prop-primary-alt ));
 }
 [data-n55-theme-pulse='success'] {
-    animation: txt-pulse__success 1.8s linear infinite alternate;
+    animation: txt-pulse__success 2.4s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-success ), var( --neodigm-theme-prop-success-alt ));
 }
 [data-n55-theme-pulse='danger'] {
-    animation: txt-pulse__danger 1.8s linear infinite alternate;
+    animation: txt-pulse__danger 2.4s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-danger ), var( --neodigm-theme-prop-danger-alt ));
 }
 [data-n55-theme-pulse='warning'] {
-    animation: txt-pulse__warning 1.8s linear infinite alternate;
+    animation: txt-pulse__warning 2.4s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-warning ), var( --neodigm-theme-prop-warning-alt ));
 }
 [data-n55-theme-pulse='info'] {
-    animation: txt-pulse__info 1.8s linear infinite alternate;
+    animation: txt-pulse__info 2.4s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-info ), var( --neodigm-theme-prop-info-alt ));
 }
 [data-n55-theme-pulse='marcom'] {
-    animation: txt-pulse__marcom 1.8s linear infinite alternate;
+    animation: txt-pulse__marcom 2.4s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-marcom ), var( --neodigm-theme-prop-marcom-alt ));
 }
 [data-n55-theme-pulse='party'] {
-    animation: txt-pulse__party 1.8s linear infinite alternate;
+    animation: txt-pulse__party 2.4s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-party ), var( --neodigm-theme-prop-party-alt ));
 }
-@keyframes txt-pulse__brand { to { --neodigm-theme-prop-brand: hsl(39, 100%, 28%); --neodigm-theme-prop-brand-alt: hsl(50, 33%, 7%); }}
+@keyframes txt-pulse__brand { to { --neodigm-theme-prop-brand: hsl(39, 100%, 28%);; --neodigm-theme-prop-brand-alt:hsl(47, 93%, 48%); }}
 @keyframes txt-pulse__primary { to { --neodigm-theme-prop-primary: hsl(219, 37%, 34%); --neodigm-theme-prop-primary-alt: hsl(219, 41%, 70%); }}
 @keyframes txt-pulse__success { to { --neodigm-theme-prop-success: hsl(145, 100%, 11%); --neodigm-theme-prop-success-alt: hsl(167, 100%, 29%); }}
 @keyframes txt-pulse__danger { to { --neodigm-theme-prop-danger: hsl(0, 100%, 25%); --neodigm-theme-prop-danger-alt: hsl(9, 73%, 50%); }}
