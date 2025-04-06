@@ -93,7 +93,7 @@ data-n55-theme-pulse="warning"
 @keyframes txt-pulse__danger { to { --neodigm-theme-prop-danger: hsl(0, 100%, 15%); --neodigm-theme-prop-danger-alt: hsl(9, 73%, 70%); }}
 @keyframes txt-pulse__warning { to { --neodigm-theme-prop-warning: hsl(51, 100%, 20%); --neodigm-theme-prop-warning-alt: hsl(52, 89%, 83%); }}
 @keyframes txt-pulse__info { to { --neodigm-theme-prop-info: hsl(180, 54%, 16%); --neodigm-theme-prop-info-alt: hsl(180, 38%, 83%); }}
-@keyframes txt-pulse__disabled { to { --neodigm-theme-prop-disabled: hsl(180, 54%, 16%); --neodigm-theme-prop-disabled-alt: hsl(0 0% 83.9%); }}
+@keyframes txt-pulse__disabled { to { --neodigm-theme-prop-disabled: hsl(0 0% 50%); --neodigm-theme-prop-disabled-alt: hsl(0 0% 83.9%); }}
 @keyframes txt-pulse__night { to { --neodigm-theme-prop-night: hsl(0 0% 14.1%); --neodigm-theme-prop-night-alt: hsl(0 0% 41.6%); }}
 @keyframes txt-pulse__marcom { to { --neodigm-theme-prop-marcom: hsl(259, 30%, 32%); --neodigm-theme-prop-marcom-alt: hsl(311, 33%, 74%); }}
 @keyframes txt-pulse__party { to { --neodigm-theme-prop-party: hsl(346, 56%, 42%); --neodigm-theme-prop-party-alt: hsl(5, 100%, 89%); }}
