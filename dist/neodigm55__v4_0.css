@@ -89,14 +89,14 @@ data-n55-theme-pulse="warning"
     animation: txt-pulse__party 2.4s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-party ), var( --neodigm-theme-prop-party-alt ));
 }
-@keyframes txt-pulse__brand { to { --neodigm-theme-prop-brand:hsl(39, 100%, 18%); --neodigm-theme-prop-brand-alt:hsl(47, 93%, 58%); }}
-@keyframes txt-pulse__primary { to { --neodigm-theme-prop-primary: hsl(219, 37%, 24%); --neodigm-theme-prop-primary-alt: hsl(219, 41%, 80%); }}
-@keyframes txt-pulse__success { to { --neodigm-theme-prop-success: hsl(145, 100%, 1%); --neodigm-theme-prop-success-alt: hsl(167, 100%, 39%); }}
-@keyframes txt-pulse__danger { to { --neodigm-theme-prop-danger: hsl(0, 100%, 15%); --neodigm-theme-prop-danger-alt: hsl(9, 73%, 60%); }}
-@keyframes txt-pulse__warning { to { --neodigm-theme-prop-warning: hsl(51, 100%, 20%); --neodigm-theme-prop-warning-alt: hsl(52, 89%, 73%); }}
-@keyframes txt-pulse__info { to { --neodigm-theme-prop-info: hsl(180, 54%, 16%); --neodigm-theme-prop-info-alt: hsl(180, 38%, 73%); }}
-@keyframes txt-pulse__marcom { to { --neodigm-theme-prop-marcom: hsl(258.75, 29.91%, 31.96%); --neodigm-theme-prop-marcom-alt: hsl(310.77, 33.33%, 64.12%); }}
-@keyframes txt-pulse__party { to { --neodigm-theme-prop-party: hsl(346, 56%, 42%); --neodigm-theme-prop-party-alt: hsl(5, 100%, 79%); }}
+@keyframes txt-pulse__brand { to { --neodigm-theme-prop-brand:hsl(39, 100%, 18%); --neodigm-theme-prop-brand-alt:hsl(47, 93%, 68%); }}
+@keyframes txt-pulse__primary { to { --neodigm-theme-prop-primary: hsl(219, 37%, 24%); --neodigm-theme-prop-primary-alt: hsl(219, 41%, 90%); }}
+@keyframes txt-pulse__success { to { --neodigm-theme-prop-success: hsl(145, 100%, 1%); --neodigm-theme-prop-success-alt: hsl(167, 100%, 49%); }}
+@keyframes txt-pulse__danger { to { --neodigm-theme-prop-danger: hsl(0, 100%, 15%); --neodigm-theme-prop-danger-alt: hsl(9, 73%, 70%); }}
+@keyframes txt-pulse__warning { to { --neodigm-theme-prop-warning: hsl(51, 100%, 20%); --neodigm-theme-prop-warning-alt: hsl(52, 89%, 83%); }}
+@keyframes txt-pulse__info { to { --neodigm-theme-prop-info: hsl(180, 54%, 16%); --neodigm-theme-prop-info-alt: hsl(180, 38%, 83%); }}
+@keyframes txt-pulse__marcom { to { --neodigm-theme-prop-marcom: hsl(258.75, 29.91%, 31.96%); --neodigm-theme-prop-marcom-alt: hsl(310.77, 33.33%, 74.12%); }}
+@keyframes txt-pulse__party { to { --neodigm-theme-prop-party: hsl(346, 56%, 42%); --neodigm-theme-prop-party-alt: hsl(5, 100%, 89%); }}
 
 neodigm-template { display: none; }
 [data-n55-cloak='true'] { display: none !important; } /* FOUC */
