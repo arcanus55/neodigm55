@@ -159,7 +159,7 @@ const neodigmUtils = ( ( _d ) =>{
     },
     robinTheme: function( sTheme = Object.keys( neodigmOpt.N55_THEME_COLORS )[0] ){  //  Round Robin Whole Page
       if( !neodigmMetronome.isPaused() ){ // TODO test OS/UA motion mq
-        let aE = [ ... document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelectorAll("[data-n55-theme") ]; const NDELAY = 40;
+        let aE = [ ... document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelectorAll("[data-n55-theme") ]; const NDELAY = 56;
         aE.forEach( ( eC, nDx ) => {
           if( eC.dataset.n55Theme != "disabled" ){
             if( !eC.n55Theme ) eC.n55Theme = eC.dataset.n55Theme
