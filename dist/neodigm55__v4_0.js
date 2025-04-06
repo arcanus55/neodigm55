@@ -168,7 +168,7 @@ const neodigmUtils = ( ( _d ) =>{
           }
         } )
         aE = [ ... document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelectorAll("[data-n55-theme-pulse") ]; const NDELAYPULSE = 256;
-        aE.forEach( ( eC, nDx ) => {
+        aE.forEach( ( eC, nDx ) => {  //  Pulse Gradiants
           if( !eC.n55ThemePulse ) eC.n55ThemePulse = eC.dataset.n55ThemePulse
           setTimeout( function(){ eC.dataset.n55ThemePulse = sTheme }, ( nDx * NDELAYPULSE ) )
           setTimeout( function(){ eC.dataset.n55ThemePulse = eC.n55ThemePulse }, ( (nDx * NDELAYPULSE) + 3e3 ) )            
