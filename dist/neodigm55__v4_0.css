@@ -89,7 +89,7 @@ data-n55-theme-pulse="warning"
     animation: txt-pulse__party 2.4s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-party ), var( --neodigm-theme-prop-party-alt ));
 }
-@keyframes txt-pulse__brand { to { --neodigm-theme-prop-brand:hsl(47, 93%, 48%); --neodigm-theme-prop-brand-alt:hsl(39, 100%, 28%); }}
+@keyframes txt-pulse__brand { to { --neodigm-theme-prop-brand:hsl(47, 93%, 48%); --neodigm-theme-prop-brand-alt:hsl(0, 100%, 25%); }}
 @keyframes txt-pulse__primary { to { --neodigm-theme-prop-primary: hsl(219, 37%, 34%); --neodigm-theme-prop-primary-alt: hsl(219, 41%, 70%); }}
 @keyframes txt-pulse__success { to { --neodigm-theme-prop-success: hsl(145, 100%, 11%); --neodigm-theme-prop-success-alt: hsl(167, 100%, 29%); }}
 @keyframes txt-pulse__danger { to { --neodigm-theme-prop-danger: hsl(0, 100%, 25%); --neodigm-theme-prop-danger-alt: hsl(9, 73%, 50%); }}
