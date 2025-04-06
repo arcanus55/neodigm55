@@ -153,7 +153,7 @@ const neodigmUtils = ( ( _d ) =>{
     flashTitle: ( sTheme=neodigmOpt.N55_THEME_DEFAULT, nT=4e3 )=>{  //  Tab Emoji
       if( neodigmOpt.N55_FLASH_TITLE ){
         if( !document?.n55Title ) document.n55Title = document.title
-        document.title = neodigmOpt.N55_THEME_COLORS[ sTheme ][2] + document.n55Title
+        if( neodigmOpt?.N55_THEME_COLORS[ sTheme ] ) document.title = neodigmOpt.N55_THEME_COLORS[ sTheme ][2] + document.n55Title
         neodigmUtils.doSetT( function(){ document.title = document.n55Title }, nT )  //  Call overloaded setT if FF is true (alt thread)
       }
     },
