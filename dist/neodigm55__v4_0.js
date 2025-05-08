@@ -258,6 +258,12 @@ const neodigmUtils = ( ( _d ) =>{
       if( bSound && neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS ) neodigmWired4Sound.sound( 13, "QUITE" )
       if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([48, 32, 8])
       return neodigmUtils;
+    },
+    hardReload: function( urlparm = "n55reset"){
+      const urlSrch = new URLSearchParams(window.location.search);
+      urlSrch.set( urlparm, new Date().getTime())
+      const urlQry = urlSrch.toString()
+      window.location.search = urlQry
     }
   }
 })( document );

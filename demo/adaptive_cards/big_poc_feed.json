@@ -1,0 +1,233 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.5",
+    "body": [
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Edible Review",
+                                    "weight": "Lighter",
+                                    "spacing": "ExtraSmall",
+                                    "isSubtle": true,
+                                    "color": "Accent"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "3:40 4/21",
+                                    "wrap": true,
+                                    "weight": "Lighter",
+                                    "spacing": "ExtraSmall",
+                                    "style": "default",
+                                    "isSubtle": true,
+                                    "color": "Accent"
+                                }
+                            ],
+                            "rtl": true
+                        }
+                    ]
+                }
+            ],
+            "bleed": true,
+            "horizontalAlignment": "Left",
+            "minHeight": "0px",
+            "style": "accent",
+            "roundedCorners": true
+        },
+        {
+            "type": "Container",
+            "horizontalAlignment": "Left",
+            "showBorder": true,
+            "roundedCorners": true,
+            "bleed": true,
+            "style": "emphasis",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "spacing": "ExtraSmall",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "separator": true,
+                                    "spacing": "ExtraSmall",
+                                    "url": "https://static.wixstatic.com/media/41fe5f_a81ede8e5b0a45b8b10be0ff968bf6e6~mv2.png/v1/crop/x_0,y_211,w_1500,h_1078/fill/w_448,h_322,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/products%20for%20page%20icetea-04.png"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "spacing": "ExtraSmall",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "I've started to have one of these after work instead of opening a bottle of wine..",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "weight": "Lighter"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "items": [
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": "stretch"
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "horizontalAlignment": "Center",
+                                    "spacing": "None"
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "Icon",
+                                            "name": "ArrowExpand",
+                                            "spacing": "ExtraSmall",
+                                            "horizontalAlignment": "Right",
+                                            "size": "xSmall",
+                                            "color": "Accent"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "20px",
+                                    "items": [
+                                        {
+                                            "type": "Icon",
+                                            "name": "BookmarkAdd",
+                                            "spacing": "ExtraSmall",
+                                            "horizontalAlignment": "Right",
+                                            "size": "xSmall",
+                                            "color": "Accent"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "20px",
+                                    "horizontalAlignment": "Center",
+                                    "items": [
+                                        {
+                                            "type": "Icon",
+                                            "name": "MoreHorizontal",
+                                            "size": "xSmall",
+                                            "color": "Accent"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "spacing": "None"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "width": "50px",
+                                            "items": [
+                                                {
+                                                    "type": "Image",
+                                                    "style": "Person",
+                                                    "height": "44px",
+                                                    "size": "Large",
+                                                    "url": "data:image/jpeg;base64,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",
+                                                    "horizontalAlignment": "Left",
+                                                    "width": "44px"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "width": "stretch",
+                                            "spacing": "None",
+                                            "horizontalAlignment": "Right",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "Dean Venture",
+                                                    "wrap": true,
+                                                    "spacing": "None",
+                                                    "horizontalAlignment": "Left",
+                                                    "size": "Small",
+                                                    "color": "Warning"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "width": "auto",
+                                            "items": [
+                                                {
+                                                    "type": "Rating",
+                                                    "value": 4,
+                                                    "color": "Marigold",
+                                                    "size": "Medium",
+                                                    "targetWidth": "AtLeast:Narrow"
+                                                },
+                                                {
+                                                    "type": "Rating",
+                                                    "style": "Compact",
+                                                    "size": "Medium",
+                                                    "color": "Marigold",
+                                                    "targetWidth": "VeryNarrow",
+                                                    "value": 4
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "speak": "Scott, explore your daily picks",
+    "verticalContentAlignment": "Center"
+}
