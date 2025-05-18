@@ -139,11 +139,13 @@ neodigm-template { display: none; }
 
 .l-snackbar .snackbar__cont--hide {
 	bottom: -112px;
-	transition: bottom .6s ease-in-out
+    opacity: 0;
+	transition: all .6s ease-in-out
 }
 .l-snackbar .snackbar__cont--show {
     animation: toast_bottom .5s ease-in-out;
 	bottom: 4px; 
+    opacity: 1;
 }
 .l-snackbar .snackbar__cont--alt {
 	background: linear-gradient(45deg, #685b2d 0%, #d8ad12 100%) !important; 
