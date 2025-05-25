@@ -48,7 +48,7 @@ All rights reserved. Redistributions of source code must retain the above copyri
 @property --neodigm-theme-prop-party            { syntax: "<color>"; inherits: false; initial-value: hsl(5, 100%, 69%); }
 @property --neodigm-theme-prop-party-alt        { syntax: "<color>"; inherits: false; initial-value: hsl(346, 56%, 52%); }
 
-/*8
+/*
 data-n55-theme-pulse="warning"
 */
 [data-n55-theme-pulse] {
@@ -58,7 +58,7 @@ data-n55-theme-pulse="warning"
     color: transparent;        
 }
 [data-n55-theme-pulse='brand'] { animation: txt-pulse__brand 2.4s linear infinite alternate;
-    background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-brand ), var( --neodigm-theme-prop-brand-alt ));
+    background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-brand, #fdaa08 ), var( --neodigm-theme-prop-brand-alt, #ddaa18 ));
 }
 [data-n55-theme-pulse='primary'] { animation: txt-pulse__primary 2.4s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-primary ), var( --neodigm-theme-prop-primary-alt ));

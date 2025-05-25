@@ -1,0 +1,170 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55__v4_0.css"></link>
+        <script src="https://arcanus55.github.io/neodigm55/dist/neodigm55__v4_0.js"></script>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.css"></link>
+    </head>
+    <body  data-n55-ampm-theme="light">
+
+<!--
+TPC Landing
+-->
+
+
+<!--  ||  TEMPLATE MU & CSS WDG BEGIN -->
+
+<article id="m5m_collateral_host__id" class="l-tpc-host" data-host-page-size='sm'>
+
+    <div class="l-tpc-host__grid">
+        <section class="l-tpc-host__bg">
+            <img id="page__id" class="l-tpc-host__page" src="https://a55-wtt-api-v1.onrender.com/v1/wdgt/getSndbxImg/1041394487/sm?protomolecule=15722334472608"></img>
+        </section>
+        <section>
+            <nav class="l-tpc__nav h-right">
+                <neodigm-acticon data-n55-theme="white" data-n55-size="micro" data-n55-tulip='{"msg":"Smartphone","mrq":false,"tmpt":"","theme":"info","size":"micro","position":"bottom","icon":""}'
+                onClick="doSize('sm')"><neodigm-icon class="material-symbols-outlined">smartphone</neodigm-icon></neodigm-acticon>
+                <neodigm-acticon data-n55-theme="white" data-n55-size="micro" data-n55-tulip='{"msg":"Tablet","mrq":false,"tmpt":"","theme":"info","size":"micro","position":"bottom","icon":""}'
+                onClick="doSize('md')"><neodigm-icon class="material-symbols-outlined">tablet</neodigm-icon></neodigm-acticon>
+                <neodigm-acticon data-n55-theme="white" data-n55-size="micro" data-n55-tulip='{"msg":"Computer","mrq":false,"tmpt":"","theme":"info","size":"micro","position":"bottom","icon":""}'
+                onClick="doSize('lg')"><neodigm-icon class="material-symbols-outlined">computer</neodigm-icon></neodigm-acticon>
+            </nav>
+            <br><br>
+            <aside style="text-align: center">
+                <p id="neodigm55_toast" class="big_and_bold" data-n55-theme-pulse="brand" data-n55-typeon-click="{'q1st': '#neodigm55_toast', 'msg': 'OPEN SOURCE|AUDIO FEEDBACK|QUICK|NO CODE|BOUNCY|ANIMATED|TOAST', 'mode':'NONE', 'uniqueDelay': 205 }">LEAD MAGNET</p>
+                <p class="readampm__title">AI Loyalty Engagement Platform</p>
+            </aside>
+        </section>        
+    </div>
+
+</article>
+
+<style>
+body {
+    background-color: rgb(221, 210, 59);
+    background-color: #fff;
+}
+.l-tpc-host {
+    background-color: rgb(221, 210, 59);
+    background-color: #fff;
+}
+.l-tpc-host__grid {
+    display: grid;
+    gap: 6px;
+}
+[data-host-page-size='sm'] .l-tpc-host__grid { grid-template-columns: 450px 1fr; }
+[data-host-page-size='md'] .l-tpc-host__grid { grid-template-columns: 980px 1fr; }
+[data-host-page-size='lg'] .l-tpc-host__grid { grid-template-columns: 1400px 1fr; }
+
+
+.big_and_bold{
+    color: #EDBA08;
+    font-family: 'Rammetto One', cursive;
+    font-size: 88px;
+    margin: 0; padding: 6px;
+    line-height: 1;
+    overflow: hidden;
+    user-select: none;
+    z-index: 0;
+}
+    .l-tpc__nav {
+        position:absolute; display: block;
+        top: 0; right: 0;
+        width: 256px;
+        z-index: 24;
+        padding: 4px 12px;
+        background-color: #edba0806;
+    }
+    .l-tpc-host__bg {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: block;
+        height: 100vh;
+        background-color: rgb(221, 210, 59);
+    }
+    [data-host-page-size='sm'] .l-tpc-host__bg { width: 450px; }
+    [data-host-page-size='md'] .l-tpc-host__bg { width: 980px; }
+    [data-host-page-size='lg'] .l-tpc-host__bg { width: 1400px; }
+
+        .l-tpc-host__page {
+            display: block;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+</style>
+<!--  ||  TEMPLATE MU & CSS WDG END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  ||  JAVASCRIPT WDG BEGIN -->
+
+ 
+<script>
+const elPage = document.querySelector("#page__id")
+const params = new URLSearchParams(window.location.search)
+const pGuid = params.get( "guid" )
+if( elPage && pGuid ){
+    const arySegs = elPage.src.split("/")
+    arySegs[6] = pGuid
+    elPage.src = arySegs.join("/")
+}
+
+let doSize = function( size ){
+    if( elPage ){
+        elPage.src = elPage.src.replace("/sm", "/"+ size)
+        elPage.src = elPage.src.replace("/md", "/"+ size)
+        elPage.src = elPage.src.replace("/lg", "/"+ size)
+    }
+    const elArt = document.querySelector("#m5m_collateral_host__id")
+    if( elArt ) elArt.dataset.hostPageSize = size
+}
+    
+const m5m_collateral_hostOpt = {
+        "is_contact_cta_user_exit": [true, "Open popup form when the user is about to exit the tab."],
+        "contact_cta_canvas_animation": [true, "Play reveal animation (wax on)."],
+        "contact_cta_oid": ["123456789012345", "Salesforce CRM Web-to-Lead unique ID."],
+        "contact_cta_retURL": ["/thank-you", "Post submit analytics URL. This page will not be visible to the end user."],
+        "contact_cta_theme": ["brand", "Popup form color theme."],
+        "contact_cta_unique_email": [true, "Timestamp each email address so that a new unique CRM lead can be created for each submit."]
+    }
+if( typeof m5m_collateral_hostCustom != 'undefined' ){  //  wdgt host script obj
+    for( cnfgProp in m5m_collateral_hostCustom ){  //  Import Custom Objects props if exists
+        m5m_collateral_hostOpt[ cnfgProp ] = m5m_collateral_hostCustom[ cnfgProp ]
+    }
+}
+let cnfHex = m5m_collateral_hostOpt?.contact_cta_theme_hex || ["#EDBA08"]
+document.documentElement.style.cssText = `--m5m_collateral_hostOpt: ${ cnfHex[0] }`
+
+class M5m_collateral_host {
+    constructor(_d, _sQ) {
+        this._d = _d; this._sQ = _sQ;
+        this.isInit = false;
+        this.elCTA_btn = this.elCTA_elm = this.elCTA_message = null;
+    }
+    init() {
+        if( !this.isInit ){
+
+        }
+        this.isInit = true;
+        return this;
+    }
+}
+let m5m_collateral_host = new M5m_collateral_host( document, "m5m_collateral_host" )
+setTimeout( ()=>{ m5m_collateral_host.init() }, 1200 )
+
+
+</script> 
+<!--  ||  JAVASCRIPT WDG END -->
+
+    </body>
+</html>
