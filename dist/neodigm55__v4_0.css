@@ -87,7 +87,7 @@ data-n55-theme-pulse="warning"
 [data-n55-theme-pulse='party'] { animation: txt-pulse__party 2.4s linear infinite alternate;
     background: linear-gradient( to right in oklch, var( --neodigm-theme-prop-party ), var( --neodigm-theme-prop-party-alt ));
 }
-@keyframes txt-pulse__brand { to { --neodigm-theme-prop-brand:hsl(39, 100%, 18%); --neodigm-theme-prop-brand-alt:hsl(47, 93%, 68%); }}
+@keyframes txt-pulse__brand { to { --neodigm-theme-prop-brand:hsl(56, 96%, 24%); --neodigm-theme-prop-brand-alt:hsl(47, 93%, 68%); }}
 @keyframes txt-pulse__primary { to { --neodigm-theme-prop-primary: hsl(219, 37%, 24%); --neodigm-theme-prop-primary-alt: hsl(219, 41%, 90%); }}
 @keyframes txt-pulse__success { to { --neodigm-theme-prop-success: hsl(145, 100%, 1%); --neodigm-theme-prop-success-alt: hsl(167, 100%, 49%); }}
 @keyframes txt-pulse__danger { to { --neodigm-theme-prop-danger: hsl(0, 100%, 15%); --neodigm-theme-prop-danger-alt: hsl(9, 73%, 70%); }}
