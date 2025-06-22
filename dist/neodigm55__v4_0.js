@@ -16,7 +16,7 @@ let neodigmOpt = {
     N55_GTM_DL_POP_OPEN: "n55_gtm_dl_pop_open",
     N55_GTM_DL_POP_CLOSE: "n55_gtm_dl_pop_close",
   neodigmWired4Sound: true,
-    W4S_VOLUME: .030,
+    W4S_VOLUME: .022,
     EVENT_SOUNDS: true,
   neodigmParallax: true,
     PRLX_MOBILE: false,  //  Show Parallax on Mobile
