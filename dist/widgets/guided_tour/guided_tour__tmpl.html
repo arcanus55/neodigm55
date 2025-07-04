@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55__v4_0.css"></link>
+        <script src="https://arcanus55.github.io/neodigm55/dist/neodigm55__v4_0.js"></script>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.css"></link>
+    </head>
+    <body  data-n55-ampm-theme="light">
+
+<!--
+
+-->
+
+
+<!--  ||  TEMPLATE MU & CSS WDG BEGIN -->
+<neodigm-template id="guided-tour__tmpl--id" data-n55-poptart='{"x": 176, "y": 176, "z": 176, "h": 176, "w": 176, "position":"bottom", "arrow": false, "offset":{"h": 0, "l":0, "t":0, "w":0}, "dismiss":"hover"}'>
+    YOUR CONTENT HERE
+</neodigm-template>
+
+<br><br><br><br>
+
+<neodigm-acticon data-n55-theme="ghost" data-n55-size="medium" data-n55-wired4sound-click='5'
+data-n55-tulip='My Poptart'
+data-n55-poptart-click="guided-tour__tmpl--id"
+data-n55-poptart-rightclick="guided-tour__tmpl--id"
+><neodigm-icon class="material-symbols-outlined" data-n55-wired4sound-hover='3'>swipe_up</neodigm-icon></neodigm-acticon>
+
+<neodigm-acticon data-n55-theme="ghost" data-n55-size="medium" data-n55-wired4sound-click='5'
+data-n55-tulip='My Poptart'
+onClick="guided_tour.prev()"
+><neodigm-icon class="material-symbols-outlined" data-n55-wired4sound-hover='3'>chevron_left</neodigm-icon></neodigm-acticon>
+
+<neodigm-acticon id = "btnQ" data-n55-theme="ghost" data-n55-size="medium" data-n55-wired4sound-click='5'
+data-n55-tulip='My Poptart'
+onClick="guided_tour.next()"
+><neodigm-icon class="material-symbols-outlined" data-n55-wired4sound-hover='3'>chevron_right</neodigm-icon></neodigm-acticon>
+
+<br><br><br><br><input id="inp-txt__bound--1" placeholder="1">
+<br><br><br><br><input id="inp-txt__bound--2" placeholder="2">
+
+
+<style>
+
+</style>
+<!--  ||  TEMPLATE MU & CSS WDG END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  ||  JAVASCRIPT WDG BEGIN -->
+
+ 
+<script>
+const guided_tour_Opt = {
+    "n55Poptart": {"x": 176, "y": 176, "z": 256, "h": 176, "w": 176, "position":"bottom", "arrow": false, "offset":{"h": 0, "l":0, "t":0, "w":0}, "dismiss":"hover"},
+    "steps": [
+        {"boundQry":"", "msg":["",""], "n55Poptart":{}},
+        {"boundQry":"", "msg":["",""], "n55Poptart":{}}
+    ]
+}
+if( typeof guided_tour_Custom != 'undefined' ){  //  wdgt host script obj
+    for( cnfgProp in guided_tour_Custom ){  //  Import Custom Objects props if exists
+        guided_tour_Opt[ cnfgProp ] = guided_tour_Custom[ cnfgProp ]
+    }
+}
+let cnfHex = guided_tour_Opt?.contact_cta_theme_hex || ["#DD4124"]
+document.documentElement.style.cssText = `--guided_tour_Opt: ${ cnfHex[0] }`
+
+class Guided_tour {
+    constructor(_d, _sQ) {
+        this._d = _d; this._sQ = _sQ;
+        this.isInit = this.bIsOpen = false;
+        this.fOnBeforeOpen = this.fOnAfterOpen = this.fOnNav = this.fOnClose = null;
+        this.state = { "popTart": null, "current": 0, "tmpl": null }
+    }
+    init() {
+        if( !this.isInit ){
+
+        }
+        this.isInit = true;
+        return this;
+    }
+    next(){
+        if( !this.state?.popTart ) this.state.popTart = this._d.querySelector( "#guided-tour__tmpl--id" )
+        if( this.state?.popTart ){
+            neodigmPopTart.open( this.state.popTart, guided_tour_Opt.n55Poptart)
+        }
+    }
+    prev(){
+
+    }
+    isOpen(){ return this.bIsOpen }
+    setOnBeforeOpen( _f, id="def"){ this.fOnBeforeOpen[ id ] = _f }
+    setOnAfterOpen( _f, id="def"){ this.fOnAfterOpen[ id ] = _f }
+    setOnNav( _f, id="def"){ this.fOnNav[ id ] = _f }
+    setOnClose( _f, id="def"){ this.fOnClose[ id ] = _f }
+}
+let guided_tour = new Guided_tour( document, "#guided-tour__tmpl--id" )
+setTimeout( ()=>{ guided_tour.init() }, 1e3 )
+
+</script> 
+<!--  ||  JAVASCRIPT WDG END -->
+
+    </body>
+</html>

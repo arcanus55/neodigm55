@@ -642,19 +642,20 @@ class NeodigmPopTart {
     }
     return this;
   }
-  click_and_right_click( ev, sAttrEv, bPrevDef=true ){
-      this.sBoundTheme = ev.target.n55Theme || ev.target?.dataset.n55Theme || ev.target?.parentNode?.dataset.n55Theme || neodigmOpt.N55_THEME_DEFAULT
-      if( this.sBoundTheme != "disabled" ) {
+  click_and_right_click( ev, sAttrEv, bPrevntDef=true ){
+    this.sBoundTheme = ev.target.n55Theme || ev.target?.dataset.n55Theme || ev.target?.parentNode?.dataset.n55Theme || neodigmOpt.N55_THEME_DEFAULT
+    if( this.sBoundTheme != "disabled" ) {
       let elPopTmpl = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "#" + sAttrEv )
       if( elPopTmpl?.dataset?.n55Poptart ){
         this.elBound = ev.target
-        if( bPrevDef ) ev.preventDefault()
+        if( bPrevntDef ) ev.preventDefault()
         neodigmPopTart.open( this.oPopTmpls[ sAttrEv ] = elPopTmpl, JSON.parse( elPopTmpl.dataset.n55Poptart ) )
       }
     }
   }
   open( elPop, oPos ) {
     if( this.bIsInit && !this.bIsPause && elPop.id && !elPop.dataset?.n55PoptartOpen ) {
+        this.oPopTmpls[ elPop.id ] = elPop
         let nOffSetT, nOffSetL, nOffSetH, nOffSetW;  //  oPos offset conf
         nOffSetT = nOffSetL = nOffSetH = nOffSetW = 0;
         if( oPos?.offset ){
@@ -729,8 +730,7 @@ class NeodigmPopTart {
     }
   }
   play (){
-    this.bIsPause = false;
-    return this;
+    this.bIsPause = false;  return this;
   }
   shake( bSound = true) {  //  Shake All Open
     if(this.bIsInit && this.bIsOpen) {
