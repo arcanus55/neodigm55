@@ -653,9 +653,13 @@ class NeodigmPopTart {
       }
     }
   }
+  autoOpen( elPop, oPos, elBound ) {
+    this.elBound = elBound
+    this.open( elPop, oPos )
+  }
   open( elPop, oPos ) {
     if( this.bIsInit && !this.bIsPause && elPop.id && !elPop.dataset?.n55PoptartOpen ) {
-        this.oPopTmpls[ elPop.id ] = elPop
+        this.oPopTmpls[ elPop.id ] = elPop 
         let nOffSetT, nOffSetL, nOffSetH, nOffSetW;  //  oPos offset conf
         nOffSetT = nOffSetL = nOffSetH = nOffSetW = 0;
         if( oPos?.offset ){

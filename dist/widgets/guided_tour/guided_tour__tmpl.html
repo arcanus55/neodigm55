@@ -36,6 +36,7 @@ onClick="guided_tour.next()"
 
 <br><br><br><br><input id="inp-txt__bound--1" placeholder="1">
 <br><br><br><br><input id="inp-txt__bound--2" placeholder="2">
+<br><br><br><br><input id="inp-txt__bound--3" placeholder="3">
 
 
 <style>
@@ -61,10 +62,10 @@ onClick="guided_tour.next()"
  
 <script>
 const guided_tour_Opt = {
-    "n55Poptart": {"x": 176, "y": 176, "z": 256, "h": 176, "w": 176, "position":"bottom", "arrow": false, "offset":{"h": 0, "l":0, "t":0, "w":0}, "dismiss":"hover"},
     "steps": [
-        {"boundQry":"", "msg":["",""], "n55Poptart":{}},
-        {"boundQry":"", "msg":["",""], "n55Poptart":{}}
+        {"boundQry":"#inp-txt__bound--1", "msg":["",""], "n55Poptart": {"x": 256, "y": 176, "z": 256, "h": 176, "w": 176, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
+        {"boundQry":"#inp-txt__bound--2", "msg":["",""], "n55Poptart": {"x": 256, "y": 176, "z": 256, "h": 176, "w": 176, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
+        {"boundQry":"#inp-txt__bound--3", "msg":["",""], "n55Poptart": {"x": 256, "y": 176, "z": 256, "h": 176, "w": 176, "position":"right", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }}
     ]
 }
 if( typeof guided_tour_Custom != 'undefined' ){  //  wdgt host script obj
@@ -80,7 +81,7 @@ class Guided_tour {
         this._d = _d; this._sQ = _sQ;
         this.isInit = this.bIsOpen = false;
         this.fOnBeforeOpen = this.fOnAfterOpen = this.fOnNav = this.fOnClose = null;
-        this.state = { "popTart": null, "current": 0, "tmpl": null }
+        this.state = { "popTartTmpl": null, "current": 0 }
     }
     init() {
         if( !this.isInit ){
@@ -90,9 +91,10 @@ class Guided_tour {
         return this;
     }
     next(){
-        if( !this.state?.popTart ) this.state.popTart = this._d.querySelector( "#guided-tour__tmpl--id" )
-        if( this.state?.popTart ){
-            neodigmPopTart.open( this.state.popTart, guided_tour_Opt.n55Poptart)
+        this.state.current++
+        if( !this.state?.popTartTmpl ) this.state.popTartTmpl = this._d.querySelector( this._sQ )
+        if( this.state?.popTartTmpl ){
+            neodigmPopTart.autoOpen( this.state.popTartTmpl, guided_tour_Opt.steps[ this.state.current ].n55Poptart, guided_tour_Opt.steps[ this.state.current ].boundQry )
         }
     }
     prev(){
