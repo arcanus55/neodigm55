@@ -1,8 +1,8 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55__v4_0.css"></link>
-        <script src="https://arcanus55.github.io/neodigm55/dist/neodigm55__v4_0.js"></script>
-        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.css"></link>
+        <link rel="stylesheet" href="/dist/neodigm55__v4_0.css">
+        <link rel="stylesheet" href="/dist/neodigm55_v1_0_launchComplete.css">
+        <script src="/dist/neodigm55__v4_0.js"></script>
     </head>
     <body  data-n55-ampm-theme="light">
 
@@ -12,32 +12,44 @@
 
 
 <!--  ||  TEMPLATE MU & CSS WDG BEGIN -->
-<neodigm-template id="guided-tour__tmpl--id" data-n55-poptart='{"x": 176, "y": 176, "z": 176, "h": 176, "w": 176, "position":"bottom", "arrow": false, "offset":{"h": 0, "l":0, "t":0, "w":0}, "dismiss":"hover"}'>
+<neodigm-template id="guided-tour__tmpl--id">
     YOUR CONTENT HERE
 </neodigm-template>
 
 <br><br><br><br>
 
-<neodigm-acticon data-n55-theme="ghost" data-n55-size="medium" data-n55-wired4sound-click='5'
+<neodigm-acticon data-n55-theme="ghost" data-n55-size="medium"
 data-n55-tulip='My Poptart'
 data-n55-poptart-click="guided-tour__tmpl--id"
 data-n55-poptart-rightclick="guided-tour__tmpl--id"
 ><neodigm-icon class="material-symbols-outlined" data-n55-wired4sound-hover='3'>swipe_up</neodigm-icon></neodigm-acticon>
 
-<neodigm-acticon data-n55-theme="ghost" data-n55-size="medium" data-n55-wired4sound-click='5'
+<neodigm-acticon data-n55-theme="ghost" data-n55-size="medium"
 data-n55-tulip='My Poptart'
 onClick="guided_tour.prev()"
 ><neodigm-icon class="material-symbols-outlined" data-n55-wired4sound-hover='3'>chevron_left</neodigm-icon></neodigm-acticon>
 
-<neodigm-acticon id = "btnQ" data-n55-theme="ghost" data-n55-size="medium" data-n55-wired4sound-click='5'
+<neodigm-acticon id = "btnQ" data-n55-theme="ghost" data-n55-size="medium"
 data-n55-tulip='My Poptart'
 onClick="guided_tour.next()"
 ><neodigm-icon class="material-symbols-outlined" data-n55-wired4sound-hover='3'>chevron_right</neodigm-icon></neodigm-acticon>
 
-<br><br><br><br><input id="inp-txt__bound--1" placeholder="1">
-<br><br><br><br><input id="inp-txt__bound--2" placeholder="2">
-<br><br><br><br><input id="inp-txt__bound--3" placeholder="3">
-
+<br><br><br><br>
+<section class="l-mock-form">
+    <div id="inp-txt__bound--1"><br><input placeholder="1"><br></div>
+    <div id="inp-txt__bound--2"><br><input placeholder="2"><br></div>
+    <div id="inp-txt__bound--3"><br><input placeholder="3"><br></div>
+</section>
+<style>
+    .l-mock-form {
+        display:flex;
+        width: 33%;
+        margin:0 auto;
+    }
+    .l-mock-form DIV {
+        width: 266px; border: 1px solid #444;
+    }
+</style>
 
 <style>
 
@@ -63,9 +75,9 @@ onClick="guided_tour.next()"
 <script>
 const guided_tour_Opt = {
     "steps": [
-        {"boundQry":"#inp-txt__bound--1", "msg":["",""], "n55Poptart": {"x": 256, "y": 176, "z": 256, "h": 176, "w": 176, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
-        {"boundQry":"#inp-txt__bound--2", "msg":["",""], "n55Poptart": {"x": 256, "y": 176, "z": 256, "h": 176, "w": 176, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
-        {"boundQry":"#inp-txt__bound--3", "msg":["",""], "n55Poptart": {"x": 256, "y": 176, "z": 256, "h": 176, "w": 176, "position":"right", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }}
+        {"boundQry":"#inp-txt__bound--1", "msg":["",""], "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "Qw": 176, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
+        {"boundQry":"#inp-txt__bound--2", "msg":["",""], "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "Qw": 176, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
+        {"boundQry":"#inp-txt__bound--3", "msg":["",""], "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "Qw": 176, "position":"right", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }}
     ]
 }
 if( typeof guided_tour_Custom != 'undefined' ){  //  wdgt host script obj
@@ -73,15 +85,13 @@ if( typeof guided_tour_Custom != 'undefined' ){  //  wdgt host script obj
         guided_tour_Opt[ cnfgProp ] = guided_tour_Custom[ cnfgProp ]
     }
 }
-let cnfHex = guided_tour_Opt?.contact_cta_theme_hex || ["#DD4124"]
-document.documentElement.style.cssText = `--guided_tour_Opt: ${ cnfHex[0] }`
 
 class Guided_tour {
     constructor(_d, _sQ) {
         this._d = _d; this._sQ = _sQ;
         this.isInit = this.bIsOpen = false;
         this.fOnBeforeOpen = this.fOnAfterOpen = this.fOnNav = this.fOnClose = null;
-        this.state = { "popTartTmpl": null, "current": 0 }
+        this.state = { "popTartTmpl": null, "current": -1 }
     }
     init() {
         if( !this.isInit ){
@@ -91,14 +101,37 @@ class Guided_tour {
         return this;
     }
     next(){
-        this.state.current++
-        if( !this.state?.popTartTmpl ) this.state.popTartTmpl = this._d.querySelector( this._sQ )
-        if( this.state?.popTartTmpl ){
-            neodigmPopTart.autoOpen( this.state.popTartTmpl, guided_tour_Opt.steps[ this.state.current ].n55Poptart, guided_tour_Opt.steps[ this.state.current ].boundQry )
+        if( this.state.current < ( guided_tour_Opt.steps.length - 1 )){
+            this.state.current++
+            let elPopTartTmpl = this._d.querySelectorAll( this._sQ )[0]
+elPopTartTmpl.removeAttribute("style")
+            const elBound = this._d.querySelectorAll( guided_tour_Opt.steps[ this.state.current ].boundQry )[0]
+console.log("----- elPopTartTmpl.style | " , elPopTartTmpl.style )
+console.log("----- elPopTartTmpl.getAttribute( 'style' ) | " , elPopTartTmpl.getAttribute( 'style' ) )
+console.log("----- elBound.getBoundingClientRect() | " , elBound.getBoundingClientRect() )
+console.log("----- document.documentElement.scrollTop | " , document.documentElement.scrollTop )
+
+            if( elPopTartTmpl && elBound ){
+                neodigmPopTart.autoOpen( elPopTartTmpl, guided_tour_Opt.steps[ this.state.current ].n55Poptart, elBound )
+            }
         }
+    console.log("----- | " , this.state.current )
+        return this
     }
     prev(){
-
+        if( this.state.current >= 1 ){
+            this.state.current--
+            let elPopTartTmpl = this._d.querySelectorAll( this._sQ )[0]
+elPopTartTmpl.removeAttribute("style")
+            const elBound = this._d.querySelectorAll( guided_tour_Opt.steps[ this.state.current ].boundQry )[0]
+console.log("----- elBound.getBoundingClientRect() | " , elBound.getBoundingClientRect() )
+console.log("----- document.documentElement.scrollTop | " , document.documentElement.scrollTop )
+            if( elPopTartTmpl && elBound ){
+                neodigmPopTart.autoOpen( elPopTartTmpl, guided_tour_Opt.steps[ this.state.current ].n55Poptart, elBound )
+            }
+        }
+    console.log("----- | " , this.state.current )
+        return this
     }
     isOpen(){ return this.bIsOpen }
     setOnBeforeOpen( _f, id="def"){ this.fOnBeforeOpen[ id ] = _f }
