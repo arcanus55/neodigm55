@@ -13,7 +13,60 @@
 
 <!--  ||  TEMPLATE MU & CSS WDG BEGIN -->
 <neodigm-template id="guided-tour__tmpl--id">
-    YOUR CONTENT HERE
+    <section class="l-guid-tmpl">
+        <header>
+            <section>
+                <p id="msg_caption">Caption</p>
+            </section>
+            <nav onClick="Guided_tour.close()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#0066F5"><path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z"/></svg>
+            </nav>
+        </header>
+        <article>
+            <p id="msg_content">Content</p>
+        </article>
+        <footer>
+            <nav>
+
+            </nav>
+        </footer>
+    </section>
+    <style>
+        #guided-tour__tmpl--id {
+            background-color: #FFF;
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0px 4px 12px 8px rgba( 0, 0, 0, 0.15);
+        }
+        .l-guid-tmpl {
+            padding: 16px;
+        }
+        .l-guid-tmpl > header {
+            display: grid;
+            grid-template-columns: auto 32px;
+            height: 32px;
+            overflow: hidden;
+        }
+        .l-guid-tmpl > header > section > p {
+            margin: 0;
+            color: #071D49;
+            font-family: Roboto;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+        .l-guid-tmpl > header > nav {
+            border-radius: 999px;
+            border: 1px solid #0066F5;
+            background: #FFF;
+            cursor: pointer; user-select: none;
+        }
+        .l-guid-tmpl > header > nav > SVG {
+            margin: 4px auto 0;
+            display: block;            
+        }
+    </style>
 </neodigm-template>
 
 <br><br><br><br>
@@ -26,12 +79,12 @@ data-n55-poptart-rightclick="guided-tour__tmpl--id"
 
 <neodigm-acticon data-n55-theme="ghost" data-n55-size="medium"
 data-n55-tulip='My Poptart'
-onClick="guided_tour.prev()"
+onClick="Guided_tour.prev()"
 ><neodigm-icon class="material-symbols-outlined" data-n55-wired4sound-hover='3'>chevron_left</neodigm-icon></neodigm-acticon>
 
 <neodigm-acticon id = "btnQ" data-n55-theme="ghost" data-n55-size="medium"
 data-n55-tulip='My Poptart'
-onClick="guided_tour.next()"
+onClick="Guided_tour.next()"
 ><neodigm-icon class="material-symbols-outlined" data-n55-wired4sound-hover='3'>chevron_right</neodigm-icon></neodigm-acticon>
 
 <br><br><br><br>
@@ -75,9 +128,9 @@ onClick="guided_tour.next()"
 <script>
 const guided_tour_Opt = {
     "steps": [
-        {"boundQry":"#inp-txt__bound--1", "msg":["",""], "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "Qw": 176, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
-        {"boundQry":"#inp-txt__bound--2", "msg":["",""], "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "Qw": 176, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
-        {"boundQry":"#inp-txt__bound--3", "msg":["",""], "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "Qw": 176, "position":"right", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }}
+        {"boundQry":"#inp-txt__bound--1", "msg":["More ways to get started","Now see more expample prompts here. Select the arrow to move through at your own pace."], "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 400, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
+        {"boundQry":"#inp-txt__bound--2", "msg":["c","d"], "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 400, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
+        {"boundQry":"#inp-txt__bound--3", "msg":["e","f"], "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 400, "position":"right", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }}
     ]
 }
 if( typeof guided_tour_Custom != 'undefined' ){  //  wdgt host script obj
@@ -87,60 +140,63 @@ if( typeof guided_tour_Custom != 'undefined' ){  //  wdgt host script obj
 }
 
 class Guided_tour {
-    constructor(_d, _sQ) {
-        this._d = _d; this._sQ = _sQ;
-        this.isInit = this.bIsOpen = false;
-        this.fOnBeforeOpen = this.fOnAfterOpen = this.fOnNav = this.fOnClose = null;
-        this.state = { "popTartTmpl": null, "current": -1 }
-    }
-    init() {
-        if( !this.isInit ){
+    static GTstate = { "popTartTmpl": null, "current": -1 }
+    static _d
+    static _sQ
+    static bIsOpen = false
+    static isInit = false
+    static fOnBeforeOpen = null
+    static fOnAfterOpen = null
+    static fOnNav = null
+    static fOnClose = null
+    static aryEl = { "msg_caption": null, "x": null, "msg_content": null, "arrow_prev": null, "step_current": null, "step_total": null, "arrow_next": null }
 
+    static init( _d, _sQ ) {
+        if( !this.isInit ){
+            this._d = _d 
+            this._sQ = _sQ
+            this.GTstate.popTartTmpl = this._d.querySelectorAll( this._sQ )[0]
+            neodigmPopTart.setOnClose( function( d ){
+console.log("........... d | " , d )
+//Guided_tour.close()
+//return false;
+//Guided_tour.GTstate.current = -1
+            }, "guided-tour__tmpl--id")
         }
         this.isInit = true;
         return this;
     }
-    next(){
-        if( this.state.current < ( guided_tour_Opt.steps.length - 1 )){
-            this.state.current++
-            let elPopTartTmpl = this._d.querySelectorAll( this._sQ )[0]
-elPopTartTmpl.removeAttribute("style")
-            const elBound = this._d.querySelectorAll( guided_tour_Opt.steps[ this.state.current ].boundQry )[0]
-console.log("----- elPopTartTmpl.style | " , elPopTartTmpl.style )
-console.log("----- elPopTartTmpl.getAttribute( 'style' ) | " , elPopTartTmpl.getAttribute( 'style' ) )
-console.log("----- elBound.getBoundingClientRect() | " , elBound.getBoundingClientRect() )
-console.log("----- document.documentElement.scrollTop | " , document.documentElement.scrollTop )
-
-            if( elPopTartTmpl && elBound ){
-                neodigmPopTart.autoOpen( elPopTartTmpl, guided_tour_Opt.steps[ this.state.current ].n55Poptart, elBound )
+    static next(){
+        if( this.GTstate.current < ( guided_tour_Opt.steps.length - 1 ) ){
+            this.GTstate.current++
+            const elBound = this._d.querySelectorAll( guided_tour_Opt.steps[ this.GTstate.current ].boundQry )[0]
+            if( this.GTstate.popTartTmpl && elBound ){
+                neodigmPopTart.autoOpen( this.GTstate.popTartTmpl, guided_tour_Opt.steps[ this.GTstate.current ].n55Poptart, elBound )
             }
         }
-    console.log("----- | " , this.state.current )
         return this
     }
-    prev(){
-        if( this.state.current >= 1 ){
-            this.state.current--
-            let elPopTartTmpl = this._d.querySelectorAll( this._sQ )[0]
-elPopTartTmpl.removeAttribute("style")
-            const elBound = this._d.querySelectorAll( guided_tour_Opt.steps[ this.state.current ].boundQry )[0]
-console.log("----- elBound.getBoundingClientRect() | " , elBound.getBoundingClientRect() )
-console.log("----- document.documentElement.scrollTop | " , document.documentElement.scrollTop )
-            if( elPopTartTmpl && elBound ){
-                neodigmPopTart.autoOpen( elPopTartTmpl, guided_tour_Opt.steps[ this.state.current ].n55Poptart, elBound )
+    static prev(){
+        if( this.GTstate.current >= 1 ){
+            this.GTstate.current--
+            const elBound = this._d.querySelectorAll( guided_tour_Opt.steps[ this.GTstate.current ].boundQry )[0]
+            if( this.GTstate.popTartTmpl && elBound ){
+                neodigmPopTart.autoOpen( this.GTstate.popTartTmpl, guided_tour_Opt.steps[ this.GTstate.current ].n55Poptart, elBound )
             }
         }
-    console.log("----- | " , this.state.current )
         return this
     }
-    isOpen(){ return this.bIsOpen }
-    setOnBeforeOpen( _f, id="def"){ this.fOnBeforeOpen[ id ] = _f }
-    setOnAfterOpen( _f, id="def"){ this.fOnAfterOpen[ id ] = _f }
-    setOnNav( _f, id="def"){ this.fOnNav[ id ] = _f }
-    setOnClose( _f, id="def"){ this.fOnClose[ id ] = _f }
+    static close(){
+        this.GTstate.current = -1
+        neodigmPopTart.close() 
+    }
+    static isOpen(){ return Guided_tour.bIsOpen }
+    static setOnBeforeOpen( _f, id="def"){ Guided_tour.fOnBeforeOpen[ id ] = _f }
+    static setOnAfterOpen( _f, id="def"){ Guided_tour.fOnAfterOpen[ id ] = _f }
+    static setOnNav( _f, id="def"){ Guided_tour.fOnNav[ id ] = _f }
+    static setOnClose( _f, id="def"){ Guided_tour.fOnClose[ id ] = _f }
 }
-let guided_tour = new Guided_tour( document, "#guided-tour__tmpl--id" )
-setTimeout( ()=>{ guided_tour.init() }, 1e3 )
+setTimeout( ()=>{ Guided_tour.init( document, "#guided-tour__tmpl--id" ) }, 1e3 )
 
 </script> 
 <!--  ||  JAVASCRIPT WDG END -->

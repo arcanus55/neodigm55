@@ -655,11 +655,11 @@ class NeodigmPopTart {
   }
   autoOpen( elPop, oPos, elBound ) {
     this.elBound = elBound
-    this.open( elPop, JSON.parse( JSON.stringify( oPos ) ) )
+    this.open( elPop, JSON.parse( JSON.stringify( oPos ) ) ) 
   }
   open( elPop, oPos ) {
     if( this.bIsInit && !this.bIsPause && elPop.id && !elPop.dataset?.n55PoptartOpen ) {
-        this.oPopTmpls[ elPop.id ] = elPop   
+        this.oPopTmpls[ elPop.id ] = elPop    
         let nOffSetT, nOffSetL, nOffSetH, nOffSetW;  //  oPos offset conf
         nOffSetT = nOffSetL = nOffSetH = nOffSetW = 0;
         if( oPos?.offset ){
@@ -717,7 +717,7 @@ class NeodigmPopTart {
             let sId = this.oPopTmpls[ e ]?.id
             let bOkClose = true  //  CBs must explicitly return false to prevent closing
             if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~Poptart Close | " + sId, this.fOnClose[ sId ] )
-            if( this.fOnClose[ sId ] ) bOkClose = !(this.fOnClose[ sId ]( sId ) === false)  //  The specific can cancel the generic
+            if( this.fOnClose[ sId ] ) bOkClose = !(this.fOnClose[ sId ]( sId ) === false)  //  The Specific can Cancel the Gseneric
             if( bOkClose && this.fOnClose["def"] ) bOkClose = !(this.fOnClose["def"]( sId ) === false)
             if( bOkClose ){
                 delete this.oPopTmpls[ e ].dataset.n55PoptartOpen;
