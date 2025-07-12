@@ -16,18 +16,30 @@
     <section class="l-guid-tmpl">
         <header>
             <section>
-                <p id="msg_caption">Caption</p>
+                <p id="msg_caption"></p>
             </section>
             <nav onClick="Guided_tour.close()">
                 <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#0066F5"><path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z"/></svg>
             </nav>
         </header>
+        <aside></aside>
         <article>
-            <p id="msg_content">Content</p>
+            <p id="msg_content"></p>
         </article>
+        <aside></aside>
         <footer>
             <nav>
-
+                <div></div>
+                <div id="arrow_prev" onClick="Guided_tour.prev()">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#071d49"><path d="M384-96 0-480l384-384 68 68-316 316 316 316-68 68Z"/></svg>
+                </div>
+                <div id="step_current"></div>
+                <div>of</div>
+                <div id="steps_total"></div>
+                <div id="arrow_next" onClick="Guided_tour.next()">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#071d49"><path d="m288-96-68-68 316-316-316-316 68-68 384 384L288-96Z"/></svg>
+                </div>
+                <div></div>
             </nav>
         </footer>
     </section>
@@ -65,6 +77,30 @@
         .l-guid-tmpl > header > nav > SVG {
             margin: 4px auto 0;
             display: block;            
+        }
+        .l-guid-tmpl > aside { height: 24px; }
+        .l-guid-tmpl > article > p,
+        .l-guid-tmpl > footer > nav {
+            margin: 0;
+            color: #071D49;
+            font-family: Roboto;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+        }
+        .l-guid-tmpl > footer > nav {
+            display: grid;
+            grid-template-columns: auto 32px 32px 12px 32px 32px auto;
+            text-align: center;
+        }
+        .l-guid-tmpl > footer > nav #arrow_prev,
+        .l-guid-tmpl > footer > nav #arrow_next {
+            margin-top: 4px;
+            cursor: pointer; user-select: none;
+        }
+        .gt-arrow--disabled{
+            pointer-events: none;
+            opacity: 0;
         }
     </style>
 </neodigm-template>
@@ -126,12 +162,15 @@ onClick="Guided_tour.next()"
 
  
 <script>
-const guided_tour_Opt = {
-    "steps": [
-        {"boundQry":"#inp-txt__bound--1", "msg":["More ways to get started","Now see more expample prompts here. Select the arrow to move through at your own pace."], "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 400, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
-        {"boundQry":"#inp-txt__bound--2", "msg":["c","d"], "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 400, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
-        {"boundQry":"#inp-txt__bound--3", "msg":["e","f"], "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 400, "position":"right", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }}
-    ]
+let guided_tour_Opt = {
+    "new_features": 
+    {
+        "steps": [
+            {"boundQry":"#inp-txt__bound--1", "msg":{"msg_caption":"More ways to get started", "msg_content":"Now see more expample prompts here. Select the arrow to move through at your own pace."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 400, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
+            {"boundQry":"#inp-txt__bound--2", "msg":{"msg_caption":"a", "msg_content":"b"}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 400, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
+            {"boundQry":"#inp-txt__bound--3", "msg":{"msg_caption":"c", "msg_content":"d"}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 400, "position":"right", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }}
+        ]    
+    }
 }
 if( typeof guided_tour_Custom != 'undefined' ){  //  wdgt host script obj
     for( cnfgProp in guided_tour_Custom ){  //  Import Custom Objects props if exists
@@ -140,7 +179,7 @@ if( typeof guided_tour_Custom != 'undefined' ){  //  wdgt host script obj
 }
 
 class Guided_tour {
-    static GTstate = { "popTartTmpl": null, "current": -1 }
+    static GTstate = { "popTartTmpl": null, "step_current": -1, "steps_total": 0 }
     static _d
     static _sQ
     static bIsOpen = false
@@ -149,45 +188,71 @@ class Guided_tour {
     static fOnAfterOpen = null
     static fOnNav = null
     static fOnClose = null
-    static aryEl = { "msg_caption": null, "x": null, "msg_content": null, "arrow_prev": null, "step_current": null, "step_total": null, "arrow_next": null }
+    static arEls = { "msg_caption": null, "x": null, "msg_content": null, "arrow_prev": null, "step_current": null, "steps_total": null, "arrow_next": null }
 
-    static init( _d, _sQ ) {
+    static init( _d, _sQ, token ){
         if( !this.isInit ){
+            guided_tour_Opt = guided_tour_Opt[ token ]
             this._d = _d 
             this._sQ = _sQ
             this.GTstate.popTartTmpl = this._d.querySelectorAll( this._sQ )[0]
-            neodigmPopTart.setOnClose( function( d ){
-console.log("........... d | " , d )
-//Guided_tour.close()
-//return false;
-//Guided_tour.GTstate.current = -1
-            }, "guided-tour__tmpl--id")
+            if( this.GTstate?.popTartTmpl ){
+                for( let elId in this.arEls){  //  Get Inner DOM El
+                    this.arEls[ elId ] = this.GTstate.popTartTmpl.querySelector( `#${ elId }` )
+                }
+                neodigmPopTart.setOnClose( function( id ){ }, "guided-tour__tmpl--id")
+            }
+            this.GTstate.steps_total = guided_tour_Opt?.steps?.length || 0
+            this.GTstate.steps_total--
         }
         this.isInit = true;
         return this;
     }
     static next(){
-        if( this.GTstate.current < ( guided_tour_Opt.steps.length - 1 ) ){
-            this.GTstate.current++
-            const elBound = this._d.querySelectorAll( guided_tour_Opt.steps[ this.GTstate.current ].boundQry )[0]
+        if( this.GTstate.step_current < ( guided_tour_Opt.steps.length - 1 ) ){
+            neodigmPopTart.close() 
+            this.GTstate.step_current++
+            this.hydrate()
+            const elBound = this._d.querySelectorAll( guided_tour_Opt.steps[ this.GTstate.step_current ].boundQry )[0]
             if( this.GTstate.popTartTmpl && elBound ){
-                neodigmPopTart.autoOpen( this.GTstate.popTartTmpl, guided_tour_Opt.steps[ this.GTstate.current ].n55Poptart, elBound )
+                neodigmPopTart.autoOpen( this.GTstate.popTartTmpl, guided_tour_Opt.steps[ this.GTstate.step_current ].n55Poptart, elBound )
             }
         }
         return this
     }
     static prev(){
-        if( this.GTstate.current >= 1 ){
-            this.GTstate.current--
-            const elBound = this._d.querySelectorAll( guided_tour_Opt.steps[ this.GTstate.current ].boundQry )[0]
+        if( this.GTstate.step_current >= 1 ){
+            neodigmPopTart.close() 
+            this.GTstate.step_current--
+            this.hydrate()
+            const elBound = this._d.querySelectorAll( guided_tour_Opt.steps[ this.GTstate.step_current ].boundQry )[0]
             if( this.GTstate.popTartTmpl && elBound ){
-                neodigmPopTart.autoOpen( this.GTstate.popTartTmpl, guided_tour_Opt.steps[ this.GTstate.current ].n55Poptart, elBound )
+                neodigmPopTart.autoOpen( this.GTstate.popTartTmpl, guided_tour_Opt.steps[ this.GTstate.step_current ].n55Poptart, elBound )
             }
         }
         return this
     }
+    static hydrate(){
+        ["msg_caption", "msg_content"].forEach( ( tkn )=>{  //  Hydrate text from metadata
+            if( this.arEls[ tkn ] ) this.arEls[ tkn ].textContent = guided_tour_Opt.steps[ this.GTstate.step_current ].msg[ tkn ]
+        } );
+        ["step_current", "steps_total"].forEach( ( tkn )=>{  //  Hydrate text from state
+            if( this.arEls[ tkn ] ) this.arEls[ tkn ].textContent = this.GTstate[ tkn ] + 1
+        } );
+        if( this.GTstate.step_current == 0 ){  //  Hydrate disabled from state
+            this.arEls[ "arrow_prev" ].classList.add("gt-arrow--disabled")
+        }else{
+            this.arEls[ "arrow_prev" ].classList.remove("gt-arrow--disabled")
+        }
+        if( this.GTstate.step_current == this.GTstate.steps_total ){  //  Hydrate disabled from state
+            this.arEls[ "arrow_next" ].classList.add("gt-arrow--disabled")
+        }else{
+            this.arEls[ "arrow_next" ].classList.remove("gt-arrow--disabled")
+        }
+        
+    }
     static close(){
-        this.GTstate.current = -1
+        this.GTstate.step_current = -1
         neodigmPopTart.close() 
     }
     static isOpen(){ return Guided_tour.bIsOpen }
@@ -196,7 +261,7 @@ console.log("........... d | " , d )
     static setOnNav( _f, id="def"){ Guided_tour.fOnNav[ id ] = _f }
     static setOnClose( _f, id="def"){ Guided_tour.fOnClose[ id ] = _f }
 }
-setTimeout( ()=>{ Guided_tour.init( document, "#guided-tour__tmpl--id" ) }, 1e3 )
+setTimeout( ()=>{ Guided_tour.init( document, "#guided-tour__tmpl--id", "new_features" ) }, 1e3 )
 
 </script> 
 <!--  ||  JAVASCRIPT WDG END -->
