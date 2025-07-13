@@ -62,12 +62,12 @@
             border: 1px solid #eee;
         }
         [data-n55-position='top'] .l-guid-tmpl {
-            clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 56% 90%, 50% 99%, 44% 90%, 0% 90%);
+            clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 55% 90%, 50% 99%, 45% 90%, 0% 90%);
         }
         [data-n55-position='top'] .asd--disp__bottom { display: none; }
 
         [data-n55-position='bottom'] .l-guid-tmpl {
-            clip-path: polygon(0% 10%, 44% 9%, 50% 0%, 56% 10%, 100% 10%, 99% 90%, 0% 90%);
+            clip-path: polygon(0% 10%, 45% 9%, 50% 0%, 55% 10%, 100% 10%, 99% 90%, 0% 90%);
         }
         [data-n55-position='bottom'] .asd--disp__bottom { display: block; }
         
@@ -137,6 +137,8 @@ onClick="Guided_tour.next()"
 ><neodigm-icon class="material-symbols-outlined" data-n55-wired4sound-hover='3'>chevron_right</neodigm-icon></neodigm-acticon>
 
 <br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
 <section class="l-mock-form">
     <div id="inp-txt__bound--1"><br><input placeholder="1"><br></div>
     <div id="inp-txt__bound--2"><br><input placeholder="2"><br></div>
@@ -181,8 +183,8 @@ let guided_tour_Opt = {
     {
         "steps": [
             {"boundQry":"#inp-txt__bound--1", "msg":{"msg_caption":"More ways to get started", "msg_content":"Now see more expample prompts here. Select the arrow to move through at your own pace."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
-            {"boundQry":"#inp-txt__bound--2", "msg":{"msg_caption":"a", "msg_content":"b"}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
-            {"boundQry":"#inp-txt__bound--3", "msg":{"msg_caption":"c", "msg_content":"d"}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"right", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }}
+            {"boundQry":"#inp-txt__bound--2", "msg":{"msg_caption":"Use product abbreviations", "msg_content":"Save time by using abbreviations for products: ‘Sky’ for Skyrizi, ‘Rin’ for Rinvoq, and others."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
+            {"boundQry":"#inp-txt__bound--3", "msg":{"msg_caption":"Try the Interaction Assistant", "msg_content":"Effortlessly build effective prompts with the new Interaction Assistant."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"right", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }}
         ]    
     }
 }
@@ -196,22 +198,19 @@ class Guided_tour {
     static GTstate = { "popTartTmpl": null, "step_current": -1, "steps_total": 0 }
     static _d
     static _sQ
+    static token  //  Guide Name
     static bIsOpen = false
     static isInit = false
-    static fOnBeforeOpen = null
-    static fOnAfterOpen = null
-    static fOnNav = null
-    static fOnClose = null
+    static fOnBeforeOpen = []; static fOnAfterOpen = []; static fOnNav = []; static fOnClose = [];
     static arEls = { "msg_caption": null, "x": null, "msg_content": null, "arrow_prev": null, "step_current": null, "steps_total": null, "arrow_next": null }
 
     static init( _d, _sQ, token ){
         if( !this.isInit ){
             guided_tour_Opt = guided_tour_Opt[ token ]
-            this._d = _d 
-            this._sQ = _sQ
+            this._d = _d; this._sQ = _sQ; this.token = token;
             this.GTstate.popTartTmpl = this._d.querySelectorAll( this._sQ )[0]
             if( this.GTstate?.popTartTmpl ){
-                for( let elId in this.arEls){  //  Get Inner DOM El
+                for( let elId in this.arEls){  //  Get Inner DOM Els
                     this.arEls[ elId ] = this.GTstate.popTartTmpl.querySelector( `#${ elId }` )
                 }
                 neodigmPopTart.setOnClose( function( id ){ }, "guided-tour__tmpl--id")
@@ -232,6 +231,7 @@ class Guided_tour {
                 neodigmPopTart.autoOpen( this.GTstate.popTartTmpl, guided_tour_Opt.steps[ this.GTstate.step_current ].n55Poptart, elBound )
             }
         }
+        if( Guided_tour.fOnNav[ this.token ] ) Guided_tour.fOnNav[ this.token ]( this.GTstate.step_current + 1 )
         return this
     }
     static prev(){
@@ -244,13 +244,14 @@ class Guided_tour {
                 neodigmPopTart.autoOpen( this.GTstate.popTartTmpl, guided_tour_Opt.steps[ this.GTstate.step_current ].n55Poptart, elBound )
             }
         }
+        if( Guided_tour.fOnNav[ this.token ] ) Guided_tour.fOnNav[ this.token ]( this.GTstate.step_current + 1 )
         return this
     }
     static hydrate(){
         ["msg_caption", "msg_content"].forEach( ( tkn )=>{  //  Hydrate text from metadata
             if( this.arEls[ tkn ] ) this.arEls[ tkn ].textContent = guided_tour_Opt.steps[ this.GTstate.step_current ].msg[ tkn ]
         } );
-        this.GTstate.popTartTmpl.dataset.n55Position = guided_tour_Opt.steps[ this.GTstate.step_current ].n55Poptart.position;
+        this.GTstate.popTartTmpl.dataset.n55Position = guided_tour_Opt.steps[ this.GTstate.step_current ].n55Poptart.position;  //  top or bottom
         ["step_current", "steps_total"].forEach( ( tkn )=>{  //  Hydrate text from state
             if( this.arEls[ tkn ] ) this.arEls[ tkn ].textContent = this.GTstate[ tkn ] + 1
         } );
@@ -276,6 +277,7 @@ class Guided_tour {
     static setOnNav( _f, id="def"){ Guided_tour.fOnNav[ id ] = _f }
     static setOnClose( _f, id="def"){ Guided_tour.fOnClose[ id ] = _f }
 }
+Guided_tour.setOnNav( ( p )=>{ console.log(`Page ${ p }`) }, "new_features" )
 setTimeout( ()=>{ Guided_tour.init( document, "#guided-tour__tmpl--id", "new_features" ) }, 1e3 )
 
 </script> 
