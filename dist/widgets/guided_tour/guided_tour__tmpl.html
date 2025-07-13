@@ -12,7 +12,7 @@
 
 
 <!--  ||  TEMPLATE MU & CSS WDG BEGIN -->
-<neodigm-template id="guided-tour__tmpl--id" data-n55-position='top'>
+<neodigm-template id="guided-tour__tmpl--id" data-n55-position='top' data-n55-size='medium'>
     <div class="l-guid-tmpl__cntnr">
         <section class="l-guid-tmpl">
             <aside class="asd--disp__bottom"></aside>
@@ -47,83 +47,102 @@
             <aside></aside>
         </section>
     </div>
-    <style>
-        #guided-tour__tmpl--id {
-            border: 0;
-            background-color: rgba(0,0,0, 0);
-        }
-        .l-guid-tmpl__cntnr {
-            padding: 16px;
-            filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
-        }
-        .l-guid-tmpl {
-            padding: 14px;
-            background-color: #fff;
-            border: 1px solid #eee;
-        }
-        [data-n55-position='top'] .l-guid-tmpl {
-            clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 55% 90%, 50% 99%, 45% 90%, 0% 90%);
-        }
-        [data-n55-position='top'] .asd--disp__bottom { display: none; }
-
-        [data-n55-position='bottom'] .l-guid-tmpl {
-            clip-path: polygon(0% 10%, 45% 9%, 50% 0%, 55% 10%, 100% 10%, 99% 90%, 0% 90%);
-        }
-        [data-n55-position='bottom'] .asd--disp__bottom { display: block; }
-        
-        .l-guid-tmpl > header {
-            display: grid;
-            grid-template-columns: auto 32px;
-            height: 32px;
-            overflow: hidden;
-        }
-        .l-guid-tmpl > header > section > p {
-            margin: 0;
-            color: #071D49;
-            font-family: Roboto;
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 1.5;
-        }
-        .l-guid-tmpl > header > nav {
-            border-radius: 999px;
-            border: 1px solid #0066F5;
-            background: #FFF;
-            cursor: pointer; user-select: none;
-        }
-        .l-guid-tmpl > header > nav > SVG {
-            margin: 4px auto 0;
-            display: block;            
-        }
-        .l-guid-tmpl > aside { height: 24px; }
-        .l-guid-tmpl > article > p,
-        .l-guid-tmpl > footer > nav {
-            margin: 0;
-            color: #071D49;
-            font-family: Roboto;
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 400;
-        }
-        .l-guid-tmpl > footer > nav {
-            display: grid;
-            grid-template-columns: auto 32px 28px 12px 28px 32px auto;
-            text-align: center;
-        }
-        .l-guid-tmpl > footer > nav #arrow_prev,
-        .l-guid-tmpl > footer > nav #arrow_next {
-            margin-top: 4px;
-            cursor: pointer; user-select: none;
-        }
-        .gt-arrow--disabled{
-            pointer-events: none;
-            opacity: 0;
-        }
-
-    </style>
 </neodigm-template>
+<style>
+    #guided-tour__tmpl--id {
+        border: 0;
+        background-color: rgba(0,0,0, 0);
+    }
+    .l-guid-tmpl__cntnr {
+        padding: 14px;
+        filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+    }
+    .l-guid-tmpl {
+        background-color: #fff;
+    }
+    [data-n55-size='small']  .l-guid-tmpl { padding: 54px 27px 24px; }
+    [data-n55-size='medium'] .l-guid-tmpl { padding: 23px 20px 24px; }
+    
+    [data-n55-position='top'] .CLIPPATHl-guid-tmpl { clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 55% 90%, 50% 99%, 45% 90%, 0% 90%); }
 
+    [data-n55-position='top'][data-n55-size='small'] .l-guid-tmpl {
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 424 236'%3E%3Cpath d='m197.567 28 10.103-17.5c1.924-3.333 6.736-3.333 8.66 0L226.433 28H392c11.038 0 20 8.962 20 20v152c0 11.038-8.962 20-20 20H32c-11.038 0-20-8.962-20-20V48c0-11.038 8.962-20 20-20h165.567Z' style='fill:%23fff' transform='matrix(1 0 0 -1 0 228)'/%3E%3C/svg%3E");
+        mask-repeat: no-repeat; mask-size: 100% 100%;
+    }
+    [data-n55-position='top'][data-n55-size='medium'] .l-guid-tmpl {
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 400 240'%3E%3Cpath d='m197.567 28 10.103-17.5c1.924-3.333 6.736-3.333 8.66 0L226.433 28H392c11.038 0 20 7.916 20 17.667v156.666c0 9.751-8.962 17.667-20 17.667H32c-11.038 0-20-7.916-20-17.667V45.667C12 35.916 20.962 28 32 28h165.567Z' style='fill:%23fc00ff' transform='matrix(1 0 0 -1.13208 -12 249.057)'/%3E%3C/svg%3E");
+        mask-repeat: no-repeat; mask-size: 100% 100%;
+    }
+
+    [data-n55-position='top'] .asd--disp__bottom { display: none; }
+
+    [data-n55-position='bottom'] .CLIPPATHl-guid-tmpl { clip-path: polygon(0% 10%, 45% 9%, 50% 0%, 55% 10%, 100% 10%, 99% 90%, 0% 90%); }
+
+    [data-n55-position='bottom'][data-n55-size='small'] .l-guid-tmpl {
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 424 236'%3E%3Cpath d='m197.567 28 10.103-17.5c1.924-3.333 6.736-3.333 8.66 0L226.433 28H392c11.038 0 20 8.962 20 20v152c0 11.038-8.962 20-20 20H32c-11.038 0-20-8.962-20-20V48c0-11.038 8.962-20 20-20h165.567Z' style='fill:%23fff'/%3E%3C/svg%3E");
+        mask-repeat: no-repeat; mask-size: 100% 100%;
+    }
+    [data-n55-position='bottom'][data-n55-size='medium'] .l-guid-tmpl {
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 424 236'%3E%3Cpath d='m197.567 28 10.103-17.5c1.924-3.333 6.736-3.333 8.66 0L226.433 28H392c11.038 0 20 8.962 20 20v152c0 11.038-8.962 20-20 20H32c-11.038 0-20-8.962-20-20V48c0-11.038 8.962-20 20-20h165.567Z' style='fill:%23fff'/%3E%3C/svg%3E");
+        mask-repeat: no-repeat; mask-size: 100% 100%;
+    }
+
+    [data-n55-position='bottom'] .asd--disp__bottom { display: block; }
+
+    .l-guid-tmpl > header {
+        display: grid;
+        grid-template-columns: auto 32px;
+        height: 32px;
+        overflow: hidden;
+    }
+    .l-guid-tmpl > header > section > p {
+        margin: 0;
+        color: #071D49;
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.5;
+    }
+    .l-guid-tmpl > header > nav {
+        border-radius: 999px;
+        border: 1px solid #0066F5;
+        background: #FFF;
+        cursor: pointer; user-select: none;
+    }
+    .l-guid-tmpl > header > nav > SVG {
+        margin: 4px auto 0;
+        display: block;            
+    }
+    .l-guid-tmpl > aside { height: 24px; }
+    .l-guid-tmpl > article > p,
+    .l-guid-tmpl > footer > nav {
+        margin: 0;
+        color: #071D49;
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+    }
+    .l-guid-tmpl > footer > nav {
+        display: grid;
+        grid-template-columns: auto 32px 28px 12px 28px 32px auto;
+        column-gap: 4px;
+        text-align: center;
+    }
+    .l-guid-tmpl > footer > nav #arrow_prev,
+    .l-guid-tmpl > footer > nav #arrow_next {
+        margin-top: 4px;
+        cursor: pointer; user-select: none;
+    }
+    .gt-arrow--disabled{
+        pointer-events: none;
+        opacity: 0;
+    }
+</style>
+<!--  ||  TEMPLATE MU & CSS WDG END -->
+
+<!-- NOT IN WDGT -->
 <br><br><br><br>
 
 <neodigm-acticon data-n55-theme="ghost" data-n55-size="medium"
@@ -156,10 +175,7 @@ onClick="Guided_tour.next()"
     }
 </style>
 
-<style>
-
-</style>
-<!--  ||  TEMPLATE MU & CSS WDG END -->
+<!-- NOT IN WDGT -->
 
 
 
@@ -182,9 +198,9 @@ let guided_tour_Opt = {
     "new_features": 
     {
         "steps": [
-            {"boundQry":"#inp-txt__bound--1", "msg":{"msg_caption":"More ways to get started", "msg_content":"Now see more expample prompts here. Select the arrow to move through at your own pace."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
-            {"boundQry":"#inp-txt__bound--2", "msg":{"msg_caption":"Use product abbreviations", "msg_content":"Save time by using abbreviations for products: ‘Sky’ for Skyrizi, ‘Rin’ for Rinvoq, and others."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }},
-            {"boundQry":"#inp-txt__bound--3", "msg":{"msg_caption":"Try the Interaction Assistant", "msg_content":"Effortlessly build effective prompts with the new Interaction Assistant."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"right", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }}
+            {"boundQry":"#inp-txt__bound--1", "msg":{"msg_caption":"More ways to get started", "msg_content":"Now see more expample prompts here. Select the arrow to move through at your own pace."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }, n55Size: "medium" },
+            {"boundQry":"#inp-txt__bound--2", "msg":{"msg_caption":"Use product abbreviations", "msg_content":"Save time by using abbreviations for products: ‘Sky’ for Skyrizi, ‘Rin’ for Rinvoq, and others."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }, n55Size: "medium" },
+            {"boundQry":"#inp-txt__bound--3", "msg":{"msg_caption":"Try the Interaction Assistant", "msg_content":"Effortlessly build effective prompts with the new Interaction Assistant."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"right", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }, n55Size: "medium" }
         ]    
     }
 }
@@ -252,6 +268,7 @@ class Guided_tour {
             if( this.arEls[ tkn ] ) this.arEls[ tkn ].textContent = guided_tour_Opt.steps[ this.GTstate.step_current ].msg[ tkn ]
         } );
         this.GTstate.popTartTmpl.dataset.n55Position = guided_tour_Opt.steps[ this.GTstate.step_current ].n55Poptart.position;  //  top or bottom
+        this.GTstate.popTartTmpl.dataset.n55Size = guided_tour_Opt.steps[ this.GTstate.step_current ].n55Size;  //  small or medium
         ["step_current", "steps_total"].forEach( ( tkn )=>{  //  Hydrate text from state
             if( this.arEls[ tkn ] ) this.arEls[ tkn ].textContent = this.GTstate[ tkn ] + 1
         } );
