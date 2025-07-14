@@ -60,8 +60,10 @@
     .l-guid-tmpl {
         background-color: #fff;
     }
-    [data-n55-size='small']  .l-guid-tmpl { padding: 54px 27px 24px; }
-    [data-n55-size='medium'] .l-guid-tmpl { padding: 23px 20px 24px; }
+    [data-n55-size='small'][data-n55-position='top']     .l-guid-tmpl { padding: 54px 27px 24px; }
+    [data-n55-size='small'][data-n55-position='bottom']  .l-guid-tmpl { padding: 38px 18px 24px; }
+    [data-n55-size='medium'][data-n55-position='top']    .l-guid-tmpl { padding: 23px 20px 24px; }
+    [data-n55-size='medium'][data-n55-position='bottom'] .l-guid-tmpl { padding: 44px 20px 24px; }
     
     [data-n55-position='top'] .CLIPPATHl-guid-tmpl { clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 55% 90%, 50% 99%, 45% 90%, 0% 90%); }
 
@@ -79,11 +81,11 @@
     [data-n55-position='bottom'] .CLIPPATHl-guid-tmpl { clip-path: polygon(0% 10%, 45% 9%, 50% 0%, 55% 10%, 100% 10%, 99% 90%, 0% 90%); }
 
     [data-n55-position='bottom'][data-n55-size='small'] .l-guid-tmpl {
-        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 424 236'%3E%3Cpath d='m197.567 28 10.103-17.5c1.924-3.333 6.736-3.333 8.66 0L226.433 28H392c11.038 0 20 8.962 20 20v152c0 11.038-8.962 20-20 20H32c-11.038 0-20-8.962-20-20V48c0-11.038 8.962-20 20-20h165.567Z' style='fill:%23fff'/%3E%3C/svg%3E");
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 400 210'%3E%3Cpath d='m197.567 28 10.103-17.5c1.924-3.333 6.736-3.333 8.66 0L226.433 28H392c11.038 0 20 9.047 20 20.19v151.62c0 11.143-8.962 20.19-20 20.19H32c-11.038 0-20-9.047-20-20.19V48.19C12 37.047 20.962 28 32 28h165.567Z' style='fill:%23fc00ff' transform='matrix(1 0 0 .99057 -12 -7.925)'/%3E%3C/svg%3E");
         mask-repeat: no-repeat; mask-size: 100% 100%;
     }
     [data-n55-position='bottom'][data-n55-size='medium'] .l-guid-tmpl {
-        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 424 236'%3E%3Cpath d='m197.567 28 10.103-17.5c1.924-3.333 6.736-3.333 8.66 0L226.433 28H392c11.038 0 20 8.962 20 20v152c0 11.038-8.962 20-20 20H32c-11.038 0-20-8.962-20-20V48c0-11.038 8.962-20 20-20h165.567Z' style='fill:%23fff'/%3E%3C/svg%3E");
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 400 240'%3E%3Cpath d='m197.567 28 10.103-17.5c1.924-3.333 6.736-3.333 8.66 0L226.433 28H392c11.038 0 20 7.916 20 17.667v156.666c0 9.751-8.962 17.667-20 17.667H32c-11.038 0-20-7.916-20-17.667V45.667C12 35.916 20.962 28 32 28h165.567Z' style='fill:%23fc00ff' transform='matrix(1 0 0 1.13208 -12 -9.057)'/%3E%3C/svg%3E");
         mask-repeat: no-repeat; mask-size: 100% 100%;
     }
 
@@ -198,9 +200,9 @@ let guided_tour_Opt = {
     "new_features": 
     {
         "steps": [
-            {"boundQry":"#inp-txt__bound--1", "msg":{"msg_caption":"More ways to get started", "msg_content":"Now see more expample prompts here. Select the arrow to move through at your own pace."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }, n55Size: "medium" },
-            {"boundQry":"#inp-txt__bound--2", "msg":{"msg_caption":"Use product abbreviations", "msg_content":"Save time by using abbreviations for products: ‘Sky’ for Skyrizi, ‘Rin’ for Rinvoq, and others."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }, n55Size: "medium" },
-            {"boundQry":"#inp-txt__bound--3", "msg":{"msg_caption":"Try the Interaction Assistant", "msg_content":"Effortlessly build effective prompts with the new Interaction Assistant."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"right", "arrow": true, "offset":{"h": 0, "l":0, "t":0, "w":0} }, n55Size: "medium" }
+            {"boundQry":"#inp-txt__bound--1", "msg":{"msg_caption":"More ways to get started", "msg_content":"Now see more expample prompts here. Select the arrow to move through at your own pace."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":33, "w":0} }, n55Size: "medium" },
+            {"boundQry":"#inp-txt__bound--2", "msg":{"msg_caption":"Use product abbreviations", "msg_content":"Save time by using abbreviations for products: ‘Sky’ for Skyrizi, ‘Rin’ for Rinvoq, and others."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":-33, "w":0} }, n55Size: "medium" },
+            {"boundQry":"#inp-txt__bound--3", "msg":{"msg_caption":"Try the Interaction Assistant", "msg_content":"Effortlessly build effective prompts with the new Interaction Assistant."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":33, "w":0} }, n55Size: "small" }
         ]    
     }
 }
@@ -238,7 +240,7 @@ class Guided_tour {
         return this;
     }
     static next(){
-        if( this.GTstate.step_current < ( guided_tour_Opt.steps.length - 1 ) ){
+        if( this.GTstate.step_current < ( guided_tour_Opt?.steps?.length - 1 ) ){
             neodigmPopTart.close() 
             this.GTstate.step_current++
             this.hydrate()
