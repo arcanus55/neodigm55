@@ -147,12 +147,31 @@
 <!-- NOT IN WDGT -->
 <br><br><br><br>
 
+<a data-n55-enchanted-cta data-n55-enchanted-cta-ambient="emit" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="false" data-n55-enchanted-cta-size="medium" data-n55-theme="ghost"
+onClick='Guided_tour.init( document, "#guided-tour__tmpl--id", "dashboard" )'
+data-n55-toast="Init the N55 Dashboard Demo|Guided Tour"
+data-n55-tulip='{"msg":" Fire Guided_tour.init(dashboard) ","mrq":false,"tmpt":"","theme":"brand","size":"small","position":"top","icon":""}'
+><span data-n55-wired4sound-hover="3">Init Dashboard</span><span>Config Guided Tour</span>
+</a>
+
+<a data-n55-enchanted-cta data-n55-enchanted-cta-ambient="emit" data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="false" data-n55-enchanted-cta-hover-an="false" data-n55-enchanted-cta-size="medium" data-n55-theme="ghost"
+onClick='Guided_tour.init( document, "#guided-tour__tmpl--id", "new_features" )'
+data-n55-toast="Init the GENAISYS|Guided Tour"
+data-n55-tulip='{"msg":" Fire Guided_tour.init(new_features) ","mrq":false,"tmpt":"","theme":"brand","size":"small","position":"top","icon":""}'
+><span data-n55-wired4sound-hover="3">Init GENAISYS</span><span>Config Guided Tour</span>
+</a>
+
+<!-- (c) 1992-2032 🗝️ www.theScottKrause.com -->
+
+<br><br><br><br>
+<br><br><br><br>
+
 <neodigm-acticon data-n55-theme="ghost" data-n55-size="medium"
 data-n55-tulip='My Poptart'
 onClick="Guided_tour.prev()"
 ><neodigm-icon class="material-symbols-outlined" data-n55-wired4sound-hover='3'>chevron_left</neodigm-icon></neodigm-acticon>
 
-<neodigm-acticon id = "btnQ" data-n55-theme="ghost" data-n55-size="medium"
+<neodigm-acticon data-n55-theme="ghost" data-n55-size="medium"
 data-n55-tulip='My Poptart'
 onClick="Guided_tour.next()"
 ><neodigm-icon class="material-symbols-outlined" data-n55-wired4sound-hover='3'>chevron_right</neodigm-icon></neodigm-acticon>
@@ -203,8 +222,16 @@ let guided_tour_Opt = {
             {"boundQry":"#inp-txt__bound--1", "msg":{"msg_caption":"More ways to get started", "msg_content":"Now see more expample prompts here. Select the arrow to move through at your own pace."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":33, "w":0} }, n55Size: "medium" },
             {"boundQry":"#inp-txt__bound--2", "msg":{"msg_caption":"Use product abbreviations", "msg_content":"Save time by using abbreviations for products: ‘Sky’ for Skyrizi, ‘Rin’ for Rinvoq, and others."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":-33, "w":0} }, n55Size: "medium" },
             {"boundQry":"#inp-txt__bound--3", "msg":{"msg_caption":"Try the Interaction Assistant", "msg_content":"Effortlessly build effective prompts with the new Interaction Assistant."}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":33, "w":0} }, n55Size: "small" }
+        ]
+    },
+    "dashboard": 
+    {
+        "steps": [
+            {"boundQry":"#js-num__primeleads", "msg":{"msg_caption":"a", "msg_content":"b"}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":33, "w":0} }, n55Size: "medium" },
+            {"boundQry":"body > section > main > header > nav.h-left > div.h-ds-ib__desktop--only > neodigm-acticon.h-ds-ib__desktop--only.h-ds-ib__leftnav-state--not2", "msg":{"msg_caption":"c", "msg_content":"d"}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"top", "arrow": true, "offset":{"h": 0, "l":0, "t":-33, "w":0} }, n55Size: "medium" },
+            {"boundQry":"body > section > main > article > section.pfmf-grid.pfmf-grid__50_50 > div:nth-child(2) > article > section.l-crd-cap__top", "msg":{"msg_caption":"d", "msg_content":"e"}, "n55Poptart": {"Qx": 256, "Qy": 176, "z": 256, "Qh": 176, "w": 428, "position":"bottom", "arrow": true, "offset":{"h": 0, "l":0, "t":33, "w":0} }, n55Size: "small" }
         ]    
-    }
+    },
 }
 if( typeof guided_tour_Custom != 'undefined' ){  //  wdgt host script obj
     for( cnfgProp in guided_tour_Custom ){  //  Import Custom Objects props if exists
@@ -297,7 +324,7 @@ class Guided_tour {
     static setOnClose( _f, id="def"){ Guided_tour.fOnClose[ id ] = _f }
 }
 Guided_tour.setOnNav( ( p )=>{ console.log(`Page ${ p }`) }, "new_features" )
-setTimeout( ()=>{ Guided_tour.init( document, "#guided-tour__tmpl--id", "new_features" ) }, 1e3 )
+//setTimeout( ()=>{ Guided_tour.init( document, "#guided-tour__tmpl--id", "new_features" ) }, 1e3 )
 
 </script> 
 <!--  ||  JAVASCRIPT WDG END -->
