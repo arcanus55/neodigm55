@@ -266,7 +266,8 @@ class Guided_tour {
         this.isInit = true;
         return this;
     }
-    static next(){
+    static next( step=0 ){
+        if( step ) this.GTstate.step_current = step
         if( this.GTstate.step_current < ( guided_tour_Opt?.steps?.length - 1 ) ){
             neodigmPopTart.close() 
             this.GTstate.step_current++
@@ -279,7 +280,8 @@ class Guided_tour {
         if( Guided_tour.fOnNav[ this.token ] ) Guided_tour.fOnNav[ this.token ]( this.GTstate.step_current + 1 )
         return this
     }
-    static prev(){
+    static prev( step=0 ){
+        if( step ) this.GTstate.step_current = step
         if( this.GTstate.step_current >= 1 ){
             neodigmPopTart.close() 
             this.GTstate.step_current--
