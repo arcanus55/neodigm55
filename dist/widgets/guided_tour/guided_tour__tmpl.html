@@ -52,6 +52,7 @@
     #guided-tour__tmpl--id {
         border: 0;
         background-color: rgba(0,0,0, 0);
+        font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif !important;
     }
     .l-guid-tmpl__cntnr {
         padding: 14px;
@@ -59,6 +60,7 @@
     }
     .l-guid-tmpl {
         background-color: #fff;
+        font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif !important;
     }
     [data-n55-size='small'][data-n55-position='top']     .l-guid-tmpl { padding: 54px 27px 24px; }
     [data-n55-size='small'][data-n55-position='bottom']  .l-guid-tmpl { padding: 38px 18px 24px; }
@@ -100,7 +102,7 @@
     .l-guid-tmpl > header > section > p {
         margin: 0;
         color: #071D49;
-        font-family: Roboto;
+        QQQQfont-family: Roboto;
         font-size: 18px;
         font-style: normal;
         font-weight: 700;
@@ -121,7 +123,7 @@
     .l-guid-tmpl > footer > nav {
         margin: 0;
         color: #071D49;
-        font-family: Roboto;
+        QQQQfont-family: Roboto;
         font-size: 18px;
         font-style: normal;
         font-weight: 400;
@@ -267,7 +269,7 @@ class Guided_tour {
         return this;
     }
     static next( step=0 ){
-        if( step ) this.GTstate.step_current = step
+        if( step ) this.GTstate.step_current = --step
         if( this.GTstate.step_current < ( guided_tour_Opt?.steps?.length - 1 ) ){
             neodigmPopTart.close() 
             this.GTstate.step_current++
@@ -281,7 +283,7 @@ class Guided_tour {
         return this
     }
     static prev( step=0 ){
-        if( step ) this.GTstate.step_current = step
+        if( step ) this.GTstate.step_current = ++step
         if( this.GTstate.step_current >= 1 ){
             neodigmPopTart.close() 
             this.GTstate.step_current--
