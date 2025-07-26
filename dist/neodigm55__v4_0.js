@@ -404,7 +404,7 @@ class NeodigmSodaPop {
                 })
                 neodigmSodaPop.eSoda.classList.add("n55SodapopFullscreen")
             }
-            this.bIsOpen = true;
+            this.bIsOpen = this.sId;  //  issue 133
             if(this.fOnAfterOpen[_sId]) this.fOnAfterOpen[_sId]( this.sId )
             if(this.fOnAfterOpen["def"]) this.fOnAfterOpen["def"]( this.sId )
             if( neodigmOpt.N55_GTM_DL_POP_OPEN ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_POP_OPEN, _sId )
@@ -706,6 +706,7 @@ class NeodigmPopTart {
         if( !elPop.dataset?.n55Theme ) elPop.dataset.n55Theme = this.sBoundTheme  //  Inherit Theme from Bound El, may be flash theme
         if( neodigmOpt.N55_GTM_DL_POPTRT ) neodigmUtils.doDataLayer( neodigmOpt.N55_GTM_DL_POPTRT, elPop.id )
         this.bIsOpen = true
+        this.bIsOpen = elPop.id;  //  issue 133
         if( this.fOnAfterOpen[ elPop.id ] ) this.fOnAfterOpen[ elPop.id ]()
         if( this.fOnAfterOpen["def"] ) this.fOnAfterOpen["def"]()
     }
