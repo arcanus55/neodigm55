@@ -67,14 +67,14 @@ const neodigmUtils = ( ( _d ) =>{
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
     f02x: function(x){ return (Math.floor(Math.random() * x)); },  //  0 to x
     fPromiseJS: async function( _d, _uri ){  //  Load JS Async then Resolve Promise All
-      return new Promise((resolve, reject) => {
-        const _js = Object.assign( _d.createElement( "script" ) , { "type": "text/javascript", "src": _uri }) 
+      return new Promise((resolve, reject) => {  //  N55 static check 👁️
+        const _js = Object.assign( _d.createElement( LZString.decompress("㎆ぎॠข") ) , { "type": LZString.decompress("அ〞샴ՠ蘆㠘쁎Ұΰ耀"), "src": _uri })
         _js.onload = resolve; _js.onerror = reject;
         _d.getElementsByTagName( "head" )[0].appendChild( _js )
       })
     },
-    fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then Callback 
-      const _js = Object.assign( _d.createElement( "script" ) , { "type": "text/javascript", "src": _uri }) 
+    fAsyncJS: function( _d, _uri, _cb ){  //  Load JS Async then Callback    //  N55 static check 👁️
+      const _js = Object.assign( _d.createElement( LZString.decompress("㎆ぎॠข") ) , { "type": LZString.decompress("அ〞샴ՠ蘆㠘쁎Ұΰ耀"), "src": _uri })
       if( _cb ) _js.onload = function(){ _cb(); }
       _d.getElementsByTagName( "head" )[0].appendChild( _js )
     },
