@@ -103,16 +103,16 @@ const neodigmUtils = ( ( _d ) =>{
       try { isVal = typeof (JSON.parse( sIn )) } catch ( er ) { }
       return ( isVal == "object" )
     },
-    displayMsg: function( sMsg ){  //  System Tray Notification
+    displayMsg: function( sMsg, icon="https://avatars.githubusercontent.com/u/217090161?s=200&v=4" ){  //  System Tray Notification
         if (!("Notification" in window)) {
             console.log('Notification API not supported.')
             return;
         } else if (Notification.permission === "granted") {
-            var notification = new Notification( neodigmUtils.prettyTime( Date.now() ), {icon: "https://avatars.githubusercontent.com/u/217090161?s=200&v=4", body: sMsg} )
+            var notification = new Notification( neodigmUtils.prettyTime( Date.now() ), {icon: icon, body: sMsg} )
         } else if (Notification.permission !== "denied") {
             Notification.requestPermission(function (permission) {
                 if (permission === "granted") {
-                    var notification = new Notification( neodigmUtils.prettyTime( Date.now() ), {icon: "https://avatars.githubusercontent.com/u/217090161?s=200&v=4", body: sMsg} )
+                    var notification = new Notification( neodigmUtils.prettyTime( Date.now() ), {icon: icon, body: sMsg} )
                 }
             })
         }
