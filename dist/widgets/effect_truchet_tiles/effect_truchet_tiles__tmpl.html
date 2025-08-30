@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55__v4_5.css"></link>
+        <script src="https://arcanus55.github.io/neodigm55/dist/neodigm55__v4_5.js"></script>
+        <link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.css"></link>
+
+    </head>
+    <body  data-n55-ampm-theme="light">
+
+
+<!--  ||  TEMPLATE MU & CSS WDG BEGIN -->
+<wtt-widget data-n55-token="effect_truchet_tiles"
+style="overflow: hidden;">
+  <div class="grid-container">
+  </div>
+</wtt-widget>
+
+<style>
+.grid-container {
+  display: grid;
+  background-color: #fff;
+  grid-template-columns: repeat(auto-fit, minmax(32px, 1fr));
+  grid-auto-rows: 1fr; 
+  gap: 0;
+}
+
+.grid-item {
+  aspect-ratio: 1 / 1; 
+  justify-content: center;
+  align-items: center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='1.5' clip-rule='evenodd' viewBox='0 0 256 256'%3E%3Ccircle cx='107.595' cy='155.014' r='77.866' fill='none' stroke='%23000' stroke-width='2.53' transform='translate(-176.87 1.181) scale(1.64384)'/%3E%3Ccircle cx='107.595' cy='155.014' r='77.866' fill='none' stroke='%23000' stroke-width='2.53' transform='translate(79.13 -254.819) scale(1.64384)'/%3E%3C/svg%3E");
+}
+.grid-item[data-tile-boolean='true'] {
+  transform: rotate(0deg);
+
+}
+.grid-item[data-tile-boolean='false'] {
+  transform: rotate(90deg);
+}
+</style>
+<!--  ||  TEMPLATE MU & CSS WDG END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  ||  JAVASCRIPT WDG BEGIN -->
+
+ 
+<script>
+let elCont  = document.querySelector(".grid-container")
+if( elCont ){
+  for(let cnt = 0; cnt < 3000; cnt++){
+    elCont.innerHTML += `<div class="grid-item"></div>`
+  }
+}
+setInterval( ()=>{
+  Array.from(document.querySelectorAll(".grid-item") ).forEach( (_)=>{ _.dataset.tileBoolean = (Math.random(1) <= .4 ) ? "true" : "false" } )
+}, 2e3)
+
+const effect_truchet_tilesOpt = {"context": "[data-n55-token='effect_truchet_tiles']", "color": 0xEDBA08, "colorOne": 0xDD4124, "speed_x": 0.0004, "speed_y": 0.002, "camera_z": "+1500"}
+if( typeof effect_truchet_tilesCustom != 'undefined' ){  //  wdgt host script obj
+    for( cnfgProp in effect_truchet_tilesCustom ){  //  Import Custom Objects props if exists
+        effect_truchet_tilesOpt[ cnfgProp ] = effect_truchet_tilesCustom[ cnfgProp ]
+    }
+}
+const elWdgt = document.querySelector( effect_truchet_tilesOpt.context )
+const gridContainer = elWdgt.querySelector('.grid-container')
+
+
+
+elCntr = document.createElement('section')
+elWdgt.appendChild(elCntr)
+
+const width = window.innerWidth
+const height = window.innerWidth
+
+
+
+window.addEventListener('resize', onWdgtWindowResize, false)
+onWdgtWindowResize()
+
+function onWdgtWindowResize () {
+}
+
+
+</script> 
+<!--  ||  JAVASCRIPT WDG END -->
+
+    </body>
+</html>

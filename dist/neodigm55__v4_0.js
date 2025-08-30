@@ -103,6 +103,28 @@ const neodigmUtils = ( ( _d ) =>{
       try { isVal = typeof (JSON.parse( sIn )) } catch ( er ) { }
       return ( isVal == "object" )
     },
+ displayMsg: function( sMsg ){
+    //    System Tray Notification
+    console.log( sMsg );
+    if (!("Notification" in window)) {
+        console.log('Notification API not supported.');
+        return;
+    } else if (Notification.permission === "granted") {
+        // If it's okay let's create a notification
+        var notification = new Notification( neodigmUtils.prettyTime( Date.now() ), {icon: "https://avatars.githubusercontent.com/u/217090161?s=200&v=4", body: sMsg} );
+    } else if (Notification.permission !== "denied") {
+        // Otherwise, we need to ask the user for permission
+
+        Notification.requestPermission(function (permission) {
+            // If the user accepts, let's create a notification
+            if (permission === "granted") {
+                var notification = new Notification( neodigmUtils.prettyTime( Date.now() ), {icon: "https://avatars.githubusercontent.com/u/217090161?s=200&v=4", body: sMsg} );
+            }
+        });
+    }
+},
+
+
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
       NeodigmKeylime.subscribe( "mouseover", ( ev )=>{
         if( ev?.target?.dataset?.n55TypeonHover ) neodigmUtils.typeOn( JSON.parse( ev.target.dataset.n55TypeonHover ) )
@@ -140,11 +162,6 @@ const neodigmUtils = ( ( _d ) =>{
       let sFirstAMPM = document[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "[data-n55-Ampm-theme]" )?.dataset.n55AmpmTheme
       if( sFirstAMPM ) neodigmOpt.N55_AMPM_THEME = neodigmOpt.N55_APP_STATE.AMPM = sFirstAMPM
     },
-    prettyTimeRETIRE: ( sDt ) => {  //  RETIRE - breaking change
-      let sOut = new Date( sDt ).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" } )
-      if( sDt == "Dec 31, 1969" ) sOut = ""
-      return sOut
-    }, 
     prettyTime: ( sDt ) => {  //  TODO create dateOnly = false param option
       return new Date( sDt ).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute:"2-digit", second:"2-digit"  } );
     },
