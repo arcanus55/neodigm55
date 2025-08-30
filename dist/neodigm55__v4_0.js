@@ -103,7 +103,7 @@ const neodigmUtils = ( ( _d ) =>{
       try { isVal = typeof (JSON.parse( sIn )) } catch ( er ) { }
       return ( isVal == "object" )
     },
-    displayMsg: function( sMsg, icon="https://avatars.githubusercontent.com/u/217090161?s=200&v=4" ){  //  System Tray Notification
+    messageNotification: function( sMsg, icon="https://avatars.githubusercontent.com/u/217090161?s=200&v=4" ){  //  System Tray Notification
         if (!("Notification" in window)) {
             console.log('Notification API not supported.')
             return;
