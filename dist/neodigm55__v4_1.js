@@ -49,7 +49,8 @@ neodigmMetronome: {"countTo": 116, "neodigmMarquee": 132},  //  soft code unq nu
    "danger":["DD4124","810000","🟥"], "warning":["F5DF4D","988200","🟨"], "info":["7BC4C4","1F6868","🟦"], "disabled":["868686","767676","⬜"], "night":["6a6a6a","242424","⬛"], "marcom":["B163A3","5F4B8B","🟪"], "party":["FF6F61","C93F60","🟪"]},
   N55_APP_STATE: {"CONTEXT": "body", "FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXTMNU": false, "FOCUS": true, "AMPM": "light", "REDUCE_MOTION": false},
   ROOT: document.querySelector(':root'),
-  N55_TYPE: "https://fonts.googleapis.com/css?family=Roboto+Condensed:wght@100;300;400|Roboto+Slab:wght@300|Roboto+Mono:wght@300|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0"
+  N55_TYPE: "https://fonts.googleapis.com/css?family=Roboto+Condensed:wght@100;300;400|Roboto+Slab:wght@300|Roboto+Mono:wght@300|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0",
+mvvLegit: false,
 }
 
 if( typeof neodigmOptCustom != 'undefined' ){
@@ -936,7 +937,6 @@ class NeodigmKeylime {  //  Universal Click / left click / pwa install / long ta
       if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~KeyLimeN55 fire | ", ev )
     }
   }
-
   static pause( nT ){
     if( this.bIsInit ){
       if( nT ) setTimeout( () =>{ NeodigmKeylime.play() }, nT )
@@ -944,8 +944,129 @@ class NeodigmKeylime {  //  Universal Click / left click / pwa install / long ta
     }
     return this;
   }
-
   static play(){ this.bIsPause = false; return this; }
+}
+
+//  MachVive Legit Begin  //
+/*
+
+*/
+class mvvLegit {  //  Are you, you?
+  static #conf = null
+  static #state = null
+  static #states = null
+  static {
+      mvvLegit._d = document; mvvLegit.bIsInit = false; mvvLegit.bIsPause = false;
+      mvvLegit.#conf = {
+          "LSKEY": "mvv",
+          "BASE": "https://streamsyncengage-saas.onrender.com/sse/v5/appCorrespondence"
+      }
+      mvvLegit.fSetNavConroller = mvvLegit.fSetOnState = null
+      mvvLegit.#states = Object.freeze({
+          "UNKNOWN": 0,
+          "UNAUTH": 1,
+          "UNVERF": 2,
+          "UNKYC": 3,
+          "AUTH": 4,
+      })
+      mvvLegit.#state = mvvLegit.#states.UNKNOWN
+
+      mvvLegit.routes = [
+          { "token":"error_route",      "states":[0,1,2,3,4] },  //  An unexpected error occurred
+          { "token":"home_route",       "states":[4] },  // 🔒 | Home Page | View Correspondence and API Meter
+          { "token":"resethash_route",  "states":[4] },  // 🔒 | An email has been sent to your address, please open that email and click on the verification link.
+          { "token":"signin_route",     "states":[1] },  //  Sign In
+          { "token":"signout_route",    "states":[4] },  // 🔒 | Sign Out
+          { "token":"signup_route",     "states":[1] },  // Sign Up | Create an Account
+          { "token":"splash_route",     "states":[0,1,2,3,4] },  // Loading ... (pre-auth)
+          { "token":"verf_link_route",  "states":[2,3] },  //  Timer, Resend, Change Email
+          { "token":"offline_route",    "states":[0,1,2,3,4] },  //  No Network
+      ]
+  }
+  static init(){
+      if( !this.bIsInit ){  //  once
+        this.bIsInit = true
+//this.#setTJO( {"ts": new Date(), "state": 2, "token": "9" } )
+
+
+        mvvLegit.#changeState( mvvLegit.#states.UNKNOWN )
+        mvvLegit.#navRoute( "splash_route" )
+        const oTJO = mvvLegit.#getTJO()
+        if( oTJO?.state ){
+          switch( oTJO.state ){
+            case 2:  //  UNVERF
+            case 3:  //  UNKYC - not supported
+              mvvLegit.#changeState( mvvLegit.#states.UNVERF )
+              mvvLegit.#navRoute( "verf_link_route" )
+            break;
+            case 4:  //  AUTH
+              mvvLegit.#changeState( mvvLegit.#states.AUTH )
+              mvvLegit.#navRoute( "home_route" )
+            break;
+          }
+
+        }else{
+          mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
+          mvvLegit.#navRoute( "signin_route" )
+        }
+      }
+      return this
+  }
+  static doSignin( tkn=null ){  //  Set signin state
+      if( this.bIsInit && tkn ){
+        mvvLegit.#changeState( mvvLegit.#states.AUTH )
+        mvvLegit.#setTJO( { "state": mvvLegit.#state, "ts": new Date(), "token": tkn } )
+        mvvLegit.#navRoute( "home_route" )
+      }
+      return this
+  }
+  static doSignout(){  //  Set signout state  TODO signout end-point
+      if( this.bIsInit ){
+        mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
+        mvvLegit.#setTJO( null )
+        mvvLegit.#navRoute( "signin_route" )
+      }
+      return this
+  }
+  static isRouteAllowed( rtkn=null ){  //  Return false if cur state is not in routes states - pre nav
+      if( this.bIsInit && rtkn ){
+        let oRt = mvvLegit.routes.filter( ( rt )=>{ return ( rt.token == rtkn ) } )[0]
+        return oRt.states.includes( mvvLegit.#state )
+      }
+      return false
+  }
+  static #navRoute( rtkn=null ){  //  Fire Callback | Private
+      if( this.bIsInit && rtkn && this.fSetNavConroller ) this.fSetNavConroller( rtkn )
+      return this
+  }
+  static #changeState( state=null ){  //  Fire Callback | Private
+      if( this.bIsInit && (state !== false) && this.fSetOnState ){
+        this.fSetOnState( mvvLegit.#state = state )
+      }
+      return this
+  }
+  static #setTJO( oLS ){  //  todo idb
+      if( this.bIsInit ){
+          if( oLS && LZString ){
+              localStorage.setItem( this.#conf.LSKEY, LZString.compressToUTF16( JSON.stringify( oLS )) )
+              if( neodigmOpt.N55_DEBUG_lOG ) console.warn( "~mvvLegit setTJO | " , oLS )
+          }else( localStorage.removeItem( this.#conf.LSKEY ))
+      }
+      return this
+  }
+  static #getTJO(){
+      let oLS = ""
+      if( this.bIsInit ){
+          oLS = localStorage.getItem( this.#conf.LSKEY )
+          if( oLS && LZString  ){
+              oLS = JSON.parse( LZString.decompressFromUTF16(  oLS ) ) 
+              if( neodigmOpt.N55_DEBUG_lOG ) console.warn( "~mvvLegit getTJO | " , oLS )
+          }
+      }
+      return oLS
+  }
+  static setNavConroller( _f ){ this.fSetNavConroller = _f; return this; } 
+  static setOnState( _f ){ this.fSetOnState = _f; return this; } 
 }
 
 //  Neodigm 55 Metronome Begin  //
@@ -1347,7 +1468,7 @@ data-n55-claire-click - confetti
       if( typeof sTheme == "object") sTheme = sTheme[ neodigmUtils.f02x( sTheme.length ) ]  //  array
       this._theme = sTheme;
       return this; }
-    }
+}
 
 //  Neodigm 55 Enchanted CTA Begin
 class NeodigmEnchantedCTA {
@@ -1520,7 +1641,7 @@ class NeodigmCarousel {
   constructor( _d, _aQ ) {
       this._d = _d; this._aQ = _aQ
       this.bIsInit = false; this.bIsPause = false
-      this.aelNC = [];  this.fOnBeforeNav = []; this.fOnAfterNav = []  //  TODO fOnBeforeNav
+      this.aelNC = [];  this.fOnBeforeNav = null; this.fOnAfterNav = []
   }
   init ( elRootCntx = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ] ){  //  rinit
     // TODO would like to fire rinit given a ref to a container element (ADD children)
@@ -1555,6 +1676,7 @@ class NeodigmCarousel {
   }
   nav ( oNav, bFireCB = true ){
     if( oNav?.id && this.bIsInit && !this.bIsPause ){
+        if( this.fOnBeforeNav && this.fOnBeforeNav( oNav ) === false ) return this;
         let elNC = this.aelNC.filter(function( el ){ return ( oNav.id == el.id ); })[0]
         if( !elNC ) {  // This caro did not exist durring init, so lets created it
             let elNewNC = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "#" + oNav.id )
@@ -1616,6 +1738,8 @@ class NeodigmCarousel {
     }
   }
   play (){ this.bIsPause = false; return this; }
+  fOnBeforeNav
+  setOnBeforeNav ( _f, id="def", pg="" ){ this.fOnBeforeNav = _f; return this; } 
   setOnAfterNav ( _f, id="def", pg="" ){ this.fOnAfterNav[ ( pg )?(id + "_" + pg):id ] = _f; return this; } 
   setTheme ( sTheme, sId ){
     if( this.bIsInit && !this.bIsPause ){
