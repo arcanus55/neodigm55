@@ -1013,6 +1013,9 @@ class mvvLegit {  //  Are you, you?
   static #getBearer(){
     return mvvLegit.#getTJO( mvvLegit.#conf.LSKEY )?.token
   }
+  static getConf(){
+    return mvvLegit.#conf
+  }
   static #overFetch(){
     const originalFetch = window.fetch;
 
