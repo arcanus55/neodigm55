@@ -1010,35 +1010,33 @@ class mvvLegit {  //  Are you, you?
     }
     return this
   }
+  static #getBearer(){
+    return mvvLegit.#getTJO( mvvLegit.#conf.LSKEY )?.token
+  }
   static #overFetch(){
     const originalFetch = window.fetch;
 
     window.fetch = function(url, options = {}) {
-        // Get bearer token from storage or a config variable
-        const bearerToken = 99999; //localStorage.getItem('bearerToken') || 'YOUR_TOKEN_HERE';
-console.log("~~~~~~~ fetch url ~~~~~~~~~ | " , url)
-        // Initialize headers if not present
-        if (!options.headers) {
-            options.headers = {};
-        }
+        const bearerToken = mvvLegit.#getBearer()
+//  TODO allow for disable and pause.  Verify that base URI is within the scope of that in conf
+        if( !options.headers ) options.headers = {}  //  Initialize headers if not present
 
         // Convert Headers object to plain object if needed
         if (options.headers instanceof Headers) {
             const headersObj = {};
-            options.headers.forEach((value, key) => {
-                headersObj[key] = value;
-            });
+            options.headers.forEach((value, key) => { headersObj[key] = value; });
             options.headers = headersObj;
         }
 
         // Add Authorization header with bearer token
-        options.headers['Authorization'] = `Bearer ${bearerToken}`;
+        if( bearerToken ) options.headers['Authorization'] = `Bearer ${bearerToken}`;
 
         // Call original fetch with modified options
         return originalFetch(url, options).then(response => {
             // Check for unauthorized status (401)
             if( response.status === 401 || response.status === 403 ) {
-                alert('Unauthorized: Your session has expired or authentication failed. Please log in again.');
+                console.log('Unauthorized: Your session has expired or authentication failed. Please log in again.');
+                mvvLegit.doSignout()
             }
             return response;
         });
