@@ -959,7 +959,7 @@ class mvvLegit {  //  Are you, you?
       mvvLegit._d = document; mvvLegit.bIsInit = false; mvvLegit.bIsPause = false;
       mvvLegit.#conf = {
           "LSKEY": "mvv",
-          "BASE": "https://streamsyncengage-saas.onrender.com/sse/v5/appCorrespondence"
+          "BASE": "https://streamsyncengage-saas.onrender.com"
       }
       mvvLegit.fSetNavConroller = mvvLegit.fSetOnState = null
       mvvLegit.#states = Object.freeze({
@@ -983,34 +983,66 @@ class mvvLegit {  //  Are you, you?
           { "token":"offline_route",    "states":[0,1,2,3,4] },  //  No Network
       ]
   }
-  static init(){
-      if( !this.bIsInit ){  //  once
-        this.bIsInit = true
-//this.#setTJO( {"ts": new Date(), "state": 2, "token": "9" } )
-
-
-        mvvLegit.#changeState( mvvLegit.#states.UNKNOWN )
-        mvvLegit.#navRoute( "splash_route" )
-        const oTJO = mvvLegit.#getTJO()
-        if( oTJO?.state ){
-          switch( oTJO.state ){
-            case 2:  //  UNVERF
-            case 3:  //  UNKYC - not supported
-              mvvLegit.#changeState( mvvLegit.#states.UNVERF )
-              mvvLegit.#navRoute( "verf_link_route" )
-            break;
-            case 4:  //  AUTH
-              mvvLegit.#changeState( mvvLegit.#states.AUTH )
-              mvvLegit.#navRoute( "home_route" )
-            break;
-          }
-
-        }else{
-          mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
-          mvvLegit.#navRoute( "signin_route" )
+  static init( oCust = mvvLegit.#conf ){
+    mvvLegit.#conf = Object.assign( mvvLegit.#conf, oCust )
+    if( !this.bIsInit ){  //  once
+      this.bIsInit = true
+      mvvLegit.#changeState( mvvLegit.#states.UNKNOWN )
+      mvvLegit.#navRoute( "splash_route" )
+      const oTJO = mvvLegit.#getTJO()
+      if( oTJO?.state ){
+        switch( oTJO.state ){
+          case 2:  //  UNVERF
+          case 3:  //  UNKYC - not supported
+            mvvLegit.#changeState( mvvLegit.#states.UNVERF )
+            mvvLegit.#navRoute( "verf_link_route" )
+          break;
+          case 4:  //  AUTH - TODO Ping
+            mvvLegit.#changeState( mvvLegit.#states.AUTH )
+            mvvLegit.#navRoute( "home_route" )
+          break;
         }
+      }else{
+        mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
+        mvvLegit.#navRoute( "signin_route" )
       }
-      return this
+      mvvLegit.#overFetch()
+    }
+    return this
+  }
+  static #overFetch(){
+    const originalFetch = window.fetch;
+
+    window.fetch = function(url, options = {}) {
+        // Get bearer token from storage or a config variable
+        const bearerToken = 99999; //localStorage.getItem('bearerToken') || 'YOUR_TOKEN_HERE';
+console.log("~~~~~~~ fetch url ~~~~~~~~~ | " , url)
+        // Initialize headers if not present
+        if (!options.headers) {
+            options.headers = {};
+        }
+
+        // Convert Headers object to plain object if needed
+        if (options.headers instanceof Headers) {
+            const headersObj = {};
+            options.headers.forEach((value, key) => {
+                headersObj[key] = value;
+            });
+            options.headers = headersObj;
+        }
+
+        // Add Authorization header with bearer token
+        options.headers['Authorization'] = `Bearer ${bearerToken}`;
+
+        // Call original fetch with modified options
+        return originalFetch(url, options).then(response => {
+            // Check for unauthorized status (401)
+            if (response.status === 401) {
+                alert('Unauthorized: Your session has expired or authentication failed. Please log in again.');
+            }
+            return response;
+        });
+    };
   }
   static doSignin( tkn=null ){  //  Set signin state
       if( this.bIsInit && tkn ){

@@ -85,11 +85,49 @@ window.addEventListener('DOMContentLoaded', ( ev ) => {  //  Create Wiki Recipe
                     if( neodigmOpt.ROOT ) neodigmOpt.ROOT.dataset.mvvLegit = state                    
                 }
             } )
-            .init();
-            neodigmCarousel.setOnBeforeNav( ( oNav )=>{ console.log("~~~~ oNav |" , oNav ); return mvvLegit.isRouteAllowed( oNav?.nav ); })
+            .init( { "newconf":"whatever" });
+            neodigmCarousel.setOnBeforeNav( ( oNav )=>{ console.log("~~~~ Route Guard |" , oNav ); return mvvLegit.isRouteAllowed( oNav?.nav ); })
         }        
     }, 2e3)
 });
+</script>
+
+<script>
+// Overload native fetch to add bearer token to all requests
+(function() {
+    const originalFetch = window.fetch;
+
+    window.fetch = function(url, options = {}) {
+        // Get bearer token from storage or a config variable
+        const bearerToken = localStorage.getItem('bearerToken') || 'YOUR_TOKEN_HERE';
+
+        // Initialize headers if not present
+        if (!options.headers) {
+            options.headers = {};
+        }
+
+        // Convert Headers object to plain object if needed
+        if (options.headers instanceof Headers) {
+            const headersObj = {};
+            options.headers.forEach((value, key) => {
+                headersObj[key] = value;
+            });
+            options.headers = headersObj;
+        }
+
+        // Add Authorization header with bearer token
+        options.headers['Authorization'] = `Bearer ${bearerToken}`;
+
+        // Call original fetch with modified options
+        return originalFetch(url, options).then(response => {
+            // Check for unauthorized status (401)
+            if (response.status === 401) {
+                alert('Unauthorized: Your session has expired or authentication failed. Please log in again.');
+            }
+            return response;
+        });
+    };
+})();
 </script>
 
 </body>
