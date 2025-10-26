@@ -1037,7 +1037,7 @@ console.log("~~~~~~~ fetch url ~~~~~~~~~ | " , url)
         // Call original fetch with modified options
         return originalFetch(url, options).then(response => {
             // Check for unauthorized status (401)
-            if (response.status === 401) {
+            if( response.status === 401 || response.status === 403 ) {
                 alert('Unauthorized: Your session has expired or authentication failed. Please log in again.');
             }
             return response;
