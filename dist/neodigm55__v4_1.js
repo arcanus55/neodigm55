@@ -1030,12 +1030,9 @@ class mvvLegit {  //  Are you, you?
             options.headers.forEach((value, key) => { headersObj[key] = value; });
             options.headers = headersObj;
         }
-
-        // Add Authorization header with bearer token
         if( url.toUpperCase().indexOf( mvvLegit.#conf.BASE.toUpperCase() ) != -1 ){  //  Verify that base URI is within the scope of that in conf
-          if( bearerToken ) options.headers['Authorization'] = `Bearer ${bearerToken}`;
+          if( bearerToken ) options.headers['Authorization'] = `Bearer ${bearerToken}`  // Add Authorization header with bearer token
         }
-
         // Call original fetch with modified options
         return originalFetch(url, options).then(response => {
             // Check for unauthorized status (401)
@@ -1046,6 +1043,14 @@ class mvvLegit {  //  Are you, you?
             return response;
         });
     };
+  }
+  static doUNVERF( tkn=null ){  //  Set UNVERF state
+      if( this.bIsInit && tkn ){
+        mvvLegit.#changeState( mvvLegit.#states.UNVERF )
+        mvvLegit.#setTJO( { "state": mvvLegit.#state, "ts": new Date(), "token": "" } )
+        mvvLegit.#navRoute( "verf_link_route" )
+      }
+      return this
   }
   static doSignin( tkn=null ){  //  Set signin state
       if( this.bIsInit && tkn ){
