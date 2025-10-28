@@ -1019,9 +1019,9 @@ class mvvLegit {  //  Are you, you?
   static #overFetch(){
     const originalFetch = window.fetch;
 
-    window.fetch = function(url, options = {}) {
+    window.fetch = function( url, options = {} ) {
         const bearerToken = mvvLegit.#getBearer()
-//  TODO allow for disable and pause.  Verify that base URI is within the scope of that in conf
+//  TODO allow for disable and pause.  
         if( !options.headers ) options.headers = {}  //  Initialize headers if not present
 
         // Convert Headers object to plain object if needed
@@ -1032,7 +1032,9 @@ class mvvLegit {  //  Are you, you?
         }
 
         // Add Authorization header with bearer token
-        if( bearerToken ) options.headers['Authorization'] = `Bearer ${bearerToken}`;
+        if( url.toUpperCase().indexOf( mvvLegit.#conf.BASE.toUpperCase() ) != -1 ){  //  Verify that base URI is within the scope of that in conf
+          if( bearerToken ) options.headers['Authorization'] = `Bearer ${bearerToken}`;
+        }
 
         // Call original fetch with modified options
         return originalFetch(url, options).then(response => {
