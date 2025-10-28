@@ -1044,8 +1044,8 @@ class mvvLegit {  //  Are you, you?
         });
     };
   }
-  static doUNVERF( tkn=null ){  //  Set UNVERF state
-      if( this.bIsInit && tkn ){
+  static doUNVERF(){  //  Set UNVERF state
+      if( this.bIsInit ){
         mvvLegit.#changeState( mvvLegit.#states.UNVERF )
         mvvLegit.#setTJO( { "state": mvvLegit.#state, "ts": new Date(), "token": "" } )
         mvvLegit.#navRoute( "verf_link_route" )
