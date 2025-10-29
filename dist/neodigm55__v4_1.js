@@ -973,6 +973,7 @@ class mvvLegit {  //  Are you, you?
 
       mvvLegit.routes = [
           { "token":"error_route",      "states":[0,1,2,3,4] },  //  An unexpected error occurred
+          { "token":"forgot_route",     "states":[1] },  //  
           { "token":"home_route",       "states":[4] },  // 🔒 | Home Page | View Correspondence and API Meter
           { "token":"resethash_route",  "states":[4] },  // 🔒 | An email has been sent to your address, please open that email and click on the verification link.
           { "token":"signin_route",     "states":[1,2] },  //  Sign In
