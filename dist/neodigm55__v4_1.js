@@ -975,7 +975,7 @@ class mvvLegit {  //  Are you, you?
           { "token":"error_route",      "states":[0,1,2,3,4] },  //  An unexpected error occurred
           { "token":"home_route",       "states":[4] },  // 🔒 | Home Page | View Correspondence and API Meter
           { "token":"resethash_route",  "states":[4] },  // 🔒 | An email has been sent to your address, please open that email and click on the verification link.
-          { "token":"signin_route",     "states":[1] },  //  Sign In
+          { "token":"signin_route",     "states":[1,2] },  //  Sign In
           { "token":"signout_route",    "states":[4] },  // 🔒 | Sign Out
           { "token":"signup_route",     "states":[1] },  // Sign Up | Create an Account
           { "token":"splash_route",     "states":[0,1,2,3,4] },  // Loading ... (pre-auth)
