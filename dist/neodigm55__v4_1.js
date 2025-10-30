@@ -968,20 +968,22 @@ class mvvLegit {  //  Are you, you?
           "UNVERF": 2,
           "UNKYC": 3,
           "AUTH": 4,
+          "FORGOT": 5
       })
       mvvLegit.#state = mvvLegit.#states.UNKNOWN
 
       mvvLegit.routes = [
-          { "token":"error_route",      "states":[0,1,2,3,4] },  //  An unexpected error occurred
+          { "token":"error_route",      "states":[0,1,2,3,4,5] },  //  An unexpected error occurred
           { "token":"forgot_route",     "states":[1] },  //  
           { "token":"home_route",       "states":[4] },  // 🔒 | Home Page | View Correspondence and API Meter
+          { "token":"resetforgot_route","states":[5] },  // 🔒 | An email has been sent to your address, please open that email and click on the verification link.
           { "token":"resethash_route",  "states":[4] },  // 🔒 | An email has been sent to your address, please open that email and click on the verification link.
-          { "token":"signin_route",     "states":[1,2] },  //  Sign In
+          { "token":"signin_route",     "states":[1,2,5] },  //  Sign In
           { "token":"signout_route",    "states":[4] },  // 🔒 | Sign Out
           { "token":"signup_route",     "states":[1] },  // Sign Up | Create an Account
-          { "token":"splash_route",     "states":[0,1,2,3,4] },  // Loading ... (pre-auth)
+          { "token":"splash_route",     "states":[0,1,2,3,4,5] },  // Loading ... (pre-auth)
           { "token":"verf_link_route",  "states":[2,3] },  //  Timer, Resend, Change Email
-          { "token":"offline_route",    "states":[0,1,2,3,4] },  //  No Network
+          { "token":"offline_route",    "states":[0,1,2,3,4,5] },  //  No Network
       ]
   }
   static init( oCust = mvvLegit.#conf ){
