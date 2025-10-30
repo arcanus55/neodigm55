@@ -1080,6 +1080,7 @@ class mvvLegit {  //  Are you, you?
   static isRouteAllowed( rtkn=null ){  //  Return false if cur state is not in routes states - pre nav
       if( this.bIsInit && rtkn ){
         let oRt = mvvLegit.routes.filter( ( rt )=>{ return ( rt.token == rtkn ) } )[0]
+        if( !oRt || !Array.isArray( oRt ) ) return true
         return oRt.states.includes( mvvLegit.#state )
       }
       return false
