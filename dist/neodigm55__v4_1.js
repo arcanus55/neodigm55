@@ -992,11 +992,13 @@ class mvvLegit {  //  Are you, you?
       mvvLegit.#navRoute( "splash_route" )
       const oTJO = mvvLegit.#getTJO()
       if( oTJO?.state ){
+  console.log("~-- mvv 'Q' | " , 'Q')
+  console.log("~-- mvv oTJO.state | " , oTJO.state)        
         switch( oTJO.state ){
           case 2:  //  UNVERF
           case 3:  //  UNKYC - not supported
             mvvLegit.#changeState( mvvLegit.#states.UNVERF )
-            mvvLegit.#navRoute( "verf_link_route" )
+            mvvLegit.#navRoute( "resethash_route" )
           break;
           case 4:  //  AUTH - TODO Ping
             mvvLegit.#changeState( mvvLegit.#states.AUTH )
