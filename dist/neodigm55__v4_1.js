@@ -1006,6 +1006,10 @@ class mvvLegit {  //  Are you, you?
             mvvLegit.#changeState( mvvLegit.#states.AUTH )
             mvvLegit.#navRoute( "home_route" )
           break;
+          case 5:  //  FORGOT Form
+            mvvLegit.#changeState( mvvLegit.#states.FORGOT )
+            mvvLegit.#navRoute( "resetforgot_route" )
+          break;
         }
       }else{
         mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
