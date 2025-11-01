@@ -1055,7 +1055,6 @@ class mvvLegit {  //  Are you, you?
       if( this.bIsInit ){
         mvvLegit.#changeState( mvvLegit.#states.UNAUTH )  //  I think this should be unauth, because on reload go to signin
         mvvLegit.#setTJO( { "state": mvvLegit.#state, "ts": new Date(), "token": "" } )
-  console.log("~-- mvv 'Q' | " , 'I think this should be unauth, because on reload go to signin')
         mvvLegit.#navRoute( "verf_link_route" ) 
       }
       return this
