@@ -994,20 +994,18 @@ class mvvLegit {  //  Are you, you?
       mvvLegit.#navRoute( "splash_route" )
       const oTJO = mvvLegit.#getTJO()
       if( oTJO?.state ){
+            mvvLegit.#changeState( oTJO?.state )
   console.log("~-- mvv 'Q' | " , 'Q')
   console.log("~-- mvv oTJO.state | " , oTJO.state)        
         switch( oTJO.state ){
           case 2:  //  UNVERF
           case 3:  //  UNKYC - not supported
-            mvvLegit.#changeState( mvvLegit.#states.UNVERF )
             mvvLegit.#navRoute( "resethash_route" )
           break;
           case 4:  //  AUTH - TODO Ping
-            mvvLegit.#changeState( mvvLegit.#states.AUTH )
             mvvLegit.#navRoute( "home_route" )
           break;
           case 5:  //  FORGOT Form
-            mvvLegit.#changeState( mvvLegit.#states.FORGOT )
             mvvLegit.#navRoute( "resetforgot_route" )
           break;
         }
@@ -1055,7 +1053,7 @@ class mvvLegit {  //  Are you, you?
   }
   static doUNVERF(){  //  Set UNVERF state
       if( this.bIsInit ){
-        mvvLegit.#changeState( mvvLegit.#states.UNVERF )
+        mvvLegit.#changeState( mvvLegit.#states.UNAUTH )  //  I think this should be unauth, because on reload go to signin
         mvvLegit.#setTJO( { "state": mvvLegit.#state, "ts": new Date(), "token": "" } )
         mvvLegit.#navRoute( "verf_link_route" )
       }
