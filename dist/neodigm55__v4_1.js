@@ -1115,6 +1115,17 @@ class mvvLegit {  //  Are you, you?
       }
       return oLS
   }
+  static showTJO(){
+      let oLS = ""
+      if( this.bIsInit ){
+          oLS = localStorage.getItem( this.#conf.LSKEY )
+          if( oLS && LZString  ){
+              oLS = JSON.parse( LZString.decompressFromUTF16(  oLS ) ) 
+              if( neodigmOpt.N55_DEBUG_lOG ) console.warn( "~mvvLegit getTJO | " , oLS )
+          }
+      }
+      console.warn( "~- LS | " ,oLS ) 
+  }
   static setNavConroller( _f ){ this.fSetNavConroller = _f; return this; } 
   static setOnState( _f ){ this.fSetOnState = _f; return this; } 
 }
