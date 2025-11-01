@@ -982,7 +982,7 @@ class mvvLegit {  //  Are you, you?
           { "token":"signout_route",    "states":[4] },  // 🔒 | Sign Out
           { "token":"signup_route",     "states":[1] },  // Sign Up | Create an Account
           { "token":"splash_route",     "states":[0,1,2,3,4,5] },  // Loading ... (pre-auth)
-          { "token":"verf_link_route",  "states":[2,3] },  //  Timer, Resend, Change Email
+          { "token":"verf_link_route",  "states":[1,2,3] },  //  Timer, Resend, Change Email
           { "token":"offline_route",    "states":[0,1,2,3,4,5] },  //  No Network
       ]
   }
@@ -1055,7 +1055,8 @@ class mvvLegit {  //  Are you, you?
       if( this.bIsInit ){
         mvvLegit.#changeState( mvvLegit.#states.UNAUTH )  //  I think this should be unauth, because on reload go to signin
         mvvLegit.#setTJO( { "state": mvvLegit.#state, "ts": new Date(), "token": "" } )
-        mvvLegit.#navRoute( "verf_link_route" )
+  console.log("~-- mvv 'Q' | " , 'I think this should be unauth, because on reload go to signin')
+        mvvLegit.#navRoute( "verf_link_route" ) 
       }
       return this
   }
