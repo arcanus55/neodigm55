@@ -994,9 +994,7 @@ class mvvLegit {  //  Are you, you?
       mvvLegit.#navRoute( "splash_route" )
       const oTJO = mvvLegit.#getTJO()
       if( oTJO?.state ){
-            mvvLegit.#changeState( oTJO?.state )
-  console.log("~-- mvv 'Q' | " , 'Q')
-  console.log("~-- mvv oTJO.state | " , oTJO.state)        
+        mvvLegit.#changeState( oTJO?.state )
         switch( oTJO.state ){
           case 2:  //  UNVERF
           case 3:  //  UNKYC - not supported
@@ -1071,7 +1069,8 @@ class mvvLegit {  //  Are you, you?
       if( this.bIsInit ){
         mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
         mvvLegit.#setTJO( null )
-        mvvLegit.#navRoute( "signin_route" )
+        neodigmUtils.hardReload()
+        //mvvLegit.#navRoute( "signin_route" )
       }
       return this
   }
