@@ -1069,7 +1069,7 @@ class mvvLegit {  //  Are you, you?
       if( this.bIsInit ){
         mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
         mvvLegit.#setTJO( null )
-        neodigmUtils.hardReload()
+        //neodigmUtils.hardReload()
         //mvvLegit.#navRoute( "signin_route" )
       }
       return this
@@ -1796,7 +1796,6 @@ class NeodigmCarousel {
     }
   }
   play (){ this.bIsPause = false; return this; }
-  fOnBeforeNav
   setOnBeforeNav ( _f, id="def", pg="" ){ this.fOnBeforeNav = _f; return this; } 
   setOnAfterNav ( _f, id="def", pg="" ){ this.fOnAfterNav[ ( pg )?(id + "_" + pg):id ] = _f; return this; } 
   setTheme ( sTheme, sId ){
