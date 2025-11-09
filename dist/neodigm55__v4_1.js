@@ -30,7 +30,7 @@ let neodigmOpt = {
   neodigmPWA: true,  N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
   neodigmCarousel: true,  N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
     N55_CARO_BLUR: true,  //  Carousel transition blur / opacity fx
-    N55_CARO_BLUR_OUT: true,  //  Carousel transition blur / Quick Destination opacity 0
+    N55_CARO_BLUR_OUT: false,  //  Carousel transition blur / Quick Destination opacity 0
 neodigmTulip: true,
 neodigmPopTart: true,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
 neodigmAgent: true,
