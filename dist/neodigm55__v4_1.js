@@ -52,6 +52,7 @@ neodigmMetronome: {"countTo": 116, "neodigmMarquee": 132},  //  soft code unq nu
   ROOT: document.querySelector(':root'),
   N55_TYPE: "https://fonts.googleapis.com/css?family=Roboto+Condensed:wght@100;300;400|Roboto+Slab:wght@300|Roboto+Mono:wght@300|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0",
 mvvLegit: false,
+  MVV_SPLASH_DELAY: 3200,
 }
 
 if( typeof neodigmOptCustom != 'undefined' ){
@@ -1012,7 +1013,7 @@ class mvvLegit {  //  Are you, you?
         setTimeout( ()=>{
           mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
           mvvLegit.#navRoute( "signin_route" )
-        }, 2e3 )
+        }, neodigmOpt.MVV_SPLASH_DELAY )
 
       }
       mvvLegit.#overFetch()
