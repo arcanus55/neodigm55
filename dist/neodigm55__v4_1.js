@@ -1783,6 +1783,30 @@ class NeodigmCarousel {
             }else{ if( neodigmOpt.N55_CARO_BLUR ) elNCCntr.parentElement.classList.add("n55-caro__blur") }
             elNC.parentElement.scrollTop = 0;
             elNCCntr.style.marginLeft = ( nSP ) - ( nSP * 2 ) + "px"
+
+            // Dynamic height control based on active page
+            let activePage = oState.aTabCntr[ (oState.nIdx - 1) ];
+            let heightMode = activePage.dataset?.n55CarouselHeight;
+            if (heightMode === 'viewport') {
+                // Viewport mode: 100vh, no centering
+                elNCCntr.style.minHeight = '100vh';
+                elNCCntr.style.maxHeight = '100vh';
+                elNCCntr.style.alignContent = 'start';
+                elNCCntr.style.padding = '0';
+                elNCCntr.style.gap = '0';
+            } else if (heightMode === 'auto') {
+                // Auto mode: natural height
+                elNCCntr.style.minHeight = 'auto';
+                elNCCntr.style.maxHeight = 'none';
+                elNCCntr.style.alignContent = 'start';
+            } else {
+                // Default: restore original grid centering
+                elNCCntr.style.minHeight = '';
+                elNCCntr.style.maxHeight = '';
+                elNCCntr.style.alignContent = 'center';
+                elNCCntr.style.padding = '8px';
+                elNCCntr.style.gap = '8px';
+            }
             if( bFireCB ){
               let sPg = oState.aTabCntr[ (oState.nIdx - 1) ].dataset?.n55CarouselPageName
               if( neodigmOpt.N55_DEBUG_lOG ) console.table( this.fOnAfterNav )
