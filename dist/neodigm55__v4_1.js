@@ -997,24 +997,25 @@ class mvvLegit {  //  Are you, you?
       const oTJO = mvvLegit.#getTJO()
       if( oTJO?.state ){
         mvvLegit.#changeState( oTJO?.state )
+        let targetRoute = "signin_route"
         switch( oTJO.state ){
           case 2:  //  UNVERF
           case 3:  //  UNKYC - not supported
-            mvvLegit.#navRoute( "resethash_route" )
+            targetRoute = "resethash_route"
           break;
           case 4:  //  AUTH - TODO Ping
-            mvvLegit.#navRoute( "home_route" )
+            targetRoute = "home_route"
           break;
           case 5:  //  FORGOT Form
-            mvvLegit.#navRoute( "resetforgot_route" )
+            targetRoute = "resetforgot_route"
           break;
         }
+        setTimeout( ()=>{ mvvLegit.#navRoute( targetRoute ) }, neodigmOpt.MVV_SPLASH_DELAY )
       }else{
         setTimeout( ()=>{
           mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
-          mvvLegit.#navRoute( "signin_route" )
+          mvvLegit.#navRoute( targetRoute )
         }, neodigmOpt.MVV_SPLASH_DELAY )
-
       }
       mvvLegit.#overFetch()
     }
