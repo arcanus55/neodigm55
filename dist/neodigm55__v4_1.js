@@ -995,9 +995,9 @@ class mvvLegit {  //  Are you, you?
       mvvLegit.#changeState( mvvLegit.#states.UNKNOWN )
       mvvLegit.#navRoute( "splash_route" )
       const oTJO = mvvLegit.#getTJO()
+      let targetRoute = "signin_route"
       if( oTJO?.state ){
         mvvLegit.#changeState( oTJO?.state )
-        let targetRoute = "signin_route"
         switch( oTJO.state ){
           case 2:  //  UNVERF
           case 3:  //  UNKYC - not supported
@@ -1075,7 +1075,7 @@ class mvvLegit {  //  Are you, you?
       if( this.bIsInit ){
         mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
         mvvLegit.#setTJO( null )
-        //neodigmUtils.hardReload()
+        neodigmUtils.hardReload()
         //mvvLegit.#navRoute( "signin_route" )
       }
       return this
