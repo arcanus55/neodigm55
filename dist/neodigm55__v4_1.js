@@ -1009,8 +1009,11 @@ class mvvLegit {  //  Are you, you?
           break;
         }
       }else{
-        mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
-        mvvLegit.#navRoute( "signin_route" )
+        setTimeout( ()=>{
+          mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
+          mvvLegit.#navRoute( "signin_route" )
+        }, 2e3 )
+
       }
       mvvLegit.#overFetch()
     }
