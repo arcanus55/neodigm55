@@ -30,6 +30,7 @@ let neodigmOpt = {
   neodigmPWA: true,  N55_PWA_TEMPLATE_ID: "js-pup-n55-pwa",
   neodigmCarousel: true,  N55_GTM_DL_CARSL: "n55_gtm_dl_carsl",
     N55_CARO_BLUR: true,  //  Carousel transition blur / opacity fx
+    N55_CARO_BLUR_OUT: true,  //  Carousel transition blur / Quick Destination opacity 0
 neodigmTulip: true,
 neodigmPopTart: true,  N55_GTM_DL_POPTRT: "n55_gtm_dl_poptrt",
 neodigmAgent: true,
@@ -1773,7 +1774,9 @@ class NeodigmCarousel {
                 if( ( oNav.nav >= 1 ) && ( oNav.nav < (oState.aTabCntr.length + 1) ) ) oState.nIdx = elNC.n55State.nIdx = oNav.nav
             }
             let nSP = ( oState.nIdx - 1 ) * oState.width  //  Scroll Position
-            if( neodigmOpt.N55_CARO_BLUR ) elNCCntr.parentElement.classList.add("n55-caro__blur")
+            if( neodigmOpt.N55_CARO_BLUR_OUT ){
+              elNCCntr.parentElement.classList.add("n55-caro__blur--out")
+            }else{ if( neodigmOpt.N55_CARO_BLUR ) elNCCntr.parentElement.classList.add("n55-caro__blur") }
             elNC.parentElement.scrollTop = 0;
             elNCCntr.style.marginLeft = ( nSP ) - ( nSP * 2 ) + "px"
             if( bFireCB ){
@@ -1784,7 +1787,9 @@ class NeodigmCarousel {
               if(this.fOnAfterNav[ elNC.id ]) this.fOnAfterNav[ elNC.id ]( elNC.id, oState.nIdx, sPg )  //  all pages within this Caro
               if(this.fOnAfterNav["def"]) this.fOnAfterNav["def"]( elNC.id, oState.nIdx, sPg )  //  all Caro
             }
-            if( neodigmOpt.N55_CARO_BLUR ) setTimeout( ()=>{ elNCCntr.parentElement.classList.remove("n55-caro__blur"); }, 860 ) 
+            if( neodigmOpt.N55_CARO_BLUR_OUT ){
+              setTimeout( ()=>{ elNCCntr.parentElement.classList.remove("n55-caro__blur--out"); }, 860 )
+            }else{ if( neodigmOpt.N55_CARO_BLUR ) setTimeout( ()=>{ elNCCntr.parentElement.classList.remove("n55-caro__blur"); }, 860 )  }
         }
     }  //  TODO datalayer
     return this;
