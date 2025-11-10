@@ -1075,8 +1075,8 @@ class mvvLegit {  //  Are you, you?
       if( this.bIsInit ){
         mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
         mvvLegit.#setTJO( null )
-        if( reload ) neodigmUtils.hardReload()
-        //mvvLegit.#navRoute( "signin_route" )
+        //if( reload ) neodigmUtils.hardReload()
+        mvvLegit.#navRoute( "splash_route" )
       }
       return this
   }
