@@ -1049,7 +1049,7 @@ class mvvLegit {  //  Are you, you?
             // Check for unauthorized status (401)
             if( response.status === 401 || response.status === 403 ) {
                 console.log('Unauthorized: Your session has expired or authentication failed. Please log in again.');
-                mvvLegit.doSignout( false )
+                if( mvvLegit.#state == mvvLegit.#states.AUTH ) mvvLegit.doSignout( false )
             }
             return response;
         });
