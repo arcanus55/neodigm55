@@ -974,19 +974,8 @@ class mvvLegit {  //  Are you, you?
       })
       mvvLegit.#state = mvvLegit.#states.UNKNOWN
 
-      mvvLegit.routes = [
-          { "token":"error_route",      "states":[0,1,2,3,4,5] },  //  An unexpected error occurred
-          { "token":"forgot_route",     "states":[1] },  //  
-          { "token":"home_route",       "states":[4] },  // 🔒 | Home Page | View Correspondence and API Meter
-          { "token":"resetforgot_route","states":[5] },  // 🔒 | An email has been sent to your address, please open that email and click on the verification link.
-          { "token":"resethash_route",  "states":[4] },  // 🔒 | An email has been sent to your address, please open that email and click on the verification link.
-          { "token":"signin_route",     "states":[1,2,5] },  //  Sign In
-          { "token":"signout_route",    "states":[4] },  // 🔒 | Sign Out
-          { "token":"signup_route",     "states":[1] },  // Sign Up | Create an Account
-          { "token":"splash_route",     "states":[0,1,2,3,4,5] },  // Loading ... (pre-auth)
-          { "token":"verf_link_route",  "states":[1,2,3] },  //  Timer, Resend, Change Email
-          { "token":"offline_route",    "states":[0,1,2,3,4,5] },  //  No Network
-      ]
+      mvvLegit.routes = JSON.parse( LZString.decompressFromUTF16( "᭣㰱|ྀ欥ᠮ昡㣧½櫚߲惎ः-డ丰ђṪ怠グᆤ䁬ሦグ֤䃌ÚÞጁ刁ዀ͖怮㊡ުბᥪ᪐疳͑ହ଱Ը+ᐠ存旋⑋⫷刏幈橸㩍㠱㏰ᕈᄱ汕๚ⅱ⯄䓳湭畒厲䲌䈊ݍᎫ僪᪮․姨ᆒࣩ㖛⛖坽䁉䢶ᤇ爰⨡⛲䢚❹愵䯈偗瀠ๅ惔䕾䯖弎⠈øኳǍሚፋλ䟮ࡐ䲸üᣲᲉ公࢕ṿ╺烵屬僲楃䉕䆘㺓兺埏⮥ɠ  " ) ) 
+      console.log( "~-- routes | " , mvvLegit.routes )
   }
   static init( oCust = mvvLegit.#conf ){
     mvvLegit.#conf = Object.assign( mvvLegit.#conf, oCust )
