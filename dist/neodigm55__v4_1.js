@@ -973,12 +973,13 @@ class mvvLegit {  //  Are you, you?
           "FORGOT": 5
       })
       mvvLegit.#state = mvvLegit.#states.UNKNOWN
+       mvvLegit.routes = Object.create( null )
 
-      mvvLegit.routes = JSON.parse( LZString.decompressFromUTF16( "᭣㰱|ྀ欥ᠮ昡㣧½櫚߲惎ः-డ丰ђṪ怠グᆤ䁬ሦグ֤䃌ÚÞጁ刁ዀ͖怮㊡ުბᥪ᪐疳͑ହ଱Ը+ᐠ存旋⑋⫷刏幈橸㩍㠱㏰ᕈᄱ汕๚ⅱ⯄䓳湭畒厲䲌䈊ݍᎫ僪᪮․姨ᆒࣩ㖛⛖坽䁉䢶ᤇ爰⨡⛲䢚❹愵䯈偗瀠ๅ惔䕾䯖弎⠈øኳǍሚፋλ䟮ࡐ䲸üᣲᲉ公࢕ṿ╺烵屬僲楃䉕䆘㺓兺埏⮥ɠ  " ) ) 
-      console.log( "~-- routes | " , mvvLegit.routes )
   }
   static init( oCust = mvvLegit.#conf ){
     mvvLegit.#conf = Object.assign( mvvLegit.#conf, oCust )
+    mvvLegit.routes = JSON.parse( LZString.decompressFromUTF16( "᭣㰱|ྀ欥ᠮ昡㣧½櫚߲惎ः-డ丰ђṪ怠グᆤ䁬ሦグ֤䃌ÚÞጁ刁ዀ͖怮㊡ުბᥪ᪐疳͑ହ଱Ը+ᐠ存旋⑋⫷刏幈橸㩍㠱㏰ᕈᄱ汕๚ⅱ⯄䓳湭畒厲䲌䈊ݍᎫ僪᪮․姨ᆒࣩ㖛⛖坽䁉䢶ᤇ爰⨡⛲䢚❹愵䯈偗瀠ๅ惔䕾䯖弎⠈øኳǍሚፋλ䟮ࡐ䲸üᣲᲉ公࢕ṿ╺烵屬僲楃䉕䆘㺓兺埏⮥ɠ  " ) ) 
+    console.log( "~-- routes | " , mvvLegit.routes )
     if( !this.bIsInit ){  //  once
       this.bIsInit = true
       mvvLegit.#changeState( mvvLegit.#states.UNKNOWN )
