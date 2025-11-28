@@ -1242,9 +1242,25 @@ const neodigmMetronome = ( () =>{
 const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
     let aMarqs = [];
     let bIsInit = bIsPause = bLTR = false
+
+    // Helper function to search both light DOM and shadow DOMs
+    const querySelectorAllDeep = (selector) => {
+      const elements = [];
+      const collect = (root) => {
+        elements.push(...root.querySelectorAll(selector));
+        root.querySelectorAll('*').forEach(el => {
+          if (el.shadowRoot) {
+            collect(el.shadowRoot);
+          }
+        });
+      };
+      collect(_d);
+      return elements;
+    };
+
     return {
       init: function(){
-        aMarqs = [ ... _d.querySelectorAll( _aQ[0] )]
+        aMarqs = querySelectorAllDeep( _aQ[0] )
         aMarqs.forEach( ( eMc )=>{
             eMc.eMp = eMc.querySelector("pre")
             if( eMc.dataset.n55MarqueeDirection !== "false"){
