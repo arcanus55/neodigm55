@@ -1,5 +1,5 @@
 /*
-Neodigm 55 v4.0.0 the eclectic low-code UX micro-library ✨
+Neodigm 55 v4.1.0 the eclectic low-code UX micro-library ✨
 Copyright (c) 2021-2032, Arcanus 55 Privacy Paranoid Vault | Forged by Scott C. Krause and talented team
 
 The lightweight web components come together in a unique way that makes your website playful, fun, and bounce resistant.
@@ -407,7 +407,7 @@ class NeodigmSodaPop {
             this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].appendChild( this.eSoda )
 
             if( neodigmOpt.neodigmWired4Sound ) neodigmWired4Sound.doHaptic([16, 8])
-            if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7, "QUITE" )
+            //if(neodigmOpt.neodigmWired4Sound && neodigmOpt.EVENT_SOUNDS) neodigmWired4Sound.sound( 7, "QUITE" )
             this.bIsFS = ( this.eTmpl.dataset.n55SodapopFullscreen == "true" && neodigmOpt.N55_APP_STATE.FIRST_TAP )
             if( this.bIsFS ){
                 this._d.body.requestFullscreen().catch(( e )=>{
