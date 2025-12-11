@@ -64,7 +64,7 @@ if( typeof neodigmOptCustom != 'undefined' ){
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
-    ver: "4.1.a",  //  Neodigm 55 version
+    ver: "4.1.b",  //  Neodigm 55 version
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
@@ -1407,9 +1407,25 @@ data-n55-claire-click - confetti
         this.bIsInit = true
         return this
     }
+    static _querySelector( sQ ){
+      // Try regular DOM first (backward compatibility)
+      let el = this._d.querySelector( sQ )
+      if( el ) return el
+
+      // Fallback: search in Shadow DOM
+      const allHosts = this._d.querySelectorAll('*')
+      for( const host of allHosts ){
+        if( host.shadowRoot ){
+          el = host.shadowRoot.querySelector( sQ )
+          if( el ) return el
+        }
+      }
+
+      return null
+    }
     static showCanv ( sQ, nOpc=1 ){
       if( this.bIsInit && !this.bIsPause ){
-        let canvCntr = this._d.querySelector( sQ )  //  One Single
+        let canvCntr = this._querySelector( sQ )  //  One Single
         let aElCanv = [ ... canvCntr.querySelectorAll( ":scope > *" )]  //  1st decendants
         if( canvCntr && aElCanv ){
           canvCntr.dataset.n55Claire = "true"
@@ -1431,14 +1447,14 @@ data-n55-claire-click - confetti
     }
     static hideCanv ( sQ ){
       if( this.bIsInit && !this.bIsPause ){
-        let canvCntr = this._d.querySelector( sQ )  //  One Single
+        let canvCntr = this._querySelector( sQ )  //  One Single
         if( canvCntr && canvCntr.aElCanv ) canvCntr.dataset.n55Claire = "false"
       }
       return this
     }
     static initCanvOn( sQ ){  //  Cover Canvas with Themed Rect
       if( this.bIsInit && !this.bIsPause ){
-        let canvCntr = this._d.querySelector( sQ )  //  One Single
+        let canvCntr = this._querySelector( sQ )  //  One Single
         if( canvCntr && canvCntr?.aElCanv ){
           canvCntr.aElCanv.forEach(function( aCnv ){
             let ctx = aCnv[1]
@@ -1455,7 +1471,7 @@ data-n55-claire-click - confetti
     }
     static initCanvOff ( sQ ){  //  Cover Canvas with Themed Rect
       if( this.bIsInit && !this.bIsPause ){
-        let canvCntr = this._d.querySelector( sQ )  //  One Single
+        let canvCntr = this._querySelector( sQ )  //  One Single
         if( canvCntr && canvCntr?.aElCanv ){
           canvCntr.aElCanv.forEach(function( aCnv ){
             let ctx = aCnv[1]
@@ -1476,7 +1492,7 @@ data-n55-claire-click - confetti
     }
     static waxOn( sQ ){
       if( this.bIsInit && !this.bIsPause ){
-        let canvCntr = this._d.querySelector( sQ )  //  One Single
+        let canvCntr = this._querySelector( sQ )  //  One Single
         if( canvCntr ){
           NeodigmClaire.aAtoms = []
           canvCntr.aElCanv.forEach(function( elChild, cnvIdx ){
@@ -1491,7 +1507,7 @@ data-n55-claire-click - confetti
     }
     static waxOff( sQ ){
       if( this.bIsInit && !this.bIsPause ){
-        let canvCntr = this._d.querySelector( sQ )  //  One Single
+        let canvCntr = this._querySelector( sQ )  //  One Single
         if( canvCntr ){
           NeodigmClaire.aAtoms = []
           canvCntr.aElCanv.forEach(function( elChild, cnvIdx ){
@@ -1507,7 +1523,7 @@ data-n55-claire-click - confetti
     static doConfetti( sQ, theme="random", nOpc=1 ){
       this.showCanv( sQ, nOpc ).setTheme( theme ).initCanvOff( sQ )
       if( this.bIsInit && !this.bIsPause ){
-        let canvCntr = this._d.querySelector( sQ )  //  One Single
+        let canvCntr = this._querySelector( sQ )  //  One Single
         if( canvCntr ){
           NeodigmClaire.aAtoms = []
           canvCntr.aElCanv.forEach(function( elChild ){
