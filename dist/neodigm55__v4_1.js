@@ -64,7 +64,7 @@ if( typeof neodigmOptCustom != 'undefined' ){
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
-    ver: "4.1.b",  //  Neodigm 55 version
+    ver: "4.1.c",  //  Neodigm 55 version
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
@@ -1426,6 +1426,7 @@ data-n55-claire-click - confetti
     static showCanv ( sQ, nOpc=1 ){
       if( this.bIsInit && !this.bIsPause ){
         let canvCntr = this._querySelector( sQ )  //  One Single
+        if( !canvCntr ) return this  //  Element not found
         let aElCanv = [ ... canvCntr.querySelectorAll( ":scope > *" )]  //  1st decendants
         if( canvCntr && aElCanv ){
           canvCntr.dataset.n55Claire = "true"
@@ -1433,12 +1434,18 @@ data-n55-claire-click - confetti
             canvCntr.aElCanv = []
             aElCanv.forEach(function( el ){
               let cnv = document.createElement( "canvas" )
-              cnv.setAttribute("height", el.clientHeight)
-              cnv.setAttribute("width",  el.clientWidth)
-              cnv.style.height = el.clientHeight; cnv.style.width = el.clientWidth;
-              if( nOpc ) cnv.style.opacity = nOpc; 
+              // Use getBoundingClientRect for web components (works with Shadow DOM)
+              let rect = el.getBoundingClientRect()
+              let height = rect.height || el.clientHeight
+              let width = rect.width || el.clientWidth
+              cnv.setAttribute("height", height)
+              cnv.setAttribute("width", width)
+              cnv.style.height = height + "px"; cnv.style.width = width + "px";
+              cnv.style.position = "absolute"; cnv.style.top = "0"; cnv.style.left = "0";
+              cnv.style.pointerEvents = "none"; // Allow clicks through canvas
+              if( nOpc ) cnv.style.opacity = nOpc;
               el.appendChild( cnv )
-              canvCntr.aElCanv.push( [cnv, cnv.getContext("2d"), el.clientHeight, el.clientWidth] )
+              canvCntr.aElCanv.push( [cnv, cnv.getContext("2d"), height, width] )
           })
           }
         }
