@@ -207,7 +207,7 @@ const neodigmUtils = ( ( _d ) =>{
     },
     typeOff: async function( o ){
       let elTrg = document.querySelector( o?.q1st )
-      if( elTrg ){
+      if( elTrg ){  //  To Circumvent Hardcode Height
         let nInterv = elTrg.textContent.length
         let oSt = window.getComputedStyle( elTrg )
         let nPd = Number(oSt.paddingTop.replace("px", "")) + Number(oSt.paddingBottom.replace("px", ""))
@@ -1116,7 +1116,8 @@ class mvvLegit {  //  Are you, you?
               if( neodigmOpt.N55_DEBUG_lOG ) console.warn( "~mvvLegit getTJO | " , oLS )
           }
       }
-      console.warn( "~- LS | " ,oLS ) 
+      console.warn( "~- LS | " ,oLS )
+      if( oLS ) return oLS
   }
   static setNavConroller( _f ){ this.fSetNavConroller = _f; return this; } 
   static setOnState( _f ){ this.fSetOnState = _f; return this; } 
