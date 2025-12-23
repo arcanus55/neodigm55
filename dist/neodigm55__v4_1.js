@@ -1107,18 +1107,45 @@ class mvvLegit {  //  Are you, you?
       }
       return oLS
   }
-  static showTJO(){
-      let oLS = ""
-      if( this.bIsInit ){
-          oLS = localStorage.getItem( this.#conf.LSKEY )
-          if( oLS && LZString  ){
-              oLS = JSON.parse( LZString.decompressFromUTF16(  oLS ) ) 
-              if( neodigmOpt.N55_DEBUG_lOG ) console.warn( "~mvvLegit getTJO | " , oLS )
-          }
-      }
-      console.warn( "~- LS | " ,oLS )
-      if( oLS ) return oLS
-  }
+static showTJO(){
+    let oLS = ""
+    if( this.bIsInit ){
+        oLS = localStorage.getItem( this.#conf.LSKEY )
+        if( oLS && LZString  ){
+            oLS = JSON.parse( LZString.decompressFromUTF16(  oLS ) ) 
+            if( neodigmOpt.N55_DEBUG_lOG ) console.warn( "~mvvLegit getTJO | " , oLS )
+        }
+    }
+    console.warn( "~- LS | " ,oLS )
+    if( oLS && oLS.accessToken ){
+        navigator.clipboard.writeText(oLS.accessToken).then(() => {
+            console.log("✓ Token copied to clipboard");
+            if (typeof neodigmToast !== 'undefined') {
+                neodigmToast.q('Token copied to clipboard!', 'success', 2000);
+            }
+        }).catch(err => {
+            console.error("Clipboard API failed, using fallback:", err);
+            // Fallback for older browsers
+            try {
+                const textarea = document.createElement('textarea');
+                textarea.value = oLS.accessToken;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                console.log("✓ Token copied to clipboard (fallback)");
+                if (typeof neodigmToast !== 'undefined') {
+                    neodigmToast.q('Token copied to clipboard!', 'success', 2000);
+                }
+            } catch (fallbackErr) {
+                console.error("Failed to copy token:", fallbackErr);
+            }
+        });
+    }
+    if( oLS ) return oLS
+}
   static setNavConroller( _f ){ this.fSetNavConroller = _f; return this; } 
   static setOnState( _f ){ this.fSetOnState = _f; return this; } 
 }
