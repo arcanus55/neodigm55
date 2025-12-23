@@ -64,7 +64,7 @@ if( typeof neodigmOptCustom != 'undefined' ){
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
-    ver: "4.1.a",  //  Neodigm 55 version
+    ver: "4.1b",  //  Neodigm 55 version
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
@@ -1115,35 +1115,12 @@ static showTJO(){
             oLS = JSON.parse( LZString.decompressFromUTF16(  oLS ) ) 
             if( neodigmOpt.N55_DEBUG_lOG ) console.warn( "~mvvLegit getTJO | " , oLS )
         }
-    }
-    console.warn( "~- LS | " ,oLS )
-    if( oLS && oLS.accessToken ){
-        navigator.clipboard.writeText(oLS.accessToken).then(() => {
-            console.log("✓ Token copied to clipboard");
-            if (typeof neodigmToast !== 'undefined') {
-                neodigmToast.q('Token copied to clipboard!', 'success', 2000);
-            }
-        }).catch(err => {
-            console.error("Clipboard API failed, using fallback:", err);
-            // Fallback for older browsers
-            try {
-                const textarea = document.createElement('textarea');
-                textarea.value = oLS.accessToken;
-                textarea.style.position = 'fixed';
-                textarea.style.opacity = '0';
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                console.log("✓ Token copied to clipboard (fallback)");
-                if (typeof neodigmToast !== 'undefined') {
-                    neodigmToast.q('Token copied to clipboard!', 'success', 2000);
-                }
-            } catch (fallbackErr) {
-                console.error("Failed to copy token:", fallbackErr);
-            }
-        });
-    }
+      if( oLS && oLS.accessToken ){
+          navigator.clipboard.writeText(oLS.accessToken).then(() => {
+            neodigmToast.q('Token copied to clipboard!', 'success');
+          }).catch(err => { console.error("Failed to copy token:", err); });
+      }
+    }    
     if( oLS ) return oLS
 }
   static setNavConroller( _f ){ this.fSetNavConroller = _f; return this; } 
