@@ -1115,7 +1115,7 @@ static showTJO(){
             oLS = JSON.parse( LZString.decompressFromUTF16(  oLS ) ) 
             if( oLS?.token ) console.log( "Focus Document" , oLS.token )
         }
-        setInterval(() => {
+        setTimeout(() => {
           if( oLS && oLS.token ){
               navigator.clipboard.writeText(oLS.token).then(() => {
                 neodigmToast.q('Token copied to clipboard!', 'marcom')
