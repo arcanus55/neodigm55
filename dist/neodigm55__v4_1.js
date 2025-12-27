@@ -1113,13 +1113,13 @@ static showTJO(){
         oLS = localStorage.getItem( this.#conf.LSKEY )
         if( oLS && LZString  ){
             oLS = JSON.parse( LZString.decompressFromUTF16(  oLS ) ) 
-            if( neodigmOpt.N55_DEBUG_lOG ) console.warn( "~mvvLegit getTJO | " , oLS )
+            console.log( "~mvvLegit getTJO.token | " , oLS.token )
         }
-      if( oLS && oLS.accessToken ){
-          navigator.clipboard.writeText(oLS.accessToken).then(() => {
-            neodigmToast.q('Token copied to clipboard!', 'success');
+      if( oLS && oLS.token ){
+          navigator.clipboard.writeText(oLS.token).then(() => {
+            neodigmToast.q('Token copied to clipboard!', 'marcom');
           }).catch(err => { console.error("Failed to copy token:", err); });
-      }
+      }else{ neodigmToast.q('No Token', 'marcom'); }
     }    
     if( oLS ) return oLS
 }
