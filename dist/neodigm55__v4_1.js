@@ -1113,13 +1113,15 @@ static showTJO(){
         oLS = localStorage.getItem( this.#conf.LSKEY )
         if( oLS && LZString  ){
             oLS = JSON.parse( LZString.decompressFromUTF16(  oLS ) ) 
-            console.log( "~mvvLegit getTJO.token | " , oLS.token )
+            if( oLS?.token ) console.log( "Focus Document" , oLS.token )
         }
-      if( oLS && oLS.token ){
-          navigator.clipboard.writeText(oLS.token).then(() => {
-            neodigmToast.q('Token copied to clipboard!', 'marcom');
-          }).catch(err => { console.error("Failed to copy token:", err); });
-      }else{ neodigmToast.q('No Token', 'marcom'); }
+        setInterval(() => {
+          if( oLS && oLS.token ){
+              navigator.clipboard.writeText(oLS.token).then(() => {
+                neodigmToast.q('Token copied to clipboard!', 'marcom')
+              }).catch(err => { console.error("Failed to copy token:", err); })
+          }else{ neodigmToast.q('No Token', 'marcom'); }          
+        }, 1e3)
     }    
     if( oLS ) return oLS
 }
