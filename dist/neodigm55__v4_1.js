@@ -64,7 +64,7 @@ if( typeof neodigmOptCustom != 'undefined' ){
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
-    ver: "4.1b",  //  Neodigm 55 version
+    ver: "4.1c",  //  Neodigm 55 version
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
@@ -1032,6 +1032,7 @@ class mvvLegit {  //  Are you, you?
         }
         if( url.toUpperCase().indexOf( mvvLegit.#conf.BASE.toUpperCase() ) != -1 ){  //  Verify that base URI is within the scope of that in conf
           if( bearerToken ) options.headers['Authorization'] = `Bearer ${bearerToken}`  // Add Authorization header with bearer token
+          if( neodigmUtils ) options.headers['machvive'] = neodigmUtils?.ver || "Neodigm"
         }
         // Call original fetch with modified options
         return originalFetch(url, options).then(response => {

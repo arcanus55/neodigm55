@@ -1032,6 +1032,7 @@ class mvvLegit {  //  Are you, you?
         }
         if( url.toUpperCase().indexOf( mvvLegit.#conf.BASE.toUpperCase() ) != -1 ){  //  Verify that base URI is within the scope of that in conf
           if( bearerToken ) options.headers['Authorization'] = `Bearer ${bearerToken}`  // Add Authorization header with bearer token
+          if( neodigmUtils ) options.headers['machvive'] = neodigmUtils?.ver || "Neodigm"
         }
         // Call original fetch with modified options
         return originalFetch(url, options).then(response => {
