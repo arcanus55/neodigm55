@@ -471,10 +471,10 @@ class NeodigmSodaPop {
         return this
     }
     isOpen(){ return this.bIsOpen }
-    setOnBeforeOpen( _f, id="def"){ this.fOnBeforeOpen[ id ] = _f }
-    setOnAfterOpen( _f, id="def"){ this.fOnAfterOpen[ id ] = _f }
-    setOnClose( _f, id="def"){ this.fOnClose[ id ] = _f }
-    setOnBeforeUserExit(_f){ this.fOnBeforeUserExit = _f }
+    setOnBeforeOpen( _f, id="def"){ this.fOnBeforeOpen[ id ] = _f; return this; }
+    setOnAfterOpen( _f, id="def"){ this.fOnAfterOpen[ id ] = _f; return this; }
+    setOnClose( _f, id="def"){ this.fOnClose[ id ] = _f; return this; }
+    setOnBeforeUserExit(_f){ this.fOnBeforeUserExit = _f; return this; }
 }
 let neodigmSodaPop = new NeodigmSodaPop( document, ["neodigm-sodapop-scrim", "neodigm-sodapop", "data-n55-sodapop-modal"] )
 
