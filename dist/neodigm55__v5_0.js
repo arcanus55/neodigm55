@@ -987,7 +987,7 @@ class mvvLegit {  //  Are you, you?
       let targetRoute = "signin_route"
 
         const urlParams = new URLSearchParams(window.location.search)
-        const routeParam = urlParams.get('route')
+        const routeParam = urlParams.get('route')  //  override
         if( routeParam ) targetRoute = routeParam
 
       if( oTJO?.state ){
@@ -1012,6 +1012,7 @@ class mvvLegit {  //  Are you, you?
         }, neodigmOpt.MVV_SPLASH_DELAY )
       }
       mvvLegit.#overFetch()
+      if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~mvvLg | " + targetRoute + " | " + oTJO?.state )
     }
     return this
   }
