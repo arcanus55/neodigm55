@@ -985,6 +985,11 @@ class mvvLegit {  //  Are you, you?
       mvvLegit.#navRoute( "splash_route" )
       const oTJO = mvvLegit.#getTJO()
       let targetRoute = "signin_route"
+
+        const urlParams = new URLSearchParams(window.location.search)
+        const routeParam = urlParams.get('route')
+        if( routeParam ) targetRoute = routeParam
+
       if( oTJO?.state ){
         mvvLegit.#changeState( oTJO?.state )
         switch( oTJO.state ){
