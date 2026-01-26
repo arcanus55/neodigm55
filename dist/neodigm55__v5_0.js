@@ -1007,8 +1007,8 @@ class mvvLegit {  //  Are you, you?
         }
         setTimeout( ()=>{ mvvLegit.#navRoute( targetRoute ) }, neodigmOpt.MVV_SPLASH_DELAY )
       }else{
+        mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
         if( neodigmOpt.MVV_SPLASH_2_SIGNIN ) setTimeout( ()=>{
-          mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
           mvvLegit.#navRoute( targetRoute )
         }, neodigmOpt.MVV_SPLASH_DELAY )
       }
