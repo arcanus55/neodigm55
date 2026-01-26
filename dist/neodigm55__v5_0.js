@@ -65,7 +65,7 @@ if( typeof neodigmOptCustom != 'undefined' ){
 //  Neodigm 55 Utils Begin  //
 const neodigmUtils = ( ( _d ) =>{
   return {
-    ver: "5.0b",  //  Neodigm 55 version
+    ver: "5.0c",  //  Neodigm 55 version
     isMobile: function(){ return (_d.body.clientWidth <= 768) ? true : false; },
     isTouch: function(){ return (typeof document.body.ontouchstart != "undefined") },
     f1210: function(){ return (Math.floor(Math.random() * (10) + 1)); },  //  1 to 10
@@ -1007,9 +1007,10 @@ class mvvLegit {  //  Are you, you?
         }
         setTimeout( ()=>{ mvvLegit.#navRoute( targetRoute ) }, neodigmOpt.MVV_SPLASH_DELAY )
       }else{
-        mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
-        if( neodigmOpt.MVV_SPLASH_2_SIGNIN ) setTimeout( ()=>{
-          mvvLegit.#navRoute( targetRoute )
+        setTimeout( ()=>{
+            if( !neodigmOpt.MVV_SPLASH_2_SIGNIN ) targetRoute = "splash_route"
+            mvvLegit.#changeState( mvvLegit.#states.UNAUTH )
+            mvvLegit.#navRoute( targetRoute )
         }, neodigmOpt.MVV_SPLASH_DELAY )
       }
       mvvLegit.#overFetch()
