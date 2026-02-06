@@ -50,7 +50,7 @@ neodigmMetronome: {"countTo": 116, "neodigmMarquee": 132},  //  soft code unq nu
    "danger":["DD4124","810000","🟥"], "warning":["F5DF4D","988200","🟨"], "info":["7BC4C4","1F6868","🟦"], "disabled":["868686","767676","⬜"], "night":["6a6a6a","242424","⬛"], "marcom":["B163A3","5F4B8B","🟪"], "party":["FF6F61","C93F60","🟪"]},
   N55_APP_STATE: {"CONTEXT": "body", "FIRST_TAP": false, "ONLINE": true, "PWA_READY": false, "PWA_CONTAIN": false, "SHAKE": false, "CONTEXTMNU": false, "FOCUS": true, "AMPM": "light", "REDUCE_MOTION": false},
   ROOT: document.querySelector(':root'),
-  N55_TYPE: "https://fonts.googleapis.com/css?family=Roboto+Condensed:wght@100;300;400|Roboto+Slab:wght@300|Roboto+Mono:wght@300|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0",
+  N55_TYPE: "https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Slab:wght@100;300;400&family=Roboto+Mono:wght@100;300;400&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap",
 mvvLegit: false,
   MVV_SPLASH_DELAY: 3200,
   MVV_SPLASH_2_SIGNIN: false,
