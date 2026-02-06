@@ -433,7 +433,7 @@ background-color: rgba( 96, 88, 44, 0);
     border-radius: 6px 22px; border: 0px;
     color: #fff; cursor: pointer; 
     display: inline-block;
-    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto',sans-serif; font-weight: 400;
+    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto Flex',sans-serif; font-weight: 400;
     overflow: hidden;
     position: relative;
     text-decoration: none;
@@ -661,7 +661,7 @@ neodigm-kpi {
     background-color: var( --neodigm-theme-brand-alt );
     border-radius: 50%;
     cursor: pointer; 
-    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto',sans-serif; font-weight: 100;
+    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto Flex',sans-serif; font-weight: 100;
     text-decoration: none;
     transition: all .6s ease;
     user-select: none;
@@ -673,7 +673,7 @@ neodigm-kpi > h6 {
     position: relative; overflow: hidden;
     text-align: center;
     color: #fff;
-    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto Condensed',sans-serif; font-weight: 300;
+    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto Flex',sans-serif; font-weight: 300;
     margin: 4px; padding: 4px;
     text-decoration: none;
     transition: all .6s ease;
