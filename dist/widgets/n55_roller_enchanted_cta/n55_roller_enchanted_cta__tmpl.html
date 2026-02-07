@@ -9,32 +9,227 @@
 
 <!--  ||  TEMPLATE MU & CSS WDG BEGIN -->
 <wtt-widget data-n55-token="n55_roller_enchanted_cta">
-    <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
+    <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 20px;">
         <div>
-
+            <h2>Neodigm 55 Enchanted CTA Button Roller</h2>
+            <p>Configure your button properties and see the live preview with generated markup.</p>
         </div>
     </section>
 
-    <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
-        <div>
+    <section class="pfmf-grid pfmf-grid__50-50 readable__doc" style="padding: 20px; gap: 20px;">
+        <div style="padding: 20px; background: #f5f5f5; border-radius: 8px;">
+            <h3>Configuration</h3>
 
+            <div class="n55-roller-control">
+                <label for="n55-roller-size">Size:</label>
+                <select id="n55-roller-size" data-n55-tulip='{"msg":"  Select the button size from eight available options.  Sizes include: pico (smallest, 10px font), micro (11px), milli (14px), xsmall (14px), small (18px), medium (20px, default), large (22px), and xlarge (24px, largest).  Each size adjusts padding, minimum width, and border radius proportionally.","mrq":true,"tmpt":"","theme":"info","size":"small","position":"top","icon":""}'>
+                    <option value="pico">Pico</option>
+                    <option value="micro">Micro</option>
+                    <option value="milli">Milli</option>
+                    <option value="xsmall">X-Small</option>
+                    <option value="small">Small</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="large">Large</option>
+                    <option value="xlarge">X-Large</option>
+                </select>
+            </div>
+
+            <div class="n55-roller-control">
+                <label for="n55-roller-theme">Theme:</label>
+                <select id="n55-roller-theme" data-n55-tulip='{"msg":"  Choose from twelve color themes to style your button.  Available themes: brand (primary brand colors), primary (main action color), secondary (supporting color), success (green, positive actions), danger (red, destructive actions), warning (yellow/orange, caution), info (blue, informational), night (dark theme), marcom (marketing communication style), party (vibrant/festive), ghost (transparent with outline), and disabled (greyed out, non-interactive).","mrq":true,"tmpt":"","theme":"info","size":"small","position":"top","icon":""}'>
+                    <option value="brand" selected>Brand</option>
+                    <option value="primary">Primary</option>
+                    <option value="secondary">Secondary</option>
+                    <option value="success">Success</option>
+                    <option value="danger">Danger</option>
+                    <option value="warning">Warning</option>
+                    <option value="info">Info</option>
+                    <option value="night">Night</option>
+                    <option value="marcom">Marcom</option>
+                    <option value="party">Party</option>
+                    <option value="ghost">Ghost</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+            </div>
+
+            <div class="n55-roller-control">
+                <label for="n55-roller-ambient">Animation (Ambient):</label>
+                <select id="n55-roller-ambient" data-n55-tulip='{"msg":"  Select a continuous looping animation that runs automatically to draw attention.  Options include: emit (pulsing glow/shadow effect), radius (alternating border radius animation), shake (subtle vibration movement), scroll (text scrolls vertically), alternate (text alternates between states), flash_danger (red pulsing alert), flash_warning (yellow/orange pulsing caution), or none (no ambient animation).  These animations loop infinitely until disabled.","mrq":true,"tmpt":"","theme":"info","size":"small","position":"top","icon":""}'>
+                    <option value="">None</option>
+                    <option value="emit" selected>Emit</option>
+                    <option value="radius">Radius</option>
+                    <option value="shake">Shake</option>
+                    <option value="scroll">Scroll</option>
+                    <option value="alternate">Alternate</option>
+                    <option value="flash_danger">Flash Danger</option>
+                    <option value="flash_warning">Flash Warning</option>
+                </select>
+            </div>
+
+            <div class="n55-roller-control">
+                <label for="n55-roller-text1">Primary Text:</label>
+                <input type="text" id="n55-roller-text1" value="Click Me" data-n55-tulip='{"msg":"  Enter the text that will be displayed on the button by default.  This is the initial text users see before hovering.  Keep it concise and action-oriented.  Common examples: Click Me, Get Started, Learn More, Buy Now, Sign Up, Download, Submit, or Continue.  Supports plain text and emoji characters.","mrq":true,"tmpt":"","theme":"info","size":"small","position":"top","icon":""}' />
+            </div>
+
+            <div class="n55-roller-control">
+                <label for="n55-roller-text2">Hover Text:</label>
+                <input type="text" id="n55-roller-text2" value="Let's Go!" data-n55-tulip='{"msg":"  Enter the alternate text that appears when users hover over the button.  This text slides up to replace the primary text, creating an engaging animation effect.  Use it to reinforce the action or add personality.  Examples: Lets Go!, Im Ready!, Click Here, Take Action, Yes Please!, Do It!, Start Now, or Join Us!  Only visible when hover animation is enabled.","mrq":true,"tmpt":"","theme":"info","size":"small","position":"top","icon":""}' />
+            </div>
+
+            <div class="n55-roller-control">
+                <label for="n55-roller-hover-an">Enable Hover Animation:</label>
+                <input type="checkbox" id="n55-roller-hover-an" checked data-n55-tulip='{"msg":"  Toggle the text swap animation that occurs on hover.  When enabled, hovering over the button causes the primary text to slide up and the hover text to slide into view from below.  When disabled, only the primary text displays and no animation occurs on hover.  The hover text (second span) is hidden when this is disabled.  Recommended to keep enabled for interactive, engaging buttons.","mrq":true,"tmpt":"","theme":"info","size":"small","position":"right","icon":""}' />
+            </div>
+
+            <div class="n55-roller-control">
+                <label for="n55-roller-dont-touch">Disable Random Animation:</label>
+                <input type="checkbox" id="n55-roller-dont-touch" data-n55-tulip='{"msg":"  Check this to turn off any random or automated animation effects that may trigger unpredictably.  This provides more control over when animations occur, making the button behavior more predictable and stable.  Useful for professional contexts where you want precise control over all visual effects.  Does not affect hover animations or deliberately selected ambient animations.","mrq":true,"tmpt":"","theme":"info","size":"small","position":"right","icon":""}' />
+            </div>
+
+            <div class="n55-roller-control">
+                <label for="n55-roller-shape-off">Square Corners:</label>
+                <input type="checkbox" id="n55-roller-shape-off" data-n55-tulip='{"msg":"  Enable this to override the button signature asymmetric rounded corners with standard square corners.  By default, enchanted CTA buttons have distinctive 6px/22px border radius for a unique organic shape.  Checking this forces all corners to 6px for a more conventional rectangular button appearance.  Useful when you need the button to match a more traditional UI design system.","mrq":true,"tmpt":"","theme":"info","size":"small","position":"right","icon":""}' />
+            </div>
+
+            <div class="n55-roller-control">
+                <label for="n55-roller-toast">Toast Message:</label>
+                <input type="text" id="n55-roller-toast" value="" placeholder="Optional toast message" data-n55-tulip='{"msg":"  Enter a message to display as a toast notification when the button is clicked.  Toast notifications are small, temporary pop-up messages that appear briefly to confirm an action or provide feedback.  They typically appear at the top or bottom of the screen and auto-dismiss after a few seconds.  Examples: Saved successfully!, Added to cart, Thank you for subscribing!, Form submitted, or Settings updated.  Leave empty for no toast.","mrq":true,"tmpt":"","theme":"info","size":"small","position":"top","icon":""}' />
+            </div>
+
+            <div class="n55-roller-control">
+                <label for="n55-roller-tulip">Tooltip Message:</label>
+                <input type="text" id="n55-roller-tulip" value="" placeholder="Optional tooltip message" data-n55-tulip='{"msg":"  Enter text to show in a tooltip when users hover over the button.  Tooltips appear as small floating boxes near the button, providing additional context or instructions without cluttering the interface.  The tooltip inherits the button theme and size settings automatically.  Examples: Click to subscribe, This will save your progress, Premium feature, Redirects to homepage, or Download starts immediately.  Position defaults to top.  Leave empty for no tooltip.","mrq":true,"tmpt":"","theme":"info","size":"small","position":"top","icon":""}' />
+            </div>
+
+            <div class="n55-roller-control">
+                <label for="n55-roller-sound">Click Sound/Vibrate:</label>
+                <select id="n55-roller-sound" data-n55-tulip='{"msg":"  Add audio or haptic feedback when the button is clicked to enhance user interaction.  Choose vibrate for haptic feedback on mobile devices that support vibration.  Or select from 24 different sound effects (numbered 1-24) to play an audio cue on click.  Each sound has a unique tone and character.  Audio feedback improves accessibility and provides satisfying confirmation of user actions.  Select None to disable all click feedback.","mrq":true,"tmpt":"","theme":"info","size":"small","position":"top","icon":""}'>
+                    <option value="">None</option>
+                    <option value="vibrate">Vibrate</option>
+                    <option value="1">Sound 1</option>
+                    <option value="2">Sound 2</option>
+                    <option value="3">Sound 3</option>
+                    <option value="4">Sound 4</option>
+                    <option value="5">Sound 5</option>
+                    <option value="6">Sound 6</option>
+                    <option value="7">Sound 7</option>
+                    <option value="8">Sound 8</option>
+                    <option value="9">Sound 9</option>
+                    <option value="10">Sound 10</option>
+                    <option value="11">Sound 11</option>
+                    <option value="12">Sound 12</option>
+                    <option value="13">Sound 13</option>
+                    <option value="14">Sound 14</option>
+                    <option value="15">Sound 15</option>
+                    <option value="16">Sound 16</option>
+                    <option value="17">Sound 17</option>
+                    <option value="18">Sound 18</option>
+                    <option value="19">Sound 19</option>
+                    <option value="20">Sound 20</option>
+                    <option value="21">Sound 21</option>
+                    <option value="22">Sound 22</option>
+                    <option value="23">Sound 23</option>
+                    <option value="24">Sound 24</option>
+                </select>
+            </div>
+
+            <div class="n55-roller-control">
+                <label for="n55-roller-sodapop">Soda Pop ID:</label>
+                <input type="text" id="n55-roller-sodapop" value="" placeholder="Optional popup ID" data-n55-tulip='{"msg":"  Connect this button to a Soda Pop modal popup by entering the popup unique identifier.  When clicked, the button will trigger the associated popup to open instead of navigating to a URL.  The ID should match the data-n55-sodapop-id value of your target popup element.  Useful for displaying modal dialogs, forms, image galleries, or additional content without leaving the current page.  Leave empty if the button should not open a popup.","mrq":true,"tmpt":"","theme":"info","size":"small","position":"top","icon":""}' />
+            </div>
+
+            <div class="n55-roller-control">
+                <label for="n55-roller-link">Link URL:</label>
+                <input type="text" id="n55-roller-link" value="" placeholder="Optional link URL (leave empty for no link)" data-n55-tulip='{"msg":"  Enter a URL to make the button function as a hyperlink.  When provided, the button opens the specified URL in a new browser tab with security attributes (target blank and rel noopener).  Can be an absolute URL (https://example.com) or relative path (/about).  Leave empty to use the button for non-navigation actions like triggering popups, forms, or JavaScript functions.  When empty, clicking the button will not refresh or navigate the page.","mrq":true,"tmpt":"","theme":"info","size":"small","position":"top","icon":""}' />
+            </div>
+        </div>
+
+        <div style="padding: 20px; background: #f5f5f5; border-radius: 8px;">
+            <h3>Live Preview</h3>
+            <div id="n55-roller-preview" style="padding: 40px; text-align: center; background: white; border-radius: 8px; min-height: 200px; display: flex; align-items: center; justify-content: center;">
+                <a id="n55-roller-button"
+                   tabindex="0"
+                   data-n55-enchanted-cta
+                   data-n55-enchanted-cta-ambient="emit"
+                   data-n55-enchanted-cta-hover-an="true"
+                   data-n55-enchanted-cta-size="medium"
+                   data-n55-theme="brand"
+                ><span>Click Me</span><span>Let's Go!</span></a>
+            </div>
         </div>
     </section>
 
-    <section class="Qpfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
-        <div>
-
+    <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 20px;">
+        <div style="padding: 20px; background: #f5f5f5; border-radius: 8px;">
+            <h3>Generated Markup</h3>
+            <textarea id="n55-roller-markup" readonly style="width: 100%; min-height: 250px; font-family: monospace; font-size: 12px; padding: 15px; border: 1px solid #ccc; border-radius: 4px; background: white;"></textarea>
+            <button id="n55-roller-copy" style="margin-top: 10px; padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Copy to Clipboard</button>
         </div>
-    </section>
-
-    <section class="pfmf-grid pfmf-grid__100 readable__doc" style="padding: 1px;">
-
     </section>
 
 </wtt-widget>
 
 <style>
+[data-n55-token="n55_roller_enchanted_cta"] {
+    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto Flex', 'Roboto', sans-serif;
+}
 
+[data-n55-token="n55_roller_enchanted_cta"] h2,
+[data-n55-token="n55_roller_enchanted_cta"] h3 {
+    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto Flex', 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+[data-n55-token="n55_roller_enchanted_cta"] p {
+    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto Flex', 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.n55-roller-control {
+    margin-bottom: 15px;
+}
+
+.n55-roller-control label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto Flex', 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #333;
+}
+
+.n55-roller-control select,
+.n55-roller-control input[type="text"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto Flex', 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.n55-roller-control input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#n55-roller-copy {
+    font-family: 'Helvetica', 'Helvetica Neue', 'Roboto Flex', 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+#n55-roller-copy:hover {
+    background: #0056b3;
+}
+
+#n55-roller-copy:active {
+    background: #004085;
+}
+
+#n55-roller-markup {
+    font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
+}
 </style>
 <!--  ||  TEMPLATE MU & CSS WDG END -->
 
@@ -52,9 +247,7 @@
 
 
 <!--  ||  JAVASCRIPT WDG BEGIN -->
-
- 
-<script> 
+<script>
 
 //  Soda Pop Tmpl logic
 setTimeout(function(){
@@ -79,13 +272,274 @@ NeodigmClaire.showCanv('neodigm-sodapop').initCanvOff('neodigm-sodapop').waxOff(
 
 class N55_roller_enchanted_cta {
     constructor() {
-
+        this.button = null;
+        this.markupTextarea = null;
+        this.config = {
+            size: 'medium',
+            theme: 'brand',
+            ambient: 'emit',
+            text1: 'Click Me',
+            text2: "Let's Go!",
+            hoverAn: true,
+            dontTouch: false,
+            shapeOff: false,
+            toast: '',
+            tulip: '',
+            sound: '',
+            sodapop: '',
+            link: ''
+        };
     }
+
     init() {
+        const self = this;
+
+        // Get DOM elements
+        this.button = document.getElementById('n55-roller-button');
+        this.markupTextarea = document.getElementById('n55-roller-markup');
+
+        // Get control elements
+        const sizeSelect = document.getElementById('n55-roller-size');
+        const themeSelect = document.getElementById('n55-roller-theme');
+        const ambientSelect = document.getElementById('n55-roller-ambient');
+        const text1Input = document.getElementById('n55-roller-text1');
+        const text2Input = document.getElementById('n55-roller-text2');
+        const hoverAnCheckbox = document.getElementById('n55-roller-hover-an');
+        const dontTouchCheckbox = document.getElementById('n55-roller-dont-touch');
+        const shapeOffCheckbox = document.getElementById('n55-roller-shape-off');
+        const toastInput = document.getElementById('n55-roller-toast');
+        const tulipInput = document.getElementById('n55-roller-tulip');
+        const soundSelect = document.getElementById('n55-roller-sound');
+        const sodapopInput = document.getElementById('n55-roller-sodapop');
+        const linkInput = document.getElementById('n55-roller-link');
+        const copyButton = document.getElementById('n55-roller-copy');
+
+        // Add event listeners
+        if (sizeSelect) {
+            sizeSelect.addEventListener('change', function() {
+                self.config.size = this.value;
+                self.updateButton();
+            });
+        }
+
+        if (themeSelect) {
+            themeSelect.addEventListener('change', function() {
+                self.config.theme = this.value;
+                self.updateButton();
+            });
+        }
+
+        if (ambientSelect) {
+            ambientSelect.addEventListener('change', function() {
+                self.config.ambient = this.value;
+                self.updateButton();
+            });
+        }
+
+        if (text1Input) {
+            text1Input.addEventListener('input', function() {
+                self.config.text1 = this.value;
+                self.updateButton();
+            });
+        }
+
+        if (text2Input) {
+            text2Input.addEventListener('input', function() {
+                self.config.text2 = this.value;
+                self.updateButton();
+            });
+        }
+
+        if (hoverAnCheckbox) {
+            hoverAnCheckbox.addEventListener('change', function() {
+                self.config.hoverAn = this.checked;
+                self.updateButton();
+            });
+        }
+
+        if (dontTouchCheckbox) {
+            dontTouchCheckbox.addEventListener('change', function() {
+                self.config.dontTouch = this.checked;
+                self.updateButton();
+            });
+        }
+
+        if (shapeOffCheckbox) {
+            shapeOffCheckbox.addEventListener('change', function() {
+                self.config.shapeOff = this.checked;
+                self.updateButton();
+            });
+        }
+
+        if (toastInput) {
+            toastInput.addEventListener('input', function() {
+                self.config.toast = this.value;
+                self.updateButton();
+            });
+        }
+
+        if (tulipInput) {
+            tulipInput.addEventListener('input', function() {
+                self.config.tulip = this.value;
+                self.updateButton();
+            });
+        }
+
+        if (soundSelect) {
+            soundSelect.addEventListener('change', function() {
+                self.config.sound = this.value;
+                self.updateButton();
+            });
+        }
+
+        if (sodapopInput) {
+            sodapopInput.addEventListener('input', function() {
+                self.config.sodapop = this.value;
+                self.updateButton();
+            });
+        }
+
+        if (linkInput) {
+            linkInput.addEventListener('input', function() {
+                self.config.link = this.value;
+                self.updateButton();
+            });
+        }
+
+        if (copyButton) {
+            copyButton.addEventListener('click', function() {
+                self.copyMarkup();
+            });
+        }
+
+        // Initial update
+        this.updateButton();
+
         return this;
     }
 
+    updateButton() {
+        if (!this.button) return;
+
+        // Update button attributes
+        this.button.setAttribute('data-n55-enchanted-cta-size', this.config.size);
+        this.button.setAttribute('data-n55-theme', this.config.theme);
+        this.button.setAttribute('data-n55-enchanted-cta-hover-an', this.config.hoverAn ? 'true' : 'false');
+        this.button.setAttribute('data-n55-enchanted-cta-dont-touch', this.config.dontTouch ? 'true' : 'false');
+        this.button.setAttribute('data-n55-enchanted-cta-shape-off', this.config.shapeOff ? 'true' : 'false');
+
+        // Handle ambient animation
+        if (this.config.ambient) {
+            this.button.setAttribute('data-n55-enchanted-cta-ambient', this.config.ambient);
+        } else {
+            this.button.removeAttribute('data-n55-enchanted-cta-ambient');
+        }
+
+        // Handle toast
+        if (this.config.toast) {
+            this.button.setAttribute('data-n55-toast', this.config.toast);
+        } else {
+            this.button.removeAttribute('data-n55-toast');
+        }
+
+        // Handle tulip (tooltip)
+        if (this.config.tulip) {
+            const tulipObj = {
+                msg: this.config.tulip,
+                mrq: false,
+                tmpt: "",
+                theme: this.config.theme,
+                size: this.config.size,
+                position: "top",
+                icon: ""
+            };
+            this.button.setAttribute('data-n55-tulip', JSON.stringify(tulipObj));
+        } else {
+            this.button.removeAttribute('data-n55-tulip');
+        }
+
+        // Handle sound/vibrate
+        if (this.config.sound) {
+            this.button.setAttribute('data-n55-wired4sound-click', this.config.sound);
+        } else {
+            this.button.removeAttribute('data-n55-wired4sound-click');
+        }
+
+        // Handle sodapop
+        if (this.config.sodapop) {
+            this.button.setAttribute('data-n55-sodapop-id', this.config.sodapop);
+        } else {
+            this.button.removeAttribute('data-n55-sodapop-id');
+        }
+
+        // Handle link URL
+        if (this.config.link) {
+            this.button.setAttribute('href', this.config.link);
+            this.button.setAttribute('target', '_blank');
+            this.button.setAttribute('rel', 'noopener');
+        } else {
+            this.button.removeAttribute('href');
+            this.button.removeAttribute('target');
+            this.button.removeAttribute('rel');
+        }
+
+        // Update button text
+        const spans = this.button.querySelectorAll('span');
+        if (spans[0]) spans[0].textContent = this.config.text1;
+        if (spans[1]) spans[1].textContent = this.config.text2;
+
+        // Re-initialize the enchanted CTA to apply changes
+        if (typeof neodigmEnchantedCTA !== 'undefined' && neodigmEnchantedCTA.init) {
+            neodigmEnchantedCTA.init();
+        }
+
+        // Update markup display
+        this.updateMarkup();
+    }
+
+    updateMarkup() {
+        if (!this.markupTextarea) return;
+
+        const ambientAttr = this.config.ambient ? `\n    data-n55-enchanted-cta-ambient="${this.config.ambient}"` : '';
+        const dontTouchAttr = this.config.dontTouch ? `\n    data-n55-enchanted-cta-dont-touch="true"` : '';
+        const shapeOffAttr = this.config.shapeOff ? `\n    data-n55-enchanted-cta-shape-off="true"` : '';
+        const toastAttr = this.config.toast ? `\n    data-n55-toast="${this.config.toast}"` : '';
+        const tulipAttr = this.config.tulip ? `\n    data-n55-tulip='{"msg":"${this.config.tulip}","mrq":false,"tmpt":"","theme":"${this.config.theme}","size":"${this.config.size}","position":"top","icon":""}'` : '';
+        const soundAttr = this.config.sound ? `\n    data-n55-wired4sound-click="${this.config.sound}"` : '';
+        const sodapopAttr = this.config.sodapop ? `\n    data-n55-sodapop-id="${this.config.sodapop}"` : '';
+        const linkAttrs = this.config.link ? ` href="${this.config.link}"\n    target="_blank" rel="noopener"` : '';
+
+        const markup = `<a id="my-enchanted-cta"${linkAttrs}
+    tabindex="0"
+    data-n55-enchanted-cta${ambientAttr}
+    data-n55-enchanted-cta-hover-an="${this.config.hoverAn ? 'true' : 'false'}"${dontTouchAttr}${shapeOffAttr}
+    data-n55-enchanted-cta-size="${this.config.size}"
+    data-n55-theme="${this.config.theme}"${toastAttr}${tulipAttr}${soundAttr}${sodapopAttr}
+><span>${this.config.text1}</span><span>${this.config.text2}</span></a>`;
+
+        this.markupTextarea.value = markup;
+    }
+
+    copyMarkup() {
+        if (!this.markupTextarea) return;
+
+        this.markupTextarea.select();
+        this.markupTextarea.setSelectionRange(0, 99999); // For mobile devices
+
+        try {
+            document.execCommand('copy');
+            alert('Markup copied to clipboard!');
+        } catch (err) {
+            // Fallback for modern browsers
+            navigator.clipboard.writeText(this.markupTextarea.value).then(function() {
+                alert('Markup copied to clipboard!');
+            }).catch(function(err) {
+                alert('Failed to copy markup. Please copy manually.');
+            });
+        }
+    }
 }
+
 let n55_roller_enchanted_cta = new N55_roller_enchanted_cta( document, "n55_roller_enchanted_cta" )
 n55_roller_enchanted_cta.init()
 neodigmMarquee.init()
@@ -94,7 +548,7 @@ neodigmEnchantedCTA.init()
 
 
 
-</script> 
+</script>
 <!--  ||  JAVASCRIPT WDG END -->
 
     </body>
