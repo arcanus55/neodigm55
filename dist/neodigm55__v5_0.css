@@ -293,9 +293,9 @@ neodigm-carousel > section > section { position: relative; display: block; }
 @keyframes carousel_nav_out {
     0% { filter: blur(0); opacity: 1; }
     4% { filter: blur(4px); }
-    12% { opacity: 0; }
+    18% { opacity: 0; }
     92% { opacity: 0; }
-    96% { opacity: 1; }
+    90% { opacity: 1; }
     100% { filter: blur(0); opacity: 1; }
 }
 /*  Neodigm Carousel End  */
