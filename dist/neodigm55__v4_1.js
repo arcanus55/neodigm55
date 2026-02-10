@@ -1257,6 +1257,25 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
     let aMarqs = [];
     let bIsInit = bIsPause = bLTR = false
 
+    // Marker character pairs for color highlighting
+    const MARKERS = {
+      brand: ['\u200B', '\u200C'],      // Zero-width space/non-joiner
+      primary: ['\u200D', '\u200E'],    // Zero-width joiner/LTR mark
+      danger: ['\uFEFF', '\u2060'],     // Zero-width no-break/word joiner
+      secondary: ['\u2061', '\u2062'],  // Function application/invisible times
+      success: ['\u2063', '\u2064'],    // Invisible separator/invisible plus
+      warning: ['\u206A', '\u206B'],    // Inhibit symmetric/activate symmetric
+      info: ['\u206C', '\u206D'],       // Inhibit arabic/activate arabic
+      night: ['\u206E', '\u206F'],      // National digit shapes/nominal digit
+      marcom: ['\u180E', '\u17B4'],     // Mongolian vowel/Khmer vowel
+      party: ['\u17B5', '\u2028'],      // Khmer vowel/line separator
+      ghost: ['\u2029', '\u202A'],      // Paragraph separator/LTR embedding
+      disabled: ['\u202B', '\u202C']    // RTL embedding/pop directional
+    };
+
+    // Check for CSS Highlight API support
+    const supportsHighlightAPI = typeof CSS !== 'undefined' && CSS.highlights;
+
     // Helper function to search both light DOM and shadow DOMs
     const querySelectorAllDeep = (selector) => {
       const elements = [];
@@ -1272,19 +1291,101 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
       return elements;
     };
 
+    // Apply color highlights based on marker characters
+    const applyHighlights = (eMc) => {
+      if (!supportsHighlightAPI) return;
+
+      const textNode = eMc.eMp.firstChild;
+      if (!textNode || textNode.nodeType !== Node.TEXT_NODE) return;
+
+      const text = textNode.textContent;
+      const colors = eMc.dataset.n55MarqueeColors ?
+        JSON.parse(eMc.dataset.n55MarqueeColors) : [];
+
+      if (colors.length === 0) return;
+
+      // Clear existing highlights for this marquee
+      colors.forEach((colorName) => {
+        const highlightKey = `marquee-${eMc.dataset.n55MarqueeId || 'default'}-${colorName}`;
+        CSS.highlights.delete(highlightKey);
+      });
+
+      // Apply new highlights
+      colors.forEach((colorName) => {
+        const markers = MARKERS[colorName];
+        if (!markers) return;
+
+        const [startChar, endChar] = markers;
+        let startIdx = text.indexOf(startChar);
+        let endIdx = text.indexOf(endChar);
+
+        // Calculate range based on visible markers
+        if (startIdx !== -1 || endIdx !== -1) {
+          const rangeStart = startIdx === -1 ? 0 : startIdx + 1;
+          const rangeEnd = endIdx === -1 ? text.length : endIdx;
+
+          if (rangeStart < rangeEnd && rangeStart < text.length) {
+            try {
+              const range = new Range();
+              range.setStart(textNode, rangeStart);
+              range.setEnd(textNode, Math.min(rangeEnd, text.length));
+
+              const highlight = new Highlight(range);
+              const highlightKey = `marquee-${eMc.dataset.n55MarqueeId || 'default'}-${colorName}`;
+              CSS.highlights.set(highlightKey, highlight);
+            } catch (e) {
+              // Silently handle range errors
+            }
+          }
+        }
+      });
+    };
+
+    // Generate dynamic CSS for highlights
+    const generateHighlightStyles = () => {
+      if (!supportsHighlightAPI) return;
+
+      let styleSheet = _d.getElementById('neodigm-marquee-highlight-styles');
+      if (!styleSheet) {
+        styleSheet = _d.createElement('style');
+        styleSheet.id = 'neodigm-marquee-highlight-styles';
+        _d.head.appendChild(styleSheet);
+      }
+
+      let css = '';
+      // Generate CSS for all possible marquee IDs and colors
+      aMarqs.forEach((eMc) => {
+        const mqId = eMc.dataset.n55MarqueeId || 'default';
+        Object.keys(MARKERS).forEach(colorName => {
+          const colors = neodigmOpt.N55_THEME_COLORS[colorName];
+          if (colors) {
+            css += `::highlight(marquee-${mqId}-${colorName}) { color: #${colors[0]}; font-weight: 600; }\n`;
+          }
+        });
+      });
+
+      styleSheet.textContent = css;
+    };
+
     return {
       init: function(){
         aMarqs = querySelectorAllDeep( _aQ[0] )
-        aMarqs.forEach( ( eMc )=>{
+        aMarqs.forEach( ( eMc, idx )=>{
             eMc.eMp = eMc.querySelector("pre")
+            // Assign unique ID for highlight management
+            if (!eMc.dataset.n55MarqueeId) {
+              eMc.dataset.n55MarqueeId = `mq-${idx}-${Date.now()}`;
+            }
             if( eMc.dataset.n55MarqueeDirection !== "false"){
               eMc.addEventListener("mouseover", neodigmMarquee.toggleDir )
-              eMc.addEventListener("mouseout", neodigmMarquee.toggleDir )              
+              eMc.addEventListener("mouseout", neodigmMarquee.toggleDir )
             }
             eMc.addEventListener("mousedown", neodigmMarquee.pause )
             eMc.addEventListener("mouseup", neodigmMarquee.play )
         })
         neodigmMetronome.subscribe( ()=>{ requestAnimationFrame( neodigmMarquee.tick ) }, _t )
+        // Generate CSS after IDs are assigned
+        setTimeout(() => generateHighlightStyles(), 0)
         bIsInit = true
         return neodigmMarquee;
       },
@@ -1296,6 +1397,7 @@ const neodigmMarquee = ( ( _d, _aQ, _t ) =>{
                     aMt.unshift( aMt.pop() )
                 }else{ aMt.push( aMt.shift() ) }
                 eMc.eMp.textContent = eMc.dataset[ _aQ[1] ] = aMt.join("")
+                applyHighlights(eMc)
             })
         }
       },
