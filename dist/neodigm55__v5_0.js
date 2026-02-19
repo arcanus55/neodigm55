@@ -53,7 +53,7 @@ neodigmMetronome: {"countTo": 116, "neodigmMarquee": 132},  //  soft code unq nu
   N55_TYPE: "https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Slab:wght@100;300;400&family=Roboto+Mono:wght@100;300;400&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap",
 mvvLegit: false,
   MVV_SPLASH_DELAY: 3200,
-  MVV_SPLASH_2_SIGNIN: false,
+  MVV_SPLASH_2_SIGNIN: true,
 }
 
 if( typeof neodigmOptCustom != 'undefined' ){
@@ -1865,7 +1865,7 @@ class NeodigmCarousel {
     if( oNav?.id && this.bIsInit && !this.bIsPause ){
         if( this.fOnBeforeNav && this.fOnBeforeNav( oNav ) === false ) return this;
         let elNC = this.aelNC.filter(function( el ){ return ( oNav.id == el.id ); })[0]
-        if( !elNC ) {  // This caro did not exist durring init, so lets created it
+        if( !elNC ) {  // This Caro did not exist durring init, so lets created it
             let elNewNC = this._d[ neodigmOpt.N55_APP_STATE.CONTEXT ].querySelector( "#" + oNav.id )
             if( elNewNC ) this.aelNC.push(elNC = neodigmCarousel.formatNewCaro( elNewNC ))
             if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~caro dyn create | " + oNav.id )
