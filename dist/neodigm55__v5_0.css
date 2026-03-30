@@ -261,6 +261,21 @@ neodigm-sodapop:not(.ndsp__modal)::after {
     neodigm-sodapop.ndsp__size--medium { width: 66%; }
     neodigm-sodapop.ndsp__size--large  { width: 88%; }
 }
+/* Slide from right drawer */
+neodigm-sodapop.ndsp__transition--slide-right {
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0, 0, 0.2, 1);
+    top: 0 !important;
+    right: 0;
+    left: auto;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+}
+neodigm-sodapop.ndsp__transition--slide-right.ndsp__opened {
+    transform: translateX(0);
+}
+
 @media print { neodigm-sodapop-scrim-close { z-index: -256 !important;} }
 /*  Neodigm Soda Pop End  */
 
@@ -281,6 +296,11 @@ neodigm-carousel > section {
     grid-area: box-content; box-sizing: border-box; align-content: center;  
     margin: 0 auto; padding: 8px; margin-left: 1px;
 	transition: all .86s ease-in-out;
+}
+neodigm-carousel > section[data-n55-carousel-flush="true"] {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
 }
 neodigm-carousel > section > section { position: relative; display: block; }
 
