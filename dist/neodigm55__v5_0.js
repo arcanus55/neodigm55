@@ -349,7 +349,7 @@ let neodigmToast = (function(_d, eID, _q) {
 class NeodigmSodaPop {
     constructor(_d, _aQ) {  //  Flux Capacitor
         this._d = _d; this._aQ = _aQ; this.sId = ""
-        this.eSoda = this.eScrim = this.eClose = this.fOnBeforeUserExit = null
+        this.eSoda = this.eScrim = this.eClose = this.fOnBeforeUserExit = null; this.sTransition = ""
         this.fOnBeforeOpen = {}; this.fOnAfterOpen = {}; this.fOnClose = {}
         this.bIsOpen = this.bIsModal = this.bIsInit = false
     }
@@ -401,7 +401,9 @@ class NeodigmSodaPop {
             setTimeout(function() { neodigmSodaPop.eScrim.classList.add("ndsp__blur"); }, 96)
             if( this.bIsModal ) this.eSoda.classList.add( "ndsp__modal" )
             this.eSoda.dataset.n55AmpmTheme = ( this.eTmpl.dataset?.n55AmpmTheme ) ? this.eTmpl.dataset.n55AmpmTheme : ""  //  Isolate Pup AMPM theme
-            this.eSoda.classList.add("ndsp__size--" + this.eTmpl.dataset.n55SodapopSize ) 
+            this.eSoda.classList.add("ndsp__size--" + this.eTmpl.dataset.n55SodapopSize )
+            this.sTransition = this.eTmpl.dataset.n55SodapopTransition || ""
+            if( this.sTransition ) this.eSoda.classList.add("ndsp__transition--" + this.sTransition)
             if( neodigmOpt.N55_SP_DISABLE_SCROLL ) neodigmSodaPop.eSoda.classList.add( "ndsp__bodyscroll" )
             setTimeout(function() { neodigmSodaPop.eSoda.classList.add("ndsp__opened"); }, 276)
             this.eSoda.innerHTML = this.eTmpl.innerHTML
@@ -435,6 +437,15 @@ class NeodigmSodaPop {
                     this.eSoda.remove()
                     this.eScrim.dataset.n55SodapopScrim = "closed"
                     this.eScrim.classList.remove("ndsp__blur", "ndsp__modal")
+                } else if( this.sTransition ) {
+                    this.eSoda.classList.remove("ndsp__opened")
+                    setTimeout(function() {
+                        neodigmSodaPop.eSoda.remove()
+                        setTimeout(function() {
+                            neodigmSodaPop.eScrim.dataset.n55SodapopScrim = "closed"
+                            neodigmSodaPop.eScrim.classList.remove("ndsp__blur", "ndsp__modal")
+                        }, 332)
+                    }, 370)
                 } else {
                     setTimeout(function() {
                         neodigmSodaPop.eSoda.remove()
