@@ -1867,6 +1867,7 @@ class NeodigmCarousel {
     elNC.n55State.aTabCntr = [ ... elNCCntr.querySelectorAll(":scope >section") ]  //  Tab Containers
     elNCCntr.style.width = ( elNC.n55State.aTabCntr.length * elNC.n55State.width ) + "px" // First Section contr width * num children
     elNCCntr.style.gridTemplateColumns = "repeat(" + elNC.n55State.aTabCntr.length + ", 1fr)"
+    if( elNCCntr.querySelector("[data-n55-carousel-flush='true']") ) elNCCntr.setAttribute("data-n55-carousel-flush", "true")
     Array.from( elNCCntr.querySelectorAll("[data-n55-cloak='true']") ).forEach( ( elCloak )=>{
       elCloak.dataset.n55Cloak = "false"
     } )
