@@ -1054,6 +1054,10 @@ class mvvLegit {  //  Are you, you?
           if( neodigmUtils ) options.headers['machvive'] = neodigmUtils?.ver || "Neodigm"
           if( localStorage.getItem( "mvvBrand" ) ){
             options.headers['x-m5t-brand'] = localStorage.getItem( "mvvBrand" )
+            if( url.indexOf( "?" ) >= -1 ) url = url + "&brand=" + localStorage.getItem( "mvvBrand" )
+            if( url.indexOf( "?" ) == -1 ) url = url + "?brand=" + localStorage.getItem( "mvvBrand" )
+            console.log("~~~ mvvL | x-m5t-brand 0 | " , url.indexOf( "?" ) )
+            console.log("~~~ mvvL | x-m5t-brand 1 | " , url )
             console.log("~~~ mvvL | x-m5t-brand 2 | " , options )
             console.log("~~~ mvvL | x-m5t-brand 3 | " , options.headers )
           }
