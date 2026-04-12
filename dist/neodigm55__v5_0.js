@@ -1058,6 +1058,7 @@ class mvvLegit {  //  Are you, you?
               if( url.indexOf( "?" ) == -1 ){
                 url = url + "?brand=" + localStorage.getItem( "mvvBrand" )
               }else{ url = url + "&brand=" + localStorage.getItem( "mvvBrand" ) }
+              url = url + "&cb=" + Date.now()
             }
 
             console.log("~~~ mvvL | x-m5t-brand 0 | " , url.indexOf( "?" ) )
