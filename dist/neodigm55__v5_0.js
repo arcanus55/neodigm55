@@ -1054,12 +1054,14 @@ class mvvLegit {  //  Are you, you?
           if( neodigmUtils ) options.headers['machvive'] = neodigmUtils?.ver || "Neodigm"
           if( localStorage.getItem( "mvvBrand" ) ){
             options.headers['x-m5t-brand'] = localStorage.getItem( "mvvBrand" )
+            /*
             if( url.indexOf( "brand=" ) == -1 ){
               if( url.indexOf( "?" ) == -1 ){
                 url = url + "?brand=" + localStorage.getItem( "mvvBrand" )
               }else{ url = url + "&brand=" + localStorage.getItem( "mvvBrand" ) }
               url = url + "&cb=" + Date.now()
             }
+            */
           }
         }
         // Call original fetch with modified options
