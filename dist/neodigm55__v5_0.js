@@ -1053,8 +1053,9 @@ class mvvLegit {  //  Are you, you?
           if( bearerToken ) options.headers['Authorization'] = `Bearer ${bearerToken}`  // Add Authorization header with bearer token
           if( neodigmUtils ) options.headers['machvive'] = neodigmUtils?.ver || "Neodigm"
           if( localStorage.getItem( "mvvBrand" ) ){
-            console.log("~~~ mvvL | x-m5t-brand")
             options.headers['x-m5t-brand'] = localStorage.getItem( "mvvBrand" )
+            console.log("~~~ mvvL | x-m5t-brand 2 | " , options )
+            console.log("~~~ mvvL | x-m5t-brand 3 | " , options.headers )
           }
         }
         // Call original fetch with modified options
