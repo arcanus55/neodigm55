@@ -1060,11 +1060,6 @@ class mvvLegit {  //  Are you, you?
               }else{ url = url + "&brand=" + localStorage.getItem( "mvvBrand" ) }
               url = url + "&cb=" + Date.now()
             }
-
-            console.log("~~~ mvvL | x-m5t-brand 0 | " , url.indexOf( "?" ) )
-            console.log("~~~ mvvL | x-m5t-brand 1 | " , url )
-            console.log("~~~ mvvL | x-m5t-brand 2 | " , options )
-            console.log("~~~ mvvL | x-m5t-brand 3 | " , options.headers )
           }
         }
         // Call original fetch with modified options
