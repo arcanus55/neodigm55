@@ -1052,7 +1052,10 @@ class mvvLegit {  //  Are you, you?
         if( url.toUpperCase().indexOf( mvvLegit.#conf.BASE.toUpperCase() ) != -1 ){  //  Verify that base URI is within the scope of that in conf
           if( bearerToken ) options.headers['Authorization'] = `Bearer ${bearerToken}`  // Add Authorization header with bearer token
           if( neodigmUtils ) options.headers['machvive'] = neodigmUtils?.ver || "Neodigm"
-          if( localStorage.getItem( "mvvBrand" ) ) options.headers['x-m5t-brand'] = localStorage.getItem( "mvvBrand" )
+          if( localStorage.getItem( "mvvBrand" ) ){
+            console.log("~~~ mvvL | x-m5t-brand")
+            options.headers['x-m5t-brand'] = localStorage.getItem( "mvvBrand" )
+          }
         }
         // Call original fetch with modified options
         return originalFetch(url, options).then(response => {
