@@ -107,19 +107,18 @@ const neodigmUtils = ( ( _d ) =>{
       try { isVal = typeof (JSON.parse( sIn )) } catch ( er ) { }
       return ( isVal == "object" )
     },
-    messageNotification: function( sMsg, icon="https://avatars.githubusercontent.com/u/217090161?s=200&v=4" ){  //  System Tray Notification
-        if (!("Notification" in window)) {
-            console.log('Notification API not supported.')
-            return;
-        } else if (Notification.permission === "granted") {
-            var notification = new Notification( neodigmUtils.prettyTime( Date.now() ), {icon: icon, body: sMsg} )
-        } else if (Notification.permission !== "denied") {
-            Notification.requestPermission(function (permission) {
-                if (permission === "granted") {
-                    var notification = new Notification( neodigmUtils.prettyTime( Date.now() ), {icon: icon, body: sMsg} )
-                }
-            })
-        }
+    messageNotification: function( sMsg, icon = "https://avatars.githubusercontent.com/u/217090161?s=200&v=4", title = null ){
+        return new Promise((resolve) => {
+            if (!("Notification" in window)) return resolve("unsupported");
+            const show = () => {
+                new Notification(title || neodigmUtils.prettyTime(Date.now()), { icon, body: sMsg });
+                resolve("shown");
+            };
+            if (Notification.permission === "granted") return show();
+            if (Notification.permission === "denied")  return resolve("denied");
+            // "default" — never asked: prompt, then report the result
+            Notification.requestPermission().then((p) => (p === "granted" ? show() : resolve(p)));
+        });
     },
     appStateListen: function( fCb ){  //  Update body atr, dataLayer, console log, and Session Storage
       NeodigmKeylime.subscribe( "mouseover", ( ev )=>{
