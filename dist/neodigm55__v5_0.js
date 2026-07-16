@@ -1004,9 +1004,7 @@ class mvvLegit {  //  Are you, you?
       if( oTJO?.state ){
         mvvLegit.#changeState( oTJO?.state )
         switch( oTJO.state ){
-          case 2:  //  UNVERF - return to verification prompt on reload
-            targetRoute = "verf_link_route"
-          break;
+          case 2:  //  UNVERF
           case 3:  //  UNKYC - not supported
             targetRoute = "resethash_route"
           break;
@@ -1078,7 +1076,7 @@ class mvvLegit {  //  Are you, you?
   }
   static doUNVERF(){  //  Set UNVERF state
       if( this.bIsInit ){
-        mvvLegit.#changeState( mvvLegit.#states.UNVERF )  //  must be UNVERF; reload routing handled in init() (state 2 -> verf_link_route)
+        mvvLegit.#changeState( mvvLegit.#states.UNAUTH )  //  UNAUTH by design: a reloaded unverified user should land on signin
         mvvLegit.#setTJO( { "state": mvvLegit.#state, "ts": new Date(), "token": "" } )
         mvvLegit.#navRoute( "verf_link_route" )
       }
