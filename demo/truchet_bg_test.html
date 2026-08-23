@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Truchet Background Web Component Test</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .demo-container {
+      margin-bottom: 40px;
+    }
+
+    .demo-container h2 {
+      margin-bottom: 15px;
+      color: #666;
+      font-size: 1.2em;
+    }
+
+    .demo-box {
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .demo-light {
+      background-color: #ffffff;
+    }
+
+    .demo-dark {
+      background-color: #1a1a1a;
+    }
+
+    .controls {
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .control-group {
+      display: inline-block;
+      margin-right: 20px;
+      margin-bottom: 10px;
+    }
+
+    .control-group label {
+      display: inline-block;
+      margin-right: 8px;
+      font-weight: 500;
+    }
+
+    .control-group select,
+    .control-group input {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 8px 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .info {
+      background: #e7f3ff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border-left: 4px solid #007bff;
+    }
+
+    .info code {
+      background: rgba(0, 0, 0, 0.1);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>Truchet Background Web Component Test</h1>
+
+  <div class="info">
+    <p><strong>Web Component:</strong> <code>&lt;truchet-bg&gt;</code></p>
+    <p><strong>Attributes:</strong></p>
+    <ul>
+      <li><code>data-mode</code>: "light" or "dark"</li>
+      <li><code>data-brand</code>: "m5t" (reserved for future use)</li>
+      <li><code>data-refresh</code>: Animation refresh interval in milliseconds (default: 800)</li>
+      <li><code>data-cell-width</code>: Width of each grid cell in pixels (default: 100)</li>
+    </ul>
+  </div>
+
+  <div class="controls">
+    <div class="control-group">
+      <label for="mode-select">Mode:</label>
+      <select id="mode-select">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label for="refresh-input">Refresh (ms):</label>
+      <input type="number" id="refresh-input" value="800" min="100" step="100">
+    </div>
+
+    <div class="control-group">
+      <label for="cell-width-input">Cell Width (px):</label>
+      <input type="number" id="cell-width-input" value="100" min="20" step="10">
+    </div>
+
+    <button id="apply-btn">Apply Changes</button>
+  </div>
+
+  <div class="demo-container">
+    <h2>Light Mode (800ms refresh, 100px cells)</h2>
+    <div class="demo-box demo-light" style="height: 400px;">
+      <truchet-bg
+        data-mode="light"
+        data-brand="m5t"
+        data-refresh="800"
+        data-cell-width="100">
+      </truchet-bg>
+    </div>
+  </div>
+
+  <div class="demo-container">
+    <h2>Dark Mode (600ms refresh, 80px cells)</h2>
+    <div class="demo-box demo-dark" style="height: 400px;">
+      <truchet-bg
+        data-mode="dark"
+        data-brand="m5t"
+        data-refresh="600"
+        data-cell-width="80">
+      </truchet-bg>
+    </div>
+  </div>
+
+  <div class="demo-container">
+    <h2>Interactive Demo</h2>
+    <div class="demo-box" id="interactive-demo" style="height: 500px; background: white;">
+      <truchet-bg
+        id="interactive-truchet"
+        data-mode="light"
+        data-brand="m5t"
+        data-refresh="800"
+        data-cell-width="100">
+      </truchet-bg>
+    </div>
+  </div>
+
+  <script src="truchet_bg.js"></script>
+  <script>
+    // Interactive controls
+    const modeSelect = document.getElementById('mode-select');
+    const refreshInput = document.getElementById('refresh-input');
+    const cellWidthInput = document.getElementById('cell-width-input');
+    const applyBtn = document.getElementById('apply-btn');
+    const interactiveTruchet = document.getElementById('interactive-truchet');
+    const interactiveDemo = document.getElementById('interactive-demo');
+
+    applyBtn.addEventListener('click', () => {
+      const mode = modeSelect.value;
+      const refresh = refreshInput.value;
+      const cellWidth = cellWidthInput.value;
+
+      interactiveTruchet.setAttribute('data-mode', mode);
+      interactiveTruchet.setAttribute('data-refresh', refresh);
+      interactiveTruchet.setAttribute('data-cell-width', cellWidth);
+
+      // Update demo box background
+      interactiveDemo.style.background = mode === 'dark' ? '#1a1a1a' : '#ffffff';
+    });
+  </script>
+</body>
+</html>
