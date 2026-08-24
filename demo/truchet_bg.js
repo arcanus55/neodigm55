@@ -96,6 +96,10 @@ class TruchetBg extends HTMLElement {
           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 1000 1000'%3E%3Cpath d='M3.338.857h912.551V877.03H3.338z' style='fill:none' transform='matrix(1.09583 0 0 1.14133 -3.658 -.978)'/%3E%3Ccircle cx='616.807' cy='648.151' r='455.604' transform='matrix(1.02705 0 0 1.02706 -133.494 -165.686)'/%3E%3Ccircle cx='469.843' cy='436.072' r='215.307' style='fill:%23fff' transform='translate(-139.266 -79.774)scale(1.07164)'/%3E%3Cpath d='M.507-.646H.268l-.055.1a.4.4 0 0 1 .169.038.4.4 0 0 1 .069.044.2.2 0 0 1 .053.058.25.25 0 0 1-.048.342.35.35 0 0 1-.288.075.2.2 0 0 1-.044-.015.1.1 0 0 1-.028-.024.04.04 0 0 1-.01-.028q0-.02.015-.029a.06.06 0 0 1 .036-.01q.021 0 .037.008l.032.019.037.018q.02.009.051.008a.18.18 0 0 0 .162-.11.2.2 0 0 0 .014-.071.2.2 0 0 0-.026-.093.2.2 0 0 0-.073-.071.4.4 0 0 0-.115-.046.6.6 0 0 0-.151-.016l.159-.288h.289z' style='fill-rule:nonzero' transform='matrix(267.97808 -164.56363 164.56341 267.97874 307.91 519.357)'/%3E%3C/svg%3E");
         }
 
+        .truchet-bg-m5t-3 {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 1000 1000'%3E%3Cpath d='M3.338.857h912.551V877.03H3.338z' style='fill:none' transform='matrix(1.09583 0 0 1.14133 -3.658 -.978)'/%3E%3Cpath d='M976.13 180.002c0-82.458-66.946-149.404-149.404-149.404H179.45c-82.458 0-149.404 66.946-149.404 149.404v644.724c0 82.458 66.946 149.404 149.404 149.404h647.276c82.458 0 149.404-66.946 149.404-149.404z' style='fill:%23fff'/%3E%3Ccircle cx='-258.969' cy='44.281' r='109.068' transform='translate(477.97 160.948)'/%3E%3Ccircle cx='-258.969' cy='44.281' r='109.068' transform='translate(1063.125 160.948)'/%3E%3Ccircle cx='-258.969' cy='44.281' r='109.068' transform='translate(773.959 459.335)'/%3E%3Ccircle cx='-258.969' cy='44.281' r='109.068' transform='translate(474.313 762.784)'/%3E%3Ccircle cx='-258.969' cy='44.281' r='109.068' transform='translate(1061.876 762.784)'/%3E%3C/svg%3E");
+        }
+
         .grid-cell[data-brand-graphic]::after {
           background-image: var(--brand-bg-image);
         }
@@ -166,7 +170,7 @@ class TruchetBg extends HTMLElement {
   getBrandGraphicsCount() {
     const brand = this.brand;
     const maxBrandMap = {
-      'm5t': 2
+      'm5t': 3
       // Add more brands here as needed
       // 'brand2': 3
     };
