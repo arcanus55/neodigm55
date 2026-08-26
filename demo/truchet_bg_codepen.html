@@ -12,7 +12,7 @@
     }
 
     body {
-      background-color: #2a1a1a;
+      background-color: #0F2435;  /*  --color-surface: m5mag */
     }
   </style>
 </head>
@@ -21,7 +21,7 @@
     <truchet-bg
       data-mode="dark"
       data-brand="m5t"
-      data-refresh="820"
+      data-refresh="800"
       data-cell-width="56"
       data-interactive="true">
     </truchet-bg>
@@ -133,10 +133,6 @@
               background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 1000 1000'%3E%3Cpath d='M3.338.857h912.551V877.03H3.338z' style='fill:none' transform='matrix(1.09583 0 0 1.14133 -3.658 -.978)'/%3E%3Cpath d='M976.13 180.002c0-82.458-66.946-149.404-149.404-149.404H179.45c-82.458 0-149.404 66.946-149.404 149.404v644.724c0 82.458 66.946 149.404 149.404 149.404h647.276c82.458 0 149.404-66.946 149.404-149.404z' style='fill:%23fff'/%3E%3Ccircle cx='-258.969' cy='44.281' r='109.068' transform='translate(477.97 160.948)'/%3E%3Ccircle cx='-258.969' cy='44.281' r='109.068' transform='translate(1063.125 160.948)'/%3E%3Ccircle cx='-258.969' cy='44.281' r='109.068' transform='translate(773.959 459.335)'/%3E%3Ccircle cx='-258.969' cy='44.281' r='109.068' transform='translate(474.313 762.784)'/%3E%3Ccircle cx='-258.969' cy='44.281' r='109.068' transform='translate(1061.876 762.784)'/%3E%3C/svg%3E");
             }
 
-            .grid-cell[data-brand-graphic]::after {
-              background-image: var(--brand-bg-image);
-            }
-
             /* Dark mode: invert colors for brand graphics */
             [data-bg-class="truchet-bg-dark"] .grid-cell[data-brand-graphic]::after {
               filter: invert(1) brightness(1.5);
@@ -188,6 +184,13 @@
               background-size: cover;
               background-repeat: no-repeat;
               pointer-events: none;
+              opacity: 0;
+              transition: opacity 300ms ease-in-out;
+            }
+
+            .grid-cell[data-brand-graphic]::after {
+              background-image: var(--brand-bg-image);
+              opacity: 0.8;
             }
           </style>
           <div class="grid-container">
@@ -259,6 +262,9 @@
         this.stopRotation();
 
         this.intervalId = setInterval(() => {
+          // 50% chance to skip this entire update cycle
+          if (Math.random() > 0.5) return;
+
           const cells = this.shadowRoot.querySelectorAll('.grid-cell');
           cells.forEach(cell => {
             // 50% chance to change
