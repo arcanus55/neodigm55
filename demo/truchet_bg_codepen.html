@@ -33,6 +33,7 @@
         super();
         this.attachShadow({ mode: 'open' });
         this.intervalId = null;
+        this.cellGraphicHistory = new Map(); // Track last graphic per cell index
       }
 
       static get observedAttributes() {
@@ -140,10 +141,10 @@
             .truchet-bg-m5t-5 {
               background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5' viewBox='0 0 1000 1000'%3E%3Cpath d='M3.338.857h912.551V877.03H3.338z' style='fill:none' transform='matrix(1.09583 0 0 1.14133 -3.658 -.978)'/%3E%3Cpath d='m363.062 363.515 22.485 69.203h72.764l-58.867 42.769 22.485 69.203-58.867-42.77-58.867 42.77 22.485-69.203-58.867-42.769h72.764z' style='fill:%23fff;stroke:%23fff;stroke-width:8.33px' transform='rotate(-45 564.528 555.103)'/%3E%3Cpath d='m363.062 363.515 22.485 69.203h72.764l-58.867 42.769 22.485 69.203-58.867-42.77-58.867 42.77 22.485-69.203-58.867-42.769h72.764z' style='fill:%23fff;stroke:%23000;stroke-width:3.97px' transform='matrix(1.4842 -1.48421 1.4842 1.4842 -799.373 275.84)'/%3E%3Cpath d='m363.062 363.515 22.485 69.203h72.764l-58.867 42.769 22.485 69.203-58.867-42.77-58.867 42.77 22.485-69.203-58.867-42.769h72.764z' style='fill:%23fff;stroke:%23fff;stroke-width:8.33px' transform='rotate(-45 369.725 84.81)'/%3E%3Cpath d='m363.062 363.515 22.485 69.203h72.764l-58.867 42.769 22.485 69.203-58.867-42.77-58.867 42.77 22.485-69.203-58.867-42.769h72.764z' style='fill:%23fff;stroke:%23fff;stroke-width:8.33px' transform='rotate(-45 679 783.178)'/%3E%3Cpath d='m363.062 363.515 22.485 69.203h72.764l-58.867 42.769 22.485 69.203-58.867-42.77-58.867 42.77 22.485-69.203-58.867-42.769h72.764z' style='fill:%23fff;stroke:%23fff;stroke-width:8.33px' transform='rotate(-45 289.394 -157.408)'/%3E%3C/svg%3E");
             }
-            .truchet-bg-m5t-6 {
-              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 1000 1000'%3E%3Cpath d='M3.338.857h912.551V877.03H3.338z' style='fill:none' transform='matrix(1.09583 0 0 1.14133 -3.658 -.978)'/%3E%3Cpath d='M284.836 242.099c0-11.63-9.442-21.072-21.072-21.072h-42.143c-11.63 0-21.072 9.442-21.072 21.072v702.452c0 11.629 9.442 21.071 21.072 21.071h42.143c11.63 0 21.072-9.442 21.072-21.071z' style='fill:%23fff' transform='rotate(-4.634 -1185.344 1066.912)'/%3E%3Cpath d='M284.836 243.471c0-12.387-9.442-22.444-21.072-22.444h-42.143c-11.63 0-21.072 10.057-21.072 22.444v699.708c0 12.387 9.442 22.443 21.072 22.443h42.143c11.63 0 21.072-10.056 21.072-22.443z' style='fill:%23fff' transform='matrix(-.11854 1.25022 -1.1738 -.1113 1236.975 277.217)'/%3E%3Cpath d='M284.836 239.194c0-10.027-9.442-18.167-21.072-18.167h-42.143c-11.63 0-21.072 8.14-21.072 18.167v708.262c0 10.026 9.442 18.166 21.072 18.166h42.143c11.63 0 21.072-8.14 21.072-18.166z' style='fill:%23fff' transform='matrix(.8586 -.07784 .0903 .99592 537.617 7.759)'/%3E%3Cpath d='M284.836 245.696c0-13.615-9.442-24.669-21.072-24.669h-42.143c-11.63 0-21.072 11.054-21.072 24.669v695.257c0 13.615 9.442 24.669 21.072 24.669h42.143c11.63 0 21.072-11.054 21.072-24.669z' style='fill:%23fff' transform='matrix(1.17024 -.02598 .0222 .9996 300.882 -62.323)'/%3E%3Cpath d='M284.836 244.297c0-12.843-9.442-23.27-21.072-23.27h-42.143c-11.63 0-21.072 10.427-21.072 23.27v698.055c0 12.843 9.442 23.27 21.072 23.27h42.143c11.63 0 21.072-10.427 21.072-23.27z' style='fill:%23fff' transform='matrix(1.03327 -.08874 .08035 .93566 119.531 28.224)'/%3E%3C/svg%3E");
-            }
 
+            .truchet-bg-m5t-7 {
+              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5' viewBox='0 0 1000 1000'%3E%3Cpath d='M3.338.857h912.551V877.03H3.338z' style='fill:none' transform='matrix(1.09583 0 0 1.14133 -3.658 -.978)'/%3E%3Cpath d='M215.149 158.677H80.695l36.434 847.263 94.697-34.311z' style='fill:%23fff;stroke:%23000;stroke-width:3.95px' transform='matrix(.92718 .3746 -.41558 1.02859 758.793 -139.393)'/%3E%3Cpath d='M215.149 158.677H80.695v818.146l103.785 32.647z' style='stroke:%23fff;stroke-width:3.95px' transform='matrix(.92718 -.3746 .41558 1.02859 -33.094 -28.568)'/%3E%3C/svg%3E");
+            }
 
             /* Dark mode: invert colors for brand graphics */
             [data-bg-class="truchet-bg-dark"] .grid-cell[data-brand-graphic]::after {
@@ -218,7 +219,7 @@
       getBrandGraphicsCount() {
         const brand = this.brand;
         const maxBrandMap = {
-          'm5t': 6
+          'm5t': 7
           // Add more brands here as needed
           // 'brand2': 3
         };
@@ -229,12 +230,27 @@
         const cells = this.shadowRoot.querySelectorAll('.grid-cell');
         const maxGraphics = this.getBrandGraphicsCount();
 
-        cells.forEach(cell => {
+        cells.forEach((cell, index) => {
           cell.addEventListener('mouseenter', () => {
             if (maxGraphics === 0) return;
 
             const brand = this.brand;
-            const randomGraphic = Math.floor(Math.random() * maxGraphics) + 1;
+            let randomGraphic;
+
+            // Get the last graphic from the history map using cell index
+            const lastGraphic = this.cellGraphicHistory.get(index);
+
+            // Ensure we don't get the same graphic as last time
+            if (maxGraphics > 1) {
+              do {
+                randomGraphic = Math.floor(Math.random() * maxGraphics) + 1;
+              } while (randomGraphic === lastGraphic);
+            } else {
+              randomGraphic = 1;
+            }
+
+            // Store the current graphic in the history map
+            this.cellGraphicHistory.set(index, randomGraphic);
             const className = `truchet-bg-${brand}-${randomGraphic}`;
 
             // Apply the brand graphic class to the cell's ::after pseudo-element

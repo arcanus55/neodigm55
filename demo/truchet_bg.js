@@ -108,6 +108,10 @@ class TruchetBg extends HTMLElement {
           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5' viewBox='0 0 1000 1000'%3E%3Cpath d='M3.338.857h912.551V877.03H3.338z' style='fill:none' transform='matrix(1.09583 0 0 1.14133 -3.658 -.978)'/%3E%3Cpath d='m363.062 363.515 22.485 69.203h72.764l-58.867 42.769 22.485 69.203-58.867-42.77-58.867 42.77 22.485-69.203-58.867-42.769h72.764z' style='fill:%23fff;stroke:%23fff;stroke-width:8.33px' transform='rotate(-45 564.528 555.103)'/%3E%3Cpath d='m363.062 363.515 22.485 69.203h72.764l-58.867 42.769 22.485 69.203-58.867-42.77-58.867 42.77 22.485-69.203-58.867-42.769h72.764z' style='fill:%23fff;stroke:%23000;stroke-width:3.97px' transform='matrix(1.4842 -1.48421 1.4842 1.4842 -799.373 275.84)'/%3E%3Cpath d='m363.062 363.515 22.485 69.203h72.764l-58.867 42.769 22.485 69.203-58.867-42.77-58.867 42.77 22.485-69.203-58.867-42.769h72.764z' style='fill:%23fff;stroke:%23fff;stroke-width:8.33px' transform='rotate(-45 369.725 84.81)'/%3E%3Cpath d='m363.062 363.515 22.485 69.203h72.764l-58.867 42.769 22.485 69.203-58.867-42.77-58.867 42.77 22.485-69.203-58.867-42.769h72.764z' style='fill:%23fff;stroke:%23fff;stroke-width:8.33px' transform='rotate(-45 679 783.178)'/%3E%3Cpath d='m363.062 363.515 22.485 69.203h72.764l-58.867 42.769 22.485 69.203-58.867-42.77-58.867 42.77 22.485-69.203-58.867-42.769h72.764z' style='fill:%23fff;stroke:%23fff;stroke-width:8.33px' transform='rotate(-45 289.394 -157.408)'/%3E%3C/svg%3E");
         }
 
+        .truchet-bg-m5t-7 {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5' viewBox='0 0 1000 1000'%3E%3Cpath d='M3.338.857h912.551V877.03H3.338z' style='fill:none' transform='matrix(1.09583 0 0 1.14133 -3.658 -.978)'/%3E%3Cpath d='M215.149 158.677H80.695l36.434 847.263 94.697-34.311z' style='fill:%23fff;stroke:%23000;stroke-width:3.95px' transform='matrix(.92718 .3746 -.41558 1.02859 758.793 -139.393)'/%3E%3Cpath d='M215.149 158.677H80.695v818.146l103.785 32.647z' style='stroke:%23fff;stroke-width:3.95px' transform='matrix(.92718 -.3746 .41558 1.02859 -33.094 -28.568)'/%3E%3C/svg%3E");
+        }
+
         /* Dark mode: invert colors for brand graphics */
         [data-bg-class="truchet-bg-dark"] .grid-cell[data-brand-graphic]::after {
           filter: invert(1) brightness(1.5);
@@ -181,7 +185,7 @@ class TruchetBg extends HTMLElement {
   getBrandGraphicsCount() {
     const brand = this.brand;
     const maxBrandMap = {
-      'm5t': 6
+      'm5t': 7
       // Add more brands here as needed
       // 'brand2': 3
     };
@@ -197,7 +201,22 @@ class TruchetBg extends HTMLElement {
         if (maxGraphics === 0) return;
 
         const brand = this.brand;
-        const randomGraphic = Math.floor(Math.random() * maxGraphics) + 1;
+        let randomGraphic;
+
+        // Get the last graphic from the data attribute
+        const lastGraphic = cell.dataset.lastGraphic ? parseInt(cell.dataset.lastGraphic) : null;
+
+        // Ensure we don't get the same graphic as last time
+        if (maxGraphics > 1) {
+          do {
+            randomGraphic = Math.floor(Math.random() * maxGraphics) + 1;
+          } while (randomGraphic === lastGraphic);
+        } else {
+          randomGraphic = 1;
+        }
+
+        // Store the current graphic for next time
+        cell.dataset.lastGraphic = randomGraphic;
         const className = `truchet-bg-${brand}-${randomGraphic}`;
 
         // Apply the brand graphic class to the cell's ::after pseudo-element
