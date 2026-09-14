@@ -1,29 +1,22 @@
-BSD 3-Clause License
+Business Source License 1.1
 
-Copyright (c) 2021, Arcanus 55, Inc. | Scott C. Krause
-All rights reserved.
+Parameters
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
+Licensor:           Arcanus 55, Inc. | DBA Mach Five Tech
+Licensed Work:      Neodigm 55
+Additional Use Grant: Production use of the Licensed Work is permitted for all purposes, provided that you do not use the Licensed Work to provide a commercial managed service, hosting platform, or Software-as-a-Service (SaaS) offering that provides access to the functionality of the Licensed Work, or any derivative work thereof, to third parties in competition with the Licensor’s own commercial offerings.
+Change Date:        September 14, 2030
+Change License:     Apache License, Version 2.0
 
-1. Redistributions of source code must retain the above copyright notice, this
-   list of conditions and the following disclaimer.
+Terms
 
-2. Redistributions in binary form must reproduce the above copyright notice,
-   this list of conditions and the following disclaimer in the documentation
-   and/or other materials provided with the distribution.
+1. The Licensor hereby grants you the right to copy, modify, create derivative works, redistribute, and make non-production use of the Licensed Work. The Licensor also grants you the right to make production use of the Licensed Work, provided such use complies with the Additional Use Grant.
 
-3. Neither the name of the copyright holder nor the names of its
-   contributors may be used to endorse or promote products derived from
-   this software without specific prior written permission.
+2. Effective on the Change Date, or the fourth anniversary of the first public availability of a specific version of the Licensed Work under this License, whichever is earlier, the Licensor hereby grants you a permanent, worldwide, royalty-free, non-exclusive, irrevocable license to the Licensed Work under the Change License.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+3. To the extent any file embedded in the Licensed Work contains a different license or notice, that license or notice shall control with respect to that file.
+
+4. This License does not grant any rights in the trademarks, service marks, or logos of the Licensor.
+
+5. THE LICENSED WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
