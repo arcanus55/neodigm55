@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/arcanus55/neodigm55#readme",
   "dependencies": {
+"@machfivetechchicago/machvive-webmcp-ai": "^5.7.0",
     "typescript": "^4.4.4"
   }
 }
